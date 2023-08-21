@@ -1,9 +1,12 @@
 import React from "react";
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from '../styles/Header.module.css'
 
 export default function Header() {
   return (
+
+    <div className={styles.container}>
    
   <header className="flex justify-items-center ">
 
@@ -11,14 +14,16 @@ export default function Header() {
 
 
 
-<Image src="/logo.jpg" alt="" width="245" height="156"/>
+
+
+<Link href="/"><Image src="/logo.jpg" alt="" width="245" height="156"/></Link>
 
 
 
 </div>
 
 <div className="navbar">
-  <ul className='uppercase text-sm'>
+  <ul className='nav-list uppercase text-sm'>
     <li><Link href="/">works</Link></li>
     <li><Link href="/presses">presses</Link></li>
     <li><Link href="/bio">bio</Link></li>
@@ -27,6 +32,8 @@ export default function Header() {
   </div>
 
 </header>
+
+</div>
    
   );
 }

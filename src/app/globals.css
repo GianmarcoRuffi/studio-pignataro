@@ -43,26 +43,27 @@ height: 40%;
 
 }
 
+
 .navbar {
 
-width: 80%;
-
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  display: inline-block;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-}
-
-li:hover {
-  color: #111111;
-}
+  width: 80%;
+  
+  }
+  
+  .nav-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .nav-list li {
+    display: inline-block;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  .nav-list li:hover {
+    color: #111111;
+  }
