@@ -8,21 +8,16 @@ export default function Header() {
 
     <div className={styles.container}>
    
-  <header className="flex justify-items-center ">
+  <header>
 
-<div className="logo-container container flex-row justify-center items-center">
+    <div className="nav-wrapper row justify-between items-center grid grid-cols-2 gap-4 ">
+      <div className="logo-container  flex justify-center">
 
-
-
-
-
-<Link href="/"><Image src="/logo.jpg" alt="" width="245" height="156"/></Link>
-
-
+<Link href="/"><Image src="/logo.jpg" alt="" width="245" height="156" className="ps-8"/></Link>
 
 </div>
 
-<div className="navbar">
+<div className="navbar flex justify-center">
   <ul className='nav-list uppercase text-sm'>
     <li><Link href="/">works</Link></li>
     <li><Link href="/presses">presses</Link></li>
@@ -30,6 +25,9 @@ export default function Header() {
     <li><Link href="/contacts">contacts</Link></li>
   </ul>
   </div>
+</div>
+
+
 
 </header>
 
