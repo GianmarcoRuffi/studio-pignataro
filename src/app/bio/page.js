@@ -6,15 +6,9 @@ export default function Bio() {
   return (
     <div className={styles.container}>
       <div className="bio-container flex justify-center items-center">
-        <div className="wrapper row grid grid-cols-2 gap-6">
+        <div className="wrapper row md:grid grid-cols-2 gap-6">
           <div className="image-container col-2 responsive">
-            <Image
-              src="/bio_01.jpg"
-              alt="bio"
-              width="620"
-              height="620"
-              
-            />
+            <Image src="/bio_01.jpg" alt="bio" width="620" height="620" />
           </div>
 
           <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
