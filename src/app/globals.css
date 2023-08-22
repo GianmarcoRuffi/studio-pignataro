@@ -102,7 +102,7 @@ height: 600px;
 
     
       height: auto;
-      background-color: red;
+     
 
   }
 
@@ -110,3 +110,30 @@ height: 600px;
     width: 100%;
     height: auto;
   } */
+
+  /* .bio-box {
+
+height: 800px;
+
+  } */
+  
+  .bio-box h1 {
+
+font-size: 30px;
+padding-bottom: 5px;
+
+  }
+
+  .bio-box h3 {
+
+    font-size: 20px;
+    padding-bottom: 10px;
+    
+      }
+
+      .bio-box p {
+
+        font-size: 15px;
+        padding-bottom: 10px;
+        
+          }

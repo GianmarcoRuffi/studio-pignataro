@@ -10,7 +10,7 @@ export default function Header() {
    
   <header>
 
-    <div className="nav-wrapper row justify-between items-center grid grid-cols-2 gap-4 ">
+    <div className="nav-wrapper row justify-between items-center grid grid-cols-2 gap-4 pb-20 ">
       <div className="logo-container  flex justify-center">
 
 <Link href="/"><Image src="/logo.jpg" alt="" width="245" height="156" className="ps-8"/></Link>
