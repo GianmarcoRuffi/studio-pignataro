@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Contacts() {
   return (
     <div className="contacts-container flex justify-center items-center">
-      <div className="wrapper row grid grid-cols-2 gap-6">
+      <div className="wrapper row md:grid grid-cols-2 gap-6">
         <div className="image-container  responsive">
           <Image
             src="/ufficio_01.jpg"
