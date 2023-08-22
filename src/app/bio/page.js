@@ -9,11 +9,11 @@ export default function Bio() {
         <div className="wrapper row grid grid-cols-2 gap-6">
           <div className="image-container col-2 responsive">
             <Image
-              src="/bio_resized.jpg"
+              src="/bio_01.jpg"
               alt="bio"
-              width="386"
-              height="386"
-              className="responsive rounded-full"
+              width="620"
+              height="620"
+              
             />
           </div>
 

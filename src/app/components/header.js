@@ -8,14 +8,14 @@ export default function Header() {
     <div className={styles.container}>
       <header>
         <div className="nav-wrapper row justify-between items-center grid grid-cols-2 gap-4 pb-20 ">
-          <div className="logo-container  flex justify-center">
+          <div className="logo-container  flex justify-center pr-12">
             <Link href="/">
               <Image
                 src="/logo.jpg"
                 alt=""
                 width="245"
                 height="156"
-                className="ps-8"
+              
               />
             </Link>
           </div>

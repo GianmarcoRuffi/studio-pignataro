@@ -9,15 +9,15 @@ export default function Contacts() {
           <Image
             src="/ufficio_01.jpg"
             alt="contacts"
-            width="582"
-            height="388"
+            width="620"
+            height="580"
             className="responsive"
           />
         </div>
 
         <div className="contacts-box flex justify-center items-center max-w-xs bg-gray-100">
           <ul className="contacts text-sm">
-            <li>Email@gmail.com</li>
+            <li>Email@gmail.com </li>
             <li>651 | 302 | 0420</li>
             <li>Saint Paul Minnesota 55114</li>
             <li>Linkedin</li>
