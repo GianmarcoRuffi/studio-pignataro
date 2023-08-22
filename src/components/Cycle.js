@@ -8,7 +8,7 @@ function renderHellos() {
   });
 }
 
-export default function Carousel() {
+export default function Cycle() {
   return (
     <>
       <h1>Hello World</h1>
