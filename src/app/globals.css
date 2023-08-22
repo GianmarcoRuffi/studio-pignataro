@@ -152,17 +152,36 @@ height:300px;
   display: flex;
   overflow: hidden;
   position: relative;
-  width: 600px;
+
 }
 
 .slide {
   flex: 0 0 100%;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; /* Aggiungi transizione per l'opacità */
+ 
 }
+
+
+/* Fading animation */
 
 .slide.active {
   opacity: 1;
+
+  animation-name: fade;
+  animation-duration: 1.5s;
+
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
 
 img {
@@ -170,7 +189,10 @@ img {
   height: auto;
 }
 
+.slide-container {
 
+  width: 950px;
+}
 
 button {
 

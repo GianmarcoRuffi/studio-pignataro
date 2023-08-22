@@ -8,12 +8,12 @@ const images = [
   '/IMG_02.jpg',
   '/ufficio_01.JPG',
   '/ufficio_02.JPG',
+  '/ufficio_03.JPG',
 ];
 
 export default function Home() {
   return (
 <div>
-      <h1>Image Slider</h1>
 
  <Slider images={images} />
 
