@@ -23,7 +23,7 @@ export default function Header() {
           <div className="navbar flex justify-center">
             <ul className="nav-list uppercase text-sm">
               <li>
-                <Link href="/">Progetti</Link>
+                <Link href="/projects">Progetti</Link>
               </li>
               <li>
                 <Link href="/presses">Pubblicazioni</Link>
