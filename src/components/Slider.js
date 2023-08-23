@@ -26,7 +26,7 @@ function Slider({ images }) {
     if (!isHovered) {
       interval = setInterval(() => {
         nextSlide();
-      }, 3000); // Cambia immagine ogni 3 secondi
+      }, 5000); // Cambia immagine ogni 3 secondi
     }
 
     return () => {
@@ -35,25 +35,37 @@ function Slider({ images }) {
   }, [activeIndex, isHovered]);
 
   return (
-    <div
-      className="slider"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <button onClick={prevSlide}>&lt;</button>
-      <div className="slide-container">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`slide ${index === activeIndex ? 'active' : ''}`}
-            style={{ display: index === activeIndex ? "block" : "none" }}
-          >
-            <img src={image} alt={`Slide ${index}`} />
-          </div>
-        ))}
+    <>
+      <div
+        className="slider"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <button onClick={prevSlide}>&lt;</button>
+        <div className="slide-container">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`slide ${index === activeIndex ? "active" : ""}`}
+              style={{ display: index === activeIndex ? "block" : "none" }}
+            >
+              <div className="img-container">
+                <Image
+                  src={image}
+                  alt={`Slide ${index}`}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                  style={{ width: "100%", height: "auto" }}
+                  priority={true}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        <button onClick={nextSlide}>&gt;</button>
       </div>
-      <button onClick={nextSlide}>&gt;</button>
-    </div>
+    </>
   );
 }
 

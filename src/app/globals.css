@@ -109,7 +109,7 @@ height: 600px;
   } */
 
 .bio-box {
-  height: 400px;
+  /* height: 620px; */
   overflow-y: scroll;
   padding-right: 15px;
   padding-left: 15px;
@@ -131,14 +131,10 @@ height: 600px;
 }
 
 .slider-container {
+  width: 500px;
 
-width: 500px;
-
-height:300px;
-
+  height: 300px;
 }
-
-
 
 /* styles/global.css */
 .slider {
@@ -152,16 +148,13 @@ height:300px;
   display: flex;
   overflow: hidden;
   position: relative;
-
 }
 
 .slide {
   flex: 0 0 100%;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; /* Aggiungi transizione per l'opacità */
- 
 }
-
 
 /* Fading animation */
 
@@ -170,9 +163,7 @@ height:300px;
 
   animation-name: fade;
   animation-duration: 1.5s;
-
 }
-
 
 .fade {
   animation-name: fade;
@@ -180,8 +171,12 @@ height:300px;
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 img {
@@ -190,12 +185,19 @@ img {
 }
 
 .slide-container {
-
   width: 950px;
 }
 
 button {
+  padding: 15px;
+}
 
-padding: 15px;
+.image-preloader {
+  width: 0;
+  height: 0;
+  display: none;
+}
 
+.img-container {
+  position: relative;
 }
