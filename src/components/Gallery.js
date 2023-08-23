@@ -5,10 +5,10 @@ export default function Gallery({ images, galleryTitle, galleryDescription }) {
   return (
     <div>
 
-<div className="flex justify-center pl-5">
+<div className="flex justify-center max-md:justify-start lg:pr-28">
    
       <div className="grid grid-cols-1 sm:grid-cols-1 gap-8">
-      <div className="row max-w-7xl text-justify mb-20">
+      <div className="row max-w-6xl text-justify mb-20">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
       </div>

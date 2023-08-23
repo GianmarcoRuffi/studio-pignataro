@@ -51,13 +51,15 @@ main {
   background-color: white;
 }
 
+/********/
+
 header {
   width: 100%;
   height: 40%;
   color: #373737;
 }
 
-/* navbar */
+/* Navbar */
 
 .navbar {
   width: 100%;
@@ -85,23 +87,19 @@ header {
   color: black;
 }
 
-/* contacts */
-
-/* .contacts-container {
-
-width:100%;
-height: 600px;
-
-
-  } */
 
 .image-container {
   height: auto;
 }
 
+/*Contacts********/
+
+
 .contacts-box {
   height: auto;
 }
+
+/*Bio********/
 
 
 .bio-box {
@@ -127,13 +125,16 @@ height: 600px;
   padding-bottom: 10px;
 }
 
+
+/*Slider********/
+
+
 .slider-container {
   width: 500px;
 
   height: 300px;
 }
 
-/* styles/global.css */
 .slider {
   display: flex;
   align-items: center;
