@@ -8,7 +8,7 @@ import { createContext } from "react";
 import React, { useState, useEffect } from "react";
 
 function Slider({ projects }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
 
   const nextSlide = () => {

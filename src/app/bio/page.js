@@ -14,12 +14,10 @@ export default function Bio() {
           <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
             <h1>Gianluca Pignataro</h1>
 
-            <h3>Architect-Designer</h3>
-
            
             
             {" "}
-            <h4>Dott. Arch. Gianluca Pignataro</h4>
+            <h4>Arch. Gianluca Pignataro</h4>
 
 <p>Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato A Puerto Rico (U.S.A.) cinque negozi in centri commerciali ed una villa.</p>
 

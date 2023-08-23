@@ -4,13 +4,16 @@ import Image from "next/image";
 export default function Gallery({ images, galleryTitle, galleryDescription }) {
   return (
     <div>
-      <div className="text-center mb-20">
+
+<div className="flex justify-center pl-5">
+   
+      <div className="grid grid-cols-1 sm:grid-cols-1 gap-8">
+      <div className="row max-w-7xl text-justify mb-20">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {images.map((image, index) => (
-          <div className="border p-4 border-none" key={index}>
+          <div className="border py-4 border-none" key={index}>
             <Image
               src={image}
               alt={`Image ${index + 1}`}
@@ -23,6 +26,7 @@ export default function Gallery({ images, galleryTitle, galleryDescription }) {
             />
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export default function ProjectCard({ name, imageSource, description }) {
 
 
       <div class="rounded overflow-hidden shadow-lg">
-        <img src={imageSource} alt="contacts" />
+        <img src={imageSource} alt="" />
         <div class="px-6 py-4 ">
           <div class="font-bold text-lg mb-2 break-words">{name}</div>
           <p class="text-gray-700 text-base">{description}</p>
