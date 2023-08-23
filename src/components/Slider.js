@@ -8,7 +8,7 @@ import { createContext } from "react";
 
 import React, { useState, useEffect } from "react";
 
-function Slider({ images }) {
+function Slider({ images, imageLinks }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -26,7 +26,7 @@ function Slider({ images }) {
     if (!isHovered) {
       interval = setInterval(() => {
         nextSlide();
-      }, 5000); // Cambia immagine ogni 3 secondi
+      }, 5000); // Cambia immagine ogni 5 secondi
     }
 
     return () => {
@@ -50,15 +50,21 @@ function Slider({ images }) {
               style={{ display: index === activeIndex ? "block" : "none" }}
             >
               <div className="img-container">
-                <Image
-                  src={image}
-                  alt={`Slide ${index}`}
-                  width={0}
-                  height={0}
-                  sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
-                  style={{ width: "100%", height: "auto" }}
-                  priority={true}
-                />
+                <a
+                  href={imageLinks[index]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={image}
+                    alt={`Slide ${index}`}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                    style={{ width: "100%", height: "auto" }}
+                    priority={true}
+                  />
+                </a>
               </div>
             </div>
           ))}

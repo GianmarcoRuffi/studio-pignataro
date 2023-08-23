@@ -11,11 +11,18 @@ const images = [
   '/IMG_22.jpg',
 ];
 
+const imageLinks = [
+  '/presses',
+  '/bio',
+  '/contacts',
+  '/presses',
+];
+
 export default function Home() {
   return (
 <div>
 
- <Slider images={images} />
+ <Slider images={images} imageLinks={imageLinks} />
 
      
     </div>
