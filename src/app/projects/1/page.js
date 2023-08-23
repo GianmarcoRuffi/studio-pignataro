@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Header from "../../components/Header";
+import Header from "../../../components/Header";
 import Link from "next/link";
 import React from 'react';
-import Gallery from "../../components/Gallery";
+import Gallery from "../../../components/Gallery";
 
 const images = [
   '/IMG_26.jpg',

@@ -3,21 +3,20 @@
 import Image from "next/image";
 import Header from "./Header";
 import Link from "next/link";
-
 import { createContext } from "react";
 
 import React, { useState, useEffect } from "react";
 
-function Slider({ images, imageLinks }) {
+function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   const nextSlide = () => {
-    setActiveIndex((activeIndex + 1) % images.length);
+    setActiveIndex((activeIndex + 1) % projects.length);
   };
 
   const prevSlide = () => {
-    setActiveIndex((activeIndex - 1 + images.length) % images.length);
+    setActiveIndex((activeIndex - 1 + projects.length) % projects.length);
   };
 
   useEffect(() => {
@@ -43,20 +42,16 @@ function Slider({ images, imageLinks }) {
       >
         <button onClick={prevSlide}>&lt;</button>
         <div className="slide-container">
-          {images.map((image, index) => (
+          {projects.map((project, index) => (
             <div
               key={index}
               className={`slide ${index === activeIndex ? "active" : ""}`}
               style={{ display: index === activeIndex ? "block" : "none" }}
             >
               <div className="img-container">
-                <a
-                  href={imageLinks[index]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={project.projectLink} rel="noopener noreferrer">
                   <Image
-                    src={image}
+                    src={project.imgSrc}
                     alt={`Slide ${index}`}
                     width={0}
                     height={0}
