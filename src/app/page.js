@@ -12,7 +12,7 @@ const images = [
 ];
 
 const imageLinks = [
-  '/presses',
+  '/1',
   '/bio',
   '/contacts',
   '/presses',
