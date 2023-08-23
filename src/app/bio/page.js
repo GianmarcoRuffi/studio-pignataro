@@ -11,7 +11,7 @@ export default function Bio() {
             <Image src="/bio_01.jpg" alt="bio" width="620" height="620" />
           </div>
 
-          <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md  h-3/5 flex-row justify-center items-center text-justify h-8 ">
+          <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
             <h1>Gianluca Pignataro</h1>
 
             <h3>Architect-Designer</h3>

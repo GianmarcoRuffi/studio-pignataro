@@ -5,10 +5,10 @@ import React from 'react';
 import Slider from '../components/Slider';
 
 const images = [
-  '/IMG_02.jpg',
-  '/ufficio_01.JPG',
-  '/ufficio_02.JPG',
-  '/ufficio_03.JPG',
+  '/IMG_26.jpg',
+  '/IMG_05.JPG',
+  '/IMG_28.JPG',
+  '/IMG_22.jpg',
 ];
 
 export default function Home() {
