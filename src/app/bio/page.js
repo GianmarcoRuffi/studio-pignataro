@@ -8,7 +8,7 @@ export default function Bio() {
       <div className="bio-container flex justify-center items-center">
         <div className="wrapper row md:grid grid-cols-2 gap-6">
           <div className="image-container col-2 responsive">
-            <Image src="/bio_01.jpg" alt="bio" width="620" height="620" />
+            <Image src="/Bio.jpg" alt="bio" width="620" height="620" />
           </div>
 
           <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
@@ -16,49 +16,64 @@ export default function Bio() {
 
             <h3>Architect-Designer</h3>
 
-            <p>
-              {" "}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              fringilla, tortor nec consectetur eleifend, ante nibh dictum mi,
-              hendrerit pharetra urna arcu sit amet justo. Nam leo est, egestas
-              sed mauris id, porttitor placerat nisl. Quisque enim sapien,
-              venenatis nec fermentum aliquet, placerat sed velit. Sed tincidunt
-              ut dolor eget pellentesque. Pellentesque egestas ante at mi
-              mattis, sed laoreet arcu ullamcorper. Suspendisse non suscipit
-              eros, in placerat metus. Mauris elementum nunc quis ultricies
-              fringilla. Phasellus pharetra, arcu at efficitur vulputate, ante
-              magna tincidunt neque, sed ornare enim dolor eu turpis. Nulla eros
-              velit, tincidunt ut luctus quis, sollicitudin quis ligula. Proin
-              in suscipit tortor, non imperdiet ex. Etiam vel fringilla massa,
-              at tincidunt mi. Sed laoreet ex vel mi ultrices, quis viverra
-              velit aliquet. Aenean hendrerit erat at nisl pretium ullamcorper.
-              Aliquam erat volutpat. Aliquam rutrum nulla condimentum, aliquam
-              turpis at, gravida lacus. Ut interdum justo vel urna gravida
-              fermentum. Mauris aliquam ac diam eu volutpat. Ut placerat, quam
-              eu vehicula consectetur, ante purus ultricies neque, vel malesuada
-              lacus mi quis enim. Aliquam tortor quam, sodales non viverra sit
-              amet, congue in sapien. Morbi at pellentesque mi. Aliquam blandit
-              libero a iaculis cursus. Mauris tristique dui vitae pharetra
-              tincidunt. Fusce at laoreet turpis, vel semper sapien. Ut lacinia
-              urna a tincidunt iaculis. Nullam diam dui, laoreet porttitor
-              sapien ut, pellentesque tincidunt sem. Aenean posuere dapibus
-              neque maximus commodo. Morbi porta metus non pharetra ullamcorper.
-              Cras nec ullamcorper dui, ut lobortis lacus. Mauris sit amet metus
-              sit amet libero lacinia faucibus. Etiam at velit ut ante
-              pellentesque elementum. Suspendisse arcu ligula, molestie sed
-              cursus sed, consectetur quis augue. Suspendisse potenti. Morbi ut
-              condimentum est. Phasellus in vestibulum magna. Vivamus sem est,
-              placerat sit amet ornare non, lacinia quis urna. Nunc quam diam,
-              vehicula id sapien quis, faucibus dignissim ex. Duis fermentum
-              augue at ante imperdiet venenatis. Aenean et elit bibendum,
-              ultricies justo et, consectetur nulla. Vestibulum rutrum porta
-              mauris, ut lobortis urna vehicula et. In condimentum porta leo, in
-              auctor velit luctus eget. Quisque sed lectus eu diam lobortis
-              tincidunt eu et orci. In imperdiet porttitor ipsum sed elementum.
-              Sed aliquet tellus sollicitudin pharetra vestibulum. Maecenas
-              dapibus tristique magna, et venenatis dui iaculis vel. Cras
-              lacinia rhoncus ex vitae vulputate. Suspendisse potenti.
-            </p>
+           
+            
+            {" "}
+            <h4>Dott. Arch. Gianluca Pignataro</h4>
+
+<p>Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato A Puerto Rico (U.S.A.) cinque negozi in centri commerciali ed una villa.</p>
+
+<h2>Esperienze professionali</h2>
+
+<h3>Studio Dott. Arch. Gianluca Pignataro – Cagliari, da Gennaio 2004 ad oggi</h3>
+
+<p>Fondatore – Titolare. Architetto progettista di interventi nell’edilizia residenziale moderna e nel recupero di edifici in centro storico.</p>
+
+<ul>
+<li>Casa Contu: Ristrutturazione con Interior design a Cagliari</li>
+<li>Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “HARLEY & DIKKINSON CONSULTING S.r.l.” Ing. Giuseppe De Bonis.</li>
+<li>Casa Reinhold-Porcu: Ristrutturazione con Interior design nel centro storico di Cagliari</li>
+<li>Palazzo Asquer: Messa in sicurezza strutturale con restauro di resti romani nel seminterrato del Palazzo storico Asquer, vincolato dalla Soprintendenza Ministeriale (SABAP) nel centro storico di Cagliari quartiere Castello</li>
+<li>Agenzia pubblicitaria Glisbo: Stand modulare per la “Regione Autonoma della Sardegna” www.glisbo.com</li>
+<li>Casa Corda: Ristrutturazione con Interior design a Cagliari www.luigicorda.com (lavoro pubblicato)</li>
+<li>Perito estimatore per la “Banca di Credito Cooperativo di Cagliari”</li>
+<li>Casa Guicciardi: Ristrutturazione con Interior design a Cagliari <a href="https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario" target="_blank">https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario</a>, <a href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/" target="_blank">https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/</a> (lavoro pubblicato)</li>
+<li>Nemesis Data s.r.l.: Ampliamento di una unità residenziale a Porto Cervo, Arzachena (OT)</li>
+<li>Casa Piras: Ristrutturazione con Interior design nel centro storico di Cagliari, quartiere Villanova (lavoro pubblicato)</li>
+<li>Casa Barranu: Ristrutturazione di una palazzina nel centro storico di Baunei (OG)</li>
+<li>Casa D’Alessio: Ristrutturazione con Interior design nel palazzo storico Zedda-Pirasa Cagliari</li>
+<li>Casa Vincis: Progettazione e d.l. di una palazzina residenziale a Cagliari</li>
+<li>Stams s.r.l. (Gruppo Cualbu): Progettazione e direzione artistica del recupero di sette edifici nel centro storico di Baunei (OG) <a href="http://www.dommoso.it/en/index.html" target="_blank">http://www.dommoso.it/en/index.html</a></li>
+<li>Tangex Corp.: Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)</li>
+</ul>
+
+<h3>Archlabo - Pignataro Vandermeulen Architetti – Cagliari, da Gennaio 1993 a Dicembre 2003</h3>
+
+<p>Co-fondatore. Architetto progettista principale, dalla ideazione sino alla realizzazione in cantiere di progetti residenziali, commerciali e di design di arredi; componente di un team composto da due architetti ed un ingegnere. Responsabile dei rapporti con committenza e imprese.</p>
+
+<ul>
+<li>Tangex Corp.: Progettazione di cinque negozi in centri commerciali a Puerto Rico (U.S.A.)</li>
+<li>Cooperativa edilizia Urbus: progettazione di un edificio residenziale a Cagliari</li>
+<li>Findomestic Banca: progettazione e d.l. delle “Sedi clienti/uffici territorio” a Cagliari e Sassari</li>
+<li>Discoteca Pandemonium: progettazione e d.l., Quartu S.E. (CA)</li>
+<li>Impresa Sarritzu: Progettazione di un Albergo Residence per 120 studenti a Cagliari</li>
+<li>Edificio Commendatore: Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari</li>
+<li>Casa Cugusi: ristrutturazione di un appartamento nel centro storico di Cagliari, quartiere Castello (lavoro pubblicato)</li>
+</ul>
+
+<h3>Studio Dott. Arch. Giovanni Maria Campus – Cagliari, da Genn. 1991 a Dic. 1993</h3>
+
+<p>Progettista unico o in partecipazione con altri architetti dalla fase ideativa sino allarealizzazione cantieristica dei seguenti progetti:</p>
+
+<ul>
+<li>Restauro di Palazzo Aresu, nel centro storico di Cagliari</li>
+<li>Progettazione della “Casa di Riposo per anziani” ad Arzachena (OT)</li>
+<li>Progettazione del “Hotel S.Efis” a Pula, località Nora (Cagliari)</li>
+<li>Restauro della chiesa della SS. Annunziata a Cagliari</li>
+</ul>
+
+
+           
           </div>
         </div>
       </div>
