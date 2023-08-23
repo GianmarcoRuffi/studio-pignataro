@@ -9,6 +9,10 @@ const images = [
   '/IMG_05.JPG',
   '/IMG_28.JPG',
   '/IMG_22.jpg',
+  '/IMG_22.jpg',
+  '/IMG_22.jpg',
+  '/IMG_22.jpg',
+  '/IMG_22.jpg',
 ];
 
 
