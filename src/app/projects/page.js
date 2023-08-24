@@ -12,6 +12,8 @@ function renderProjects() {
     <ProjectCard
       name={project.projectName}
       imageSource={project.imgSrc}
+      description={project.description}
+      
     
     >
       {" "}

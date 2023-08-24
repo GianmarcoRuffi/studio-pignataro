@@ -24,9 +24,9 @@ const projects = [
     projectLink: "/projects/CasaGuicciardi",
     description: `Ristrutturazione con Interior design. (lavoro pubblicato)
     Via Machiavelli n.108 Cagliari
-    https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
-    https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/
     `,
+    externalLink:`https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
+    https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
 
 },
 
@@ -37,10 +37,9 @@ const projects = [
     projectLink: "/projects/CasaPiras",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.(lavoro pubblicato)
     Vico V di via S. Giovanni n.6
-    https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
-    
-    https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti
     `,
+    externalLink:` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
+     https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
 
 },
 
