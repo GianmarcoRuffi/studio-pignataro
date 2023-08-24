@@ -8,7 +8,7 @@ export default function Header() {
     
       <header className="">
         <div className="nav-wrapper items-center md:grid grid-cols-2 gap-8 pb-8 ">
-          <div className="logo-container flex justify-center">
+          <div className="logo-container flex justify-center mr-20">
             <Link href="/">
               <img
                 src="/logo.jpg"
