@@ -47,7 +47,9 @@
 } */
 
 html {
-  font-family: Verdana, Tahoma, sans-serif;
+  font-family: century-gothic, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }

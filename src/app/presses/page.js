@@ -12,7 +12,7 @@ export default function Presses() {
 
             <Card
               description=" “Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”."
-              imageSource="/Pubblicazioni/TUBES01.JPG"
+              imageSource="/Pubblicazioni/TUBES_cover.JPG"
               source={
                 <a href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/">
                   {" "}
@@ -26,7 +26,7 @@ export default function Presses() {
 
             <Card
               description=" “15 motivi (….)”, articolo pubblicato nella rivista online “HOMIFY”"
-              imageSource="/Pubblicazioni/HOMIFY_1.jpg"
+              imageSource="/Pubblicazioni/HOMIFY_cover1.jpg"
               source={
                 <a href=" https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti">
                   {" "}
@@ -40,7 +40,7 @@ export default function Presses() {
 
             <Card
               description=" Recupero dei sottotetti(….)”, articolo pubblicato nella rivista online “HOMIFY”"
-              imageSource="/Pubblicazioni/HOMIFY_2.jpg"
+              imageSource="/Pubblicazioni/HOMIFY_cover2.jpg"
               source={
                 <a href=" https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte">
                   {" "}
@@ -54,7 +54,7 @@ export default function Presses() {
 
             <Card
               description="Un appartamento moderno rivoluzionato”, articolo pubblicato nella rivista online “HOMIFY"
-              imageSource="/Pubblicazioni/HOMIFY_3.jpg"
+              imageSource="/Pubblicazioni/HOMIFY_cover3.jpg"
               source={
                 <a href="https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario">
                   {" "}
@@ -68,7 +68,7 @@ export default function Presses() {
 
             <Card
               description="“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”"
-              imageSource="/Pubblicazioni/GRES.jpg"
+              imageSource="/Pubblicazioni/GRES_cover_resized.jpg"
               source=""
               date="Settembre 2015"
             >

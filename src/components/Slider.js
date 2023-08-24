@@ -61,7 +61,7 @@ function Slider({ projects }) {
                     alt={`Slide ${index}`}
                     width={0}
                     height={0}
-                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
                     style={{ width: "100%", height: "auto" }}
                     priority={true}
                   />
