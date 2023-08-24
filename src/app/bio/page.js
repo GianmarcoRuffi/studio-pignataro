@@ -11,7 +11,8 @@ export default function Bio() {
         </div>
 
         <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
-          <h1>Gianluca Pignataro</h1> <h4>Arch. Gianluca Pignataro</h4>
+          <h1>Gianluca Pignataro</h1>
+          <h2>Arch. Gianluca Pignataro</h2>
           <p>
             Nato a Bologna e diplomato in studi scientifici, laureato a Firenze
             ho intrapreso la professione a Cagliari dove ho da subito affrontato
@@ -24,16 +25,21 @@ export default function Bio() {
             progettazione architettonica ho operato in Italia per clienti come
             Findomestic Banca, imprese di costruzione, cooperative e privati e
             grazie alla doppia cittadinanza italiana e statunitense, ho
-            realizzato A Puerto Rico (U.S.A.) cinque negozi in centri
+            realizzato a Puerto Rico (U.S.A.) cinque negozi in centri
             commerciali ed una villa.
           </p>
-          <h2>Esperienze professionali</h2>
+          <h2>
+            
+            Esperienze professionali
+          </h2>
           <h3>
             Studio Dott. Arch. Gianluca Pignataro – Cagliari, da Gennaio 2004 ad
             oggi
           </h3>
+          <h4>Fondatore – Titolare. </h4>
+
           <p>
-            Fondatore – Titolare. Architetto progettista di interventi
+          Architetto progettista di interventi
             nell’edilizia residenziale moderna e nel recupero di edifici in
             centro storico.
           </p>
@@ -57,7 +63,7 @@ export default function Bio() {
             </li>
             <li>
               Agenzia pubblicitaria Glisbo: Stand modulare per la “Regione
-              Autonoma della Sardegna” www.glisbo.com
+              Autonoma della Sardegna” <a href="https://glisbo.com/" target="_blank">www.glisbo.com</a>
             </li>
             <li>
               Casa Corda: Ristrutturazione con Interior design a Cagliari
@@ -75,15 +81,17 @@ export default function Bio() {
               >
                 https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
               </a>
-              ,{" "}
-              <a
+              {" "}
+            
+            </li>
+
+            <li>  <a
                 href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/"
                 target="_blank"
               >
                 https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/
               </a>{" "}
-              (lavoro pubblicato)
-            </li>
+              (lavoro pubblicato)</li>
             <li>
               Nemesis Data s.r.l.: Ampliamento di una unità residenziale a Porto
               Cervo, Arzachena (OT)
@@ -116,12 +124,14 @@ export default function Bio() {
               Puerto Rico (U.S.A.)
             </li>
           </ul>
+          {" "}
           <h3>
             Archlabo - Pignataro Vandermeulen Architetti – Cagliari, da Gennaio
             1993 a Dicembre 2003
           </h3>
+          <h4>Co-fondatore.</h4>
           <p>
-            Co-fondatore. Architetto progettista principale, dalla ideazione
+            Architetto progettista principale, dalla ideazione
             sino alla realizzazione in cantiere di progetti residenziali,
             commerciali e di design di arredi; componente di un team composto da
             due architetti ed un ingegnere. Responsabile dei rapporti con
@@ -156,10 +166,12 @@ export default function Bio() {
               storico di Cagliari, quartiere Castello (lavoro pubblicato)
             </li>
           </ul>
+          {" "}
           <h3>
             Studio Dott. Arch. Giovanni Maria Campus – Cagliari, da Genn. 1991 a
             Dic. 1993
           </h3>
+          <h4>Progettista</h4>
           <p>
             Progettista unico o in partecipazione con altri architetti dalla
             fase ideativa sino allarealizzazione cantieristica dei seguenti

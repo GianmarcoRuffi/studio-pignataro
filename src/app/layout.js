@@ -18,8 +18,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+
+        <div className='layout-wrapper'> <Header /></div>
         
-      <Header />
+     
 
         {children}</body>
     </html>
