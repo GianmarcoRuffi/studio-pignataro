@@ -33,6 +33,8 @@ function Slider({ projects }) {
     };
   }, [activeIndex, isHovered]);
 
+// Slider //
+
   return (
     <>
       <div

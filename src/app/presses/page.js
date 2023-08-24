@@ -48,7 +48,7 @@ export default function Presses() {
 
           <Card
             description="“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”"
-            imageSource="/Pubblicazioni/GRES_1.jpg"
+            imageSource="/Pubblicazioni/GRES.jpg"
             source=""
             date="Settembre 2015"
           >
@@ -57,7 +57,7 @@ export default function Presses() {
 
           <Card
             description="“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa” "
-            imageSource="/Pubblicazioni/DIAGONALE_1.jpg"
+            imageSource="/Pubblicazioni/YOUTRADE.jpg"
             source=""
             date="Maggio 2015"
           >
@@ -66,7 +66,7 @@ export default function Presses() {
 
           <Card
             description="“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”"
-            imageSource="/Pubblicazioni/BravaCasa_1.jpg"
+            imageSource="/Pubblicazioni/BravaCasa.jpg"
             source=""
             date="Marzo 1999"
           >
