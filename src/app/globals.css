@@ -151,12 +151,18 @@ header {
 
 /*Slider********/
 
+.slider-wrapper {
+
+display:flex;
+
+}
 
 .slider {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 1900px;
 }
 
 .slide-container {
@@ -165,7 +171,7 @@ header {
   position: relative;
   align-items: center;
   justify-content: center;
-  width: 1900px;
+  
 }
 
 .slide {

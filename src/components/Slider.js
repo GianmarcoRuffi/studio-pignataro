@@ -37,15 +37,16 @@ function Slider({ projects }) {
 
   return (
     <>
+    
+   <div className="justify-center flex content-center items-center" >
+    
+    <button className="prev" onClick={prevSlide}>&lt;</button>
       <div
         className="slider"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
 
-
-
-<button classname="prev" onClick={prevSlide}>&lt;</button>
         <div className="slide-container">
           <div className="img-container">
             {projects.map((project, index) => (
@@ -70,8 +71,10 @@ function Slider({ projects }) {
           </div>
         </div>
 
-        <button classname="next" onClick={nextSlide}>&gt;</button>
+        
       </div>
+      <button className="next" onClick={nextSlide}>&gt;</button>
+      </div> 
     </>
   );
 }
