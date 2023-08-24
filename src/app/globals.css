@@ -213,6 +213,24 @@ list-style-type: disc;
     }
 
 
+    /* Card */
+
+
+    .card-link a:hover{
+
+      color: gray;
+      
+        }
+
+        /* Gallery */
+
+        .gallery-link a:hover{
+
+          color: black;
+          
+            }
+
+
 /* Fading animation */
 
 .slide.active {

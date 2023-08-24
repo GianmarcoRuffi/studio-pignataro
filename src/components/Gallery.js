@@ -11,8 +11,8 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
       <div className="row max-w-6xl text-justify mb-20">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500">{galleryLink}</p>
-        <p className="text-gray-500">{galleryLinkTwo}</p>
+        <p className="text-gray-500 gallery-link">{galleryLink}</p>
+        <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
         
       </div>
         {images.map((image, index) => (
