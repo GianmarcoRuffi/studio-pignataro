@@ -6,8 +6,8 @@ export default function Bio() {
   return (
     <div className={styles.container}>
       <div className="bio-container flex justify-center items-center">
-        <div className="wrapper row md:grid grid-cols-2 gap-6">
-          <div className="image-container col-2 responsive">
+        <div className="wrapper row lg:grid grid-cols-2 gap-6">
+          <div className="image-container lg:col-2 responsive">
             <Image src="/Bio.jpg" alt="bio" width="620" height="620" />
           </div>
 

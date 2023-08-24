@@ -4,78 +4,97 @@ import Card from "../../components/Card";
 
 export default function Presses() {
   return (
-    <div className="flex justify-center pl-5">
-      <div className="presses-container flex justify-center items-center max-w-7xl">
-        <div class="card-box bg-gray-100 p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16">
-          {/* container start */}
+    
+      <div className="flex main-presses justify-center">
+        <div className="presses-container flex justify-center items-center max-w-7xl">
+          <div class="card-box bg-gray-100 p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16">
+            {/* container start */}
 
-          <Card
-            description=" “Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”."
-            imageSource="/Pubblicazioni/TUBES01.JPG"
-            source={<a href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/"> https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/</a>}
-             date="2022"
-          >
-            {" "}
-          </Card>
+            <Card
+              description=" “Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”."
+              imageSource="/Pubblicazioni/TUBES01.JPG"
+              source={
+                <a href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/">
+                  {" "}
+                  https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/
+                </a>
+              }
+              date="2022"
+            >
+              {" "}
+            </Card>
 
-          <Card
-            description=" “15 motivi (….)”, articolo pubblicato nella rivista online “HOMIFY”"
-            imageSource="/Pubblicazioni/HOMIFY_1.jpg"
-            source={<a href=" https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti">  https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti</a>}
-            date="Febbraio 2021"
-          >
-            {" "}
-          </Card>
+            <Card
+              description=" “15 motivi (….)”, articolo pubblicato nella rivista online “HOMIFY”"
+              imageSource="/Pubblicazioni/HOMIFY_1.jpg"
+              source={
+                <a href=" https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti">
+                  {" "}
+                  https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti
+                </a>
+              }
+              date="Febbraio 2021"
+            >
+              {" "}
+            </Card>
 
-          <Card
-            description=" Recupero dei sottotetti(….)”, articolo pubblicato nella rivista online “HOMIFY”"
-            imageSource="/Pubblicazioni/HOMIFY_2.jpg"
-            source={<a href=" https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte">   https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte</a>}
-            date="Novembre 2018"
-          >
-            {" "}
-          </Card>
+            <Card
+              description=" Recupero dei sottotetti(….)”, articolo pubblicato nella rivista online “HOMIFY”"
+              imageSource="/Pubblicazioni/HOMIFY_2.jpg"
+              source={
+                <a href=" https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte">
+                  {" "}
+                  https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
+                </a>
+              }
+              date="Novembre 2018"
+            >
+              {" "}
+            </Card>
 
+            <Card
+              description="Un appartamento moderno rivoluzionato”, articolo pubblicato nella rivista online “HOMIFY"
+              imageSource="/Pubblicazioni/HOMIFY_3.jpg"
+              source={
+                <a href="https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario">
+                  {" "}
+                  https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
+                </a>
+              }
+              date="Maggio 2016"
+            >
+              {" "}
+            </Card>
 
-          <Card
-            description="Un appartamento moderno rivoluzionato”, articolo pubblicato nella rivista online “HOMIFY"
-            imageSource="/Pubblicazioni/HOMIFY_3.jpg"
-            source={<a href="https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario"> https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario</a>}
-            date="Maggio 2016"
-          >
-            {" "}
-          </Card>
+            <Card
+              description="“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”"
+              imageSource="/Pubblicazioni/GRES.jpg"
+              source=""
+              date="Settembre 2015"
+            >
+              {" "}
+            </Card>
 
-          <Card
-            description="“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”"
-            imageSource="/Pubblicazioni/GRES.jpg"
-            source=""
-            date="Settembre 2015"
-          >
-            {" "}
-          </Card>
+            <Card
+              description="“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa” "
+              imageSource="/Pubblicazioni/YOUTRADE.jpg"
+              source=""
+              date="Maggio 2015"
+            >
+              {" "}
+            </Card>
 
-          <Card
-            description="“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa” "
-            imageSource="/Pubblicazioni/YOUTRADE.jpg"
-            source=""
-            date="Maggio 2015"
-          >
-            {" "}
-          </Card>
-
-          <Card
-            description="“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”"
-            imageSource="/Pubblicazioni/BravaCasa.jpg"
-            source=""
-            date="Marzo 1999"
-          >
-            {" "}
-          </Card>
-
-
+            <Card
+              description="“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”"
+              imageSource="/Pubblicazioni/BravaCasa.jpg"
+              source=""
+              date="Marzo 1999"
+            >
+              {" "}
+            </Card>
+          </div>
         </div>
       </div>
-    </div>
+    
   );
 }

@@ -33,7 +33,7 @@ function Slider({ projects }) {
     };
   }, [activeIndex, isHovered]);
 
-// Slider //
+  // Slider //
 
   return (
     <>
@@ -42,15 +42,18 @@ function Slider({ projects }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <button onClick={prevSlide}>&lt;</button>
+
+
+
+<button classname="prev" onClick={prevSlide}>&lt;</button>
         <div className="slide-container">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`slide ${index === activeIndex ? "active" : ""}`}
-              style={{ display: index === activeIndex ? "block" : "none" }}
-            >
-              <div className="img-container">
+          <div className="img-container">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className={`slide ${index === activeIndex ? "active" : ""}`}
+                style={{ display: index === activeIndex ? "block" : "none" }}
+              >
                 <a href={project.projectLink} rel="noopener noreferrer">
                   <Image
                     src={project.imgSrc}
@@ -63,10 +66,11 @@ function Slider({ projects }) {
                   />
                 </a>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <button onClick={nextSlide}>&gt;</button>
+
+        <button classname="next" onClick={nextSlide}>&gt;</button>
       </div>
     </>
   );

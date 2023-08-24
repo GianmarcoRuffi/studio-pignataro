@@ -163,6 +163,9 @@ header {
   display: flex;
   overflow: hidden;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 1900px;
 }
 
 .slide {
@@ -174,10 +177,7 @@ header {
 
 
 
-.slide-container {
-  width: 950px;
-  
-}
+
 
 button {
   padding: 15px;
@@ -191,7 +191,8 @@ button {
 }
 
 .img-container {
-  position: relative;
+ 
   max-height: 633px;
 }
+
 

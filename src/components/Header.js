@@ -6,15 +6,13 @@ import Link from "next/link";
 export default function Header() {
   return (
     
-      <header>
-        <div className="nav-wrapper row justify-between items-center md:grid grid-cols-2 gap-4 pb-8 ">
-          <div className="logo-container  flex justify-center pr-16">
+      <header className="">
+        <div className="nav-wrapper items-center md:grid grid-cols-2 gap-8 pb-8 ">
+          <div className="logo-container flex justify-center">
             <Link href="/">
-              <Image
+              <img
                 src="/logo.jpg"
                 alt=""
-                width="245"
-                height="156"
               
               />
             </Link>
