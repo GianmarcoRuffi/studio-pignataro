@@ -4,26 +4,21 @@ import Image from "next/image";
 export default function Contacts() {
   return (
     <div className="contacts-container flex justify-center items-center">
-      <div className="wrapper row md:grid grid-cols-2 gap-6">
-        <div className="image-container  responsive">
-          <Image
-            src="/Studio.jpg"
-            alt="contacts"
-            width="620"
-            height="580"
-            className="responsive"
-          />
+      <div className="contacts-wrapper row lg:grid grid-cols-2 gap-6">
+        <div className="image-container ">
+          <img src="/Studio.jpg" alt="studio" />
         </div>
 
-        <div className="contacts-box flex justify-center items-center max-w-xs bg-gray-100">
-          <ul className="contacts text-sm">
-            <li>
+        <div className="contacts-box py-8 flex justify-center items-center max-w-xs bg-gray-100">
+          <ul className="contacts text-sm ">
+            <li className="p-4">
               <strong>Studio:</strong> Via Ada Negri 12, 09127 Cagliari
             </li>
-            <li>
-              <strong>Email:</strong> <a href="mailto:glpignataro@yahoo.it">glpignataro@yahoo.it</a> 
+            <li className="p-4">
+              <strong>Email:</strong>{" "}
+              <a href="mailto:glpignataro@yahoo.it">glpignataro@yahoo.it</a>
             </li>
-            <li>
+            <li className="p-4">
               <strong>Telefono:</strong> 0703517306 / Cell. 3485189797
             </li>
           </ul>

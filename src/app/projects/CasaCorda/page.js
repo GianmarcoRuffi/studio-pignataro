@@ -21,8 +21,11 @@ export default function Project() {
   return (
 <div>
 
- <Gallery images={images} galleryTitle={"Casa Corda"} galleryDescription={`Ristrutturazione con Interior design. Www.luigicorda.com (lavoro pubblicato)
-    Via Asti n.9 Cagliari`} />
+ <Gallery images={images} galleryTitle={"Casa Corda"} galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
+    Via Asti n.9 Cagliari`} galleryLink={<a href=" https://www.luigicorda.com/">
+    {" "}
+    https://www.luigicorda.com/
+  </a>} />
 
      
     </div>

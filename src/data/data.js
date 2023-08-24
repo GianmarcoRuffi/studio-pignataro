@@ -13,6 +13,7 @@ const projects = [
     projectLink: "/projects/CasaCorda",
     description: `Ristrutturazione con Interior design. Www.luigicorda.com (lavoro pubblicato)
     Via Asti n.9 Cagliari`,
+    
 
 }
 ,

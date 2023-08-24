@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Gallery({ images, galleryTitle, galleryDescription, galleryLink }) {
+export default function Gallery({ images, galleryTitle, galleryDescription, galleryLink, galleryLinkTwo }) {
   return (
     <div>
 
@@ -11,7 +11,8 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
       <div className="row max-w-6xl text-justify mb-20">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <span className="text-gray-500">{galleryLink}</span>
+        <p className="text-gray-500">{galleryLink}</p>
+        <p className="text-gray-500">{galleryLinkTwo}</p>
         
       </div>
         {images.map((image, index) => (

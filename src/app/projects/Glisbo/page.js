@@ -19,7 +19,10 @@ export default function Project() {
   return (
 <div>
 
- <Gallery images={images} galleryTitle={"Agenzia pubblicitaria Glisbo"} galleryDescription={"Stand modulare per la “Regione Autonoma della Sardegna”. Www.glisbo.com"} />
+ <Gallery images={images} galleryTitle={"Agenzia pubblicitaria Glisbo"} galleryDescription={"Stand modulare per la “Regione Autonoma della Sardegna”."} galleryLink={<a href=" https://glisbo.com/">
+    {" "}
+    https://glisbo.com/
+  </a>} />
 
      
     </div>
