@@ -1,5 +1,8 @@
 "use client";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import Image from "next/image";
 import Header from "./Header";
 import Link from "next/link";
@@ -37,7 +40,9 @@ function Slider({ projects }) {
 
   return (
     <>
-      {/* <button className="prev" onClick={prevSlide}>&lt;</button> */}
+      { <button className="prev" onClick={prevSlide}><FontAwesomeIcon icon={faAngleLeft} /></button> }
+
+      
       <div
         className="slider"
         onMouseEnter={() => setIsHovered(true)}
@@ -66,9 +71,9 @@ function Slider({ projects }) {
           </div>
         </div>
       </div>
-      {/* <button className="next" onClick={nextSlide}>
-        &gt;
-      </button> */}
+      { <button className="next" onClick={nextSlide}>
+      <FontAwesomeIcon icon={faAngleRight} />
+      </button> }
     </>
   );
 }
