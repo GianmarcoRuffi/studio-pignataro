@@ -179,12 +179,16 @@ width:100%;
 } */
 
 
+.bio-container {
+
+height: 434px;
+
+}
+
 .bio-box {
-  /* height: 620px; */
   overflow-y: scroll;
   padding-right: 15px;
   padding-left: 15px;
-  height: 514px;
 }
 
 .bio-box h1 {

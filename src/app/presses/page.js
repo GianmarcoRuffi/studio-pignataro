@@ -6,7 +6,7 @@ export default function Presses() {
   return (
     
       <div className="flex main-presses justify-center">
-        <div className="presses-container flex justify-center items-center max-w-7xl">
+        <div className="presses-container flex justify-center items-center ">
           <div className="card-box bg-gray-100 p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16">
             {/* container start */}
 
