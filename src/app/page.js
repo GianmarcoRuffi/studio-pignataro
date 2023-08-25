@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from 'react';
 import Slider from '../components/Slider';
 import projects from '../data/data';
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -15,7 +16,8 @@ export default function Home() {
 
  <Slider projects={projects} />
 
- 
+
+<Footer />
     </div>
   );
 }

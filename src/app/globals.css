@@ -325,15 +325,20 @@ background-color: #F3F4F6;
 
 .prev {
  
-  left:2%;
+  left:5px;
 }
 
 .next {
-right:2%;
+right:5px;
 
 
 }
 
+button:hover {
+
+color: gray;
+
+}
 
 
 /*Slider********/

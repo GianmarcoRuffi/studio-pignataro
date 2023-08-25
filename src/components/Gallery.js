@@ -11,6 +11,7 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
             <p className="text-gray-500">{galleryDescription}</p>
             <p className="text-gray-500 gallery-link">{galleryLink}</p>
             <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
+            <span className="text-gray-500  text-xs">Foto &copy;  Luigi Corda.</span>
           </div>
           
           <div className="flex flex-wrap gap-8 bg-gray-100 justify-center">

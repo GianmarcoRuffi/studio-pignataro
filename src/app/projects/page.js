@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard";
+import Footer from "../../components/Footer";
 
 function renderProjects() {
   return projects.map((project, index) =>
@@ -25,6 +26,7 @@ export default function Projects() {
       <div className="card-box bg-gray-100 p-10 flex flex-col md:gap-16 gap-16">
         {renderProjects()}
       </div>
+      <Footer></Footer>
     </div>
   );
 }

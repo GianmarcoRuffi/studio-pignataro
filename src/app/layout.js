@@ -11,6 +11,7 @@ import localFont from 'next/font/local'
 import Header from "../components/Header";
 
 
+
 export const metadata = {
   title: "Studio Pignataro",
   description: "Studio Pignataro",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           {" "}
           <Header />
           {children}
+          
         </div>
       </body>
     </html>
