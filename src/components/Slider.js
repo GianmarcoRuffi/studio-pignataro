@@ -66,9 +66,9 @@ function Slider({ projects }) {
           </div>
         </div>
       </div>
-      <button className="next" onClick={nextSlide}>
+      {/* <button className="next" onClick={nextSlide}>
         &gt;
-      </button>
+      </button> */}
     </>
   );
 }
