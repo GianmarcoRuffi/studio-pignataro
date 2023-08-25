@@ -6,7 +6,7 @@ export default function Contacts() {
     <div className="contacts-container flex justify-center items-center bg-gray-100">
       
         <div className="image-container w-1/2 pr-4 ">
-          <img src="/Studio.jpg" alt="studio" className="max-w-full" />
+          <img src="/Studio.jpg " alt="studio" className="max-w-full" />
         </div>
 
         <div className="contacts-box py-8  w-1/2 flex items-center ">

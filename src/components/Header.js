@@ -11,7 +11,7 @@ export default function Header() {
           <div className="logo-container flex">
             <Link href="/">
               <img
-                src="/logo2.jpg"
+                src="/logo.jpg"
                 alt=""
               
               />

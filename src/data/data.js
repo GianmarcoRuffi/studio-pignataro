@@ -87,6 +87,18 @@ const projects = [
     Via Eroi d’Italia n.33/35
     `,
   },
+
+  {
+    projectName: "Studio Pignataro",
+    imgSrc: "/Home/11.jpg",
+    projectLink: "/contacts",
+    description: `Progettazione, Interior design e d.l. di una palazzina residenziale.
+    Via Eroi d’Italia n.33/35
+    `,
+    invisible: true,
+    
+  },
 ];
+
 
 export default projects;
