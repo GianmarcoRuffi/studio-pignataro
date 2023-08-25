@@ -37,16 +37,12 @@ function Slider({ projects }) {
 
   return (
     <>
-    
-   <div className="justify-center flex content-center items-center" >
-    
-    {/* <button className="prev" onClick={prevSlide}>&lt;</button> */}
+      {/* <button className="prev" onClick={prevSlide}>&lt;</button> */}
       <div
         className="slider"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-
         <div className="slide-container">
           <div className="img-container">
             {projects.map((project, index) => (
@@ -59,22 +55,20 @@ function Slider({ projects }) {
                   <Image
                     src={project.imgSrc}
                     alt={`Slide ${index}`}
-                    width={0}
-                    height={0}
                     sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
-                    style={{ width: "100%", height: "auto" }}
+                    style={{ objectFit: "contain" }}
                     priority={true}
+                    fill={true}
                   />
                 </a>
               </div>
-            ))} 
+            ))}
           </div>
         </div>
-
-        
       </div>
-      {/* <button className="next" onClick={nextSlide}>&gt;</button> */}
-      </div> 
+      <button className="next" onClick={nextSlide}>
+        &gt;
+      </button>
     </>
   );
 }

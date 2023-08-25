@@ -11,11 +11,11 @@ export default function Home() {
 <div>
 
 
-  <div className="">
+  
 
  <Slider projects={projects} />
 
- </div>
+ 
     </div>
   );
 }

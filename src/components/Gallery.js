@@ -3,33 +3,33 @@ import Image from "next/image";
 
 export default function Gallery({ images, galleryTitle, galleryDescription, galleryLink, galleryLinkTwo }) {
   return (
-    <div>
-
-<div className="flex justify-center max-md:justify-start lg:pr-28">
-   
-      <div className="grid grid-cols-1 sm:grid-cols-1 gap-8">
-      <div className="row max-w-6xl text-justify mb-20">
-        <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
-        <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500 gallery-link">{galleryLink}</p>
-        <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
-        
-      </div>
-        {images.map((image, index) => (
-          <div className="border py-4 border-none" key={index}>
-            <Image
-              src={image}
-              alt={`Image ${index + 1}`}
-              width={0}
-              height={0}
-              sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
-              style={{ width: "100%", height: "auto" }}
-              priority={true}
-              className="mx-auto"
-            />
+    <div className="flex justify-center">
+      <div className="">
+        <div className="flex flex-col">
+          <div className="mb-20">
+            <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
+            <p className="text-gray-500">{galleryDescription}</p>
+            <p className="text-gray-500 gallery-link">{galleryLink}</p>
+            <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
           </div>
-        ))}
-      </div>
+          
+          <div className="flex flex-wrap gap-8">
+            {images.map((image, index) => (
+              <div className="border py-4 border-none" key={index}>
+                <Image
+                  src={image}
+                  alt={`Image ${index + 1}`}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                  style={{ width: "100%", height: "auto" }}
+                  priority={true}
+                  className="mx-auto"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -280,7 +280,7 @@ list-style-type: disc;
 
 /*Slider********/
 
-.slider-wrapper {
+/* .slider-wrapper {
 
 display:flex;
 width:100%;
@@ -309,28 +309,29 @@ height:auto;
   display: flex;
   flex: 0 0 100%;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out; /* Aggiungi transizione per l'opacità */
-}
+  transition: opacity 0.5s ease-in-out;
+} */
 
 
 
 
 
-button {
+
+
+/* button {
   padding: 15px;
   
 
-}
+} */
 
-.image-preloader {
-  width: 0;
-  height: 0;
-  display: none;
-}
 
 .img-container {
- 
-  max-height: 633px;
+  height: 80vh;
+  position: relative;
 }
 
+.slide-container {
 
+background-color: #F3F4F6;
+
+}
