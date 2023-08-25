@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Gallery({ images, galleryTitle, galleryDescription, galleryLink, galleryLinkTwo }) {
   return (
-    <div className="flex justify-center">
-      <div className="">
-        <div className="flex flex-col">
+    <div className="flex justify-center bg-gray-100">
+      
+        <div className="flex flex-col ">
           <div className="mb-20">
             <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
             <p className="text-gray-500">{galleryDescription}</p>
@@ -13,7 +13,7 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
             <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
           </div>
           
-          <div className="flex flex-wrap gap-8">
+          <div className="flex flex-wrap gap-8 bg-gray-100 justify-center">
             {images.map((image, index) => (
               <div className="border py-4 border-none" key={index}>
                 <Image
@@ -30,7 +30,7 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
             ))}
           </div>
         </div>
-      </div>
+      
     </div>
   );
 }

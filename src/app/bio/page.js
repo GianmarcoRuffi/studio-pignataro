@@ -4,13 +4,13 @@ import styles from "../styles/Bio.module.css";
 
 export default function Bio() {
   return (
-    <div className="bio-container flex  bg-gray-100">
+    <div className="bio-container flex bg-gray-100 max-lg:flex-col">
       
-        <div className="image-container w-1/2 mr-4">
+        <div className="image-container lg:w-1/2 lg:mr-4">
           <img src="/Bio.jpg" alt="bio" className="max-w-full h-auto"/>
         </div>
 
-        <div className="bio-box w-1/2 text-justify">
+        <div className="bio-box lg:w-1/2 text-justify">
           <h1>Gianluca Pignataro</h1>
           <h2>Arch. Gianluca Pignataro</h2>
           <p>
@@ -174,7 +174,7 @@ export default function Bio() {
           <h4>Progettista</h4>
           <p>
             Progettista unico o in partecipazione con altri architetti dalla
-            fase ideativa sino allarealizzazione cantieristica dei seguenti
+            fase ideativa sino alla realizzazione cantieristica dei seguenti
             progetti:
           </p>
           <ul>

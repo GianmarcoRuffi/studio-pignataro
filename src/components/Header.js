@@ -7,7 +7,7 @@ export default function Header() {
   return (
     
       <header className="">
-        <div className="nav-wrapper items-center flex justify-between">
+        <div className="nav-wrapper items-center flex justify-between max-lg:flex-col">
           <div className="logo-container flex">
             <Link href="/">
               <img

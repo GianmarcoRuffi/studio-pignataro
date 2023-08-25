@@ -171,9 +171,19 @@ width:100%;
 
 .bio-container {
 
-height: 434px;
+height: 434px;}
+ 
 
-}
+
+
+
+ @media screen and (max-width: 1023px) {
+  .bio-container {
+
+    height: auto;
+    
+    }
+  } 
 
 .bio-box {
   overflow-y: scroll;

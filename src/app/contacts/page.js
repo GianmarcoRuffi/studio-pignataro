@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export default function Contacts() {
   return (
-    <div className="contacts-container flex justify-center items-center bg-gray-100">
+    <div className="contacts-container flex justify-center items-center bg-gray-100 max-lg:flex-col">
       
-        <div className="image-container w-1/2 pr-4 ">
+        <div className="image-container lg:w-1/2 lg:pr-4 ">
           <img src="/Studio.jpg " alt="studio" className="max-w-full" />
         </div>
 
-        <div className="contacts-box py-8  w-1/2 flex items-center ">
+        <div className="contacts-box py-8  lg:w-1/2 flex items-center ">
           <ul className="contacts text-sm ">
             <li className="p-4">
               <strong>Studio:</strong> Via Ada Negri 12, 09127 Cagliari
