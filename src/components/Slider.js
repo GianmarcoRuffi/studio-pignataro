@@ -40,7 +40,7 @@ function Slider({ projects }) {
     
    <div className="justify-center flex content-center items-center" >
     
-    <button className="prev" onClick={prevSlide}>&lt;</button>
+    {/* <button className="prev" onClick={prevSlide}>&lt;</button> */}
       <div
         className="slider"
         onMouseEnter={() => setIsHovered(true)}
@@ -67,13 +67,13 @@ function Slider({ projects }) {
                   />
                 </a>
               </div>
-            ))}
+            ))} 
           </div>
         </div>
 
         
       </div>
-      <button className="next" onClick={nextSlide}>&gt;</button>
+      {/* <button className="next" onClick={nextSlide}>&gt;</button> */}
       </div> 
     </>
   );

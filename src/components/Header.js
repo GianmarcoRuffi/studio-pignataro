@@ -7,8 +7,8 @@ export default function Header() {
   return (
     
       <header className="">
-        <div className="nav-wrapper items-center md:grid grid-cols-2 gap-8 pb-8 ">
-          <div className="logo-container flex justify-center mr-20">
+        <div className="nav-wrapper items-center flex justify-between">
+          <div className="logo-container flex">
             <Link href="/">
               <img
                 src="/logo2.jpg"
@@ -18,7 +18,7 @@ export default function Header() {
             </Link>
           </div>
 
-          <div className="navbar flex justify-center">
+          <div className="navbar flex">
             <ul className="nav-list uppercase text-sm">
               <li>
                 <Link href="/projects">Progetti</Link>

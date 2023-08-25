@@ -4,13 +4,13 @@ import styles from "../styles/Bio.module.css";
 
 export default function Bio() {
   return (
-    <div className="bio-container flex justify-center items-center mr-8">
-      <div className="bio-wrapper row lg:grid grid-cols-2 gap-6">
-        <div className="image-container ">
-          <img src="/Bio.jpg" alt="bio" />
+    <div className="bio-container flex justify-center items-center bg-gray-100">
+      
+        <div className="image-container pr-4">
+          <img src="/Bio.jpg" alt="bio" className="max-w-full h-auto"/>
         </div>
 
-        <div className="bio-box bg-gray-100 max-h-screen col-2 max-w-md flex-row justify-center items-center text-justify h-8 ">
+        <div className="bio-box max-h-screen max-w-md text-justify h-8 ">
           <h1>Gianluca Pignataro</h1>
           <h2>Arch. Gianluca Pignataro</h2>
           <p>
@@ -189,6 +189,6 @@ export default function Bio() {
           </ul>
         </div>
       </div>
-    </div>
+    
   );
 }
