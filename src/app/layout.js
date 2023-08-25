@@ -1,29 +1,26 @@
 import "./globals.css";
-// import centuryGothic from '/fonts/CenturyGothic.ttf'
-//  import centuryGothic from '../../public/fonts'
 
-//  const myFont = centuryGothic({
-//    src: '/fonts/CenturyGothic.ttf',
-//    display: 'swap',
-//  })
-
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local'
 
 //components
 
 import Header from "../components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Studio Pignataro",
   description: "Studio Pignataro",
 };
 
+const myFont = localFont({
+  src: '/fonts/CenturyGothic.ttf',
+  display: 'swap',
+})
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={""}>
+    <html lang="en" className={myFont.className}>
+      <body >
         <div className="layout-wrapper">
           {" "}
           <Header />
