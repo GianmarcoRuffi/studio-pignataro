@@ -11,7 +11,7 @@ export default function Header() {
           <div className="logo-container flex justify-center mr-20">
             <Link href="/">
               <img
-                src="/logo.jpg"
+                src="/logo2.jpg"
                 alt=""
               
               />

@@ -4,7 +4,7 @@ import styles from "../styles/Bio.module.css";
 
 export default function Bio() {
   return (
-    <div className="bio-container flex justify-center items-center mr-6">
+    <div className="bio-container flex justify-center items-center mr-8">
       <div className="bio-wrapper row lg:grid grid-cols-2 gap-6">
         <div className="image-container ">
           <img src="/Bio.jpg" alt="bio" />
