@@ -12,7 +12,7 @@ export default function Presses() {
 
           <Card
             description=" “Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”."
-            imageSource="/Pubblicazioni/TUBES_cover.JPG"
+            imageSource="/Pubblicazioni/TUBES_cover.jpg"
             source={
               <a href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/">
                 {" "}
