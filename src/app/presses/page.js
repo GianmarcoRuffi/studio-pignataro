@@ -86,7 +86,7 @@ export default function Presses() {
 
           <Card
             description="“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”"
-            imageSource="/Pubblicazioni/BravaCasa.jpg"
+            imageSource="/Pubblicazioni/Bravacasa.jpg"
             source=""
             date="Marzo 1999"
           >
