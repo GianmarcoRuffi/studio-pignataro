@@ -1,6 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-
 export default function Contacts() {
   return (
     <div className="contacts-container flex justify-center items-center bg-gray-100 max-lg:flex-col">

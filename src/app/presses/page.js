@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import Card from "../../components/Card";
 import ScrollUpButton from "../../components/ScrollUpButton";
 

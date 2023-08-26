@@ -3,7 +3,8 @@ const projects = [
     projectName: "Agenzia pubblicitaria Glisbo",
     imgSrc: "/Home/01.jpg",
     projectLink: "/projects/Glisbo",
-    description: "Stand modulare per la “Regione Autonoma della Sardegna”. www.glisbo.com",
+    description:
+      "Stand modulare per la “Regione Autonoma della Sardegna”. www.glisbo.com",
     externalLink: `https://glisbo.com/`,
   },
 
@@ -96,9 +97,7 @@ const projects = [
     Via Eroi d’Italia n.33/35
     `,
     invisible: true,
-    
   },
 ];
-
 
 export default projects;

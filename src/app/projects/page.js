@@ -1,8 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard";
-import Footer from "../../components/Footer";
 import ScrollUpButton from "../../components/ScrollUpButton";
 
 function renderProjects() {

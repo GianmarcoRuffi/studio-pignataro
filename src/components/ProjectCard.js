@@ -1,5 +1,4 @@
 import React from "react";
-import projects from "../data/data";
 
 export default function ProjectCard({ name, imageSource, description }) {
   return (
@@ -17,6 +16,3 @@ export default function ProjectCard({ name, imageSource, description }) {
     </>
   );
 }
-
-
-

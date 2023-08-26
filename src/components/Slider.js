@@ -4,10 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import Header from "./Header";
-import Link from "next/link";
-import { createContext } from "react";
-
 import React, { useState, useEffect } from "react";
 
 function Slider({ projects }) {
