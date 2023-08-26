@@ -60,7 +60,7 @@ export default function Bio() {
             </a>
           </li>
           <li>
-            Casa Corda: Ristrutturazione con Interior design a Cagliari
+            Casa Corda: Ristrutturazione con Interior design a Cagliari -
             <a href="https://www.luigicorda.com/" target="_blank">
               www.luigicorda.com
             </a>{" "}
