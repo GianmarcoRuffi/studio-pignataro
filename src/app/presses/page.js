@@ -39,7 +39,7 @@ export default function Presses() {
           </Card>
 
           <Card
-            description=" Recupero dei sottotetti(….)”, articolo pubblicato nella rivista online “HOMIFY”"
+            description=" Recupero dei sottotetti (….)”, articolo pubblicato nella rivista online “HOMIFY”"
             imageSource="/Pubblicazioni/HOMIFY_cover2.jpg"
             source={
               <a href=" https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte">

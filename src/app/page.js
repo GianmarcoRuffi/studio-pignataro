@@ -17,7 +17,7 @@ export default function Home() {
  <Slider projects={projects} />
 
 
-<Footer />
+
     </div>
   );
 }

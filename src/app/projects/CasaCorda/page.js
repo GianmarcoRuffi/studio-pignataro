@@ -1,33 +1,37 @@
-import React from 'react';
+import React from "react";
 import Gallery from "../../../components/Gallery";
 
 const images = [
-  '/CasaCorda/1.jpg',
-  '/CasaCorda/2.jpg',
-  '/CasaCorda/3.jpg',
-  '/CasaCorda/4.jpg',
-  '/CasaCorda/5.jpg',
-  '/CasaCorda/6.jpg',
-  '/CasaCorda/7.jpg',
-  '/CasaCorda/8.jpg',
-  '/CasaCorda/9.jpg',
-  '/CasaCorda/10.jpg',
-  '/CasaCorda/11.jpg',
-  '/CasaCorda/12.jpg',
+  "/CasaCorda/1.jpg",
+  "/CasaCorda/2.jpg",
+  "/CasaCorda/3.jpg",
+  "/CasaCorda/4.jpg",
+  "/CasaCorda/5.jpg",
+  "/CasaCorda/6.jpg",
+  "/CasaCorda/7.jpg",
+  "/CasaCorda/8.jpg",
+  "/CasaCorda/9.jpg",
+  "/CasaCorda/10.jpg",
+  "/CasaCorda/11.jpg",
+  "/CasaCorda/12.jpg",
 ];
-
 
 export default function Project() {
   return (
-<div>
-
- <Gallery images={images} galleryTitle={"Casa Corda"} galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
-    Via Asti n.9 Cagliari`} galleryLink={<a href=" https://www.luigicorda.com/">
-    {" "}
-    https://www.luigicorda.com/
-  </a>} />
-
-     
+    <div>
+      <Gallery
+        images={images}
+        galleryTitle={"Casa Corda"}
+        galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
+    Via Asti n.9 Cagliari`}
+        galleryLink={
+          <a href=" https://www.luigicorda.com/">
+            {" "}
+            https://www.luigicorda.com/
+          </a>
+        }
+        imgCredits={"Foto © Luigi Corda"}
+      />
     </div>
   );
 }
