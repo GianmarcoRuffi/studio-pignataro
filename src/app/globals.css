@@ -94,12 +94,6 @@ header {
 
 /* Navbar */
 
-
-
-/* .nav-wrapper {
-  width: 100%;
-} */
-
 .nav-list ul {
   list-style-type: none;
   margin: 0;
@@ -172,8 +166,6 @@ width:100%;
 .bio-container {
 
 height: 434px;}
- 
-
 
 
 
@@ -341,46 +333,25 @@ color: gray;
 }
 
 
-/*Slider********/
+/* Scroll up button */
 
+/* styles.css */
 
-
-/* .slider-wrapper {
-
-display:flex;
-width:100%;
-height:auto;
-
+.scroll-up-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #F3F4F6;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.3s;
 }
 
-.slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 1980px;
+.scroll-up-button.visible {
+  display: block;
 }
-
-.slide-container {
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  
-}
-
-.slide {
-  display: flex;
-  flex: 0 0 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-} */
-
-/* button {
-  padding: 15px;
-  
-
-} */
-
 

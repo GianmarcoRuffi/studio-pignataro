@@ -3,6 +3,7 @@ import Image from "next/image";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard";
 import Footer from "../../components/Footer";
+import ScrollUpButton from '../../components/ScrollUpButton';
 
 function renderProjects() {
   return projects.map((project, index) =>
@@ -27,6 +28,7 @@ export default function Projects() {
         {renderProjects()}
       </div>
       <Footer></Footer>
+<ScrollUpButton></ScrollUpButton>
     </div>
   );
 }

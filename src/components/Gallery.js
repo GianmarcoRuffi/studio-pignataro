@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ScrollUpButton from './ScrollUpButton';
 
 export default function Gallery({ images, galleryTitle, galleryDescription, galleryLink, galleryLinkTwo }) {
   return (
@@ -31,7 +32,7 @@ export default function Gallery({ images, galleryTitle, galleryDescription, gall
             ))}
           </div>
         </div>
-      
+        <ScrollUpButton />
     </div>
   );
 }
