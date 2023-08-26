@@ -61,7 +61,10 @@ export default function Bio() {
           </li>
           <li>
             Casa Corda: Ristrutturazione con Interior design a Cagliari
-            www.luigicorda.com (lavoro pubblicato)
+            <a href="https://www.luigicorda.com/" target="_blank">
+              www.luigicorda.com
+            </a>{" "}
+            (lavoro pubblicato)
           </li>
           <li>
             Perito estimatore per la “Banca di Credito Cooperativo di Cagliari”
@@ -100,7 +103,7 @@ export default function Bio() {
           </li>
           <li>
             Casa D’Alessio: Ristrutturazione con Interior design nel palazzo
-            storico Zedda-Pirasa Cagliari
+            storico Zedda-Piras a Cagliari
           </li>
           <li>
             Casa Vincis: Progettazione e d.l. di una palazzina residenziale a
