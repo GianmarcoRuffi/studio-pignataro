@@ -6,6 +6,7 @@ const images = [
   "/Glisbo/02.jpg",
   "/Glisbo/03.jpg",
   "/Glisbo/04.jpg",
+  "/Glisbo/render.gif",
 ];
 
 export default function Project() {
