@@ -32,28 +32,6 @@
   background: #555;
 }
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
-/* html {
-   font-family:Arial, Helvetica, sans-serif; 
-  font-weight: 400;
-  font-style: normal;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-} */
-
 body {
   margin: 0 auto;
   white-space: pre-line;
@@ -61,18 +39,6 @@ body {
 
 main {
   background-color: white;
-}
-
-.layout-wrapper {
-  margin-left: 300px;
-  margin-right: 300px;
-}
-
-@media screen and (width: 1920px) and (height: 1080px) {
-  .layout-wrapper {
-    margin-left: 300px;
-    margin-right: 300px;
-  }
 }
 
 /* Margini per mobile */
@@ -88,83 +54,61 @@ main {
   }
 }
 
-@media screen and (width: 1440px) and (height: 900px) {
+/* Breakpoints */
+
+@media screen and (min-width: 1024px) {
+  .layout-wrapper {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .bio-container {
+    height: 326px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  .bio-container {
+    height: 541px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .layout-wrapper {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .layout-wrapper {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .layout-wrapper {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
   .layout-wrapper {
     margin-left: 100px;
     margin-right: 100px;
   }
 
-  .bio-container {
-    height: 544px;
-  }
-}
-
-@media screen and (width: 1366px) and (height: 768px) {
-  .layout-wrapper {
-    margin-left: 23px;
-    margin-right: 23px;
-  }
-}
-
-@media screen and (width: 1536px) and (height: 864px) {
-  .layout-wrapper {
-    margin-left: 107px;
-    margin-right: 107px;
-  }
-}
-
-@media screen and (width: 1280px) and (height: 720px) {
-  .layout-wrapper {
-    margin-left: 23px;
-    margin-right: 23px;
-  }
-
-  .bio-container {
-    height: 540px;
-  }
-}
-
-@media screen and (width: 1600px) and (height: 900px) {
-  .layout-wrapper {
-    margin-left: 23px;
-    margin-right: 23px;
-  }
-
-  .bio-container {
-    height: 682px;
-  }
-}
-
-@media screen and (width: 1280px) and (height: 800px) {
-  .layout-wrapper {
-    margin-left: 23px;
-    margin-right: 23px;
-  }
-
-  .bio-container {
-    height: 541px;
-  }
-}
-
-@media screen and (width: 1280px) and (height: 1024px) {
-  .layout-wrapper {
-    margin-left: 23px;
-    margin-right: 23px;
-  }
-
-  .bio-container {
-    height: 541px;
-  }
-}
-
-@media screen and (width: 1024px) and (height: 768px) {
-  .layout-wrapper {
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-
-  .bio-container {
-    height: 426px;
+  @media screen and (min-width: 1920px) {
+    .layout-wrapper {
+      margin-left: 300px;
+      margin-right: 300px;
+    }
   }
 }
 

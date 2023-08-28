@@ -1,16 +1,9 @@
 "use client";
 import styles from "../styles/Bio.module.css";
 
-function test() {
-  console.log(window.innerHeight);
-
-  console.log(window.innerWidth);
-}
-
 export default function Bio() {
   return (
     <div className="bio-container flex bg-gray-100 max-lg:flex-col">
-      {test()}
       <div className="image-container lg:w-2/3 lg:mr-4">
         <img src="/Bio.jpg" alt="bio" className="" />
       </div>
