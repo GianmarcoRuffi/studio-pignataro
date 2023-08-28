@@ -88,8 +88,8 @@ export default function Bio() {
             >
               https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/
             </a>
+            (lavoro pubblicato)
           </p>{" "}
-          (lavoro pubblicato)
           <li>
             Nemesis Data s.r.l.: Ampliamento di una unità residenziale a Porto
             Cervo, Arzachena (OT)
