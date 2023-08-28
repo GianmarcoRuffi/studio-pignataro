@@ -4,7 +4,7 @@ export default function Bio() {
   return (
     <div className="bio-container flex bg-gray-100 max-lg:flex-col">
       <div className="image-container lg:w-2/3 lg:mr-4">
-        <img src="/Bio.jpg" alt="bio" className="max-w-full h-auto" />
+        <img src="/Bio.jpg" alt="bio" className="" />
       </div>
 
       <div className="bio-box lg:w-1/3 text-justify">

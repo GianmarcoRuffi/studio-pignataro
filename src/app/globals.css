@@ -68,6 +68,13 @@ main {
   margin-right: 300px;
 }
 
+@media screen and (width: 1920px) and (height: 1080px) {
+  .layout-wrapper {
+    margin-left: 300px;
+    margin-right: 300px;
+  }
+}
+
 /* Margini per mobile */
 
 @media screen and (max-width: 1023px) {
@@ -117,6 +124,50 @@ main {
   }
 }
 
+@media screen and (width: 1600px) and (height: 900px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  .bio-container {
+    height: 682px;
+  }
+}
+
+@media screen and (width: 1280px) and (height: 800px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  .bio-container {
+    height: 541px;
+  }
+}
+
+@media screen and (width: 1280px) and (height: 1024px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  .bio-container {
+    height: 541px;
+  }
+}
+
+@media screen and (width: 1024px) and (height: 768px) {
+  .layout-wrapper {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .bio-container {
+    height: 426px;
+  }
+}
+
 /********/
 
 header {
@@ -160,6 +211,16 @@ header {
 
 .bio-container {
   height: 579px;
+  overflow: hidden;
+}
+
+.bio-box {
+  overflow-y: scroll;
+}
+
+.image-container img {
+  height: 100%;
+  width: fit-content;
 }
 
 @media screen and (max-width: 1023px) {
@@ -167,8 +228,7 @@ header {
     height: auto;
   }
 }
-
-.bio-box {
+*/ .bio-box {
   overflow-y: scroll;
   padding-right: 15px;
   padding-left: 15px;
