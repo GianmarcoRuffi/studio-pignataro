@@ -9,8 +9,10 @@ export default function Bio() {
       </div>
 
       <div className="bio-box lg:w-1/3 text-justify">
-        <h1>Gianluca Pignataro</h1>
-        <h2>Arch. Gianluca Pignataro</h2>
+        {/* <h1>Arch. Gianluca Pignataro</h1> */}
+        <h2>
+          <strong>Arch. Gianluca Pignataro</strong>
+        </h2>
         <p>
           Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho
           intrapreso la professione a Cagliari dove ho da subito affrontato
@@ -78,18 +80,16 @@ export default function Bio() {
             >
               https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
             </a>{" "}
-          </li>
-
-          <li>
-            {" "}
+          </li>{" "}
+          <p>
             <a
               href="https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/"
               target="_blank"
             >
               https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/
-            </a>{" "}
-            (lavoro pubblicato)
-          </li>
+            </a>
+          </p>{" "}
+          (lavoro pubblicato)
           <li>
             Nemesis Data s.r.l.: Ampliamento di una unità residenziale a Porto
             Cervo, Arzachena (OT)
@@ -161,8 +161,8 @@ export default function Bio() {
           </li>
         </ul>{" "}
         <h3>
-          Studio Dott. Arch. Giovanni Maria Campus – Cagliari, da Genn. 1991 a
-          Dic. 1993
+          Studio Dott. Arch. Giovanni Maria Campus – Cagliari, da Gennaio 1991 a
+          Dicembre 1993
         </h3>
         <h4>Progettista</h4>
         <p>
