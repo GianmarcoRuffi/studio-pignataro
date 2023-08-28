@@ -3,8 +3,7 @@ const projects = [
     projectName: "Agenzia pubblicitaria Glisbo",
     imgSrc: "/Home/01.jpg",
     projectLink: "/projects/Glisbo",
-    description:
-      "Stand modulare per la “Regione Autonoma della Sardegna”. www.glisbo.com",
+    description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
     externalLink: `https://glisbo.com/`,
   },
 
@@ -12,14 +11,14 @@ const projects = [
     projectName: "Casa Corda",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/CasaCorda",
-    description: `Ristrutturazione con Interior design. Www.luigicorda.com (lavoro pubblicato)
+    description: `Ristrutturazione con Interior design.
     Via Asti n.9 Cagliari`,
   },
   {
     projectName: "Casa Guicciardi",
     imgSrc: "/Home/03.jpg",
     projectLink: "/projects/CasaGuicciardi",
-    description: `Ristrutturazione con Interior design. (lavoro pubblicato)
+    description: `Ristrutturazione con Interior design.
     Via Machiavelli n.108 Cagliari
     `,
     externalLink: `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
@@ -30,7 +29,7 @@ const projects = [
     projectName: "Casa Piras",
     imgSrc: "/Home/04.jpg",
     projectLink: "/projects/CasaPiras",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.(lavoro pubblicato)
+    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
     Vico V di via S. Giovanni n.6
     `,
     externalLink: ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
@@ -69,7 +68,7 @@ const projects = [
     imgSrc: "/Home/08.jpg",
     projectLink: "/projects/CasaVincis",
     description: `Progettazione e d.l. di una palazzina residenziale.
-    Via Vittorio Amedeo II n. 44, Cagliari.
+    Via Vittorio Amedeo II n. 44, Cagliari
     `,
   },
 
@@ -85,7 +84,7 @@ const projects = [
     imgSrc: "/Home/10.jpg",
     projectLink: "/projects/EdificioCommendatore",
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale.
-    Via Eroi d’Italia n.33/35
+    Via Eroi d’Italia n.33/35, Cagliari
     `,
   },
 

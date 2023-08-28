@@ -19,7 +19,7 @@ export default function Project() {
         images={images}
         galleryTitle={"Edificio Commendatore"}
         galleryDescription={`Progettazione, Interior design e d.l. di una palazzina residenziale.
-    Via Eroi d’Italia n.33/35
+    Via Eroi d’Italia n.33/35, Cagliari
     `}
         imgCredits={"Foto © Matteo Piazza"}
       />

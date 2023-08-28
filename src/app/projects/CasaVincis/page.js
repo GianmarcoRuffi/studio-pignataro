@@ -10,7 +10,7 @@ export default function Project() {
         images={images}
         galleryTitle={"Casa Vincis"}
         galleryDescription={`Progettazione e d.l. di una palazzina residenziale.
-    Via Vittorio Amedeo II n. 44, Cagliari.
+    Via Vittorio Amedeo II n. 44, Cagliari
     `}
         imgCredits={"Foto © Luigi Corda"}
       />

@@ -1,5 +1,13 @@
 import "./globals.css";
 
+export const metadata = {
+  title: "Studio Pignataro",
+  // openGraph: {
+  //   title: "Acme",
+  //   description: "Acme is a...",
+  // },
+};
+
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -9,11 +17,6 @@ import localFont from "next/font/local";
 //components
 
 import Header from "../components/Header";
-
-export const metadata = {
-  title: "Studio Pignataro",
-  description: "Studio Pignataro",
-};
 
 const myFont = localFont({
   src: "/fonts/CenturyGothic.ttf",
