@@ -8,7 +8,7 @@ export default function Bio() {
         <img src="/Bio.jpg" alt="bio" className="" />
       </div>
 
-      <div className="bio-box lg:w-1/3 text-justify">
+      <div className="bio-box lg:w-1/3 text-justify py-4">
         {/* <h1>Arch. Gianluca Pignataro</h1> */}
         <h2>
           <strong>Arch. Gianluca Pignataro</strong>
