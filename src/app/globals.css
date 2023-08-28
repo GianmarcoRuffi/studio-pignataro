@@ -68,24 +68,52 @@ main {
   margin-right: 300px;
 }
 
-@media screen and (max-width: 1439px) {
+/* Margini per mobile */
+
+@media screen and (max-width: 1023px) {
   .layout-wrapper {
     margin-left: 0;
     margin-right: 0;
   }
-}
 
-@media screen and (max-width: 1439px) {
-  .layout-wrapper {
-    margin-left: 0;
-    margin-right: 0;
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
 
-@media screen and (min-width: 1440px) and (max-width: 1918px) {
+@media screen and (width: 1440px) and (height: 900px) {
   .layout-wrapper {
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .bio-container {
+    height: 544px;
+  }
+}
+
+@media screen and (width: 1366px) and (height: 768px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+}
+
+@media screen and (width: 1536px) and (height: 864px) {
+  .layout-wrapper {
+    margin-left: 107px;
+    margin-right: 107px;
+  }
+}
+
+@media screen and (width: 1280px) and (height: 720px) {
+  .layout-wrapper {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  .bio-container {
+    height: 540px;
   }
 }
 
@@ -128,42 +156,7 @@ header {
   font-size: 18px;
 }
 
-/* .contacts-wrapper {
-
-  width:90%;
- padding-left: 12%;
- 
-
-} */
-
-/* @media only screen and (max-width: 1023px) {
-  .contacts-wrapper {
-
-    width:90%;
-   padding-left: 0;
-   
-  
-  }
-} */
-
-/*Bio********/
-
-/* .bio-wrapper {
-
-width:100%;
- padding-left: 17%;
-
-} */
-
-/* @media only screen and (max-width: 1023px) {
-  .bio-wrapper {
-
-    width:90%;
-   padding-left: 0;
-   
-  
-  }
-} */
+/* Bio */
 
 .bio-container {
   height: 579px;
