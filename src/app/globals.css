@@ -276,9 +276,9 @@ header {
   font-size: 35px;
   cursor: pointer;
   z-index: 2;
-  /* background-color: #f3f4f667;
+  background-color: #f3f4f605;
   border-radius: 50%;
-  padding: 15px; */
+  padding: 15px;
 }
 
 .prev {
