@@ -228,7 +228,7 @@ header {
     height: auto;
   }
 }
-*/ .bio-box {
+.bio-box {
   overflow-y: scroll;
   padding-right: 15px;
   padding-left: 15px;
