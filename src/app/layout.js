@@ -2,10 +2,10 @@ import "./globals.css";
 
 export const metadata = {
   title: "Studio Pignataro",
-  // openGraph: {
-  //   title: "Acme",
-  //   description: "Acme is a...",
-  // },
+  openGraph: {
+    title: "Studio Pignataro",
+    image: "/Bio_2.jpg",
+  },
 };
 
 import { config } from "@fortawesome/fontawesome-svg-core";
