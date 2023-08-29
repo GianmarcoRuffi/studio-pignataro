@@ -37,6 +37,9 @@ export default function Bio() {
           moderna e nel recupero di edifici in centro storico.
         </p>
         <ul>
+          <li>
+            Casa Conti Kalb: Ristrutturazione con Interior design a Cagliari
+          </li>
           <li>Casa Contu: Ristrutturazione con Interior design a Cagliari</li>
           <li>
             Responsabile unico del team di Architetti ed Ingegneri per le
