@@ -1,9 +1,11 @@
 import "./globals.css";
+import Head from "next/head";
 
 export const metadata = {
   title: "Studio Pignataro",
   openGraph: {
     title: "Studio Pignataro",
+    title: "Architetto Gianluca Pignataro",
     image: "/Bio_2.jpg",
   },
 };
@@ -26,6 +28,20 @@ const myFont = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
+      <Head>
+        <title>{metadata.title}</title>
+        {metadata.openGraph && (
+          <>
+            <meta property="og:title" content={metadata.openGraph.title} />
+            <meta
+              property="og:description"
+              content={metadata.openGraph.description}
+            />
+            <meta property="og:image" content={metadata.openGraph.image} />
+          </>
+        )}
+      </Head>
+
       <body>
         <div className="layout-wrapper">
           {" "}
