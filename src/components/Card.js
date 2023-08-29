@@ -7,14 +7,14 @@ export default function Card({ description, imageSource, source, date }) {
         <div style={{ display: "flex" }}>
           <img src={imageSource} alt="" />
         </div>
-        <div className="px-6 p-4 ">
-          <div className="font-bold text-lg mb-2 break-words sm:max-md:text-sm">
+        <div className="presses-box px-6 p-4 ">
+          <div className="font-bold mb-2 break-words text-sm md:text-lg">
             {description}
           </div>
-          <div className="text-md mb-2 break-words card-link sm:max-md:text-sm">
+          <div className="mb-2 break-words card-link  text-xs md:text-md">
             {source}
           </div>
-          <p className="text-gray-700 text-base sm:max-md:text-sm">{date}</p>
+          <p className="text-gray-700 text-xs md:text-base">{date}</p>
         </div>
       </div>
     </>

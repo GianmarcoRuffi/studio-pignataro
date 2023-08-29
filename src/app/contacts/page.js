@@ -5,8 +5,8 @@ export default function Contacts() {
         <img src="/Studio.jpg " alt="studio" className="max-w-full" />
       </div>
 
-      <div className="contacts-box py-8  lg:w-1/3 flex items-center ">
-        <ul className="contacts text-sm ">
+      <div className="contacts-box py-8  lg:w-1/3 flex items-center text-xs md:text-sm ">
+        <ul className="contacts">
           <li className="p-4">
             <strong>Studio:</strong> Via Ada Negri 12, 09127 Cagliari
           </li>
