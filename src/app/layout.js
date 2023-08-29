@@ -5,7 +5,7 @@ export const metadata = {
   title: "Studio Pignataro",
   openGraph: {
     title: "Studio Pignataro",
-    title: "Architetto Gianluca Pignataro",
+    description: "Architetto Gianluca Pignataro",
     image: "/Bio_2.jpg",
   },
 };
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
               property="og:description"
               content={metadata.openGraph.description}
             />
-            <meta property="og:image" content={metadata.openGraph.image} />
+            <meta property="og:image" content="/Bio_2.jpg" />
           </>
         )}
       </Head>

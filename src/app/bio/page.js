@@ -9,7 +9,6 @@ export default function Bio() {
       </div>
 
       <div className="bio-box lg:w-1/3 text-justify py-4">
-        {/* <h1>Arch. Gianluca Pignataro</h1> */}
         <h2>
           <strong>Arch. Gianluca Pignataro</strong>
         </h2>
@@ -29,7 +28,7 @@ export default function Bio() {
         </p>
         <h2>Esperienze professionali</h2>
         <h3>
-          Studio Dott. Arch. Gianluca Pignataro – Cagliari, da Gennaio 2004 ad
+          Studio Dott. Arch. Gianluca Pignataro - Cagliari, da Gennaio 2004 ad
           oggi
         </h3>
         <h4>Fondatore – Titolare. </h4>
@@ -123,7 +122,7 @@ export default function Bio() {
           </li>
         </ul>{" "}
         <h3>
-          Archlabo - Pignataro Vandermeulen Architetti – Cagliari, da Gennaio
+          Archlabo - Pignataro Vandermeulen Architetti - Cagliari, da Gennaio
           1993 a Dicembre 2003
         </h3>
         <h4>Co-fondatore.</h4>
