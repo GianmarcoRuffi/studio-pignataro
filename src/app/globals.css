@@ -57,8 +57,13 @@ main {
     display: none;
   }
 
-  .contacts li {
-    font-size: 10px;
+  .slide-container {
+    background-color: white;
+  }
+
+  .contacts-box li {
+    height: auto;
+    font-size: 16px;
   }
 }
 
@@ -71,6 +76,15 @@ main {
   }
   .bio-container {
     height: 428px;
+  }
+
+  .slide-container {
+    background-color: #f3f4f6;
+  }
+
+  .contacts-box li {
+    height: auto;
+    font-size: 18px;
   }
 }
 
@@ -153,11 +167,6 @@ header {
 }
 
 /*Contacts********/
-
-.contacts-box li {
-  height: auto;
-  font-size: 18px;
-}
 
 /* Bio */
 
@@ -265,10 +274,6 @@ header {
 
 .slider {
   position: relative;
-}
-
-.slide-container {
-  background-color: #f3f4f6;
 }
 
 .slider-container {
