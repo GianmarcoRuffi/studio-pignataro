@@ -13,15 +13,14 @@ export default function Gallery({
   return (
     <div className="flex justify-center bg-gray-100">
       <div className="flex flex-col ">
-        <div className="mb-20 text-justify pl-2">
-          <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
-          <p className="text-gray-500">{galleryDescription}</p>
-          <p className="text-gray-500 gallery-link">{galleryLink}</p>
-          <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
-          <span className="text-gray-500  text-xs">{imgCredits}</span>
-        </div>
-
-        <div className="flex flex-wrap gap-8 bg-gray-100 justify-center">
+        <div className="flex flex-wrap gap-8 bg-gray-100">
+          <div className="mb-20 text-justify pl-2">
+            <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
+            <p className="text-gray-500">{galleryDescription}</p>
+            <p className="text-gray-500 gallery-link">{galleryLink}</p>
+            <p className="text-gray-500 gallery-link">{galleryLinkTwo}</p>
+            <span className="text-gray-500  text-xs">{imgCredits}</span>
+          </div>
           {images.map((image, index) => (
             <div className="border py-4 border-none" key={index}>
               <Image
