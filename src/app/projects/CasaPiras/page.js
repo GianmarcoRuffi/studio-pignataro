@@ -33,7 +33,8 @@ export default function Project() {
         galleryLinkTwo={
           <a href=" https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti">
             {" "}
-            https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti
+            https://www.homify.it/librodelleidee/7792268/15 motivi per scegliere
+            il cocciopesto e i laterizi per i rivestimenti
           </a>
         }
         imgCredits={"Foto © Luigi Corda"}
