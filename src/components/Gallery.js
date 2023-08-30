@@ -15,10 +15,10 @@ export default function Gallery({
       <div className="mb-20 flex flex-col">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base">
+        <p className="text-gray-500 gallery-link text-sm md:text-base mx-4">
           {galleryLink}
         </p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base">
+        <p className="text-gray-500 gallery-link text-sm md:text-base mx-4">
           {galleryLinkTwo}
         </p>
         <span className="text-gray-500  text-xs">{imgCredits}</span>
