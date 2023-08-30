@@ -12,8 +12,8 @@ export default function Gallery({
 }) {
   return (
     <div className="flex justify-center bg-gray-100">
-      <div className="flex flex-col break-words">
-        <div className="mb-20 break-words">
+      <div className="flex flex-col ">
+        <div className="mb-20 flex-wrap gap-8 bg-gray-100 justify-center">
           <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
           <p className="text-gray-500">{galleryDescription}</p>
           <p className="text-gray-500 gallery-link">{galleryLink}</p>
