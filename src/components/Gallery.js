@@ -12,13 +12,13 @@ export default function Gallery({
 }) {
   return (
     <div className="flex-col justify-center bg-gray-100">
-      <div className="mb-20 flex flex-col">
+      <div className="mb-20 flex flex-col align-center">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base mx-4">
+        <p className="text-gray-500 gallery-link text-sm md:text-base  max-w-[300px] md:max-w-full">
           {galleryLink}
         </p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base mx-4">
+        <p className="text-gray-500 gallery-link text-sm md:text-base  max-w-[300px] md:max-w-full">
           {galleryLinkTwo}
         </p>
         <span className="text-gray-500  text-xs">{imgCredits}</span>
