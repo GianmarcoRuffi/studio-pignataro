@@ -12,11 +12,13 @@ export default function Gallery({
 }) {
   return (
     <div className="flex-col justify-center bg-gray-100">
-      <div className="mb-20 break-words">
+      <div className="mb-20">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500 gallery-link break-words">{galleryLink}</p>
-        <p className="text-gray-500 gallery-link break-words">
+        <p className="text-gray-500 gallery-link text-sm md:text-base">
+          {galleryLink}
+        </p>
+        <p className="text-gray-500 gallery-link text-sm md:text-base">
           {galleryLinkTwo}
         </p>
         <span className="text-gray-500  text-xs">{imgCredits}</span>
