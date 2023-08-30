@@ -12,7 +12,7 @@ export default function Gallery({
 }) {
   return (
     <div className="flex-col justify-center bg-gray-100">
-      <div className="mb-20">
+      <div className="mb-20 px-8">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
         <p className="text-gray-500 gallery-link">{galleryLink}</p>
