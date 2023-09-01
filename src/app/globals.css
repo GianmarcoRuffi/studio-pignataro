@@ -2,14 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fade {
-  from {
-    opacity: 0.7;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* Scrollbar */
 
 /* width */
 ::-webkit-scrollbar {
@@ -32,6 +25,8 @@
   background: #555;
 }
 
+/* /end scrollbar */
+
 body {
   margin: 0 auto;
   white-space: pre-line;
@@ -41,7 +36,9 @@ main {
   background-color: white;
 }
 
-/* Margini per mobile */
+/* Media queries */
+
+/* Mobile query*/
 
 @media screen and (max-width: 1023px) {
   .layout-wrapper {
@@ -134,178 +131,16 @@ main {
   }
 }
 
-/********/
-
-header {
-  width: 100%;
-  height: 40%;
-  color: #373737;
-}
-
-/* Navbar */
-
-.nav-list ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.nav-list li {
-  display: inline-block;
-  text-align: center;
-  padding: 0.5rem;
-  text-decoration: none;
-}
-
-.nav-list li:hover {
-  color: black;
-}
-
-.image-container {
-  height: auto;
-}
-
-/* Bio */
-
-.bio-container {
-  height: 579px;
-  overflow: hidden;
-}
-
-.bio-box {
-  overflow-y: scroll;
-}
-
-.image-container img {
-  height: 100%;
-  width: fit-content;
-}
-
-@media screen and (max-width: 1023px) {
-  .bio-container {
-    height: auto;
-  }
-}
-.bio-box {
-  overflow-y: scroll;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.bio-box h1 {
-  font-size: 30px;
-  padding-bottom: 5px;
-}
-
-.bio-box h2 {
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-
-.bio-box h3 {
-  font-size: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.bio-box h4 {
-  font-weight: bold;
-  padding-bottom: 5px;
-  font-size: 15px;
-}
-
-.bio-box p {
-  font-size: 13px;
-  padding-bottom: 10px;
-}
-
-.bio-box li {
-  padding-bottom: 5px;
-  padding-top: 5px;
-  font-size: 13px;
-  list-style-type: disc;
-}
-
-.bio-box a {
-  text-decoration: underline;
-}
-
-.bio-box a:hover {
-  color: gray;
-}
-
-/* Card */
+/* Card css */
 
 .card-link a:hover {
   color: gray;
 }
 
-/* Gallery */
+/* Gallery css */
 
 .gallery-link a:hover {
   color: black;
-}
-
-/* Fading animation */
-
-.slide.active {
-  opacity: 1;
-
-  animation-name: fade;
-  animation-duration: 3.5s;
-}
-
-.fade {
-  animation-name: fade;
-  animation-duration: 3s;
-}
-
-/* Slider image container */
-
-.img-container {
-  height: 80vh;
-  position: relative;
-}
-
-.slider {
-  position: relative;
-}
-
-.slider-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 35px;
-  cursor: pointer;
-  z-index: 2;
-  background-color: #f3f4f605;
-  border-radius: 50%;
-  padding: 15px;
-}
-
-.prev {
-  left: 5px;
-}
-
-.next {
-  right: 5px;
-}
-
-button:hover {
-  color: gray;
 }
 
 /* Scroll up button */

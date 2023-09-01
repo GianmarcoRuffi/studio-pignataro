@@ -11,7 +11,7 @@ export default function Card({ description, imageSource, source, date }) {
           <div className="font-bold mb-2 break-words text-sm md:text-lg">
             {description}
           </div>
-          <div className="mb-2 break-words card-link  text-xs md:text-md">
+          <div className="mb-2 break-words card-link  text-xs md:text-base">
             {source}
           </div>
           <p className="text-gray-700 text-xs md:text-base">{date}</p>

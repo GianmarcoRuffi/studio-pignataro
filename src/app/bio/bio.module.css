@@ -1,0 +1,70 @@
+/* bio.module.css */
+
+.bio-container {
+  height: 579px;
+  overflow: hidden;
+}
+
+.bio-box {
+  overflow-y: scroll;
+}
+
+.image-container img {
+  height: 100%;
+  width: fit-content;
+}
+
+@media screen and (max-width: 1023px) {
+  .bio-container {
+    height: auto;
+  }
+}
+.bio-box {
+  overflow-y: scroll;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.bio-box h1 {
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.bio-box h2 {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.bio-box h3 {
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.bio-box h4 {
+  font-weight: bold;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+.bio-box p {
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+
+.bio-box li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 13px;
+  list-style-type: disc;
+}
+
+.bio-box a {
+  text-decoration: underline;
+}
+
+.bio-box a:hover {
+  color: gray;
+}

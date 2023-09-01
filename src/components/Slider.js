@@ -1,5 +1,5 @@
 "use client";
-
+import styles from "./slider.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -37,20 +37,27 @@ function Slider({ projects }) {
   return (
     <>
       <div
-        className="slider"
+        className={styles.slider}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <button className="prev" onClick={prevSlide}>
+        <button
+          className={`${styles.prev} ${styles.sliderButton} `}
+          onClick={prevSlide}
+        >
           <FontAwesomeIcon icon={faAngleLeft} />
         </button>
-        <div className="slide-container">
-          <div className="img-container">
+        <div className={styles["slide-container"]}>
+          <div className={styles["img-container"]}>
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`slide ${index === activeIndex ? "active" : ""}`}
-                style={{ display: index === activeIndex ? "block" : "none" }}
+                className={`${styles.slide} ${
+                  index === activeIndex ? styles.active : ""
+                }`}
+                style={{
+                  display: index === activeIndex ? "block" : "none",
+                }}
               >
                 <a href={project.projectLink} rel="noopener noreferrer">
                   <Image
@@ -66,7 +73,10 @@ function Slider({ projects }) {
             ))}
           </div>
         </div>
-        <button className="next" onClick={nextSlide}>
+        <button
+          className={`${styles.next} ${styles.sliderButton}`}
+          onClick={nextSlide}
+        >
           <FontAwesomeIcon icon={faAngleRight} />
         </button>
       </div>

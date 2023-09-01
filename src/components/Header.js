@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import styles from "../styles/Header.module.css";
+import styles from "./header.module.css";
 
 export default function Header() {
   return (
-    <header className="">
+    <header className={styles.headerContainer}>
       <div className="nav-wrapper items-center flex justify-between max-lg:flex-col">
         <div className="logo-container flex">
           <Link href="/">
@@ -14,7 +14,7 @@ export default function Header() {
         </div>
 
         <div className="navbar flex">
-          <ul className="nav-list uppercase text-sm">
+          <ul className={`nav-list uppercase text-sm ${styles["nav-list"]}`}>
             <li>
               <Link href="/projects">Progetti</Link>
             </li>

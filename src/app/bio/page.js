@@ -1,14 +1,16 @@
 "use client";
-import styles from "../styles/Bio.module.css";
+import styles from "./bio.module.css";
 
 export default function Bio() {
   return (
-    <div className="bio-container flex bg-gray-100 max-lg:flex-col">
-      <div className="image-container lg:w-2/3 lg:mr-4">
+    <div
+      className={`${styles["bio-container"]} flex bg-gray-100 max-lg:flex-col`}
+    >
+      <div className={`${styles["image-container"]} lg:w-2/3 lg:mr-4`}>
         <img src="/Bio.jpg" alt="bio" className="" />
       </div>
 
-      <div className="bio-box lg:w-1/3 text-justify py-4">
+      <div className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4`}>
         <h2>
           <strong>Arch. Gianluca Pignataro</strong>
         </h2>

@@ -1,0 +1,77 @@
+/* slider.module.css */
+
+/* Slider image container */
+
+@media screen and (min-width: 1024px) {
+  .slide-container {
+    background-color: #f3f4f6;
+  }
+}
+
+.img-container {
+  height: 80vh;
+  position: relative;
+}
+
+.slider {
+  position: relative;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Buttons */
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  z-index: 2;
+  background-color: #f3f4f605;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.prev {
+  left: 5px;
+}
+
+.next {
+  right: 5px;
+}
+
+.sliderButton:hover {
+  color: gray;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fading animation */
+
+.slide.active {
+  opacity: 1;
+
+  animation-name: fade;
+  animation-duration: 3.5s;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
