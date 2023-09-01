@@ -6,21 +6,23 @@ export default function Gallery({
   images,
   galleryTitle,
   galleryDescription,
-  galleryLink,
-  galleryLinkTwo,
+  galleryLinks,
   imgCredits,
 }) {
+  function renderGalleryLinks() {
+    return galleryLinks.map((link, index) => (
+      <p key={index} className="text-gray-500 text-sm md:text-base truncate">
+        <a href={link}>{link}</a>
+      </p>
+    ));
+  }
+
   return (
     <div className="flex-col justify-center bg-gray-100">
-      <div className="mb-20 flex flex-col align-center mx-2 md:ml-0">
+      <div className="mb-20 flex flex-col align-center mx-2 md:ml-16">
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base truncate">
-          {galleryLink}
-        </p>
-        <p className="text-gray-500 gallery-link text-sm md:text-base truncate">
-          {galleryLinkTwo}
-        </p>
+        <div className="gallery-links">{renderGalleryLinks()}</div>
         <span className="text-gray-500  text-xs">{imgCredits}</span>
       </div>
 

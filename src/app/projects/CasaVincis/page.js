@@ -12,6 +12,7 @@ export default function Project() {
         galleryDescription={`Progettazione e d.l. di una palazzina residenziale.
     Via Vittorio Amedeo II n. 44, Cagliari
     `}
+        galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>

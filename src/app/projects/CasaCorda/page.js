@@ -24,12 +24,7 @@ export default function Project() {
         galleryTitle={"Casa Corda"}
         galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
     Via Asti n.9 Cagliari`}
-        galleryLink={
-          <a href=" https://www.luigicorda.com/">
-            {" "}
-            https://www.luigicorda.com/
-          </a>
-        }
+        galleryLinks={["https://www.luigicorda.com/"]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>
