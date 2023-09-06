@@ -29,6 +29,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
       <Head>
+        <meta
+          name="keywords"
+          content="architetto, gianluca, pignataro, studio"
+        />
         <title>{metadata.title}</title>
         {metadata.openGraph && (
           <>
