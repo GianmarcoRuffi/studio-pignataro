@@ -29,10 +29,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
       <Head>
-        <meta
-          name="google-site-verification"
-          content="rt3FHzCiR0SsU0Du-VEvz_BoANOjd_YquUxSGh3Ea48"
-        />
         <title>{metadata.title}</title>
         {metadata.openGraph && (
           <>
