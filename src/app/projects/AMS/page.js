@@ -18,6 +18,7 @@ export default function Project() {
         galleryDescription={`Interior design e d.l.
     Via Cagliari n.19, Capoterra (CA)
     `}
+        galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>

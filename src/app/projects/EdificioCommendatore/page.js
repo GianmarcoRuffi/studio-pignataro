@@ -21,6 +21,7 @@ export default function Project() {
         galleryDescription={`Progettazione, Interior design e d.l. di una palazzina residenziale.
     Via Eroi d’Italia n.33/35, Cagliari
     `}
+        galleryLinks={[""]}
         imgCredits={"Foto © Matteo Piazza"}
       />
     </div>

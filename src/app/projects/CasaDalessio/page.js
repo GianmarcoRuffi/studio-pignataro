@@ -23,6 +23,7 @@ export default function Project() {
         galleryDescription={`Ristrutturazione nel palazzo storico Zedda-Piras.
     V.le Regina Margherita n.15, Cagliari
     `}
+        galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>
