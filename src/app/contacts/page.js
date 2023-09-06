@@ -12,7 +12,9 @@ export default function Contacts() {
           </li>
           <li className="p-4">
             <strong>Email:</strong>{" "}
-            <a href="mailto:glpignataro@yahoo.it">glpignataro@yahoo.it</a>
+            <a href="mailto:glpignataro@yahoo.it" className="mailto">
+              glpignataro@yahoo.it
+            </a>
           </li>
           <li className="p-4">
             <strong>Telefono:</strong> 0703517306 / Cell. 3485189797

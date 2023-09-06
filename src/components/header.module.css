@@ -22,7 +22,7 @@
   text-decoration: none;
 }
 
-.nav-list li:hover {
+.nav-list a:hover {
   color: black;
   background-color: #f3f4f6;
 }

@@ -139,8 +139,18 @@ main {
 
 /* Gallery css */
 
-.gallery-link a:hover {
+.gallery-links a:hover {
   color: black;
+}
+
+/* Contacts */
+
+.mailto {
+  text-decoration: underline;
+}
+
+.mailto:hover {
+  color: gray;
 }
 
 /* Scroll up button */
