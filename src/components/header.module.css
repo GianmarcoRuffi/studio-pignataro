@@ -24,6 +24,7 @@
 
 .nav-list li:hover {
   color: black;
+  background-color: #f3f4f6;
 }
 
 .image-container {

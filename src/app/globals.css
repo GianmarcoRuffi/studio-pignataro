@@ -162,3 +162,19 @@ main {
 .scroll-up-button.visible {
   display: block;
 }
+
+/* Footer */
+
+.footer-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.footer-list li {
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: none;
+}

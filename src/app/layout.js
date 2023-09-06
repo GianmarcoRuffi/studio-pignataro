@@ -2,9 +2,9 @@ import "./globals.css";
 import Head from "next/head";
 
 export const metadata = {
-  title: "Studio Pignataro",
+  title: "Architetto Pignataro",
   openGraph: {
-    title: "Studio Pignataro",
+    title: "Architetto Pignataro",
     description: "Architetto Gianluca Pignataro",
     image: "/Bio_2.jpg",
   },
@@ -19,6 +19,7 @@ import localFont from "next/font/local";
 //components
 
 import Header from "../components/Header";
+// import Footer from "../components/Footer";
 
 const myFont = localFont({
   src: "/fonts/CenturyGothic.ttf",
