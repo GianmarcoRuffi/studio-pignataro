@@ -24,19 +24,10 @@ export default function Project() {
         galleryTitle={"Casa Piras"}
         galleryDescription={`Ristrutturazione con Interior design nel centro storico di Cagliari.(lavoro pubblicato)
     Vico V di via S. Giovanni n.6`}
-        galleryLink={
-          <a href=" https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte">
-            {" "}
-            https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
-          </a>
-        }
-        galleryLinkTwo={
-          <a href=" https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti">
-            {" "}
-            https://www.homify.it/librodelleidee/7792268/15 motivi per scegliere
-            il cocciopesto e i laterizi per i rivestimenti
-          </a>
-        }
+        galleryLinks={[
+          "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
+          "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
+        ]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>

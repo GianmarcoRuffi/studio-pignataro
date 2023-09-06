@@ -18,7 +18,7 @@ export default function Project() {
         galleryDescription={
           "Stand modulare per la “Regione Autonoma della Sardegna”."
         }
-        galleryLink={<a href=" https://glisbo.com/"> https://glisbo.com/</a>}
+        galleryLinks={["https://glisbo.com/"]}
         imgCredits={
           "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it "
         }

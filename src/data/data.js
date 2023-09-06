@@ -4,7 +4,7 @@ const projects = [
     imgSrc: "/Home/01.jpg",
     projectLink: "/projects/Glisbo",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
-    externalLink: `https://glisbo.com/`,
+    externalLink: [`https://glisbo.com/`],
   },
 
   {
@@ -21,8 +21,10 @@ const projects = [
     description: `Ristrutturazione con Interior design.
     Via Machiavelli n.108 Cagliari
     `,
-    externalLink: `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario
-    https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
+    externalLink: [
+      `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario`,
+      `https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
+    ],
   },
 
   {
@@ -32,8 +34,10 @@ const projects = [
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
     Vico V di via S. Giovanni n.6
     `,
-    externalLink: ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte
-     https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
+    externalLink: [
+      ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
+      `https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
+    ],
   },
 
   {

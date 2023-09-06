@@ -15,6 +15,7 @@ export default function Project() {
         images={images}
         galleryTitle={"Tangex Corp."}
         galleryDescription={`Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)`}
+        galleryLinks={[""]}
         imgCredits={"Foto © Guanina Santiago de Jesus"}
       />
     </div>

@@ -28,6 +28,7 @@ export default function Project() {
         galleryDescription={`Ristrutturazione di una palazzina nel centro storico.
     Via Canonico Sanna n.1, Baunei (OG)
     `}
+        galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}
       />
     </div>
