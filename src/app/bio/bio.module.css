@@ -25,12 +25,12 @@
   padding-left: 15px;
 }
 
-.bio-box h1 {
+/* .bio-box h1 {
   font-size: 30px;
   padding-bottom: 5px;
-}
+} */
 
-.bio-box h2 {
+.bio-box h1 {
   font-size: 20px;
   padding-bottom: 10px;
 }

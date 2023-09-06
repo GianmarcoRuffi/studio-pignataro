@@ -11,9 +11,9 @@ export default function Bio() {
       </div>
 
       <div className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4`}>
-        <h2>
+        <h1>
           <strong>Arch. Gianluca Pignataro</strong>
-        </h2>
+        </h1>
         <p>
           Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho
           intrapreso la professione a Cagliari dove ho da subito affrontato
