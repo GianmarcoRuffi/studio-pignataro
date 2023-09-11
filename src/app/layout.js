@@ -1,3 +1,4 @@
+<link rel="icon" href="/favicon.ico"></link>;
 import "./globals.css";
 import Head from "next/head";
 
