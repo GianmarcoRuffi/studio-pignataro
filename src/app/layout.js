@@ -2,12 +2,12 @@ import "./globals.css";
 import Head from "next/head";
 
 export const metadata = {
-  title: "Architetto Pignataro",
-  openGraph: {
-    title: "Architetto Pignataro",
-    description: "Architetto Gianluca Pignataro",
-    image: "/Bio_2.jpg",
-  },
+  title: "Gianluca Pignataro Architetto",
+  // openGraph: {
+  //   title: "Architetto Pignataro",
+  //   description: "Architetto Gianluca Pignataro",
+  //   image: "/Bio_2.jpg",
+  // },
 };
 
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -31,11 +31,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head>
         <meta
-          name="keywords"
-          content="architetto, gianluca, pignataro, studio"
+          name="description"
+          content="Studio Gianluca Pignataro Architetto - Cagliari"
         />
         <title>{metadata.title}</title>
-        {metadata.openGraph && (
+        {/* {metadata.openGraph && (
           <>
             <meta property="og:title" content={metadata.openGraph.title} />
             <meta
@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
             />
             <meta property="og:image" content="/Bio_2.jpg" />
           </>
-        )}
+        )} */}
       </Head>
 
       <body>
