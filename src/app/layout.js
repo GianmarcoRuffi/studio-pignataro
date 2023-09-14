@@ -31,11 +31,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
       <Head>
+        <title>{metadata.title}</title>
         <meta
           name="description"
           content="Studio Gianluca Pignataro Architetto - Cagliari"
         />
-        <title>{metadata.title}</title>
+
         {/* {metadata.openGraph && (
           <>
             <meta property="og:title" content={metadata.openGraph.title} />
