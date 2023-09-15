@@ -120,6 +120,13 @@ export default function Bio() {
             <a href="http://www.dommoso.it/en/index.html" target="_blank">
               http://www.dommoso.it/en/index.html
             </a>
+            <br />
+            <a
+              href="https://www.villeecasali.com/country-living/stile-country/turismo-in-ogliastra/"
+              target="_blank"
+            >
+              http://www.villeecasali.com/country-living/stile-country/turismo-in-ogliastra/
+            </a>
           </li>
           <li>
             Tangex Corp.: Progettazione di una villa a Ocean Park San Juan,
