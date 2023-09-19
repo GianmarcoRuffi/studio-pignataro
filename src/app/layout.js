@@ -42,6 +42,11 @@ export default function RootLayout({ children }) {
           content="Studio Gianluca Pignataro Architetto - Cagliari. Elenco dei progetti di Gianluca Pignataro, pubblicazioni e articoli, biografia e contatti dello studio."
         />
 
+        <meta
+          property="og:description"
+          content="Studio Gianluca Pignataro Architetto - Cagliari. Elenco dei progetti di Gianluca Pignataro, pubblicazioni e articoli, biografia e contatti dello studio."
+        />
+
         {/* {metadata.openGraph && (
           <>
             <meta property="og:title" content={metadata.openGraph.title} />
