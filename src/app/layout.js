@@ -2,6 +2,28 @@
 import "./globals.css";
 import Head from "next/head";
 
+// Font
+
+const myFont = localFont({
+  src: "/fonts/CenturyGothic.ttf",
+  display: "swap",
+});
+
+import localFont from "next/font/local";
+
+//Fontawesome
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
+//Components
+
+import Header from "../components/Header";
+// import Footer from "../components/Footer";
+
+//Metadata
+
 export const metadata = {
   title: "Gianluca Pignataro Architetto",
   description:
@@ -13,21 +35,7 @@ export const metadata = {
   // },
 };
 
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
-
-import localFont from "next/font/local";
-
-//components
-
-import Header from "../components/Header";
-// import Footer from "../components/Footer";
-
-const myFont = localFont({
-  src: "/fonts/CenturyGothic.ttf",
-  display: "swap",
-});
+//Layout//
 
 export default function RootLayout({ children }) {
   return (
