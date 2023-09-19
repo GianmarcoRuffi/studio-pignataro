@@ -4,6 +4,8 @@ import Head from "next/head";
 
 export const metadata = {
   title: "Gianluca Pignataro Architetto",
+  description:
+    "Studio Gianluca Pignataro Architetto - Cagliari. Elenco dei progetti di Gianluca Pignataro, pubblicazioni e articoli, biografia e contatti dello studio.",
   // openGraph: {
   //   title: "Architetto Pignataro",
   //   description: "Architetto Gianluca Pignataro",
@@ -32,9 +34,12 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head>
         <title>{metadata.title}</title>
+        <meta name="robots" content="noodp,noydir" />
+        <description>{metadata.description}</description>
+        {metadata.description}
         <meta
           name="description"
-          content="Studio Gianluca Pignataro Architetto - Cagliari"
+          content="Studio Gianluca Pignataro Architetto - Cagliari. Elenco dei progetti di Gianluca Pignataro, pubblicazioni e articoli, biografia e contatti dello studio."
         />
 
         {/* {metadata.openGraph && (
