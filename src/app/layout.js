@@ -24,21 +24,17 @@ import Header from "../components/Header";
 
 // Metadata
 
-const pageTitle = "Studio Architetto Gianluca Pignataro";
-const pageDescription =
-  "Architetto Gianluca Pignataro, professionista con venti anni di esperienza in grado di ideare con creatività, gestire la complessità di un progetto e realizzarlo con competenza tecnica e senso artistico.";
+export const metadata = {
+  title: "Studio Architetto Gianluca Pignataro",
+  description:
+    "Architetto Gianluca Pignataro, professionista con venti anni di esperienza in grado di ideare con creatività, gestire la complessità di un progetto e realizzarlo con competenza tecnica e senso artistico.",
+};
 
 //Layout//
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
-      <Head>
-        <title>{pageTitle}</title>
-
-        <meta name="description" content={pageDescription} />
-      </Head>
-
       <body>
         <div className="layout-wrapper">
           {" "}
