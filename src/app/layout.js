@@ -28,6 +28,19 @@ export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   description:
     "Architetto Gianluca Pignataro, professionista con venti anni di esperienza in grado di ideare con creatività, gestire la complessità di un progetto e realizzarlo con competenza tecnica e senso artistico.",
+  keywords: [
+    "architetto",
+    "gianluca",
+    "pignataro",
+    "studio",
+    "cagliari",
+    "architetto cagliari",
+    "studio architetto pignataro",
+    "studio pignataro",
+    "pignataro cagliari",
+  ],
+  url: "https://archpignataro.it/",
+  siteName: "Studio Gianluca Pignataro",
 };
 
 //Layout//
