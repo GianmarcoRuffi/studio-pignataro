@@ -39,8 +39,6 @@ export const metadata = {
     "studio pignataro",
     "pignataro cagliari",
   ],
-  url: "https://archpignataro.it/",
-  siteName: "Studio Gianluca Pignataro",
 };
 
 //Layout//
@@ -48,6 +46,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
+      <Head>
+        <title>{metadata.title}</title>
+        <description>{metadata.description}</description>
+      </Head>
       <body>
         <div className="layout-wrapper">
           {" "}

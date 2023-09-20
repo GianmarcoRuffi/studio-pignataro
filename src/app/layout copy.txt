@@ -27,3 +27,6 @@ export const metadata = {
 
                 <description>{metadata.description}</description>
         {metadata.description}
+
+          url: "https://archpignataro.it/",
+  siteName: "Studio Gianluca Pignataro",
