@@ -27,7 +27,7 @@ import Header from "../components/Header";
 export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   description:
-    "Architetto Gianluca Pignataro, professionista con venti anni di esperienza in grado di ideare con creatività, gestire la complessità di un progetto e realizzarlo con competenza tecnica e senso artistico.",
+    "Studio professionale a Cagliari con venti anni di esperienza in  architettura e design di interni, e ristrutturazione di edifici storici.",
   keywords: [
     "architetto",
     "gianluca",
@@ -39,6 +39,7 @@ export const metadata = {
     "studio pignataro",
     "pignataro cagliari",
   ],
+  site_name: "Studio Professionale Gianluca Pignataro",
 };
 
 //Layout//
@@ -49,6 +50,8 @@ export default function RootLayout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <description>{metadata.description}</description>
+        <keywords>{metadata.keywords}</keywords>
+        <site_name>{metadata.site_name}</site_name>
       </Head>
       <body>
         <div className="layout-wrapper">
