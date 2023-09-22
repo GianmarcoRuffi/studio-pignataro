@@ -39,7 +39,6 @@ export default function RootLayout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <description>{metadata.description}</description>
-        <keywords>{metadata.keywords}</keywords>
         <site_name>{metadata.site_name}</site_name>
       </Head>
       <body>
