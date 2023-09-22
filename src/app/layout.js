@@ -28,7 +28,6 @@ export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in  architettura e design di interni, e ristrutturazione di edifici storici.",
-  site_name: "Studio Professionale Gianluca Pignataro",
 };
 
 //Layout//
@@ -39,7 +38,6 @@ export default function RootLayout({ children }) {
       <Head>
         <title>{metadata.title}</title>
         <description>{metadata.description}</description>
-        <site_name>{metadata.site_name}</site_name>
       </Head>
       <body>
         <div className="layout-wrapper">

@@ -30,3 +30,7 @@ export const metadata = {
 
           url: "https://archpignataro.it/",
   siteName: "Studio Gianluca Pignataro",
+
+
+   site_name: "Studio Professionale Gianluca Pignataro",
+           <site_name>{metadata.site_name}</site_name>
