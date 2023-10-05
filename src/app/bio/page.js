@@ -173,7 +173,7 @@ export default function Bio() {
           </li>
         </ul>{" "}
         <h3>
-          Studio Dott. Arch. Giovanni Maria Campus – Cagliari, da Gennaio 1991 a
+          Studio Prof. Arch. Giovanni Maria Campus – Cagliari, da Gennaio 1991 a
           Dicembre 1993
         </h3>
         <h4>Progettista</h4>
