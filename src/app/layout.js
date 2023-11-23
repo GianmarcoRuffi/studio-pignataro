@@ -27,7 +27,7 @@ import Header from "../components/Header";
 export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   description:
-    "Studio professionale a Cagliari con trenta anni di esperienza in  architettura e design di interni, e ristrutturazione di edifici storici.",
+    "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
 };
 
 //Layout//
