@@ -19,9 +19,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa D'Alessio"}
-        galleryDescription={`Ristrutturazione nel palazzo storico Zedda-Piras.
-    V.le Regina Margherita n.15, Cagliari
+        galleryTitle={"V.le Regina Margherita"}
+        galleryDescription={`Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}

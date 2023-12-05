@@ -19,10 +19,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa Guicciardi"}
-        galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
-    Via Machiavelli n.108 Cagliari
-    `}
+        galleryTitle={"Via Machiavelli"}
+        galleryDescription={`Ristrutturazione con Interior design a Cagliari. (lavoro pubblicato)`}
         galleryLinks={[
           "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
           "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",

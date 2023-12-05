@@ -21,9 +21,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa Piras"}
-        galleryDescription={`Ristrutturazione con Interior design nel centro storico di Cagliari.(lavoro pubblicato)
-    Vico V di via S. Giovanni n.6`}
+        galleryTitle={"Vico V di Via S. Giovanni"}
+        galleryDescription={`Ristrutturazione con Interior design nel centro storico di Cagliari. (lavoro pubblicato)`}
         galleryLinks={[
           "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
           "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",

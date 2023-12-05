@@ -1,5 +1,6 @@
 import React from "react";
 import Gallery from "../../../components/Gallery";
+import projects from "../../../data/data";
 
 const images = [
   "/CasaCorda/1.jpg",
@@ -21,9 +22,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa Corda"}
-        galleryDescription={`Ristrutturazione con Interior design. (lavoro pubblicato)
-    Via Asti n.9 Cagliari`}
+        galleryTitle={"Via Asti"}
+        galleryDescription={`Ristrutturazione con Interior design a Cagliari.(lavoro pubblicato)`}
         galleryLinks={["https://www.luigicorda.com/"]}
         imgCredits={"Foto © Luigi Corda"}
       />

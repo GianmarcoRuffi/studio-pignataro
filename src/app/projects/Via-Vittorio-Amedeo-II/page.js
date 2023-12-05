@@ -8,9 +8,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa Vincis"}
-        galleryDescription={`Progettazione e d.l. di una palazzina residenziale.
-    Via Vittorio Amedeo II n. 44, Cagliari
+        galleryTitle={"Via Vittorio Amedeo II"}
+        galleryDescription={`Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}

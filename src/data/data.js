@@ -8,18 +8,16 @@ const projects = [
   },
 
   {
-    projectName: "Casa Corda",
+    projectName: "Via Asti",
     imgSrc: "/Home/02.jpg",
-    projectLink: "/projects/CasaCorda",
-    description: `Ristrutturazione con Interior design.
-    Via Asti n.9 Cagliari`,
+    projectLink: "/projects/Via-Asti",
+    description: `Ristrutturazione con Interior design a Cagliari.`,
   },
   {
-    projectName: "Casa Guicciardi",
+    projectName: "Via Machiavelli",
     imgSrc: "/Home/03.jpg",
-    projectLink: "/projects/CasaGuicciardi",
-    description: `Ristrutturazione con Interior design.
-    Via Machiavelli n.108 Cagliari
+    projectLink: "/projects/Via-Machiavelli",
+    description: `Ristrutturazione con Interior design a Cagliari.
     `,
     externalLink: [
       `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario`,
@@ -28,11 +26,10 @@ const projects = [
   },
 
   {
-    projectName: "Casa Piras",
+    projectName: "Vico V di Via S. Giovanni",
     imgSrc: "/Home/04.jpg",
-    projectLink: "/projects/CasaPiras",
+    projectLink: "/projects/Vico-V-Via-San-Giovanni",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
-    Vico V di via S. Giovanni n.6
     `,
     externalLink: [
       ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
@@ -45,34 +42,31 @@ const projects = [
     imgSrc: "/Home/05.jpg",
     projectLink: "/projects/AMS",
     description: `Interior design e d.l.
-    Via Cagliari n.19, Capoterra (CA)
+    Via Cagliari, Capoterra (CA)
     `,
   },
 
   {
-    projectName: "Casa Barranu",
+    projectName: "Via Canonico Sanna",
     imgSrc: "/Home/06.jpg",
-    projectLink: "/projects/CasaBarranu",
-    description: `Ristrutturazione di una palazzina nel centro storico.
-    Via Canonico Sanna n.1, Baunei (OG)
+    projectLink: "/projects/Via-Canonico-Sanna",
+    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `,
   },
 
   {
-    projectName: "Casa D’Alessio",
+    projectName: "V.le Regina Margherita",
     imgSrc: "/Home/07.jpg",
-    projectLink: "/projects/CasaDalessio",
-    description: `Ristrutturazione nel palazzo storico Zedda-Piras.
-    V.le Regina Margherita n.15, Cagliari
+    projectLink: "/projects/Viale-Regina-Margherita",
+    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `,
   },
 
   {
-    projectName: "Casa Vincis",
+    projectName: "Via Vittorio Amedeo II",
     imgSrc: "/Home/08.jpg",
-    projectLink: "/projects/CasaVincis",
-    description: `Progettazione e d.l. di una palazzina residenziale.
-    Via Vittorio Amedeo II n. 44, Cagliari
+    projectLink: "/projects/Via-Vittorio-Amedeo-II",
+    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `,
   },
 
@@ -84,11 +78,10 @@ const projects = [
   },
 
   {
-    projectName: "Edificio Commendatore",
+    projectName: "Via Eroi d’Italia",
     imgSrc: "/Home/10.jpg",
-    projectLink: "/projects/EdificioCommendatore",
-    description: `Progettazione, Interior design e d.l. di una palazzina residenziale.
-    Via Eroi d’Italia n.33/35, Cagliari
+    projectLink: "/projects/Via-Eroi-d-Italia",
+    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
     `,
   },
 
@@ -96,9 +89,7 @@ const projects = [
     projectName: "Studio Pignataro",
     imgSrc: "/Home/11.jpg",
     projectLink: "/contacts",
-    description: `Progettazione, Interior design e d.l. di una palazzina residenziale.
-    Via Eroi d’Italia n.33/35
-    `,
+    description: ``,
     invisible: true,
   },
 ];

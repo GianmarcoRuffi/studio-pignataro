@@ -68,7 +68,7 @@ export default function Bio() {
             </a>
           </li>
           <li>
-            Casa Corda: Ristrutturazione con Interior design a Cagliari -
+            Via Asti: Ristrutturazione con Interior design a Cagliari -
             <a href="https://www.luigicorda.com/" target="_blank">
               www.luigicorda.com
             </a>{" "}
@@ -78,7 +78,7 @@ export default function Bio() {
             Perito estimatore per la “Banca di Credito Cooperativo di Cagliari”
           </li>
           <li>
-            Casa Guicciardi: Ristrutturazione con Interior design a Cagliari{" "}
+            Via Machiavelli: Ristrutturazione con Interior design a Cagliari{" "}
             <a
               href="https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario"
               target="_blank"
@@ -100,20 +100,20 @@ export default function Bio() {
             Cervo, Arzachena (OT)
           </li>
           <li>
-            Casa Piras: Ristrutturazione con Interior design nel centro storico
-            di Cagliari, quartiere Villanova (lavoro pubblicato)
+            Vico V di Via San Giovanni: Ristrutturazione con Interior design nel
+            centro storico di Cagliari, quartiere Villanova (lavoro pubblicato)
           </li>
           <li>
-            Casa Barranu: Ristrutturazione di una palazzina nel centro storico
-            di Baunei (OG)
+            Via Canonico Sanna: Ristrutturazione di una palazzina nel centro
+            storico di Baunei (OG)
           </li>
           <li>
-            Casa D’Alessio: Ristrutturazione con Interior design nel palazzo
-            storico Zedda-Piras a Cagliari
+            V.le Regina Margherita: Ristrutturazione con Interior design nel
+            palazzo storico Zedda-Piras a Cagliari
           </li>
           <li>
-            Casa Vincis: Progettazione e d.l. di una palazzina residenziale a
-            Cagliari
+            Via Vittorio Amedeo II: Progettazione e d.l. di una palazzina
+            residenziale a Cagliari
           </li>
           <li>
             Stams s.r.l. (Gruppo Cualbu): Progettazione e direzione artistica

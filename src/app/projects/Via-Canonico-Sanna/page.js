@@ -24,9 +24,8 @@ export default function Project() {
     <div>
       <Gallery
         images={images}
-        galleryTitle={"Casa Barranu"}
-        galleryDescription={`Ristrutturazione di una palazzina nel centro storico.
-    Via Canonico Sanna n.1, Baunei (OG)
+        galleryTitle={"Via Canonico Sanna"}
+        galleryDescription={`Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}
