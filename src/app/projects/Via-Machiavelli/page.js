@@ -20,7 +20,7 @@ export default function Project() {
       <Gallery
         images={images}
         galleryTitle={"Via Machiavelli"}
-        galleryDescription={`Ristrutturazione con Interior design a Cagliari. (lavoro pubblicato)`}
+        galleryDescription={`Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)`}
         galleryLinks={[
           "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
           "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",

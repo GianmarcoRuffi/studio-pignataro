@@ -16,7 +16,7 @@ export default function Project() {
         images={images}
         galleryTitle={"Agenzia pubblicitaria Glisbo"}
         galleryDescription={
-          "Stand modulare per la “Regione Autonoma della Sardegna”."
+          "Stand modulare per la “Regione Autonoma della Sardegna” "
         }
         galleryLinks={["https://glisbo.com/"]}
         imgCredits={

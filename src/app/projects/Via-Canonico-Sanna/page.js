@@ -25,7 +25,7 @@ export default function Project() {
       <Gallery
         images={images}
         galleryTitle={"Via Canonico Sanna"}
-        galleryDescription={`Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
+        galleryDescription={`Ristrutturazione di una palazzina nel centro storico di Baunei (OG)
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}

@@ -18,7 +18,7 @@ export default function Project() {
       <Gallery
         images={images}
         galleryTitle={"Via Eroi d’Italia"}
-        galleryDescription={`Progettazione e Interior design e d.l. di una palazzina residenziale a Cagliari.
+        galleryDescription={`Progettazione e Interior design e d.l. di una palazzina residenziale a Cagliari
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Matteo Piazza"}

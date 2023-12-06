@@ -20,7 +20,7 @@ export default function Project() {
       <Gallery
         images={images}
         galleryTitle={"V.le Regina Margherita"}
-        galleryDescription={`Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
+        galleryDescription={`Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari
     `}
         galleryLinks={[""]}
         imgCredits={"Foto © Luigi Corda"}

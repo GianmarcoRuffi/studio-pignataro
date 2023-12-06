@@ -23,7 +23,7 @@ export default function Project() {
       <Gallery
         images={images}
         galleryTitle={"Via Asti"}
-        galleryDescription={`Ristrutturazione con Interior design a Cagliari.(lavoro pubblicato)`}
+        galleryDescription={`Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)`}
         galleryLinks={["https://www.luigicorda.com/"]}
         imgCredits={"Foto © Luigi Corda"}
       />

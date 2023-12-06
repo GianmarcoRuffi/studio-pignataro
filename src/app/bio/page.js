@@ -40,10 +40,10 @@ export default function Bio() {
           moderna e nel recupero di edifici in centro storico.
         </p>
         <ul>
+          <li>Via Ancona: Ristrutturazione con Interior design a Cagliari</li>
           <li>
-            Casa Conti Kalb: Ristrutturazione con Interior design a Cagliari
+            Via delle Libellule: Ristrutturazione con Interior design a Cagliari
           </li>
-          <li>Casa Contu: Ristrutturazione con Interior design a Cagliari</li>
           <li>
             Responsabile unico del team di Architetti ed Ingegneri per le
             verifiche edilizie ed urbanistiche degli edifici aderenti alla
@@ -51,8 +51,8 @@ export default function Bio() {
             “HARLEY & DIKKINSON CONSULTING S.r.l.” Ing. Giuseppe De Bonis.
           </li>
           <li>
-            Casa Reinhold-Porcu: Ristrutturazione con Interior design nel centro
-            storico di Cagliari
+            Corso Vittorio Emanuele II: Ristrutturazione con Interior design nel
+            centro storico di Cagliari
           </li>
           <li>
             Palazzo Asquer: Messa in sicurezza strutturale con restauro di resti
@@ -164,11 +164,11 @@ export default function Bio() {
             studenti a Cagliari
           </li>
           <li>
-            Edificio Commendatore: Progettazione, Interior design e d.l. di una
+            Via Eroi d'Italia: Progettazione, Interior design e d.l. di una
             palazzina residenziale a Cagliari
           </li>
           <li>
-            Casa Cugusi: ristrutturazione di un appartamento nel centro storico
+            Via Canelles: ristrutturazione di un appartamento nel centro storico
             di Cagliari, quartiere Castello (lavoro pubblicato)
           </li>
         </ul>{" "}
