@@ -10,11 +10,15 @@ export default function Gallery({
   imgCredits,
 }) {
   function renderGalleryLinks() {
-    return galleryLinks.map((link, index) => (
-      <p key={index} className="text-gray-500 text-sm md:text-base truncate">
-        <a href={link}>{link}</a>
-      </p>
-    ));
+    if (galleryLinks) {
+      return galleryLinks.map((link, index) => (
+        <p key={index} className="text-gray-500 text-sm md:text-base truncate">
+          <a href={link}>{link}</a>
+        </p>
+      ));
+    }
+
+    return null;
   }
 
   return (
@@ -27,20 +31,22 @@ export default function Gallery({
       </div>
 
       <div className="flex flex-wrap gap-8 bg-gray-100 justify-center">
-        {images.map((image, index) => (
-          <div className="border py-4 border-none" key={index}>
-            <Image
-              src={image}
-              alt={`Image ${index + 1}`}
-              width={0}
-              height={0}
-              sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
-              style={{ width: "100%", height: "auto" }}
-              priority={true}
-              className="mx-auto"
-            />
-          </div>
-        ))}
+        {images
+          ? images.map((image, index) => (
+              <div className="border py-4 border-none" key={index}>
+                <Image
+                  src={image}
+                  alt={`Image ${index + 1}`}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                  style={{ width: "100%", height: "auto" }}
+                  priority={true}
+                  className="mx-auto"
+                />
+              </div>
+            ))
+          : null}
       </div>
 
       <ScrollUpButton />
