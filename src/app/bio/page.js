@@ -34,7 +34,7 @@ export default function Bio() {
           Studio Dott. Arch. Gianluca Pignataro - Cagliari, da Gennaio 2004 ad
           oggi
         </h3>
-        <h4>Fondatore – Titolare. </h4>
+        <h4>Fondatore – Titolare </h4>
         <p>
           Architetto progettista di interventi nell’edilizia residenziale
           moderna e nel recupero di edifici in centro storico.
@@ -138,7 +138,7 @@ export default function Bio() {
           Archlabo - Pignataro Vandermeulen Architetti - Cagliari, da Gennaio
           1993 a Dicembre 2003
         </h3>
-        <h4>Co-fondatore.</h4>
+        <h4>Co-fondatore</h4>
         <p>
           Architetto progettista principale, dalla ideazione sino alla
           realizzazione in cantiere di progetti residenziali, commerciali e di

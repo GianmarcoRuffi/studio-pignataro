@@ -4,7 +4,7 @@ const projects = [
     imgSrc: "/Home/01.jpg",
     // TODO remove projectLink
     projectLink: "/projects/Glisbo",
-    description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
+    description: "Stand modulare per la “Regione Autonoma della Sardegna”",
     externalLink: [`https://glisbo.com/`],
     slug: "Glisbo",
     imgCredits:
@@ -22,7 +22,7 @@ const projects = [
     projectName: "Via Asti",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Via-Asti",
-    description: `Ristrutturazione con Interior design a Cagliari.`,
+    description: `Ristrutturazione con Interior design a Cagliari`,
     externalLink: [`https://www.luigicorda.com/`],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
@@ -46,7 +46,7 @@ const projects = [
     projectName: "Via Machiavelli",
     imgSrc: "/Home/03.jpg",
     projectLink: "/projects/Via-Machiavelli",
-    description: `Ristrutturazione con Interior design a Cagliari.
+    description: `Ristrutturazione con Interior design a Cagliari
     `,
     externalLink: [
       `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario`,
@@ -72,7 +72,7 @@ const projects = [
     projectName: "Vico V di Via S. Giovanni",
     imgSrc: "/Home/04.jpg",
     projectLink: "/projects/Vico-V-Via-San-Giovanni",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
+    description: `Ristrutturazione con Interior design nel centro storico di Cagliari
     `,
     externalLink: [
       ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
@@ -118,7 +118,7 @@ const projects = [
     projectName: "Via Canonico Sanna",
     imgSrc: "/Home/06.jpg",
     projectLink: "/projects/Via-Canonico-Sanna",
-    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
+    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG)
     `,
     slug: "Via-Canonico-Sanna",
     imgCredits: "Foto © Luigi Corda",
@@ -145,7 +145,7 @@ const projects = [
     projectName: "V.le Regina Margherita",
     imgSrc: "/Home/07.jpg",
     projectLink: "/projects/Viale-Regina-Margherita",
-    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
+    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari
     `,
     slug: "Viale-Regina-Margherita",
     imgCredits: "Foto © Luigi Corda",
@@ -167,7 +167,7 @@ const projects = [
     projectName: "Via Vittorio Amedeo II",
     imgSrc: "/Home/08.jpg",
     projectLink: "/projects/Via-Vittorio-Amedeo-II",
-    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
+    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari
     `,
     slug: "Via-Vittorio-Amedeo-II",
     imgCredits: "Foto © Luigi Corda",
@@ -193,7 +193,7 @@ const projects = [
     projectName: "Via Eroi d’Italia",
     imgSrc: "/Home/10.jpg",
     projectLink: "/projects/Via-Eroi-d-Italia",
-    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
+    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari
     `,
     slug: "Via-Eroi-d-Italia",
     imgCredits: "Foto © Matteo Piazza",
