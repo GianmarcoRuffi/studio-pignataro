@@ -41,6 +41,7 @@ const projects = [
       "/CasaCorda/12.jpg",
     ],
   },
+
   {
     projectName: "Via Machiavelli",
     imgSrc: "/Home/03.jpg",
