@@ -2,16 +2,28 @@ const projects = [
   {
     projectName: "Agenzia pubblicitaria Glisbo",
     imgSrc: "/Home/01.jpg",
+    // TODO remove projectLink
     projectLink: "/projects/Glisbo",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
     externalLink: [`https://glisbo.com/`],
+    slug: "Glisbo",
+    imgCredits:
+      "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
+    images: [
+      "/Glisbo/01.jpg",
+      "/Glisbo/02.jpg",
+      "/Glisbo/03.jpg",
+      "/Glisbo/04.jpg",
+      "/Glisbo/render.gif",
+    ],
   },
-
   {
     projectName: "Via Asti",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Via-Asti",
     description: `Ristrutturazione con Interior design a Cagliari.`,
+    slug: "Via-Asti",
+    images: [],
   },
   {
     projectName: "Via Machiavelli",
@@ -23,6 +35,8 @@ const projects = [
       `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario`,
       `https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
     ],
+    slug: "Via-Machiavelli",
+    images: [],
   },
 
   {
@@ -35,6 +49,8 @@ const projects = [
       ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
       `https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
     ],
+    slug: "Vico-V-Via-San-Giovanni",
+    images: [],
   },
 
   {
@@ -44,6 +60,8 @@ const projects = [
     description: `Interior design e d.l.
     Via Cagliari, Capoterra (CA)
     `,
+    slug: "AMS",
+    images: [],
   },
 
   {
@@ -52,6 +70,8 @@ const projects = [
     projectLink: "/projects/Via-Canonico-Sanna",
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `,
+    slug: "Via-Canonico-Sanna",
+    images: [],
   },
 
   {
@@ -60,6 +80,8 @@ const projects = [
     projectLink: "/projects/Viale-Regina-Margherita",
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `,
+    slug: "Viale-Regina-Margherita",
+    images: [],
   },
 
   {
@@ -68,6 +90,8 @@ const projects = [
     projectLink: "/projects/Via-Vittorio-Amedeo-II",
     description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `,
+    slug: "Via-Vittorio-Amedeo-II",
+    images: [],
   },
 
   {
@@ -75,6 +99,13 @@ const projects = [
     imgSrc: "/Home/09.jpg",
     projectLink: "/projects/TangexCorp",
     description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)`,
+    slug: "TangexCorp",
+    images: [
+      "/TangexCorp/1.jpg",
+      "/TangexCorp/2.jpg",
+      "/TangexCorp/3.jpg",
+      "/TangexCorp/4.jpg",
+    ],
   },
 
   {
@@ -83,6 +114,8 @@ const projects = [
     projectLink: "/projects/Via-Eroi-d-Italia",
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
     `,
+    slug: "Via-Eroi-d-Italia",
+    images: [],
   },
 
   {
@@ -91,6 +124,8 @@ const projects = [
     projectLink: "/contacts",
     description: ``,
     invisible: true,
+    slug: "contacts",
+    images: [],
   },
 ];
 
