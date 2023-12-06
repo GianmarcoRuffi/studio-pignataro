@@ -17,14 +17,31 @@ const projects = [
       "/Glisbo/render.gif",
     ],
   },
+
   {
     projectName: "Via Asti",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Via-Asti",
     description: `Ristrutturazione con Interior design a Cagliari.`,
+    externalLink: [`https://www.luigicorda.com/`],
     slug: "Via-Asti",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/CasaCorda/1.jpg",
+      "/CasaCorda/2.jpg",
+      "/CasaCorda/3.jpg",
+      "/CasaCorda/4.jpg",
+      "/CasaCorda/5.jpg",
+      "/CasaCorda/6.jpg",
+      "/CasaCorda/7.jpg",
+      "/CasaCorda/8.jpg",
+      "/CasaCorda/9.jpg",
+      "/CasaCorda/10.jpg",
+      "/CasaCorda/11.jpg",
+      "/CasaCorda/12.jpg",
+    ],
   },
+
   {
     projectName: "Via Machiavelli",
     imgSrc: "/Home/03.jpg",
@@ -36,7 +53,19 @@ const projects = [
       `https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
     ],
     slug: "Via-Machiavelli",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/CasaGuicciardi/1.jpg",
+      "/CasaGuicciardi/2.jpg",
+      "/CasaGuicciardi/3.jpg",
+      "/CasaGuicciardi/4.jpg",
+      "/CasaGuicciardi/5.jpg",
+      "/CasaGuicciardi/6.jpg",
+      "/CasaGuicciardi/7.jpg",
+      "/CasaGuicciardi/8.jpg",
+      "/CasaGuicciardi/9.jpg",
+      "/CasaGuicciardi/10.jpg",
+    ],
   },
 
   {
@@ -50,18 +79,39 @@ const projects = [
       `https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
     ],
     slug: "Vico-V-Via-San-Giovanni",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/CasaPiras/1.jpg",
+      "/CasaPiras/2.jpg",
+      "/CasaPiras/3.jpg",
+      "/CasaPiras/4.jpg",
+      "/CasaPiras/5.jpg",
+      "/CasaPiras/6.jpg",
+      "/CasaPiras/7.jpg",
+      "/CasaPiras/8.jpg",
+      "/CasaPiras/9.jpg",
+      "/CasaPiras/10.jpg",
+      "/CasaPiras/11.jpg",
+      "/CasaPiras/12.jpg",
+    ],
   },
 
   {
     projectName: "Agenzia Immobiliare AMS",
     imgSrc: "/Home/05.jpg",
-    projectLink: "/projects/AMS",
+    projectLink: "/projects/Agenzia-Immobiliare-AMS",
     description: `Interior design e d.l.
     Via Cagliari, Capoterra (CA)
     `,
-    slug: "AMS",
-    images: [],
+    slug: "Agenzia-Immobiliare-AMS",
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/AMS/1.jpg",
+      "/AMS/3.jpg",
+      "/AMS/2.jpg",
+      "/AMS/4.jpg",
+      "/AMS/5.jpg",
+    ],
   },
 
   {
@@ -71,7 +121,24 @@ const projects = [
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `,
     slug: "Via-Canonico-Sanna",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/CasaBarranu/1.jpg",
+      "/CasaBarranu/2.jpg",
+      "/CasaBarranu/3.jpg",
+      "/CasaBarranu/4.jpg",
+      "/CasaBarranu/5.jpg",
+      "/CasaBarranu/6.jpg",
+      "/CasaBarranu/7.jpg",
+      "/CasaBarranu/8.jpg",
+      "/CasaBarranu/9.jpg",
+      "/CasaBarranu/10.jpg",
+      "/CasaBarranu/11.jpg",
+      "/CasaBarranu/12.jpg",
+      "/CasaBarranu/13.jpg",
+      "/CasaBarranu/14.jpg",
+      "/CasaBarranu/15.jpg",
+    ],
   },
 
   {
@@ -81,7 +148,19 @@ const projects = [
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `,
     slug: "Viale-Regina-Margherita",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/CasaDalessio/1.jpg",
+      "/CasaDalessio/2.jpg",
+      "/CasaDalessio/3.jpg",
+      "/CasaDalessio/4.jpg",
+      "/CasaDalessio/5.jpg",
+      "/CasaDalessio/6.jpg",
+      "/CasaDalessio/7.jpg",
+      "/CasaDalessio/8.jpg",
+      "/CasaDalessio/9.jpg",
+      "/CasaDalessio/10.jpg",
+    ],
   },
 
   {
@@ -91,7 +170,8 @@ const projects = [
     description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Vittorio-Amedeo-II",
-    images: [],
+    imgCredits: "Foto © Luigi Corda",
+    images: ["/CasaVincis/1.jpg", "/CasaVincis/2.jpg", "/CasaVincis/3.jpg"],
   },
 
   {
@@ -100,6 +180,7 @@ const projects = [
     projectLink: "/projects/TangexCorp",
     description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)`,
     slug: "TangexCorp",
+    imgCredits: "Foto © Guanina Santiago de Jesus",
     images: [
       "/TangexCorp/1.jpg",
       "/TangexCorp/2.jpg",
@@ -115,7 +196,17 @@ const projects = [
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Eroi-d-Italia",
-    images: [],
+    imgCredits: "Foto © Matteo Piazza",
+    images: [
+      "/EdificioCommendatore/1.jpg",
+      "/EdificioCommendatore/2.jpg",
+      "/EdificioCommendatore/3.jpg",
+      "/EdificioCommendatore/4.jpg",
+      "/EdificioCommendatore/5.jpg",
+      "/EdificioCommendatore/6.jpg",
+      "/EdificioCommendatore/7.jpg",
+      "/EdificioCommendatore/8.jpg",
+    ],
   },
 
   {
@@ -125,6 +216,7 @@ const projects = [
     description: ``,
     invisible: true,
     slug: "contacts",
+    imgCredits: "",
     images: [],
   },
 ];
