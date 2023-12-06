@@ -1,0 +1,36 @@
+//Metadata
+
+export const metadata = {
+  title: "Gianluca Pignataro Architetto",
+  description:
+    "Studio Gianluca Pignataro Architetto - Cagliari. Elenco dei progetti di Gianluca Pignataro, pubblicazioni e articoli, biografia e contatti dello studio.",
+  // openGraph: {
+  //   title: "Architetto Pignataro",
+  //   description: "Architetto Gianluca Pignataro",
+  //   image: "/Bio_2.jpg",
+  // },
+};
+
+        {/* {metadata.openGraph && (
+          <>
+            <meta property="og:title" content={metadata.openGraph.title} />
+            <meta
+              property="og:description"
+              content={metadata.openGraph.description}
+            />
+            <meta property="og:image" content="/Bio_2.jpg" />
+          </>
+        )} */}
+
+
+
+
+                <description>{metadata.description}</description>
+        {metadata.description}
+
+          url: "https://archpignataro.it/",
+  siteName: "Studio Gianluca Pignataro",
+
+
+   site_name: "Studio Professionale Gianluca Pignataro",
+           <site_name>{metadata.site_name}</site_name>
