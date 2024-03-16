@@ -3,7 +3,7 @@ import projects from "../../../data/data";
 import Gallery from "../../../components/Gallery";
 
 export async function generateStaticParams() {
-  // cicla l'oggetto projects e ritorna lo slug - per ciascuno verrà creata una rotta projects/[slug] - deve chiamarsi esattamente come il segmento di rotta specificato
+  // cicla l'oggetto projects e restituisce lo slug - per ciascuno verrà creata una rotta projects/[slug] - deve chiamarsi esattamente come il segmento di rotta specificato
   return projects.map((p) => ({
     slug: p.slug,
   }));
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export default function Page({ params }) {
   const { slug } = params;
 
-  // prendiamo dall'oggeto projects il progetto giusto tramite slug
+  // prendiamo dall'oggetto projects il progetto giusto tramite slug
   const project = projects.find((p) => {
     return p.slug == slug;
   });
