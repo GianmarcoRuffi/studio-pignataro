@@ -1,24 +1,5 @@
 const projects = [
-  {
-    projectName: "Agenzia pubblicitaria Glisbo",
-    imgSrc: "/Home/01.jpg",
-    // TODO remove projectLink
-    projectLink: "/projects/Glisbo",
-    description: "Stand modulare per la “Regione Autonoma della Sardegna”",
-    externalLink: [`https://glisbo.com/`],
-    slug: "Glisbo",
-    imgCredits:
-      "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
-    images: [
-      "/Glisbo/01.jpg",
-      "/Glisbo/02.jpg",
-      "/Glisbo/03.jpg",
-      "/Glisbo/04.jpg",
-      "/Glisbo/render.gif",
-    ],
-  },
-
-   {
+     {
     projectName: "Via Vittorio Emanuele II",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Via-Vittorio-Emanuele-II",
@@ -41,6 +22,25 @@ const projects = [
       "/ViaVittorioEmanuele_II/12.jpg",
       "/ViaVittorioEmanuele_II/13.jpg",
       "/ViaVittorioEmanuele_II/14.jpg",
+    ],
+  },
+  
+  {
+    projectName: "Agenzia pubblicitaria Glisbo",
+    imgSrc: "/Home/01.jpg",
+    // TODO remove projectLink
+    projectLink: "/projects/Glisbo",
+    description: "Stand modulare per la “Regione Autonoma della Sardegna”",
+    externalLink: [`https://glisbo.com/`],
+    slug: "Glisbo",
+    imgCredits:
+      "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
+    images: [
+      "/Glisbo/01.jpg",
+      "/Glisbo/02.jpg",
+      "/Glisbo/03.jpg",
+      "/Glisbo/04.jpg",
+      "/Glisbo/render.gif",
     ],
   },
 
