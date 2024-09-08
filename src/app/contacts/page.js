@@ -8,7 +8,7 @@ export default function Contacts() {
       <div className="contacts-box py-8  lg:w-1/3 flex items-center text-xs md:text-sm ">
         <ul className="contacts">
           <li className="p-4">
-            <strong>Studio:</strong> Via Ada Negri 12, 09127 Cagliari
+            <strong>Studio:</strong> Via Arrigo Solmi 36, 09129 Cagliari
           </li>
           <li className="p-4">
             <strong>Email:</strong>{" "}
@@ -17,7 +17,7 @@ export default function Contacts() {
             </a>
           </li>
           <li className="p-4">
-            <strong>Telefono:</strong> 0703517306 / Cell. 3485189797
+            <strong>Telefono:</strong> 070305880 / Cell. 3485189797
           </li>
         </ul>
       </div>
