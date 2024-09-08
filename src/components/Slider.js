@@ -7,7 +7,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 function Slider({ projects }) {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   const nextSlide = () => {
