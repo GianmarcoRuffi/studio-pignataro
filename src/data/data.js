@@ -18,9 +18,35 @@ const projects = [
     ],
   },
 
+   {
+    projectName: "Via Vittorio Emanuele II",
+    imgSrc: "/Home/02.jpg",
+    projectLink: "/projects/Via-Vittorio-Emanuele-II",
+    description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
+    externalLink: [`https://www.luigicorda.com/`],
+    slug: "Via-Vittorio-Emanuele-II",
+    imgCredits: "Foto © Luigi Corda",
+    images: [
+      "/ViaVittorioEmanuele_II/1.jpg",
+      "/ViaVittorioEmanuele_II/2.jpg",
+      "/ViaVittorioEmanuele_II/3.jpg",
+      "/ViaVittorioEmanuele_II/4.jpg",
+      "/ViaVittorioEmanuele_II/5.jpg",
+      "/ViaVittorioEmanuele_II/6.jpg",
+      "/ViaVittorioEmanuele_II/7.jpg",
+      "/ViaVittorioEmanuele_II/8.jpg",
+      "/ViaVittorioEmanuele_II/9.jpg",
+      "/ViaVittorioEmanuele_II/10.jpg",
+      "/ViaVittorioEmanuele_II/11.jpg",
+      "/ViaVittorioEmanuele_II/12.jpg",
+      "/ViaVittorioEmanuele_II/13.jpg",
+      "/ViaVittorioEmanuele_II/14.jpg",
+    ],
+  },
+
   {
     projectName: "Via Asti",
-    imgSrc: "/Home/02.jpg",
+    imgSrc: "/Home/03.jpg",
     projectLink: "/projects/Via-Asti",
     description: `Ristrutturazione con Interior design a Cagliari`,
     externalLink: [`https://www.luigicorda.com/`],
@@ -44,7 +70,7 @@ const projects = [
 
   {
     projectName: "Via Machiavelli",
-    imgSrc: "/Home/03.jpg",
+    imgSrc: "/Home/04.jpg",
     projectLink: "/projects/Via-Machiavelli",
     description: `Ristrutturazione con Interior design a Cagliari
     `,
@@ -70,7 +96,7 @@ const projects = [
 
   {
     projectName: "Vico V di Via S. Giovanni",
-    imgSrc: "/Home/04.jpg",
+    imgSrc: "/Home/05.jpg",
     projectLink: "/projects/Vico-V-Via-San-Giovanni",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari
     `,
@@ -98,7 +124,7 @@ const projects = [
 
   {
     projectName: "Agenzia Immobiliare AMS",
-    imgSrc: "/Home/05.jpg",
+    imgSrc: "/Home/06.jpg",
     projectLink: "/projects/Agenzia-Immobiliare-AMS",
     description: `Interior design e d.l.
     Via Cagliari, Capoterra (CA)
@@ -116,7 +142,7 @@ const projects = [
 
   {
     projectName: "Via Canonico Sanna",
-    imgSrc: "/Home/06.jpg",
+    imgSrc: "/Home/07.jpg",
     projectLink: "/projects/Via-Canonico-Sanna",
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG)
     `,
@@ -143,7 +169,7 @@ const projects = [
 
   {
     projectName: "V.le Regina Margherita",
-    imgSrc: "/Home/07.jpg",
+    imgSrc: "/Home/08.jpg",
     projectLink: "/projects/Viale-Regina-Margherita",
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari
     `,
@@ -165,7 +191,7 @@ const projects = [
 
   {
     projectName: "Via Vittorio Amedeo II",
-    imgSrc: "/Home/08.jpg",
+    imgSrc: "/Home/09.jpg",
     projectLink: "/projects/Via-Vittorio-Amedeo-II",
     description: `Progettazione e d.l. di una palazzina residenziale a Cagliari
     `,
@@ -176,7 +202,7 @@ const projects = [
 
   {
     projectName: "Tangex Corp.",
-    imgSrc: "/Home/09.jpg",
+    imgSrc: "/Home/10.jpg",
     projectLink: "/projects/TangexCorp",
     description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)`,
     slug: "TangexCorp",
@@ -191,7 +217,7 @@ const projects = [
 
   {
     projectName: "Via Eroi d’Italia",
-    imgSrc: "/Home/10.jpg",
+    imgSrc: "/Home/11.jpg",
     projectLink: "/projects/Via-Eroi-d-Italia",
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari
     `,
@@ -209,16 +235,16 @@ const projects = [
     ],
   },
 
-  {
-    projectName: "Studio Pignataro",
-    imgSrc: "/Home/11.jpg",
-    projectLink: "/contacts",
-    description: ``,
-    invisible: true,
-    slug: "contacts",
-    imgCredits: "",
-    images: [],
-  },
+  // {
+  //   projectName: "Studio Pignataro",
+  //   imgSrc: "/Home/11.jpg",
+  //   projectLink: "/contacts",
+  //   description: ``,
+  //   invisible: true,
+  //   slug: "contacts",
+  //   imgCredits: "",
+  //   images: [],
+  // },
 ];
 
 export default projects;
