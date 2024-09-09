@@ -7,6 +7,12 @@ export default function Presses() {
     <div className="presses-container flex-row justify-center ">
       <div className="card-box bg-gray-100 p-10 flex flex-col gap-16">
         {/* container start */}
+        <Card
+          description=" “Gianluca Pignataro – 30 anni di inconsuetudine”, monografia a cura di Luigi Corda – “Associazione Culturale Timeless”"
+          imageSource="/Pubblicazioni/Inconsuetudine.jpg"
+          source={null}
+          date="Dicembre 2023"
+        />
 
         <Card
           description=" “Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”."
