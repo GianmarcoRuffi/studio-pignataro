@@ -36,7 +36,7 @@ export const bioData = {
           ],
         },
         {
-          description: `Ristrutturazione di un appartamento`,
+          description: `Ristrutturazione di un appartamento (lavoro pubblicato)`,
           links: [
             {
               name: "Tubes Radiatori",

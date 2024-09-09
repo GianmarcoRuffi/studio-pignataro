@@ -13,9 +13,10 @@ export default function Bio() {
         <h1><strong>{bioData.name}</strong></h1>
         <p>{bioData.intro}</p>
 
+         <h2>{bioData.professionalExperiencesTitle}</h2>
+
         {bioData.experiences.map((experience, index) => (
           <div key={index}>
-            <h2>Esperienze professionali</h2>
             <h3>{experience.title}</h3>
             <h4>{experience.role}</h4>
             <p>{experience.description}</p>
