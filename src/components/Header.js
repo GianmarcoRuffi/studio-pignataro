@@ -6,15 +6,15 @@ import styles from "./header.module.css";
 export default function Header() {
   return (
     <header className={styles.headerContainer}>
-      <div className="nav-wrapper items-center flex justify-between max-lg:flex-col">
-        <div className="logo-container flex">
+      <div className={`${styles.navWrapper} flex justify-between max-lg:flex-col`}>
+        <div className={styles.logoContainer}>
           <Link href="/">
-            <img src="/logo.jpg" alt="" />
+            <img src="/logo.jpg" alt="Logo" layout="intrinsic" />
           </Link>
         </div>
 
-        <div className="navbar flex">
-          <ul className={`nav-list uppercase text-sm ${styles["nav-list"]}`}>
+        <div className={styles.navbar}>
+          <ul className={`${styles.navList} uppercase text-sm`}>
             <li>
               <Link href="/projects">Progetti</Link>
             </li>

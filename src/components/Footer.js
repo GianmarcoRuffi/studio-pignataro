@@ -1,14 +1,15 @@
 import React from "react";
+import styles from "./footer.module.css"
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="footer-wrapper items-center flex justify-start max-lg:flex-col">
+    <footer className={styles.footerContainer}>
+      <div className={`${styles.footerWrapper} flex justify-start max-lg:flex-col`}>
         <div className="footer-contacts flex">
-          <ul className="footer-list">
-            <li className="p-4">Via Ada Negri 12, 09127 Cagliari</li>
-            <li className="p-4">0703517306 / Cell. 3485189797</li>
-            <li className="p-4">
+          <ul className={`${styles.footerList} p-4`}>
+            <li>Via Ada Negri 12, 09127 Cagliari</li>
+            <li>0703517306 / Cell. 3485189797</li>
+            <li>
               <a href="mailto:glpignataro@yahoo.it">glpignataro@yahoo.it</a>
             </li>
           </ul>

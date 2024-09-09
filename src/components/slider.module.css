@@ -1,6 +1,5 @@
-/* slider.module.css */
-
 /* Slider image container */
+
 
 @media screen and (min-width: 1024px) {
   .slide-container {
@@ -12,7 +11,6 @@
   height: 80vh;
   position: relative;
 }
-
 .slider {
   position: relative;
 }

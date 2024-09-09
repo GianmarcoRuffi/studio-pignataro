@@ -1,28 +1,17 @@
-<link rel="icon" href="/favicon.ico"></link>;
-import "./globals.css";
+import "./styles/globals.css";
 import Head from "next/head";
+import localFont from "next/font/local";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-// Font
+config.autoAddCss = false;
 
 const myFont = localFont({
   src: "/fonts/CenturyGothic.ttf",
   display: "swap",
 });
-
-import localFont from "next/font/local";
-
-//Fontawesome
-
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
-
-//Components
-
-import Header from "../components/Header";
-// import Footer from "../components/Footer";
-
-// Metadata
 
 export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
@@ -31,8 +20,6 @@ export const metadata = {
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
   locale: "it",
 };
-
-//Layout//
 
 export default function RootLayout({ children }) {
   return (
@@ -45,9 +32,9 @@ export default function RootLayout({ children }) {
       </Head>
       <body>
         <div className="layout-wrapper">
-          {" "}
           <Header />
           {children}
+          <Footer /> {/* Aggiungi il Footer qui */}
         </div>
       </body>
     </html>

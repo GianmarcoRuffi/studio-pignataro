@@ -1,0 +1,40 @@
+
+.footerContainer {
+  width: 100%;
+  background-color: white; /* Colore di sfondo del footer */
+  color: #373737; /* Colore del testo */
+  padding: 1rem 2rem; /* Spaziatura interna */
+  position: relative;
+  bottom: 0;
+}
+
+.footerWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footerList li {
+  padding: 0.5rem 0;
+}
+
+.footerList a {
+  color: #373737;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerList a:hover {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .footerList {
+    text-align: center;
+  }
+}
