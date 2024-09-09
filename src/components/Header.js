@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Importa usePathname
 import styles from "./header.module.css";
 
 export default function Header() {
+  const pathname = usePathname(); // Usa usePathname per ottenere il percorso corrente
+
   return (
     <header className={styles.headerContainer}>
       <div
@@ -17,16 +20,16 @@ export default function Header() {
 
         <div className={styles.navbar}>
           <ul className={`${styles.navList} uppercase text-sm`}>
-            <li>
+            <li className={pathname === "/projects" ? styles.active : ""}>
               <Link href="/projects">Progetti</Link>
             </li>
-            <li>
+            <li className={pathname === "/presses" ? styles.active : ""}>
               <Link href="/presses">Pubblicazioni</Link>
             </li>
-            <li>
+            <li className={pathname === "/bio" ? styles.active : ""}>
               <Link href="/bio">Bio</Link>
             </li>
-            <li>
+            <li className={pathname === "/contacts" ? styles.active : ""}>
               <Link href="/contacts">Contatti</Link>
             </li>
           </ul>

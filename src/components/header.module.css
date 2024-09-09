@@ -44,5 +44,10 @@
 
 .navList a:hover {
   color: #000;
-  background-color: #f3f4f6;
+  background-color: #e0e0e0; /* Lighter grey for hover */
+}
+
+.navList li.active a {
+  color: #000;
+  background-color: #b0b0b0d2; /* Darker grey for active state */
 }
