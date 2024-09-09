@@ -2,7 +2,7 @@ const pressesData = [
   {
     description: "“Gianluca Pignataro – 30 anni di inconsuetudine”, monografia a cura di Luigi Corda – “Associazione Culturale Timeless”",
     imageSource: "/Pubblicazioni/Inconsuetudine.jpg",
-    source: null,
+    source: "",
     date: "Dicembre 2023",
   },
   {
@@ -32,19 +32,19 @@ const pressesData = [
   {
     description: "“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”",
     imageSource: "/Pubblicazioni/GRES_cover_resized.jpg",
-    source: null,
+    source: "",
     date: "Settembre 2015",
   },
   {
     description: "“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa”",
     imageSource: "/Pubblicazioni/YOUTRADE.jpg",
-    source: null,
+    source: "",
     date: "Maggio 2015",
   },
   {
     description: "“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”",
     imageSource: "/Pubblicazioni/Bravacasa.jpg",
-    source: null,
+    source: "",
     date: "Marzo 1999",
   }
 ];

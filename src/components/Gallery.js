@@ -18,7 +18,7 @@ export default function Gallery({
       ));
     }
 
-    return null;
+    return "";
   }
 
   return (
@@ -46,7 +46,7 @@ export default function Gallery({
                 />
               </div>
             ))
-          : null}
+          : ""}
       </div>
 
       <ScrollUpButton />

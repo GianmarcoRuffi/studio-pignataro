@@ -22,7 +22,7 @@ export default function Presses() {
                 >
                   Vai all' articolo
                 </a>
-              ) : null
+              ) : ""
             }
             date={press.date}
           />
