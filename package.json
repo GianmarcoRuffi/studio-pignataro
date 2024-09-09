@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "20.5.1",
-    "@types/react": "18.2.20"
+    "@types/react": "18.2.20",
+    "prettier": "^2.8.7"
   }
 }

@@ -10,7 +10,6 @@
 }
 
 .buttonLink:hover {
-  background-color: #E6E9EE;
+  background-color: #e6e9ee;
   transform: translateY(-2px);
 }
-

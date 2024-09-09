@@ -1,5 +1,5 @@
 const projects = [
-     {
+  {
     projectName: "Corso Vittorio Emanuele II",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Corso-Vittorio-Emanuele-II",
@@ -24,7 +24,7 @@ const projects = [
       "/CorsoVittorioEmanuele_II/14.jpg",
     ],
   },
-  
+
   {
     projectName: "Agenzia pubblicitaria Glisbo",
     imgSrc: "/Home/01.jpg",

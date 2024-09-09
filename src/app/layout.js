@@ -41,8 +41,7 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <site_name>{metadata.site_name}</site_name>
         <description>{metadata.description}</description>
-                <locale>{metadata.locale}</locale>
-
+        <locale>{metadata.locale}</locale>
       </Head>
       <body>
         <div className="layout-wrapper">
