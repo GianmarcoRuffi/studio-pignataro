@@ -2,7 +2,7 @@
 
 .headerContainer {
   width: 100%;
-  height: auto;
+  height: 156px;
   background-color: #fff; /* Add a background color to make the header stand out */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a modern look */
 }

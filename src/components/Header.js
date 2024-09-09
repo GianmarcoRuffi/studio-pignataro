@@ -6,7 +6,9 @@ import styles from "./header.module.css";
 export default function Header() {
   return (
     <header className={styles.headerContainer}>
-      <div className={`${styles.navWrapper} flex justify-between max-lg:flex-col`}>
+      <div
+        className={`${styles.navWrapper} flex justify-between max-lg:flex-col`}
+      >
         <div className={styles.logoContainer}>
           <Link href="/">
             <img src="/logo.jpg" alt="Logo" layout="intrinsic" />

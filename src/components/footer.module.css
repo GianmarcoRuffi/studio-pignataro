@@ -1,22 +1,32 @@
-
 .footerContainer {
   width: 100%;
-  background-color: white; /* Colore di sfondo del footer */
+  height: 156px; /* Altezza del footer */
+  background-color: #fff; /* Colore di sfondo del footer */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra sottile per un aspetto moderno */
   color: #373737; /* Colore del testo */
   padding: 1rem 2rem; /* Spaziatura interna */
   position: relative;
   bottom: 0;
+  display: flex; /* Imposta il footer come un contenitore flex */
+  align-items: center; /* Allinea verticalmente il contenuto */
+  justify-content: center; /* Allinea orizzontalmente il contenuto */
 }
 
 .footerWrapper {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex; /* Imposta il wrapper come un contenitore flex */
+  justify-content: center; /* Allinea orizzontalmente il contenuto */
+  width: 100%;
 }
 
 .footerList {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex; /* Imposta l'elenco in orizzontale */
+  gap: 2rem; /* Spazio tra gli elementi */
+  align-items: center; /* Allinea verticalmente gli elementi della lista */
 }
 
 .footerList li {
@@ -24,17 +34,18 @@
 }
 
 .footerList a {
-  color: #373737;
+  color: #373737; /* Colore del testo dei link */
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footerList a:hover {
-  color: black;
+  color: black; /* Colore del testo dei link al passaggio del mouse */
 }
 
 @media (max-width: 768px) {
   .footerList {
-    text-align: center;
+    flex-direction: column; /* Cambia la direzione in colonna su dispositivi mobili */
+    text-align: center; /* Allinea il testo al centro */
   }
 }
