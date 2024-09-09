@@ -1,6 +1,7 @@
 export const bioData = {
   name: "Arch. Gianluca Pignataro",
   intro: `Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica nello studio del Prof. Arch. Giovanni Maria Campus. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato a Puerto Rico (U.S.A.) cinque negozi in centri commerciali ed una villa.`,
+  professionalExperiencesTitle: "Esperienze professionali",
   experiences: [
     {
       title:
@@ -21,12 +22,12 @@ export const bioData = {
           links: [{ name: "Glisbo", url: "https://glisbo.com/" }],
         },
         {
-          description: `Via Asti: Ristrutturazione con Interior design a Cagliari`,
+          description: `Via Asti: Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)`,
           links: [{ name: "Luigi Corda", url: "https://www.luigicorda.com/" }],
         },
         "Perito estimatore per la “Banca di Credito Cooperativo di Cagliari”",
         {
-          description: `Via Machiavelli: Ristrutturazione con Interior design a Cagliari`,
+          description: `Via Machiavelli: Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)`,
           links: [
             {
               name: "Homify",
@@ -75,7 +76,7 @@ export const bioData = {
         "Via Eroi d'Italia: Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari",
         {
           description:
-            "Via Canelles: ristrutturazione di un appartamento nel centro storico di Cagliari, quartiere Castello",
+            "Via Canelles: ristrutturazione di un appartamento nel centro storico di Cagliari, quartiere Castello (lavoro pubblicato)",
           links: [],
         },
       ],
