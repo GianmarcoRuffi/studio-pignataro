@@ -26,15 +26,17 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head>
         <title>{metadata.title}</title>
-        <site_name>{metadata.site_name}</site_name>
-        <description>{metadata.description}</description>
-        <locale>{metadata.locale}</locale>
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:site_name" content={metadata.site_name} />
+        <meta name="description" content={metadata.description} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:locale" content={metadata.locale} />
       </Head>
       <body>
         <div className="layout-wrapper">
           <Header />
           {children}
-          <Footer /> {/* Aggiungi il Footer qui */}
+          <Footer />
         </div>
       </body>
     </html>
