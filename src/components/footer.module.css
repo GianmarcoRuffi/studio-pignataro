@@ -43,9 +43,26 @@
   color: black; /* Colore del testo dei link al passaggio del mouse */
 }
 
+/* Media Query per Mobile */
 @media (max-width: 768px) {
+  .footerContainer {
+    height: auto; /* Altezza automatica per adattarsi al contenuto */
+    padding: 1rem; /* Riduci il padding per mobile */
+  }
+
+  .footerWrapper {
+    flex-direction: column; /* Incolonna il contenuto */
+    align-items: center; /* Allinea al centro */
+  }
+
   .footerList {
     flex-direction: column; /* Cambia la direzione in colonna su dispositivi mobili */
-    text-align: center; /* Allinea il testo al centro */
+    gap: 0; /* Rimuovi lo spazio tra gli elementi */
+    padding: 0; /* Rimuovi il padding */
+  }
+
+  .footerList li {
+    padding: 0; /* Rimuovi il padding tra gli elementi della lista */
+    margin: 0; /* Rimuovi il margine */
   }
 }
