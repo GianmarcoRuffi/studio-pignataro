@@ -26,8 +26,10 @@ import Header from "../components/Header";
 
 export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
+  site_name: "Studio Architetto Gianluca Pignataro",
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+  locale: "it",
 };
 
 //Layout//
@@ -37,7 +39,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head>
         <title>{metadata.title}</title>
+        <site_name>{metadata.site_name}</site_name>
         <description>{metadata.description}</description>
+                <locale>{metadata.locale}</locale>
+
       </Head>
       <body>
         <div className="layout-wrapper">
