@@ -61,30 +61,30 @@
 
   .navWrapper {
     justify-content: center; /* Ensure the logo is horizontally centered */
-    align-items: center;     /* Ensure the logo is vertically centered */
+    align-items: center; /* Ensure the logo is vertically centered */
     width: 100%;
   }
 
   .navList {
-  list-style-type: none;
-  display: flex;
-}
+    list-style-type: none;
+    display: flex;
+  }
 
-.navList li {
-  margin: 0;
-}
+  .navList li {
+    margin: 0;
+  }
 }
 
 /* Media Query for Tablet */
 @media (max-width: 1024px) {
   .navbar {
     flex-direction: column; /* Stack the items vertically */
-    align-items: center;     /* Center navbar items */
+    align-items: center; /* Center navbar items */
   }
 
   .navWrapper {
     justify-content: center; /* Ensure the logo is horizontally centered */
-    align-items: center;     /* Ensure the logo is vertically centered */
+    align-items: center; /* Ensure the logo is vertically centered */
     width: 100%;
   }
 }

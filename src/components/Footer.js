@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className={styles.footerContainer}>
       <div
-        className={`${styles.footerWrapper} flex justify-start max-lg:flex-col`}
+        className={`${styles.footerWrapper} flex justify-center max-lg:flex-col`}
       >
         <div className="footer-contacts flex">
           <ul className={`${styles.footerList} p-4`}>

@@ -5,7 +5,9 @@ import ScrollUpButton from "../../components/ScrollUpButton";
 
 function renderProjects() {
   return projects.map((project, index) =>
-    project.invisible ? "" : (
+    project.invisible ? (
+      ""
+    ) : (
       <Link key={index} href={project.projectLink}>
         <ProjectCard
           name={project.projectName}

@@ -1,7 +1,7 @@
 import Card from "../../components/Card";
 import ScrollUpButton from "../../components/ScrollUpButton";
 import styles from "./presses.module.css";
-import pressesData from "../../data/pressesData"; 
+import pressesData from "../../data/pressesData";
 
 export default function Presses() {
   return (
@@ -22,7 +22,9 @@ export default function Presses() {
                 >
                   Vai all' articolo
                 </a>
-              ) : ""
+              ) : (
+                ""
+              )
             }
             date={press.date}
           />
