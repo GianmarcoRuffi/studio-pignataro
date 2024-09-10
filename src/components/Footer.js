@@ -21,7 +21,7 @@ export default function Footer() {
                 {contactsData.email.address}
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href={contactsData.social.linkedin}
                 target="_blank"
@@ -42,7 +42,7 @@ export default function Footer() {
                 <FaFacebook className="text-xl" />
                 <span>Facebook</span>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
