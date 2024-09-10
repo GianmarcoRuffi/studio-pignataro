@@ -1,10 +1,21 @@
+const linkNames = {
+  "https://www.luigicorda.com/": "Luigi Corda",
+  "https://glisbo.com/": "Glisbo",
+  "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario": "Homify",
+  "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/": "Tubes Radiatori",
+  "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte": "Homify - Recupero dei Sottotetti",
+  "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti": "Homify - 15 motivi...",
+};
+
 const projects = [
   {
     projectName: "Corso Vittorio Emanuele II",
     imgSrc: "/Home/02.jpg",
     projectLink: "/projects/Corso-Vittorio-Emanuele-II",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
-    externalLink: [`https://www.luigicorda.com/`],
+  externalLink: [
+      { name: "Luigi Corda", url: "https://www.luigicorda.com/" }
+    ],
     slug: "Corso-Vittorio-Emanuele-II",
     imgCredits: "Foto © Luigi Corda",
     images: [
@@ -31,7 +42,9 @@ const projects = [
     // TODO remove projectLink
     projectLink: "/projects/Glisbo",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”",
-    externalLink: [`https://glisbo.com/`],
+    externalLink: [
+      { name: "Glisbo", url: "https://glisbo.com/" }
+    ],
     slug: "Glisbo",
     imgCredits:
       "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
@@ -49,7 +62,9 @@ const projects = [
     imgSrc: "/Home/03.jpg",
     projectLink: "/projects/Via-Asti",
     description: `Ristrutturazione con Interior design a Cagliari`,
-    externalLink: [`https://www.luigicorda.com/`],
+     externalLink: [
+      { name: "Luigi Corda", url: "https://www.luigicorda.com/" }
+    ],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
     images: [
@@ -74,9 +89,9 @@ const projects = [
     projectLink: "/projects/Via-Machiavelli",
     description: `Ristrutturazione con Interior design a Cagliari
     `,
-    externalLink: [
-      `https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario`,
-      `https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/`,
+ externalLink: [
+      { name: " 'Un appartamento moderno rivoluzionario' su Homify", url: "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario" },
+      { name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori", url: "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/" }
     ],
     slug: "Via-Machiavelli",
     imgCredits: "Foto © Luigi Corda",
@@ -104,6 +119,13 @@ const projects = [
       ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
       `https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
     ],
+
+     externalLink: [
+      { name: " 'Recupero dei sottotetti...' su Homify", url: "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte" },
+      { name: " '15 motivi...' su Homify", url: "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti" }
+    ],
+     
+     
     slug: "Vico-V-Via-San-Giovanni",
     imgCredits: "Foto © Luigi Corda",
     images: [

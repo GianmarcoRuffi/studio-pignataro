@@ -14,7 +14,7 @@ export default function Gallery({
     if (galleryLinks) {
       return galleryLinks.map((link, index) => (
         <p key={index} className="text-gray-500 text-sm md:text-base truncate">
-          <a href={link}>{link}</a>
+          <a href={link.url}>{link.name}</a>
         </p>
       ));
     }
