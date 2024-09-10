@@ -42,7 +42,7 @@ export default function Gallery({
         </div>
       </div>
 
-      {/* Modifica da flex a grid per ottenere 2 card per riga */}
+      {/* Container delle immagini con il bottone alla fine */}
       <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">
         {images
           ? images.map((image, index) => (
@@ -63,6 +63,16 @@ export default function Gallery({
               </div>
             ))
           : ""}
+        
+        {/* Bottone "Torna alla galleria dei progetti" centrato */}
+        <div className="col-span-full flex justify-center mt-8">
+          <a
+            href="/projects"
+            className={styles.buttonLink}
+          >
+            <span>Torna alla galleria dei progetti</span>
+          </a>
+        </div>
       </div>
 
       <ScrollUpButton />
