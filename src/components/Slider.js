@@ -59,7 +59,7 @@ function Slider({ projects }) {
                   display: index === activeIndex ? "block" : "none",
                 }}
               >
-                <a href={project.projectLink} rel="noopener noreferrer">
+                <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
                   <Image
                     src={project.imgSrc}
                     alt={`Slide ${index}`}

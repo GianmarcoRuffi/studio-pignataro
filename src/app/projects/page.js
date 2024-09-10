@@ -8,14 +8,13 @@ function renderProjects() {
     project.invisible ? (
       ""
     ) : (
-      <Link key={index} href={project.projectLink}>
+      <Link key={index} href={`/projects/${project.slug}`}>
         <ProjectCard
           name={project.projectName}
           imageSource={project.imgSrc}
           description={project.description}
           className="uniform-card"
         >
-          {" "}
         </ProjectCard>
       </Link>
     )
