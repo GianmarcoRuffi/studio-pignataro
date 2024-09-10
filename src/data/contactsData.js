@@ -8,4 +8,8 @@ export const contactsData = {
     landline: "070305880",
     mobile: "3485189797",
   },
+  social: {
+    linkedin: "https://it.linkedin.com/in/gianluca-pignataro-a6708558",
+    facebook: "https://www.facebook.com/pignarch",
+  },
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./footer.module.css";
 import { contactsData } from "../data/contactsData";
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -18,6 +19,28 @@ export default function Footer() {
             <li>
               <a href={contactsData.email.mailto}>
                 {contactsData.email.address}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contactsData.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2"
+              >
+                <FaLinkedin className="text-xl" />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={contactsData.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2"
+              >
+                <FaFacebook className="text-xl" />
+                <span>Facebook</span>
               </a>
             </li>
           </ul>

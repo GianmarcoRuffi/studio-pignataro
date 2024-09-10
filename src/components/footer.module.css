@@ -41,6 +41,7 @@
 
 .footerList a:hover {
   color: black; /* Colore del testo dei link al passaggio del mouse */
+  font-weight: bold;
 }
 
 /* Media Query per Mobile */
