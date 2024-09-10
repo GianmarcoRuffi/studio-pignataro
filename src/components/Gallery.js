@@ -9,6 +9,8 @@ export default function Gallery({
   galleryDescription,
   galleryLinks,
   imgCredits,
+  prevProject,
+  nextProject,
 }) {
   function renderGalleryLinks() {
     if (galleryLinks) {
@@ -21,12 +23,30 @@ export default function Gallery({
         </p>
       ));
     }
-
     return "";
   }
 
   return (
     <div className="flex-col justify-center bg-gray-100">
+      {/* Breadcrumb per i progetti precedente e successivo */}
+      <div className="breadcrumb-container flex justify-between mx-2 md:mx-4 mb-8">
+        {prevProject && (
+          <a
+            href={`/projects/${prevProject.slug}`}
+            className="text-gray-600 hover:text-gray-800"
+          >
+            &lt; {prevProject.projectName}
+          </a>
+        )}
+        {nextProject && (
+          <a
+            href={`/projects/${nextProject.slug}`}
+            className="text-gray-600 hover:text-gray-800"
+          >
+            {nextProject.projectName} &gt;
+          </a>
+        )}
+      </div>
       <div className="flex flex-col md:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
         <div className="info-container bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8">
           <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>

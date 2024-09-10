@@ -14,12 +14,16 @@ export default function Page({ params }) {
   const { slug } = params;
 
   // prendiamo dall'oggetto projects il progetto giusto tramite slug
-  const project = projects.find((p) => {
-    return p.slug == slug;
-  });
+  const projectIndex = projects.findIndex((p) => p.slug === slug);
+  const project = projects[projectIndex];
 
   // se non esiste -> 404
   if (!project) notFound();
+
+  // Troviamo il progetto precedente e successivo
+  const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
+  const nextProject =
+    projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 
   return (
     <div>
@@ -29,6 +33,8 @@ export default function Page({ params }) {
         galleryDescription={project.description}
         galleryLinks={project.externalLink}
         imgCredits={project.imgCredits}
+        prevProject={prevProject} // Passiamo il progetto precedente
+        nextProject={nextProject} // Passiamo il progetto successivo
       />
     </div>
   );
