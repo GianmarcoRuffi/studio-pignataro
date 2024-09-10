@@ -14,7 +14,7 @@ const linkNames = {
 const projects = [
   {
     projectName: "Corso Vittorio Emanuele II",
-    imgSrc: "/Home/02.jpg",
+    imgSrc: "/Home/01.jpg",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Corso-Vittorio-Emanuele-II",
@@ -39,7 +39,7 @@ const projects = [
 
   {
     projectName: "Agenzia pubblicitaria Glisbo",
-    imgSrc: "/Home/01.jpg",
+    imgSrc: "/Home/02.jpg",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”",
     externalLink: [{ name: "Glisbo", url: linkNames["Glisbo"] }],
     slug: "Glisbo",

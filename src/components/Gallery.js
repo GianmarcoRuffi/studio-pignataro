@@ -66,21 +66,26 @@ export default function Gallery({
       <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">
         {images
           ? images.map((image, index) => (
-              <div
-                className="bg-gray-100 p-4 border border-gray-200 shadow-md"
+              <a
+                href={image}
                 key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden relative group"
               >
-                <Image
-                  src={image}
-                  alt={`Image ${index + 1}`}
-                  width={0}
-                  height={0}
-                  sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
-                  style={{ width: "100%", height: "auto" }}
-                  priority={true}
-                  className="mx-auto"
-                />
-              </div>
+                <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
+                  <Image
+                    src={image}
+                    alt={`Image ${index + 1}`}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                    style={{ width: "100%", height: "auto" }}
+                    priority={true}
+                    className="mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80"
+                  />
+                </div>
+              </a>
             ))
           : ""}
 

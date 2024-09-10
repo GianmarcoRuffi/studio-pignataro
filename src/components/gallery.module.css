@@ -14,3 +14,7 @@
   background-color: #ffffff; /* Sfondo bianco al passaggio del mouse */
   transform: translateY(-2px);
 }
+
+.photos-container a:hover .image {
+  opacity: 0.8;
+}
