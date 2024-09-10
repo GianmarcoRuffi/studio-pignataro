@@ -3,27 +3,26 @@ import projects from "../../../data/data";
 import Gallery from "../../../components/Gallery";
 
 export async function generateStaticParams() {
-  // cicla l'oggetto projects e restituisce lo slug - per ciascuno verrà creata una rotta projects/[slug] - deve chiamarsi esattamente come il segmento di rotta specificato
+  // Cicla l'oggetto projects e restituisce lo slug - per ciascuno verrà creata una rotta projects/[slug]
   return projects.map((p) => ({
     slug: p.slug,
   }));
 }
 
-// params contiene il risultato ritornato da generateStaticParams
 export default function Page({ params }) {
   const { slug } = params;
 
-  // prendiamo dall'oggetto projects il progetto giusto tramite slug
+  // Prendi dall'oggetto projects il progetto giusto tramite slug
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
 
-  // se non esiste -> 404
+  // Se non esiste -> 404
   if (!project) notFound();
 
-  // Troviamo il progetto precedente e successivo
-  const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
-  const nextProject =
-    projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
+
+  const prevProject =
+    projects[(projectIndex - 1 + projects.length) % projects.length];
+  const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (
     <div>
@@ -33,8 +32,8 @@ export default function Page({ params }) {
         galleryDescription={project.description}
         galleryLinks={project.externalLink}
         imgCredits={project.imgCredits}
-        prevProject={prevProject} // Passiamo il progetto precedente
-        nextProject={nextProject} // Passiamo il progetto successivo
+        prevProject={prevProject} 
+        nextProject={nextProject} 
       />
     </div>
   );

@@ -30,22 +30,22 @@ export default function Gallery({
     <div>
       {/* Breadcrumb per i progetti precedente e successivo */}
       <div className={styles.breadcrumbContainer}>
-        {prevProject && (
-          <a
-            href={`/projects/${prevProject.slug}`}
-            className={styles.breadcrumbLink}
-          >
-            &lt; {prevProject.projectName}
-          </a>
-        )}
-        {nextProject && (
-          <a
-            href={`/projects/${nextProject.slug}`}
-            className={styles.breadcrumbLink}
-          >
-            {nextProject.projectName} &gt;
-          </a>
-        )}
+        <a
+          href={`/projects/${prevProject ? prevProject.slug : "#"}`}
+          className={styles.breadcrumbLink}
+        >
+          {prevProject
+            ? `< ${prevProject.projectName}`
+            : "< Nessun progetto precedente"}
+        </a>
+        <a
+          href={`/projects/${nextProject ? nextProject.slug : "#"}`}
+          className={styles.breadcrumbLink}
+        >
+          {nextProject
+            ? `${nextProject.projectName} >`
+            : "Nessun progetto successivo >"}
+        </a>
       </div>
 
       <div className="flex-col justify-center bg-gray-100">
@@ -91,7 +91,7 @@ export default function Gallery({
               ))
             : ""}
 
-          {/* Bottone "Torna alla galleria dei progetti" centrato */}
+          {/* Bottone "Torna alla galleria dei progetti" */}
           <div className="col-span-full flex justify-center mt-8">
             <a href="/projects" className={styles.buttonLink}>
               <span>Torna alla galleria dei progetti</span>
