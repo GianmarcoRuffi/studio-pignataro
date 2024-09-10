@@ -1,10 +1,10 @@
 const linkNames = {
-  "https://www.luigicorda.com/": "Luigi Corda",
-  "https://glisbo.com/": "Glisbo",
-  "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario": "Homify",
-  "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/": "Tubes Radiatori",
-  "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte": "Homify - Recupero dei Sottotetti",
-  "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti": "Homify - 15 motivi...",
+  "Luigi Corda": "https://www.luigicorda.com/",
+  "Glisbo": "https://glisbo.com/",
+  "Homify": "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
+  "Tubes Radiatori": "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",
+  "Homify-Recupero dei Sottotetti": "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
+  "Homify-15 motivi": "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti"
 };
 
 const projects = [
@@ -14,7 +14,7 @@ const projects = [
     projectLink: "/projects/Corso-Vittorio-Emanuele-II",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
   externalLink: [
-      { name: "Luigi Corda", url: "https://www.luigicorda.com/" }
+      { name: "Luigi Corda", url: linkNames["Luigi Corda"] },
     ],
     slug: "Corso-Vittorio-Emanuele-II",
     imgCredits: "Foto © Luigi Corda",
@@ -43,7 +43,7 @@ const projects = [
     projectLink: "/projects/Glisbo",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”",
     externalLink: [
-      { name: "Glisbo", url: "https://glisbo.com/" }
+      { name: "Glisbo", url: linkNames["Glisbo"] }
     ],
     slug: "Glisbo",
     imgCredits:
@@ -63,7 +63,7 @@ const projects = [
     projectLink: "/projects/Via-Asti",
     description: `Ristrutturazione con Interior design a Cagliari`,
      externalLink: [
-      { name: "Luigi Corda", url: "https://www.luigicorda.com/" }
+      { name: "Luigi Corda", url: linkNames["Luigi Corda"] },
     ],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
@@ -90,8 +90,8 @@ const projects = [
     description: `Ristrutturazione con Interior design a Cagliari
     `,
  externalLink: [
-      { name: " 'Un appartamento moderno rivoluzionario' su Homify", url: "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario" },
-      { name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori", url: "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/" }
+      { name: " 'Un appartamento moderno rivoluzionario' su Homify", url: linkNames["Homify"] },
+      { name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori", url: linkNames["Tubes Radiatori"] },
     ],
     slug: "Via-Machiavelli",
     imgCredits: "Foto © Luigi Corda",
@@ -117,8 +117,8 @@ const projects = [
     `,
 
      externalLink: [
-      { name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify", url: "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte" },
-      { name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify", url: "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti" }
+      { name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify", url: linkNames["Homify-Recupero dei Sottotetti"] },
+      { name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify", url: linkNames["Homify-15 motivi"] },
     ],
      
      
