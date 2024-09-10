@@ -18,3 +18,26 @@
 .photos-container a:hover .image {
   opacity: 0.8;
 }
+
+.breadcrumbContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa; /* Colore di sfondo */
+  border-radius: 4px; /* Angoli arrotondati */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+.breadcrumbLink {
+  color: #4a5568; /* Colore del testo */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  padding: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.breadcrumbLink:hover {
+  background-color: #e2e8f0; /* Colore di sfondo al passaggio del mouse */
+  color: #2d3748; /* Colore del testo al passaggio del mouse */
+  border-radius: 4px; /* Angoli arrotondati al passaggio del mouse */
+}
