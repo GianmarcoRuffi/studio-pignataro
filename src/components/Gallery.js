@@ -27,10 +27,11 @@ export default function Gallery({
         <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
         <p className="text-gray-500">{galleryDescription}</p>
         <div className="gallery-links">{renderGalleryLinks()}</div>
-        <span className="text-gray-500  text-xs">{imgCredits}</span>
+        <span className="text-gray-500 text-xs">{imgCredits}</span>
       </div>
 
-      <div className="flex flex-wrap gap-8 bg-gray-100 justify-center">
+      {/* Modifica da flex a grid per ottenere 2 card per riga */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100">
         {images
           ? images.map((image, index) => (
               <div className="border py-4 border-none" key={index}>
