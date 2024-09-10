@@ -13,7 +13,7 @@ export default function Gallery({
   function renderGalleryLinks() {
     if (galleryLinks) {
       return galleryLinks.map((link, index) => (
-        <p key={index} className="text-gray-500 text-sm md:text-base truncate">
+        <p key={index} className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 ">
           <a href={link.url}>{link.name}</a>
         </p>
       ));

@@ -115,14 +115,10 @@ const projects = [
     projectLink: "/projects/Vico-V-Via-San-Giovanni",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari
     `,
-    externalLink: [
-      ` https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte`,
-      `https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti`,
-    ],
 
      externalLink: [
-      { name: " 'Recupero dei sottotetti...' su Homify", url: "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte" },
-      { name: " '15 motivi...' su Homify", url: "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti" }
+      { name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify", url: "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte" },
+      { name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify", url: "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti" }
     ],
      
      
