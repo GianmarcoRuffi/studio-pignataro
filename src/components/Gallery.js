@@ -28,7 +28,7 @@ export default function Gallery({
 
   return (
     <div>
-      {/* Breadcrumb per i progetti precedente e successivo */}
+             {/* Breadcrumb per i progetti precedente e successivo */}
       <div className={styles.breadcrumbContainer}>
         {prevProject && (
           <a
@@ -48,59 +48,61 @@ export default function Gallery({
         )}
       </div>
 
-      <div className="flex-col justify-center bg-gray-100">
-        <div className="flex flex-col md:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
-          <div className="info-container bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8">
-            <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
-            <p className="text-gray-500">{galleryDescription}</p>
-            <div className="gallery-links">{renderGalleryLinks()}</div>
-            <span className="text-gray-500 text-xs">{imgCredits}</span>
-          </div>
+      
+    <div className="flex-col justify-center bg-gray-100">
 
-          <div className="button-container flex items-center md:ml-8 mt-8">
-            <a href="/projects" className={styles.buttonLink}>
-              <span>Torna alla galleria dei progetti</span>
-            </a>
-          </div>
+      <div className="flex flex-col md:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
+        <div className="info-container bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8">
+          <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
+          <p className="text-gray-500">{galleryDescription}</p>
+          <div className="gallery-links">{renderGalleryLinks()}</div>
+          <span className="text-gray-500 text-xs">{imgCredits}</span>
         </div>
 
-        {/* Container delle immagini con il bottone alla fine */}
-        <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">
-          {images
-            ? images.map((image, index) => (
-                <a
-                  href={image}
-                  key={index}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block overflow-hidden relative group"
-                >
-                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
-                    <Image
-                      src={image}
-                      alt={`Image ${index + 1}`}
-                      width={0}
-                      height={0}
-                      sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
-                      style={{ width: "100%", height: "auto" }}
-                      priority={true}
-                      className="mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80"
-                    />
-                  </div>
-                </a>
-              ))
-            : ""}
-
-          {/* Bottone "Torna alla galleria dei progetti" centrato */}
-          <div className="col-span-full flex justify-center mt-8">
-            <a href="/projects" className={styles.buttonLink}>
-              <span>Torna alla galleria dei progetti</span>
-            </a>
-          </div>
+        <div className="button-container flex items-center md:ml-8 mt-8">
+          <a href="/projects" className={styles.buttonLink}>
+            <span>Torna alla galleria dei progetti</span>
+          </a>
         </div>
-
-        <ScrollUpButton />
       </div>
-    </div>
+
+      {/* Container delle immagini con il bottone alla fine */}
+      <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">
+        {images
+          ? images.map((image, index) => (
+              <a
+                href={image}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden relative group"
+              >
+                <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
+                  <Image
+                    src={image}
+                    alt={`Image ${index + 1}`}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
+                    style={{ width: "100%", height: "auto" }}
+                    priority={true}
+                    className="mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80"
+                  />
+                </div>
+              </a>
+            ))
+          : ""}
+
+        {/* Bottone "Torna alla galleria dei progetti" centrato */}
+        <div className="col-span-full flex justify-center mt-8">
+          <a href="/projects" className={styles.buttonLink}>
+            <span>Torna alla galleria dei progetti</span>
+          </a>
+        </div>
+      </div>
+
+      <ScrollUpButton />
+      </div>
+      </div>
   );
 }
