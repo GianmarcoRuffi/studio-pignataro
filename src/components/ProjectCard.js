@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProjectCard({ name, imageSource, description }) {
   return (
-    <div className="rounded overflow-hidden shadow-lg lg:h-[600px] md:h-[500px] sm:h-auto flex flex-col">
+    <div className="rounded overflow-hidden shadow-lg lg:h-[600px] md:h-[500px] sm:h-auto flex flex-col transition-opacity duration-300 ease-in-out hover:opacity-75">
       <div className="lg:h-4/5 sm:h-auto md:h-3/5 w-full">
         {/* Imposta altezza e larghezza fissa per l'immagine */}
         <img
