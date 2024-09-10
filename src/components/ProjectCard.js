@@ -17,7 +17,7 @@ export default function ProjectCard({ name, imageSource, description }) {
         <div className="font-bold text-lg mb-2 text-left break-words text-sm md:text-base">
           {name}
         </div>
-        
+
         {/* Descrizione limitata a 3 righe */}
         <p className="text-gray-700 text-sm md:text-base line-clamp-3 text-left">
           {description}

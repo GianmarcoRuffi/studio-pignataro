@@ -14,8 +14,7 @@ function renderProjects() {
           imageSource={project.imgSrc}
           description={project.description}
           className="uniform-card"
-        >
-        </ProjectCard>
+        ></ProjectCard>
       </Link>
     )
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ScrollUpButton from "./ScrollUpButton";
-import styles from './gallery.module.css';
+import styles from "./gallery.module.css";
 
 export default function Gallery({
   images,
@@ -13,7 +13,10 @@ export default function Gallery({
   function renderGalleryLinks() {
     if (galleryLinks) {
       return galleryLinks.map((link, index) => (
-        <p key={index} className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 ">
+        <p
+          key={index}
+          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 "
+        >
           <a href={link.url}>{link.name}</a>
         </p>
       ));
@@ -33,10 +36,7 @@ export default function Gallery({
         </div>
 
         <div className="button-container flex items-center md:ml-8 mt-8">
-          <a
-            href="/projects"
-            className={styles.buttonLink}
-          >
+          <a href="/projects" className={styles.buttonLink}>
             <span>Torna alla galleria dei progetti</span>
           </a>
         </div>
@@ -63,13 +63,10 @@ export default function Gallery({
               </div>
             ))
           : ""}
-        
+
         {/* Bottone "Torna alla galleria dei progetti" centrato */}
         <div className="col-span-full flex justify-center mt-8">
-          <a
-            href="/projects"
-            className={styles.buttonLink}
-          >
+          <a href="/projects" className={styles.buttonLink}>
             <span>Torna alla galleria dei progetti</span>
           </a>
         </div>

@@ -1,10 +1,14 @@
 const linkNames = {
   "Luigi Corda": "https://www.luigicorda.com/",
-  "Glisbo": "https://glisbo.com/",
-  "Homify": "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
-  "Tubes Radiatori": "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",
-  "Homify-Recupero dei Sottotetti": "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
-  "Homify-15 motivi": "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti"
+  Glisbo: "https://glisbo.com/",
+  Homify:
+    "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
+  "Tubes Radiatori":
+    "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",
+  "Homify-Recupero dei Sottotetti":
+    "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
+  "Homify-15 motivi":
+    "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
 };
 
 const projects = [
@@ -12,9 +16,7 @@ const projects = [
     projectName: "Corso Vittorio Emanuele II",
     imgSrc: "/Home/02.jpg",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
-  externalLink: [
-      { name: "Luigi Corda", url: linkNames["Luigi Corda"] },
-    ],
+    externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Corso-Vittorio-Emanuele-II",
     imgCredits: "Foto © Luigi Corda",
     images: [
@@ -39,9 +41,7 @@ const projects = [
     projectName: "Agenzia pubblicitaria Glisbo",
     imgSrc: "/Home/01.jpg",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”",
-    externalLink: [
-      { name: "Glisbo", url: linkNames["Glisbo"] }
-    ],
+    externalLink: [{ name: "Glisbo", url: linkNames["Glisbo"] }],
     slug: "Glisbo",
     imgCredits:
       "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
@@ -58,9 +58,7 @@ const projects = [
     projectName: "Via Asti",
     imgSrc: "/Home/03.jpg",
     description: `Ristrutturazione con Interior design a Cagliari`,
-     externalLink: [
-      { name: "Luigi Corda", url: linkNames["Luigi Corda"] },
-    ],
+    externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
     images: [
@@ -84,9 +82,15 @@ const projects = [
     imgSrc: "/Home/04.jpg",
     description: `Ristrutturazione con Interior design a Cagliari
     `,
- externalLink: [
-      { name: " 'Un appartamento moderno rivoluzionario' su Homify", url: linkNames["Homify"] },
-      { name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori", url: linkNames["Tubes Radiatori"] },
+    externalLink: [
+      {
+        name: " 'Un appartamento moderno rivoluzionario' su Homify",
+        url: linkNames["Homify"],
+      },
+      {
+        name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori",
+        url: linkNames["Tubes Radiatori"],
+      },
     ],
     slug: "Via-Machiavelli",
     imgCredits: "Foto © Luigi Corda",
@@ -110,12 +114,17 @@ const projects = [
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari
     `,
 
-     externalLink: [
-      { name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify", url: linkNames["Homify-Recupero dei Sottotetti"] },
-      { name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify", url: linkNames["Homify-15 motivi"] },
+    externalLink: [
+      {
+        name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify",
+        url: linkNames["Homify-Recupero dei Sottotetti"],
+      },
+      {
+        name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify",
+        url: linkNames["Homify-15 motivi"],
+      },
     ],
-     
-     
+
     slug: "Vico-V-Via-San-Giovanni",
     imgCredits: "Foto © Luigi Corda",
     images: [
