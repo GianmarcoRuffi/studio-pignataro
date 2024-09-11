@@ -1,0 +1,25 @@
+.notFoundContainer {
+  height: 70vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Centro il contenuto */
+  background-color: #f9f9f9; /* Colore di sfondo */
+}
+
+.title {
+  margin-bottom: 20px; /* Spazio tra il titolo e il link */
+  font-size: 24px;
+  color: #333;
+}
+
+.link {
+  color: #6c757d; /* Grigio per il link normale */
+  text-decoration: underline;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #495057; /* Grigio più scuro per l'hover */
+}
