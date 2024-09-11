@@ -59,3 +59,17 @@
 .sliderButton:hover {
   color: gray;
 }
+
+/* Media Query per Tablet */
+@media (max-width: 1024px) {
+  .sliderButton {
+    opacity: 1; /* Mostra i pulsanti su tablet */
+  }
+}
+
+/* Media Query per Mobile */
+@media (max-width: 768px) {
+  .sliderButton {
+    opacity: 1; /* Mostra i pulsanti su dispositivi mobili */
+  }
+}
