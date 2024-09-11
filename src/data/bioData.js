@@ -18,8 +18,8 @@ export const bioData = {
           links: [],
         },
         {
-          description: `Agenzia pubblicitaria Glisbo: Stand modulare per la “Regione Autonoma della Sardegna”`,
-          links: [{ name: "Glisbo", url: "https://glisbo.com/" }],
+          description: `Agenzia pubblicitaria Glisbò: Stand modulare per la “Regione Autonoma della Sardegna”`,
+          links: [{ name: "Glisbò", url: "https://glisbo.com/" }],
         },
         {
           description: `Via Asti: Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)`,
