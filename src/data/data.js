@@ -38,10 +38,10 @@ const projects = [
   },
 
   {
-    projectName: "Agenzia pubblicitaria Glisbo",
+    projectName: "Agenzia pubblicitaria Glisbò",
     imgSrc: "/Home/02.jpg",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”",
-    externalLink: [{ name: "Glisbo", url: linkNames["Glisbo"] }],
+    externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
     slug: "Glisbo",
     imgCredits:
       "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
