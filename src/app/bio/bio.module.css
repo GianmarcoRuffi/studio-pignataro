@@ -1,32 +1,26 @@
 .bio-container {
-  height: 579px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Permette al contenitore di adattarsi */
+  background-color: #f7f7f7; /* Imposta il colore di sfondo se necessario */
 }
 
-.bio-box {
-  overflow-y: scroll;
+.image-container {
+  flex: 2; /* L'immagine occupa 2/3 dello spazio */
 }
 
 .image-container img {
-  height: 100%;
-  width: fit-content;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-@media screen and (max-width: 1023px) {
-  .bio-container {
-    height: auto;
-  }
-}
 .bio-box {
-  overflow-y: scroll;
-  padding-right: 15px;
-  padding-left: 15px;
+  flex: 1; /* Il bio-box occupa 1/3 dello spazio */
+  overflow-y: auto; /* Abilita lo scroll se il contenuto è più alto */
+  padding: 15px;
+  box-sizing: border-box; /* Include il padding e il bordo nelle dimensioni dell'elemento */
 }
-
-/* .bio-box h1 {
-  font-size: 30px;
-  padding-bottom: 5px;
-} */
 
 .bio-box h1 {
   font-size: 20px;
@@ -65,4 +59,18 @@
 
 .bio-box a:hover {
   color: gray;
+}
+
+@media screen and (max-width: 1023px) {
+  .bio-container {
+    flex-direction: column;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .bio-box {
+    width: 100%;
+  }
 }
