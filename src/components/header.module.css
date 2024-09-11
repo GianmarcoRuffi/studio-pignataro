@@ -16,6 +16,11 @@
 .logoContainer {
   height: auto;
   /* Keeping the logo's original size */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+}
+
+.logoContainer:hover {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on the right and bottom */
 }
 
 .navbar {
@@ -38,18 +43,20 @@
   text-decoration: none;
   color: #373737;
   padding: 0.5rem 1rem;
-  border-radius: 0.25rem; /* Rounded corners for a modern look */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+  border-radius: 0.25rem;
+  transition: box-shadow 0.3s ease-in-out; /* Transizione morbida per box-shadow */
 }
 
 .navList a:hover {
-  color: #000;
-  background-color: #e0e0e0; /* Lighter grey for hover */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); /* Ombra spostata verso il basso e verso destra */
+  color: #000; /* Colore del testo */
+  background-color: transparent; /* Sfondo trasparente per evitare conflitti con l'ombra */
 }
 
 .navList li.active a {
   color: #000;
-  background-color: #b0b0b0d2; /* Darker grey for active state */
+  background-color: #e0e0e0;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); /* Ombra spostata verso il basso e verso destra */
 }
 
 /* Media Query for Mobile */
