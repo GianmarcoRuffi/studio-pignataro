@@ -19,7 +19,6 @@ export default function Page({ params }) {
   // Se non esiste -> 404
   if (!project) notFound();
 
-
   const prevProject =
     projects[(projectIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(projectIndex + 1) % projects.length];
@@ -32,8 +31,8 @@ export default function Page({ params }) {
         galleryDescription={project.description}
         galleryLinks={project.externalLink}
         imgCredits={project.imgCredits}
-        prevProject={prevProject} 
-        nextProject={nextProject} 
+        prevProject={prevProject}
+        nextProject={nextProject}
       />
     </div>
   );
