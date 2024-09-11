@@ -1,20 +1,23 @@
 "use client";
 import styles from "./slider.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faAngleLeft  } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const slideContainerRef = useRef(null);
 
   const nextSlide = () => {
-    setActiveIndex((activeIndex + 1) % projects.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const prevSlide = () => {
-    setActiveIndex((activeIndex - 1 + projects.length) % projects.length);
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
+    );
   };
 
   useEffect(() => {
@@ -23,63 +26,71 @@ function Slider({ projects }) {
     if (!isHovered) {
       interval = setInterval(() => {
         nextSlide();
-      }, 5000); // Cambia immagine ogni 5 secondi
+      }, 3000);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [activeIndex, isHovered]);
+  }, [isHovered, activeIndex]);
 
-  // Slider //
+  useEffect(() => {
+    if (slideContainerRef.current) {
+      slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
+    }
+  }, [activeIndex, projects]);
 
   return (
-    <>
-      <div
-        className={styles.slider}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+    <div
+      className={styles.slider}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <button
+        className={`${styles.prev} ${styles.sliderButton} ${
+          isHovered ? styles.visible : styles.hidden
+        }`}
+        onClick={prevSlide}
       >
-        <button
-          className={`${styles.prev} ${styles.sliderButton} `}
-          onClick={prevSlide}
+        <FontAwesomeIcon icon={faAngleLeft} />
+      </button>
+      <div className={styles["slide-container"]} ref={slideContainerRef}>
+        <div
+          className={styles.slides}
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
-        <div className={styles["slide-container"]}>
-          <div className={styles["img-container"]}>
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className={`${styles.slide} ${
-                  index === activeIndex ? styles.active : ""
-                }`}
-                style={{
-                  display: index === activeIndex ? "block" : "none",
-                }}
-              >
-                <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
+          {projects.map((project, index) => (
+            <div key={index} className={styles.slide}>
+              <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
+                <div className={styles.imageWrapper}>
                   <Image
                     src={project.imgSrc}
                     alt={`Slide ${index}`}
-                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
+                         sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
                     style={{ objectFit: "contain" }}
                     priority={true}
                     fill={true}
+                    onLoadingComplete={() => {
+                      if (slideContainerRef.current) {
+                        slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
+                      }
+                    }}
                   />
-                </a>
-              </div>
-            ))}
-          </div>
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
-        <button
-          className={`${styles.next} ${styles.sliderButton}`}
-          onClick={nextSlide}
-        >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </button>
       </div>
-    </>
+      <button
+        className={`${styles.next} ${styles.sliderButton} ${
+          isHovered ? styles.visible : styles.hidden
+        }`}
+        onClick={nextSlide}
+      >
+        <FontAwesomeIcon icon={faAngleRight} />
+      </button>
+    </div>
   );
 }
 
