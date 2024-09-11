@@ -41,3 +41,19 @@
   color: #2d3748; /* Colore del testo al passaggio del mouse */
   border-radius: 4px; /* Angoli arrotondati al passaggio del mouse */
 }
+
+/* Breakpoint per schermi molto piccoli (375px - 413px) */
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  .breadcrumbLink {
+    font-size: 12px; /* Dimensione molto piccola per schermi molto piccoli */
+  }
+
+  
+}
+
+/* Breakpoint per smartphone(414px - 640px) */
+@media screen and (min-width: 414px) and (max-width: 640px) {
+  .breadcrumbLink {
+    font-size: 14px; /* Dimensione piccola per schermi piccoli */
+  }
+}
