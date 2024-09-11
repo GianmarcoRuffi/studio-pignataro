@@ -49,7 +49,7 @@ export default function Gallery({
       </div>
 
       <div className="gallery-container flex-col justify-center bg-gray-100">
-        <div className="flex flex-col items-center lg:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
+        <div className="flex flex-col lg:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
           <div className="info-container bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8">
             <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
             <p className="text-gray-500">{galleryDescription}</p>
@@ -57,7 +57,7 @@ export default function Gallery({
             <span className="text-gray-500 text-xs">{imgCredits}</span>
           </div>
 
-          <div className="button-container flex items-center md:ml-8 mt-8">
+          <div className="button-container flex justify-center md:items-center md:justify-start md:ml-8 mt-8">
             <a href="/projects" className={styles.buttonLink}>
               <span>Torna alla galleria dei progetti</span>
             </a>
