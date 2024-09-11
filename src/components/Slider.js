@@ -1,8 +1,7 @@
 "use client";
 import styles from "./slider.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faAngleLeft  } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
