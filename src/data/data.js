@@ -250,7 +250,7 @@ const projects = [
     ],
   },
 
-// Placeholder per la nuova location dello studio
+  // Placeholder per la nuova location dello studio
 
   // {
   //   projectName: "Studio Pignataro",

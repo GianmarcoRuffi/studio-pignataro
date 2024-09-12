@@ -21,6 +21,7 @@ export default function Footer() {
                 {contactsData.email.address}
               </a>
             </li>
+            <li> P.iva: {contactsData.p_iva} </li>
             {/* <li>
               <a
                 href={contactsData.social.linkedin}
