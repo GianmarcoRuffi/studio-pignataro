@@ -110,3 +110,17 @@
     width: 100%;
   }
 }
+
+/* Spazio tra logo e navbar su dispositivi mobili e tablet */
+
+@media (max-width: 768px) {
+  .navWrapper {
+    gap: 2rem; 
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navWrapper {
+    gap: 1.5rem; 
+  }
+}
