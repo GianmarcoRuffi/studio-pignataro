@@ -1,0 +1,9 @@
+/* projects.module.css */
+.card-box .project-card img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card-box .project-card.loaded img {
+  opacity: 1;
+}
