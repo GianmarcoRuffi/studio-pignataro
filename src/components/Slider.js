@@ -66,7 +66,7 @@ function Slider({ projects }) {
                   <Image
                     src={project.imgSrc}
                     alt={`Slide ${index}`}
-                         sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
+                    sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
                     style={{ objectFit: "contain" }}
                     priority={true}
                     fill={true}

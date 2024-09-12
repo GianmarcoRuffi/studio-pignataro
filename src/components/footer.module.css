@@ -2,8 +2,7 @@
   width: 100%;
   height: 156px; /* Altezza del footer */
   background-color: #fff; /* Colore di sfondo del footer */
-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset anche verso l'alto */
-
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset anche verso l'alto */
 
   color: #373737; /* Colore del testo */
   padding: 1rem 2rem; /* Spaziatura interna */

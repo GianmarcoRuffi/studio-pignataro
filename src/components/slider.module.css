@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera */
 }
 
 .slide-container {
@@ -35,13 +35,13 @@
   background: none;
   background-color: #f3f4f605;
   border: none;
-   font-size: 35px;
+  font-size: 35px;
   cursor: pointer;
   z-index: 10;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-    border-radius: 50%;
-   padding: 15px;
+  border-radius: 50%;
+  padding: 15px;
 }
 
 .prev {

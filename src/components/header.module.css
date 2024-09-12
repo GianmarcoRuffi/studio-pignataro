@@ -4,8 +4,8 @@
   width: 100%;
   height: auto;
   background-color: #fff; /* Add a background color to make the header stand out */
-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset verso il basso */
- position: relative; /* Assicurati che l'ombra sia visibile */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset verso il basso */
+  position: relative; /* Assicurati che l'ombra sia visibile */
   z-index: 1000;
 }
 
