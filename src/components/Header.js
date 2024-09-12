@@ -21,7 +21,9 @@ export default function Header() {
         <div className={styles.navbar}>
           <ul className={`${styles.navList} uppercase text-sm`}>
             <li
-              className={`${pathname === "/" ? styles.active : ""} ${styles.notMobile}`}
+              className={`${pathname === "/" ? styles.active : ""} ${
+                styles.notMobile
+              }`}
             >
               <Link href="/">Home</Link>
             </li>

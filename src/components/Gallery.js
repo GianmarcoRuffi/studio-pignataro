@@ -94,7 +94,9 @@ export default function Gallery({
                       sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
                       style={{ width: "100%", height: "auto" }}
                       priority={true}
-                      className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${styles.imageTransition} ${
+                      className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
+                        styles.imageTransition
+                      } ${
                         loadedImages[index] ? styles.imageTransitionLoaded : ""
                       }`}
                       onLoad={() => handleImageLoad(index)}

@@ -12,7 +12,9 @@ export default function Projects() {
   return (
     <div className="projects-container flex-row justify-center">
       <div
-        className={`${styles.cardBox} ${loaded ? 'loaded' : ''} bg-gray-100 p-10 grid grid-cols-1 md:grid-cols-2 gap-8`}
+        className={`${styles.cardBox} ${
+          loaded ? "loaded" : ""
+        } bg-gray-100 p-10 grid grid-cols-1 md:grid-cols-2 gap-8`}
         onLoad={() => setLoaded(true)} // Mark cards as loaded when images are loaded
       >
         {projects.map((project, index) =>

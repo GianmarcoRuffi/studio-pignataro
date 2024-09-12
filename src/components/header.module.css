@@ -96,7 +96,6 @@
   }
 }
 
-
 /* Media Query for Tablet */
 @media (max-width: 1024px) {
   .navbar {
@@ -115,12 +114,12 @@
 
 @media (max-width: 768px) {
   .navWrapper {
-    gap: 2rem; 
+    gap: 2rem;
   }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
   .navWrapper {
-    gap: 1.5rem; 
+    gap: 1.5rem;
   }
 }

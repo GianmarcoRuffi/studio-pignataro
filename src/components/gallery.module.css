@@ -53,7 +53,6 @@
   }
 }
 
-
 /* Aggiungi una classe per le immagini con effetto di transizione */
 .imageTransition {
   opacity: 0; /* Inizia con le immagini invisibili */
@@ -63,4 +62,3 @@
 .imageTransitionLoaded {
   opacity: 1; /* Rendi le immagini completamente visibili quando caricate */
 }
-
