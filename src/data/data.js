@@ -15,7 +15,7 @@ const projects = [
   {
     projectName: "Corso Vittorio Emanuele II",
     imgSrc: "/Home/01.jpg",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari`,
+    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Corso-Vittorio-Emanuele-II",
     imgCredits: "Foto © Luigi Corda",
@@ -40,11 +40,11 @@ const projects = [
   {
     projectName: "Agenzia pubblicitaria Glisbò",
     imgSrc: "/Home/02.jpg",
-    description: "Stand modulare per la “Regione Autonoma della Sardegna”",
+    description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
     externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
     slug: "Glisbo",
     imgCredits:
-      "Render di Gianpierluigi Secci - 3d Designer -www. mistralstudio.it ",
+      "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
     images: [
       "/Glisbo/01.jpg",
       "/Glisbo/02.jpg",
@@ -57,7 +57,7 @@ const projects = [
   {
     projectName: "Via Asti",
     imgSrc: "/Home/03.jpg",
-    description: `Ristrutturazione con Interior design a Cagliari`,
+    description: `Ristrutturazione con Interior design a Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
@@ -80,7 +80,7 @@ const projects = [
   {
     projectName: "Via Machiavelli",
     imgSrc: "/Home/04.jpg",
-    description: `Ristrutturazione con Interior design a Cagliari
+    description: `Ristrutturazione con Interior design a Cagliari.
     `,
     externalLink: [
       {
@@ -111,7 +111,7 @@ const projects = [
   {
     projectName: "Vico V di Via S. Giovanni",
     imgSrc: "/Home/05.jpg",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari
+    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
     `,
 
     externalLink: [
@@ -163,7 +163,7 @@ const projects = [
   {
     projectName: "Via Canonico Sanna",
     imgSrc: "/Home/07.jpg",
-    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG)
+    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `,
     slug: "Via-Canonico-Sanna",
     imgCredits: "Foto © Luigi Corda",
@@ -189,7 +189,7 @@ const projects = [
   {
     projectName: "V.le Regina Margherita",
     imgSrc: "/Home/08.jpg",
-    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari
+    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `,
     slug: "Viale-Regina-Margherita",
     imgCredits: "Foto © Luigi Corda",
@@ -210,7 +210,7 @@ const projects = [
   {
     projectName: "Via Vittorio Amedeo II",
     imgSrc: "/Home/09.jpg",
-    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari
+    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Vittorio-Amedeo-II",
     imgCredits: "Foto © Luigi Corda",
@@ -220,7 +220,7 @@ const projects = [
   {
     projectName: "Tangex Corp.",
     imgSrc: "/Home/10.jpg",
-    description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)`,
+    description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).`,
     slug: "TangexCorp",
     imgCredits: "Foto © Guanina Santiago de Jesus",
     images: [
@@ -234,7 +234,7 @@ const projects = [
   {
     projectName: "Via Eroi d’Italia",
     imgSrc: "/Home/11.jpg",
-    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari
+    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Eroi-d-Italia",
     imgCredits: "Foto © Matteo Piazza",
@@ -250,9 +250,11 @@ const projects = [
     ],
   },
 
+// Placeholder per la nuova location dello studio
+
   // {
   //   projectName: "Studio Pignataro",
-  //   imgSrc: "/Home/11.jpg",
+  //   imgSrc: "/Home/12.jpg",
   //   description: ``,
   //   invisible: true,
   //   slug: "contacts",
