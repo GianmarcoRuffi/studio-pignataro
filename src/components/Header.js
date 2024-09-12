@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Importa usePathname
+import { usePathname } from "next/navigation";
 import styles from "./header.module.css";
 
 export default function Header() {
-  const pathname = usePathname(); // Usa usePathname per ottenere il percorso corrente
+  const pathname = usePathname();
 
   return (
     <header className={styles.headerContainer}>
@@ -20,6 +20,11 @@ export default function Header() {
 
         <div className={styles.navbar}>
           <ul className={`${styles.navList} uppercase text-sm`}>
+            <li
+              className={`${pathname === "/" ? styles.active : ""} ${styles.notMobile}`}
+            >
+              <Link href="/">Home</Link>
+            </li>
             <li className={pathname === "/projects" ? styles.active : ""}>
               <Link href="/projects">Progetti</Link>
             </li>

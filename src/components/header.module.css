@@ -84,6 +84,19 @@
   }
 }
 
+/* Mostra solo su schermi più grandi */
+.notMobile {
+  display: none;
+}
+
+/* Mostra a partire dal breakpoint per tablet/PC */
+@media (min-width: 540px) {
+  .notMobile {
+    display: block;
+  }
+}
+
+
 /* Media Query for Tablet */
 @media (max-width: 1024px) {
   .navbar {
