@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import ScrollUpButton from "./ScrollUpButton";
 import styles from "./gallery.module.css";
@@ -12,6 +13,15 @@ export default function Gallery({
   prevProject,
   nextProject,
 }) {
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({
+      ...prev,
+      [index]: true,
+    }));
+  };
+
   function renderGalleryLinks() {
     if (galleryLinks) {
       return galleryLinks.map((link, index) => (
@@ -84,7 +94,10 @@ export default function Gallery({
                       sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
                       style={{ width: "100%", height: "auto" }}
                       priority={true}
-                      className="mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80"
+                      className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${styles.imageTransition} ${
+                        loadedImages[index] ? styles.imageTransitionLoaded : ""
+                      }`}
+                      onLoad={() => handleImageLoad(index)}
                     />
                   </div>
                 </a>

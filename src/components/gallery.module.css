@@ -15,10 +15,6 @@
   transform: translateY(-2px);
 }
 
-.photos-container a:hover .image {
-  opacity: 0.8;
-}
-
 .breadcrumbContainer {
   display: flex;
   justify-content: space-between;
@@ -56,3 +52,15 @@
     font-size: 14px; /* Dimensione piccola per schermi piccoli */
   }
 }
+
+
+/* Aggiungi una classe per le immagini con effetto di transizione */
+.imageTransition {
+  opacity: 0; /* Inizia con le immagini invisibili */
+  transition: opacity 1s ease-in-out; /* Transizione della opacità */
+}
+
+.imageTransitionLoaded {
+  opacity: 1; /* Rendi le immagini completamente visibili quando caricate */
+}
+
