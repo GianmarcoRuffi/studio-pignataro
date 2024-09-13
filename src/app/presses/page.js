@@ -1,4 +1,4 @@
-import Card from "../../components/Card";
+import PressesCard from "../../components/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton";
 import styles from "./presses.module.css";
 import pressesData from "../../data/pressesData";
@@ -8,7 +8,7 @@ export default function Presses() {
     <div className="presses-container flex-row justify-center ">
       <div className="card-box bg-gray-100 p-10 flex flex-col gap-16">
         {pressesData.map((press, index) => (
-          <Card
+          <PressesCard
             key={index}
             description={press.description}
             imageSource={press.imageSource}
