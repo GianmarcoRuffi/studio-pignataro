@@ -70,6 +70,6 @@
 /* Media Query per Mobile */
 @media (max-width: 768px) {
   .sliderButton {
-    opacity: 1; 
+    opacity: 1;
   }
 }

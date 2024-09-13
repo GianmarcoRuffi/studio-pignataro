@@ -44,8 +44,6 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Media queries */
-
 /* Mobile query*/
 
 @media screen and (max-width: 1023px) {
@@ -137,31 +135,4 @@ main {
       margin-right: 300px;
     }
   }
-}
-
-/* Card css */
-
-.card-link a:hover {
-  color: gray;
-}
-
-
-/* Scroll up button */
-
-.scroll-up-button {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  background-color: theme("colors.backgroundGray");
-  color: theme("colors.textPrimary");
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: opacity 0.3s;
-}
-
-.scroll-up-button.visible {
-  display: block;
 }

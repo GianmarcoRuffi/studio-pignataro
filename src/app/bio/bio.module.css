@@ -1,12 +1,12 @@
 .bio-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
-  background-color: #f7f7f7; 
+  flex-wrap: wrap;
+  background-color: #f7f7f7;
 }
 
 .image-container {
-  flex: 2; 
+  flex: 2;
 }
 
 .image-container img {
@@ -16,8 +16,8 @@
 }
 
 .bio-box {
-  flex: 1; 
-  overflow-y: auto; 
+  flex: 1;
+  overflow-y: auto;
   padding: 15px;
   box-sizing: border-box;
 }

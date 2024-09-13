@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import styles from "./scrollup-button.module.css";
 
 const ScrollUpButton = () => {
   const [showButton, setShowButton] = useState(false);
@@ -28,7 +29,7 @@ const ScrollUpButton = () => {
 
   return (
     <button
-      className={`scroll-up-button ${showButton ? "visible" : ""}`}
+      className={`${styles.scrollUpButton} ${showButton ? styles.visible : ""}`}
       onClick={scrollToTop}
     >
       <FontAwesomeIcon icon={faArrowUp} />

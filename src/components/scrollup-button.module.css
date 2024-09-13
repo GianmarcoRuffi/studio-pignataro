@@ -1,0 +1,17 @@
+.scrollUpButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: theme("colors.backgroundGray");
+  color: theme("colors.textPrimary");
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.visible {
+  display: block;
+}
