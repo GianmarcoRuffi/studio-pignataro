@@ -29,7 +29,7 @@ html {
   background: #555;
 }
 
-/* /end scrollbar */
+/* end Scrollbar */
 
 body {
   margin: 0 auto;
@@ -44,7 +44,12 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile query*/
+/* Layout Wrapper Breakpoints */
+
+.layout-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 @media screen and (max-width: 1023px) {
   .layout-wrapper {
@@ -56,8 +61,6 @@ main {
     display: none;
   }
 }
-
-/* Breakpoints */
 
 @media screen and (min-width: 1024px) {
   .layout-wrapper {
@@ -99,11 +102,11 @@ main {
     margin-left: 140px;
     margin-right: 140px;
   }
+}
 
-  @media screen and (min-width: 1920px) {
-    .layout-wrapper {
-      margin-left: 300px;
-      margin-right: 300px;
-    }
+@media screen and (min-width: 1920px) {
+  .layout-wrapper {
+    margin-left: 300px;
+    margin-right: 300px;
   }
 }
