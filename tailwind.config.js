@@ -14,9 +14,8 @@ module.exports = {
 
         backgroundLight: "#fff",
         backgroundDark: "#f3f4f605",
-        backgroundGray: "#f3f4f6",
-        backgroundButton: "#e6e9ee",
-        backgroundBreadcrumb: "#e2e8f0",
+        backgroundGray: "#e6e9ee",
+        backgroundAltGray: "#e2e8f0",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
