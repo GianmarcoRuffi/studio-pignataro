@@ -55,19 +55,6 @@ main {
   ::-webkit-scrollbar {
     display: none;
   }
-
-  .scroll-up-button {
-    display: none;
-  }
-
-  .slide-container {
-    background-color: white;
-  }
-
-  .contacts-box li {
-    height: auto;
-    font-size: 14px;
-  }
 }
 
 /* Breakpoints */
@@ -77,28 +64,12 @@ main {
     margin-left: 2px;
     margin-right: 2px;
   }
-  .bio-container {
-    height: 428px;
-  }
-
-  .slide-container {
-    background-color: theme("colors.backgroundGray");
-  }
-
-  .contacts-box li {
-    height: auto;
-    font-size: 18px;
-  }
 }
 
 @media screen and (min-width: 1280px) {
   .layout-wrapper {
     margin-left: 23px;
     margin-right: 23px;
-  }
-
-  .bio-container {
-    height: 541px;
   }
 }
 

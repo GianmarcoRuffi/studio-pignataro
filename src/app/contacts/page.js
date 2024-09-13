@@ -27,7 +27,7 @@ export default function Contacts() {
         />
       </div>
 
-      <div className="contacts-box py-8 lg:w-1/3 flex items-center text-xs md:text-sm">
+      <div className="contacts-box py-8 lg:w-1/3 flex items-center text-sm md:text-md">
         <ul className="contacts">
           <li className="p-4">
             <strong>Studio:</strong> {contactsData.studio}
