@@ -16,16 +16,7 @@ module.exports = {
         backgroundDark: "#f3f4f605",
         backgroundGray: "#f3f4f6",
         backgroundButton: "#e6e9ee",
-
-        textLight: "#f5f5f5",
-        textDark: "#1a202c",
-
-        borderLight: "#e2e8f0",
-        borderDark: "#4a5568",
-
-        linkColor: "#3182ce",
-        linkHoverColor: "#2b6cb0",
-        linkHoverAltColor: "#000000",
+        backgroundBreadcrumb: "#e2e8f0",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
