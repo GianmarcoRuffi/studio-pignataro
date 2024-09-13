@@ -12,8 +12,9 @@ module.exports = {
         secondary: "#2d3748",
         accent: "#4a5568",
 
-        backgroundLight: "#f3f4f6",
+        backgroundLight: "#fff",
         backgroundDark: "#f3f4f605",
+        backgroundGray: "#f3f4f6",
 
         textLight: "#f5f5f5",
         textDark: "#1a202c",

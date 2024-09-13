@@ -33,7 +33,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: none;
-  background-color: #f3f4f605;
+  background-color: theme('colors.backgroundDark');
   border: none;
   font-size: 35px;
   cursor: pointer;
