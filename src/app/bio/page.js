@@ -32,7 +32,6 @@ export default function Bio() {
       }
     }
 
-    // Rimuovi l'evento listener
     return () => {
       if (img) {
         img.removeEventListener("load", updateBioBoxHeight);
@@ -48,7 +47,6 @@ export default function Bio() {
         className={`${styles["image-container"]} lg:w-2/3 lg:mr-4`}
         ref={imageRef}
       >
-        {/* Applica l'effetto di dissolvenza */}
         <img
           src="/Bio.jpg"
           alt="bio"
