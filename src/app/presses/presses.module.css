@@ -2,15 +2,15 @@
   display: inline-block;
   padding: 10px 20px;
   background-color: #e6e9ee; /* Sfondo grigio chiaro */
-  color: #373737; /* Colore del testo */
+  color: theme('colors.primary');
   font-size: 14px;
   border-radius: 5px;
   text-decoration: none;
-  border: 1px solid #373737; /* Contorno nero */
+  border: 1px solid theme('colors.primary');
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .buttonLink:hover {
-  background-color: #ffffff; /* Sfondo bianco al passaggio del mouse */
+  background-color: theme('colors.backgroundLight');
   transform: translateY(-2px);
 }

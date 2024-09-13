@@ -3,7 +3,7 @@
 .headerContainer {
   width: 100%;
   height: auto;
-  background-color: #fff; /* Add a background color to make the header stand out */
+  background-color: theme('colors.backgroundLight');
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset verso il basso */
   position: relative; /* Assicurati che l'ombra sia visibile */
   z-index: 1000;
@@ -43,7 +43,7 @@
 
 .navList a {
   text-decoration: none;
-  color: #373737;
+  color: theme('colors.primary');
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   transition: box-shadow 0.3s ease-in-out; /* Transizione morbida per box-shadow */
