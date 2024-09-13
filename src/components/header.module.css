@@ -1,28 +1,25 @@
-/* header.module.css */
-
 .headerContainer {
   width: 100%;
   height: auto;
   background-color: theme("colors.backgroundLight");
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset verso il basso */
-  position: relative; /* Assicurati che l'ombra sia visibile */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+  position: relative; 
   z-index: 1000;
 }
 
 /* Navbar */
 
 .navWrapper {
-  padding: 1rem; /* Add padding for better spacing */
+  padding: 1rem;
 }
 
 .logoContainer {
   height: auto;
-  /* Keeping the logo's original size */
-  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+  transition: box-shadow 0.3s ease-in-out; 
 }
 
 .logoContainer:hover {
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on the right and bottom */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
 .navbar {
@@ -38,7 +35,7 @@
 }
 
 .navList li {
-  margin: 0 1rem; /* Add spacing between menu items */
+  margin: 0 1rem;
 }
 
 .navList a {
@@ -46,31 +43,31 @@
   color: theme("colors.primary");
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  transition: box-shadow 0.3s ease-in-out; /* Transizione morbida per box-shadow */
+  transition: box-shadow 0.3s ease-in-out; 
 }
 
 .navList a:hover {
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); /* Ombra spostata verso il basso e verso destra */
-  color: #000; /* Colore del testo */
-  background-color: transparent; /* Sfondo trasparente per evitare conflitti con l'ombra */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+  color: #000; 
+  background-color: transparent; 
 }
 
 .navList li.active a {
   color: #000;
   background-color: #e0e0e0;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); /* Ombra spostata verso il basso e verso destra */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column; /* Stack the items vertically */
+    flex-direction: column; 
     align-items: center;
   }
 
   .navWrapper {
-    justify-content: center; /* Ensure the logo is horizontally centered */
-    align-items: center; /* Ensure the logo is vertically centered */
+    justify-content: center; 
+    align-items: center; 
     width: 100%;
   }
 
@@ -99,18 +96,17 @@
 /* Media Query for Tablet */
 @media (max-width: 1024px) {
   .navbar {
-    flex-direction: column; /* Stack the items vertically */
-    align-items: center; /* Center navbar items */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .navWrapper {
-    justify-content: center; /* Ensure the logo is horizontally centered */
-    align-items: center; /* Ensure the logo is vertically centered */
+    justify-content: center; 
+    align-items: center; 
     width: 100%;
   }
 }
 
-/* Spazio tra logo e navbar su dispositivi mobili e tablet */
 
 @media (max-width: 768px) {
   .navWrapper {

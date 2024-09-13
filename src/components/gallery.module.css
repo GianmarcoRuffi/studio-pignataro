@@ -22,6 +22,11 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
+.galleryLinks a:hover {
+  color: theme("colors.textPrimary");
+}
+
+
 /* Breakpoint per schermi molto piccoli (355px - 413px) */
 @media screen and (min-width: 355px) and (max-width: 413px) {
   .breadcrumbLink {

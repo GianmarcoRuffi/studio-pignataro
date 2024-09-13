@@ -1,23 +1,23 @@
 .footerContainer {
   width: 100%;
-  height: 156px; /* Altezza del footer */
+  height: 156px; 
   background-color: theme("colors.backgroundLight");
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera con offset anche verso l'alto */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.2);
 
   color: theme("colors.primary");
-  padding: 1rem 2rem; /* Spaziatura interna */
+  padding: 1rem 2rem;
   position: relative;
   bottom: 0;
-  display: flex; /* Imposta il footer come un contenitore flex */
-  align-items: center; /* Allinea verticalmente il contenuto */
-  justify-content: center; /* Allinea orizzontalmente il contenuto */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .footerWrapper {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex; /* Imposta il wrapper come un contenitore flex */
-  justify-content: center; /* Allinea orizzontalmente il contenuto */
+  display: flex; 
+  justify-content: center; 
   width: 100%;
 }
 
@@ -25,9 +25,9 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Imposta l'elenco in orizzontale */
-  gap: 2rem; /* Spazio tra gli elementi */
-  align-items: center; /* Allinea verticalmente gli elementi della lista */
+  display: flex; 
+  gap: 2rem; 
+  align-items: center;
 }
 
 .footerList li {
@@ -41,30 +41,30 @@
 }
 
 .footerList a:hover {
-  color: black; /* Colore del testo dei link al passaggio del mouse */
+  color: theme("colors.textPrimary");
   font-weight: bold;
 }
 
 /* Media Query per Mobile */
 @media (max-width: 768px) {
   .footerContainer {
-    height: auto; /* Altezza automatica per adattarsi al contenuto */
-    padding: 1rem; /* Riduci il padding per mobile */
+    height: auto; 
+    padding: 1rem; 
   }
 
   .footerWrapper {
-    flex-direction: column; /* Incolonna il contenuto */
-    align-items: center; /* Allinea al centro */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .footerList {
-    flex-direction: column; /* Cambia la direzione in colonna su dispositivi mobili */
-    gap: 0; /* Rimuovi lo spazio tra gli elementi */
-    padding: 0; /* Rimuovi il padding */
+    flex-direction: column; 
+    gap: 0; 
+    padding: 0; 
   }
 
   .footerList li {
-    padding: 0; /* Rimuovi il padding tra gli elementi della lista */
-    margin: 0; /* Rimuovi il margine */
+    padding: 0; 
+    margin: 0; 
   }
 }

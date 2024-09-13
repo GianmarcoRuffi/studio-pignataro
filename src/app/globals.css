@@ -41,7 +41,7 @@ main {
 }
 
 .layout-content {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Media queries */
@@ -145,21 +145,6 @@ main {
   color: gray;
 }
 
-/* Gallery css */
-
-.gallery-links a:hover {
-  color: black;
-}
-
-/* Contacts */
-
-.mailto {
-  text-decoration: underline;
-}
-
-.mailto:hover {
-  color: gray;
-}
 
 /* Scroll up button */
 
@@ -170,7 +155,7 @@ main {
   right: 20px;
   padding: 10px 15px;
   background-color: theme("colors.backgroundGray");
-  color: black;
+  color: theme("colors.textPrimary");
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -179,20 +164,4 @@ main {
 
 .scroll-up-button.visible {
   display: block;
-}
-
-/* Footer */
-
-.footer-list ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.footer-list li {
-  display: inline-block;
-  text-align: center;
-  padding: 0.5rem;
-  text-decoration: none;
 }

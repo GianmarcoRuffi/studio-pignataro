@@ -1,0 +1,7 @@
+.mailto {
+  text-decoration: underline;
+}
+
+.mailto:hover {
+  color: gray;
+}

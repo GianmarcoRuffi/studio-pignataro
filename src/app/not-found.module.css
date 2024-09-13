@@ -4,22 +4,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; /* Centro il contenuto */
-  background-color: #f9f9f9; /* Colore di sfondo */
+  text-align: center; 
+  background-color: #f9f9f9; 
 }
 
 .title {
-  margin-bottom: 20px; /* Spazio tra il titolo e il link */
+  margin-bottom: 20px;
   font-size: 24px;
   color: #333;
 }
 
 .link {
-  color: #6c757d; /* Grigio per il link normale */
+  color: #6c757d;
   text-decoration: underline;
 }
 
 .link:hover {
   text-decoration: none;
-  color: #495057; /* Grigio più scuro per l'hover */
+  color: #495057;
 }

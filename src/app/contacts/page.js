@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { contactsData } from "../../data/contactsData";
+import styles from "./contacts.module.css";
 
 export default function Contacts() {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -33,7 +34,7 @@ export default function Contacts() {
           </li>
           <li className="p-4">
             <strong>Email:</strong>{" "}
-            <a href={contactsData.email.mailto} className="mailto">
+            <a href={contactsData.email.mailto} className={styles.mailto}>
               {contactsData.email.address}
             </a>
           </li>

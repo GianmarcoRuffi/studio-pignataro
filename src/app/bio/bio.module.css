@@ -1,12 +1,12 @@
 .bio-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Permette al contenitore di adattarsi */
-  background-color: #f7f7f7; /* Imposta il colore di sfondo se necessario */
+  flex-wrap: wrap; 
+  background-color: #f7f7f7; 
 }
 
 .image-container {
-  flex: 2; /* L'immagine occupa 2/3 dello spazio */
+  flex: 2; 
 }
 
 .image-container img {
@@ -16,10 +16,10 @@
 }
 
 .bio-box {
-  flex: 1; /* Il bio-box occupa 1/3 dello spazio */
-  overflow-y: auto; /* Abilita lo scroll se il contenuto è più alto */
+  flex: 1; 
+  overflow-y: auto; 
   padding: 15px;
-  box-sizing: border-box; /* Include il padding e il bordo nelle dimensioni dell'elemento */
+  box-sizing: border-box;
 }
 
 .bio-box h1 {
