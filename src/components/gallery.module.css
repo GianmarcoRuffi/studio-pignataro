@@ -1,7 +1,7 @@
 .buttonLink {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #e6e9ee; /* Sfondo grigio chiaro */
+  background-color: theme('colors.backgroundButton'); /* Sfondo grigio chiaro */
   color: theme('colors.primary');
   font-size: 14px;
   border-radius: 5px;
@@ -34,7 +34,7 @@
 
 .breadcrumbLink:hover {
   background-color: #e2e8f0; /* Colore di sfondo al passaggio del mouse */
-  color: #2d3748; /* Colore del testo al passaggio del mouse */
+  color: theme('colors.scondary'); /* Colore del testo al passaggio del mouse */
   border-radius: 4px; /* Angoli arrotondati al passaggio del mouse */
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Ombra simile a quella del bottone */
 }

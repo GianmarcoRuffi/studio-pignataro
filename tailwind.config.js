@@ -15,6 +15,7 @@ module.exports = {
         backgroundLight: "#fff",
         backgroundDark: "#f3f4f605",
         backgroundGray: "#f3f4f6",
+        backgroundButton: "#e6e9ee",
 
         textLight: "#f5f5f5",
         textDark: "#1a202c",
