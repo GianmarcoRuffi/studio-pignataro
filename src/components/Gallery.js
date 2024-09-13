@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ScrollUpButton from "./ScrollUpButton";
 import styles from "./gallery.module.css";
+import LinkButton from "./LinkButton";
 
 export default function Gallery({
   images,
@@ -68,9 +69,9 @@ export default function Gallery({
           </div>
 
           <div className="button-container flex justify-center md:items-center md:justify-start md:ml-8 mt-8">
-            <a href="/projects" className={styles.buttonLink}>
-              <span>Torna alla galleria dei progetti</span>
-            </a>
+            <LinkButton href="/projects">
+              Torna alla galleria dei progetti
+            </LinkButton>
           </div>
         </div>
 
@@ -108,9 +109,9 @@ export default function Gallery({
 
           {/* Bottone "Torna alla galleria dei progetti" */}
           <div className="col-span-full flex justify-center mt-8">
-            <a href="/projects" className={styles.buttonLink}>
-              <span>Torna alla galleria dei progetti</span>
-            </a>
+            <LinkButton href="/projects">
+              Torna alla galleria dei progetti
+            </LinkButton>
           </div>
         </div>
 

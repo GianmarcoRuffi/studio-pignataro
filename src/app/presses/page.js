@@ -1,6 +1,6 @@
 import PressesCard from "../../components/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton";
-import styles from "./presses.module.css";
+import LinkButton from "../../components/LinkButton";
 import pressesData from "../../data/pressesData";
 
 export default function Presses() {
@@ -14,14 +14,13 @@ export default function Presses() {
             imageSource={press.imageSource}
             source={
               press.source ? (
-                <a
+                <LinkButton
                   href={press.source}
-                  className={styles.buttonLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Vai all' articolo
-                </a>
+                  Vai all'articolo
+                </LinkButton>
               ) : (
                 ""
               )

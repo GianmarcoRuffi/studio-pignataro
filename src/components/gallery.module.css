@@ -1,20 +1,3 @@
-.buttonLink {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: theme('colors.backgroundButton'); /* Sfondo grigio chiaro */
-  color: theme('colors.primary');
-  font-size: 14px;
-  border-radius: 5px;
-  text-decoration: none;
-  border: 1px solid theme('colors.primary');
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.buttonLink:hover {
-  background-color: theme('colors.backgroundLight');
-  transform: translateY(-2px);
-}
-
 .breadcrumbContainer {
   display: flex;
   justify-content: space-between;
@@ -34,7 +17,9 @@
 
 .breadcrumbLink:hover {
   background-color: #e2e8f0; /* Colore di sfondo al passaggio del mouse */
-  color: theme('colors.scondary'); /* Colore del testo al passaggio del mouse */
+  color: theme(
+    "colors.secondary"
+  ); /* Colore del testo al passaggio del mouse */
   border-radius: 4px; /* Angoli arrotondati al passaggio del mouse */
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Ombra simile a quella del bottone */
 }

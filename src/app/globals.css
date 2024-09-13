@@ -84,7 +84,7 @@ main {
   }
 
   .slide-container {
-    background-color: theme('colors.backgroundGray');
+    background-color: theme("colors.backgroundGray");
   }
 
   .contacts-box li {
@@ -169,7 +169,7 @@ main {
   bottom: 20px;
   right: 20px;
   padding: 10px 15px;
-  background-color: theme('colors.backgroundGray');
+  background-color: theme("colors.backgroundGray");
   color: black;
   border: none;
   border-radius: 50%;
