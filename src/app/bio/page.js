@@ -1,16 +1,16 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./bio.module.css";
 import { bioData } from "../../data/bioData";
 
 export default function Bio() {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const imageRef = useRef(null);
   const bioBoxRef = useRef(null);
 
   useEffect(() => {
     const updateBioBoxHeight = () => {
       if (imageRef.current && bioBoxRef.current) {
-        // Trova l'altezza dell'immagine e applica al bio-box
         const img = imageRef.current.querySelector("img");
         if (img) {
           bioBoxRef.current.style.height = `${img.offsetHeight}px`;
@@ -18,15 +18,21 @@ export default function Bio() {
       }
     };
 
-    // Aggiorna l'altezza al caricamento dell'immagine
     const img = imageRef.current.querySelector("img");
     if (img) {
-      img.addEventListener("load", updateBioBoxHeight);
-      // Esegui anche al montaggio
-      updateBioBoxHeight();
+      img.addEventListener("load", () => {
+        setIsImageLoaded(true);
+        updateBioBoxHeight();
+      });
+
+      // Controllo per vedere se l'immagine è già stata caricata (es. dalla cache)
+      if (img.complete) {
+        setIsImageLoaded(true);
+        updateBioBoxHeight();
+      }
     }
 
-    // Pulisci l'evento listener
+    // Rimuovi l'evento listener
     return () => {
       if (img) {
         img.removeEventListener("load", updateBioBoxHeight);
@@ -42,7 +48,14 @@ export default function Bio() {
         className={`${styles["image-container"]} lg:w-2/3 lg:mr-4`}
         ref={imageRef}
       >
-        <img src="/Bio.jpg" alt="bio" className="" />
+        {/* Applica l'effetto di dissolvenza */}
+        <img
+          src="/Bio.jpg"
+          alt="bio"
+          className={`transition-opacity duration-700 ${
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </div>
 
       <div
