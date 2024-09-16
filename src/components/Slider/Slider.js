@@ -48,11 +48,12 @@ function Slider({ projects }) {
     };
   }, [isHovered, activeIndex]);
 
-  useEffect(() => {
-    if (slideContainerRef.current) {
-      slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
-    }
-  }, [activeIndex, projects]);
+useEffect(() => {
+  if (slideContainerRef.current !== null) {
+    slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
+  }
+}, [activeIndex, projects]);
+
 
   return (
     <div
