@@ -28,34 +28,34 @@ export default function Gallery({
       return galleryLinks.map((link, index) => (
         <p
           key={index}
-          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 "
+          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800"
         >
           <a href={link.url}>{link.name}</a>
         </p>
       ));
     }
-    return "";
+    return null;
   }
 
   return (
     <div>
       <div className={styles.breadcrumbContainer}>
-        <a
-          href={`/projects/${prevProject ? prevProject.slug : "#"}`}
-          className={styles.breadcrumbLink}
-        >
-          {prevProject
-            ? `< ${prevProject.projectName}`
-            : "< Nessun progetto precedente"}
-        </a>
-        <a
-          href={`/projects/${nextProject ? nextProject.slug : "#"}`}
-          className={styles.breadcrumbLink}
-        >
-          {nextProject
-            ? `${nextProject.projectName} >`
-            : "Nessun progetto successivo >"}
-        </a>
+        {prevProject && (
+          <a
+            href={`/projects/${prevProject.slug}`}
+            className={styles.breadcrumbLink}
+          >
+            {"< "}{prevProject.projectName}
+          </a>
+        )}
+        {nextProject && (
+          <a
+            href={`/projects/${nextProject.slug}`}
+            className={styles.breadcrumbLink}
+          >
+            {nextProject.projectName} {">"}
+          </a>
+        )}
       </div>
 
       <div className="gallery-container flex-col justify-center bg-gray-100">
@@ -84,7 +84,7 @@ export default function Gallery({
                   rel="noopener noreferrer"
                   className="block overflow-hidden relative group"
                 >
-                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
+                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md relative">
                     <Image
                       src={image}
                       alt={`Image ${index + 1}`}
@@ -100,10 +100,13 @@ export default function Gallery({
                       }`}
                       onLoad={() => handleImageLoad(index)}
                     />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-gray-800 bg-opacity-75 text-white text-sm p-2 rounded">
+                      Visualizza l'immagine
+                    </div>
                   </div>
                 </a>
               ))
-            : ""}
+            : null}
 
           <div className="col-span-full flex justify-center mt-8">
             <LinkButton href="/projects">
