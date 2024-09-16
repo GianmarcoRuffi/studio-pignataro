@@ -14,6 +14,7 @@ module.exports = {
 
         textPrimary: "black",
 
+        backgroundPrimary: "#f7f7f7",
         backgroundLight: "#fff",
         backgroundDark: "#f3f4f605",
         backgroundGray: "#e6e9ee",

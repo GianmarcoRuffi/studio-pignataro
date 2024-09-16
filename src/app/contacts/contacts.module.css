@@ -5,3 +5,7 @@
 .mailto:hover {
   color: gray;
 }
+
+.contactsContainer {
+  background-color: theme("colors.backgroundPrimary");
+}
