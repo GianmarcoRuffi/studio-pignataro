@@ -45,7 +45,8 @@ export default function Gallery({
             href={`/projects/${prevProject.slug}`}
             className={styles.breadcrumbLink}
           >
-            {"< "}{prevProject.projectName}
+            {"< "}
+            {prevProject.projectName}
           </a>
         )}
         {nextProject && (
