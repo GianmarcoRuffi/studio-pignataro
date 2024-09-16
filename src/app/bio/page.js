@@ -40,13 +40,8 @@ export default function Bio() {
   }, []);
 
   return (
-    <div
-      className={`${styles["bio-container"]} flex bg-gray-100 max-lg:flex-col`}
-    >
-      <div
-        className={`${styles["image-container"]} lg:w-2/3 lg:mr-4`}
-        ref={imageRef}
-      >
+    <div className={`${styles["bio-container"]} flex max-lg:flex-col`}>
+      <div className={`${styles["image-container"]} lg:w-2/3`} ref={imageRef}>
         <img
           src="/Bio.jpg"
           alt="bio"
@@ -57,7 +52,7 @@ export default function Bio() {
       </div>
 
       <div
-        className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4`}
+        className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4 lg:ml-4`}
         ref={bioBoxRef}
       >
         <h1>
