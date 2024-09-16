@@ -8,7 +8,22 @@ import React, { useState, useEffect, useRef } from "react";
 function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false); 
   const slideContainerRef = useRef(null);
+
+  const handleResize = () => {
+    setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
+  };
+
+  useEffect(() => {
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -67,7 +82,7 @@ function Slider({ projects }) {
                     src={project.imgSrc}
                     alt={`Slide ${index}`}
                     sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: isLargeScreen ? "contain" : "cover" }} // Cambia objectFit in base al breakpoint
                     priority={true}
                     fill={true}
                     onLoadingComplete={() => {
