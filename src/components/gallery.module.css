@@ -23,7 +23,7 @@
 }
 
 .galleryLinks a:hover {
-  color: theme("colors.textPrimary");
+  color: theme("colors.textSecondary");
 }
 
 /* Breakpoint per schermi molto piccoli (355px - 413px) */

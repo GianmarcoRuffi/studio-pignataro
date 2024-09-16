@@ -12,7 +12,9 @@ module.exports = {
         secondary: "#2d3748",
         accent: "#4a5568",
 
-        textPrimary: "black",
+        textPrimary: "#373737",
+        textSecondary: "#000",
+        textTertiary: "gray",
 
         backgroundPrimary: "#f7f7f7",
         backgroundLight: "#fff",
