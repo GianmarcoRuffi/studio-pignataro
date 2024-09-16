@@ -11,15 +11,15 @@
 .title {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: theme("colors.primary");
 }
 
 .link {
-  color: #6c757d;
+  color: theme("colors.textTertiary");
   text-decoration: underline;
 }
 
 .link:hover {
   text-decoration: none;
-  color: #495057;
+  color: theme("colors.accent");
 }
