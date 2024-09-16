@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import projects from "../../../data/data";
-import Gallery from "../../../components/Gallery";
+import Gallery from "../../../components/Gallery/Gallery";
 
 export async function generateStaticParams() {
   // Cicla l'oggetto projects e restituisce lo slug - per ciascuno verrà creata una rotta projects/[slug]

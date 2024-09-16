@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Slider from "../components/Slider";
+import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
-import styles from "./page.home.module.css";
+import styles from "./styles/page.home.module.css";
+import SliderSkeleton from "../components/SliderSkeleton/SliderSkeleton";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,13 +25,7 @@ export default function Home() {
 
   return (
     <div className={styles.sliderContainer}>
-      {isLoading ? (
-        <div className={styles.sliderSkeleton}>
-          <div className={styles.loader}></div>
-        </div>
-      ) : (
-        <Slider projects={projects} />
-      )}
+      {isLoading ? <SliderSkeleton /> : <Slider projects={projects} />}
     </div>
   );
 }

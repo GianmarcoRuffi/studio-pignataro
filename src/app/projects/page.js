@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import projects from "../../data/data";
-import ProjectCard from "../../components/ProjectCard";
-import ScrollUpButton from "../../components/ScrollUpButton";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import styles from "./projects.module.css";
 
 export default function Projects() {

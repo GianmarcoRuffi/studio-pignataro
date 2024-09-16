@@ -1,10 +1,10 @@
-import "./globals.css";
+import "./styles/globals.css";
 import Head from "next/head";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 config.autoAddCss = false;
 

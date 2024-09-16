@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import ScrollUpButton from "./ScrollUpButton";
+import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.css";
-import LinkButton from "./LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 
 export default function Gallery({
   images,

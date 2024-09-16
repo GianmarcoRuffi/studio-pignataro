@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./footer.module.css";
-import { contactsData } from "../data/contactsData";
+import { contactsData } from "../../data/contactsData";
 import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
