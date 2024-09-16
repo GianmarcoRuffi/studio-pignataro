@@ -5,14 +5,11 @@
   background-color: theme("colors.backgroundPrimary");
 }
 
-.image-container {
-  flex: 2;
-}
-
 .image-container img {
   width: 100%;
   height: auto;
   display: block;
+  flex: 2;
 }
 
 .bio-box {
@@ -72,6 +69,11 @@
 
   .bio-box {
     width: 100%;
+  }
+
+  .bio-box li {
+
+        margin-left: 12px;
   }
 }
 
