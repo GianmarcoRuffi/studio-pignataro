@@ -8,7 +8,7 @@ import React, { useState, useEffect, useRef } from "react";
 function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false); 
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const slideContainerRef = useRef(null);
 
   const handleResize = () => {
@@ -16,8 +16,7 @@ function Slider({ projects }) {
   };
 
   useEffect(() => {
-
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
