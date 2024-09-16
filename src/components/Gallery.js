@@ -28,7 +28,7 @@ export default function Gallery({
       return galleryLinks.map((link, index) => (
         <p
           key={index}
-          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800"
+          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 "
         >
           <a href={link.url}>{link.name}</a>
         </p>
@@ -84,7 +84,7 @@ export default function Gallery({
                   rel="noopener noreferrer"
                   className="block overflow-hidden relative group"
                 >
-                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md relative">
+                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
                     <Image
                       src={image}
                       alt={`Image ${index + 1}`}
@@ -100,9 +100,6 @@ export default function Gallery({
                       }`}
                       onLoad={() => handleImageLoad(index)}
                     />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-gray-800 bg-opacity-75 text-white text-sm p-2 rounded">
-                      Visualizza l'immagine
-                    </div>
                   </div>
                 </a>
               ))
