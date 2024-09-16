@@ -41,7 +41,7 @@
 }
 
 .footerList a:hover {
-  color: theme("colors.textPrimary");
+  color: theme("colors.textSecondary");
   font-weight: bold;
 }
 

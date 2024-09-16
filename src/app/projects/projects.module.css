@@ -1,8 +1,12 @@
-.card-box .project-card img {
+.cardBox .project-card img {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
-.card-box .project-card.loaded img {
+.cardBox .project-card.loaded img {
   opacity: 1;
+}
+
+.cardBox {
+  background-color: theme("colors.backgroundPrimary");
 }

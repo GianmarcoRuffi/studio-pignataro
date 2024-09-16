@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin: 0 0.5rem;
   padding: 0.5rem;
-  background-color: #f8f9fa;
+  background-color: theme("colors.backgroundPrimary");
   border-radius: 4px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
@@ -23,7 +23,7 @@
 }
 
 .galleryLinks a:hover {
-  color: theme("colors.textPrimary");
+  color: theme("colors.textSecondary");
 }
 
 /* Breakpoint per schermi molto piccoli (355px - 413px) */

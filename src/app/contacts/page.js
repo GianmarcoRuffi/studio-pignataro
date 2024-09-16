@@ -15,7 +15,9 @@ export default function Contacts() {
   }, []);
 
   return (
-    <div className="contacts-container flex justify-center items-center bg-gray-100 max-lg:flex-col">
+    <div
+      className={`${styles.contactsContainer} flex justify-center items-center max-lg:flex-col`}
+    >
       <div className="image-container lg:w-2/3 lg:pr-4">
         <img
           src="/Studio.jpg"

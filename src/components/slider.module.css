@@ -57,7 +57,7 @@
 }
 
 .sliderButton:hover {
-  color: gray;
+  color: theme("colors.textTertiary");
 }
 
 /* Media Query per Tablet */
