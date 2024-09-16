@@ -1,6 +1,6 @@
-import PressesCard from "../../components/PressesCard";
-import ScrollUpButton from "../../components/ScrollUpButton";
-import LinkButton from "../../components/LinkButton";
+import PressesCard from "../../components/PressesCard/PressesCard";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import LinkButton from "../../components/LinkButton/LinkButton";
 import pressesData from "../../data/pressesData";
 import styles from "./presses.module.css";
 

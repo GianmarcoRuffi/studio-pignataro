@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Slider from "../components/Slider";
+import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
 import styles from "./page.home.module.css";
 
