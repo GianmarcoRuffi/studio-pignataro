@@ -34,28 +34,28 @@ export default function Gallery({
         </p>
       ));
     }
-    return "";
+    return null;
   }
 
   return (
     <div>
       <div className={styles.breadcrumbContainer}>
-        <a
-          href={`/projects/${prevProject ? prevProject.slug : "#"}`}
-          className={styles.breadcrumbLink}
-        >
-          {prevProject
-            ? `< ${prevProject.projectName}`
-            : "< Nessun progetto precedente"}
-        </a>
-        <a
-          href={`/projects/${nextProject ? nextProject.slug : "#"}`}
-          className={styles.breadcrumbLink}
-        >
-          {nextProject
-            ? `${nextProject.projectName} >`
-            : "Nessun progetto successivo >"}
-        </a>
+        {prevProject && (
+          <a
+            href={`/projects/${prevProject.slug}`}
+            className={styles.breadcrumbLink}
+          >
+            {"< "}{prevProject.projectName}
+          </a>
+        )}
+        {nextProject && (
+          <a
+            href={`/projects/${nextProject.slug}`}
+            className={styles.breadcrumbLink}
+          >
+            {nextProject.projectName} {">"}
+          </a>
+        )}
       </div>
 
       <div className="gallery-container flex-col justify-center bg-gray-100">
@@ -103,7 +103,7 @@ export default function Gallery({
                   </div>
                 </a>
               ))
-            : ""}
+            : null}
 
           <div className="col-span-full flex justify-center mt-8">
             <LinkButton href="/projects">

@@ -13,11 +13,10 @@ export default function Home() {
         const img = new Image();
         img.src = project.image;
         img.onload = resolve;
-        img.onerror = resolve; // Anche in caso di errore, risolvi per evitare che rimanga bloccato
+        img.onerror = resolve;
       });
     });
 
-    // Quando tutte le immagini sono caricate, cambia lo stato
     Promise.all(imagePromises).then(() => {
       setIsLoading(false);
     });
