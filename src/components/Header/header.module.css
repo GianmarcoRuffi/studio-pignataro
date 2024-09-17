@@ -3,15 +3,41 @@
   height: auto;
   background-color: theme("colors.backgroundLight");
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  position: relative;
+  position: fixed; /* Cambiato da 'relative' a 'fixed' */
+  top: 0;
+  left: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease, height 0.3s ease;
 }
 
-/* Navbar */
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.9); /* Trasparente */
+  height: 60px; /* Altezza ridotta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
+}
 
 .navWrapper {
   padding: 1rem;
+  transition: padding 0.3s ease;
 }
+
+.scrolledNavWrapper {
+  padding: 0.5rem 1rem; /* Ridotto quando scrollato */
+}
+
+.logoContainer {
+  height: auto;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.scrolledLogoContainer img {
+  height: 40px; /* Ridotto quando scrollato */
+  transition: height 0.3s ease;
+}
+
+
+/* Navbar */
+
 
 .logoContainer {
   height: auto;

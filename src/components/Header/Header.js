@@ -1,41 +1,48 @@
 "use client";
-import React from "react";
+import React, { forwardRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.css";
 
-export default function Header() {
+const Header = forwardRef((props, ref) => {
   const pathname = usePathname();
   const isActive = pathname === "/"; // Logica per rendere l'icona della casa attiva
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // Modifica la soglia come desideri
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className={styles.headerContainer}>
+    <header
+      ref={ref}
+      className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ""}`}
+    >
       <div
-        className={`${styles.navWrapper} flex justify-between max-lg:flex-col`}
+        className={`${styles.navWrapper} flex justify-between max-lg:flex-col ${scrolled ? styles.scrolledNavWrapper : ""}`}
       >
-        <div className={styles.logoContainer}>
+        <div className={`${styles.logoContainer} ${scrolled ? styles.scrolledLogoContainer : ""}`}>
           <Link href="/">
             <img src="/logo.jpg" alt="Logo" layout="intrinsic" />
           </Link>
         </div>
 
-        {/* Aggiungi l'icona della casa con logica attiva */}
         <div className={`${styles.homeIcon} ${isActive ? styles.active : ""}`}>
           <Link href="/">
-            <FontAwesomeIcon icon={faHome} size="lg" />{" "}
-            {/* Riduci dimensione */}
+            <FontAwesomeIcon icon={faHome} size="lg" />
           </Link>
         </div>
 
         <div className={styles.navbar}>
           <ul className={`${styles.navList} uppercase text-sm`}>
-            <li
-              className={`${pathname === "/" ? styles.active : ""} ${
-                styles.notMobile
-              }`}
-            >
+            <li className={`${pathname === "/" ? styles.active : ""} ${styles.notMobile}`}>
               <Link href="/">Home</Link>
             </li>
             <li className={pathname === "/projects" ? styles.active : ""}>
@@ -55,4 +62,8 @@ export default function Header() {
       </div>
     </header>
   );
-}
+});
+
+Header.displayName = 'Header';
+
+export default Header;

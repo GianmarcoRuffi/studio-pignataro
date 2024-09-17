@@ -1,3 +1,4 @@
+"use client";
 import "./styles/globals.css";
 import Head from "next/head";
 import localFont from "next/font/local";
@@ -5,6 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import { useEffect, useRef, useState } from "react";
 
 config.autoAddCss = false;
 
@@ -13,7 +15,7 @@ const myFont = localFont({
   display: "swap",
 });
 
-export const metadata = {
+ const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   site_name: "Studio Architetto Gianluca Pignataro",
   description:
@@ -22,6 +24,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    updateHeaderHeight(); // Imposta l'altezza iniziale
+
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => window.removeEventListener("resize", updateHeaderHeight);
+  }, []);
+
   return (
     <html lang="en" className={myFont.className}>
       <Head>
@@ -34,8 +52,10 @@ export default function RootLayout({ children }) {
       </Head>
       <body>
         <div className="layout-wrapper">
-          <Header />
-          <div className="layout-content">{children}</div>
+          <Header ref={headerRef} />
+          <div className="layout-content" style={{ marginTop: headerHeight }}>
+            {children}
+          </div>
           <Footer />
         </div>
       </body>
