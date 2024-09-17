@@ -76,16 +76,3 @@
   }
 }
 
-/* Breakpoints */
-
-@media screen and (min-width: 1024px) {
-  .bio-container {
-    height: 428px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .bio-container {
-    height: 580px;
-  }
-}
