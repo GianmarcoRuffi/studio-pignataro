@@ -13,8 +13,7 @@ const Header = forwardRef((props, ref) => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Determina la soglia in base alla larghezza dello schermo
-      const threshold = window.innerWidth <= 767 ? 100 : 50; // 100px per mobile, 50px per desktop
+      const threshold = 50; 
       setScrolled(window.scrollY > threshold);
     };
 
