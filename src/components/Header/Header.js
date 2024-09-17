@@ -2,10 +2,13 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.css";
 
 export default function Header() {
   const pathname = usePathname();
+  const isActive = pathname === "/"; // Logica per rendere l'icona della casa attiva
 
   return (
     <header className={styles.headerContainer}>
@@ -15,6 +18,14 @@ export default function Header() {
         <div className={styles.logoContainer}>
           <Link href="/">
             <img src="/logo.jpg" alt="Logo" layout="intrinsic" />
+          </Link>
+        </div>
+
+        {/* Aggiungi l'icona della casa con logica attiva */}
+        <div className={`${styles.homeIcon} ${isActive ? styles.active : ""}`}>
+          <Link href="/">
+            <FontAwesomeIcon icon={faHome} size="lg" />{" "}
+            {/* Riduci dimensione */}
           </Link>
         </div>
 
