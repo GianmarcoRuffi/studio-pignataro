@@ -13,7 +13,7 @@ const Header = forwardRef((props, ref) => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const threshold = 50; 
+      const threshold = 50;
       setScrolled(window.scrollY > threshold);
     };
 
