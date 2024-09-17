@@ -40,6 +40,9 @@ export default function RootLayout({ children }) {
     return () => window.removeEventListener("resize", updateHeaderHeight);
   }, []);
 
+  // Funzione per verificare se siamo su un dispositivo mobile
+  const isMobile = () => typeof window !==  window.innerWidth <= 767;
+
   return (
     <html lang="en" className={myFont.className}>
       <Head>
@@ -53,7 +56,13 @@ export default function RootLayout({ children }) {
       <body>
         <div className="layout-wrapper">
           <Header ref={headerRef} />
-          <div className="layout-content" style={{ marginTop: headerHeight }}>
+          {/* Aggiungiamo un padding-top dinamico solo su dispositivi mobili */}
+          <div
+            className="layout-content"
+            style={{
+              marginTop: isMobile() ? `${headerHeight}px` : 0, // Padding solo su dispositivi mobili
+            }}
+          >
             {children}
           </div>
           <Footer />

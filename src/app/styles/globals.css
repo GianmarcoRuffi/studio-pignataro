@@ -8,6 +8,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overscroll-behavior: none;
+}
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 12px;
