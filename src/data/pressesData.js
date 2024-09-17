@@ -32,7 +32,7 @@ const pressesData = [
   },
   {
     description:
-      "Un appartamento moderno rivoluzionato”, articolo pubblicato nella rivista online “HOMIFY”",
+      "“Un appartamento moderno rivoluzionario”, articolo pubblicato nella rivista online “HOMIFY”",
     imageSource: "/Pubblicazioni/HOMIFY_cover_3.jpg",
     source:
       "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
 import styles from "./styles/page.home.module.css";
-import SliderSkeleton from "../components/SliderSkeleton/SliderSkeleton";
+import MainSkeleton from "../components/MainSkeleton/MainSkeleton";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +24,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.sliderContainer}>
-      {isLoading ? <SliderSkeleton /> : <Slider projects={projects} />}
+    <div className={styles.homeContainer}>
+      {isLoading ? <MainSkeleton /> : <Slider projects={projects} />}
     </div>
   );
 }

@@ -73,8 +73,12 @@
 }
 
 /* Media Query per Mobile */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sliderButton {
     opacity: 1;
   }
+
+  .imageWrapper {
+  height: 60vh;
+}
 }

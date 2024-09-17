@@ -1,4 +1,12 @@
-.sliderContainer {
+.homeContainer {
   width: 100%;
   height: 80vh;
+}
+
+/* Media Query per Mobile */
+@media (max-width: 767px) {
+.homeContainer {
+  width: 100%;
+  height: 60vh;
+}
 }
