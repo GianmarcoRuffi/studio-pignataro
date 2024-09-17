@@ -5,8 +5,8 @@
 
 /* Media Query per Mobile */
 @media (max-width: 767px) {
-.homeContainer {
-  width: 100%;
-  height: 60vh;
-}
+  .homeContainer {
+    width: 100%;
+    height: 60vh;
+  }
 }
