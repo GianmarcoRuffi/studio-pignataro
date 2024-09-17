@@ -18,7 +18,7 @@ export default function PressesCard({
   }, [imageSource]);
 
   return (
-    <div className="rounded overflow-hidden shadow-lg">
+    <div className="rounded overflow-hidden shadow-xl">
       <div style={{ display: "flex" }}>
         <img
           src={imageSource}
