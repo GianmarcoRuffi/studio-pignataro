@@ -8,7 +8,7 @@ import styles from "./header.module.css";
 
 const Header = forwardRef((props, ref) => {
   const pathname = usePathname();
-  const isActive = pathname === "/"; // Logica per rendere l'icona della casa attiva
+  const isActive = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {

@@ -27,17 +27,25 @@ export default function RootLayout({ children }) {
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef(null);
 
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    };
+  const updateHeaderHeight = () => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  };
 
-    updateHeaderHeight(); // Imposta l'altezza iniziale
+  useEffect(() => {
+    // Calcolo dell'altezza dell'header all'inizializzazione e quando la finestra viene ridimensionata
+    updateHeaderHeight();
 
     window.addEventListener("resize", updateHeaderHeight);
-    return () => window.removeEventListener("resize", updateHeaderHeight);
+
+    // Aggiornamento anche al caricamento della pagina
+    window.addEventListener("load", updateHeaderHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+      window.removeEventListener("load", updateHeaderHeight);
+    };
   }, []);
 
   return (
