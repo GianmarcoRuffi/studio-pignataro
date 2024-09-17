@@ -67,12 +67,6 @@ export default function Gallery({
             <div className={styles.galleryLinks}>{renderGalleryLinks()}</div>
             <span className="text-gray-500 text-xs">{imgCredits}</span>
           </div>
-
-          <div className="button-container flex justify-center md:items-center md:justify-start md:ml-8 mt-8">
-            <LinkButton href="/projects">
-              Torna alla galleria dei progetti
-            </LinkButton>
-          </div>
         </div>
 
         <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">

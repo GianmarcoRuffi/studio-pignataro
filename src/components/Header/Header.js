@@ -26,9 +26,15 @@ const Header = forwardRef((props, ref) => {
       className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ""}`}
     >
       <div
-        className={`${styles.navWrapper} flex justify-between max-lg:flex-col ${scrolled ? styles.scrolledNavWrapper : ""}`}
+        className={`${styles.navWrapper} flex justify-between max-lg:flex-col ${
+          scrolled ? styles.scrolledNavWrapper : ""
+        }`}
       >
-        <div className={`${styles.logoContainer} ${scrolled ? styles.scrolledLogoContainer : ""}`}>
+        <div
+          className={`${styles.logoContainer} ${
+            scrolled ? styles.scrolledLogoContainer : ""
+          }`}
+        >
           <Link href="/">
             <img src="/logo.jpg" alt="Logo" layout="intrinsic" />
           </Link>
@@ -42,7 +48,11 @@ const Header = forwardRef((props, ref) => {
 
         <div className={styles.navbar}>
           <ul className={`${styles.navList} uppercase text-sm`}>
-            <li className={`${pathname === "/" ? styles.active : ""} ${styles.notMobile}`}>
+            <li
+              className={`${pathname === "/" ? styles.active : ""} ${
+                styles.notMobile
+              }`}
+            >
               <Link href="/">Home</Link>
             </li>
             <li className={pathname === "/projects" ? styles.active : ""}>
@@ -64,6 +74,6 @@ const Header = forwardRef((props, ref) => {
   );
 });
 
-Header.displayName = 'Header';
+Header.displayName = "Header";
 
 export default Header;

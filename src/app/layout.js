@@ -15,7 +15,7 @@ const myFont = localFont({
   display: "swap",
 });
 
- const metadata = {
+const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   site_name: "Studio Architetto Gianluca Pignataro",
   description:

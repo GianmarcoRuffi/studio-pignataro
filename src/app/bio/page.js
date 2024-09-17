@@ -9,34 +9,17 @@ export default function Bio() {
   const bioBoxRef = useRef(null);
 
   useEffect(() => {
-    const updateBioBoxHeight = () => {
-      if (imageRef.current && bioBoxRef.current) {
-        const img = imageRef.current.querySelector("img");
-        if (img) {
-          bioBoxRef.current.style.height = `${img.offsetHeight}px`;
-        }
-      }
-    };
-
     const img = imageRef.current.querySelector("img");
     if (img) {
       img.addEventListener("load", () => {
         setIsImageLoaded(true);
-        updateBioBoxHeight();
       });
 
       // Controllo per vedere se l'immagine è già stata caricata (es. dalla cache)
       if (img.complete) {
         setIsImageLoaded(true);
-        updateBioBoxHeight();
       }
     }
-
-    return () => {
-      if (img) {
-        img.removeEventListener("load", updateBioBoxHeight);
-      }
-    };
   }, []);
 
   return (

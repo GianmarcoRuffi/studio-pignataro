@@ -17,7 +17,9 @@ export default function ProjectCard({ name, imageSource, description }) {
           src={imageSource}
           alt={name}
           layout="fill"
-          className={`${styles.image} ${loaded ? styles.loaded : ""} object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
+          className={`${styles.image} ${
+            loaded ? styles.loaded : ""
+          } object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
           onLoad={handleImageLoad}
         />
         <div className="absolute inset-0 bg-transparent transition-opacity duration-1000 ease-in-out" />

@@ -53,7 +53,7 @@ main {
 
 @media screen and (max-width: 1023px) {
   .layout-content {
-  padding-left:0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

@@ -23,7 +23,7 @@
 
 .scrolledNavWrapper {
   padding: 0.5rem 1rem; /* Ridotto quando scrollato */
-    background-color: rgba(255, 255, 255, 0.9); /* Trasparente */
+  background-color: rgba(255, 255, 255, 0.9); /* Trasparente */
 }
 
 .logoContainer {
@@ -36,9 +36,7 @@
   transition: height 0.3s ease;
 }
 
-
 /* Navbar */
-
 
 .logoContainer {
   height: auto;
