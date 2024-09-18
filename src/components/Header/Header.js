@@ -34,8 +34,10 @@ const Header = forwardRef((props, ref) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        menuRef.current && !menuRef.current.contains(event.target) &&
-        menuIconRef.current && !menuIconRef.current.contains(event.target)
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        menuIconRef.current &&
+        !menuIconRef.current.contains(event.target)
       ) {
         setMenuOpen(false);
       }
