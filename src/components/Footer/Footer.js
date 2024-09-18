@@ -21,6 +21,30 @@ export default function Footer() {
               </a>
             </li>
             <li>P.iva: {contactsData.p_iva}</li>
+
+              {/* <li>
+              <a
+                href={contactsData.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2"
+              >
+                <FaLinkedin className="text-xl" />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={contactsData.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2"
+              >
+                <FaFacebook className="text-xl" />
+                <span>Facebook</span>
+              </a>
+            </li> */}
+            
           </ul>
         </div>
       </div>
