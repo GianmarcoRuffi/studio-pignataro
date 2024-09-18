@@ -87,6 +87,11 @@
   display: none;
 }
 
+.menuIcon {
+  display: none;
+  cursor: pointer;
+}
+
 @media (max-width: 767px) {
   .homeIcon {
     display: block;
@@ -111,28 +116,45 @@
     background-color: theme("colors.backgroundGray");
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
   }
-}
 
-/* Media Query for Mobile */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
+  /* Riduci la dimensione del logo su mobile e posiziona icone accanto */
+  .logoContainer img {
+    height: 30px; /* Dimensione ridotta su mobile */
   }
 
   .navWrapper {
-    justify-content: center;
+    display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: space-between; /* Posiziona icone a fianco */
+  }
+
+  .menuIcon {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .navbar.openMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Dipende dall'altezza dell'header */
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo trasparente */
+    padding: 1rem;
+    z-index: 999; /* Per sovrapporsi ai contenitori sottostanti */
   }
 
   .navList {
-    list-style-type: none;
-    display: flex;
+    display: block;
   }
 
   .navList li {
-    margin: 0;
+    margin: 0.5rem 0;
   }
 }
 

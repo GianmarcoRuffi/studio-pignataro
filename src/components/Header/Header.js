@@ -3,13 +3,14 @@ import React, { forwardRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.css";
 
 const Header = forwardRef((props, ref) => {
   const pathname = usePathname();
   const isActive = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -21,39 +22,48 @@ const Header = forwardRef((props, ref) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Chiudi il menu quando si naviga su una nuova pagina
+  React.useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header
       ref={ref}
       className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ""}`}
     >
       <div
-        className={`${styles.navWrapper} flex justify-between max-lg:flex-col ${
+        className={`${styles.navWrapper} flex justify-between items-center ${
           scrolled ? styles.scrolledNavWrapper : ""
         }`}
       >
+        {/* Logo */}
         <div
           className={`${styles.logoContainer} ${
             scrolled ? styles.scrolledLogoContainer : ""
           }`}
         >
           <Link href="/">
-            <img src="/logo.jpg" alt="Logo" layout="intrinsic" />
+            <img src="/logo.jpg" alt="Logo" className={styles.logoImage} />
           </Link>
         </div>
 
+        {/* Icona Home */}
         <div className={`${styles.homeIcon} ${isActive ? styles.active : ""}`}>
           <Link href="/">
             <FontAwesomeIcon icon={faHome} size="lg" />
           </Link>
         </div>
 
-        <div className={styles.navbar}>
+        {/* Icona menu hamburger */}
+        <div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
+          <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} size="lg" />
+        </div>
+
+        {/* Navbar classica (Menu a tendina) */}
+        <div className={`${styles.navbar} ${menuOpen ? styles.openMenu : ""}`}>
           <ul className={`${styles.navList} uppercase text-sm`}>
-            <li
-              className={`${pathname === "/" ? styles.active : ""} ${
-                styles.notMobile
-              }`}
-            >
+            <li className={pathname === "/" ? styles.active : ""}>
               <Link href="/">Home</Link>
             </li>
             <li className={pathname === "/projects" ? styles.active : ""}>
