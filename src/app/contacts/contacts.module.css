@@ -9,3 +9,10 @@
 .contactsContainer {
   background-color: theme("colors.backgroundPrimary");
 }
+
+
+@media (max-width: 767px) {
+.contactsContainer {
+ height: 70vh;
+}
+}
