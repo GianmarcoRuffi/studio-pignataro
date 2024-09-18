@@ -13,28 +13,15 @@ const myFont = localFont({
 });
 
 export const metadata = {
-  openGraph: {
-    title: 'Studio Architetto Gianluca Pignataro',
-    description: 'Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.',
-    url: 'https://archpignataro.it',
-    siteName: 'Studio Architetto Gianluca Pignataro',
-    images: [
-      {
-        url: 'https://archpignataro.it/Bio.jpg', // Must be an absolute URL
-        width: 800,
-        height: 600,
-      },
-      {
-        url: 'https://archpignataro.it/Bio.jpg', // Must be an absolute URL
-        width: 1800,
-        height: 1600,
-        alt: 'My custom alt',
-      },
-    ],
-    locale: 'it_IT',
-    type: 'website',
-  },
-}
+  title: "Studio Architetto Gianluca Pignataro",
+  siteName: "Studio Architetto Gianluca Pignataro",
+  site_name: "Studio Architetto Gianluca Pignataro",
+  description:
+    "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+  locale: "it_IT",
+  url: 'https://archpignataro.it',
+  keywords: 'architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici',
+};
 
 export default function RootLayout({ children }) {
   return (
