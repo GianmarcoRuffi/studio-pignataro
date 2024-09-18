@@ -119,7 +119,7 @@
 
   /* Riduci la dimensione del logo su mobile e posiziona icone accanto */
   .logoContainer img {
-    height: 30px; /* Dimensione ridotta su mobile */
+    height: 60px; /* Dimensione ridotta su mobile */
   }
 
   .navWrapper {
@@ -154,7 +154,7 @@
   }
 
   .navList li {
-    margin: 0.5rem 0;
+    margin: 1.5rem 0; /* Aggiungi spazio tra le voci su mobile */
   }
 }
 

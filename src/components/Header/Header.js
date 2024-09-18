@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,7 @@ const Header = forwardRef((props, ref) => {
   const isActive = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const menuRef = useRef(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,18 @@ const Header = forwardRef((props, ref) => {
   React.useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  // Chiudi il menu quando si clicca fuori dal menu
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
 
   return (
     <header
@@ -61,7 +74,10 @@ const Header = forwardRef((props, ref) => {
         </div>
 
         {/* Navbar classica (Menu a tendina) */}
-        <div className={`${styles.navbar} ${menuOpen ? styles.openMenu : ""}`}>
+        <div
+          ref={menuRef}
+          className={`${styles.navbar} ${menuOpen ? styles.openMenu : ""}`}
+        >
           <ul className={`${styles.navList} uppercase text-sm`}>
             <li className={pathname === "/" ? styles.active : ""}>
               <Link href="/">Home</Link>
