@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +12,9 @@ const Header = forwardRef((props, ref) => {
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuRef = useRef(null);
+  const menuIconRef = useRef(null);
 
+  // Gestisci lo scroll per ridurre l'header
   React.useEffect(() => {
     const handleScroll = () => {
       const threshold = 50;
@@ -28,17 +30,20 @@ const Header = forwardRef((props, ref) => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Chiudi il menu quando si clicca fuori dal menu
-  React.useEffect(() => {
+  // Gestisci il clic fuori dal menu per chiuderlo
+  useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        menuRef.current && !menuRef.current.contains(event.target) &&
+        menuIconRef.current && !menuIconRef.current.contains(event.target)
+      ) {
         setMenuOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [menuOpen]);
+  }, []);
 
   return (
     <header
@@ -69,7 +74,11 @@ const Header = forwardRef((props, ref) => {
         </div>
 
         {/* Icona menu hamburger */}
-        <div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
+        <div
+          ref={menuIconRef}
+          className={styles.menuIcon}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} size="lg" />
         </div>
 
