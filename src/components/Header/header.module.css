@@ -136,25 +136,47 @@
   }
 
   .navbar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px; /* Dipende dall'altezza dell'header */
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.952); /* Sfondo trasparente */
+  padding: 1rem;
+  z-index: 999; /* Per sovrapporsi ai contenitori sottostanti */
+  opacity: 0; /* Inizialmente nascosto */
+  max-height: 0; /* Inizialmente chiuso */
+  overflow: hidden; /* Nascondi contenuti che escono */
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar.openMenu {
+  opacity: 1; /* Visibile */
+  max-height: 500px; /* Un valore sufficientemente grande per mostrare tutto il contenuto */
+}
+
+
+  /* .navbar {
     display: none;
-    opacity: 0; /* Inizialmente nascosto e trasparente */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Aggiungi transizione per opacità e trasformazione */
-    transform: translateY(-10px); /* Sposta leggermente verso l'alto */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    transform: translateY(-10px); 
   }
 
   .navbar.openMenu {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px; /* Dipende dall'altezza dell'header */
+    top: 70px; 
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.9); /* Sfondo trasparente */
+    background-color: rgba(255, 255, 255, 0.9); 
     padding: 1rem;
-    z-index: 999; /* Per sovrapporsi ai contenitori sottostanti */
-    opacity: 1; /* Visibile */
-    transform: translateY(0); /* Torna alla posizione originale */
-  }
+    z-index: 999; 
+    opacity: 1; 
+    transform: translateY(0); 
+  } */
 
   .navList {
     display: block;
