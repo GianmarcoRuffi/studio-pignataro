@@ -19,21 +19,18 @@ export const metadata = {
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
   locale: "it_IT",
-  url: 'https://archpignataro.it',
-  keywords: 'architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici',
+  url: "https://archpignataro.it",
+  keywords:
+    "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
-      <Head>
-        
-      </Head>
+      <Head></Head>
       <body>
         <div className="layout-wrapper">
-          <HeaderHeightManager>
-            {children}
-          </HeaderHeightManager>
+          <HeaderHeightManager>{children}</HeaderHeightManager>
           <Footer />
         </div>
       </body>
