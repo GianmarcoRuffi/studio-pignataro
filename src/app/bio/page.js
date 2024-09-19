@@ -1,32 +1,16 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useImageLoader } from "../../hooks/useImageLoader"; 
 import styles from "./bio.module.css";
 import { bioData } from "../../data/bioData";
 
 export default function Bio() {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const imageRef = useRef(null);
-  const bioBoxRef = useRef(null);
-
-  useEffect(() => {
-    const img = imageRef.current.querySelector("img");
-    if (img) {
-      img.addEventListener("load", () => {
-        setIsImageLoaded(true);
-      });
-
-      // Controllo per vedere se l'immagine è già stata caricata (es. dalla cache)
-      if (img.complete) {
-        setIsImageLoaded(true);
-      }
-    }
-  }, []);
+    const isImageLoaded = useImageLoader(`img[src='${bioData.image}']`);
 
   return (
     <div className={`${styles["bio-container"]} flex max-lg:flex-col`}>
-      <div className={`${styles["image-container"]} lg:w-2/3`} ref={imageRef}>
+      <div className={`${styles["image-container"]} lg:w-2/3`}>
         <img
-          src="/Bio.jpg"
+          src={bioData.image}
           alt="bio"
           className={`transition-opacity duration-700 ${
             isImageLoaded ? "opacity-100" : "opacity-0"
@@ -34,10 +18,7 @@ export default function Bio() {
         />
       </div>
 
-      <div
-        className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4 lg:ml-4`}
-        ref={bioBoxRef}
-      >
+      <div className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4 lg:ml-4`}>
         <h1>
           <strong>{bioData.name}</strong>
         </h1>
