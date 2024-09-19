@@ -1,8 +1,7 @@
-
 NPM = npm
 
 # Comandi
-.PHONY: start format install build clean
+.PHONY: start format install build clean clean-all start-prod
 
 # Avvia l'app in modalità di sviluppo
 start:
@@ -23,6 +22,11 @@ build:
 # Pulisce la cartella di build
 clean:
 	rm -rf .next
+
+# Pulisce la cartella di build e node_modules
+clean-all:
+	rm -rf .next
+	rm -rf node_modules
 
 # Comando per avviare il server di produzione
 start-prod:
