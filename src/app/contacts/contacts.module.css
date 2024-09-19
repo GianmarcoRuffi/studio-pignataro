@@ -25,7 +25,8 @@
   gap: 1rem; /* Spazio tra i container interni */
 }
 
-.contactsBox, .mapContainer {
+.contactsBox,
+.mapContainer {
   flex: 1;
   width: 100%;
 }
@@ -49,7 +50,7 @@
   .contactsContainer {
     flex-direction: column; /* Disposizione in colonna per dispositivi mobili */
   }
-  
+
   .imageContainer {
     margin-bottom: 1rem; /* Spazio tra immagine e box dei contatti su dispositivi mobili */
     padding-right: 0; /* Rimuove il padding a destra su dispositivi mobili */
