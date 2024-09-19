@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useImageLoader } from "../../hooks/useImageLoader";
 
 export default function PressesCard({
   description,
@@ -7,15 +8,7 @@ export default function PressesCard({
   source,
   date,
 }) {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = document.querySelector(`img[src="${imageSource}"]`);
-    // Verifica se l'immagine è già caricata (cache) e imposta lo stato di conseguenza
-    if (img && img.complete) {
-      setIsImageLoaded(true);
-    }
-  }, [imageSource]);
+  const isImageLoaded = useImageLoader(`img[src='${imageSource}']`);
 
   return (
     <div className="rounded overflow-hidden shadow-xl">
@@ -26,7 +19,6 @@ export default function PressesCard({
           className={`transition-opacity duration-700 ease-in-out ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          onLoad={() => setIsImageLoaded(true)}
         />
       </div>
       <div className="presses-box px-6 p-4">

@@ -1,31 +1,19 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
 import styles from "./styles/page.home.module.css";
 import MainSkeleton from "../components/MainSkeleton/MainSkeleton";
+import { useArrayImageLoader } from "../hooks/useArrayImageLoader";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const projectImages = projects.map((project) => project.image);
 
-  useEffect(() => {
-    const imagePromises = projects.map((project) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = project.image;
-        img.onload = resolve;
-        img.onerror = resolve;
-      });
-    });
-
-    Promise.all(imagePromises).then(() => {
-      setIsLoading(false);
-    });
-  }, []);
+  const areImagesLoaded = useArrayImageLoader(projectImages);
 
   return (
     <div className={styles.homeContainer}>
-      {isLoading ? <MainSkeleton /> : <Slider projects={projects} />}
+      {areImagesLoaded ? <Slider projects={projects} /> : <MainSkeleton />}
     </div>
   );
 }
