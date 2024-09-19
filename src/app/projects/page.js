@@ -14,7 +14,7 @@ export default function Projects() {
       <div
         className={`${styles.cardBox} ${
           loaded ? "loaded" : ""
-        } bg-gray-100 p-10 grid grid-cols-1 md:grid-cols-2 gap-8`}
+        } p-10 grid grid-cols-1 md:grid-cols-2 gap-8`}
         onLoad={() => setLoaded(true)}
       >
         {projects.map((project, index) =>

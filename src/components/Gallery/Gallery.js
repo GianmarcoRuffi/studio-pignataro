@@ -59,9 +59,11 @@ export default function Gallery({
         )}
       </div>
 
-      <div className="gallery-container flex-col justify-center bg-gray-100">
+      <div className={`${styles.galleryContainer} flex-col justify-center`}>
         <div className="flex flex-col lg:flex-row md:justify-between mx-2 md:ml-4 md:mr-16 mb-10">
-          <div className="info-container bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8">
+          <div
+            className={`${styles.infoContainer} bg-gray-50 p-6 mb-8 md:mb-0 flex-1 md:flex-none md:w-2/3 lg:w-1/2 xl:w-3/6 shadow-lg border border-gray-200 mt-8`}
+          >
             <h1 className="text-3xl font-semibold py-4">{galleryTitle}</h1>
             <p className="text-gray-500">{galleryDescription}</p>
             <div className={styles.galleryLinks}>{renderGalleryLinks()}</div>
@@ -69,7 +71,7 @@ export default function Gallery({
           </div>
         </div>
 
-        <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-100 px-4 pt-8 pb-8">
+        <div className="photos-container grid grid-cols-1 md:grid-cols-2 gap-8 px-4 pt-8 pb-8">
           {images
             ? images.map((image, index) => (
                 <a
@@ -79,7 +81,7 @@ export default function Gallery({
                   rel="noopener noreferrer"
                   className="block overflow-hidden relative group"
                 >
-                  <div className="bg-gray-100 p-4 border border-gray-200 shadow-md">
+                  <div className="p-4 border border-gray-200 shadow-md">
                     <Image
                       src={image}
                       alt={`Image ${index + 1}`}

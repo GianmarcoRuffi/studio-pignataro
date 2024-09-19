@@ -20,6 +20,7 @@ module.exports = {
         backgroundLight: "#fff",
         backgroundDark: "#f3f4f605",
         backgroundGray: "#e6e9ee",
+        backgroundLightGray: "#F3F4F6",
         backgroundAltGray: "#e2e8f0",
       },
       backgroundImage: {

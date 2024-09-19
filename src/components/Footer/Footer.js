@@ -22,7 +22,7 @@ export default function Footer() {
             </li>
             <li>P.iva: {contactsData.p_iva}</li>
 
-              {/* <li>
+            {/* <li>
               <a
                 href={contactsData.social.linkedin}
                 target="_blank"
@@ -44,7 +44,6 @@ export default function Footer() {
                 <span>Facebook</span>
               </a>
             </li> */}
-            
           </ul>
         </div>
       </div>

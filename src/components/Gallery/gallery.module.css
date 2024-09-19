@@ -1,3 +1,11 @@
+.galleryContainer {
+  background-color: theme("colors.backgroundLightGray");
+}
+
+.infoContainer {
+  background-color: theme("colors.backgroundLight");
+}
+
 .breadcrumbContainer {
   display: flex;
   justify-content: space-between;
