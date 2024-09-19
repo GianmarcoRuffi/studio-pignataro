@@ -1,16 +1,15 @@
 "use client";
 import { contactsData } from "../../data/contactsData";
-import { useImageLoader } from "../../hooks/useImageLoader"; // Importa l'hook
+import { useImageLoader } from "../../hooks/useImageLoader";
 import styles from "./contacts.module.css";
 
 export default function Contacts() {
   const isImageLoaded = useImageLoader(`img[src='${contactsData.image}']`);
 
   return (
-    <div
-      className={`${styles.contactsContainer} flex justify-center items-center max-lg:flex-col`}
-    >
-      <div className="image-container lg:w-2/3 lg:pr-4">
+    <div className={`${styles.contactsContainer} flex flex-col lg:flex-row`}>
+      {/* Image Container */}
+      <div className={`${styles.imageContainer} lg:pr-4 mb-8 lg:mb-0`}>
         <img
           src={contactsData.image}
           alt="studio"
@@ -20,22 +19,38 @@ export default function Contacts() {
         />
       </div>
 
-      <div className="contacts-box py-8 lg:w-1/3 flex items-center text-sm md:text-md">
-        <ul className="contacts">
-          <li className="p-4">
-            <strong>Studio:</strong> {contactsData.studio}
-          </li>
-          <li className="p-4">
-            <strong>Email:</strong>{" "}
-            <a href={contactsData.email.mailto} className={styles.mailto}>
-              {contactsData.email.address}
-            </a>
-          </li>
-          <li className="p-4">
-            <strong>Telefono:</strong> {contactsData.phone.landline} / Cell.{" "}
-            {contactsData.phone.mobile}
-          </li>
-        </ul>
+      {/* Info Container */}
+      <div className={`${styles.infoContainer} lg:pr-4 flex flex-col`}>
+        {/* Contacts Box */}
+        <div className={`${styles.contactsBox} pt-8`}>
+          <ul className="contacts text-sm md:text-md">
+            <li className="p-4">
+              <strong>Studio:</strong> {contactsData.studio}
+            </li>
+            <li className="p-4">
+              <strong>Email:</strong>{" "}
+              <a href={contactsData.email.mailto} className={styles.mailto}>
+                {contactsData.email.address}
+              </a>
+            </li>
+            <li className="p-4">
+              <strong>Telefono:</strong> {contactsData.phone.landline} / Cell.{" "}
+              {contactsData.phone.mobile}
+            </li>
+          </ul>
+        </div>
+
+        {/* Map Container */}
+        <div className={`${styles.mapContainer} pb-2`}>
+          <iframe
+            src={contactsData.embed_data}
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Studio Location"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
