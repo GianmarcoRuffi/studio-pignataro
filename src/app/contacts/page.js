@@ -1,18 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
 import { contactsData } from "../../data/contactsData";
+import { useImageLoader } from "../../hooks/useImageLoader"; // Importa l'hook
 import styles from "./contacts.module.css";
 
 export default function Contacts() {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  // Verifica se l'immagine è stata già caricata
-  useEffect(() => {
-    const img = document.querySelector("img[src='/Studio.jpg']");
-    if (img && img.complete) {
-      setIsImageLoaded(true); // Se già caricata, attiva subito l'immagine
-    }
-  }, []);
+  const isImageLoaded = useImageLoader(`img[src='${contactsData.image}']`);
 
   return (
     <div
@@ -20,12 +12,11 @@ export default function Contacts() {
     >
       <div className="image-container lg:w-2/3 lg:pr-4">
         <img
-          src="/Studio.jpg"
+          src={contactsData.image}
           alt="studio"
           className={`max-w-full transition-opacity duration-700 ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
-          onLoad={() => setIsImageLoaded(true)}
         />
       </div>
 

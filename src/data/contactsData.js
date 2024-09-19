@@ -1,4 +1,5 @@
 export const contactsData = {
+  image: "/Studio.jpg",
   studio: "Via Arrigo Solmi 36, 09129 Cagliari",
   email: {
     address: "glpignataro@yahoo.it",
