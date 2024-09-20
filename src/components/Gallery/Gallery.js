@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.css";
 import LinkButton from "../LinkButton/LinkButton";
+import { useArrayImageLoader } from "../../hooks/useArrayImageLoader"; 
 
 export default function Gallery({
   images,
@@ -14,14 +15,8 @@ export default function Gallery({
   prevProject,
   nextProject,
 }) {
-  const [loadedImages, setLoadedImages] = useState({});
 
-  const handleImageLoad = (index) => {
-    setLoadedImages((prev) => ({
-      ...prev,
-      [index]: true,
-    }));
-  };
+  const areImagesLoaded = useArrayImageLoader(images);
 
   function renderGalleryLinks() {
     if (galleryLinks) {
@@ -92,10 +87,7 @@ export default function Gallery({
                       priority={true}
                       className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
                         styles.imageTransition
-                      } ${
-                        loadedImages[index] ? styles.imageTransitionLoaded : ""
-                      }`}
-                      onLoad={() => handleImageLoad(index)}
+                      } ${areImagesLoaded ? styles.imageTransitionLoaded : ""}`}
                     />
                   </div>
                 </a>
