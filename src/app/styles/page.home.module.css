@@ -1,7 +1,7 @@
 .homeContainer {
   width: 100%;
   height: 80vh;
-  margin-top: 60px; /* Imposta il margine superiore per compensare l'header */
+  margin-top: 60px;
 }
 
 /* Media Query per Mobile */
@@ -9,6 +9,6 @@
   .homeContainer {
     width: 100%;
     height: 70vh;
-    margin-top: 60px; /* Mantieni lo stesso margine superiore per mobile */
+    margin-top: 60px; 
   }
 }

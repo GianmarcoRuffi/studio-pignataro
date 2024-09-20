@@ -3,7 +3,7 @@
   height: auto;
   background-color: theme("colors.backgroundLight");
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  position: fixed; /* Cambiato da 'relative' a 'fixed' */
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -11,9 +11,9 @@
 }
 
 .scrolled {
-  background-color: rgba(255, 255, 255, 0.9); /* Trasparente */
-  height: 60px; /* Altezza ridotta */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
+  background-color: rgba(255, 255, 255, 0.9); 
+  height: 60px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .navWrapper {
@@ -22,8 +22,8 @@
 }
 
 .scrolledNavWrapper {
-  padding: 0.5rem 1rem; /* Ridotto quando scrollato */
-  background-color: rgba(255, 255, 255, 0.9); /* Trasparente */
+  padding: 0.5rem 1rem; 
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .logoContainer {
@@ -32,7 +32,7 @@
 }
 
 .scrolledLogoContainer img {
-  height: 40px; /* Ridotto quando scrollato */
+  height: 40px; 
   transition: height 0.3s ease;
 }
 
@@ -117,17 +117,17 @@
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
   }
 
-  /* Riduci la dimensione del logo su mobile e posiziona icone accanto */
+
   .logoContainer img {
-    height: 60px; /* Dimensione ridotta su mobile per evitare che esca dal contenitore */
-    max-width: 100%; /* Assicurati che il logo non superi la larghezza del contenitore */
-    object-fit: contain; /* Mantieni le proporzioni dell'immagine */
+    height: 60px; 
+    max-width: 100%;
+    object-fit: contain; 
   }
 
   .navWrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Posiziona icone a fianco */
+    justify-content: space-between; 
   }
 
   .menuIcon {
@@ -139,61 +139,29 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px; /* Dipende dall'altezza dell'header */
+    top: 70px; 
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.952); /* Sfondo trasparente */
+    background-color: rgba(255, 255, 255, 0.952); 
     padding: 1rem;
-    z-index: 999; /* Per sovrapporsi ai contenitori sottostanti */
-    opacity: 0; /* Inizialmente nascosto */
-    max-height: 0; /* Inizialmente chiuso */
-    overflow: hidden; /* Nascondi contenuti che escono */
+    z-index: 999; 
+    opacity: 0; 
+    max-height: 0; 
+    overflow: hidden; 
     transition: max-height 0.3s ease, opacity 0.3s ease;
   }
 
   .navbar.openMenu {
-    opacity: 1; /* Visibile */
-    max-height: 500px; /* Un valore sufficientemente grande per mostrare tutto il contenuto */
-  }
-
-  /* .navbar {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease; 
-    transform: translateY(-10px); 
-  }
-
-  .navbar.openMenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px; 
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.9); 
-    padding: 1rem;
-    z-index: 999; 
     opacity: 1; 
-    transform: translateY(0); 
-  } */
+    max-height: 500px; 
+  }
 
   .navList {
     display: block;
   }
 
   .navList li {
-    margin: 1.5rem 0; /* Aggiungi spazio tra le voci su mobile */
-  }
-}
-
-/* Mostra solo su schermi più grandi */
-.notMobile {
-  display: none;
-}
-
-@media (min-width: 540px) {
-  .notMobile {
-    display: block;
+    margin: 1.5rem 0;
   }
 }
 
