@@ -14,7 +14,7 @@ const Header = forwardRef((props, ref) => {
   const menuRef = useRef(null);
   const menuIconRef = useRef(null);
 
-  // Gestisci lo scroll per ridurre l'header
+  // Gestisce lo scroll per ridurre l'header
   React.useEffect(() => {
     const handleScroll = () => {
       const threshold = 50;
@@ -25,12 +25,12 @@ const Header = forwardRef((props, ref) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Chiudi il menu quando si naviga su una nuova pagina
+  // Chiude il menu quando si naviga su una nuova pagina
   React.useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Gestisci il clic fuori dal menu per chiuderlo
+  // Gestisce il clic fuori dal menu per chiuderlo
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (

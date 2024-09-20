@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 export default function Page({ params }) {
   const { slug } = params;
 
-  // Prendi dall'oggetto projects il progetto giusto tramite slug
+  // Prende dall'oggetto projects il progetto giusto tramite slug
   const projectIndex = projects.findIndex((p) => p.slug === slug);
   const project = projects[projectIndex];
 
