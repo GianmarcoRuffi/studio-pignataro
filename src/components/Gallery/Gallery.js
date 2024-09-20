@@ -4,7 +4,7 @@ import Image from "next/image";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.css";
 import LinkButton from "../LinkButton/LinkButton";
-import { useArrayImageLoader } from "../../hooks/useArrayImageLoader"; 
+import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
 
 export default function Gallery({
   images,
@@ -15,7 +15,6 @@ export default function Gallery({
   prevProject,
   nextProject,
 }) {
-
   const areImagesLoaded = useArrayImageLoader(images);
 
   function renderGalleryLinks() {

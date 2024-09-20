@@ -11,9 +11,9 @@
 }
 
 .scrolled {
-  background-color: rgba(255, 255, 255, 0.9); 
-  height: 60px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navWrapper {
@@ -22,7 +22,7 @@
 }
 
 .scrolledNavWrapper {
-  padding: 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -32,7 +32,7 @@
 }
 
 .scrolledLogoContainer img {
-  height: 40px; 
+  height: 40px;
   transition: height 0.3s ease;
 }
 
@@ -117,17 +117,16 @@
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
   }
 
-
   .logoContainer img {
-    height: 60px; 
+    height: 60px;
     max-width: 100%;
-    object-fit: contain; 
+    object-fit: contain;
   }
 
   .navWrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
 
   .menuIcon {
@@ -139,21 +138,21 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px; 
+    top: 70px;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.952); 
+    background-color: rgba(255, 255, 255, 0.952);
     padding: 1rem;
-    z-index: 999; 
-    opacity: 0; 
-    max-height: 0; 
-    overflow: hidden; 
+    z-index: 999;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
     transition: max-height 0.3s ease, opacity 0.3s ease;
   }
 
   .navbar.openMenu {
-    opacity: 1; 
-    max-height: 500px; 
+    opacity: 1;
+    max-height: 500px;
   }
 
   .navList {
