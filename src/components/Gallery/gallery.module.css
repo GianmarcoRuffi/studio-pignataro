@@ -56,3 +56,7 @@
 .imageTransitionLoaded {
   opacity: 1;
 }
+
+.imageTransitionLoaded:hover {
+  cursor:zoom-in;
+}
