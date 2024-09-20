@@ -3,6 +3,7 @@ import Head from "next/head";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import ScrollToTop from "../hooks/ScrollToTop";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
 config.autoAddCss = false;
@@ -14,7 +15,6 @@ const myFont = localFont({
 
 export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
-  siteName: "Studio Architetto Gianluca Pignataro",
   site_name: "Studio Architetto Gianluca Pignataro",
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head></Head>
       <body>
+        <ScrollToTop />
         <div className="layout-wrapper">
           <HeaderHeightManager>{children}</HeaderHeightManager>
           <Footer />
