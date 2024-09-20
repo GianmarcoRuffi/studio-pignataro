@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import ScrollToTop from "../hooks/ScrollToTop";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
+import CookieConsent from "../components/CookieConsent/CookieConsent"; 
 config.autoAddCss = false;
 
 const myFont = localFont({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           <HeaderHeightManager>{children}</HeaderHeightManager>
           <Footer />
         </div>
+        <CookieConsent />
       </body>
     </html>
   );
