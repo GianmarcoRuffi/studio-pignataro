@@ -45,9 +45,7 @@
   z-index: 10;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
-  padding: 15px;
-  width: 60px; /* Default width for the button */
-  height: 60px; /* Default height for the button */
+
 }
 
 .prev {
@@ -90,14 +88,6 @@
     padding: 20px; /* Increased padding for larger clickable area */
     width: 100px; /* Increased width for the button */
     height: 100px; /* Increased height for the button */
-    transition: background-color 1s ease, color 0.7s ease, box-shadow 1s ease; /* Slower transition */
-    border-radius: 50%;
-  }
-
-  .sliderButton:hover {
-    background-color: theme("colors.backgroundLight");
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Soft shadow on hover */
-    transition: background-color 1s ease, color 0.7s ease, box-shadow 1s ease; /* Smooth shadow and color transition */
   }
 }
 
