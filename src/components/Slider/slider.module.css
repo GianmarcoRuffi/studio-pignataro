@@ -45,7 +45,6 @@
   z-index: 10;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
-
 }
 
 .prev {
@@ -91,13 +90,10 @@
   }
 }
 
+.prev {
+  left: 20px; /* Slightly increase the left margin */
+}
 
-
-  .prev {
-    left: 20px; /* Slightly increase the left margin */
-  }
-
-  .next {
-    right: 20px; /* Slightly increase the right margin */
-  }
-
+.next {
+  right: 20px; /* Slightly increase the right margin */
+}
