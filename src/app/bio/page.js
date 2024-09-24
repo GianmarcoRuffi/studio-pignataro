@@ -4,7 +4,7 @@ import styles from "./bio.module.css";
 import { bioData } from "../../data/bioData";
 
 export default function Bio() {
-  const isImageLoaded = useImageLoader(`img[src='${bioData.image}']`);
+  const imageLoaderClass = useImageLoader(`img[src='${bioData.image}']`);
 
   return (
     <div className={`${styles["bio-container"]} flex max-lg:flex-col`}>
@@ -12,9 +12,7 @@ export default function Bio() {
         <img
           src={bioData.image}
           alt="bio"
-          className={`transition-opacity duration-700 ${
-            isImageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={imageLoaderClass}
         />
       </div>
 

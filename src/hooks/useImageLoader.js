@@ -17,5 +17,8 @@ export const useImageLoader = (imageSelector) => {
     }
   }, [imageSelector]);
 
-  return isImageLoaded;
+
+  const transitionClass = `transition-opacity duration-700 ${isImageLoaded ? "opacity-100" : "opacity-0"}`;
+
+  return transitionClass;
 };
