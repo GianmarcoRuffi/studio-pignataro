@@ -86,8 +86,8 @@ function Slider({ projects }) {
                     sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
                     style={{
                       objectFit: isLargeScreen ? "contain" : "cover",
-                      opacity: areImagesLoaded ? 1 : 0, 
-                      transition: "opacity 0.5s ease", 
+                      opacity: areImagesLoaded ? 1 : 0,
+                      transition: "opacity 0.5s ease",
                     }}
                     priority={true}
                     fill={true}
