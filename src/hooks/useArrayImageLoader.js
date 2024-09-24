@@ -1,22 +1,30 @@
 import { useState, useEffect } from "react";
 
 export function useArrayImageLoader(images) {
-  const [areImagesLoaded, setAreImagesLoaded] = useState(false);
+  const [imageClasses, setImageClasses] = useState(
+    images.map(() => "opacity-0")
+  );
 
   useEffect(() => {
-    const imagePromises = images.map((src) => {
+    const imagePromises = images.map((src, index) => {
       return new Promise((resolve) => {
         const img = new Image();
         img.src = src;
-        img.onload = resolve;
-        img.onerror = resolve;
+        img.onload = () => {
+          setImageClasses((prev) => {
+            const newClasses = [...prev];
+            newClasses[index] = "transition-opacity duration-700 opacity-100"; 
+            return newClasses;
+          });
+          resolve();
+        };
+        img.onerror = resolve; 
       });
     });
 
     Promise.all(imagePromises).then(() => {
-      setAreImagesLoaded(true);
     });
   }, [images]);
 
-  return areImagesLoaded;
+  return imageClasses;
 }

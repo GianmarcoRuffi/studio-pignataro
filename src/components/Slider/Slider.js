@@ -13,7 +13,7 @@ function Slider({ projects }) {
   const slideContainerRef = useRef(null);
 
   const imageSources = projects.map((project) => project.imgSrc);
-  const areImagesLoaded = useArrayImageLoader(imageSources);
+  const imageLoaderClass = useArrayImageLoader(imageSources);
 
   const handleResize = () => {
     setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
@@ -85,6 +85,7 @@ function Slider({ projects }) {
                     alt={`Slide ${index}`}
                     sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
                     style={{ objectFit: isLargeScreen ? "contain" : "cover" }}
+                    className={imageLoaderClass[index]}
                     priority={true}
                     fill={true}
                     onLoadingComplete={() => {
