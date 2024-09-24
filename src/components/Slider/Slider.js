@@ -59,9 +59,7 @@ function Slider({ projects }) {
 
   return (
     <div
-      className={`transition-opacity duration-700 ease-in-out ${
-        areImagesLoaded ? "opacity-100" : "opacity-0"
-      } ${styles.slider}`}
+      className={styles.slider}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
