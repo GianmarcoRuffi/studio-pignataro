@@ -1,15 +1,19 @@
 "use client";
-import styles from "./slider.module.css";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
+import styles from "./slider.module.css";
 
 function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const slideContainerRef = useRef(null);
+
+  const imageSources = projects.map((project) => project.imgSrc);
+  const areImagesLoaded = useArrayImageLoader(imageSources);
 
   const handleResize = () => {
     setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
@@ -18,7 +22,6 @@ function Slider({ projects }) {
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -56,7 +59,9 @@ function Slider({ projects }) {
 
   return (
     <div
-      className={styles.slider}
+      className={`transition-opacity duration-700 ease-in-out ${
+        areImagesLoaded ? "opacity-100" : "opacity-0"
+      } ${styles.slider}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
