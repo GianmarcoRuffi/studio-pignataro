@@ -13,7 +13,7 @@ function Slider({ projects }) {
   const slideContainerRef = useRef(null);
 
   const imageSources = projects.map((project) => project.imgSrc);
-  const areImagesLoaded = useArrayImageLoader(imageSources);
+  const transitionClass = useArrayImageLoader(imageSources); // Use hook to get image classes
 
   const handleResize = () => {
     setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
@@ -87,6 +87,7 @@ function Slider({ projects }) {
                     style={{ objectFit: isLargeScreen ? "contain" : "cover" }}
                     priority={true}
                     fill={true}
+                    className={transitionClass[index]}
                     onLoadingComplete={() => {
                       if (slideContainerRef.current) {
                         slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
