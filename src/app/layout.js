@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ScrollToTop from "../hooks/ScrollToTop";
-import SplashScreen from "../components/SplashScreen/SplashScreen";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
 config.autoAddCss = false;
@@ -30,7 +29,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head></Head>
       <body>
-        <SplashScreen />
         <ScrollToTop />
         <div className="layout-wrapper">
           <HeaderHeightManager>{children}</HeaderHeightManager>

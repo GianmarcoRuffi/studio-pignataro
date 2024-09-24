@@ -4,6 +4,7 @@ import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
 import styles from "./styles/page.home.module.css";
 import MainSkeleton from "../components/MainSkeleton/MainSkeleton";
+import SplashScreen from "../components/SplashScreen/SplashScreen";
 import { useArrayImageLoader } from "../hooks/useArrayImageLoader";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
+              <SplashScreen />
       {areImagesLoaded ? <Slider projects={projects} /> : <MainSkeleton />}
     </div>
   );
