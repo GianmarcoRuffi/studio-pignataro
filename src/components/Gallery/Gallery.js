@@ -15,8 +15,7 @@ export default function Gallery({
   prevProject,
   nextProject,
 }) {
-
-  const imageTransitionClasses = useArrayImageLoader(images);
+  const areImagesLoaded = useArrayImageLoader(images);
 
   function renderGalleryLinks() {
     if (galleryLinks) {
@@ -86,8 +85,8 @@ export default function Gallery({
                       style={{ width: "100%", height: "auto" }}
                       priority={true}
                       className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
-                        imageTransitionClasses[index]
-                      }`}
+                        styles.imageTransition
+                      } ${areImagesLoaded ? styles.imageTransitionLoaded : ""}`}
                     />
                   </div>
                 </a>
