@@ -13,7 +13,7 @@ function Slider({ projects }) {
   const slideContainerRef = useRef(null);
 
   const imageSources = projects.map((project) => project.imgSrc);
-  const transitionClass = useArrayImageLoader(imageSources);
+  const transitionClass = useArrayImageLoader(imageSources); // Use hook to get image classes
 
   const handleResize = () => {
     setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
