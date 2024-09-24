@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
-              <SplashScreen />
+      <SplashScreen />
       {areImagesLoaded ? <Slider projects={projects} /> : <MainSkeleton />}
     </div>
   );
