@@ -4,7 +4,7 @@ import { useImageLoader } from "../../hooks/useImageLoader";
 import styles from "./contacts.module.css";
 
 export default function Contacts() {
-  const imageLoaderClass = useImageLoader(`img[src='${contactsData.image}']`);
+  const isImageLoaded = useImageLoader(`img[src='${contactsData.image}']`);
 
   return (
     <div className={`${styles.contactsContainer} flex flex-col lg:flex-row`}>
@@ -13,7 +13,9 @@ export default function Contacts() {
         <img
           src={contactsData.image}
           alt="studio"
-          className={`max-w-full ${imageLoaderClass}`}
+          className={`max-w-full transition-opacity duration-700 ${
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
 

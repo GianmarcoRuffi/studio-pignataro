@@ -8,7 +8,7 @@ export default function PressesCard({
   source,
   date,
 }) {
-  const imageLoaderClass = useImageLoader(`img[src='${imageSource}']`);
+  const isImageLoaded = useImageLoader(`img[src='${imageSource}']`);
 
   return (
     <div className="rounded overflow-hidden shadow-xl">
@@ -16,7 +16,9 @@ export default function PressesCard({
         <img
           src={imageSource}
           alt=""
-          className={`max-w-full ${imageLoaderClass}`}
+          className={`transition-opacity duration-700 ease-in-out ${
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
       <div className="presses-box px-6 p-4">
