@@ -1,20 +1,20 @@
 "use client";
-import { useEffect, useState } from 'react';
-import styles from './splash-screen.module.css';
+import { useEffect, useState } from "react";
+import styles from "./splash-screen.module.css";
 
 const SplashScreen = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem('hasVisited');
-    
+    const hasVisited = localStorage.getItem("hasVisited");
+
     if (hasVisited) {
       setShowSplash(false);
     } else {
       setTimeout(() => {
         setShowSplash(false);
-        localStorage.setItem('hasVisited', true);
-      }, 2000); 
+        localStorage.setItem("hasVisited", true);
+      }, 2000);
     }
   }, []);
 

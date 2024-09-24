@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={myFont.className}>
       <Head></Head>
       <body>
-         <SplashScreen />
+        <SplashScreen />
         <ScrollToTop />
         <div className="layout-wrapper">
           <HeaderHeightManager>{children}</HeaderHeightManager>

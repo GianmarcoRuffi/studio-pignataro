@@ -10,7 +10,7 @@
   background-color: theme("colors.backgroundLight");
   z-index: 9999;
   animation: fadeOut 0.5s ease-in-out forwards;
-  animation-delay: 1.5s; 
+  animation-delay: 1.5s;
 }
 
 .logo {
