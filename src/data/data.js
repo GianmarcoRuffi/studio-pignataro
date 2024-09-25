@@ -14,7 +14,7 @@ const linkNames = {
 const projects = [
   {
     projectName: "Corso Vittorio Emanuele II",
-    imgSrc: "/Home/01.jpg",
+    imgSrc: "/Home/01.webp",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Corso-Vittorio-Emanuele-II",
@@ -39,7 +39,7 @@ const projects = [
 
   {
     projectName: "Agenzia pubblicitaria Glisbò",
-    imgSrc: "/Home/02.jpg",
+    imgSrc: "/Home/02.webp",
     description: "Stand modulare per la “Regione Autonoma della Sardegna”.",
     externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
     slug: "Glisbo",
@@ -56,7 +56,7 @@ const projects = [
 
   {
     projectName: "Via Asti",
-    imgSrc: "/Home/03.jpg",
+    imgSrc: "/Home/03.webp",
     description: `Ristrutturazione con Interior design a Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Via-Asti",
@@ -79,7 +79,7 @@ const projects = [
 
   {
     projectName: "Via Machiavelli",
-    imgSrc: "/Home/04.jpg",
+    imgSrc: "/Home/04.webp",
     description: `Ristrutturazione con Interior design a Cagliari.
     `,
     externalLink: [
@@ -110,7 +110,7 @@ const projects = [
 
   {
     projectName: "Vico V di Via S. Giovanni",
-    imgSrc: "/Home/05.jpg",
+    imgSrc: "/Home/05.webp",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.
     `,
 
@@ -145,7 +145,7 @@ const projects = [
 
   {
     projectName: "Agenzia Immobiliare AMS",
-    imgSrc: "/Home/06.jpg",
+    imgSrc: "/Home/06.webp",
     description: `Interior design e d.l.
     Via Cagliari, Capoterra (CA)
     `,
@@ -162,7 +162,7 @@ const projects = [
 
   {
     projectName: "Via Canonico Sanna",
-    imgSrc: "/Home/07.jpg",
+    imgSrc: "/Home/07.webp",
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).
     `,
     slug: "Via-Canonico-Sanna",
@@ -188,7 +188,7 @@ const projects = [
 
   {
     projectName: "V.le Regina Margherita",
-    imgSrc: "/Home/08.jpg",
+    imgSrc: "/Home/08.webp",
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.
     `,
     slug: "Viale-Regina-Margherita",
@@ -209,7 +209,7 @@ const projects = [
 
   {
     projectName: "Via Vittorio Amedeo II",
-    imgSrc: "/Home/09.jpg",
+    imgSrc: "/Home/09.webp",
     description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Vittorio-Amedeo-II",
@@ -219,7 +219,7 @@ const projects = [
 
   {
     projectName: "Tangex Corp.",
-    imgSrc: "/Home/10.jpg",
+    imgSrc: "/Home/10.webp",
     description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).`,
     slug: "TangexCorp",
     imgCredits: "Foto © Guanina Santiago de Jesus",
@@ -233,7 +233,7 @@ const projects = [
 
   {
     projectName: "Via Eroi d’Italia",
-    imgSrc: "/Home/11.jpg",
+    imgSrc: "/Home/11.webp",
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.
     `,
     slug: "Via-Eroi-d-Italia",
