@@ -17,6 +17,7 @@ export default function ProjectCard({ name, imageSource, description }) {
           src={imageSource}
           alt={name}
           layout="fill"
+          loading="lazy"
           className={`${styles.image} ${
             loaded ? styles.loaded : ""
           } object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
