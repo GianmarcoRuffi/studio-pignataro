@@ -80,8 +80,8 @@ export default function Gallery({
                       src={image}
                       alt={`Image ${index + 1}`}
                       width={0}
-                    height={0}
-                    loading="lazy"
+                      height={0}
+                      loading="lazy"
                       sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
                       style={{ width: "100%", height: "auto" }}
                       priority={true}
