@@ -3,13 +3,17 @@ import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
 import styles from "./slider.module.css";
 
-function Slider({ projects, currentImageRef }) {
+function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const slideContainerRef = useRef(null);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const slideContainerRef = useRef(null);
+
+  const imageSources = projects.map((project) => project.imgSrc);
+  const areImagesLoaded = useArrayImageLoader(imageSources);
 
   const handleResize = () => {
     setIsLargeScreen(window.matchMedia("(min-width: 1024px)").matches);
@@ -18,7 +22,9 @@ function Slider({ projects, currentImageRef }) {
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const nextSlide = () => {
@@ -33,13 +39,23 @@ function Slider({ projects, currentImageRef }) {
 
   useEffect(() => {
     let interval;
+
     if (!isHovered) {
       interval = setInterval(() => {
         nextSlide();
-      }, 3000); // Adjust this as needed
+      }, 3000);
     }
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [isHovered, activeIndex]);
+
+  useEffect(() => {
+    if (slideContainerRef.current !== null) {
+      slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
+    }
+  }, [activeIndex, projects]);
 
   return (
     <div
@@ -65,15 +81,20 @@ function Slider({ projects, currentImageRef }) {
               <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
                 <div className={styles.imageWrapper}>
                   <Image
-                    ref={index === activeIndex ? currentImageRef : null}
                     src={project.imgSrc}
                     alt={`Slide ${index}`}
                     sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1800px) 70vw, 60vw"
+                    style={{
+                      objectFit: isLargeScreen ? "contain" : "cover",
+                      opacity: areImagesLoaded ? 1 : 0,
+                      transition: "opacity 0.5s ease",
+                    }}
                     priority={true}
                     fill={true}
-                    style={{
-                      objectFit: isLargeScreen.current ? "contain" : "cover",
-                      transition: "opacity 0.5s ease",
+                    onLoadingComplete={() => {
+                      if (slideContainerRef.current) {
+                        slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
+                      }
                     }}
                   />
                 </div>
