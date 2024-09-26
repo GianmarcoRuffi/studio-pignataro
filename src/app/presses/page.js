@@ -5,7 +5,9 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import LinkButton from "../../components/LinkButton/LinkButton";
 import pressesData from "../../data/pressesData";
 import PressesSkeleton from "../../components/PressesSkeleton/PressesSkeleton";
+import MainSkeleton from "../../components/MainSkeleton/MainSkeleton";
 import styles from "./presses.module.css";
+import MainSkeleton from "../../components/MainSkeleton/MainSkeleton";
 
 export default function Presses() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -50,7 +52,7 @@ export default function Presses() {
                 date={press.date}
               />
             ))
-          : pressesData.map((_, index) => <PressesSkeleton key={index} />)}
+          : <MainSkeleton />}
       </div>
       <ScrollUpButton />
     </div>
