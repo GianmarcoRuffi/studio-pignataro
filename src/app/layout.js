@@ -3,7 +3,7 @@ import Head from "next/head";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import ScrollToTop from "../hooks/ScrollToTop";
+import ScrollToTop from "../hooks/useScrollToTop";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
 config.autoAddCss = false;

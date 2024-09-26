@@ -91,7 +91,6 @@ function Slider({ projects }) {
                     }}
                     priority={true}
                     fill={true}
-                    loading="lazy"
                     onLoadingComplete={() => {
                       if (slideContainerRef.current) {
                         slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
