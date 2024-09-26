@@ -1,0 +1,56 @@
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonImage {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+}
+
+.skeletonText {
+  width: 80%;
+  height: 20px;
+  background-color: #e0e0e0;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.skeletonButton {
+  width: 60%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3; /* Colore di sfondo */
+  border-top: 4px solid #3498db; /* Colore del bordo superiore */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
