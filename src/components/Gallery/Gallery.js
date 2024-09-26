@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.css";
 import LinkButton from "../LinkButton/LinkButton";
-import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
 
 export default function Gallery({
   images,
@@ -15,7 +14,14 @@ export default function Gallery({
   prevProject,
   nextProject,
 }) {
-  const areImagesLoaded = useArrayImageLoader(images);
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({
+      ...prev,
+      [index]: true,
+    }));
+  };
 
   function renderGalleryLinks() {
     if (galleryLinks) {
@@ -81,12 +87,15 @@ export default function Gallery({
                       alt={`Image ${index + 1}`}
                       width={0}
                       height={0}
-                      loading="lazy"
                       sizes="(max-width: 1200px) 90vw, (max-width: 1400px) 80vw, (max-width: 1600px) 70vw, 60vw"
                       style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
                       className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
                         styles.imageTransition
-                      } ${areImagesLoaded ? styles.imageTransitionLoaded : ""}`}
+                      } ${
+                        loadedImages[index] ? styles.imageTransitionLoaded : ""
+                      }`}
+                      onLoad={() => handleImageLoad(index)}
                     />
                   </div>
                 </a>
