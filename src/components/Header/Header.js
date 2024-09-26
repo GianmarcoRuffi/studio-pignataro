@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,7 @@ const Header = forwardRef((props, ref) => {
   const isActive = pathname === "/";
   const [scrolled, setScrolled] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const menuRef = useRef(null);
   const menuIconRef = useRef(null);
 
@@ -47,6 +48,17 @@ const Header = forwardRef((props, ref) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Controlla se il tema è scuro
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setIsDarkMode(darkModeMediaQuery.matches);
+
+    const handleChange = (e) => setIsDarkMode(e.matches);
+    darkModeMediaQuery.addEventListener("change", handleChange);
+
+    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   return (
     <header
       ref={ref}
@@ -64,7 +76,11 @@ const Header = forwardRef((props, ref) => {
           }`}
         >
           <Link href="/">
-            <img src="/logo.jpg" alt="Logo" className={styles.logoImage} />
+            <img
+              src={isDarkMode ? "/dark_theme_logo.jpg" : "/logo.jpg"}
+              alt="Logo"
+              className={styles.logoImage}
+            />
           </Link>
         </div>
 
