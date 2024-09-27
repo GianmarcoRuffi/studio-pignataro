@@ -4,7 +4,6 @@ import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
 import styles from "./styles/page.home.module.css";
 import MainSkeleton from "../components/MainSkeleton/MainSkeleton";
-import SplashScreen from "../components/SplashScreen/SplashScreen";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +25,6 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <SplashScreen />
       {isLoading ? <MainSkeleton /> : <Slider projects={projects} />}
     </div>
   );
