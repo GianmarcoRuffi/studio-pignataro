@@ -10,7 +10,11 @@ interface ProjectCardProps {
   description: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ name, imageSource, description }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  name,
+  imageSource,
+  description,
+}) => {
   const [loaded, setLoaded] = useState(false);
 
   const handleImageLoad = () => {
@@ -23,9 +27,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, imageSource, descriptio
         <Image
           src={imageSource}
           alt={name}
-          layout="fill"
+          fill
           loading="lazy"
-          className={`${styles.image} ${loaded ? styles.loaded : ""} object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
+          className={`${styles.image} ${
+            loaded ? styles.loaded : ""
+          } object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
           onLoad={handleImageLoad}
         />
         <div className="absolute inset-0 bg-transparent transition-opacity duration-1000 ease-in-out" />

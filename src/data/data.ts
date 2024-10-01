@@ -1,4 +1,6 @@
-const linkNames = {
+import { Project } from "../models/models";
+
+const linkNames: Record<string, string> = {
   "Luigi Corda": "https://www.luigicorda.com/",
   Glisbo: "https://glisbo.com/",
   Homify:
@@ -11,7 +13,7 @@ const linkNames = {
     "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
 };
 
-const projects = [
+const projects: Project[] = [
   {
     projectName: "Corso Vittorio Emanuele II",
     imgSrc: "/Home/01.webp",

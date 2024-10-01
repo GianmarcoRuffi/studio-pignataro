@@ -8,9 +8,11 @@ interface HeaderHeightManagerProps {
   children: ReactNode;
 }
 
-const HeaderHeightManager: React.FC<HeaderHeightManagerProps> = ({ children }) => {
+const HeaderHeightManager: React.FC<HeaderHeightManagerProps> = ({
+  children,
+}) => {
   const [headerHeight, setHeaderHeight] = useState<number>(0);
-  const headerRef = useRef<HTMLDivElement | null>(null); 
+  const headerRef = useRef<HTMLDivElement | null>(null);
 
   const updateHeaderHeight = () => {
     if (headerRef.current) {

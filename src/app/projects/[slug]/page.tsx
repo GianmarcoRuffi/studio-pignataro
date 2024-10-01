@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import projects from "../../../data/data";
 import Gallery from "../../../components/Gallery/Gallery";
-import {Project} from "../../../interfaces/interfaces";
+import { Project } from "../../../models/models";
 
 interface Params {
   params: {
@@ -28,7 +28,8 @@ export default function Page({ params }: Params) {
   if (!project) notFound();
 
   // Get the previous and next projects
-  const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
+  const prevProject =
+    projects[(projectIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (

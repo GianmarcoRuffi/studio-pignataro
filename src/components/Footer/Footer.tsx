@@ -5,15 +5,20 @@ import { contactsData } from "../../data/contactsData";
 const Footer: React.FC = () => {
   return (
     <footer className={`${styles.footerContainer} flex flex-col items-center`}>
-      <div className={`${styles.footerWrapper} flex justify-center max-lg:flex-col`}>
+      <div
+        className={`${styles.footerWrapper} flex justify-center max-lg:flex-col`}
+      >
         <div className="footer-contacts flex mb-4">
           <ul className={`${styles.footerList} p-4`}>
             <li>{contactsData.studio}</li>
             <li>
-              Tel: {contactsData.phone.landline} / Cell. {contactsData.phone.mobile}
+              Tel: {contactsData.phone.landline} / Cell.{" "}
+              {contactsData.phone.mobile}
             </li>
             <li>
-              <a href={contactsData.email.mailto}>{contactsData.email.address}</a>
+              <a href={contactsData.email.mailto}>
+                {contactsData.email.address}
+              </a>
             </li>
             <li>P.iva: {contactsData.p_iva}</li>
 

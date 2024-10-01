@@ -2,13 +2,16 @@ interface Project {
   projectName: string;
   imgSrc: string;
   description: string;
-  externalLink?: {
-    name: string;
-    url: string;
-  }[];
+  externalLink?: ExternalLink[];
   slug: string;
   imgCredits: string;
   images: string[];
+  invisible?: boolean;
+}
+
+interface ExternalLink {
+  name: string;
+  url: string;
 }
 
 interface HomeProps {
@@ -57,22 +60,22 @@ interface BioData {
   experiences: Experience[];
 }
 
- interface Email {
+interface Email {
   mailto: string;
   address: string;
 }
 
- interface Phone {
+interface Phone {
   landline: string;
   mobile: string;
 }
 
- interface SocialLinks {
+interface SocialLinks {
   linkedin: string;
   facebook: string;
 }
 
- interface ContactsData {
+interface ContactsData {
   image: string;
   studio: string;
   embed_data: string;
@@ -80,22 +83,20 @@ interface BioData {
   phone: Phone;
   p_iva: string;
   social: SocialLinks;
- }
+}
 
- interface PressesData {
+interface PressesData {
   description: string;
   imageSource: string;
   source: string;
   date: string;
- }
+}
 interface PressesCardProps {
   description: string;
   imageSource: string;
-  source: React.ReactNode; 
+  source: React.ReactNode;
   date: string;
 }
-
-
 
 export type { Project };
 export type { HomeProps };

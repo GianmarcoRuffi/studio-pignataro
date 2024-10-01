@@ -42,7 +42,9 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
   };
 
   const prevSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
+    );
   };
 
   useEffect(() => {

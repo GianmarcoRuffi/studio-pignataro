@@ -1,4 +1,4 @@
-import { ContactsData } from "../interfaces/interfaces";
+import { ContactsData } from "../models/models";
 
 export const contactsData: ContactsData = {
   image: "/Contacts/Studio.jpg",

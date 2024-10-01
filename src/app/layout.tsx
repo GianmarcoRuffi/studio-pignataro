@@ -1,6 +1,6 @@
 import "./styles/globals.scss";
 import Head from "next/head";
-import { Metadata, HeadProps, RootLayoutProps } from "../interfaces/interfaces";
+import { Metadata, HeadProps, RootLayoutProps } from "../models/models";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";

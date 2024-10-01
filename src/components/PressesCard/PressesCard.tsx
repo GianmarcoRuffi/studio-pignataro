@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useImageLoader } from "../../hooks/useImageLoader";
-import { PressesCardProps } from "../../interfaces/interfaces";
+import { PressesCardProps } from "../../models/models";
 
 const PressesCard: React.FC<PressesCardProps> = ({
   description,

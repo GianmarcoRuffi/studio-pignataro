@@ -106,7 +106,9 @@ const Gallery: React.FC<GalleryProps> = ({
                       loading="lazy"
                       className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
                         styles.imageTransition
-                      } ${loadedImages[index] ? styles.imageTransitionLoaded : ""}`}
+                      } ${
+                        loadedImages[index] ? styles.imageTransitionLoaded : ""
+                      }`}
                       onLoad={() => handleImageLoad(index)}
                     />
                   </div>

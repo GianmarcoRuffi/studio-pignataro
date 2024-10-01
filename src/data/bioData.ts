@@ -1,4 +1,4 @@
-import { BioData } from "../interfaces/interfaces";
+import { BioData } from "../models/models";
 
 export const bioData: BioData = {
   image: "/Bio/Profile.jpg",
