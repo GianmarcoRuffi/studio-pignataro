@@ -1,26 +1,34 @@
 import { notFound } from "next/navigation";
 import projects from "../../../data/data";
 import Gallery from "../../../components/Gallery/Gallery";
+import {Project} from "../../../interfaces/interfaces";
 
+interface Params {
+  params: {
+    slug: string;
+  };
+}
+
+// Function to generate static paths for each project
 export async function generateStaticParams() {
-  // Cicla l'oggetto projects e restituisce lo slug - per ciascuno verrà creata una rotta projects/[slug]
-  return projects.map((p) => ({
+  return projects.map((p: Project) => ({
     slug: p.slug,
   }));
 }
 
-export default function Page({ params }) {
+// Page component
+export default function Page({ params }: Params) {
   const { slug } = params;
 
-  // Prende dall'oggetto projects il progetto giusto tramite slug
-  const projectIndex = projects.findIndex((p) => p.slug === slug);
+  // Find the project using the slug
+  const projectIndex = projects.findIndex((p: Project) => p.slug === slug);
   const project = projects[projectIndex];
 
-  // Se non esiste -> 404
+  // If project doesn't exist, return a 404
   if (!project) notFound();
 
-  const prevProject =
-    projects[(projectIndex - 1 + projects.length) % projects.length];
+  // Get the previous and next projects
+  const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (

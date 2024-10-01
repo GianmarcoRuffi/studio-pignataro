@@ -1,13 +1,26 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import styles from "./projects.module.scss";
 
-export default function Projects() {
-  const [loaded, setLoaded] = useState(false);
+interface Project {
+  slug: string;
+  projectName: string;
+  imgSrc: string;
+  description: string;
+  invisible?: boolean;
+}
+
+const Projects: React.FC = () => {
+  const [loaded, setLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <div className="projects-container flex-row justify-center">
@@ -15,9 +28,8 @@ export default function Projects() {
         className={`${styles.cardBox} ${
           loaded ? "loaded" : ""
         } p-10 grid grid-cols-1 md:grid-cols-2 gap-8`}
-        onLoad={() => setLoaded(true)}
       >
-        {projects.map((project, index) =>
+        {projects.map((project: Project, index: number) =>
           project.invisible ? null : (
             <Link key={index} href={`/projects/${project.slug}`}>
               <div className="project-card">
@@ -34,4 +46,6 @@ export default function Projects() {
       <ScrollUpButton />
     </div>
   );
-}
+};
+
+export default Projects;
