@@ -1,5 +1,3 @@
-// data/pressesData.ts
-
 import { PressesData } from "../interfaces/interfaces";
 
 const pressesData: PressesData[] = [
