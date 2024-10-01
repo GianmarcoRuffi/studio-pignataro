@@ -8,7 +8,7 @@ export default function Bio() {
 
   return (
     <div className={`${styles["bio-container"]} flex max-lg:flex-col`}>
-      <div className={`${styles["image-container"]} lg:w-1/2`}>
+      <div className={`${styles["image-box"]} lg:w-1/2`}>
         <img
           src={bioData.image}
           alt="bio"
