@@ -1,13 +1,7 @@
 import { notFound } from "next/navigation";
 import projects from "../../../data/data";
 import Gallery from "../../../components/Gallery/Gallery";
-import { Project } from "../../../models/models";
-
-interface Params {
-  params: {
-    slug: string;
-  };
-}
+import { Params, Project } from "../../../models/models";
 
 // Function to generate static paths for each project
 export async function generateStaticParams() {

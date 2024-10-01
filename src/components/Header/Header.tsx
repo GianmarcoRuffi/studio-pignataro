@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.scss";
-
-interface HeaderProps {}
+import { HeaderProps } from "../../models/models";
 
 const Header = forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const pathname = usePathname();

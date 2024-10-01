@@ -1,5 +1,6 @@
 import type { ReactNode, ReactElement } from "react";
 
+// Project
 interface Project {
   projectName: string;
   imgSrc: string;
@@ -20,6 +21,41 @@ interface HomeProps {
   projects: Project[];
 }
 
+interface ProjectBio {
+  description: string;
+  links?: Link[];
+}
+
+interface ProjectCardProps {
+  name: string;
+  imageSource: string;
+  description: string;
+}
+
+interface SliderProps {
+  projects: Project[];
+}
+
+interface Params {
+  params: {
+    slug: string;
+  };
+}
+
+// Link
+interface Link {
+  name: string;
+  url: string;
+}
+
+interface LinkButtonProps {
+  href: string;
+  children: ReactNode;
+  target?: string;
+  rel?: string;
+}
+
+// Layout
 interface Metadata {
   title: string;
   site_name: string;
@@ -34,19 +70,16 @@ interface HeadProps {
 }
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-interface Link {
-  name: string;
-  url: string;
+interface HeaderHeightManagerProps {
+  children: ReactNode;
 }
 
-interface ProjectBio {
-  description: string;
-  links?: Link[];
-}
+interface HeaderProps {}
 
+// Bio
 interface Experience {
   title: string;
   role: string;
@@ -62,6 +95,7 @@ interface BioData {
   experiences: Experience[];
 }
 
+// Contacts
 interface Email {
   mailto: string;
   address: string;
@@ -87,19 +121,7 @@ interface ContactsData {
   social: SocialLinks;
 }
 
-interface PressesData {
-  description: string;
-  imageSource: string;
-  source: string;
-  date: string;
-}
-interface PressesCardProps {
-  description: string;
-  imageSource: string;
-  source: React.ReactNode;
-  date: string;
-}
-
+// Gallery
 interface GalleryLink {
   url: string;
   name: string;
@@ -115,42 +137,44 @@ interface GalleryProps {
   nextProject?: { slug: string; projectName: string };
 }
 
-interface ProjectCardProps {
-  name: string;
-  imageSource: string;
+// Presses
+interface PressesData {
   description: string;
+  imageSource: string;
+  source: string;
+  date: string;
 }
 
-interface LinkButtonProps {
-  href: string;
-  children: ReactNode;
-  target?: string;
-  rel?: string;
+interface PressesCardProps {
+  description: string;
+  imageSource: string;
+  source: React.ReactNode;
+  date: string;
 }
 
-interface HeaderHeightManagerProps {
-  children: ReactNode;
-}
-
-interface SliderProps {
-  projects: Project[];
-}
-
-export type { Project };
-export type { HomeProps };
-export type { Metadata };
-export type { HeadProps };
-export type { RootLayoutProps };
-export type { BioData };
-export type { Link };
-export type { ProjectBio };
-export type { Experience };
-export type { ContactsData };
-export type { PressesData };
-export type { PressesCardProps };
-export type { GalleryProps };
-export type { GalleryLink };
-export type { ProjectCardProps };
-export type { LinkButtonProps };
-export type { HeaderHeightManagerProps };
-export type { SliderProps };
+export type {
+  Project,
+  ExternalLink,
+  HomeProps,
+  ProjectBio,
+  ProjectCardProps,
+  SliderProps,
+  Link,
+  LinkButtonProps,
+  Metadata,
+  HeadProps,
+  RootLayoutProps,
+  HeaderHeightManagerProps,
+  Experience,
+  BioData,
+  Email,
+  Phone,
+  SocialLinks,
+  ContactsData,
+  GalleryLink,
+  GalleryProps,
+  PressesData,
+  PressesCardProps,
+  HeaderProps,
+  Params,
+};
