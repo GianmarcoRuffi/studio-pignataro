@@ -32,8 +32,37 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+interface Link {
+  name: string;
+  url: string;
+}
+
+interface ProjectBio {
+  description: string;
+  links?: Link[];
+}
+
+interface Experience {
+  title: string;
+  role: string;
+  description: string;
+  projects: (string | ProjectBio)[];
+}
+
+interface BioData {
+  image: string;
+  name: string;
+  intro: string;
+  professionalExperiencesTitle: string;
+  experiences: Experience[];
+}
+
 export type { Project };
 export type { HomeProps };
 export type { Metadata };
 export type { HeadProps };
 export type { RootLayoutProps };
+export type { BioData };
+export type { Link };
+export type { ProjectBio };
+export type { Experience };
