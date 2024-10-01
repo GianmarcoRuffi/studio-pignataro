@@ -7,7 +7,7 @@ import pressesData from "../../data/pressesData";
 import PressesSkeleton from "../../components/PressesSkeleton/PressesSkeleton";
 import MainSkeleton from "../../components/MainSkeleton/MainSkeleton";
 import styles from "./presses.module.scss";
-import { PressesData } from "../../interfaces/interfaces";
+import { PressesData, PressesCardProps } from "../../interfaces/interfaces";
 
 export default function Presses() {
   const [imagesLoaded, setImagesLoaded] = useState(false);

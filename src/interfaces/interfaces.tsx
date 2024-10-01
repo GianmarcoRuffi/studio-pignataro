@@ -88,6 +88,12 @@ interface BioData {
   source: string;
   date: string;
  }
+interface PressesCardProps {
+  description: string;
+  imageSource: string;
+  source: React.ReactNode; 
+  date: string;
+}
 
 
 
@@ -102,3 +108,4 @@ export type { ProjectBio };
 export type { Experience };
 export type { ContactsData };
 export type { PressesData };
+export type { PressesCardProps };
