@@ -37,9 +37,6 @@ export default function Contacts() {
               <strong>Telefono:</strong> {contactsData.phone.landline} / Cell.{" "}
               {contactsData.phone.mobile}
             </li>
-            <li className="p-4">
-              <strong>Partita IVA:</strong> {contactsData.p_iva}
-            </li>
           </ul>
         </div>
 
