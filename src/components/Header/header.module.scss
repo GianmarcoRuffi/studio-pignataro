@@ -58,13 +58,11 @@
   padding: 0;
   display: flex;
 
-
-
   li {
     margin: 0 1rem;
   }
 
-    li.active a {
+  li.active a {
     color: theme("colors.textSecondary");
     background-color: theme("colors.backgroundGray");
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);

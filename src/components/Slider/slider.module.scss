@@ -5,8 +5,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   &:hover .sliderButton {
-  opacity: 1;
-}
+    opacity: 1;
+  }
 }
 
 .slide-container {
@@ -33,10 +33,9 @@
   transition: opacity 1s ease;
 
   &:hover {
-  opacity: 0.8;
+    opacity: 0.8;
+  }
 }
-}
-
 
 .sliderButton {
   position: absolute;
@@ -59,8 +58,6 @@
 .next {
   right: 5px;
 }
-
-
 
 .sliderButton:hover {
   color: theme("colors.textTertiary");

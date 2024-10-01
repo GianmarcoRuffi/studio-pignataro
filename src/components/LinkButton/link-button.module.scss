@@ -10,9 +10,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-  background-color: theme("colors.backgroundLight");
-  transform: translateY(-2px);
+    background-color: theme("colors.backgroundLight");
+    transform: translateY(-2px);
+  }
 }
-}
-
-
