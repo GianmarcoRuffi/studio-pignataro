@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.scss";
 
-const Header = forwardRef((props, ref) => {
+interface HeaderProps {}
+
+const Header = forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const pathname = usePathname();
   const isActive = pathname === "/";
-  const [scrolled, setScrolled] = React.useState(false);
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const menuRef = useRef(null);
-  const menuIconRef = useRef(null);
+  const [scrolled, setScrolled] = React.useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuIconRef = useRef<HTMLDivElement | null>(null);
 
   // Gestisce lo scroll per ridurre l'header
   React.useEffect(() => {
@@ -32,12 +34,12 @@ const Header = forwardRef((props, ref) => {
 
   // Gestisce il clic fuori dal menu per chiuderlo
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         menuRef.current &&
-        !menuRef.current.contains(event.target) &&
+        !menuRef.current.contains(event.target as Node) &&
         menuIconRef.current &&
-        !menuIconRef.current.contains(event.target)
+        !menuIconRef.current.contains(event.target as Node)
       ) {
         setMenuOpen(false);
       }
