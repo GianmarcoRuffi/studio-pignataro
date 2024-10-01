@@ -1,12 +1,11 @@
 import "./styles/globals.scss";
-import Head from "next/head";
-import { Metadata, HeadProps, RootLayoutProps } from "../models/models";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ScrollToTop from "../hooks/useScrollToTop";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
+import { RootLayoutProps } from "../models/models";
 
 config.autoAddCss = false;
 
@@ -15,21 +14,25 @@ const myFont = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Studio Architetto Gianluca Pignataro",
-  site_name: "Studio Architetto Gianluca Pignataro",
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-  locale: "it_IT",
-  url: "https://archpignataro.it",
   keywords:
     "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
+  openGraph: {
+    title: "Studio Architetto Gianluca Pignataro",
+    description:
+      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+    locale: "it_IT",
+    siteName: "Studio Architetto Gianluca Pignataro",
+    url: "https://archpignataro.it",
+  },
 };
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="en" className={myFont.className}>
-      <Head>{children}</Head>
+    <html lang="it" className={myFont.className}>
       <body>
         <ScrollToTop />
         <div className="layout-wrapper">
