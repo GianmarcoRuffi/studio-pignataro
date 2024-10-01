@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import Header from "../Header/Header";
 
-const HeaderHeightManager = ({ children }) => {
-  const [headerHeight, setHeaderHeight] = useState(0);
-  const headerRef = useRef(null);
+interface HeaderHeightManagerProps {
+  children: ReactNode;
+}
+
+const HeaderHeightManager: React.FC<HeaderHeightManagerProps> = ({ children }) => {
+  const [headerHeight, setHeaderHeight] = useState<number>(0);
+  const headerRef = useRef<HTMLDivElement | null>(null); 
 
   const updateHeaderHeight = () => {
     if (headerRef.current) {
@@ -18,8 +23,6 @@ const HeaderHeightManager = ({ children }) => {
     updateHeaderHeight();
 
     window.addEventListener("resize", updateHeaderHeight);
-
-    // Aggiornamento anche al caricamento della pagina
     window.addEventListener("load", updateHeaderHeight);
 
     return () => {
