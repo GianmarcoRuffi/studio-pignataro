@@ -89,13 +89,6 @@ interface BioData {
   date: string;
  }
 
- interface LinkButtonProps {
-   href: string;
-   children: any;
-   target?: string;
-   rel?: string;
- }
-
 
 
 export type { Project };
@@ -109,4 +102,3 @@ export type { ProjectBio };
 export type { Experience };
 export type { ContactsData };
 export type { PressesData };
-export type { LinkButtonProps };

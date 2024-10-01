@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import styles from "./splash-screen.module.scss";
 
-const SplashScreen = () => {
-  const [showSplash, setShowSplash] = useState(true);
+const SplashScreen: React.FC = () => {
+  const [showSplash, setShowSplash] = useState<boolean>(true);
 
   useEffect(() => {
     const hasVisitedBefore = localStorage.getItem("hasVisited");
@@ -15,14 +15,17 @@ const SplashScreen = () => {
     } else if (hasVisitedBefore) {
       // If the user has visited before, just set a session flag to not show again
       setShowSplash(false);
-      sessionStorage.setItem("hasSeenSplash", true);
+      sessionStorage.setItem("hasSeenSplash", "true");
     } else {
       // Show the splash screen and then set both local and session flags
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         setShowSplash(false);
-        localStorage.setItem("hasVisited", true); // Remember the user for future sessions
-        sessionStorage.setItem("hasSeenSplash", true); // Don't show again in this session
+        localStorage.setItem("hasVisited", "true"); // Remember the user for future sessions
+        sessionStorage.setItem("hasSeenSplash", "true"); // Don't show again in this session
       }, 2000);
+
+      // Cleanup timeout on component unmount
+      return () => clearTimeout(timeoutId);
     }
   }, []);
 

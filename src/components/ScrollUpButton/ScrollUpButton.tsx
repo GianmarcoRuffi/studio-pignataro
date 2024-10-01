@@ -5,15 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import styles from "./scrollup-button.module.scss";
 
-const ScrollUpButton = () => {
-  const [showButton, setShowButton] = useState(false);
+const ScrollUpButton: React.FC = () => {
+  const [showButton, setShowButton] = useState<boolean>(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
+    setShowButton(window.scrollY > 100);
   };
 
   const scrollToTop = () => {
@@ -31,6 +27,7 @@ const ScrollUpButton = () => {
     <button
       className={`${styles.scrollUpButton} ${showButton ? styles.visible : ""}`}
       onClick={scrollToTop}
+      aria-label="Scroll to top"
     >
       <FontAwesomeIcon icon={faArrowUp} />
     </button>
