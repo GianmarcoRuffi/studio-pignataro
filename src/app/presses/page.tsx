@@ -7,17 +7,18 @@ import pressesData from "../../data/pressesData";
 import PressesSkeleton from "../../components/PressesSkeleton/PressesSkeleton";
 import MainSkeleton from "../../components/MainSkeleton/MainSkeleton";
 import styles from "./presses.module.scss";
+import { PressesData } from "../../interfaces/interfaces";
 
 export default function Presses() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
-    const imagePromises = pressesData.map((press) => {
-      return new Promise((resolve) => {
+    const imagePromises = pressesData.map((press: PressesData) => {
+      return new Promise<void>((resolve) => {
         const img = new Image();
         img.src = press.imageSource;
-        img.onload = resolve;
-        img.onerror = resolve;
+      img.onload = () => resolve();
+      img.onerror = () => resolve();
       });
     });
 
@@ -30,7 +31,7 @@ export default function Presses() {
     <div className="presses-container flex-row justify-center ">
       <div className={`${styles.cardBox} p-10 flex flex-col gap-16`}>
         {imagesLoaded ? (
-          pressesData.map((press, index) => (
+          pressesData.map((press: PressesData, index: number) => (
             <PressesCard
               key={index}
               description={press.description}

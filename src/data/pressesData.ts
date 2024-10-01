@@ -1,4 +1,8 @@
-const pressesData = [
+// data/pressesData.ts
+
+import { PressesData } from "../interfaces/interfaces";
+
+const pressesData: PressesData[] = [
   {
     description:
       "“Gianluca Pignataro – 30 anni di inconsuetudine”<br />Monografia a cura di Luigi Corda – “Associazione Culturale Timeless”",

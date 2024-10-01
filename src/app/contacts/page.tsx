@@ -37,6 +37,30 @@ export default function Contacts() {
               <strong>Telefono:</strong> {contactsData.phone.landline} / Cell.{" "}
               {contactsData.phone.mobile}
             </li>
+            <li className="p-4">
+              <strong>Partita IVA:</strong> {contactsData.p_iva}
+            </li>
+            <li className="p-4">
+              <strong>Social:</strong>
+              <div>
+                <a
+                  href={contactsData.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div>
+                <a
+                  href={contactsData.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -45,7 +69,7 @@ export default function Contacts() {
           <iframe
             src={contactsData.embed_data}
             style={{ border: 0 }}
-            allowFullScreen=""
+            allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Studio Location"

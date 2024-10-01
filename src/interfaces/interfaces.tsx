@@ -57,6 +57,47 @@ interface BioData {
   experiences: Experience[];
 }
 
+ interface Email {
+  mailto: string;
+  address: string;
+}
+
+ interface Phone {
+  landline: string;
+  mobile: string;
+}
+
+ interface SocialLinks {
+  linkedin: string;
+  facebook: string;
+}
+
+ interface ContactsData {
+  image: string;
+  studio: string;
+  embed_data: string;
+  email: Email;
+  phone: Phone;
+  p_iva: string;
+  social: SocialLinks;
+ }
+
+ interface PressesData {
+  description: string;
+  imageSource: string;
+  source: string;
+  date: string;
+ }
+
+ interface LinkButtonProps {
+   href: string;
+   children: any;
+   target?: string;
+   rel?: string;
+ }
+
+
+
 export type { Project };
 export type { HomeProps };
 export type { Metadata };
@@ -66,3 +107,6 @@ export type { BioData };
 export type { Link };
 export type { ProjectBio };
 export type { Experience };
+export type { ContactsData };
+export type { PressesData };
+export type { LinkButtonProps };

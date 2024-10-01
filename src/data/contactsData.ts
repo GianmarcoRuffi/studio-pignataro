@@ -1,4 +1,6 @@
-export const contactsData = {
+import { ContactsData } from "../interfaces/interfaces";
+
+export const contactsData: ContactsData = {
   image: "/Contacts/Studio.jpg",
   studio: "Via Arrigo Solmi 36, 09129 Cagliari",
   embed_data:
@@ -11,9 +13,7 @@ export const contactsData = {
     landline: "070305880",
     mobile: "3485189797",
   },
-
   p_iva: "02783940923",
-
   social: {
     linkedin: "https://it.linkedin.com/in/gianluca-pignataro-a6708558",
     facebook: "https://www.facebook.com/pignarch",
