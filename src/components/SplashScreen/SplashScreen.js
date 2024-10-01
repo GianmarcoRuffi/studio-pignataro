@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "./splash-screen.module.css";
+import styles from "./splash-screen.module.scss";
 
 const SplashScreen = () => {
   const [showSplash, setShowSplash] = useState(true);

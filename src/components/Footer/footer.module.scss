@@ -28,21 +28,21 @@
   display: flex;
   gap: 2rem;
   align-items: center;
-}
 
-.footerList li {
-  padding: 0.5rem 0;
-}
+  li {
+    padding: 0.5rem 0;
+  }
 
-.footerList a {
-  color: theme("colors.primary");
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+  a {
+    color: theme("colors.primary");
+    text-decoration: none;
+    transition: color 0.3s ease;
 
-.footerList a:hover {
-  color: theme("colors.textSecondary");
-  font-weight: bold;
+    &:hover {
+      color: theme("colors.textSecondary");
+      font-weight: bold;
+    }
+  }
 }
 
 /* Media Query per Mobile */
@@ -61,10 +61,10 @@
     flex-direction: column;
     gap: 0;
     padding: 0;
-  }
 
-  .footerList li {
-    padding: 0;
-    margin: 0;
+    li {
+      padding: 0;
+      margin: 0;
+    }
   }
 }

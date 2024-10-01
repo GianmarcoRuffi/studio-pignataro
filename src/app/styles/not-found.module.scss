@@ -17,9 +17,9 @@
 .link {
   color: theme("colors.textTertiary");
   text-decoration: underline;
-}
 
-.link:hover {
-  text-decoration: none;
-  color: theme("colors.accent");
+  &:hover {
+    text-decoration: none;
+    color: theme("colors.accent");
+  }
 }

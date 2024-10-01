@@ -8,9 +8,11 @@
   text-decoration: none;
   border: 1px solid theme("colors.primary");
   transition: background-color 0.3s ease, transform 0.3s ease;
-}
 
-.linkButton:hover {
+  &:hover {
   background-color: theme("colors.backgroundLight");
   transform: translateY(-2px);
 }
+}
+
+

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import styles from "./project-card.module.css";
+import styles from "./project-card.module.scss";
 
 export default function ProjectCard({ name, imageSource, description }) {
   const [loaded, setLoaded] = useState(false);

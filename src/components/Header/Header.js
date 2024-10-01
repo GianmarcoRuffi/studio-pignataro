@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import styles from "./header.module.css";
+import styles from "./header.module.scss";
 
 const Header = forwardRef((props, ref) => {
   const pathname = usePathname();

@@ -1,6 +1,6 @@
 "use client";
 import { useImageLoader } from "../../hooks/useImageLoader";
-import styles from "./bio.module.css";
+import styles from "./bio.module.scss";
 import { bioData } from "../../data/bioData";
 
 export default function Bio() {
@@ -8,7 +8,7 @@ export default function Bio() {
 
   return (
     <div className={`${styles["bio-container"]} flex max-lg:flex-col`}>
-      <div className={`${styles["image-box"]} lg:w-1/2`}>
+      <div className={`${styles["image-box"]} lg:w-2/3`}>
         <img
           src={bioData.image}
           alt="bio"
@@ -19,7 +19,7 @@ export default function Bio() {
       </div>
 
       <div
-        className={`${styles["bio-box"]} lg:w-1/2 text-justify py-4 lg:ml-4`}
+        className={`${styles["bio-box"]} lg:w-1/3 text-justify py-4 lg:ml-4`}
       >
         <h1>
           <strong>{bioData.name}</strong>

@@ -6,7 +6,7 @@ import LinkButton from "../../components/LinkButton/LinkButton";
 import pressesData from "../../data/pressesData";
 import PressesSkeleton from "../../components/PressesSkeleton/PressesSkeleton";
 import MainSkeleton from "../../components/MainSkeleton/MainSkeleton";
-import styles from "./presses.module.css";
+import styles from "./presses.module.scss";
 
 export default function Presses() {
   const [imagesLoaded, setImagesLoaded] = useState(false);

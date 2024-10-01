@@ -1,9 +1,9 @@
 .mailto {
   text-decoration: underline;
-}
 
-.mailto:hover {
-  color: theme("colors.textTertiary");
+  &:hover {
+    color: theme("colors.textTertiary");
+  }
 }
 
 .contactsContainer {
@@ -35,14 +35,14 @@
   position: relative;
   padding-top: 56.25%; /* Mantiene l'aspetto 16:9 */
   height: 0;
-}
 
-.mapContainer iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* Media Query per dispositivi mobili */

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
-import styles from "./gallery.module.css";
+import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
 
 export default function Gallery({

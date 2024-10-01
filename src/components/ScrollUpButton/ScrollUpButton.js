@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import styles from "./scrollup-button.module.css";
+import styles from "./scrollup-button.module.scss";
 
 const ScrollUpButton = () => {
   const [showButton, setShowButton] = useState(false);

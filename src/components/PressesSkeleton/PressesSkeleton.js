@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./presses-skeleton.module.css";
+import styles from "./presses-skeleton.module.scss";
 
 export default function PressesSkeleton() {
   return (

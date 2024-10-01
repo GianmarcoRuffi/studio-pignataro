@@ -4,7 +4,7 @@ import Link from "next/link";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import styles from "./projects.module.css";
+import styles from "./projects.module.scss";
 
 export default function Projects() {
   const [loaded, setLoaded] = useState(false);

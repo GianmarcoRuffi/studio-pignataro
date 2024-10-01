@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "../components/Slider/Slider";
 import projects from "../data/data";
-import styles from "./styles/page.home.module.css";
+import styles from "./styles/page.home.module.scss";
 import MainSkeleton from "../components/MainSkeleton/MainSkeleton";
 
 export default function Home() {

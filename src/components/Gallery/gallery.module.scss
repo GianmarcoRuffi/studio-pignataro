@@ -21,17 +21,20 @@
   text-decoration: none;
   padding: 0.5rem;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  &:hover {
+    background-color: theme("colors.backgroundAltGray");
+    color: theme("colors.secondary");
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.breadcrumbLink:hover {
-  background-color: theme("colors.backgroundAltGray");
-  color: theme("colors.secondary");
-  border-radius: 4px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-}
-
-.galleryLinks a:hover {
-  color: theme("colors.textSecondary");
+.galleryLinks {
+  a {
+    &:hover {
+      color: theme("colors.textSecondary");
+    }
+  }
 }
 
 /* Breakpoint per schermi molto piccoli (355px - 413px) */
@@ -55,8 +58,8 @@
 
 .imageTransitionLoaded {
   opacity: 1;
-}
 
-.imageTransitionLoaded:hover {
-  cursor: zoom-in;
+  &:hover {
+    cursor: zoom-in;
+  }
 }

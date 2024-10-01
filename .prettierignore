@@ -1,0 +1,26 @@
+# Dipendenze e file di lock
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# File di build
+.next/
+out/
+dist/
+build/
+
+# File di configurazione di versione, ambiente e altri
+.env
+.env.local
+.env.*.local
+.eslintcache
+.npmrc
+.vscode/
+.DS_Store
+
+# Cartella con le risorse statiche e di compilazione
+public/
+coverage/
+logs/
+.tmp/

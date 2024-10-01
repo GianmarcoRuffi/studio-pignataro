@@ -1,7 +1,7 @@
 "use client";
 import { contactsData } from "../../data/contactsData";
 import { useImageLoader } from "../../hooks/useImageLoader";
-import styles from "./contacts.module.css";
+import styles from "./contacts.module.scss";
 
 export default function Contacts() {
   const isImageLoaded = useImageLoader(`img[src='${contactsData.image}']`);

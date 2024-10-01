@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./footer.module.css";
+import styles from "./footer.module.scss";
 import { contactsData } from "../../data/contactsData";
 
 export default function Footer() {

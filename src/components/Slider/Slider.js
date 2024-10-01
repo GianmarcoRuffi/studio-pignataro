@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
-import styles from "./slider.module.css";
+import styles from "./slider.module.scss";
 
 function Slider({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./link-button.module.css";
+import styles from "./link-button.module.scss";
 
 const LinkButton = ({ href, children }) => {
   return (

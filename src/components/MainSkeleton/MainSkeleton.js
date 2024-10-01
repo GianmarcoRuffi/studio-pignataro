@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./main-skeleton.module.css";
+import styles from "./main-skeleton.module.scss";
 
 export default function MainSkeleton() {
   return (
