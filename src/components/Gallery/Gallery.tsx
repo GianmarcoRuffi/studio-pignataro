@@ -5,7 +5,22 @@ import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
 
-export default function Gallery({
+interface GalleryLink {
+  url: string;
+  name: string;
+}
+
+interface GalleryProps {
+  images: string[];
+  galleryTitle: string;
+  galleryDescription: string;
+  galleryLinks?: GalleryLink[];
+  imgCredits?: string;
+  prevProject?: { slug: string; projectName: string };
+  nextProject?: { slug: string; projectName: string };
+}
+
+const Gallery: React.FC<GalleryProps> = ({
   images,
   galleryTitle,
   galleryDescription,
@@ -13,10 +28,10 @@ export default function Gallery({
   imgCredits,
   prevProject,
   nextProject,
-}) {
-  const [loadedImages, setLoadedImages] = useState({});
+}) => {
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
-  const handleImageLoad = (index) => {
+  const handleImageLoad = (index: number) => {
     setLoadedImages((prev) => ({
       ...prev,
       [index]: true,
@@ -28,7 +43,7 @@ export default function Gallery({
       return galleryLinks.map((link, index) => (
         <p
           key={index}
-          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800 "
+          className="text-gray-500 text-sm md:text-base truncate underline italic hover:text-gray-800"
         >
           <a href={link.url}>{link.name}</a>
         </p>
@@ -45,8 +60,7 @@ export default function Gallery({
             href={`/projects/${prevProject.slug}`}
             className={styles.breadcrumbLink}
           >
-            {"< "}
-            {prevProject.projectName}
+            {"< "} {prevProject.projectName}
           </a>
         )}
         {nextProject && (
@@ -92,9 +106,7 @@ export default function Gallery({
                       loading="lazy"
                       className={`mx-auto transition-opacity duration-300 ease-in-out group-hover:opacity-80 ${
                         styles.imageTransition
-                      } ${
-                        loadedImages[index] ? styles.imageTransitionLoaded : ""
-                      }`}
+                      } ${loadedImages[index] ? styles.imageTransitionLoaded : ""}`}
                       onLoad={() => handleImageLoad(index)}
                     />
                   </div>
@@ -113,4 +125,6 @@ export default function Gallery({
       </div>
     </div>
   );
-}
+};
+
+export default Gallery;
