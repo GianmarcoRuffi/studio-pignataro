@@ -1,11 +1,13 @@
 import "./styles/globals.scss";
 import Head from "next/head";
+import { Metadata, HeadProps, RootLayoutProps } from "../interfaces/interfaces";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ScrollToTop from "../hooks/useScrollToTop";
 import HeaderHeightManager from "../components/HeaderHeightManager/HeaderHeightManager";
 import Footer from "../components/Footer/Footer";
+
 config.autoAddCss = false;
 
 const myFont = localFont({
@@ -13,7 +15,7 @@ const myFont = localFont({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Studio Architetto Gianluca Pignataro",
   site_name: "Studio Architetto Gianluca Pignataro",
   description:
@@ -24,10 +26,10 @@ export const metadata = {
     "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
 };
 
-export default function RootLayout({ children }) {
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en" className={myFont.className}>
-      <Head></Head>
+      <Head>{children}</Head>
       <body>
         <ScrollToTop />
         <div className="layout-wrapper">
@@ -37,4 +39,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./styles/not-found.module.scss";
 
-export default function NotFound() {
+const NotFound: React.FC = () => {
   return (
     <div className={styles.notFoundContainer}>
       <h2 className={styles.title}>
@@ -12,4 +12,6 @@ export default function NotFound() {
       </Link>
     </div>
   );
-}
+};
+
+export default NotFound;
