@@ -1,9 +1,16 @@
 "use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./project-card.module.scss";
 
-export default function ProjectCard({ name, imageSource, description }) {
+interface ProjectCardProps {
+  name: string;
+  imageSource: string;
+  description: string;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ name, imageSource, description }) => {
   const [loaded, setLoaded] = useState(false);
 
   const handleImageLoad = () => {
@@ -18,9 +25,7 @@ export default function ProjectCard({ name, imageSource, description }) {
           alt={name}
           layout="fill"
           loading="lazy"
-          className={`${styles.image} ${
-            loaded ? styles.loaded : ""
-          } object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
+          className={`${styles.image} ${loaded ? styles.loaded : ""} object-cover xs:object-cover sm:object-cover md:object-cover lg:object-contain xl:object-contain`}
           onLoad={handleImageLoad}
         />
         <div className="absolute inset-0 bg-transparent transition-opacity duration-1000 ease-in-out" />
@@ -36,4 +41,6 @@ export default function ProjectCard({ name, imageSource, description }) {
       </div>
     </div>
   );
-}
+};
+
+export default ProjectCard;

@@ -2,12 +2,19 @@
 import React from "react";
 import { useImageLoader } from "../../hooks/useImageLoader";
 
-export default function PressesCard({
+interface PressesCardProps {
+  description: string;
+  imageSource: string;
+  source: string;
+  date: string;
+}
+
+const PressesCard: React.FC<PressesCardProps> = ({
   description,
   imageSource,
   source,
   date,
-}) {
+}) => {
   const isImageLoaded = useImageLoader(`img[src='${imageSource}']`);
 
   return (
@@ -31,4 +38,6 @@ export default function PressesCard({
       </div>
     </div>
   );
-}
+};
+
+export default PressesCard;

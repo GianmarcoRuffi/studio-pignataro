@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -6,11 +7,20 @@ import Image from "next/image";
 import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
 import styles from "./slider.module.scss";
 
-function Slider({ projects }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const slideContainerRef = useRef(null);
+interface Project {
+  slug: string;
+  imgSrc: string;
+}
+
+interface SliderProps {
+  projects: Project[];
+}
+
+const Slider: React.FC<SliderProps> = ({ projects }) => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+  const slideContainerRef = useRef<HTMLDivElement | null>(null);
 
   const imageSources = projects.map((project) => project.imgSrc);
   const areImagesLoaded = useArrayImageLoader(imageSources);
@@ -32,13 +42,11 @@ function Slider({ projects }) {
   };
 
   const prevSlide = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
+    setActiveIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
   };
 
   useEffect(() => {
-    let interval;
+    let interval: NodeJS.Timeout;
 
     if (!isHovered) {
       interval = setInterval(() => {
@@ -113,6 +121,6 @@ function Slider({ projects }) {
       </button>
     </div>
   );
-}
+};
 
 export default Slider;

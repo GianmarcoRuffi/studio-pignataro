@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./presses-skeleton.module.scss";
 
-export default function PressesSkeleton() {
+const PressesSkeleton: React.FC = () => {
   return (
     <div className={styles.skeletonCard}>
       <div className={styles.skeletonImage}></div>
@@ -10,4 +10,6 @@ export default function PressesSkeleton() {
       <div className={styles.spinner}></div>
     </div>
   );
-}
+};
+
+export default PressesSkeleton;
