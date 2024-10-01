@@ -6,14 +6,7 @@ import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import styles from "./projects.module.scss";
-
-interface Project {
-  slug: string;
-  projectName: string;
-  imgSrc: string;
-  description: string;
-  invisible?: boolean;
-}
+import { Project } from "../../models/models";
 
 const Projects: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean>(false);

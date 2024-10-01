@@ -3,12 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./project-card.module.scss";
-
-interface ProjectCardProps {
-  name: string;
-  imageSource: string;
-  description: string;
-}
+import { ProjectCardProps } from "../../models/models";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,

@@ -1,3 +1,5 @@
+import type { ReactNode, ReactElement } from "react";
+
 interface Project {
   projectName: string;
   imgSrc: string;
@@ -98,6 +100,42 @@ interface PressesCardProps {
   date: string;
 }
 
+interface GalleryLink {
+  url: string;
+  name: string;
+}
+
+interface GalleryProps {
+  images: string[];
+  galleryTitle: string;
+  galleryDescription: string;
+  galleryLinks?: GalleryLink[];
+  imgCredits?: string;
+  prevProject?: { slug: string; projectName: string };
+  nextProject?: { slug: string; projectName: string };
+}
+
+interface ProjectCardProps {
+  name: string;
+  imageSource: string;
+  description: string;
+}
+
+interface LinkButtonProps {
+  href: string;
+  children: ReactNode;
+  target?: string;
+  rel?: string;
+}
+
+interface HeaderHeightManagerProps {
+  children: ReactNode;
+}
+
+interface SliderProps {
+  projects: Project[];
+}
+
 export type { Project };
 export type { HomeProps };
 export type { Metadata };
@@ -110,3 +148,9 @@ export type { Experience };
 export type { ContactsData };
 export type { PressesData };
 export type { PressesCardProps };
+export type { GalleryProps };
+export type { GalleryLink };
+export type { ProjectCardProps };
+export type { LinkButtonProps };
+export type { HeaderHeightManagerProps };
+export type { SliderProps };

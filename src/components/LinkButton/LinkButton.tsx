@@ -1,13 +1,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./link-button.module.scss";
-
-interface LinkButtonProps {
-  href: string;
-  children: ReactNode;
-  target?: string;
-  rel?: string;
-}
+import { LinkButtonProps } from "../../models/models";
 
 const LinkButton: React.FC<LinkButtonProps> = ({
   href,

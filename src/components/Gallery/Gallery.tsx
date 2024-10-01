@@ -4,21 +4,7 @@ import Image from "next/image";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
-
-interface GalleryLink {
-  url: string;
-  name: string;
-}
-
-interface GalleryProps {
-  images: string[];
-  galleryTitle: string;
-  galleryDescription: string;
-  galleryLinks?: GalleryLink[];
-  imgCredits?: string;
-  prevProject?: { slug: string; projectName: string };
-  nextProject?: { slug: string; projectName: string };
-}
+import { GalleryProps } from "../../models/models";
 
 const Gallery: React.FC<GalleryProps> = ({
   images,

@@ -6,15 +6,7 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { useArrayImageLoader } from "../../hooks/useArrayImageLoader";
 import styles from "./slider.module.scss";
-
-interface Project {
-  slug: string;
-  imgSrc: string;
-}
-
-interface SliderProps {
-  projects: Project[];
-}
+import { SliderProps } from "../../models/models";
 
 const Slider: React.FC<SliderProps> = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);

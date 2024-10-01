@@ -3,10 +3,7 @@
 import React from "react";
 import { useEffect, useRef, useState, ReactNode } from "react";
 import Header from "../Header/Header";
-
-interface HeaderHeightManagerProps {
-  children: ReactNode;
-}
+import { HeaderHeightManagerProps } from "../../models/models";
 
 const HeaderHeightManager: React.FC<HeaderHeightManagerProps> = ({
   children,
