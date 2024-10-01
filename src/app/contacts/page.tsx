@@ -40,27 +40,6 @@ export default function Contacts() {
             <li className="p-4">
               <strong>Partita IVA:</strong> {contactsData.p_iva}
             </li>
-            <li className="p-4">
-              <strong>Social:</strong>
-              <div>
-                <a
-                  href={contactsData.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <div>
-                <a
-                  href={contactsData.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>
-              </div>
-            </li>
           </ul>
         </div>
 
