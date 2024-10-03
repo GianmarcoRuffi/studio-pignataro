@@ -34,8 +34,8 @@ export default function Contacts() {
               </a>
             </li>
             <li className="p-4">
-              <strong>Telefono:</strong> {contactsData.phone.landline} / Cell.{" "}
-              {contactsData.phone.mobile}
+              <strong>Telefono:</strong> {contactsData.phone.landline} /{" "}
+              <strong>Cell.</strong> {contactsData.phone.mobile}
             </li>
           </ul>
         </div>

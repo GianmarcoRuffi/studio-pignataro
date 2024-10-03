@@ -93,7 +93,7 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
                     }}
                     priority={true}
                     fill={true}
-                    onLoadingComplete={() => {
+                    onLoad={() => {
                       if (slideContainerRef.current) {
                         slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
                       }
