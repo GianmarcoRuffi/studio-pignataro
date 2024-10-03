@@ -13,7 +13,6 @@ export default function Bio() {
 
   useEffect(() => {
     const handleResize = () => {
-
       if (window.innerWidth >= 1024 && isImageLoaded && imageRef.current) {
         const height = imageRef.current.offsetHeight;
         setImageHeight(height);
@@ -21,19 +20,15 @@ export default function Bio() {
           bioBoxRef.current.style.height = `${height}px`;
         }
       } else {
-
         if (bioBoxRef.current) {
           bioBoxRef.current.style.height = "auto";
         }
       }
     };
 
-
     window.addEventListener("resize", handleResize);
 
-
     handleResize();
-
 
     return () => window.removeEventListener("resize", handleResize);
   }, [isImageLoaded]);
