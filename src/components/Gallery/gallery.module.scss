@@ -1,0 +1,65 @@
+.galleryContainer {
+  background-color: theme("colors.backgroundLightGray");
+}
+
+.infoContainer {
+  background-color: theme("colors.backgroundLight");
+}
+
+.breadcrumbContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  background-color: theme("colors.backgroundPrimary");
+  border-radius: 4px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.breadcrumbLink {
+  color: theme("colors.accent");
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  &:hover {
+    background-color: theme("colors.backgroundAltGray");
+    color: theme("colors.secondary");
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.galleryLinks {
+  a {
+    &:hover {
+      color: theme("colors.textSecondary");
+    }
+  }
+}
+
+/* Breakpoint per schermi molto piccoli (355px - 413px) */
+@media screen and (min-width: 355px) and (max-width: 413px) {
+  .breadcrumbLink {
+    font-size: 12px;
+  }
+}
+
+/* Breakpoint per smartphone(414px - 640px) */
+@media screen and (min-width: 414px) and (max-width: 640px) {
+  .breadcrumbLink {
+    font-size: 14px;
+  }
+}
+
+.imageTransition {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageTransitionLoaded {
+  opacity: 1;
+
+  &:hover {
+    cursor: zoom-in;
+  }
+}

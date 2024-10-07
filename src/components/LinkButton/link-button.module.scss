@@ -1,0 +1,16 @@
+.linkButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: theme("colors.backgroundGray");
+  color: theme("colors.primary");
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 1px solid theme("colors.primary");
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: theme("colors.backgroundLight");
+    transform: translateY(-2px);
+  }
+}

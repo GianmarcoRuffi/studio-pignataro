@@ -1,0 +1,99 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover .sliderButton {
+    opacity: 1;
+  }
+}
+
+.slide-container {
+  display: flex;
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  transition: opacity 1s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.sliderButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  background-color: theme("colors.backgroundDark");
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.prev {
+  left: 5px;
+}
+
+.next {
+  right: 5px;
+}
+
+.sliderButton:hover {
+  color: theme("colors.textTertiary");
+}
+
+/* Media Query per Tablet */
+@media (max-width: 1024px) {
+  .sliderButton {
+    opacity: 1;
+  }
+}
+
+/* Media Query per Mobile */
+@media (max-width: 767px) {
+  .sliderButton {
+    opacity: 1;
+  }
+
+  .imageWrapper {
+    height: 70vh;
+  }
+}
+
+/* Media Query per Desktop */
+@media (min-width: 1024px) {
+  .sliderButton {
+    padding: 20px; /* Increased padding for larger clickable area */
+    width: 100px; /* Increased width for the button */
+    height: 100px; /* Increased height for the button */
+  }
+}
+
+.prev {
+  left: 20px; /* Slightly increase the left margin */
+}
+
+.next {
+  right: 20px; /* Slightly increase the right margin */
+}
