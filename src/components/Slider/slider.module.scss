@@ -49,6 +49,10 @@
   z-index: 10;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+  color: theme("colors.textTertiary");
+}
 }
 
 .prev {
@@ -57,10 +61,6 @@
 
 .next {
   right: 5px;
-}
-
-.sliderButton:hover {
-  color: theme("colors.textTertiary");
 }
 
 /* Media Query per Tablet */
