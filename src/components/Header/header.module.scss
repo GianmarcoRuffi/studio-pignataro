@@ -26,11 +26,6 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.logoContainer {
-  height: auto;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
 .scrolledLogoContainer img {
   height: 40px;
   transition: height 0.3s ease;
@@ -41,10 +36,10 @@
 .logoContainer {
   height: auto;
   transition: box-shadow 0.3s ease-in-out;
-}
 
-.logoContainer:hover {
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  &:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .navbar {

@@ -9,12 +9,20 @@ import styles from "./slider.module.scss";
 import { SliderProps } from "../../models/models";
 
 const Slider: React.FC<SliderProps> = ({ projects }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(1); // Start from 1 to account for the cloned first slide
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isLargeScreen, setIsLargeScreen] = useState<boolean>(false);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(true); // Control smooth transition
   const slideContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const imageSources = projects.map((project) => project.imgSrc);
+  // Clone first and last slides
+  const extendedProjects = [
+    projects[projects.length - 1], // Clone last slide
+    ...projects,
+    projects[0], // Clone first slide
+  ];
+
+  const imageSources = extendedProjects.map((project) => project.imgSrc);
   const areImagesLoaded = useArrayImageLoader(imageSources);
 
   const handleResize = () => {
@@ -30,13 +38,11 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
   }, []);
 
   const nextSlide = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    setActiveIndex((prevIndex) => prevIndex + 1);
   };
 
   const prevSlide = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
+    setActiveIndex((prevIndex) => prevIndex - 1);
   };
 
   useEffect(() => {
@@ -51,13 +57,32 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered, activeIndex]);
+  }, [isHovered]);
+
+  // Infinite scrolling effect
+  useEffect(() => {
+    if (activeIndex === 0) {
+      // Go from the cloned last slide to the real last slide
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveIndex(projects.length);
+      }, 500);
+    } else if (activeIndex === extendedProjects.length - 1) {
+      // Go from the cloned first slide to the real first slide
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveIndex(1);
+      }, 500);
+    } else {
+      setIsTransitioning(true);
+    }
+  }, [activeIndex, extendedProjects.length, projects.length]);
 
   useEffect(() => {
     if (slideContainerRef.current !== null) {
       slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
     }
-  }, [activeIndex, projects]);
+  }, [activeIndex]);
 
   return (
     <div
@@ -76,9 +101,12 @@ const Slider: React.FC<SliderProps> = ({ projects }) => {
       <div className={styles["slide-container"]} ref={slideContainerRef}>
         <div
           className={styles.slides}
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          style={{
+            transform: `translateX(-${activeIndex * 100}%)`,
+            transition: isTransitioning ? "transform 0.5s ease" : "none",
+          }}
         >
-          {projects.map((project, index) => (
+          {extendedProjects.map((project, index) => (
             <div key={index} className={styles.slide}>
               <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
                 <div className={styles.imageWrapper}>
