@@ -1,0 +1,176 @@
+@use "tailwindcss";
+
+@layer theme {
+  :root {
+    /* Custom colors */
+    --color-primary: #373737;
+    --color-secondary: #2d3748;
+    --color-accent: #4a5568;
+    
+    --color-text-primary: #373737;
+    --color-text-secondary: #000;
+    --color-text-tertiary: #6c757d;
+    
+    --color-background-primary: #f7f7f7;
+    --color-background-light: #fff;
+    --color-background-dark: #f3f4f605;
+    --color-background-gray: #e6e9ee;
+    --color-background-light-gray: #f3f4f6;
+    --color-background-alt-gray: #e2e8f0;
+  }
+}
+
+/* Scrollbar + smooth scroll */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  overflow-x: hidden; /* Previene scrollbar orizzontale */
+  box-sizing: border-box; /* Include padding e border nell'altezza */
+}
+
+html,
+.layout-content {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .layout-content {
+    scroll-behavior: auto;
+  }
+}
+
+/* Desktop scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Mobile: nasconde scrollbar ovunque, mantenendo lo scroll */
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+    background: transparent;
+  }
+}
+
+:root {
+  --viewport-height: 100vh;
+  --header-height: 70px; /* Altezza fissa dell'header */
+  --footer-height: 40px; /* Ripristinata alle dimensioni originali */
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+
+/* Media query per footer più sottile su mobile */
+@media (max-width: 768px) {
+  :root {
+    --footer-height: 35px; /* Ripristinata alle dimensioni originali */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --footer-height: 30px; /* Ripristinata alle dimensioni originali */
+  }
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: var(--viewport-height); /* Forza altezza esatta del viewport */
+  max-height: var(--viewport-height); /* Non permette mai di superare il viewport */
+  margin: 0; /* Rimuove margin */
+  padding: 0; /* Rimuove padding */
+  overflow: hidden; /* Nasconde tutto ciò che sfora */
+}
+
+/* Layout per mobile con footer fisso */
+@media (max-width: 768px) {
+  .layout-wrapper {
+    height: var(--viewport-height); /* Forza altezza esatta su mobile */
+    min-height: var(--viewport-height); /* Mantiene almeno l'altezza del viewport */
+    max-height: var(--viewport-height); /* Non supera mai il viewport */
+    overflow: hidden; /* Nasconde overflow del wrapper ma permette scroll interno */
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--header-height);
+  padding: 2rem 1rem; /* Padding per le pagine normali */
+  overflow: auto; /* Scroll per pagine normali */
+  max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Non sfora mai */
+}
+
+/* Layout content per mobile - permette scroll interno */
+@media (max-width: 768px) {
+  .layout-content {
+    height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Altezza fissa considerando footer fisso */
+    max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+    overflow-y: auto; /* Permette scroll verticale interno */
+    overflow-x: hidden; /* Nasconde scroll orizzontale */
+    padding: 1rem 0.5rem; /* Padding ridotto per mobile */
+  }
+}
+
+/* Stile specifico per la homepage */
+.layout-content.homepage {
+  height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Homepage: viewport - header - footer */
+  max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+  min-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+/* Homepage su mobile - scroll interno senza scrollbar */
+@media (max-width: 768px) {
+  .layout-content.homepage {
+    height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Include footer fisso */
+    max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+    min-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+    overflow-y: auto; /* Permette scroll verticale */
+    overflow-x: hidden; /* Nasconde scroll orizzontale */
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .layout-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

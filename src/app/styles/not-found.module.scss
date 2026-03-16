@@ -1,0 +1,25 @@
+.notFoundContainer {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-background-primary);
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+.link {
+  color: var(--color-text-tertiary);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-accent);
+  }
+}
