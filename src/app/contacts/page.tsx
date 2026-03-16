@@ -3,10 +3,19 @@ import Image from "next/image";
 import { useState } from "react";
 import { contactsData } from "../../data/contactsData";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import ContactForm from "../../components/ContactForm/ContactForm";
 import styles from "./contacts.module.scss";
 
 export default function Contacts() {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const formElement = document.getElementById("contact-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className={styles.contactsContainer}>
@@ -34,6 +43,13 @@ export default function Contacts() {
               facilmente raggiungibile e sempre pronto ad accogliere i nostri
               clienti.
             </p>
+            <a
+              href="#contact-form"
+              className={styles.contactFormLink}
+              onClick={scrollToForm}
+            >
+              Inviaci un messaggio
+            </a>
           </div>
         </div>
       </div>
@@ -126,6 +142,10 @@ export default function Contacts() {
             ></iframe>
           </div>
         </div>
+      </div>
+
+      <div id="contact-form" className={styles.formSection}>
+        <ContactForm />
       </div>
 
       <ScrollUpButton />
