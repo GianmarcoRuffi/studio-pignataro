@@ -2,13 +2,19 @@
 import { useState, useEffect } from "react";
 
 export const usePageLoading = () => {
-  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [isPageLoading, setIsPageLoading] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return !sessionStorage.getItem("siteVisited");
+  });
 
   useEffect(() => {
     const checkNavigationType = () => {
-      const entry = performance.getEntriesByType(
-        "navigation"
-      )[0] as PerformanceNavigationTiming;
+      const entry = performance.getEntriesByType("navigation")[0] as
+        | PerformanceNavigationTiming
+        | undefined;
 
       const isReload = entry?.type === "reload";
       const isBackForward = entry?.type === "back_forward";
@@ -18,10 +24,9 @@ export const usePageLoading = () => {
       const isFirstVisit = !sessionStorage.getItem("siteVisited");
 
       const shouldShowLoading =
-        isDirectOrBookmark && isFirstVisit && !isReload && !isBackForward;
+        isFirstVisit && isDirectOrBookmark && !isReload && !isBackForward;
 
       setIsPageLoading(shouldShowLoading);
-
       sessionStorage.setItem("siteVisited", "true");
     };
 

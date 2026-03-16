@@ -37,14 +37,14 @@ const OptionalScripts: FC<OptionalScriptsProps> = ({ children }) => {
     evaluateConsent();
     window.addEventListener(
       "cookie-consent-change",
-      handleConsentChange as EventListener,
+      handleConsentChange as EventListener
     );
     window.addEventListener("storage", handleStorage);
 
     return () => {
       window.removeEventListener(
         "cookie-consent-change",
-        handleConsentChange as EventListener,
+        handleConsentChange as EventListener
       );
       window.removeEventListener("storage", handleStorage);
     };

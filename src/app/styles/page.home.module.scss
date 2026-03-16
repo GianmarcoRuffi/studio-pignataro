@@ -1,31 +1,28 @@
 .homeContainer {
   width: 100%;
-  height: calc(100vh - var(--header-height) - var(--footer-height)); /* Altezza esatta: viewport - header - footer */
+  height: calc(100vh - var(--header-height) - var(--footer-height));
   max-height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Previene overflow */
+  overflow: hidden;
 }
 
-/* Media query per mobile - scroll interno senza scrollbar */
 @media (max-width: 768px) {
   .homeContainer {
-    height: calc(100vh - var(--header-height) - var(--footer-height)); /* Include footer fisso */
+    height: calc(100vh - var(--header-height) - var(--footer-height));
     max-height: calc(100vh - var(--header-height) - var(--footer-height));
-    overflow-y: auto; /* Permette scroll verticale */
-    overflow-x: hidden; /* Nasconde scroll orizzontale */
-    
-    /* Nasconde scrollbar ma mantiene funzionalità */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    
-    &::-webkit-scrollbar { /* WebKit */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
       display: none;
     }
   }
 }
 
-/* Loading State Semplice e Affidabile */
 .loadingContainer {
   display: flex;
   flex-direction: column;
@@ -33,9 +30,11 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(248, 249, 250, 0.98) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 249, 250, 0.98) 100%
+  );
   color: var(--color-primary);
   text-align: center;
   padding: 2rem;
@@ -57,7 +56,7 @@
   margin-bottom: 1rem;
   color: var(--color-primary);
   letter-spacing: 2px;
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
   }
@@ -68,13 +67,17 @@
   opacity: 0.8;
   font-weight: 400;
   margin: 0;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -2,15 +2,14 @@
 
 @layer theme {
   :root {
-    /* Custom colors */
     --color-primary: #373737;
     --color-secondary: #2d3748;
     --color-accent: #4a5568;
-    
+
     --color-text-primary: #373737;
     --color-text-secondary: #000;
     --color-text-tertiary: #6c757d;
-    
+
     --color-background-primary: #f7f7f7;
     --color-background-light: #fff;
     --color-background-dark: #f3f4f605;
@@ -20,16 +19,14 @@
   }
 }
 
-/* Scrollbar + smooth scroll */
-
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
-  overflow-x: hidden; /* Previene scrollbar orizzontale */
-  box-sizing: border-box; /* Include padding e border nell'altezza */
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 html,
@@ -44,28 +41,23 @@ html,
   }
 }
 
-/* Desktop scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-/* Mobile: nasconde scrollbar ovunque, mantenendo lo scroll */
 @media (max-width: 768px) {
   * {
     scrollbar-width: none;
@@ -82,8 +74,8 @@ html,
 
 :root {
   --viewport-height: 100vh;
-  --header-height: 70px; /* Altezza fissa dell'header */
-  --footer-height: 40px; /* Ripristinata alle dimensioni originali */
+  --header-height: 70px;
+  --footer-height: 40px;
 }
 
 @supports (height: 100dvh) {
@@ -92,36 +84,34 @@ html,
   }
 }
 
-/* Media query per footer più sottile su mobile */
 @media (max-width: 768px) {
   :root {
-    --footer-height: 35px; /* Ripristinata alle dimensioni originali */
+    --footer-height: 35px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --footer-height: 30px; /* Ripristinata alle dimensioni originali */
+    --footer-height: 30px;
   }
 }
 
 .layout-wrapper {
   display: flex;
   flex-direction: column;
-  height: var(--viewport-height); /* Forza altezza esatta del viewport */
-  max-height: var(--viewport-height); /* Non permette mai di superare il viewport */
-  margin: 0; /* Rimuove margin */
-  padding: 0; /* Rimuove padding */
-  overflow: hidden; /* Nasconde tutto ciò che sfora */
+  height: var(--viewport-height);
+  max-height: var(--viewport-height);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Layout per mobile con footer fisso */
 @media (max-width: 768px) {
   .layout-wrapper {
-    height: var(--viewport-height); /* Forza altezza esatta su mobile */
-    min-height: var(--viewport-height); /* Mantiene almeno l'altezza del viewport */
-    max-height: var(--viewport-height); /* Non supera mai il viewport */
-    overflow: hidden; /* Nasconde overflow del wrapper ma permette scroll interno */
+    height: var(--viewport-height);
+    min-height: var(--viewport-height);
+    max-height: var(--viewport-height);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
   }
@@ -132,39 +122,54 @@ html,
   display: flex;
   flex-direction: column;
   margin-top: var(--header-height);
-  padding: 2rem 1rem; /* Padding per le pagine normali */
-  overflow: auto; /* Scroll per pagine normali */
-  max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Non sfora mai */
+  padding: 2rem 1rem;
+  overflow: auto;
+  max-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
 }
 
-/* Layout content per mobile - permette scroll interno */
 @media (max-width: 768px) {
   .layout-content {
-    height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Altezza fissa considerando footer fisso */
-    max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
-    overflow-y: auto; /* Permette scroll verticale interno */
-    overflow-x: hidden; /* Nasconde scroll orizzontale */
-    padding: 1rem 0.5rem; /* Padding ridotto per mobile */
+    height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    max-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0.5rem;
   }
 }
 
-/* Stile specifico per la homepage */
 .layout-content.homepage {
-  height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Homepage: viewport - header - footer */
-  max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
-  min-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
+  height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+  max-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+  min-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
   overflow: hidden;
   padding: 0 !important;
 }
 
-/* Homepage su mobile - scroll interno senza scrollbar */
 @media (max-width: 768px) {
   .layout-content.homepage {
-    height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height)); /* Include footer fisso */
-    max-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
-    min-height: calc(var(--viewport-height) - var(--header-height) - var(--footer-height));
-    overflow-y: auto; /* Permette scroll verticale */
-    overflow-x: hidden; /* Nasconde scroll orizzontale */
+    height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    max-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    min-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 

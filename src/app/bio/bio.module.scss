@@ -1,18 +1,15 @@
-/* Container principale */
 .bioContainer {
   min-height: 100vh;
   min-height: 100dvh;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
-/* Mobile ottimizzato - rimuove altezza fissa per permettere scroll naturale */
 @media (max-width: 768px) {
   .bioContainer {
-    min-height: auto; /* Rimuove l'altezza minima fissa */
+    min-height: auto;
   }
 }
 
-/* Header Section */
 .headerSection {
   background: white;
   padding: 3rem 2rem;
@@ -44,12 +41,12 @@
   object-fit: cover;
   object-position: left center;
   transition: all 0.7s ease-in-out;
-  
+
   &.loading {
     opacity: 0;
     transform: scale(1.1);
   }
-  
+
   &.loaded {
     opacity: 1;
     transform: scale(1);
@@ -75,7 +72,6 @@
   text-align: justify;
 }
 
-/* Experiences Section */
 .experiencesSection {
   max-width: 1200px;
   margin: 0 auto;
@@ -211,7 +207,6 @@
   }
 }
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
   .headerSection {
     padding: 2rem 1rem;

@@ -1,19 +1,20 @@
 "use client";
 
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import projects from "../../data/data";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
+import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
 import styles from "./projects.module.scss";
 import { Project } from "../../models/models";
 
 const Projects: FC = () => {
   const [visibleCards, setVisibleCards] = useState(6);
-  const loadMoreRef = useRef<HTMLDivElement>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [skeletonCount, setSkeletonCount] = useState(6);
+  const skeletonCount = useResponsiveSkeletonCount();
 
   const visibleProjects = useMemo(
     () => projects.filter((project) => !project.invisible),
@@ -35,60 +36,56 @@ const Projects: FC = () => {
     onComplete: preloadRemainingImages,
   });
 
-  useEffect(() => {
-    const updateSkeletonCount = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setSkeletonCount(3);
-      } else if (width < 1200) {
-        setSkeletonCount(4);
-      } else {
-        setSkeletonCount(6);
+  const preloadImage = useCallback((src: string) => {
+    return new Promise<void>((resolve) => {
+      const img = new window.Image();
+      let isSettled = false;
+
+      const settle = () => {
+        if (isSettled) {
+          return;
+        }
+
+        isSettled = true;
+        resolve();
+      };
+
+      img.onload = settle;
+      img.onerror = settle;
+      img.src = src;
+
+      if (img.complete) {
+        settle();
       }
-    };
-
-    updateSkeletonCount();
-    window.addEventListener("resize", updateSkeletonCount);
-
-    return () => {
-      window.removeEventListener("resize", updateSkeletonCount);
-    };
+    });
   }, []);
 
   const loadMoreCards = useCallback(() => {
     if (isLoadingMore || visibleCards >= visibleProjects.length) return;
 
+    const nextVisibleCards = Math.min(visibleCards + 6, visibleProjects.length);
+    const nextImageSources = visibleProjects
+      .slice(visibleCards, nextVisibleCards)
+      .map((project) => project.imgSrc);
+
     setIsLoadingMore(true);
-    setTimeout(() => {
-      setVisibleCards((prev) => Math.min(prev + 6, visibleProjects.length));
-      setIsLoadingMore(false);
-    }, 300);
-  }, [isLoadingMore, visibleCards, visibleProjects.length]);
 
-  useEffect(() => {
-    if (isLoading || !loadMoreRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          visibleCards < visibleProjects.length
-        ) {
-          loadMoreCards();
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "100px",
+    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
+      () => {
+        setVisibleCards(nextVisibleCards);
+        setIsLoadingMore(false);
       }
     );
+  }, [isLoadingMore, preloadImage, visibleCards, visibleProjects]);
 
-    observer.observe(loadMoreRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [isLoading, loadMoreCards, visibleCards, visibleProjects.length]);
+  const hasMoreCards = visibleCards < visibleProjects.length;
+  const loadMoreRef = useInfiniteLoadTrigger({
+    enabled: !isLoading,
+    hasMore: hasMoreCards,
+    onIntersect: loadMoreCards,
+    threshold: 0.01,
+    rootMargin: "900px 0px",
+  });
 
   return (
     <div className={styles.projectsContainer}>
@@ -128,7 +125,7 @@ const Projects: FC = () => {
                 .slice(0, visibleCards)
                 .map((project: Project, index: number) => (
                   <div
-                    key={index}
+                    key={project.slug}
                     className={styles.cardWrapper}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >

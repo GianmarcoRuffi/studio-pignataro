@@ -1,19 +1,20 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import PressesCard from "../../components/PressesCard/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import LinkButton from "../../components/LinkButton/LinkButton";
 import pressesData from "../../data/pressesData";
+import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
+import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
 import styles from "./presses.module.scss";
 import { PressesData } from "../../models/models";
 
 export default function Presses() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [visibleCards, setVisibleCards] = useState(6);
-  const loadMoreRef = useRef<HTMLDivElement>(null);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [skeletonCount, setSkeletonCount] = useState(6);
+  const skeletonCount = useResponsiveSkeletonCount();
 
   const years = useMemo(
     () =>
@@ -55,57 +56,56 @@ export default function Presses() {
     onComplete: preloadRemainingImages,
   });
 
-  useEffect(() => {
-    const updateSkeletonCount = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setSkeletonCount(3);
-      } else if (width < 1200) {
-        setSkeletonCount(4);
-      } else {
-        setSkeletonCount(6);
+  const preloadImage = useCallback((src: string) => {
+    return new Promise<void>((resolve) => {
+      const img = new window.Image();
+      let isSettled = false;
+
+      const settle = () => {
+        if (isSettled) {
+          return;
+        }
+
+        isSettled = true;
+        resolve();
+      };
+
+      img.onload = settle;
+      img.onerror = settle;
+      img.src = src;
+
+      if (img.complete) {
+        settle();
       }
-    };
-
-    updateSkeletonCount();
-    window.addEventListener("resize", updateSkeletonCount);
-
-    return () => {
-      window.removeEventListener("resize", updateSkeletonCount);
-    };
+    });
   }, []);
 
   const loadMoreCards = useCallback(() => {
     if (isLoadingMore || visibleCards >= filteredData.length) return;
 
+    const nextVisibleCards = Math.min(visibleCards + 6, filteredData.length);
+    const nextImageSources = filteredData
+      .slice(visibleCards, nextVisibleCards)
+      .map((press) => press.imageSource);
+
     setIsLoadingMore(true);
-    setTimeout(() => {
-      setVisibleCards((prev) => Math.min(prev + 6, filteredData.length));
-      setIsLoadingMore(false);
-    }, 300);
-  }, [filteredData.length, isLoadingMore, visibleCards]);
 
-  useEffect(() => {
-    if (isLoading || !loadMoreRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && visibleCards < filteredData.length) {
-          loadMoreCards();
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "100px",
+    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
+      () => {
+        setVisibleCards(nextVisibleCards);
+        setIsLoadingMore(false);
       }
     );
+  }, [filteredData, isLoadingMore, preloadImage, visibleCards]);
 
-    observer.observe(loadMoreRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [filteredData.length, isLoading, loadMoreCards, visibleCards]);
+  const hasMoreCards = visibleCards < filteredData.length;
+  const loadMoreRef = useInfiniteLoadTrigger({
+    enabled: !isLoading,
+    hasMore: hasMoreCards,
+    onIntersect: loadMoreCards,
+    threshold: 0.01,
+    rootMargin: "900px 0px",
+  });
 
   return (
     <div className={styles.pressesContainer}>
@@ -169,32 +169,32 @@ export default function Presses() {
         ) : (
           <>
             <div className={styles.cardGrid}>
-              {filteredData.slice(0, visibleCards).map((press: PressesData) => (
-                <div
-                  key={`${press.date}-${press.description.substring(0, 20)}`}
-                  className={styles.cardWrapper}
-                  style={{
-                    animationDelay: `${filteredData.indexOf(press) * 0.1}s`,
-                  }}
-                >
-                  <PressesCard
-                    description={press.description}
-                    imageSource={press.imageSource}
-                    source={
-                      press.source ? (
-                        <LinkButton
-                          href={press.source}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Vai all'articolo
-                        </LinkButton>
-                      ) : null
-                    }
-                    date={press.date}
-                  />
-                </div>
-              ))}
+              {filteredData
+                .slice(0, visibleCards)
+                .map((press: PressesData, index: number) => (
+                  <div
+                    key={`${press.date}-${press.imageSource}`}
+                    className={styles.cardWrapper}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <PressesCard
+                      description={press.description}
+                      imageSource={press.imageSource}
+                      source={
+                        press.source ? (
+                          <LinkButton
+                            href={press.source}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Vai all'articolo
+                          </LinkButton>
+                        ) : null
+                      }
+                      date={press.date}
+                    />
+                  </div>
+                ))}
             </div>
 
             {visibleCards < filteredData.length && (

@@ -236,40 +236,40 @@
   .headerSection {
     padding: 2rem 1rem;
   }
-  
+
   .pageTitle {
     font-size: 2rem;
   }
-  
+
   .pageSubtitle {
     font-size: 1rem;
   }
-  
+
   .filterSection {
     padding: 1rem;
   }
-  
+
   .filterContainer {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
   }
-  
+
   .filterButtons {
     justify-content: center;
     width: 100%;
   }
-  
+
   .contentSection {
     padding: 0 1rem 3rem;
   }
-  
+
   .cardGrid {
     grid-template-columns: 1fr;
     max-width: 600px;
     gap: 2.5rem;
   }
-  
+
   .loadMoreButton {
     padding: 0.875rem 1.5rem;
     font-size: 0.9rem;
@@ -281,11 +281,11 @@
     padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
   }
-  
+
   .pageTitle {
     font-size: 1.75rem;
   }
-  
+
   .pageSubtitle {
     font-size: 0.9rem;
   }

@@ -1,8 +1,3 @@
-// ====================================
-// COSTANTI GLOBALI
-// ====================================
-
-// Animazioni
 export const ANIMATIONS = {
   FADE_IN_DURATION: 0.6,
   FADE_DELAY: 0.1,
@@ -10,7 +5,6 @@ export const ANIMATIONS = {
   CUBIC_BEZIER: "cubic-bezier(0.4, 0, 0.2, 1)",
 } as const;
 
-// Layout
 export const LAYOUT = {
   CARD_GRID_GAP: "3rem",
   CONTAINER_MAX_WIDTH: "1200px",
@@ -18,7 +12,6 @@ export const LAYOUT = {
   SECTION_PADDING: "4rem",
 } as const;
 
-// Responsive Breakpoints
 export const BREAKPOINTS = {
   mobile: 480,
   tablet: 768,
@@ -26,7 +19,6 @@ export const BREAKPOINTS = {
   wide: 1440,
 } as const;
 
-// Card Grid Configurations
 export const CARD_GRIDS = {
   publications: {
     minWidth: "550px",
@@ -46,7 +38,6 @@ export const CARD_GRIDS = {
   },
 } as const;
 
-// Loading States
 export const LOADING = {
   INITIAL_ITEMS: 6,
   ITEMS_PER_LOAD: 6,
@@ -57,7 +48,6 @@ export const LOADING = {
   },
 } as const;
 
-// Z-Index Scale
 export const Z_INDEX = {
   dropdown: 1000,
   sticky: 1020,

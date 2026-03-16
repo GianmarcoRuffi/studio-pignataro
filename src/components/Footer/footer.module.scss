@@ -1,39 +1,39 @@
 .footerContainer {
   width: 100%;
-  height: var(--footer-height); /* Altezza fissa usando CSS variable */
+  height: var(--footer-height);
   background-color: var(--color-background-light);
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
   color: var(--color-primary);
-  padding: 0 1rem; /* Ripristino padding originale senza padding verticale */
+  padding: 0 1rem;
   position: relative;
   bottom: 0;
   display: flex;
-  align-items: center; /* Centra verticalmente */
-  justify-content: center; /* Centra orizzontalmente il wrapper */
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  box-sizing: border-box; /* Include padding nell'altezza */
+  box-sizing: border-box;
 }
 
 .footerWrapper {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; /* Distribuisce i tre elementi */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 0 1rem; /* Aggiunge padding laterale */
+  padding: 0 1rem;
 }
 
 .footerContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Aggiunge centratura verticale */
-  gap: 0.5rem; /* Aumentato gap per più spazio */
+  justify-content: center;
+  gap: 0.5rem;
   text-align: center;
-  flex: 1; /* Prende lo spazio centrale */
+  flex: 1;
 }
 
 .footerList {
@@ -50,7 +50,7 @@
     padding: 0;
     display: flex;
     align-items: center;
-    font-size: 14px; /* Aumentato da 12px a 14px */
+    font-size: 14px;
     white-space: nowrap;
   }
 
@@ -68,18 +68,18 @@
 .policyLinks {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra orizzontalmente */
+  justify-content: center;
   gap: 0.5rem;
-  font-size: 14px; /* Aumentato da 10px a 14px */
-  flex-shrink: 0; /* Non si restringe */
-  white-space: nowrap; /* Impedisce di andare a capo */
+  font-size: 14px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .policyLink {
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
-  
+
   &:hover {
     color: var(--color-primary);
     text-decoration: underline;
@@ -88,34 +88,31 @@
 
 .separator {
   color: var(--color-text-secondary);
-  font-size: 14px; /* Aumentato da 10px a 14px */
+  font-size: 14px;
 }
 
 .copyright {
-  position: static; /* Rimuove positioning assoluto */
-  font-size: 14px; /* Aumentato da 12px a 14px */
+  position: static;
+  font-size: 14px;
   color: var(--color-primary);
   white-space: nowrap;
-  flex-shrink: 0; /* Non si restringe */
+  flex-shrink: 0;
   display: flex;
-  align-items: center; /* Centra verticalmente il copyright */
+  align-items: center;
 }
 
-
-
-/* Media Query per Mobile */
 @media (max-width: 768px) {
   .footerContainer {
-    position: fixed; /* Footer fisso in basso su mobile */
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: var(--footer-height); /* Usa la variabile CSS */
-    min-height: var(--footer-height); /* Altezza minima dalla variabile */
+    height: var(--footer-height);
+    min-height: var(--footer-height);
     padding: 0.5rem 0.5rem;
-    overflow: hidden; /* Impedisce al contenuto di fuoriuscire */
-    margin-top: 0; /* Rimuove margin-top */
-    z-index: 100; /* Sopra il contenuto */
+    overflow: hidden;
+    margin-top: 0;
+    z-index: 100;
   }
 
   .footerWrapper {
@@ -132,7 +129,7 @@
   .policyLinks {
     display: none;
   }
-  
+
   .copyright {
     display: flex;
     align-items: center;
@@ -142,7 +139,6 @@
   }
 }
 
-/* Per schermi ancora più piccoli */
 @media (max-width: 480px) {
   .footerContainer {
     position: fixed;

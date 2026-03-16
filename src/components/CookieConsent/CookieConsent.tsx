@@ -27,7 +27,7 @@ const CookieConsent: FC = () => {
     window.dispatchEvent(
       new CustomEvent("cookie-consent-change", {
         detail: { status },
-      }),
+      })
     );
   };
 

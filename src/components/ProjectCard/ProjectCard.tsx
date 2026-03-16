@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./project-card.module.scss";
 import { ProjectCardProps } from "../../models/models";
@@ -12,6 +12,24 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const [loaded, setLoaded] = useState(false);
 
+  useEffect(() => {
+    setLoaded(false);
+
+    const preloader = new window.Image();
+    preloader.onload = () => setLoaded(true);
+    preloader.onerror = () => setLoaded(true);
+    preloader.src = imageSource;
+
+    if (preloader.complete) {
+      setLoaded(true);
+    }
+
+    return () => {
+      preloader.onload = null;
+      preloader.onerror = null;
+    };
+  }, [imageSource]);
+
   const handleImageLoad = () => {
     setLoaded(true);
   };
@@ -19,6 +37,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
   return (
     <article className={styles.projectCard}>
       <div className={styles.imageContainer}>
+        <div
+          className={`${styles.imageSkeleton} ${
+            loaded ? styles.skeletonHidden : styles.skeletonVisible
+          }`}
+        >
+          <div className={styles.skeletonShimmer}></div>
+        </div>
         <Image
           src={imageSource}
           alt={name}

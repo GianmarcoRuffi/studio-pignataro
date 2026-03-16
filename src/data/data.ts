@@ -181,17 +181,6 @@ const projects: Project[] = [
       "/Glisbo/render.gif",
     ],
   },
-
-  // Placeholder per la nuova location dello studio
-  // {
-  //   projectName: "Studio Pignataro",
-  //   imgSrc: "/Home/12.jpg",
-  //   description: ``,
-  //   invisible: true,
-  //   slug: "contacts",
-  //   imgCredits: "",
-  //   images: [],
-  // },
 ];
 
 export default projects;

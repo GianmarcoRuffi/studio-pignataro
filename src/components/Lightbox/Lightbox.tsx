@@ -160,7 +160,6 @@ const Lightbox: FC<LightboxProps> = ({
     [images.length, preloadImage]
   );
 
-  // Effetto per quando si apre la lightbox
   useEffect(() => {
     if (isOpen) {
       setActiveIndex(currentIndex);
@@ -171,7 +170,6 @@ const Lightbox: FC<LightboxProps> = ({
     }
   }, [isOpen, currentIndex, preloadAdjacentImages]);
 
-  // Effetto per quando cambia l'indice attivo
   useEffect(() => {
     if (isOpen) {
       const status = imageCacheRef.current.get(activeIndex);
@@ -181,7 +179,6 @@ const Lightbox: FC<LightboxProps> = ({
     }
   }, [activeIndex, isOpen, preloadAdjacentImages]);
 
-  // Effetto per gestire overflow del body
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";

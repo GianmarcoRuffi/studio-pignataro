@@ -13,23 +13,30 @@ const PressesCard: FC<PressesCardProps> = ({
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-    // Reset state when source changes
     setIsImageLoaded(false);
 
-    // Se l'immagine è già caricata nel buffer (es. precaricata da useMultiImageLoader),
-    // Next/Image potrebbe non scatenare onLoad.
     const img = new window.Image();
+    img.onload = () => setIsImageLoaded(true);
+    img.onerror = () => setIsImageLoaded(true);
     img.src = imageSource;
+
     if (img.complete) {
       setIsImageLoaded(true);
     }
+
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
   }, [imageSource]);
 
   const handleImageClick = () => {
     window.open(imageSource, "_blank", "noopener,noreferrer");
   };
 
-  const descriptionLines = description.split(/<br\s*\/?>/gi).map((line) => line.trim());
+  const descriptionLines = description
+    .split(/<br\s*\/?>/gi)
+    .map((line) => line.trim());
 
   return (
     <article className={styles.pressCard}>
@@ -39,6 +46,13 @@ const PressesCard: FC<PressesCardProps> = ({
         onClick={handleImageClick}
         aria-label={`Visualizza ${description}`}
       >
+        <div
+          className={`${styles.imageSkeleton} ${
+            isImageLoaded ? styles.skeletonHidden : styles.skeletonVisible
+          }`}
+        >
+          <div className={styles.skeletonShimmer}></div>
+        </div>
         <Image
           src={imageSource}
           alt={`Copertina: ${date}`}

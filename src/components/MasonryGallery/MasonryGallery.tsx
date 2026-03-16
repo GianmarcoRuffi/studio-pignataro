@@ -88,7 +88,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
       <div className={styles.masonryContainer} ref={containerRef}>
         {columnArrays.map((columnImages, columnIndex) => (
           <div
-            key={`masonry-column-${columnIndex}-${columnImages.join("-")}`}
+            key={`masonry-column-${columnIndex}`}
             className={styles.masonryColumn}
           >
             {columnImages.map((imageIndex) => (
@@ -118,6 +118,9 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       alt={`Gallery image ${imageIndex + 1}`}
                       width={600}
                       height={400}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized
+                      loading={imageIndex < preloadedCount ? "eager" : "lazy"}
                       className={`${styles.image} ${
                         loadingImages[imageIndex]
                           ? styles.imageLoading
@@ -130,7 +133,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                           [imageIndex]: false,
                         }));
                       }}
-                      priority={imageIndex < 6}
+                      priority={imageIndex < preloadedCount}
                       quality={85}
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="

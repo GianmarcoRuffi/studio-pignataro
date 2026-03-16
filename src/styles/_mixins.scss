@@ -46,7 +46,7 @@
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--color-primary);
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
   }
@@ -68,7 +68,7 @@
 
 @mixin cardHover($scale: 1.05, $shadow: 0 20px 40px rgba(0, 0, 0, 0.15)) {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     transform: translateY(-8px) scale($scale);
     box-shadow: $shadow;

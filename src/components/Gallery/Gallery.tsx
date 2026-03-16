@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import MasonryGallery from "../MasonryGallery/MasonryGallery";
@@ -21,7 +21,10 @@ const Gallery: FC<GalleryProps> = ({
   const [skeletonCount, setSkeletonCount] = useState(6);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
-  const initialBatchImages = useMemo(() => (images ?? []).slice(0, 6), [images]);
+  const initialBatchImages = useMemo(
+    () => (images ?? []).slice(0, 6),
+    [images]
+  );
 
   useEffect(() => {
     let isCancelled = false;
@@ -49,39 +52,63 @@ const Gallery: FC<GalleryProps> = ({
     window.addEventListener("resize", updateSkeletonCount);
 
     let loadedCount = 0;
+    let hasFinished = false;
+    const loadingStartedAt = Date.now();
+    let settleTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const finishLoading = () => {
+      if (hasFinished || isCancelled) {
+        return;
+      }
+
+      hasFinished = true;
+      const elapsed = Date.now() - loadingStartedAt;
+      const remaining = Math.max(0, 350 - elapsed);
+
+      settleTimeoutId = setTimeout(() => {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      }, remaining);
+    };
 
     const preloadPromises = initialBatchImages.map((imageSrc) => {
       return new Promise<void>((resolve) => {
         const img = document.createElement("img");
+        let isSettled = false;
+
+        const markLoaded = () => {
+          if (isSettled) {
+            return;
+          }
+
+          isSettled = true;
+
+          if (isCancelled) {
+            resolve();
+            return;
+          }
+
+          loadedCount++;
+          if (loadedCount >= Math.min(3, initialBatchImages.length)) {
+            finishLoading();
+          }
+          resolve();
+        };
+
+        img.onload = markLoaded;
+        img.onerror = markLoaded;
         img.src = imageSrc;
-        img.onload = () => {
-          if (isCancelled) {
-            resolve();
-            return;
-          }
-          loadedCount++;
-          if (loadedCount >= Math.min(3, initialBatchImages.length)) {
-            setIsLoading(false);
-          }
-          resolve();
-        };
-        img.onerror = () => {
-          if (isCancelled) {
-            resolve();
-            return;
-          }
-          loadedCount++;
-          if (loadedCount >= Math.min(3, initialBatchImages.length)) {
-            setIsLoading(false);
-          }
-          resolve();
-        };
+
+        if (img.complete) {
+          markLoaded();
+        }
       });
     });
 
     const timeout = setTimeout(() => {
       if (!isCancelled) {
-        setIsLoading(false);
+        finishLoading();
       }
     }, 5000);
 
@@ -90,15 +117,60 @@ const Gallery: FC<GalleryProps> = ({
         return;
       }
       clearTimeout(timeout);
-      setIsLoading(false);
+      finishLoading();
     });
 
     return () => {
       isCancelled = true;
       window.removeEventListener("resize", updateSkeletonCount);
       clearTimeout(timeout);
+      if (settleTimeoutId) {
+        clearTimeout(settleTimeoutId);
+      }
     };
   }, [images, initialBatchImages]);
+
+  const preloadImage = useCallback((src: string) => {
+    return new Promise<void>((resolve) => {
+      const img = new window.Image();
+      let isSettled = false;
+
+      const settle = () => {
+        if (isSettled) {
+          return;
+        }
+
+        isSettled = true;
+        resolve();
+      };
+
+      img.onload = settle;
+      img.onerror = settle;
+      img.src = src;
+
+      if (img.complete) {
+        settle();
+      }
+    });
+  }, []);
+
+  const loadMoreImages = useCallback(() => {
+    if (!images || isLoadingMore || visibleImages >= images.length) {
+      return;
+    }
+
+    const nextVisibleImages = Math.min(visibleImages + 6, images.length);
+    const nextImageSources = images.slice(visibleImages, nextVisibleImages);
+
+    setIsLoadingMore(true);
+
+    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
+      () => {
+        setVisibleImages(nextVisibleImages);
+        setIsLoadingMore(false);
+      }
+    );
+  }, [images, isLoadingMore, preloadImage, visibleImages]);
 
   useEffect(() => {
     if (isLoading || !images || visibleImages >= images.length) {
@@ -108,17 +180,13 @@ const Gallery: FC<GalleryProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         const target = entries[0];
-        if (target.isIntersecting && !isLoadingMore) {
-          setIsLoadingMore(true);
-          setTimeout(() => {
-            setVisibleImages((prev) => Math.min(prev + 6, images?.length || 0));
-            setIsLoadingMore(false);
-          }, 300);
+        if (target.isIntersecting) {
+          loadMoreImages();
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "100px 0px",
+        threshold: 0.01,
+        rootMargin: "900px 0px",
       }
     );
 
@@ -132,7 +200,7 @@ const Gallery: FC<GalleryProps> = ({
         observer.unobserve(currentTrigger);
       }
     };
-  }, [isLoading, images, visibleImages, isLoadingMore]);
+  }, [isLoading, images, visibleImages, loadMoreImages]);
 
   function renderGalleryLinks() {
     if (galleryLinks) {

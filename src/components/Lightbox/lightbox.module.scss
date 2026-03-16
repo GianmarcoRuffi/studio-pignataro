@@ -21,21 +21,21 @@
   max-width: 96vw;
   max-height: 92vh;
   cursor: default;
-  
+
   @media (max-width: 480px) {
     width: 98vw;
     height: 90vh;
     max-width: 98vw;
     max-height: 90vh;
   }
-  
+
   @media (min-width: 481px) and (max-width: 768px) {
     width: 96vw;
     height: 90vh;
     max-width: 96vw;
     max-height: 90vh;
   }
-  
+
   @media (min-width: 769px) and (max-width: 1024px) {
     width: 96vw;
     height: 92vh;
@@ -72,9 +72,8 @@
   image-rendering: crisp-edges;
   z-index: 10001;
   position: relative;
-  
+
   filter: contrast(1.01) saturate(1.02) brightness(1.01);
-  
 }
 
 .errorIndicator {
@@ -89,7 +88,7 @@
   color: white;
   text-align: center;
   z-index: 10004;
-  
+
   span {
     font-size: 16px;
     font-weight: 500;
@@ -108,13 +107,13 @@
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-1px);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
@@ -123,7 +122,7 @@
 .retryButton {
   background: rgba(74, 144, 226, 0.3);
   border-color: rgba(74, 144, 226, 0.5);
-  
+
   &:hover {
     background: rgba(74, 144, 226, 0.4);
     border-color: rgba(74, 144, 226, 0.7);
@@ -133,7 +132,7 @@
 .skipButton {
   background: rgba(156, 163, 175, 0.3);
   border-color: rgba(156, 163, 175, 0.5);
-  
+
   &:hover {
     background: rgba(156, 163, 175, 0.4);
     border-color: rgba(156, 163, 175, 0.7);
@@ -141,8 +140,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .closeButton {
@@ -164,12 +167,12 @@
   backdrop-filter: blur(10px);
   z-index: 10005;
   pointer-events: auto;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
   }
-  
+
   @media (max-width: 768px) {
     top: 12px;
     right: 12px;
@@ -198,22 +201,22 @@
   backdrop-filter: blur(10px);
   z-index: 10005;
   pointer-events: auto;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-50%) scale(1.1);
   }
-  
+
   &:active {
     transform: translateY(-50%) scale(0.95);
   }
-  
+
   @media (max-width: 768px) {
     width: 45px;
     height: 45px;
     font-size: 18px;
   }
-  
+
   @media (max-width: 480px) {
     width: 40px;
     height: 40px;
@@ -223,11 +226,11 @@
 
 .navButtonLeft {
   left: 16px;
-  
+
   @media (max-width: 1024px) {
     left: 12px;
   }
-  
+
   @media (max-width: 768px) {
     left: 8px;
   }
@@ -235,11 +238,11 @@
 
 .navButtonRight {
   right: 16px;
-  
+
   @media (max-width: 1024px) {
     right: 12px;
   }
-  
+
   @media (max-width: 768px) {
     right: 8px;
   }
@@ -247,7 +250,7 @@
 
 .prevButton {
   left: -60px;
-  
+
   @media (max-width: 768px) {
     left: -50px;
   }
@@ -255,7 +258,7 @@
 
 .nextButton {
   right: -60px;
-  
+
   @media (max-width: 768px) {
     right: -50px;
   }
@@ -269,7 +272,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  
+
   @media (max-width: 768px) {
     bottom: 12px;
   }
@@ -282,7 +285,7 @@
   padding: 8px 16px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  
+
   @media (max-width: 768px) {
     font-size: 12px;
     padding: 6px 12px;

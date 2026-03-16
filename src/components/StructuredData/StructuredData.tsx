@@ -34,7 +34,6 @@ const StructuredData = () => {
     <Script
       id="structured-data"
       type="application/ld+json"
-      // sonarqube:disable-next-line security:S1891
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(structuredData),
       }}

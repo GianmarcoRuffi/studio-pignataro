@@ -10,10 +10,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "analyze": "ANALYZE=true npm run build",
-    "type-check": "npm run clean && tsc --noEmit",
-    "clean": "rm -rf .next",
-    "deploy:staging": "./scripts/deploy-staging.sh",
+    "type-check": "tsc --noEmit",
     "sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
