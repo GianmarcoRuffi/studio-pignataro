@@ -21,6 +21,16 @@ const CookieConsent: FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("cookie-popup-visible", {
+          detail: { isVisible },
+        })
+      );
+    }
+  }, [isVisible]);
+
   const notifyConsentChange = (status: "accepted" | "declined") => {
     if (typeof window === "undefined") return;
 

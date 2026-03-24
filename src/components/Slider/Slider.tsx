@@ -21,7 +21,23 @@ import { SliderProps } from "../../models/models";
 const Slider: FC<SliderProps> = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isCookieVisible, setIsCookieVisible] = useState<boolean>(false);
   const slideContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleCookieVisibility = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isVisible: boolean }>;
+      setIsCookieVisible(customEvent.detail.isVisible);
+    };
+
+    window.addEventListener("cookie-popup-visible", handleCookieVisibility);
+    return () => {
+      window.removeEventListener(
+        "cookie-popup-visible",
+        handleCookieVisibility
+      );
+    };
+  }, []);
 
   const imageSources = useMemo(
     () => projects.slice(0, 3).map((project) => project.imgSrc),
@@ -52,7 +68,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!isHovered && !isLoading) {
+    if (!isHovered && !isLoading && !isCookieVisible) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
       }, 3000);
@@ -61,7 +77,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered, isLoading, projects.length]);
+  }, [isHovered, isLoading, projects.length, isCookieVisible]);
 
   useEffect(() => {
     if (slideContainerRef.current !== null) {
@@ -131,6 +147,9 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                     quality={95}
                     style={imageStyle}
                     priority={projectIndex <= 2}
+                    loading={projectIndex > 2 ? "lazy" : "eager"}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                 </div>
               </Link>
