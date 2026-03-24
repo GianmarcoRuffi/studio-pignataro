@@ -65,6 +65,7 @@ const Header: FC = () => {
               alt="Logo"
               width={360}
               height={120}
+              priority
               className={styles.logoImage}
               style={{ width: "auto" }}
             />
