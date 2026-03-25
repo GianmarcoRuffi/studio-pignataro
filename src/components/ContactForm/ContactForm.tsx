@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState, FormEvent } from "react";
+import Link from "next/link";
 import styles from "./ContactForm.module.scss";
 
 interface FormData {
@@ -8,6 +9,7 @@ interface FormData {
   name: string;
   message: string;
   acceptPrivacy: boolean;
+  honeypot: string; // Campo honeypot anti-spam
 }
 
 interface FormErrors {
@@ -17,12 +19,17 @@ interface FormErrors {
   acceptPrivacy?: string;
 }
 
+// Costanti per validazione
+const MAX_NAME_LENGTH = 100;
+const MAX_MESSAGE_LENGTH = 5000;
+
 const ContactForm: FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     name: "",
     message: "",
     acceptPrivacy: false,
+    honeypot: "", // Campo honeypot - deve restare vuoto
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -53,10 +60,14 @@ const ContactForm: FC = () => {
       newErrors.name = "Il nome è obbligatorio";
     } else if (!validateName(formData.name)) {
       newErrors.name = "Il nome deve contenere almeno 2 caratteri";
+    } else if (formData.name.length > MAX_NAME_LENGTH) {
+      newErrors.name = `Il nome non può superare ${MAX_NAME_LENGTH} caratteri`;
     }
 
     if (!formData.message.trim()) {
       newErrors.message = "Il messaggio è obbligatorio";
+    } else if (formData.message.length > MAX_MESSAGE_LENGTH) {
+      newErrors.message = `Il messaggio non può superare ${MAX_MESSAGE_LENGTH} caratteri`;
     }
 
     if (!formData.acceptPrivacy) {
@@ -94,6 +105,7 @@ const ContactForm: FC = () => {
           name: "",
           message: "",
           acceptPrivacy: false,
+          honeypot: "",
         });
         setErrors({});
       } else {
@@ -135,39 +147,80 @@ const ContactForm: FC = () => {
         possibile.
       </p>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form} noValidate>
+        {/* Honeypot field - nascosto, i bot lo compilano */}
+        <div className={styles.honeypot} aria-hidden="true">
+          <label htmlFor="website">
+            Non compilare questo campo
+          </label>
+          <input
+            type="text"
+            id="website"
+            name="honeypot"
+            value={formData.honeypot}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         <div className={styles.formGroup}>
+          <label htmlFor="email" className={styles.label}>
+            Email <span className={styles.required}>*</span>
+          </label>
           <input
             type="email"
+            id="email"
             name="email"
             placeholder="La tua email"
             value={formData.email}
             onChange={handleChange}
             className={`${styles.formInput} ${errors.email ? styles.error : ""}`}
             disabled={isSubmitting}
+            aria-required="true"
+            aria-invalid={errors.email ? "true" : "false"}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            autoComplete="email"
           />
           {errors.email && (
-            <span className={styles.errorMessage}>{errors.email}</span>
+            <span id="email-error" className={styles.errorMessage} role="alert">
+              {errors.email}
+            </span>
           )}
         </div>
 
         <div className={styles.formGroup}>
+          <label htmlFor="name" className={styles.label}>
+            Nome <span className={styles.required}>*</span>
+          </label>
           <input
             type="text"
+            id="name"
             name="name"
             placeholder="Il tuo nome"
             value={formData.name}
             onChange={handleChange}
             className={`${styles.formInput} ${errors.name ? styles.error : ""}`}
             disabled={isSubmitting}
+            aria-required="true"
+            aria-invalid={errors.name ? "true" : "false"}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            autoComplete="name"
+            maxLength={MAX_NAME_LENGTH}
           />
           {errors.name && (
-            <span className={styles.errorMessage}>{errors.name}</span>
+            <span id="name-error" className={styles.errorMessage} role="alert">
+              {errors.name}
+            </span>
           )}
         </div>
 
         <div className={styles.formGroup}>
+          <label htmlFor="message" className={styles.label}>
+            Messaggio <span className={styles.required}>*</span>
+          </label>
           <textarea
+            id="message"
             name="message"
             placeholder="Il tuo messaggio"
             value={formData.message}
@@ -175,31 +228,57 @@ const ContactForm: FC = () => {
             className={`${styles.formTextarea} ${errors.message ? styles.error : ""}`}
             rows={6}
             disabled={isSubmitting}
+            aria-required="true"
+            aria-invalid={errors.message ? "true" : "false"}
+            aria-describedby={errors.message ? "message-error" : "message-hint"}
+            maxLength={MAX_MESSAGE_LENGTH}
           />
+          <span id="message-hint" className={styles.characterCount}>
+            {formData.message.length}/{MAX_MESSAGE_LENGTH} caratteri
+          </span>
           {errors.message && (
-            <span className={styles.errorMessage}>{errors.message}</span>
+            <span id="message-error" className={styles.errorMessage} role="alert">
+              {errors.message}
+            </span>
           )}
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.checkboxLabel}>
+          <div className={styles.checkboxWrapper}>
             <input
               type="checkbox"
+              id="acceptPrivacy"
               name="acceptPrivacy"
               checked={formData.acceptPrivacy}
               onChange={handleChange}
               className={styles.checkbox}
               disabled={isSubmitting}
+              aria-required="true"
+              aria-invalid={errors.acceptPrivacy ? "true" : "false"}
+              aria-describedby={errors.acceptPrivacy ? "privacy-error" : undefined}
             />
-            <span className={errors.acceptPrivacy ? styles.errorText : ""}>
-              Accetto il trattamento dei dati personali per l'invio di questa
-              email
-            </span>
-          </label>
+            <label 
+              htmlFor="acceptPrivacy" 
+              className={`${styles.checkboxLabel} ${errors.acceptPrivacy ? styles.errorText : ""}`}
+            >
+              Accetto il trattamento dei dati personali secondo la{" "}
+              <Link href="/privacy-policy" target="_blank" className={styles.privacyLink}>
+                Privacy Policy
+              </Link>{" "}
+              per l&apos;invio di questa email <span className={styles.required}>*</span>
+            </label>
+          </div>
           {errors.acceptPrivacy && (
-            <span className={styles.errorMessage}>{errors.acceptPrivacy}</span>
+            <span id="privacy-error" className={styles.errorMessage} role="alert">
+              {errors.acceptPrivacy}
+            </span>
           )}
         </div>
+
+        <p className={styles.privacyNote}>
+          I tuoi dati saranno utilizzati esclusivamente per rispondere alla tua richiesta 
+          e non saranno condivisi con terze parti.
+        </p>
 
         {submitStatus === "success" && (
           <div className={styles.successMessage}>
