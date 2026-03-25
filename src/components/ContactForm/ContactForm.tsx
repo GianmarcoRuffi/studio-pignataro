@@ -147,7 +147,7 @@ const ContactForm: FC = () => {
         possibile.
       </p>
 
-      <form onSubmit={handleSubmit} className={styles.form} noValidate>
+      <form onSubmit={handleSubmit} className={`${styles.form} ${isSubmitting ? styles.submitting : ''}`} noValidate>
         {/* Honeypot field - nascosto, i bot lo compilano */}
         <div className={styles.honeypot} aria-hidden="true">
           <label htmlFor="website">

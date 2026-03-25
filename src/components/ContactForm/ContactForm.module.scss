@@ -1,6 +1,5 @@
 .formContainer {
-  max-width: 700px;
-  margin: 4rem auto;
+  width: 100%;
   padding: 3rem;
   background: white;
   border-radius: 1rem;
@@ -167,6 +166,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 0.5rem;
+  position: relative;
 
   &:hover:not(:disabled) {
     background: var(--color-secondary);
@@ -182,7 +182,14 @@
     background: #9ca3af;
     cursor: not-allowed;
     transform: none;
+    opacity: 0.7;
   }
+}
+
+// Stile per form disabilitato durante invio
+.form.submitting {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .errorMessage {
@@ -203,7 +210,6 @@
 
 @media screen and (max-width: 768px) {
   .formContainer {
-    margin: 2rem 1rem;
     padding: 2rem 1.5rem;
   }
 
