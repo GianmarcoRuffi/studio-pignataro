@@ -66,7 +66,6 @@ const Header: FC = () => {
               width={360}
               height={120}
               priority
-              loading="eager"
               className={styles.logoImage}
               style={{ width: "auto", height: "auto" }}
             />
