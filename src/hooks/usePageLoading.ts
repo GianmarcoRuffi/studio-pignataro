@@ -2,15 +2,13 @@
 import { useState, useEffect } from "react";
 
 export const usePageLoading = () => {
-  const [isPageLoading, setIsPageLoading] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    return !sessionStorage.getItem("siteVisited");
-  });
+  // Start with false on server to avoid hydration mismatch
+  const [isPageLoading, setIsPageLoading] = useState(false);
+  const [hasChecked, setHasChecked] = useState(false);
 
   useEffect(() => {
+    if (hasChecked) return;
+
     const checkNavigationType = () => {
       const entry = performance.getEntriesByType("navigation")[0] as
         | PerformanceNavigationTiming
@@ -28,10 +26,11 @@ export const usePageLoading = () => {
 
       setIsPageLoading(shouldShowLoading);
       sessionStorage.setItem("siteVisited", "true");
+      setHasChecked(true);
     };
 
     checkNavigationType();
-  }, []);
+  }, [hasChecked]);
 
   const handleLoadingComplete = () => {
     setIsPageLoading(false);

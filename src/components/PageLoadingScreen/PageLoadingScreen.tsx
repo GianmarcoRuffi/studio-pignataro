@@ -49,6 +49,7 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
         width={360}
         height={120}
         className={styles.logo}
+        style={{ width: "auto", height: "auto" }}
         onLoad={() => setIsLogoLoaded(true)}
         onError={() => setIsLogoLoaded(true)}
       />
