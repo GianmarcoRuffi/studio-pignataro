@@ -8,10 +8,16 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  will-change: transform, box-shadow;
 
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 
