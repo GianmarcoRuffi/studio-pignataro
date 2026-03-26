@@ -101,18 +101,11 @@
   align-items: center;
 }
 
-@media (max-width: 768px) {
+// Tablet e dispositivi intermedi (iPad Pro, iPad Air, Nest Hub, ecc.)
+// Mostra solo copyright come su mobile per evitare che il testo sfordi
+@media (max-width: 1024px) {
   .footerContainer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: var(--footer-height);
-    min-height: var(--footer-height);
-    padding: 0.5rem 0.5rem;
-    overflow: hidden;
-    margin-top: 0;
-    z-index: 100;
+    padding: 0.5rem 1rem;
   }
 
   .footerWrapper {
@@ -134,8 +127,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--footer-height);
+    min-height: var(--footer-height);
+    padding: 0.5rem 0.5rem;
+    overflow: hidden;
+    margin-top: 0;
+    z-index: 100;
+  }
+
+  .copyright {
     font-size: 13px;
-    order: 0;
   }
 }
 

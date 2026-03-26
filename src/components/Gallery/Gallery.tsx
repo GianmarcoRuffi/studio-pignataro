@@ -391,12 +391,12 @@ const Gallery: FC<GalleryProps> = ({
             {visibleImages < images.length && (
               <div
                 ref={loadMoreTriggerRef}
-                className="my-8 flex h-[100px] items-center justify-center"
+                className={styles.loadMoreTrigger}
               >
                 {isLoadingMore && (
-                  <div className="flex items-center gap-4 text-[0.9rem] text-[var(--color-text-secondary)]">
+                  <div className={styles.loadingIndicator}>
                     <div className={styles.spinner}></div>
-                    <span>Caricamento in corso...</span>
+                    <span>Caricamento immagini...</span>
                   </div>
                 )}
               </div>

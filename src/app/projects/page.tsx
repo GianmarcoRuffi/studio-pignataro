@@ -143,30 +143,36 @@ const Projects: FC = () => {
             {visibleCards < visibleProjects.length && (
               <div className={styles.loadMoreSection} ref={loadMoreRef}>
                 {isLoadingMore && (
-                  <div className={styles.cardGrid}>
-                    {Array.from(
-                      {
-                        length: Math.min(
-                          6,
-                          visibleProjects.length - visibleCards
-                        ),
-                      },
-                      (_, index) => (
-                        <div
-                          key={`skeleton-more-${index}`}
-                          className={styles.cardSkeleton}
-                          style={{ animationDelay: `${index * 0.1}s` }}
-                        >
-                          <div className={styles.skeletonPlaceholder}></div>
-                          <div className={styles.skeletonText}>
-                            <div className={styles.skeletonTitle}></div>
-                            <div className={styles.skeletonDesc}></div>
-                            <div className={styles.skeletonDesc}></div>
+                  <>
+                    <div className={styles.loadingIndicator}>
+                      <div className={styles.spinner}></div>
+                      <span>Caricamento progetti...</span>
+                    </div>
+                    <div className={styles.cardGrid}>
+                      {Array.from(
+                        {
+                          length: Math.min(
+                            6,
+                            visibleProjects.length - visibleCards
+                          ),
+                        },
+                        (_, index) => (
+                          <div
+                            key={`skeleton-more-${index}`}
+                            className={styles.cardSkeleton}
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                          >
+                            <div className={styles.skeletonPlaceholder}></div>
+                            <div className={styles.skeletonText}>
+                              <div className={styles.skeletonTitle}></div>
+                              <div className={styles.skeletonDesc}></div>
+                              <div className={styles.skeletonDesc}></div>
+                            </div>
                           </div>
-                        </div>
-                      )
-                    )}
-                  </div>
+                        )
+                      )}
+                    </div>
+                  </>
                 )}
               </div>
             )}

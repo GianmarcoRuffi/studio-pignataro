@@ -173,6 +173,7 @@ const projects: Project[] = [
     imgSrc: "/Home/02.webp",
     description: 'Stand modulare per la "Regione Autonoma della Sardegna".',
     externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
+    imageFit: "contain",
     slug: "Glisbo",
     imgCredits:
       "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
