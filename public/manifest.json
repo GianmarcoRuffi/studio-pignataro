@@ -1,0 +1,10 @@
+{
+  "name": "Studio Architetto Gianluca Pignataro",
+  "short_name": "Architetto Pignataro",
+  "description": "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": []
+}

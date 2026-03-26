@@ -1,0 +1,94 @@
+@mixin cardGrid($minWidth: 500px, $gap: 3rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($minWidth, 1fr));
+  gap: $gap;
+  margin-bottom: $gap;
+}
+
+@mixin fadeInUp($delay: 0s, $duration: 0.6s) {
+  animation: fadeInUp $duration ease-out #{$delay} forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@mixin fadeIn($delay: 0s, $duration: 0.4s) {
+  animation: fadeIn $duration ease-out #{$delay} forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin containerMax($maxWidth: 1200px, $padding: 2rem) {
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: 0 $padding;
+}
+
+@mixin contentSection($maxWidth: 1200px, $padding: 2rem 2rem 4rem) {
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: $padding;
+}
+
+@mixin sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+@mixin sectionDescription {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@mixin glassMorphism($blur: 10px, $opacity: 0.1) {
+  backdrop-filter: blur($blur);
+  background: rgba(255, 255, 255, $opacity);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin cardHover($scale: 1.05, $shadow: 0 20px 40px rgba(0, 0, 0, 0.15)) {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: translateY(-8px) scale($scale);
+    box-shadow: $shadow;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

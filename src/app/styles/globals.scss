@@ -1,0 +1,181 @@
+@use "tailwindcss";
+
+@layer theme {
+  :root {
+    --color-primary: #373737;
+    --color-secondary: #2d3748;
+    --color-accent: #4a5568;
+
+    --color-text-primary: #373737;
+    --color-text-secondary: #000;
+    --color-text-tertiary: #6c757d;
+
+    --color-background-primary: #f7f7f7;
+    --color-background-light: #fff;
+    --color-background-dark: #f3f4f605;
+    --color-background-gray: #e6e9ee;
+    --color-background-light-gray: #f3f4f6;
+    --color-background-alt-gray: #e2e8f0;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+html,
+.layout-content {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .layout-content {
+    scroll-behavior: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+    background: transparent;
+  }
+}
+
+:root {
+  --viewport-height: 100vh;
+  --header-height: 70px;
+  --footer-height: 40px;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --footer-height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --footer-height: 30px;
+  }
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: var(--viewport-height);
+  max-height: var(--viewport-height);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .layout-wrapper {
+    height: var(--viewport-height);
+    min-height: var(--viewport-height);
+    max-height: var(--viewport-height);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--header-height);
+  padding: 2rem 1rem;
+  overflow: auto;
+  max-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+}
+
+@media (max-width: 768px) {
+  .layout-content {
+    height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    max-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0.5rem;
+  }
+}
+
+.layout-content.homepage {
+  height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+  max-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+  min-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height)
+  );
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .layout-content.homepage {
+    height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    max-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    min-height: calc(
+      var(--viewport-height) - var(--header-height) - var(--footer-height)
+    );
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .layout-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
