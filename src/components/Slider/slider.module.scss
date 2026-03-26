@@ -110,9 +110,19 @@
 }
 
 @media (max-width: 767px) {
-  .imageWrapper img {
-    object-fit: cover;
-    object-position: center top;
+  .imageWrapper {
+    background-color: #f5f5f5;
+
+    // Usa contain per mostrare l'intera immagine invece di tagliarla
+    img {
+      object-fit: contain;
+    }
+
+    // Sfondo blur per riempire gli spazi vuoti
+    &.withBackdrop::before {
+      opacity: 0.5;
+      filter: blur(25px);
+    }
   }
 
   .sliderButton {
