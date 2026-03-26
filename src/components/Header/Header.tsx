@@ -67,7 +67,7 @@ const Header: FC = () => {
               height={120}
               priority
               className={styles.logoImage}
-              style={{ height: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
           </Link>
         </div>
