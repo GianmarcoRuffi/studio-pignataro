@@ -9,10 +9,41 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
   z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .visible {
   display: block;
+}
+
+// Mobile: posiziona sopra il footer fisso
+@media (max-width: 768px) {
+  .scrollUpButton {
+    bottom: calc(var(--footer-height) + 15px);
+    right: 15px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrollUpButton {
+    bottom: calc(var(--footer-height) + 12px);
+    right: 12px;
+    padding: 8px 11px;
+    font-size: 0.85rem;
+  }
 }

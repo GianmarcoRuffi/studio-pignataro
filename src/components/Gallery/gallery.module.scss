@@ -247,10 +247,10 @@
 .spinner {
   width: 24px;
   height: 24px;
-  border: 2px solid #f3f3f3;
-  border-top: 2px solid var(--color-primary);
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid var(--color-text-secondary);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -260,6 +260,28 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.loadMoreTrigger {
+  margin: 2rem 0;
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .breadcrumbContainer {
