@@ -14,7 +14,7 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
-import Loader from "../Loader/Loader";
+import { useSplash } from "../../context/SplashContext";
 import styles from "./slider.module.scss";
 import { SliderProps } from "../../models/models";
 
@@ -23,6 +23,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isCookieVisible, setIsCookieVisible] = useState<boolean>(false);
   const slideContainerRef = useRef<HTMLDivElement | null>(null);
+  const { isSplashComplete } = useSplash();
 
   useEffect(() => {
     const handleCookieVisibility = (e: Event) => {
@@ -50,10 +51,13 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     }
   }, [projects]);
 
-  const { isLoading, progress } = useMultiImageLoader(imageSources, {
+  const { isLoading } = useMultiImageLoader(imageSources, {
     timeout: 6000,
     onComplete: preloadRemainingImages,
   });
+  
+  // Consider loading complete once splash is done OR images are loaded
+  const effectiveLoading = !isSplashComplete && isLoading;
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -68,7 +72,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!isHovered && !isLoading && !isCookieVisible) {
+    if (!isHovered && !effectiveLoading && !isCookieVisible && isSplashComplete) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
       }, 3000);
@@ -77,7 +81,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered, isLoading, projects.length, isCookieVisible]);
+  }, [isHovered, effectiveLoading, projects.length, isCookieVisible, isSplashComplete]);
 
   useEffect(() => {
     if (slideContainerRef.current !== null) {
@@ -92,21 +96,13 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       onMouseLeave={() => setIsHovered(false)}
       aria-label="Slider progetti"
     >
-      {isLoading && (
-        <Loader
-          message={`Caricamento galleria... ${Math.round(progress)}%`}
-          size="large"
-          overlay={true}
-        />
-      )}
-
       <button
         type="button"
         className={`${styles.prev} ${styles.sliderButton} ${
-          isHovered && !isLoading ? styles.visible : styles.hidden
+          isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={prevSlide}
-        disabled={isLoading}
+        disabled={effectiveLoading}
         aria-label="Slide precedente"
       >
         <FontAwesomeIcon icon={faAngleLeft} />
@@ -114,7 +110,10 @@ const Slider: FC<SliderProps> = ({ projects }) => {
 
       <div className={styles["slide-container"]} ref={slideContainerRef}>
         {projects.map((project, projectIndex) => {
-          const isContain = project.imageFit === "contain";
+          // Usa il valore specificato nei dati, default a "cover" per coprire tutta la superficie
+          // Solo le immagini con imageFit: "contain" esplicitamente impostato useranno contain
+          const effectiveImageFit = project.imageFit ?? "cover";
+          const isContain = effectiveImageFit === "contain";
           const wrapperStyle = isContain
             ? ({ "--slide-bg": `url(${project.imgSrc})` } as CSSProperties)
             : undefined;
@@ -123,7 +122,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
             height: "100%",
             maxWidth: "100%",
             maxHeight: "100%",
-            objectFit: project.imageFit ?? "cover",
+            objectFit: effectiveImageFit,
             objectPosition: project.imagePosition ?? "center",
           } as CSSProperties;
 
@@ -143,13 +142,14 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                     src={project.imgSrc}
                     alt={`Slide ${projectIndex + 1}`}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                     quality={95}
                     style={imageStyle}
                     priority={projectIndex <= 2}
                     loading={projectIndex > 2 ? "lazy" : "eager"}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    unoptimized
                   />
                 </div>
               </Link>
@@ -161,10 +161,10 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       <button
         type="button"
         className={`${styles.next} ${styles.sliderButton} ${
-          isHovered && !isLoading ? styles.visible : styles.hidden
+          isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={nextSlide}
-        disabled={isLoading}
+        disabled={effectiveLoading}
         aria-label="Slide successivo"
       >
         <FontAwesomeIcon icon={faAngleRight} />

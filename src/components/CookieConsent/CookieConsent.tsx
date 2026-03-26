@@ -3,23 +3,29 @@
 import { FC, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCookie } from "@fortawesome/free-solid-svg-icons";
+import { useSplash } from "../../context/SplashContext";
 import styles from "./CookieConsent.module.scss";
 
 const CookieConsent: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { isSplashComplete } = useSplash();
 
   useEffect(() => {
+    // Only show cookie consent after splash screen is complete
+    if (!isSplashComplete) return;
+
     try {
       const consent = localStorage.getItem("cookie-consent");
       if (!consent) {
-        setTimeout(() => setIsVisible(true), 1000);
+        // Delay showing cookie consent a bit after splash completes
+        setTimeout(() => setIsVisible(true), 500);
       }
     } catch (e) {
       console.warn("localStorage not available:", e);
-      setTimeout(() => setIsVisible(true), 1000);
+      setTimeout(() => setIsVisible(true), 500);
     }
-  }, []);
+  }, [isSplashComplete]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

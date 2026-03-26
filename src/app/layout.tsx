@@ -10,6 +10,8 @@ import CookieConsent from "../components/CookieConsent/CookieConsent";
 import OptionalScripts from "../components/OptionalScripts/OptionalScripts";
 import StructuredData from "../components/StructuredData/StructuredData";
 import { RootLayoutProps } from "../models/models";
+import { SplashProvider } from "../context/SplashContext";
+import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
 
 config.autoAddCss = false;
 
@@ -79,14 +81,18 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="it" className={myFont.className} data-scroll-behavior="smooth">
       <body>
-        <StructuredData />
-        <ScrollToTop />
-        <div className="layout-wrapper">
-          <HeaderHeightManager>{children}</HeaderHeightManager>
-          <Footer />
-        </div>
-        <OptionalScripts />
-        <CookieConsent />
+        <SplashProvider>
+          <SplashWrapper>
+            <StructuredData />
+            <ScrollToTop />
+            <div className="layout-wrapper">
+              <HeaderHeightManager>{children}</HeaderHeightManager>
+              <Footer />
+            </div>
+            <OptionalScripts />
+            <CookieConsent />
+          </SplashWrapper>
+        </SplashProvider>
       </body>
     </html>
   );

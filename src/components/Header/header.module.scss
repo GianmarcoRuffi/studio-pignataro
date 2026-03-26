@@ -38,8 +38,8 @@
 .scrolledLogoContainer {
   background: rgba(255, 255, 255, 0.15);
 
-  img {
-    height: 50px;
+  .logoImage {
+    height: 50px !important;
     transition: height 0.3s ease;
   }
 }
@@ -55,13 +55,21 @@
     rgba(255, 255, 255, 0.1) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
+}
 
-  img {
-    height: 60px;
-    max-width: 100%;
-    object-fit: contain;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+.logoImage {
+  height: 60px !important;
+  width: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.logoContainer {
+  &:hover .logoImage {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
   }
 
   &::before {
@@ -94,11 +102,6 @@
 
     &::before {
       opacity: 1;
-    }
-
-    img {
-      transform: scale(1.05);
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
     }
   }
 }
@@ -665,5 +668,40 @@
 
   .scrolledLogoContainer img {
     height: 52px;
+  }
+
+  // Menu fullscreen piu' compatto su mobile piccoli
+  .fullscreenNavList {
+    .navItem {
+      margin: 1rem 0;
+    }
+  }
+}
+
+// Tablet e mobile grandi: riduci margini menu
+@media (max-width: 768px) {
+  .fullscreenNavList {
+    .navItem {
+      margin: 1.25rem 0;
+    }
+  }
+
+  .navLink {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+  }
+}
+
+// Mobile landscape e schermi bassi
+@media (max-height: 600px) {
+  .fullscreenNavList {
+    .navItem {
+      margin: 0.75rem 0;
+    }
+  }
+
+  .navLink {
+    font-size: 1.8rem;
+    padding: 0.75rem 1.5rem;
   }
 }
