@@ -65,6 +65,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
           height={133}
           priority
           className={styles.logo}
+          style={{ width: "auto", height: "auto" }}
         />
       </div>
     </div>

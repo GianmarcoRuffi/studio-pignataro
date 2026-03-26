@@ -18,12 +18,30 @@ import { useSplash } from "../../context/SplashContext";
 import styles from "./slider.module.scss";
 import { SliderProps } from "../../models/models";
 
+// Hook per rilevare se siamo su mobile
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return isMobile;
+};
+
 const Slider: FC<SliderProps> = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isCookieVisible, setIsCookieVisible] = useState<boolean>(false);
   const slideContainerRef = useRef<HTMLDivElement | null>(null);
   const { isSplashComplete } = useSplash();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleCookieVisibility = (e: Event) => {
@@ -110,7 +128,10 @@ const Slider: FC<SliderProps> = ({ projects }) => {
 
       <div className={styles["slide-container"]} ref={slideContainerRef}>
         {projects.map((project, projectIndex) => {
-          const isContain = project.imageFit === "contain";
+          // Su mobile usa sempre contain per mostrare l'intera immagine
+          // Su desktop usa il valore specificato o contain come default
+          const effectiveImageFit = isMobile ? "contain" : (project.imageFit ?? "contain");
+          const isContain = effectiveImageFit === "contain";
           const wrapperStyle = isContain
             ? ({ "--slide-bg": `url(${project.imgSrc})` } as CSSProperties)
             : undefined;
@@ -119,7 +140,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
             height: "100%",
             maxWidth: "100%",
             maxHeight: "100%",
-            objectFit: project.imageFit ?? "cover",
+            objectFit: effectiveImageFit,
             objectPosition: project.imagePosition ?? "center",
           } as CSSProperties;
 
@@ -139,13 +160,14 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                     src={project.imgSrc}
                     alt={`Slide ${projectIndex + 1}`}
                     fill
-                    sizes="100vw"
-                    quality={95}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                    quality={100}
                     style={imageStyle}
                     priority={projectIndex <= 2}
                     loading={projectIndex > 2 ? "lazy" : "eager"}
                     placeholder="blur"
                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    unoptimized
                   />
                 </div>
               </Link>
