@@ -58,10 +58,11 @@
     background-image: var(--slide-bg);
     background-size: cover;
     background-position: center;
-    filter: blur(18px);
-    transform: scale(1.05);
-    opacity: 0.45;
+    filter: blur(40px);
+    transform: scale(1.15);
+    opacity: 0.7;
     pointer-events: none;
+    z-index: 0;
   }
 
   img {
