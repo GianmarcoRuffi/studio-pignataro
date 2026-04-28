@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
 import { bioData } from "../../data/bioData";
 import { Link as BioLink } from "../../models/models";
 
 export default function Bio() {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const isImageLoaded = useImageLoad(bioData.image);
 
   const renderProjectLinks = (links: BioLink[] | undefined) => {
     if (!links || links.length === 0) return null;
@@ -47,8 +47,6 @@ export default function Bio() {
               className={`${styles.profileImg} ${
                 isImageLoaded ? styles.loaded : styles.loading
               }`}
-              onLoad={() => setIsImageLoaded(true)}
-              onError={() => setIsImageLoaded(true)}
             />
           </div>
           <div className={styles.profileInfo}>

@@ -29,7 +29,6 @@
   display: block;
 }
 
-// Mobile: posiziona sopra il footer fisso
 @media (max-width: 768px) {
   .scrollUpButton {
     bottom: calc(var(--footer-height) + 15px);

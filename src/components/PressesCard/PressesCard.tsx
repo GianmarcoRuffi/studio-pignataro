@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import { useImageLoad } from "../../hooks/useImageLoad";
 import { PressesCardProps } from "../../models/models";
 import styles from "./pressesCard.module.scss";
 
@@ -10,25 +11,7 @@ const PressesCard: FC<PressesCardProps> = ({
   source,
   date,
 }) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsImageLoaded(false);
-
-    const img = new window.Image();
-    img.onload = () => setIsImageLoaded(true);
-    img.onerror = () => setIsImageLoaded(true);
-    img.src = imageSource;
-
-    if (img.complete) {
-      setIsImageLoaded(true);
-    }
-
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [imageSource]);
+  const isImageLoaded = useImageLoad(imageSource);
 
   const handleImageClick = () => {
     window.open(imageSource, "_blank", "noopener,noreferrer");
@@ -66,8 +49,6 @@ const PressesCard: FC<PressesCardProps> = ({
           className={`${styles.cardImage} ${
             isImageLoaded ? styles.loaded : styles.loading
           }`}
-          onLoad={() => setIsImageLoaded(true)}
-          onError={() => setIsImageLoaded(true)}
         />
         <div className={styles.zoomOverlay}>
           <span className={styles.zoomIcon} aria-hidden="true">

@@ -670,7 +670,6 @@
     height: 52px;
   }
 
-  // Menu fullscreen piu' compatto su mobile piccoli
   .fullscreenNavList {
     .navItem {
       margin: 1rem 0;
@@ -678,7 +677,6 @@
   }
 }
 
-// Tablet e mobile grandi: riduci margini menu
 @media (max-width: 768px) {
   .fullscreenNavList {
     .navItem {
@@ -692,7 +690,6 @@
   }
 }
 
-// Mobile landscape e schermi bassi
 @media (max-height: 600px) {
   .fullscreenNavList {
     .navItem {

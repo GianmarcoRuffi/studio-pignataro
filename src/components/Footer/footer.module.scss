@@ -101,8 +101,6 @@
   align-items: center;
 }
 
-// Tablet e dispositivi intermedi (iPad Pro, iPad Air, Nest Hub, ecc.)
-// Mostra solo copyright come su mobile per evitare che il testo sfordi
 @media (max-width: 1024px) {
   .footerContainer {
     padding: 0.5rem 1rem;

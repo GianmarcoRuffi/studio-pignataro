@@ -56,7 +56,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     onComplete: preloadRemainingImages,
   });
   
-  // Consider loading complete once splash is done OR images are loaded
   const effectiveLoading = !isSplashComplete && isLoading;
 
   const nextSlide = () => {
@@ -110,8 +109,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
 
       <div className={styles["slide-container"]} ref={slideContainerRef}>
         {projects.map((project, projectIndex) => {
-          // Usa il valore specificato nei dati, default a "cover" per coprire tutta la superficie
-          // Solo le immagini con imageFit: "contain" esplicitamente impostato useranno contain
           const effectiveImageFit = project.imageFit ?? "cover";
           const isContain = effectiveImageFit === "contain";
           const wrapperStyle = isContain

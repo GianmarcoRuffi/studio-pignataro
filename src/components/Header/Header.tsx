@@ -7,6 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./header.module.scss";
 
+const NAV_ITEMS = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Progetti" },
+  { href: "/presses", label: "Pubblicazioni" },
+  { href: "/bio", label: "Chi sono" },
+  { href: "/contacts", label: "Contatti" },
+] as const;
+
 const Header: FC = () => {
   const pathname = usePathname();
   const isActive = pathname === "/";
@@ -80,21 +88,14 @@ const Header: FC = () => {
 
         <div className={styles.navbar}>
           <ul className={styles.navList}>
-            <li className={pathname === "/" ? styles.active : ""}>
-              <Link href="/">Home</Link>
-            </li>
-            <li className={pathname === "/projects" ? styles.active : ""}>
-              <Link href="/projects">Progetti</Link>
-            </li>
-            <li className={pathname === "/presses" ? styles.active : ""}>
-              <Link href="/presses">Pubblicazioni</Link>
-            </li>
-            <li className={pathname === "/bio" ? styles.active : ""}>
-              <Link href="/bio">Chi sono</Link>
-            </li>
-            <li className={pathname === "/contacts" ? styles.active : ""}>
-              <Link href="/contacts">Contatti</Link>
-            </li>
+            {NAV_ITEMS.map((item) => (
+              <li
+                key={item.href}
+                className={pathname === item.href ? styles.active : ""}
+              >
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -126,41 +127,18 @@ const Header: FC = () => {
 
           <nav className={styles.fullscreenNav}>
             <ul className={styles.fullscreenNavList}>
-              <li
-                className={`${styles.navItem} ${pathname === "/" ? styles.active : ""}`}
-              >
-                <Link href="/" className={styles.navLink}>
-                  <span className={styles.navText}>Home</span>
-                </Link>
-              </li>
-              <li
-                className={`${styles.navItem} ${pathname === "/projects" ? styles.active : ""}`}
-              >
-                <Link href="/projects" className={styles.navLink}>
-                  <span className={styles.navText}>Progetti</span>
-                </Link>
-              </li>
-              <li
-                className={`${styles.navItem} ${pathname === "/presses" ? styles.active : ""}`}
-              >
-                <Link href="/presses" className={styles.navLink}>
-                  <span className={styles.navText}>Pubblicazioni</span>
-                </Link>
-              </li>
-              <li
-                className={`${styles.navItem} ${pathname === "/bio" ? styles.active : ""}`}
-              >
-                <Link href="/bio" className={styles.navLink}>
-                  <span className={styles.navText}>Chi sono</span>
-                </Link>
-              </li>
-              <li
-                className={`${styles.navItem} ${pathname === "/contacts" ? styles.active : ""}`}
-              >
-                <Link href="/contacts" className={styles.navLink}>
-                  <span className={styles.navText}>Contatti</span>
-                </Link>
-              </li>
+              {NAV_ITEMS.map((item) => (
+                <li
+                  key={`mobile-${item.href}`}
+                  className={`${styles.navItem} ${
+                    pathname === item.href ? styles.active : ""
+                  }`}
+                >
+                  <Link href={item.href} className={styles.navLink}>
+                    <span className={styles.navText}>{item.label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>

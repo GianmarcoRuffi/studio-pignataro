@@ -35,7 +35,6 @@ export const SplashProvider: FC<SplashProviderProps> = ({ children }) => {
   const [shouldShowSplash, setShouldShowSplash] = useState(true);
 
   useEffect(() => {
-    // Check on mount if splash was already shown in this session
     const splashShown = sessionStorage.getItem("splash-shown");
     if (splashShown) {
       setIsSplashComplete(true);

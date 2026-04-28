@@ -49,3 +49,29 @@ export function generateVanchigliaPaths(
 
   return images;
 }
+
+/**
+ * Preload a single image
+ * @param src - Image source URL
+ * @returns Promise that resolves when image is loaded or fails
+ */
+export function preloadImage(src: string): Promise<void> {
+  return new Promise<void>((resolve) => {
+    const img = new window.Image();
+    let isSettled = false;
+
+    const settle = () => {
+      if (isSettled) return;
+      isSettled = true;
+      resolve();
+    };
+
+    img.onload = settle;
+    img.onerror = settle;
+    img.src = src;
+
+    if (img.complete) {
+      settle();
+    }
+  });
+}

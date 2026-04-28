@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
 import { contactsData } from "../../data/contactsData";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./contacts.module.scss";
 
 export default function Contacts() {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const isImageLoaded = useImageLoad(contactsData.image);
 
   return (
     <div className={styles.contactsContainer}>
@@ -25,8 +25,6 @@ export default function Contacts() {
               className={`${styles.studioImg} ${
                 isImageLoaded ? styles.loaded : styles.loading
               }`}
-              onLoad={() => setIsImageLoaded(true)}
-              onError={() => setIsImageLoaded(true)}
             />
           </div>
           <div className={styles.studioInfo}>

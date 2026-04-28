@@ -8,11 +8,14 @@ import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
 import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
+import { preloadImage } from "../../utils/imageUtils";
+import { LOADING } from "../../constants";
+import CardSkeleton from "../../components/CardSkeleton/CardSkeleton";
 import styles from "./projects.module.scss";
 import { Project } from "../../models/models";
 
 const Projects: FC = () => {
-  const [visibleCards, setVisibleCards] = useState(6);
+  const [visibleCards, setVisibleCards] = useState<number>(LOADING.INITIAL_ITEMS);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const skeletonCount = useResponsiveSkeletonCount();
 
@@ -21,11 +24,11 @@ const Projects: FC = () => {
     []
   );
   const initialImages = useMemo(
-    () => visibleProjects.slice(0, 6).map((project) => project.imgSrc),
+    () => visibleProjects.slice(0, LOADING.INITIAL_ITEMS).map((project) => project.imgSrc),
     [visibleProjects]
   );
   const preloadRemainingImages = useCallback(() => {
-    visibleProjects.slice(6).forEach((project) => {
+    visibleProjects.slice(LOADING.INITIAL_ITEMS).forEach((project) => {
       const img = document.createElement("img");
       img.src = project.imgSrc;
     });
@@ -36,34 +39,10 @@ const Projects: FC = () => {
     onComplete: preloadRemainingImages,
   });
 
-  const preloadImage = useCallback((src: string) => {
-    return new Promise<void>((resolve) => {
-      const img = new window.Image();
-      let isSettled = false;
-
-      const settle = () => {
-        if (isSettled) {
-          return;
-        }
-
-        isSettled = true;
-        resolve();
-      };
-
-      img.onload = settle;
-      img.onerror = settle;
-      img.src = src;
-
-      if (img.complete) {
-        settle();
-      }
-    });
-  }, []);
-
   const loadMoreCards = useCallback(() => {
     if (isLoadingMore || visibleCards >= visibleProjects.length) return;
 
-    const nextVisibleCards = Math.min(visibleCards + 6, visibleProjects.length);
+    const nextVisibleCards = Math.min(visibleCards + LOADING.ITEMS_PER_LOAD, visibleProjects.length);
     const nextImageSources = visibleProjects
       .slice(visibleCards, nextVisibleCards)
       .map((project) => project.imgSrc);
@@ -103,20 +82,15 @@ const Projects: FC = () => {
       <div className={styles.contentSection}>
         {isLoading ? (
           <div className={styles.cardGrid}>
-            {Array.from({ length: skeletonCount }, (_, index) => (
-              <div
-                key={`skeleton-${index}`}
-                className={styles.cardSkeleton}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={styles.skeletonPlaceholder}></div>
-                <div className={styles.skeletonText}>
-                  <div className={styles.skeletonTitle}></div>
-                  <div className={styles.skeletonDesc}></div>
-                  <div className={styles.skeletonDesc}></div>
-                </div>
-              </div>
-            ))}
+            <CardSkeleton
+              count={skeletonCount}
+              descriptionLines={3}
+              className={styles.cardSkeleton}
+              placeholderClassName={styles.skeletonPlaceholder}
+              textClassName={styles.skeletonText}
+              titleClassName={styles.skeletonTitle}
+              descClassName={styles.skeletonDesc}
+            />
           </div>
         ) : (
           <>
@@ -149,28 +123,15 @@ const Projects: FC = () => {
                       <span>Caricamento progetti...</span>
                     </div>
                     <div className={styles.cardGrid}>
-                      {Array.from(
-                        {
-                          length: Math.min(
-                            6,
-                            visibleProjects.length - visibleCards
-                          ),
-                        },
-                        (_, index) => (
-                          <div
-                            key={`skeleton-more-${index}`}
-                            className={styles.cardSkeleton}
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                          >
-                            <div className={styles.skeletonPlaceholder}></div>
-                            <div className={styles.skeletonText}>
-                              <div className={styles.skeletonTitle}></div>
-                              <div className={styles.skeletonDesc}></div>
-                              <div className={styles.skeletonDesc}></div>
-                            </div>
-                          </div>
-                        )
-                      )}
+                      <CardSkeleton
+                        count={Math.min(LOADING.ITEMS_PER_LOAD, visibleProjects.length - visibleCards)}
+                        descriptionLines={3}
+                        className={styles.cardSkeleton}
+                        placeholderClassName={styles.skeletonPlaceholder}
+                        textClassName={styles.skeletonText}
+                        titleClassName={styles.skeletonTitle}
+                        descClassName={styles.skeletonDesc}
+                      />
                     </div>
                   </>
                 )}

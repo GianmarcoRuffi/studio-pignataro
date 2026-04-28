@@ -16,23 +16,17 @@ const SplashScreen: FC<SplashScreenProps> = ({
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Check if splash was already shown in this session
     const splashShown = sessionStorage.getItem("splash-shown");
     
     if (splashShown) {
-      // Skip splash if already shown
       onComplete();
       return;
     }
 
-    // Show splash for minimum time then exit
     const timer = setTimeout(() => {
       setIsExiting(true);
-      
-      // Mark splash as shown for this session
       sessionStorage.setItem("splash-shown", "true");
       
-      // Wait for exit animation to complete
       setTimeout(() => {
         onComplete();
       }, 600);
@@ -41,7 +35,6 @@ const SplashScreen: FC<SplashScreenProps> = ({
     return () => clearTimeout(timer);
   }, [minDisplayTime, onComplete]);
 
-  // Don't render if already shown
   const [shouldRender, setShouldRender] = useState(true);
   
   useEffect(() => {

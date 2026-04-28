@@ -1,7 +1,8 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
+import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./project-card.module.scss";
 import { ProjectCardProps } from "../../models/models";
 
@@ -10,29 +11,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   imageSource,
   description,
 }) => {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(false);
-
-    const preloader = new window.Image();
-    preloader.onload = () => setLoaded(true);
-    preloader.onerror = () => setLoaded(true);
-    preloader.src = imageSource;
-
-    if (preloader.complete) {
-      setLoaded(true);
-    }
-
-    return () => {
-      preloader.onload = null;
-      preloader.onerror = null;
-    };
-  }, [imageSource]);
-
-  const handleImageLoad = () => {
-    setLoaded(true);
-  };
+  const loaded = useImageLoad(imageSource);
 
   return (
     <article className={styles.projectCard}>
@@ -53,7 +32,6 @@ const ProjectCard: FC<ProjectCardProps> = ({
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
           className={`${styles.cardImage} ${loaded ? styles.loaded : styles.loading}`}
-          onLoad={handleImageLoad}
         />
         <div className={styles.overlay}>
           <span className={styles.viewProject}>Visualizza Progetto</span>

@@ -12,13 +12,11 @@ const CookieConsent: FC = () => {
   const { isSplashComplete } = useSplash();
 
   useEffect(() => {
-    // Only show cookie consent after splash screen is complete
     if (!isSplashComplete) return;
 
     try {
       const consent = localStorage.getItem("cookie-consent");
       if (!consent) {
-        // Delay showing cookie consent a bit after splash completes
         setTimeout(() => setIsVisible(true), 500);
       }
     } catch (e) {

@@ -1,135 +1,53 @@
 "use client";
 
-import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
+import { cookiePolicyData, cookieDisclaimerNote } from "../../data/cookiePolicyData";
 import styles from "./cookie.module.scss";
 
 export default function CookiePolicy() {
   return (
-    <div className={styles.cookieContainer}>
-      <div className={styles.headerSection}>
-        <div className={styles.headerContent}>
-          <h1 className={styles.pageTitle}>Cookie Policy</h1>
-          <p className={styles.pageSubtitle}>
-            Informativa sull'utilizzo dei cookie
-          </p>
-          <p className={styles.lastUpdated}>
-            Ultimo aggiornamento: {new Date().toLocaleDateString("it-IT")}
-          </p>
-        </div>
-      </div>
+    <PolicyLayout
+      title="Cookie Policy"
+      subtitle="Informativa sull'utilizzo dei cookie"
+    >
+      {cookiePolicyData.map((section) => (
+        <section key={section.id} className={styles.section}>
+          <h2>{section.title}</h2>
+          {typeof section.content === "string" && section.content && (
+            <p>{section.content}</p>
+          )}
+          {Array.isArray(section.content) &&
+            section.content.map((paragraph, idx) => (
+              <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))}
 
-      <div className={styles.contentSection}>
-        <div className={styles.cookieContent}>
-          <section className={styles.section}>
-            <h2>1. Cosa sono i cookie</h2>
-            <p>
-              I cookie sono piccoli file di testo che vengono memorizzati sul
-              dispositivo dell'utente quando visita un sito web. Permettono al
-              sito di ricordare le azioni e preferenze dell'utente per un certo
-              periodo di tempo.
-            </p>
-          </section>
+          {section.subsections?.map((subsection, idx) => (
+            <div key={idx}>
+              <h3>{subsection.title}</h3>
+              <p>{subsection.content}</p>
+              {subsection.list && (
+                <ul>
+                  {subsection.list.items.map((item, itemIdx) => (
+                    <li key={itemIdx} dangerouslySetInnerHTML={{ __html: item }} />
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
 
-          <section className={styles.section}>
-            <h2>2. Tipologie di cookie utilizzati</h2>
-
-            <h3>Cookie tecnici necessari</h3>
-            <p>
-              Questi cookie sono essenziali per il corretto funzionamento del
-              sito:
-            </p>
+          {section.list && (
             <ul>
-              <li>
-                <strong>Cookie di sessione:</strong> mantengono la sessione di
-                navigazione
-              </li>
-              <li>
-                <strong>Cookie di preferenze:</strong> ricordano le scelte
-                dell'utente
-              </li>
-              <li>
-                <strong>Cookie di sicurezza:</strong> proteggono da attacchi
-                informatici
-              </li>
+              {section.list.items.map((item, idx) => (
+                <li key={idx} dangerouslySetInnerHTML={{ __html: item }} />
+              ))}
             </ul>
+          )}
 
-            <h3>Cookie di analisi</h3>
-            <p>
-              Utilizziamo Google Analytics per raccogliere informazioni anonime
-              su:
-            </p>
-            <ul>
-              <li>Numero di visitatori del sito</li>
-              <li>Pagine più visitate</li>
-              <li>Tempo di permanenza sul sito</li>
-              <li>Dispositivi e browser utilizzati</li>
-            </ul>
-          </section>
+          {section.id === "gestione" && (
+            <p dangerouslySetInnerHTML={{ __html: cookieDisclaimerNote }} />
+          )}
 
-          <section className={styles.section}>
-            <h2>3. Cookie di terze parti</h2>
-            <p>
-              Il sito può utilizzare servizi di terze parti che impostano i
-              propri cookie:
-            </p>
-            <ul>
-              <li>
-                <strong>Google Analytics:</strong> analisi del traffico web
-              </li>
-              <li>
-                <strong>Google Fonts:</strong> caricamento dei font
-                personalizzati
-              </li>
-              <li>
-                <strong>FontAwesome:</strong> icone e simboli grafici
-              </li>
-            </ul>
-          </section>
-
-          <section className={styles.section}>
-            <h2>4. Gestione dei cookie</h2>
-            <p>
-              Puoi gestire o disabilitare i cookie attraverso le impostazioni
-              del tuo browser:
-            </p>
-            <ul>
-              <li>
-                <strong>Chrome:</strong> Impostazioni → Privacy e sicurezza →
-                Cookie
-              </li>
-              <li>
-                <strong>Firefox:</strong> Impostazioni → Privacy e sicurezza →
-                Cookie
-              </li>
-              <li>
-                <strong>Safari:</strong> Preferenze → Privacy → Cookie
-              </li>
-              <li>
-                <strong>Edge:</strong> Impostazioni → Privacy → Cookie
-              </li>
-            </ul>
-            <p>
-              <strong>Nota:</strong> La disabilitazione dei cookie tecnici
-              potrebbe compromettere il corretto funzionamento del sito.
-            </p>
-          </section>
-
-          <section className={styles.section}>
-            <h2>5. Consenso</h2>
-            <p>
-              L'utilizzo del sito implica l'accettazione dei cookie tecnici
-              necessari. Per i cookie di analisi e marketing, il consenso viene
-              richiesto attraverso il banner informativo.
-            </p>
-            <p>
-              Il consenso può essere revocato in qualsiasi momento modificando
-              le impostazioni del browser o contattandoci all'indirizzo:{" "}
-              <a href="mailto:info@archpignataro.it">info@archpignataro.it</a>
-            </p>
-          </section>
-
-          <section className={styles.section}>
-            <h2>6. Cookie utilizzati nel dettaglio</h2>
+          {section.cookieTable && (
             <div className={styles.cookieTable}>
               <div className={styles.tableHeader}>
                 <span>Nome</span>
@@ -137,59 +55,47 @@ export default function CookiePolicy() {
                 <span>Durata</span>
                 <span>Tipo</span>
               </div>
-              <div className={styles.tableRow}>
-                <span>cookie-consent</span>
-                <span>Memorizza il consenso dell'utente</span>
-                <span>1 anno</span>
-                <span>Tecnico</span>
-              </div>
-              <div className={styles.tableRow}>
-                <span>_ga</span>
-                <span>Google Analytics - identificazione utenti</span>
-                <span>2 anni</span>
-                <span>Analisi</span>
-              </div>
-              <div className={styles.tableRow}>
-                <span>_ga_*</span>
-                <span>Google Analytics - ID della proprietà</span>
-                <span>2 anni</span>
-                <span>Analisi</span>
-              </div>
+              {section.cookieTable.map((row, idx) => (
+                <div key={idx} className={styles.tableRow}>
+                  <span>{row.name}</span>
+                  <span>{row.purpose}</span>
+                  <span>{row.duration}</span>
+                  <span>{row.type}</span>
+                </div>
+              ))}
             </div>
-          </section>
+          )}
 
-          <section className={styles.section}>
-            <h2>7. Contatti</h2>
-            <p>
-              Per qualsiasi domanda riguardante questa Cookie Policy o per
-              esercitare i tuoi diritti, contattaci:
-            </p>
+          {section.contactInfo && (
             <div className={styles.contactInfo}>
               <p>
                 <strong>Email:</strong>{" "}
-                <a href="mailto:glpignataro@yahoo.it">glpignataro@yahoo.it</a>
+                <a href={`mailto:${section.contactInfo.email}`}>
+                  {section.contactInfo.email}
+                </a>
               </p>
               <p>
                 <strong>Telefono:</strong>{" "}
-                <a href="tel:+39070305880">070 305880</a>
+                <a href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}>
+                  {section.contactInfo.phone}
+                </a>
               </p>
               <p>
                 <strong>Cellulare:</strong>{" "}
-                <a href="tel:+393485189797">348 5189797</a>
+                <a href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}>
+                  {section.contactInfo.mobile}
+                </a>
               </p>
               <p>
-                <strong>Indirizzo:</strong> Via Arrigo Solmi 36, 09129 Cagliari
-                (CA)
+                <strong>Indirizzo:</strong> {section.contactInfo.address}
               </p>
               <p>
-                <strong>P.IVA:</strong> 02783940923
+                <strong>P.IVA:</strong> {section.contactInfo.vat}
               </p>
             </div>
-          </section>
-        </div>
-      </div>
-
-      <ScrollUpButton />
-    </div>
+          )}
+        </section>
+      ))}
+    </PolicyLayout>
   );
 }
