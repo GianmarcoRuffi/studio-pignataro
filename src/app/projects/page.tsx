@@ -55,7 +55,7 @@ const Projects: FC = () => {
         setIsLoadingMore(false);
       }
     );
-  }, [isLoadingMore, preloadImage, visibleCards, visibleProjects]);
+  }, [isLoadingMore, visibleCards, visibleProjects]);
 
   const hasMoreCards = visibleCards < visibleProjects.length;
   const loadMoreRef = useInfiniteLoadTrigger({

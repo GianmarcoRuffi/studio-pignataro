@@ -75,7 +75,7 @@ export default function Presses() {
         setIsLoadingMore(false);
       }
     );
-  }, [filteredData, isLoadingMore, preloadImage, visibleCards]);
+  }, [filteredData, isLoadingMore, visibleCards]);
 
   const hasMoreCards = visibleCards < filteredData.length;
   const loadMoreRef = useInfiniteLoadTrigger({
