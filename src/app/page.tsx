@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
 import Slider from "../components/Slider/Slider";
-import projects from "../data/data";
+import projects from "../data/projectsData";
 import styles from "./styles/page.home.module.scss";
 
 const Home: FC = () => {

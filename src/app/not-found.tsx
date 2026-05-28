@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { notFoundContent } from "../data/data";
+import { notFoundContent } from "./not-found.data";
 import styles from "./styles/not-found.module.scss";
 
 export const metadata: Metadata = {

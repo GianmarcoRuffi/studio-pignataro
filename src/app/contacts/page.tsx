@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { contactsData } from "../../data/contactsData";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./contacts.module.scss";
+import { contactsData } from "./data";
 
 export default function Contacts() {
   const isImageLoaded = useImageLoad(contactsData.image);
@@ -80,7 +80,7 @@ export default function Contacts() {
                 <div className={styles.contactItem}>
                   <span className={styles.contactLabel}>P.IVA:</span>
                   <span className={styles.contactValue}>
-                    {contactsData.p_iva}
+                    {contactsData.vatNumber}
                   </span>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function Contacts() {
           <h2 className={styles.sectionTitle}>Dove Siamo</h2>
           <div className={styles.mapContainer}>
             <iframe
-              src={contactsData.embed_data}
+              src={contactsData.embedData}
               style={{ border: 0 }}
               allowFullScreen={true}
               loading="lazy"

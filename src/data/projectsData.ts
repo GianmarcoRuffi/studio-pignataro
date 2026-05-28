@@ -18,12 +18,6 @@ const linkNames: Record<string, string> = {
     "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
 };
 
-export const notFoundContent = {
-  title: "Siamo spiacenti, la pagina che hai cercato non esiste.",
-  ctaLabel: "Clicca qui per tornare alla home",
-  ctaHref: "/",
-} as const;
-
 const projects: Project[] = [
   {
     projectName: "Quartiere Vanchiglia",

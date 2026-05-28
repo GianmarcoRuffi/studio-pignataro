@@ -18,10 +18,6 @@ interface ExternalLink {
   url: string;
 }
 
-interface HomeProps {
-  projects: Project[];
-}
-
 interface ProjectBio {
   description: string;
   links?: Link[];
@@ -55,19 +51,6 @@ interface LinkButtonProps {
   rel?: string;
 }
 
-interface Metadata {
-  title: string;
-  site_name: string;
-  description: string;
-  locale: string;
-  url: string;
-  keywords: string;
-}
-
-interface HeadProps {
-  children?: ReactNode;
-}
-
 interface RootLayoutProps {
   children: ReactNode;
 }
@@ -75,8 +58,6 @@ interface RootLayoutProps {
 interface HeaderHeightManagerProps {
   children: ReactNode;
 }
-
-interface HeaderProps {}
 
 interface Experience {
   title: string;
@@ -108,15 +89,20 @@ interface SocialLinks {
   facebook: string;
 }
 
-interface ContactsData {
-  image: string;
+interface SharedContactsData {
   studio: string;
-  embed_data: string;
   email: Email;
   phone: Phone;
-  p_iva: string;
+  vatNumber: string;
+}
+
+interface ContactsPageOnlyData {
+  image: string;
+  embedData: string;
   social: SocialLinks;
 }
+
+type ContactsData = SharedContactsData & ContactsPageOnlyData;
 
 interface GalleryLink {
   url: string;
@@ -150,14 +136,11 @@ interface PressesCardProps {
 export type {
   Project,
   ExternalLink,
-  HomeProps,
   ProjectBio,
   ProjectCardProps,
   SliderProps,
   Link,
   LinkButtonProps,
-  Metadata,
-  HeadProps,
   RootLayoutProps,
   HeaderHeightManagerProps,
   Experience,
@@ -165,11 +148,12 @@ export type {
   Email,
   Phone,
   SocialLinks,
+  SharedContactsData,
+  ContactsPageOnlyData,
   ContactsData,
   GalleryLink,
   GalleryProps,
   PressesData,
   PressesCardProps,
-  HeaderProps,
   Params,
 };
