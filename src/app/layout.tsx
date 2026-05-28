@@ -80,7 +80,7 @@ export const metadata = {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="it" className={myFont.className} data-scroll-behavior="smooth">
-      <body>
+      <body suppressHydrationWarning>
         <SplashProvider>
           <SplashWrapper>
             <StructuredData />
