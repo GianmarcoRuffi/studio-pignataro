@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,23 +18,28 @@ const NAV_ITEMS = [
 const Header: FC = () => {
   const pathname = usePathname();
   const isActive = pathname === "/";
+  const isHomepage = pathname === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
+  const updateScrolledState = () => {
+    const threshold = 50;
+    setScrolled(window.scrollY > threshold);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const threshold = 50;
-      setScrolled(window.scrollY > threshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateScrolledState();
+    window.addEventListener("scroll", updateScrolledState);
+    return () => window.removeEventListener("scroll", updateScrolledState);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMenuOpen(false);
+    updateScrolledState();
+
+    const frameId = window.requestAnimationFrame(updateScrolledState);
+    return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
 
   useEffect(() => {
@@ -55,7 +60,9 @@ const Header: FC = () => {
 
   return (
     <header
-      className={`${styles.headerContainer} ${scrolled ? styles.scrolled : ""}`}
+      className={`${styles.headerContainer} ${
+        isHomepage ? styles.homepage : ""
+      } ${scrolled ? styles.scrolled : ""}`}
     >
       <div
         className={`${styles.navWrapper} flex justify-between items-center ${

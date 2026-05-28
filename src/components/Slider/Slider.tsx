@@ -55,14 +55,22 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     timeout: 6000,
     onComplete: preloadRemainingImages,
   });
-  
+
   const effectiveLoading = !isSplashComplete && isLoading;
 
   const nextSlide = () => {
+    if (effectiveLoading) {
+      return;
+    }
+
     setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const prevSlide = () => {
+    if (effectiveLoading) {
+      return;
+    }
+
     setActiveIndex(
       (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
     );
@@ -101,7 +109,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={prevSlide}
-        disabled={effectiveLoading}
         aria-label="Slide precedente"
       >
         <FontAwesomeIcon icon={faAngleLeft} />
@@ -161,7 +168,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={nextSlide}
-        disabled={effectiveLoading}
         aria-label="Slide successivo"
       >
         <FontAwesomeIcon icon={faAngleRight} />

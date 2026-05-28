@@ -144,32 +144,20 @@ html,
 }
 
 .layout-content.homepage {
-  height: calc(
-    var(--viewport-height) - var(--header-height) - var(--footer-height)
-  );
-  max-height: calc(
-    var(--viewport-height) - var(--header-height) - var(--footer-height)
-  );
-  min-height: calc(
-    var(--viewport-height) - var(--header-height) - var(--footer-height)
-  );
+  margin-top: 0;
+  height: var(--viewport-height);
+  max-height: var(--viewport-height);
+  min-height: var(--viewport-height);
   overflow: hidden;
   padding: 0 !important;
 }
 
 @media (max-width: 768px) {
   .layout-content.homepage {
-    height: calc(
-      var(--viewport-height) - var(--header-height) - var(--footer-height)
-    );
-    max-height: calc(
-      var(--viewport-height) - var(--header-height) - var(--footer-height)
-    );
-    min-height: calc(
-      var(--viewport-height) - var(--header-height) - var(--footer-height)
-    );
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: var(--viewport-height);
+    max-height: var(--viewport-height);
+    min-height: var(--viewport-height);
+    overflow: hidden;
   }
 }
 
