@@ -45,7 +45,7 @@ export function generateVanchigliaPaths(
   for (let i = 1; i <= count; i++) {
     const paddedNumber = i.toString().padStart(2, "0");
     images.push(
-      `/projects/quartiere-vanchiglia/gallery/Torino_${paddedNumber}.${extension}`
+      `/projects/quartiere-vanchiglia/gallery/torino-${paddedNumber}.${extension}`
     );
   }
 
