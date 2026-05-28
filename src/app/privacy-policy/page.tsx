@@ -1,7 +1,7 @@
 "use client";
 
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
-import { privacyPolicyData, privacyContactEmail } from "../../data/privacyPolicyData";
+import { privacyPolicyData, privacyContactEmail } from "./data";
 import styles from "./privacy.module.scss";
 
 export default function PrivacyPolicy() {

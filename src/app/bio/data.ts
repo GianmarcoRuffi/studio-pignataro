@@ -1,4 +1,4 @@
-import { BioData } from "../models/models";
+import { BioData } from "../../models/models";
 
 export const bioData: BioData = {
   image: "/Bio/Profile.webp",

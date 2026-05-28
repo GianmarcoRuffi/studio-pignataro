@@ -1,7 +1,7 @@
 "use client";
 
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
-import { cookiePolicyData, cookieDisclaimerNote } from "../../data/cookiePolicyData";
+import { cookiePolicyData, cookieDisclaimerNote } from "./data";
 import styles from "./cookie.module.scss";
 
 export default function CookiePolicy() {

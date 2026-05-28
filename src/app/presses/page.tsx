@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import PressesCard from "../../components/PressesCard/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import LinkButton from "../../components/LinkButton/LinkButton";
-import pressesData from "../../data/pressesData";
+import pressesData from "./data";
 import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
 import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";

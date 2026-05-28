@@ -1,4 +1,4 @@
-import { PressesData } from "../models/models";
+import { PressesData } from "../../models/models";
 
 const pressesData: PressesData[] = [
   {
