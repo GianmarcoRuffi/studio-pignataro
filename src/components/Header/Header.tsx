@@ -69,7 +69,7 @@ const Header: FC = () => {
         >
           <Link href="/">
             <Image
-              src="/logo.jpg"
+              src="/branding/logo.jpg"
               alt="Logo Studio Architetto Pignataro"
               width={360}
               height={120}

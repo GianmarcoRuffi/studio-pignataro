@@ -57,7 +57,7 @@ export const metadata = {
     url: "https://archpignataro.it",
     images: [
       {
-        url: "https://archpignataro.it/logo.jpg",
+        url: "https://archpignataro.it/branding/logo.jpg",
         width: 1200,
         height: 630,
         alt: "Studio Architetto Gianluca Pignataro - Logo",
@@ -69,7 +69,7 @@ export const metadata = {
     title: "Studio Architetto Gianluca Pignataro",
     description:
       "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    images: ["https://archpignataro.it/logo.jpg"],
+    images: ["https://archpignataro.it/branding/logo.jpg"],
   },
   verification: {
     google: "google0b4aa7aff11718e8",

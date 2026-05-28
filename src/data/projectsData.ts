@@ -21,7 +21,7 @@ const linkNames: Record<string, string> = {
 const projects: Project[] = [
   {
     projectName: "Quartiere Vanchiglia",
-    imgSrc: "/Home/13.webp",
+    imgSrc: "/projects/quartiere-vanchiglia/cover.webp",
     description: `Ristrutturazione con Interior design nel centro storico di Torino.`,
     slug: "Quartiere-Vanchiglia",
     imgCredits: "Foto © Luigi Corda",
@@ -30,45 +30,48 @@ const projects: Project[] = [
 
   {
     projectName: "Via Venturoli",
-    imgSrc: "/Home/14.webp",
+    imgSrc: "/projects/via-venturoli/cover.webp",
     description: `Progettazione di Interior design a Bologna.`,
     slug: "Via-Venturoli",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("ViaVenturoli", 15),
+    images: generateImagePaths("projects/via-venturoli/gallery", 15),
   },
 
   {
     projectName: "Corso Vittorio Emanuele II",
-    imgSrc: "/Home/01.webp",
+    imgSrc: "/projects/corso-vittorio-emanuele-ii/cover.webp",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Corso-Vittorio-Emanuele-II",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CorsoVittorioEmanuele_II", 14),
+    images: generateImagePaths(
+      "projects/corso-vittorio-emanuele-ii/gallery",
+      14
+    ),
   },
 
   {
     projectName: "Via Asti",
-    imgSrc: "/Home/03.webp",
+    imgSrc: "/projects/via-asti/cover.webp",
     description: `Ristrutturazione con Interior design a Cagliari.`,
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaCorda", 12),
+    images: generateImagePaths("projects/via-asti/gallery", 12),
   },
 
   {
     projectName: "Via Ada Negri",
-    imgSrc: "/Home/12.webp",
+    imgSrc: "/projects/via-ada-negri/cover.webp",
     description: `Progettazione di Interior design a Cagliari.`,
     slug: "Via-Ada-Negri",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("ViaAdaNegri", 5),
+    images: generateImagePaths("projects/via-ada-negri/gallery", 5),
   },
 
   {
     projectName: "Via Machiavelli",
-    imgSrc: "/Home/04.webp",
+    imgSrc: "/projects/via-machiavelli/cover.webp",
     description: `Ristrutturazione con Interior design a Cagliari.`,
     externalLink: [
       {
@@ -82,12 +85,12 @@ const projects: Project[] = [
     ],
     slug: "Via-Machiavelli",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaGuicciardi", 10),
+    images: generateImagePaths("projects/via-machiavelli/gallery", 10),
   },
 
   {
     projectName: "Vico V di Via S. Giovanni",
-    imgSrc: "/Home/05.webp",
+    imgSrc: "/projects/vico-v-via-san-giovanni/cover.webp",
     description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
 
     externalLink: [
@@ -103,68 +106,71 @@ const projects: Project[] = [
 
     slug: "Vico-V-Via-San-Giovanni",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaPiras", 12),
+    images: generateImagePaths("projects/vico-v-via-san-giovanni/gallery", 12),
   },
 
   {
     projectName: "Agenzia Immobiliare AMS",
-    imgSrc: "/Home/06.webp",
+    imgSrc: "/projects/agenzia-immobiliare-ams/cover.webp",
     description: `Interior design e d.l.
     Via Cagliari, Capoterra (CA)`,
     slug: "Agenzia-Immobiliare-AMS",
     imgCredits: "Foto © Luigi Corda",
-    images: generateNamedImagePaths("AMS", ["1", "3", "2", "4", "5"]),
+    images: generateNamedImagePaths(
+      "projects/agenzia-immobiliare-ams/gallery",
+      ["1", "3", "2", "4", "5"]
+    ),
   },
 
   {
     projectName: "Via Canonico Sanna",
-    imgSrc: "/Home/07.webp",
+    imgSrc: "/projects/via-canonico-sanna/cover.webp",
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).`,
     slug: "Via-Canonico-Sanna",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaBarranu", 15),
+    images: generateImagePaths("projects/via-canonico-sanna/gallery", 15),
   },
 
   {
     projectName: "V.le Regina Margherita",
-    imgSrc: "/Home/08.webp",
+    imgSrc: "/projects/viale-regina-margherita/cover.webp",
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.`,
     slug: "Viale-Regina-Margherita",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaDalessio", 10),
+    images: generateImagePaths("projects/viale-regina-margherita/gallery", 10),
   },
 
   {
     projectName: "Via Vittorio Amedeo II",
-    imgSrc: "/Home/09.webp",
+    imgSrc: "/projects/via-vittorio-amedeo-ii/cover.webp",
     description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.`,
     slug: "Via-Vittorio-Amedeo-II",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("CasaVincis", 3),
+    images: generateImagePaths("projects/via-vittorio-amedeo-ii/gallery", 3),
   },
 
   {
     projectName: "Tangex Corp.",
-    imgSrc: "/Home/10.webp",
+    imgSrc: "/projects/tangex-corp/cover.webp",
     description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).`,
     slug: "TangexCorp",
     imgCredits: "Foto © Guanina Santiago de Jesus",
-    images: generateImagePaths("TangexCorp", 4),
+    images: generateImagePaths("projects/tangex-corp/gallery", 4),
   },
 
   {
     projectName: "Via Eroi d'Italia",
-    imgSrc: "/Home/11.webp",
+    imgSrc: "/projects/via-eroi-d-italia/cover.webp",
     description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.`,
     imageFit: "contain",
     slug: "Via-Eroi-d-Italia",
     imgCredits: "Foto © Matteo Piazza",
-    images: generateImagePaths("EdificioCommendatore", 8),
+    images: generateImagePaths("projects/via-eroi-d-italia/gallery", 8),
   },
 
   {
     projectName: "Agenzia pubblicitaria Glisbò",
-    imgSrc: "/Home/02.webp",
+    imgSrc: "/projects/glisbo/cover.webp",
     description: 'Stand modulare per la "Regione Autonoma della Sardegna".',
     externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
     imageFit: "contain",
@@ -172,8 +178,12 @@ const projects: Project[] = [
     imgCredits:
       "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
     images: [
-      ...generateNamedImagePaths("Glisbo", ["01", "02", "03", "04"], "webp"),
-      "/Glisbo/render.gif",
+      ...generateNamedImagePaths(
+        "projects/glisbo/gallery",
+        ["01", "02", "03", "04"],
+        "webp"
+      ),
+      "/projects/glisbo/gallery/render.gif",
     ],
   },
 ];

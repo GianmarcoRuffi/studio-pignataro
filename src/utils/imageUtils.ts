@@ -1,6 +1,6 @@
 /**
  * Genera un array di path immagini per una cartella specifica
- * @param folderName - Nome della cartella (es. "CasaCorda", "Home")
+ * @param folderName - Percorso cartella relativo alla root di public (es. "projects/via-asti/gallery")
  * @param count - Numero di immagini da generare
  * @param startFrom - Numero da cui iniziare (default: 1)
  * @param extension - Estensione file (default: "webp")
@@ -23,7 +23,7 @@ export function generateImagePaths(
 
 /**
  * Genera path immagini con nomi specifici
- * @param folderName - Nome della cartella
+ * @param folderName - Percorso cartella relativo alla root di public
  * @param fileNames - Array di nomi file senza estensione
  * @param extension - Estensione file (default: "webp")
  * @returns Array di path immagini
@@ -44,7 +44,9 @@ export function generateVanchigliaPaths(
 
   for (let i = 1; i <= count; i++) {
     const paddedNumber = i.toString().padStart(2, "0");
-    images.push(`/Vanchiglia/Torino_${paddedNumber}.${extension}`);
+    images.push(
+      `/projects/quartiere-vanchiglia/gallery/Torino_${paddedNumber}.${extension}`
+    );
   }
 
   return images;
