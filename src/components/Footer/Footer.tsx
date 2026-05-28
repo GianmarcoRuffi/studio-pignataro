@@ -4,6 +4,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./footer.module.scss";
+import { LEGAL_PATHS } from "../../constants";
 import { sharedContactsData } from "../../data/contactsData";
 
 const Footer: FC = () => {
@@ -36,11 +37,11 @@ const Footer: FC = () => {
         </div>
 
         <div className={styles.policyLinks}>
-          <Link href="/privacy-policy" className={styles.policyLink}>
+          <Link href={LEGAL_PATHS.privacyPolicy} className={styles.policyLink}>
             Privacy Policy
           </Link>
           <span className={styles.separator}>•</span>
-          <Link href="/cookie-policy" className={styles.policyLink}>
+          <Link href={LEGAL_PATHS.cookiePolicy} className={styles.policyLink}>
             Cookie Policy
           </Link>
         </div>

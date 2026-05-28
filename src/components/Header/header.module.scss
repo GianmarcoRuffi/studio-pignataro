@@ -103,11 +103,18 @@
   );
 }
 
-.logoContainer a {
+.logoLink {
   display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
+  justify-content: center;
+}
+
+.logoImageFrame {
+  position: relative;
+  width: calc(100% - 0.45rem);
+  height: calc(100% - 0.45rem);
 }
 
 .headerContainer.homepage .logoContainer {
@@ -128,9 +135,6 @@
 
 .logoImage {
   display: block;
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100%;
   object-fit: contain;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));

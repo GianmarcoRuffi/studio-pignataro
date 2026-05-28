@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, ReactNode } from "react";
+import { UI_TIMINGS } from "../../constants";
 import { useSplash } from "../../context/SplashContext";
 import SplashScreen from "../SplashScreen/SplashScreen";
 
@@ -14,13 +15,16 @@ const SplashWrapper: FC<SplashWrapperProps> = ({ children }) => {
   return (
     <>
       {shouldShowSplash && !isSplashComplete && (
-        <SplashScreen onComplete={setSplashComplete} minDisplayTime={1800} />
+        <SplashScreen
+          onComplete={setSplashComplete}
+          minDisplayTime={UI_TIMINGS.splash.initialMinDisplay}
+        />
       )}
       <div
         style={{
           visibility: isSplashComplete ? "visible" : "hidden",
           opacity: isSplashComplete ? 1 : 0,
-          transition: "opacity 0.3s ease-in",
+          transition: `opacity ${UI_TIMINGS.splash.contentFadeDuration}ms ease-in`,
         }}
       >
         {children}

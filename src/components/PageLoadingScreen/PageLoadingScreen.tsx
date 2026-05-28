@@ -1,6 +1,11 @@
 "use client";
 import { FC, useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  BRANDING_LOGO_DIMENSIONS,
+  BRANDING_LOGO_PATH,
+  UI_TIMINGS,
+} from "../../constants";
 import styles from "./page-loading-screen.module.scss";
 
 interface PageLoadingScreenProps {
@@ -24,8 +29,8 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       hideTimer = window.setTimeout(() => {
         setIsVisible(false);
         onLoadingComplete();
-      }, 800);
-    }, 1200);
+      }, UI_TIMINGS.pageLoading.fadeOutDuration);
+    }, UI_TIMINGS.pageLoading.logoDisplayDuration);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -44,10 +49,10 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       className={`${styles.loadingContainer} ${isFading ? styles.fadeOut : ""}`}
     >
       <Image
-        src="/branding/logo.jpg"
+        src={BRANDING_LOGO_PATH}
         alt="Logo"
-        width={360}
-        height={120}
+        width={BRANDING_LOGO_DIMENSIONS.width}
+        height={BRANDING_LOGO_DIMENSIONS.height}
         className={styles.logo}
         style={{ width: "auto", height: "auto" }}
         onLoad={() => setIsLogoLoaded(true)}

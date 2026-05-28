@@ -2,6 +2,11 @@
 
 import { FC, useEffect, useState } from "react";
 import Image from "next/image";
+import {
+  BRANDING_LOGO_DIMENSIONS,
+  BRANDING_LOGO_PATH,
+  UI_TIMINGS,
+} from "../../constants";
 import styles from "./SplashScreen.module.scss";
 
 interface SplashScreenProps {
@@ -11,7 +16,7 @@ interface SplashScreenProps {
 
 const SplashScreen: FC<SplashScreenProps> = ({
   onComplete,
-  minDisplayTime = 1500,
+  minDisplayTime = UI_TIMINGS.splash.defaultMinDisplay,
 }) => {
   const [isExiting, setIsExiting] = useState(false);
 
@@ -29,7 +34,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
       
       setTimeout(() => {
         onComplete();
-      }, 600);
+      }, UI_TIMINGS.splash.exitDuration);
     }, minDisplayTime);
 
     return () => clearTimeout(timer);
@@ -52,10 +57,10 @@ const SplashScreen: FC<SplashScreenProps> = ({
     <div className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}>
       <div className={styles.logoContainer}>
         <Image
-          src="/branding/logo.jpg"
+          src={BRANDING_LOGO_PATH}
           alt="Studio Architetto Gianluca Pignataro"
-          width={400}
-          height={133}
+          width={BRANDING_LOGO_DIMENSIONS.width}
+          height={BRANDING_LOGO_DIMENSIONS.height}
           priority
           className={styles.logo}
           style={{ width: "auto", height: "auto" }}

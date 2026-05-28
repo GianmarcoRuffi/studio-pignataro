@@ -1,5 +1,6 @@
 "use client";
 import Script from "next/script";
+import { BRANDING_LOGO_URL, SITE_URL } from "../../constants";
 
 const StructuredData = () => {
   const structuredData = {
@@ -9,9 +10,9 @@ const StructuredData = () => {
     alternateName: "Architetto Pignataro",
     description:
       "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    url: "https://archpignataro.it",
-    logo: "https://archpignataro.it/branding/logo.jpg",
-    image: "https://archpignataro.it/branding/logo.jpg",
+    url: SITE_URL,
+    logo: BRANDING_LOGO_URL,
+    image: BRANDING_LOGO_URL,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Cagliari",
@@ -27,7 +28,7 @@ const StructuredData = () => {
       name: "Gianluca Pignataro",
       jobTitle: "Architetto",
     },
-    sameAs: ["https://archpignataro.it"],
+    sameAs: [SITE_URL],
   };
 
   return (

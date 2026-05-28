@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { BRANDING_LOGO_PATH } from "../../constants";
 import styles from "./header.module.scss";
 
 const NAV_ITEMS = [
@@ -74,15 +75,17 @@ const Header: FC = () => {
             scrolled ? styles.scrolledLogoContainer : ""
           }`}
         >
-          <Link href="/">
+          <Link href="/" className={styles.logoLink}>
+            <span className={styles.logoImageFrame}>
             <Image
-              src="/branding/logo.jpg"
+              src={BRANDING_LOGO_PATH}
               alt="Logo Studio Architetto Pignataro"
-              width={360}
-              height={120}
+              fill
+              sizes="(max-width: 480px) 180px, (max-width: 768px) 195px, 180px"
               priority
               className={styles.logoImage}
             />
+            </span>
           </Link>
         </div>
 
