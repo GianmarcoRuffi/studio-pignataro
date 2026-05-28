@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { UI_TIMINGS } from "../../constants";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
 import { useSplash } from "../../context/SplashContext";
 import styles from "./slider.module.scss";
@@ -52,17 +53,25 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   }, [projects]);
 
   const { isLoading } = useMultiImageLoader(imageSources, {
-    timeout: 6000,
+    timeout: UI_TIMINGS.slider.imageLoadTimeout,
     onComplete: preloadRemainingImages,
   });
-  
+
   const effectiveLoading = !isSplashComplete && isLoading;
 
   const nextSlide = () => {
+    if (effectiveLoading) {
+      return;
+    }
+
     setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const prevSlide = () => {
+    if (effectiveLoading) {
+      return;
+    }
+
     setActiveIndex(
       (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
     );
@@ -74,7 +83,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     if (!isHovered && !effectiveLoading && !isCookieVisible && isSplashComplete) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
-      }, 3000);
+      }, UI_TIMINGS.slider.autoplayInterval);
     }
 
     return () => {
@@ -101,7 +110,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={prevSlide}
-        disabled={effectiveLoading}
         aria-label="Slide precedente"
       >
         <FontAwesomeIcon icon={faAngleLeft} />
@@ -161,7 +169,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={nextSlide}
-        disabled={effectiveLoading}
         aria-label="Slide successivo"
       >
         <FontAwesomeIcon icon={faAngleRight} />

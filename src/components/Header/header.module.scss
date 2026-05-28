@@ -14,6 +14,31 @@
   z-index: 1000;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &.homepage {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.28) 58%,
+      rgba(255, 255, 255, 0.42) 100%
+    );
+    backdrop-filter: blur(14px) saturate(145%);
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+  }
+
+  &.homepage.scrolled {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.68) 0%,
+      rgba(255, 255, 255, 0.84) 100%
+    );
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.48);
+  }
 }
 
 .scrolled {
@@ -35,19 +60,41 @@
   background-color: rgba(255, 255, 255, 0.95);
 }
 
+.headerContainer.homepage .scrolledNavWrapper {
+  background-color: transparent;
+}
+
 .scrolledLogoContainer {
   background: rgba(255, 255, 255, 0.15);
-  --logo-width: 150px;
-  --logo-height: 50px;
+  --logo-width: 180px;
+  --logo-height: 60px;
+}
+
+.headerContainer.homepage .scrolledLogoContainer {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(255, 255, 255, 0.32) 100%
+  );
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .logoContainer {
   --logo-width: 180px;
   --logo-height: 60px;
-  height: auto;
+  width: var(--logo-width);
+  height: var(--logo-height);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 0;
+  padding: 0;
+  overflow: hidden;
   border-radius: 1rem;
   background: linear-gradient(
     135deg,
@@ -56,10 +103,38 @@
   );
 }
 
+.logoLink {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImageFrame {
+  position: relative;
+  width: calc(100% - 0.45rem);
+  height: calc(100% - 0.45rem);
+}
+
+.headerContainer.homepage .logoContainer {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.headerContainer.homepage .logoContainer::before {
+  display: none;
+}
+
+.headerContainer.homepage .logoContainer:hover {
+  transform: none;
+  background: transparent;
+  box-shadow: none;
+}
+
 .logoImage {
-  width: var(--logo-width) !important;
-  height: var(--logo-height) !important;
-  max-width: 100%;
+  display: block;
   object-fit: contain;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
@@ -128,6 +203,7 @@
       font-weight: 500;
       font-size: 0.95rem;
       border-radius: 2rem;
+      border: 1px solid transparent;
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.8) 0%,
@@ -193,6 +269,42 @@
       }
     }
   }
+}
+
+.headerContainer.homepage .navList li a {
+  color: var(--color-text-secondary);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.74) 0%,
+    rgba(255, 255, 255, 0.56) 100%
+  );
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.headerContainer.homepage .navList li a:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.84) 0%,
+    rgba(255, 255, 255, 0.66) 100%
+  );
+}
+
+.headerContainer.homepage .navList li.active a {
+  background: rgba(55, 55, 55, 0.88);
+  color: white;
+  text-shadow: none;
+  border-color: rgba(55, 55, 55, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 10px 24px rgba(0, 0, 0, 0.22);
 }
 
 .homeIcon {
@@ -352,6 +464,36 @@
         left: 3px;
       }
     }
+  }
+}
+
+.headerContainer.homepage .menuIcon {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  backdrop-filter: blur(14px) saturate(145%);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 768px) {
+  .headerContainer.homepage {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.32) 0%,
+      rgba(255, 255, 255, 0.54) 64%,
+      rgba(255, 255, 255, 0.7) 100%
+    );
+  }
+
+  .headerContainer.homepage.scrolled {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.76) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
   }
 }
 
@@ -630,12 +772,11 @@
   .logoContainer {
     --logo-width: 195px;
     --logo-height: 65px;
-    padding: 0.25rem;
   }
 
   .scrolledLogoContainer {
-    --logo-width: 165px;
-    --logo-height: 55px;
+    --logo-width: 195px;
+    --logo-height: 65px;
   }
 
   .navLink {
@@ -666,8 +807,8 @@
   }
 
   .scrolledLogoContainer {
-    --logo-width: 156px;
-    --logo-height: 52px;
+    --logo-width: 180px;
+    --logo-height: 60px;
   }
 
   .fullscreenNavList {

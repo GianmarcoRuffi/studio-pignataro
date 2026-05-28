@@ -4,6 +4,7 @@ import { FC, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCookie } from "@fortawesome/free-solid-svg-icons";
 import { useSplash } from "../../context/SplashContext";
+import { LEGAL_PATHS, UI_TIMINGS } from "../../constants";
 import styles from "./CookieConsent.module.scss";
 
 const CookieConsent: FC = () => {
@@ -17,11 +18,11 @@ const CookieConsent: FC = () => {
     try {
       const consent = localStorage.getItem("cookie-consent");
       if (!consent) {
-        setTimeout(() => setIsVisible(true), 500);
+        setTimeout(() => setIsVisible(true), UI_TIMINGS.cookieConsent.showDelay);
       }
     } catch (e) {
       console.warn("localStorage not available:", e);
-      setTimeout(() => setIsVisible(true), 500);
+      setTimeout(() => setIsVisible(true), UI_TIMINGS.cookieConsent.showDelay);
     }
   }, [isSplashComplete]);
 
@@ -72,7 +73,7 @@ const CookieConsent: FC = () => {
     setTimeout(() => {
       setIsVisible(false);
       setIsClosing(false);
-    }, 300);
+    }, UI_TIMINGS.cookieConsent.closeDuration);
   };
 
   if (!isVisible) return null;
@@ -111,7 +112,7 @@ const CookieConsent: FC = () => {
 
           <div className={styles.cookieLinks}>
             <a
-              href="/privacy-policy"
+              href={LEGAL_PATHS.privacyPolicy}
               className={styles.policyLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -119,7 +120,7 @@ const CookieConsent: FC = () => {
               Privacy Policy
             </a>
             <a
-              href="/cookie-policy"
+              href={LEGAL_PATHS.cookiePolicy}
               className={styles.policyLink}
               target="_blank"
               rel="noopener noreferrer"

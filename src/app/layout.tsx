@@ -12,6 +12,7 @@ import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import { RootLayoutProps } from "../models/models";
 import { SplashProvider } from "../context/SplashContext";
 import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
+import { BRANDING_LOGO_URL, SITE_URL } from "../constants";
 
 config.autoAddCss = false;
 
@@ -27,14 +28,14 @@ export const metadata = {
   },
   description:
     "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-  metadataBase: new URL("https://archpignataro.it"),
+  metadataBase: new URL(SITE_URL),
   keywords:
     "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
   authors: [{ name: "Architetto Gianluca Pignataro" }],
   creator: "Architetto Gianluca Pignataro",
   publisher: "Architetto Pignataro",
   alternates: {
-    canonical: "https://archpignataro.it",
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -54,10 +55,10 @@ export const metadata = {
       "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
     locale: "it_IT",
     siteName: "Architetto Pignataro",
-    url: "https://archpignataro.it",
+    url: SITE_URL,
     images: [
       {
-        url: "https://archpignataro.it/branding/logo.jpg",
+        url: BRANDING_LOGO_URL,
         width: 1200,
         height: 630,
         alt: "Studio Architetto Gianluca Pignataro - Logo",
@@ -69,7 +70,7 @@ export const metadata = {
     title: "Studio Architetto Gianluca Pignataro",
     description:
       "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    images: ["https://archpignataro.it/branding/logo.jpg"],
+    images: [BRANDING_LOGO_URL],
   },
   verification: {
     google: "google0b4aa7aff11718e8",
