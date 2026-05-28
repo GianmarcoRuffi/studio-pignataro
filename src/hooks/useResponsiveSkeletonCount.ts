@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BREAKPOINTS, LOADING } from "../constants";
 
 interface UseResponsiveSkeletonCountOptions {
   mobile?: number;
@@ -12,11 +13,11 @@ export function useResponsiveSkeletonCount(
   options: UseResponsiveSkeletonCountOptions = {}
 ): number {
   const {
-    mobile = 3,
-    tablet = 4,
-    desktop = 6,
-    mobileBreakpoint = 768,
-    tabletBreakpoint = 1200,
+    mobile = LOADING.SKELETON_COUNTS.mobile,
+    tablet = LOADING.SKELETON_COUNTS.tablet,
+    desktop = LOADING.SKELETON_COUNTS.desktop,
+    mobileBreakpoint = BREAKPOINTS.tablet,
+    tabletBreakpoint = BREAKPOINTS.large,
   } = options;
 
   const [count, setCount] = useState(desktop);

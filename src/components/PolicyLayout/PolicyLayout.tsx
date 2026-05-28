@@ -25,7 +25,7 @@ export const PolicyLayout: FC<PolicyLayoutProps> = ({
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>{title}</h1>
           <p className={styles.pageSubtitle}>{subtitle}</p>
-          <p className={styles.lastUpdated}>
+          <p className={styles.lastUpdated} suppressHydrationWarning>
             Ultimo aggiornamento: {new Date().toLocaleDateString("it-IT")}
           </p>
         </div>

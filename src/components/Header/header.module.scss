@@ -37,14 +37,13 @@
 
 .scrolledLogoContainer {
   background: rgba(255, 255, 255, 0.15);
-
-  .logoImage {
-    height: 50px !important;
-    transition: height 0.3s ease;
-  }
+  --logo-width: 150px;
+  --logo-height: 50px;
 }
 
 .logoContainer {
+  --logo-width: 180px;
+  --logo-height: 60px;
   height: auto;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -58,8 +57,8 @@
 }
 
 .logoImage {
-  height: 60px !important;
-  width: auto !important;
+  width: var(--logo-width) !important;
+  height: var(--logo-height) !important;
   max-width: 100%;
   object-fit: contain;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -629,15 +628,14 @@
   }
 
   .logoContainer {
+    --logo-width: 195px;
+    --logo-height: 65px;
     padding: 0.25rem;
-
-    img {
-      height: 65px;
-    }
   }
 
-  .scrolledLogoContainer img {
-    height: 55px;
+  .scrolledLogoContainer {
+    --logo-width: 165px;
+    --logo-height: 55px;
   }
 
   .navLink {
@@ -662,12 +660,14 @@
     letter-spacing: 1px;
   }
 
-  .logoContainer img {
-    height: 60px;
+  .logoContainer {
+    --logo-width: 180px;
+    --logo-height: 60px;
   }
 
-  .scrolledLogoContainer img {
-    height: 52px;
+  .scrolledLogoContainer {
+    --logo-width: 156px;
+    --logo-height: 52px;
   }
 
   .fullscreenNavList {

@@ -52,7 +52,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
     <div className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}>
       <div className={styles.logoContainer}>
         <Image
-          src="/logo.jpg"
+          src="/branding/logo.jpg"
           alt="Studio Architetto Gianluca Pignataro"
           width={400}
           height={133}

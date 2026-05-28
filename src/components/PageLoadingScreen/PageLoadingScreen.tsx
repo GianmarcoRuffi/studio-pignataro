@@ -44,7 +44,7 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       className={`${styles.loadingContainer} ${isFading ? styles.fadeOut : ""}`}
     >
       <Image
-        src="/logo.jpg"
+        src="/branding/logo.jpg"
         alt="Logo"
         width={360}
         height={120}

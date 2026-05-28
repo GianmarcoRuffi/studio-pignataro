@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import projects from "../../../data/data";
+import projects from "../../../data/projectsData";
 import Gallery from "../../../components/Gallery/Gallery";
 import { Params, Project } from "../../../models/models";
 

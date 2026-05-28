@@ -5,6 +5,8 @@ import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import MasonryGallery from "../MasonryGallery/MasonryGallery";
 import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
+import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
+import { preloadImage } from "../../utils/imageUtils";
 import { GalleryProps, GalleryLink } from "../../models/models";
 
 const Gallery: FC<GalleryProps> = ({
@@ -18,9 +20,9 @@ const Gallery: FC<GalleryProps> = ({
 }) => {
   const [visibleImages, setVisibleImages] = useState(6);
   const [isLoading, setIsLoading] = useState(true);
-  const [skeletonCount, setSkeletonCount] = useState(6);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
+  const skeletonCount = useResponsiveSkeletonCount();
   const initialBatchImages = useMemo(
     () => (images ?? []).slice(0, 6),
     [images]
@@ -36,20 +38,6 @@ const Gallery: FC<GalleryProps> = ({
     }
 
     setIsLoading(true);
-
-    const updateSkeletonCount = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        setSkeletonCount(3);
-      } else if (width < 1200) {
-        setSkeletonCount(4);
-      } else {
-        setSkeletonCount(6);
-      }
-    };
-
-    updateSkeletonCount();
-    window.addEventListener("resize", updateSkeletonCount);
 
     let loadedCount = 0;
     let hasFinished = false;
@@ -73,35 +61,14 @@ const Gallery: FC<GalleryProps> = ({
     };
 
     const preloadPromises = initialBatchImages.map((imageSrc) => {
-      return new Promise<void>((resolve) => {
-        const img = document.createElement("img");
-        let isSettled = false;
+      return preloadImage(imageSrc).then(() => {
+        if (isCancelled) {
+          return;
+        }
 
-        const markLoaded = () => {
-          if (isSettled) {
-            return;
-          }
-
-          isSettled = true;
-
-          if (isCancelled) {
-            resolve();
-            return;
-          }
-
-          loadedCount++;
-          if (loadedCount >= Math.min(3, initialBatchImages.length)) {
-            finishLoading();
-          }
-          resolve();
-        };
-
-        img.onload = markLoaded;
-        img.onerror = markLoaded;
-        img.src = imageSrc;
-
-        if (img.complete) {
-          markLoaded();
+        loadedCount++;
+        if (loadedCount >= Math.min(3, initialBatchImages.length)) {
+          finishLoading();
         }
       });
     });
@@ -122,37 +89,12 @@ const Gallery: FC<GalleryProps> = ({
 
     return () => {
       isCancelled = true;
-      window.removeEventListener("resize", updateSkeletonCount);
       clearTimeout(timeout);
       if (settleTimeoutId) {
         clearTimeout(settleTimeoutId);
       }
     };
   }, [images, initialBatchImages]);
-
-  const preloadImage = useCallback((src: string) => {
-    return new Promise<void>((resolve) => {
-      const img = new window.Image();
-      let isSettled = false;
-
-      const settle = () => {
-        if (isSettled) {
-          return;
-        }
-
-        isSettled = true;
-        resolve();
-      };
-
-      img.onload = settle;
-      img.onerror = settle;
-      img.src = src;
-
-      if (img.complete) {
-        settle();
-      }
-    });
-  }, []);
 
   const loadMoreImages = useCallback(() => {
     if (!images || isLoadingMore || visibleImages >= images.length) {
@@ -170,7 +112,7 @@ const Gallery: FC<GalleryProps> = ({
         setIsLoadingMore(false);
       }
     );
-  }, [images, isLoadingMore, preloadImage, visibleImages]);
+  }, [images, isLoadingMore, visibleImages]);
 
   useEffect(() => {
     if (isLoading || !images || visibleImages >= images.length) {

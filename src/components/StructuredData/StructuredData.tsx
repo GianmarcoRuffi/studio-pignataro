@@ -10,8 +10,8 @@ const StructuredData = () => {
     description:
       "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
     url: "https://archpignataro.it",
-    logo: "https://archpignataro.it/logo.jpg",
-    image: "https://archpignataro.it/logo.jpg",
+    logo: "https://archpignataro.it/branding/logo.jpg",
+    image: "https://archpignataro.it/branding/logo.jpg",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Cagliari",

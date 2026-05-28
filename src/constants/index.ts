@@ -1,41 +1,8 @@
-export const ANIMATIONS = {
-  FADE_IN_DURATION: 0.6,
-  FADE_DELAY: 0.1,
-  HOVER_DURATION: 0.3,
-  CUBIC_BEZIER: "cubic-bezier(0.4, 0, 0.2, 1)",
-} as const;
-
-export const LAYOUT = {
-  CARD_GRID_GAP: "3rem",
-  CONTAINER_MAX_WIDTH: "1200px",
-  CONTAINER_PADDING: "2rem",
-  SECTION_PADDING: "4rem",
-} as const;
-
 export const BREAKPOINTS = {
-  mobile: 480,
   tablet: 768,
   desktop: 1024,
-  wide: 1440,
-} as const;
-
-export const CARD_GRIDS = {
-  publications: {
-    minWidth: "550px",
-    gap: "3rem",
-  },
-  projects: {
-    minWidth: "500px",
-    gap: "3rem",
-  },
-  gallery: {
-    minWidth: "400px",
-    gap: "2rem",
-  },
-  bio: {
-    minWidth: "300px",
-    gap: "2rem",
-  },
+  large: 1200,
+  wide: 1400,
 } as const;
 
 export const LOADING = {
@@ -46,13 +13,4 @@ export const LOADING = {
     tablet: 4,
     desktop: 6,
   },
-} as const;
-
-export const Z_INDEX = {
-  dropdown: 1000,
-  sticky: 1020,
-  fixed: 1030,
-  modal: 1040,
-  popover: 1050,
-  tooltip: 1060,
 } as const;

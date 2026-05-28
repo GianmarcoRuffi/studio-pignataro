@@ -4,7 +4,7 @@ import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
-import { bioData } from "../../data/bioData";
+import { bioData } from "./data";
 import { Link as BioLink } from "../../models/models";
 
 export default function Bio() {

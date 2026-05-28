@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import styles from "./footer.module.scss";
-import { contactsData } from "../../data/contactsData";
+import { sharedContactsData } from "../../data/contactsData";
 
 const Footer: FC = () => {
   return (
@@ -11,17 +11,17 @@ const Footer: FC = () => {
 
         <div className={styles.footerContent}>
           <ul className={styles.footerList}>
-            <li>{contactsData.studio}</li>
+            <li>{sharedContactsData.studio}</li>
             <li>
-              Tel: {contactsData.phone.landline} / Cell.{" "}
-              {contactsData.phone.mobile}
+              Tel: {sharedContactsData.phone.landline} / Cell.{" "}
+              {sharedContactsData.phone.mobile}
             </li>
             <li>
-              <a href={contactsData.email.mailto}>
-                {contactsData.email.address}
+              <a href={sharedContactsData.email.mailto}>
+                {sharedContactsData.email.address}
               </a>
             </li>
-            <li>P.iva: {contactsData.p_iva}</li>
+            <li>P.iva: {sharedContactsData.vatNumber}</li>
           </ul>
         </div>
 

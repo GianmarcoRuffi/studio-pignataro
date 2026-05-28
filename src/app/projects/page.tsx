@@ -2,7 +2,7 @@
 
 import { FC, useCallback, useMemo, useState } from "react";
 import Link from "next/link";
-import projects from "../../data/data";
+import projects from "../../data/projectsData";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
@@ -55,7 +55,7 @@ const Projects: FC = () => {
         setIsLoadingMore(false);
       }
     );
-  }, [isLoadingMore, preloadImage, visibleCards, visibleProjects]);
+  }, [isLoadingMore, visibleCards, visibleProjects]);
 
   const hasMoreCards = visibleCards < visibleProjects.length;
   const loadMoreRef = useInfiniteLoadTrigger({

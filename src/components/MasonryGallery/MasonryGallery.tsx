@@ -2,6 +2,7 @@
 import { FC, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
+import { BREAKPOINTS } from "../../constants";
 import styles from "./MasonryGallery.module.scss";
 
 interface MasonryGalleryProps {
@@ -26,11 +27,11 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   useEffect(() => {
     const updateColumns = () => {
       const width = window.innerWidth;
-      if (width < 768) {
+      if (width < BREAKPOINTS.tablet) {
         setColumns(1);
-      } else if (width < 1024) {
+      } else if (width < BREAKPOINTS.desktop) {
         setColumns(2);
-      } else if (width < 1400) {
+      } else if (width < BREAKPOINTS.wide) {
         setColumns(3);
       } else {
         setColumns(4);

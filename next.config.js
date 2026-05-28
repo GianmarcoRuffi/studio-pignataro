@@ -12,7 +12,7 @@ const nextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ["@fortawesome/react-fontawesome", "react-icons"],
+    optimizePackageImports: ["@fortawesome/react-fontawesome"],
   },
 
   async headers() {
