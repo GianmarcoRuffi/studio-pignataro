@@ -9,6 +9,7 @@ import CookieConsent from "../components/CookieConsent/CookieConsent";
 import OptionalScripts from "../components/OptionalScripts/OptionalScripts";
 import StructuredData from "../components/StructuredData/StructuredData";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import PageSmoothScroll from "../components/PageSmoothScroll/PageSmoothScroll";
 import { RootLayoutProps } from "../models/models";
 import { SplashProvider } from "../context/SplashContext";
 import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
@@ -85,6 +86,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
         <SplashProvider>
           <SplashWrapper>
             <StructuredData />
+            <PageSmoothScroll />
             <ScrollToTop />
             <div className="layout-wrapper">
               <HeaderHeightManager>{children}</HeaderHeightManager>

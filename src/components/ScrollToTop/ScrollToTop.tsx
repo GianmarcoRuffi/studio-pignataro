@@ -2,6 +2,7 @@
 
 import { FC, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { scrollToPosition } from "../../utils/scroll";
 
 const ScrollToTop: FC = () => {
   const pathname = usePathname();
@@ -10,8 +11,7 @@ const ScrollToTop: FC = () => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-
-    window.scrollTo({
+    scrollToPosition({
       top: 0,
       behavior: prefersReducedMotion ? "auto" : "smooth",
     });

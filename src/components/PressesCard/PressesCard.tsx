@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import { useImageLoad } from "../../hooks/useImageLoad";
+import { LOADING } from "../../constants";
 import { PressesCardProps } from "../../models/models";
 import styles from "./pressesCard.module.scss";
 
@@ -11,7 +12,9 @@ const PressesCard: FC<PressesCardProps> = ({
   source,
   date,
 }) => {
-  const isImageLoaded = useImageLoad(imageSource);
+  const isImageLoaded = useImageLoad(imageSource, {
+    minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
+  });
 
   const handleImageClick = () => {
     window.open(imageSource, "_blank", "noopener,noreferrer");

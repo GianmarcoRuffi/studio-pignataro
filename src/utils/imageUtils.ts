@@ -55,17 +55,26 @@ export function generateVanchigliaPaths(
 /**
  * Preload a single image
  * @param src - Image source URL
+ * @param minimumLoadingTime - Minimum time in ms before resolving
  * @returns Promise that resolves when image is loaded or fails
  */
-export function preloadImage(src: string): Promise<void> {
+export function preloadImage(
+  src: string,
+  minimumLoadingTime: number = 0
+): Promise<void> {
   return new Promise<void>((resolve) => {
     const img = new window.Image();
     let isSettled = false;
+    const loadingStartedAt = Date.now();
 
     const settle = () => {
       if (isSettled) return;
+
       isSettled = true;
-      resolve();
+      const elapsed = Date.now() - loadingStartedAt;
+      const remaining = Math.max(0, minimumLoadingTime - elapsed);
+
+      setTimeout(resolve, remaining);
     };
 
     img.onload = settle;

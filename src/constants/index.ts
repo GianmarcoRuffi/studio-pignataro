@@ -23,6 +23,10 @@ export const UI_TIMINGS = {
     showDelay: 500,
     closeDuration: 300,
   },
+  smoothScroll: {
+    lerp: 0.085,
+    wheelMultiplier: 0.9,
+  },
   splash: {
     defaultMinDisplay: 1500,
     initialMinDisplay: 1800,
@@ -42,6 +46,8 @@ export const UI_TIMINGS = {
 export const LOADING = {
   INITIAL_ITEMS: 6,
   ITEMS_PER_LOAD: 6,
+  BATCH_SKELETON_MIN_DISPLAY: 450,
+  IMAGE_SKELETON_MIN_DISPLAY: 220,
   SKELETON_COUNTS: {
     mobile: 3,
     tablet: 4,

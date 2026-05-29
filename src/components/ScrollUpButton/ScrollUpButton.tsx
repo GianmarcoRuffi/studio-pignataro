@@ -4,56 +4,49 @@ import { FC, useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import styles from "./scrollup-button.module.scss";
+import {
+  DEFAULT_SCROLL_CONTAINER_SELECTOR,
+  getScrollEventTarget,
+  getScrollTop,
+  scrollToPosition,
+} from "../../utils/scroll";
 
 interface ScrollUpButtonProps {
   scrollContainer?: string;
 }
 
 const ScrollUpButton: FC<ScrollUpButtonProps> = ({
-  scrollContainer = ".layout-content:not(.homepage)",
+  scrollContainer = DEFAULT_SCROLL_CONTAINER_SELECTOR,
 }) => {
   const [showButton, setShowButton] = useState<boolean>(false);
 
   const handleScroll = useCallback(() => {
-    const container = document.querySelector(scrollContainer) as HTMLElement;
-    const scrollPosition = container
-      ? container.scrollTop
-      : window.scrollY || document.documentElement.scrollTop;
-
-    setShowButton(scrollPosition > 100);
+    setShowButton(getScrollTop(scrollContainer) > 100);
   }, [scrollContainer]);
 
   const scrollToTop = () => {
-    const container = document.querySelector(scrollContainer) as HTMLElement;
-
-    if (container) {
-      container.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    scrollToPosition({ top: 0, selector: scrollContainer });
   };
 
   useEffect(() => {
     setShowButton(false);
 
     const timeoutId = setTimeout(() => {
-      const container = document.querySelector(scrollContainer) as HTMLElement;
+      const eventTarget = getScrollEventTarget(scrollContainer);
 
-      if (container) {
-        container.addEventListener("scroll", handleScroll);
-      } else {
-        window.addEventListener("scroll", handleScroll);
+      if (eventTarget) {
+        eventTarget.addEventListener("scroll", handleScroll);
       }
+
+      handleScroll();
     }, 100);
 
     return () => {
       clearTimeout(timeoutId);
 
-      const container = document.querySelector(scrollContainer) as HTMLElement;
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-      } else {
-        window.removeEventListener("scroll", handleScroll);
+      const eventTarget = getScrollEventTarget(scrollContainer);
+      if (eventTarget) {
+        eventTarget.removeEventListener("scroll", handleScroll);
       }
     };
   }, [scrollContainer, handleScroll]);
