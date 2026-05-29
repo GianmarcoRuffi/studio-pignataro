@@ -34,6 +34,64 @@ const openPageWithoutIntroOverlays = async (page: Page, path: string) => {
 };
 
 test.describe("smooth scrolling and skeleton loading", () => {
+  test("single project gallery shows visible skeletons without abrupt card pop-in", async ({
+    page,
+  }) => {
+    await slowImageResponses(page);
+    await openPageWithoutIntroOverlays(page, "/projects/Via-Eroi-d-Italia");
+
+    const initialSkeleton = page
+      .locator("[class*='galleryGrid'] [class*='imageSkeleton']")
+      .first();
+    await expect(initialSkeleton).toBeVisible({ timeout: 10_000 });
+
+    const initialOpacity = await initialSkeleton.evaluate(
+      (element) => Number(window.getComputedStyle(element).opacity)
+    );
+    expect(initialOpacity).toBeGreaterThan(0.95);
+
+    await expect(
+      page.locator("[class*='masonryContainer'] [class*='imageWrapper']")
+    ).toHaveCount(6, { timeout: 15_000 });
+
+    const container = page.locator("main.layout-content");
+    await container.evaluate((element) => {
+      const node = element as HTMLElement;
+      node.scrollTop = node.scrollHeight;
+    });
+
+    const sawMasonrySkeleton = await page.evaluate(async () => {
+      const selector = "[class*='masonryContainer'] [class*='imageSkeleton']";
+      const deadline = window.performance.now() + 4000;
+
+      while (window.performance.now() < deadline) {
+        const skeleton = document.querySelector(selector);
+
+        if (skeleton instanceof HTMLElement) {
+          const styles = window.getComputedStyle(skeleton);
+          const isVisible =
+            styles.display !== "none" &&
+            styles.visibility !== "hidden" &&
+            Number(styles.opacity) > 0.1;
+
+          if (isVisible) {
+            return true;
+          }
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+
+      return false;
+    });
+
+    expect(sawMasonrySkeleton).toBe(true);
+
+    await expect(
+      page.locator("[class*='masonryContainer'] [class*='imageWrapper']")
+    ).toHaveCount(8, { timeout: 10_000 });
+  });
+
   test("homepage keeps the hero slider visible", async ({ page }) => {
     await openPageWithoutIntroOverlays(page, "/");
 

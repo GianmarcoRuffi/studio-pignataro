@@ -7,6 +7,7 @@ import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
 import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
 import { preloadImage } from "../../utils/imageUtils";
+import { LOADING } from "../../constants";
 import { GalleryProps, GalleryLink } from "../../models/models";
 
 const Gallery: FC<GalleryProps> = ({
@@ -18,20 +19,25 @@ const Gallery: FC<GalleryProps> = ({
   prevProject,
   nextProject,
 }) => {
-  const [visibleImages, setVisibleImages] = useState(6);
+  const [visibleImages, setVisibleImages] = useState<number>(
+    LOADING.INITIAL_ITEMS
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
+  const loadMoreReleaseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
   const skeletonCount = useResponsiveSkeletonCount();
   const initialBatchImages = useMemo(
-    () => (images ?? []).slice(0, 6),
+    () => (images ?? []).slice(0, LOADING.INITIAL_ITEMS),
     [images]
   );
 
   useEffect(() => {
     let isCancelled = false;
 
-    setVisibleImages(6);
+    setVisibleImages(LOADING.INITIAL_ITEMS);
     if (!images || images.length === 0) {
       setIsLoading(false);
       return;
@@ -39,7 +45,6 @@ const Gallery: FC<GalleryProps> = ({
 
     setIsLoading(true);
 
-    let loadedCount = 0;
     let hasFinished = false;
     const loadingStartedAt = Date.now();
     let settleTimeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -51,7 +56,7 @@ const Gallery: FC<GalleryProps> = ({
 
       hasFinished = true;
       const elapsed = Date.now() - loadingStartedAt;
-      const remaining = Math.max(0, 350 - elapsed);
+      const remaining = Math.max(0, LOADING.BATCH_SKELETON_MIN_DISPLAY - elapsed);
 
       settleTimeoutId = setTimeout(() => {
         if (!isCancelled) {
@@ -60,18 +65,9 @@ const Gallery: FC<GalleryProps> = ({
       }, remaining);
     };
 
-    const preloadPromises = initialBatchImages.map((imageSrc) => {
-      return preloadImage(imageSrc).then(() => {
-        if (isCancelled) {
-          return;
-        }
-
-        loadedCount++;
-        if (loadedCount >= Math.min(3, initialBatchImages.length)) {
-          finishLoading();
-        }
-      });
-    });
+    const preloadPromises = initialBatchImages.map((imageSrc) =>
+      preloadImage(imageSrc)
+    );
 
     const timeout = setTimeout(() => {
       if (!isCancelled) {
@@ -96,22 +92,32 @@ const Gallery: FC<GalleryProps> = ({
     };
   }, [images, initialBatchImages]);
 
+  useEffect(() => {
+    return () => {
+      if (loadMoreReleaseTimeoutRef.current) {
+        clearTimeout(loadMoreReleaseTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const loadMoreImages = useCallback(() => {
     if (!images || isLoadingMore || visibleImages >= images.length) {
       return;
     }
 
     const nextVisibleImages = Math.min(visibleImages + 6, images.length);
-    const nextImageSources = images.slice(visibleImages, nextVisibleImages);
 
     setIsLoadingMore(true);
 
-    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
-      () => {
-        setVisibleImages(nextVisibleImages);
-        setIsLoadingMore(false);
-      }
-    );
+    if (loadMoreReleaseTimeoutRef.current) {
+      clearTimeout(loadMoreReleaseTimeoutRef.current);
+    }
+
+    setVisibleImages(nextVisibleImages);
+    loadMoreReleaseTimeoutRef.current = setTimeout(() => {
+      setIsLoadingMore(false);
+      loadMoreReleaseTimeoutRef.current = null;
+    }, LOADING.IMAGE_SKELETON_MIN_DISPLAY);
   }, [images, isLoadingMore, visibleImages]);
 
   useEffect(() => {
@@ -311,11 +317,7 @@ const Gallery: FC<GalleryProps> = ({
         {isLoading && (
           <div className={styles.galleryGrid}>
             {Array.from({ length: skeletonCount }, (_, index) => (
-              <div
-                key={`skeleton-${index}`}
-                className={styles.imageSkeleton}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+              <div key={`skeleton-${index}`} className={styles.imageSkeleton}>
                 <div className={styles.skeletonPlaceholder}></div>
               </div>
             ))}
@@ -334,14 +336,7 @@ const Gallery: FC<GalleryProps> = ({
               <div
                 ref={loadMoreTriggerRef}
                 className={styles.loadMoreTrigger}
-              >
-                {isLoadingMore && (
-                  <div className={styles.loadingIndicator}>
-                    <div className={styles.spinner}></div>
-                    <span>Caricamento immagini...</span>
-                  </div>
-                )}
-              </div>
+              />
             )}
           </>
         )}

@@ -1,8 +1,8 @@
 "use client";
-import { FC, useState, useEffect, useRef } from "react";
+import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
-import { BREAKPOINTS } from "../../constants";
+import { BREAKPOINTS, LOADING } from "../../constants";
 import styles from "./MasonryGallery.module.scss";
 
 interface MasonryGalleryProps {
@@ -23,6 +23,10 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const loadingStartedAtRef = useRef<Record<number, number>>({});
+  const settleTimeoutsRef = useRef<Record<number, ReturnType<typeof setTimeout>>>(
+    {}
+  );
 
   useEffect(() => {
     const updateColumns = () => {
@@ -49,18 +53,51 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
       for (let i = 0; i < Math.min(visibleImages, images.length); i++) {
         if (!(i in newLoadingState)) {
           newLoadingState[i] = i >= preloadedCount;
+
+          if (newLoadingState[i]) {
+            loadingStartedAtRef.current[i] = Date.now();
+          }
         }
       }
       return newLoadingState;
     });
   }, [visibleImages, images.length, preloadedCount]);
 
-  const handleImageLoad = (index: number) => {
-    setLoadingImages((prev) => ({
-      ...prev,
-      [index]: false,
-    }));
-  };
+  useEffect(() => {
+    const settleTimeouts = settleTimeoutsRef.current;
+
+    return () => {
+      Object.values(settleTimeouts).forEach((timeoutId) => {
+        clearTimeout(timeoutId);
+      });
+    };
+  }, []);
+
+  const settleImageLoading = useCallback((index: number) => {
+    if (settleTimeoutsRef.current[index]) {
+      return;
+    }
+
+    const loadingStartedAt = loadingStartedAtRef.current[index] ?? Date.now();
+    const elapsed = Date.now() - loadingStartedAt;
+    const remaining = Math.max(0, LOADING.IMAGE_SKELETON_MIN_DISPLAY - elapsed);
+
+    settleTimeoutsRef.current[index] = setTimeout(() => {
+      setLoadingImages((prev) => {
+        if (!prev[index]) {
+          return prev;
+        }
+
+        return {
+          ...prev,
+          [index]: false,
+        };
+      });
+
+      delete settleTimeoutsRef.current[index];
+      delete loadingStartedAtRef.current[index];
+    }, remaining);
+  }, []);
 
   const organizeImages = () => {
     const columnArrays: number[][] = Array.from({ length: columns }, () => []);
@@ -93,11 +130,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
             className={styles.masonryColumn}
           >
             {columnImages.map((imageIndex) => (
-              <div
-                key={imageIndex}
-                className={styles.imageWrapper}
-                style={{ animationDelay: `${(imageIndex + 1) * 0.05}s` }}
-              >
+              <div key={imageIndex} className={styles.imageWrapper}>
                 <button
                   type="button"
                   className={styles.imageLink}
@@ -106,11 +139,8 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                 >
                   <div className={styles.imageContainer}>
                     {loadingImages[imageIndex] && (
-                      <div className="absolute left-0 top-0 z-[2] flex h-full w-full flex-col items-center justify-center gap-4 bg-[rgba(255,255,255,0.95)]">
-                        <div className={styles.loaderSpinner}></div>
-                        <span className="text-[0.85rem] font-medium text-[#666]">
-                          Caricamento...
-                        </span>
+                      <div className={styles.imageSkeleton}>
+                        <div className={styles.skeletonPlaceholder}></div>
                       </div>
                     )}
 
@@ -127,13 +157,8 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                           ? styles.imageLoading
                           : styles.imageLoaded
                       }`}
-                      onLoad={() => handleImageLoad(imageIndex)}
-                      onError={() => {
-                        setLoadingImages((prev) => ({
-                          ...prev,
-                          [imageIndex]: false,
-                        }));
-                      }}
+                      onLoad={() => settleImageLoading(imageIndex)}
+                      onError={() => settleImageLoading(imageIndex)}
                       priority={imageIndex < preloadedCount}
                       quality={85}
                       placeholder="blur"
