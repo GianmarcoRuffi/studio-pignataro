@@ -23,12 +23,16 @@ Per far funzionare il form di contatto, devi configurare Resend per l'invio dell
 ```env
 RESEND_API_KEY=re_tua_chiave_api_qui
 EMAIL_FROM=onboarding@resend.dev
-EMAIL_TO=gianmarco.ruffi@outlook.it
+EMAIL_TO=info@archpignataro.it
 ```
+
+Tutte e tre le variabili sono obbligatorie. Se ne manca una, il form restituisce un errore esplicito invece di usare fallback impliciti.
 
 ### Per Testing (default)
 - `EMAIL_FROM=onboarding@resend.dev` - Email di test di Resend
-- `EMAIL_TO=gianmarco.ruffi@outlook.it` - Dove riceverai i messaggi di test
+- `EMAIL_TO=info@archpignataro.it` - Casella ufficiale di produzione
+
+Per test locale o preview puoi usare un indirizzo tecnico separato, ma impostalo esplicitamente nelle env dell'ambiente interessato.
 
 ### Per Produzione (consigliato)
 1. Verifica il tuo dominio su Resend:
@@ -41,6 +45,12 @@ EMAIL_TO=gianmarco.ruffi@outlook.it
 EMAIL_FROM=noreply@archpignataro.it
 EMAIL_TO=info@archpignataro.it
 ```
+
+### Comportamento della risposta email
+
+- L'email ricevuta usa `Reply-To` con l'indirizzo inserito dall'utente nel form.
+- Per rispondere correttamente e mantenere il thread, usa il pulsante di risposta del tuo client email.
+- Il messaggio originale dell'utente resta nel corpo della mail ricevuta ed e' identificato da un ID richiesta nel subject.
 
 ## Step 4: Riavvia il server
 
@@ -78,10 +88,34 @@ Quando fai il deploy su Vercel, aggiungi le variabili d'ambiente:
 1. Vai su Vercel Dashboard
 2. Seleziona il progetto
 3. Settings → Environment Variables
-4. Aggiungi:
+4. Aggiungi in entrambi gli ambienti `Preview` e `Production`:
    - `RESEND_API_KEY`
    - `EMAIL_FROM`
    - `EMAIL_TO`
+5. Configura i valori per ambiente:
+   - `Production`: `EMAIL_TO=info@archpignataro.it`
+   - `Preview`: un indirizzo separato per test/staging, cosi' i messaggi non finiscono nella casella live
+6. Dopo aver aggiornato le env, fai un nuovo deploy dell'ambiente interessato
+
+### Blocchi pronti da incollare
+
+Per `Preview`:
+
+```env
+RESEND_API_KEY=re_tua_chiave_api_qui
+EMAIL_FROM=onboarding@resend.dev
+EMAIL_TO=gianmarco.ruffi@outlook.it
+```
+
+Per `Production`:
+
+```env
+RESEND_API_KEY=re_tua_chiave_api_qui
+EMAIL_FROM=noreply@archpignataro.it
+EMAIL_TO=info@archpignataro.it
+```
+
+Se preferisci, puoi usare la stessa `RESEND_API_KEY` in entrambi gli ambienti. La differenza importante e' che `Preview` continui a spedire verso la casella di test, mentre `Production` punti alla casella live.
 
 ## Link utili
 

@@ -19,6 +19,11 @@ interface FormErrors {
   acceptPrivacy?: string;
 }
 
+interface ContactFormResponse {
+  message?: string;
+  error?: string;
+}
+
 // Costanti per validazione
 const MAX_NAME_LENGTH = 100;
 const MAX_MESSAGE_LENGTH = 5000;
@@ -37,6 +42,7 @@ const ContactForm: FC = () => {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null
   );
+  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,6 +88,7 @@ const ContactForm: FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitStatus(null);
+    setSubmitMessage(null);
 
     if (!validateForm()) {
       return;
@@ -97,9 +104,14 @@ const ContactForm: FC = () => {
         },
         body: JSON.stringify(formData),
       });
+      const result = (await response.json().catch(() => null)) as ContactFormResponse | null;
 
       if (response.ok) {
         setSubmitStatus("success");
+        setSubmitMessage(
+          result?.message ||
+            "Messaggio inviato con successo! Ti risponderemo al più presto."
+        );
         setFormData({
           email: "",
           name: "",
@@ -110,10 +122,17 @@ const ContactForm: FC = () => {
         setErrors({});
       } else {
         setSubmitStatus("error");
+        setSubmitMessage(
+          result?.error ||
+            "Si è verificato un errore. Riprova più tardi o contattaci direttamente via email."
+        );
       }
     } catch (error) {
       console.error("Errore nell'invio del form:", error);
       setSubmitStatus("error");
+      setSubmitMessage(
+        "Si è verificato un errore di rete. Controlla la connessione e riprova."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -136,6 +155,11 @@ const ContactForm: FC = () => {
         ...prev,
         [name]: undefined,
       }));
+    }
+
+    if (submitStatus) {
+      setSubmitStatus(null);
+      setSubmitMessage(null);
     }
   };
 
@@ -281,15 +305,14 @@ const ContactForm: FC = () => {
         </p>
 
         {submitStatus === "success" && (
-          <div className={styles.successMessage}>
-            Messaggio inviato con successo! Ti risponderemo al più presto.
+          <div className={`${styles.submitFeedback} ${styles.successMessage}`} role="status">
+            {submitMessage}
           </div>
         )}
 
         {submitStatus === "error" && (
-          <div className={styles.errorMessage}>
-            Si è verificato un errore. Riprova più tardi o contattaci
-            direttamente via email.
+          <div className={`${styles.submitFeedback} ${styles.submitErrorMessage}`} role="alert">
+            {submitMessage}
           </div>
         )}
 

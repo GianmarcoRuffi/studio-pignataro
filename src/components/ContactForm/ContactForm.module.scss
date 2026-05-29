@@ -199,13 +199,21 @@
   display: block;
 }
 
-.successMessage {
+.submitFeedback {
   padding: 1rem;
-  background: #d1fae5;
-  color: #065f46;
   border-radius: 0.5rem;
   text-align: center;
   font-weight: 500;
+}
+
+.successMessage {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.submitErrorMessage {
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 @media screen and (max-width: 768px) {

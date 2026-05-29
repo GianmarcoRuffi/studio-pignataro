@@ -73,15 +73,17 @@ Una volta verificato il dominio, aggiorna il file `.env.local`:
 # API Key di Resend
 RESEND_API_KEY=re_tua_chiave_api_qui
 
-# Mittente personalizzato (dominio verificato)
+# Mittente personalizzato (obbligatorio, dominio verificato)
 EMAIL_FROM=studiopignataro@archpignataro.it
 # Oppure:
 # EMAIL_FROM=noreply@archpignataro.it
 # EMAIL_FROM=info@archpignataro.it
 
-# Destinatario dei messaggi
+# Destinatario dei messaggi (obbligatorio)
 EMAIL_TO=info@archpignataro.it
 ```
+
+Il form non usa piu' fallback impliciti: se una di queste variabili manca, l'API risponde con errore di configurazione.
 
 ### Opzioni per EMAIL_FROM
 
@@ -103,9 +105,18 @@ Se usi Vercel per il deployment, aggiorna anche le variabili d'ambiente lì:
 1. Vai su [https://vercel.com](https://vercel.com)
 2. Seleziona il progetto **studio-pignataro**
 3. Vai su **Settings** → **Environment Variables**
-4. Modifica `EMAIL_FROM` con il tuo indirizzo personalizzato
-5. Clicca su **Save**
-6. Fai un nuovo deploy o riavvia l'applicazione
+4. Imposta sia `Preview` sia `Production`
+5. Usa questi valori consigliati:
+	- `Production`: `EMAIL_FROM=noreply@archpignataro.it`, `EMAIL_TO=info@archpignataro.it`
+	- `Preview`: `EMAIL_FROM=noreply@archpignataro.it` oppure `onboarding@resend.dev` se stai ancora testando, con `EMAIL_TO` su una casella separata
+6. Clicca su **Save**
+7. Fai un nuovo deploy o riavvia l'applicazione
+
+## Risposte e threading
+
+- L'email ricevuta dal form imposta automaticamente `Reply-To` sull'indirizzo dell'utente.
+- Per rispondere mantenendo il messaggio originale quotato, usa il normale comando di risposta del tuo client email.
+- Ogni richiesta ha un ID dedicato nel subject, utile per tenere separati i thread e riconoscere piu' richieste dallo stesso mittente.
 
 ## Step 4: Riavvia il Server di Sviluppo
 

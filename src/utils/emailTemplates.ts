@@ -2,6 +2,15 @@ interface ContactEmailData {
   name: string;
   email: string;
   message: string;
+  submissionId: string;
+  submittedAt: string;
+}
+
+const EMAIL_SUBJECT_PREFIX =
+  'Nuovo messaggio dal form del tuo sito "Studio Dott. Arch. Gianluca Pignataro"';
+
+export function buildContactEmailSubject(submissionId: string): string {
+  return `${EMAIL_SUBJECT_PREFIX} [${submissionId}]`;
 }
 
 export function linkifyMessage(text: string): string {
@@ -14,7 +23,7 @@ export function linkifyMessage(text: string): string {
 }
 
 export function generateContactEmailHTML(data: ContactEmailData): string {
-  const { name, email, message } = data;
+  const { name, email, message, submissionId, submittedAt } = data;
   const messageWithLinks = linkifyMessage(message);
   
   return `
@@ -72,6 +81,11 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
         color: #0066cc;
         text-decoration: none;
       }
+      .meta {
+        margin-top: 12px;
+        font-size: 0.9em;
+        color: #666;
+      }
       .message-box {
         background: white;
         padding: 20px;
@@ -110,6 +124,11 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
         color: #666;
         border-top: 2px solid #373737;
       }
+      .reply-note {
+        margin-top: 12px;
+        font-size: 0.9em;
+        color: #4a4a4a;
+      }
     </style>
   </head>
   <body>
@@ -124,6 +143,10 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
         <div class="sender-email">
           <a href="mailto:${email}">${email}</a>
         </div>
+        <div class="meta">
+          Richiesta ${submissionId}<br>
+          Ricevuta il ${submittedAt}
+        </div>
       </div>
       
       <div class="message-box">
@@ -132,8 +155,10 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
       </div>
       
       <div class="footer-note">
-        <strong>Suggerimento:</strong> Puoi rispondere direttamente a questa email per contattare ${name}. 
-        Il messaggio originale verrà automaticamente citato nella tua risposta.
+        <strong>Suggerimento:</strong> usa il pulsante di risposta del tuo client email per contattare ${name} mantenendo il thread.
+        <div class="reply-note">
+          Il messaggio originale resta in questa email, cosi' Gmail, Outlook e client simili possono citarlo automaticamente nella risposta.
+        </div>
       </div>
     </div>
   </body>
@@ -142,7 +167,7 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
 }
 
 export function generateContactEmailText(data: ContactEmailData): string {
-  const { name, email, message } = data;
+  const { name, email, message, submissionId, submittedAt } = data;
   
   return `
 NUOVO MESSAGGIO DAL FORM DI CONTATTO
@@ -153,6 +178,8 @@ Studio Dott. Arch. Gianluca Pignataro
 RICEVUTO DA:
 ${name}
 ${email}
+Richiesta: ${submissionId}
+Ricevuta il: ${submittedAt}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -162,8 +189,6 @@ ${message}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Puoi rispondere direttamente a questa email per contattare ${name}.
+Usa il pulsante di risposta del tuo client email per contattare ${name} mantenendo il thread.
   `.trim();
 }
-
-export const EMAIL_SUBJECT = 'Nuovo messaggio dal form del tuo sito "Studio Dott. Arch. Gianluca Pignataro"';
