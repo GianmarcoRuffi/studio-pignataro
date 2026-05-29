@@ -66,7 +66,7 @@ const Header: FC = () => {
       } ${scrolled ? styles.scrolled : ""}`}
     >
       <div
-        className={`${styles.navWrapper} flex justify-between items-center ${
+        className={`${styles.navWrapper} ${
           scrolled ? styles.scrolledNavWrapper : ""
         }`}
       >
@@ -114,6 +114,7 @@ const Header: FC = () => {
           className={`${styles.menuIcon} ${menuOpen ? styles.open : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <div className={styles.hamburgerLines}>
             <span className={styles.line1}></span>
