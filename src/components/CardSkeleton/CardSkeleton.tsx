@@ -22,11 +22,7 @@ export const CardSkeleton: FC<CardSkeletonProps> = ({
   return (
     <>
       {Array.from({ length: count }, (_, index) => (
-        <div
-          key={`skeleton-${index}`}
-          className={className}
-          style={{ animationDelay: `${index * 0.1}s` }}
-        >
+        <div key={`skeleton-${index}`} className={className}>
           <div className={placeholderClassName}></div>
           <div className={textClassName}>
             <div className={titleClassName}></div>

@@ -56,6 +56,7 @@ export default function Presses() {
 
   const { isLoading } = useMultiImageLoader(currentImages, {
     timeout: 4000,
+    minimumLoadingTime: LOADING.BATCH_SKELETON_MIN_DISPLAY,
     onComplete: preloadRemainingImages,
   });
 
@@ -69,12 +70,14 @@ export default function Presses() {
 
     setIsLoadingMore(true);
 
-    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
-      () => {
-        setVisibleCards(nextVisibleCards);
-        setIsLoadingMore(false);
-      }
-    );
+    void Promise.all(
+      nextImageSources.map((src) =>
+        preloadImage(src, LOADING.BATCH_SKELETON_MIN_DISPLAY)
+      )
+    ).finally(() => {
+      setVisibleCards(nextVisibleCards);
+      setIsLoadingMore(false);
+    });
   }, [filteredData, isLoadingMore, visibleCards]);
 
   const hasMoreCards = visibleCards < filteredData.length;

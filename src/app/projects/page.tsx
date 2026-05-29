@@ -36,6 +36,7 @@ const Projects: FC = () => {
 
   const { isLoading } = useMultiImageLoader(initialImages, {
     timeout: 4000,
+    minimumLoadingTime: LOADING.BATCH_SKELETON_MIN_DISPLAY,
     onComplete: preloadRemainingImages,
   });
 
@@ -49,12 +50,14 @@ const Projects: FC = () => {
 
     setIsLoadingMore(true);
 
-    void Promise.all(nextImageSources.map((src) => preloadImage(src))).finally(
-      () => {
-        setVisibleCards(nextVisibleCards);
-        setIsLoadingMore(false);
-      }
-    );
+    void Promise.all(
+      nextImageSources.map((src) =>
+        preloadImage(src, LOADING.BATCH_SKELETON_MIN_DISPLAY)
+      )
+    ).finally(() => {
+      setVisibleCards(nextVisibleCards);
+      setIsLoadingMore(false);
+    });
   }, [isLoadingMore, visibleCards, visibleProjects]);
 
   const hasMoreCards = visibleCards < visibleProjects.length;

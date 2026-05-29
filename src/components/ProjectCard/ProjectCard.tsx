@@ -3,6 +3,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { useImageLoad } from "../../hooks/useImageLoad";
+import { LOADING } from "../../constants";
 import styles from "./project-card.module.scss";
 import { ProjectCardProps } from "../../models/models";
 
@@ -11,7 +12,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
   imageSource,
   description,
 }) => {
-  const loaded = useImageLoad(imageSource);
+  const loaded = useImageLoad(imageSource, {
+    minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
+  });
 
   return (
     <article className={styles.projectCard}>

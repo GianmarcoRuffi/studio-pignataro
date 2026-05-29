@@ -14,7 +14,9 @@ const HeaderHeightManager: FC<HeaderHeightManagerProps> = ({ children }) => {
     <>
       <Header />
       <main className={`layout-content ${isHomepage ? "homepage" : ""}`}>
-        <ClientPageWrapper>{children}</ClientPageWrapper>
+        <div className="layout-scroll-content" data-scroll-content>
+          <ClientPageWrapper>{children}</ClientPageWrapper>
+        </div>
       </main>
     </>
   );
