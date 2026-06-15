@@ -22,6 +22,8 @@ const Header: FC = () => {
   const isHomepage = pathname === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [suppressHomepageLogoChrome, setSuppressHomepageLogoChrome] =
+    useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
   const updateScrolledState = () => {
@@ -37,11 +39,20 @@ const Header: FC = () => {
 
   useLayoutEffect(() => {
     setMenuOpen(false);
+    setSuppressHomepageLogoChrome(false);
     updateScrolledState();
 
     const frameId = window.requestAnimationFrame(updateScrolledState);
     return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
+
+  const handleNavigationStart = (href: string) => {
+    if (pathname === "/" && href !== "/") {
+      setSuppressHomepageLogoChrome(true);
+    }
+
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -73,6 +84,8 @@ const Header: FC = () => {
         <div
           className={`${styles.logoContainer} ${
             scrolled ? styles.scrolledLogoContainer : ""
+          } ${
+            suppressHomepageLogoChrome ? styles.suppressHomepageLogoChrome : ""
           }`}
         >
           <Link href="/" className={styles.logoLink}>
@@ -102,7 +115,12 @@ const Header: FC = () => {
                 key={item.href}
                 className={pathname === item.href ? styles.active : ""}
               >
-                <Link href={item.href}>{item.label}</Link>
+                <Link
+                  href={item.href}
+                  onClick={() => handleNavigationStart(item.href)}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>

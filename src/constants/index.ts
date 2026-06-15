@@ -6,7 +6,7 @@ export const BREAKPOINTS = {
 } as const;
 
 export const SITE_URL = "https://archpignataro.it";
-export const BRANDING_LOGO_FILENAME = "logo.jpg";
+export const BRANDING_LOGO_FILENAME = "logo.png";
 export const BRANDING_LOGO_PATH = `/branding/${BRANDING_LOGO_FILENAME}`;
 export const BRANDING_LOGO_URL = `${SITE_URL}${BRANDING_LOGO_PATH}`;
 export const BRANDING_LOGO_DIMENSIONS = {
