@@ -8,6 +8,8 @@ export const BREAKPOINTS = {
 export const SITE_URL = "https://archpignataro.it";
 export const BRANDING_LOGO_FILENAME = "logo.png";
 export const BRANDING_LOGO_PATH = `/branding/${BRANDING_LOGO_FILENAME}`;
+export const BRANDING_DARK_LOGO_FILENAME = "dark-theme-logo.png";
+export const BRANDING_DARK_LOGO_PATH = `/branding/${BRANDING_DARK_LOGO_FILENAME}`;
 export const BRANDING_LOGO_URL = `${SITE_URL}${BRANDING_LOGO_PATH}`;
 export const BRANDING_LOGO_DIMENSIONS = {
   width: 237,

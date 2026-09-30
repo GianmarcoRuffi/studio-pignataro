@@ -1,11 +1,14 @@
 "use client";
 import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { BRANDING_LOGO_PATH } from "../../constants";
+import {
+  BRANDING_DARK_LOGO_PATH,
+  BRANDING_LOGO_DIMENSIONS,
+  BRANDING_LOGO_PATH,
+} from "../../constants";
 import styles from "./header.module.scss";
 
 const NAV_ITEMS = [
@@ -89,16 +92,21 @@ const Header: FC = () => {
           }`}
         >
           <Link href="/" className={styles.logoLink}>
-            <span className={styles.logoImageFrame}>
-            <Image
-              src={BRANDING_LOGO_PATH}
-              alt="Logo Studio Architetto Pignataro"
-              fill
-              sizes="(max-width: 480px) 180px, (max-width: 768px) 195px, 180px"
-              priority
-              className={styles.logoImage}
-            />
-            </span>
+            <picture className={styles.logoImageFrame}>
+              <source
+                media="(prefers-color-scheme: dark)"
+                srcSet={BRANDING_DARK_LOGO_PATH}
+              />
+              <img
+                src={BRANDING_LOGO_PATH}
+                alt="Logo Studio Architetto Pignataro"
+                width={BRANDING_LOGO_DIMENSIONS.width}
+                height={BRANDING_LOGO_DIMENSIONS.height}
+                className={styles.logoImage}
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
           </Link>
         </div>
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { FC, useEffect, useState } from "react";
-import Image from "next/image";
 import {
+  BRANDING_DARK_LOGO_PATH,
   BRANDING_LOGO_DIMENSIONS,
   BRANDING_LOGO_PATH,
   UI_TIMINGS,
@@ -56,15 +56,21 @@ const SplashScreen: FC<SplashScreenProps> = ({
   return (
     <div className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}>
       <div className={styles.logoContainer}>
-        <Image
-          src={BRANDING_LOGO_PATH}
-          alt="Studio Architetto Gianluca Pignataro"
-          width={BRANDING_LOGO_DIMENSIONS.width}
-          height={BRANDING_LOGO_DIMENSIONS.height}
-          priority
-          className={styles.logo}
-          style={{ width: "auto", height: "auto" }}
-        />
+        <picture>
+          <source
+            media="(prefers-color-scheme: dark)"
+            srcSet={BRANDING_DARK_LOGO_PATH}
+          />
+          <img
+            src={BRANDING_LOGO_PATH}
+            alt="Studio Architetto Gianluca Pignataro"
+            width={BRANDING_LOGO_DIMENSIONS.width}
+            height={BRANDING_LOGO_DIMENSIONS.height}
+            className={styles.logo}
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
       </div>
     </div>
   );
