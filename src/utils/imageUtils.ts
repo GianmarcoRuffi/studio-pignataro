@@ -1,3 +1,5 @@
+import { getImageProps } from "next/image";
+
 /**
  * Genera un array di path immagini per una cartella specifica
  * @param folderName - Percorso cartella relativo alla root di public (es. "projects/via-asti/gallery")
@@ -60,7 +62,8 @@ export function generateVanchigliaPaths(
  */
 export function preloadImage(
   src: string,
-  minimumLoadingTime: number = 0
+  minimumLoadingTime: number = 0,
+  responsive?: { sizes: string; quality: number }
 ): Promise<void> {
   return new Promise<void>((resolve) => {
     const img = new window.Image();
@@ -79,7 +82,20 @@ export function preloadImage(
 
     img.onload = settle;
     img.onerror = settle;
-    img.src = src;
+    if (responsive && !src.endsWith(".gif")) {
+      const { props } = getImageProps({
+        src,
+        alt: "",
+        width: 600,
+        height: 400,
+        ...responsive,
+      });
+      img.sizes = props.sizes ?? "";
+      img.srcset = props.srcSet ?? "";
+      img.src = props.src;
+    } else {
+      img.src = src;
+    }
 
     if (img.complete) {
       settle();

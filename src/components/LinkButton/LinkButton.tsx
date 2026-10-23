@@ -5,12 +5,7 @@ import styles from "./link-button.module.scss";
 
 const LinkButton: FC<LinkButtonProps> = ({ href, children, target, rel }) => {
   return (
-    <Link
-      href={href}
-      target={target}
-      rel={rel}
-      className={styles.linkButton}
-    >
+    <Link href={href} target={target} rel={rel} className={styles.linkButton}>
       {children}
     </Link>
   );

@@ -1,11 +1,16 @@
 "use client";
 import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { BRANDING_LOGO_PATH } from "../../constants";
+import {
+  BRANDING_DARK_LOGO_PATH,
+  BRANDING_LOGO_DIMENSIONS,
+  BRANDING_LOGO_PATH,
+} from "../../constants";
+import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
+import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import styles from "./header.module.scss";
 
 const NAV_ITEMS = [
@@ -26,16 +31,18 @@ const Header: FC = () => {
     useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
+  useModalAccessibility(menuOpen, menuRef, () => setMenuOpen(false));
   const updateScrolledState = () => {
     const threshold = 50;
-    setScrolled(window.scrollY > threshold);
+    setScrolled(getScrollTop() > threshold);
   };
 
   useEffect(() => {
     updateScrolledState();
-    window.addEventListener("scroll", updateScrolledState);
-    return () => window.removeEventListener("scroll", updateScrolledState);
-  }, []);
+    const target = getScrollEventTarget();
+    target?.addEventListener("scroll", updateScrolledState);
+    return () => target?.removeEventListener("scroll", updateScrolledState);
+  }, [pathname]);
 
   useLayoutEffect(() => {
     setMenuOpen(false);
@@ -53,22 +60,6 @@ const Header: FC = () => {
 
     setMenuOpen(false);
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        menuIconRef.current &&
-        !menuIconRef.current.contains(event.target as Node)
-      ) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   return (
     <header
@@ -89,21 +80,26 @@ const Header: FC = () => {
           }`}
         >
           <Link href="/" className={styles.logoLink}>
-            <span className={styles.logoImageFrame}>
-            <Image
-              src={BRANDING_LOGO_PATH}
-              alt="Logo Studio Architetto Pignataro"
-              fill
-              sizes="(max-width: 480px) 180px, (max-width: 768px) 195px, 180px"
-              priority
-              className={styles.logoImage}
-            />
-            </span>
+            <picture className={styles.logoImageFrame}>
+              <source
+                media="(prefers-color-scheme: dark)"
+                srcSet={BRANDING_DARK_LOGO_PATH}
+              />
+              <img
+                src={BRANDING_LOGO_PATH}
+                alt="Logo Studio Architetto Pignataro"
+                width={BRANDING_LOGO_DIMENSIONS.width}
+                height={BRANDING_LOGO_DIMENSIONS.height}
+                className={styles.logoImage}
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
           </Link>
         </div>
 
         <div className={`${styles.homeIcon} ${isActive ? styles.active : ""}`}>
-          <Link href="/">
+          <Link href="/" aria-label="Home">
             <FontAwesomeIcon icon={faHome} size="lg" />
           </Link>
         </div>
@@ -133,6 +129,7 @@ const Header: FC = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           <div className={styles.hamburgerLines}>
             <span className={styles.line1}></span>
@@ -142,6 +139,15 @@ const Header: FC = () => {
         </button>
 
         <div
+          id="mobile-navigation"
+          ref={menuRef}
+          role="dialog"
+          aria-modal={menuOpen ? true : undefined}
+          aria-label="Menu di navigazione"
+          aria-hidden={!menuOpen}
+          inert={!menuOpen}
+          tabIndex={-1}
+          data-lenis-prevent
           className={`${styles.menuOverlay} ${menuOpen ? styles.menuOpen : ""}`}
         >
           <button
@@ -162,7 +168,11 @@ const Header: FC = () => {
                     pathname === item.href ? styles.active : ""
                   }`}
                 >
-                  <Link href={item.href} className={styles.navLink}>
+                  <Link
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={() => handleNavigationStart(item.href)}
+                  >
                     <span className={styles.navText}>{item.label}</span>
                   </Link>
                 </li>

@@ -1,3 +1,5 @@
+import { sharedContactsData } from "../../data/contactsData";
+
 export interface CookieTableRow {
   name: string;
   purpose: string;
@@ -31,115 +33,79 @@ export interface PolicySection {
   };
 }
 
+export const cookiePolicyUpdatedAt = "2026-10-23";
+
 export const cookiePolicyData: PolicySection[] = [
   {
     id: "cosa-sono",
-    title: "1. Cosa sono i cookie",
+    title: "1. Cookie e memoria del browser",
     content:
-      "I cookie sono piccoli file di testo che vengono memorizzati sul dispositivo dell'utente quando visita un sito web. Permettono al sito di ricordare le azioni e preferenze dell'utente per un certo periodo di tempo.",
+      "I cookie e le memorie locali del browser permettono di conservare informazioni sul dispositivo. Questo sito usa localStorage per ricordare la scelta sui servizi facoltativi e sessionStorage per gestire le schermate introduttive durante la visita.",
   },
   {
     id: "tipologie",
-    title: "2. Tipologie di cookie utilizzati",
-    content: "",
-    subsections: [
-      {
-        title: "Cookie tecnici necessari",
-        content: "Questi cookie sono essenziali per il corretto funzionamento del sito:",
-        list: {
-          items: [
-            "<strong>Cookie di sessione:</strong> mantengono la sessione di navigazione",
-            "<strong>Cookie di preferenze:</strong> ricordano le scelte dell'utente",
-            "<strong>Cookie di sicurezza:</strong> proteggono da attacchi informatici",
-          ],
-        },
-      },
-      {
-        title: "Cookie di analisi",
-        content: "Utilizziamo Google Analytics per raccogliere informazioni anonime su:",
-        list: {
-          items: [
-            "Numero di visitatori del sito",
-            "Pagine più visitate",
-            "Tempo di permanenza sul sito",
-            "Dispositivi e browser utilizzati",
-          ],
-        },
-      },
-    ],
+    title: "2. Strumenti utilizzati dal sito",
+    content:
+      "Le preferenze di navigazione sono memorizzate sul dispositivo. Il sito non integra Google Analytics o strumenti di marketing; i font e le icone sono serviti dal sito, senza collegamenti a Google Fonts o CDN FontAwesome.",
   },
   {
     id: "terze-parti",
-    title: "3. Cookie di terze parti",
-    content: "Il sito può utilizzare servizi di terze parti che impostano i propri cookie:",
-    list: {
-      items: [
-        "<strong>Google Analytics:</strong> analisi del traffico web",
-        "<strong>Google Fonts:</strong> caricamento dei font personalizzati",
-        "<strong>FontAwesome:</strong> icone e simboli grafici",
-      ],
-    },
-  },
-  {
-    id: "gestione",
-    title: "4. Gestione dei cookie",
-    content: "Puoi gestire o disabilitare i cookie attraverso le impostazioni del tuo browser:",
-    list: {
-      items: [
-        "<strong>Chrome:</strong> Impostazioni → Privacy e sicurezza → Cookie",
-        "<strong>Firefox:</strong> Impostazioni → Privacy e sicurezza → Cookie",
-        "<strong>Safari:</strong> Preferenze → Privacy → Cookie",
-        "<strong>Edge:</strong> Impostazioni → Privacy → Cookie",
-      ],
-    },
-  },
-  {
-    id: "consenso",
-    title: "5. Consenso",
+    title: "3. Mappa Google Maps",
     content: [
-      "L'utilizzo del sito implica l'accettazione dei cookie tecnici necessari. Per i cookie di analisi e marketing, il consenso viene richiesto attraverso il banner informativo.",
-      "Il consenso può essere revocato in qualsiasi momento modificando le impostazioni del browser o contattandoci all'indirizzo: <a href=\"mailto:info@archpignataro.it\">info@archpignataro.it</a>",
+      'La pagina Contatti può mostrare una mappa fornita da Google Maps. La mappa resta disattivata finché non scegli «Accetta servizi facoltativi». Dopo l’attivazione il browser si collega a Google, comunicando dati tecnici quali indirizzo IP e informazioni del dispositivo; Google può usare propri cookie e strumenti di memoria secondo le sue impostazioni. Per i dettagli consulta <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">l’informativa privacy di Google</a>.',
     ],
   },
   {
+    id: "gestione",
+    title: "4. Gestione delle preferenze",
+    content:
+      "Il pulsante «Preferenze cookie» nel footer, disponibile anche su mobile, permette di cambiare la scelta in ogni momento. «Solo necessari» impedisce il caricamento della mappa e rimuove quella eventualmente aperta. La revoca interrompe le nuove connessioni della mappa ma non cancella i dati già ricevuti da Google o i cookie di terze parti: questi possono essere eliminati nelle impostazioni del browser.",
+  },
+  {
+    id: "consenso",
+    title: "5. Durata della scelta",
+    content:
+      "La scelta viene registrata con la data e resta valida per 365 giorni, poi viene richiesta nuovamente. Una scelta senza data valida è considerata scaduta. Navigare o scorrere la pagina non autorizza servizi facoltativi. Se il browser impedisce la memorizzazione, la scelta vale soltanto durante la visita corrente.",
+  },
+  {
     id: "dettaglio",
-    title: "6. Cookie utilizzati nel dettaglio",
-    content: "",
+    title: "6. Memorie locali utilizzate",
+    content:
+      "Queste voci sono memorie locali del browser, non cookie inviati al server. È possibile cancellarle tramite le impostazioni del browser.",
     cookieTable: [
       {
         name: "cookie-consent",
-        purpose: "Memorizza il consenso dell'utente",
-        duration: "1 anno",
-        type: "Tecnico",
+        purpose: "Scelta accepted o declined (localStorage)",
+        duration: "365 giorni",
+        type: "Preferenza tecnica",
       },
       {
-        name: "_ga",
-        purpose: "Google Analytics - identificazione utenti",
-        duration: "2 anni",
-        type: "Analisi",
+        name: "cookie-consent-date",
+        purpose: "Data della scelta e controllo della scadenza (localStorage)",
+        duration: "365 giorni",
+        type: "Preferenza tecnica",
       },
       {
-        name: "_ga_*",
-        purpose: "Google Analytics - ID della proprietà",
-        duration: "2 anni",
-        type: "Analisi",
+        name: "splash-shown / siteVisited",
+        purpose: "Evita di ripetere le schermate introduttive (sessionStorage)",
+        duration: "Sessione della scheda",
+        type: "Navigazione",
       },
     ],
   },
   {
     id: "contatti",
     title: "7. Contatti",
-    content:
-      "Per qualsiasi domanda riguardante questa Cookie Policy o per esercitare i tuoi diritti, contattaci:",
+    content: "Per informazioni su questa pagina contatta lo studio:",
     contactInfo: {
-      email: "glpignataro@yahoo.it",
-      phone: "070 305880",
-      mobile: "348 5189797",
-      address: "Via Arrigo Solmi 36, 09129 Cagliari (CA)",
-      vat: "02783940923",
+      email: sharedContactsData.email.address,
+      phone: sharedContactsData.phone.landline,
+      mobile: sharedContactsData.phone.mobile,
+      address: sharedContactsData.studio,
+      vat: sharedContactsData.vatNumber,
     },
   },
 ];
 
 export const cookieDisclaimerNote =
-  "<strong>Nota:</strong> La disabilitazione dei cookie tecnici potrebbe compromettere il corretto funzionamento del sito.";
+  "<strong>Nota:</strong> rifiutare i servizi facoltativi consente di consultare comunque il portfolio e i contatti dello studio.";

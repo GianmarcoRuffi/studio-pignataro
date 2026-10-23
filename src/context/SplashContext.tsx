@@ -1,4 +1,5 @@
 "use client";
+import { readSessionValue } from "../utils/storage";
 
 import {
   createContext,
@@ -35,7 +36,7 @@ export const SplashProvider: FC<SplashProviderProps> = ({ children }) => {
   const [shouldShowSplash, setShouldShowSplash] = useState(true);
 
   useEffect(() => {
-    const splashShown = sessionStorage.getItem("splash-shown");
+    const splashShown = readSessionValue("splash-shown");
     if (splashShown) {
       setIsSplashComplete(true);
       setShouldShowSplash(false);

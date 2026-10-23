@@ -29,18 +29,21 @@ EMAIL_TO=info@archpignataro.it
 Tutte e tre le variabili sono obbligatorie. Se ne manca una, il form restituisce un errore esplicito invece di usare fallback impliciti.
 
 ### Per Testing (default)
+
 - `EMAIL_FROM=onboarding@resend.dev` - Email di test di Resend
 - `EMAIL_TO=info@archpignataro.it` - Casella ufficiale di produzione
 
 Per test locale o preview puoi usare un indirizzo tecnico separato, ma impostalo esplicitamente nelle env dell'ambiente interessato.
 
 ### Per Produzione (consigliato)
+
 1. Verifica il tuo dominio su Resend:
    - Vai su [https://resend.com/domains](https://resend.com/domains)
    - Aggiungi `archpignataro.it`
    - Segui le istruzioni per configurare i record DNS
 
 2. Dopo la verifica, aggiorna `.env.local`:
+
 ```env
 EMAIL_FROM=noreply@archpignataro.it
 EMAIL_TO=info@archpignataro.it
@@ -68,15 +71,18 @@ npm run dev
 ## Troubleshooting
 
 ### "Servizio email non configurato correttamente"
+
 - Verifica che `RESEND_API_KEY` sia impostata nel file `.env.local`
 - Riavvia il server dopo aver modificato `.env.local`
 
 ### "Errore nell'invio dell'email"
+
 - Controlla che l'API key sia valida
 - Verifica che `EMAIL_FROM` sia `onboarding@resend.dev` o un dominio verificato
 - Controlla i log nella console del server per dettagli
 
 ### Email non arriva
+
 - Controlla la cartella spam
 - Verifica che `EMAIL_TO` sia corretto
 - Controlla il dashboard di Resend per vedere se l'email è stata inviata

@@ -7,11 +7,11 @@ interface UseImageLoadOptions {
 /**
  * Hook to track image loading state
  * Consolidates image loading logic used across multiple components
- * 
+ *
  * @param src - Image source URL
  * @param options - Optional timing controls for the loading state
  * @returns boolean - true when image is loaded or failed (ready to display)
- * 
+ *
  * @example
  * const isLoaded = useImageLoad(imageUrl, { minimumLoadingTime: 200 });
  * <img className={isLoaded ? 'loaded' : 'loading'} src={imageUrl} />

@@ -104,7 +104,9 @@ const ContactForm: FC = () => {
         },
         body: JSON.stringify(formData),
       });
-      const result = (await response.json().catch(() => null)) as ContactFormResponse | null;
+      const result = (await response
+        .json()
+        .catch(() => null)) as ContactFormResponse | null;
 
       if (response.ok) {
         setSubmitStatus("success");
@@ -171,12 +173,14 @@ const ContactForm: FC = () => {
         possibile.
       </p>
 
-      <form onSubmit={handleSubmit} className={`${styles.form} ${isSubmitting ? styles.submitting : ''}`} noValidate>
+      <form
+        onSubmit={handleSubmit}
+        className={`${styles.form} ${isSubmitting ? styles.submitting : ""}`}
+        noValidate
+      >
         {/* Honeypot field - nascosto, i bot lo compilano */}
         <div className={styles.honeypot} aria-hidden="true">
-          <label htmlFor="website">
-            Non compilare questo campo
-          </label>
+          <label htmlFor="website">Non compilare questo campo</label>
           <input
             type="text"
             id="website"
@@ -261,7 +265,11 @@ const ContactForm: FC = () => {
             {formData.message.length}/{MAX_MESSAGE_LENGTH} caratteri
           </span>
           {errors.message && (
-            <span id="message-error" className={styles.errorMessage} role="alert">
+            <span
+              id="message-error"
+              className={styles.errorMessage}
+              role="alert"
+            >
               {errors.message}
             </span>
           )}
@@ -279,39 +287,57 @@ const ContactForm: FC = () => {
               disabled={isSubmitting}
               aria-required="true"
               aria-invalid={errors.acceptPrivacy ? "true" : "false"}
-              aria-describedby={errors.acceptPrivacy ? "privacy-error" : undefined}
+              aria-describedby={
+                errors.acceptPrivacy ? "privacy-error" : undefined
+              }
             />
-            <label 
-              htmlFor="acceptPrivacy" 
+            <label
+              htmlFor="acceptPrivacy"
               className={`${styles.checkboxLabel} ${errors.acceptPrivacy ? styles.errorText : ""}`}
             >
               Accetto il trattamento dei dati personali secondo la{" "}
-              <Link href="/privacy-policy" target="_blank" className={styles.privacyLink}>
+              <Link
+                href="/privacy-policy"
+                target="_blank"
+                className={styles.privacyLink}
+              >
                 Privacy Policy
               </Link>{" "}
-              per l&apos;invio di questa email <span className={styles.required}>*</span>
+              per l&apos;invio di questa email{" "}
+              <span className={styles.required}>*</span>
             </label>
           </div>
           {errors.acceptPrivacy && (
-            <span id="privacy-error" className={styles.errorMessage} role="alert">
+            <span
+              id="privacy-error"
+              className={styles.errorMessage}
+              role="alert"
+            >
               {errors.acceptPrivacy}
             </span>
           )}
         </div>
 
         <p className={styles.privacyNote}>
-          I tuoi dati saranno utilizzati esclusivamente per rispondere alla tua richiesta 
-          e non saranno condivisi con terze parti.
+          I tuoi dati saranno utilizzati per rispondere alla tua richiesta e
+          trasmessi tramite il servizio email dello studio, come descritto nella
+          Privacy Policy.
         </p>
 
         {submitStatus === "success" && (
-          <div className={`${styles.submitFeedback} ${styles.successMessage}`} role="status">
+          <div
+            className={`${styles.submitFeedback} ${styles.successMessage}`}
+            role="status"
+          >
             {submitMessage}
           </div>
         )}
 
         {submitStatus === "error" && (
-          <div className={`${styles.submitFeedback} ${styles.submitErrorMessage}`} role="alert">
+          <div
+            className={`${styles.submitFeedback} ${styles.submitErrorMessage}`}
+            role="alert"
+          >
             {submitMessage}
           </div>
         )}

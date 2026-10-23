@@ -5,6 +5,7 @@ const projectsDescription =
   "Una selezione dei miei progetti di architettura e interior design, dalla ristrutturazione di edifici storici a soluzioni innovative per interni contemporanei.";
 
 export const metadata: Metadata = generatePageMetadata({
+  path: "/projects",
   title: {
     default: "Progetti",
     template: "%s | Studio Architetto Gianluca Pignataro",

@@ -45,8 +45,8 @@ test.describe("smooth scrolling and skeleton loading", () => {
       .first();
     await expect(initialSkeleton).toBeVisible({ timeout: 10_000 });
 
-    const initialOpacity = await initialSkeleton.evaluate(
-      (element) => Number(window.getComputedStyle(element).opacity)
+    const initialOpacity = await initialSkeleton.evaluate((element) =>
+      Number(window.getComputedStyle(element).opacity)
     );
     expect(initialOpacity).toBeGreaterThan(0.95);
 
@@ -108,16 +108,20 @@ test.describe("smooth scrolling and skeleton loading", () => {
     ).toBeVisible();
   });
 
-  test("internal pages smooth-scroll the layout container", async ({ page }) => {
+  test("internal pages smooth-scroll the layout container", async ({
+    page,
+  }) => {
     await openPageWithoutIntroOverlays(page, "/projects");
 
     const container = page.locator("main.layout-content");
     await expect(container).toBeVisible();
 
-    await expect.poll(async () => {
-      const className = await container.getAttribute("class");
-      return className?.includes("lenis") ?? false;
-    }).toBe(true);
+    await expect
+      .poll(async () => {
+        const className = await container.getAttribute("class");
+        return className?.includes("lenis") ?? false;
+      })
+      .toBe(true);
 
     await container.hover();
     await page.mouse.wheel(0, 1600);
@@ -136,15 +140,17 @@ test.describe("smooth scrolling and skeleton loading", () => {
     expect(animatedScrollTop).toBeGreaterThan(immediateScrollTop);
   });
 
-  test("projects keep skeletons visible before cards resolve", async ({ page }) => {
+  test("projects keep skeletons visible before cards resolve", async ({
+    page,
+  }) => {
     await slowImageResponses(page);
     await openPageWithoutIntroOverlays(page, "/projects");
 
     const batchSkeleton = page.locator("[class*='cardSkeleton']").first();
     await expect(batchSkeleton).toBeVisible();
 
-    const batchOpacity = await batchSkeleton.evaluate(
-      (element) => Number(window.getComputedStyle(element).opacity)
+    const batchOpacity = await batchSkeleton.evaluate((element) =>
+      Number(window.getComputedStyle(element).opacity)
     );
 
     expect(batchOpacity).toBeGreaterThan(0.95);
@@ -155,16 +161,16 @@ test.describe("smooth scrolling and skeleton loading", () => {
     const imageSkeleton = firstCard.locator("[class*='imageSkeleton']");
     await expect(imageSkeleton).toBeVisible();
 
-    const skeletonOpacity = await imageSkeleton.evaluate(
-      (element) => Number(window.getComputedStyle(element).opacity)
+    const skeletonOpacity = await imageSkeleton.evaluate((element) =>
+      Number(window.getComputedStyle(element).opacity)
     );
 
     expect(skeletonOpacity).toBeGreaterThan(0.95);
 
     await page.waitForTimeout(120);
 
-    const opacityDuringMinimumWindow = await imageSkeleton.evaluate(
-      (element) => Number(window.getComputedStyle(element).opacity)
+    const opacityDuringMinimumWindow = await imageSkeleton.evaluate((element) =>
+      Number(window.getComputedStyle(element).opacity)
     );
 
     expect(opacityDuringMinimumWindow).toBeGreaterThan(0.1);
@@ -175,9 +181,9 @@ test.describe("smooth scrolling and skeleton loading", () => {
     await openPageWithoutIntroOverlays(page, "/projects");
 
     const container = page.locator("main.layout-content");
-    await expect(
-      page.locator("article[class*='projectCard']")
-    ).toHaveCount(6, { timeout: 15_000 });
+    await expect(page.locator("article[class*='projectCard']")).toHaveCount(6, {
+      timeout: 15_000,
+    });
 
     await container.evaluate((element) => {
       const node = element as HTMLElement;
@@ -212,9 +218,11 @@ test.describe("smooth scrolling and skeleton loading", () => {
 
     expect(sawLoadMoreSkeleton).toBe(true);
 
-    await expect.poll(async () => {
-      return page.locator("article[class*='projectCard']").count();
-    }).toBeGreaterThan(6);
+    await expect
+      .poll(async () => {
+        return page.locator("article[class*='projectCard']").count();
+      })
+      .toBeGreaterThan(6);
   });
 
   test("scroll-up button resets the page container", async ({ page }) => {
@@ -234,11 +242,13 @@ test.describe("smooth scrolling and skeleton loading", () => {
 
     await scrollUpButton.click();
 
-    await expect.poll(async () => {
-      return container.evaluate((element) =>
-        Math.round((element as HTMLElement).scrollTop)
-      );
-    }).toBeLessThan(20);
+    await expect
+      .poll(async () => {
+        return container.evaluate((element) =>
+          Math.round((element as HTMLElement).scrollTop)
+        );
+      })
+      .toBeLessThan(20);
 
     const windowScrollTop = await page.evaluate(() => window.scrollY);
     expect(windowScrollTop).toBe(0);

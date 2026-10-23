@@ -1,7 +1,7 @@
 "use client";
 import { FC, useEffect, useState } from "react";
-import Image from "next/image";
 import {
+  BRANDING_DARK_LOGO_PATH,
   BRANDING_LOGO_DIMENSIONS,
   BRANDING_LOGO_PATH,
   UI_TIMINGS,
@@ -48,16 +48,23 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
     <div
       className={`${styles.loadingContainer} ${isFading ? styles.fadeOut : ""}`}
     >
-      <Image
-        src={BRANDING_LOGO_PATH}
-        alt="Logo"
-        width={BRANDING_LOGO_DIMENSIONS.width}
-        height={BRANDING_LOGO_DIMENSIONS.height}
-        className={styles.logo}
-        style={{ width: "auto", height: "auto" }}
-        onLoad={() => setIsLogoLoaded(true)}
-        onError={() => setIsLogoLoaded(true)}
-      />
+      <picture>
+        <source
+          media="(prefers-color-scheme: dark)"
+          srcSet={BRANDING_DARK_LOGO_PATH}
+        />
+        <img
+          src={BRANDING_LOGO_PATH}
+          alt="Logo"
+          width={BRANDING_LOGO_DIMENSIONS.width}
+          height={BRANDING_LOGO_DIMENSIONS.height}
+          className={styles.logo}
+          decoding="async"
+          fetchPriority="high"
+          onLoad={() => setIsLogoLoaded(true)}
+          onError={() => setIsLogoLoaded(true)}
+        />
+      </picture>
     </div>
   );
 };

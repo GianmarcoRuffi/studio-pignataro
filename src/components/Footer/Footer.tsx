@@ -3,6 +3,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { openConsentPreferences } from "../../utils/consent";
 import styles from "./footer.module.scss";
 import { LEGAL_PATHS } from "../../constants";
 import { sharedContactsData } from "../../data/contactsData";
@@ -38,7 +39,10 @@ const Footer: FC = () => {
           </div>
 
           <div className={styles.policyLinks}>
-            <Link href={LEGAL_PATHS.privacyPolicy} className={styles.policyLink}>
+            <Link
+              href={LEGAL_PATHS.privacyPolicy}
+              className={styles.policyLink}
+            >
               Privacy Policy
             </Link>
             <span className={styles.separator}>•</span>
@@ -46,6 +50,13 @@ const Footer: FC = () => {
               Cookie Policy
             </Link>
           </div>
+          <button
+            type="button"
+            className={styles.preferencesButton}
+            onClick={openConsentPreferences}
+          >
+            Preferenze cookie
+          </button>
         </div>
       </div>
     </footer>

@@ -5,6 +5,7 @@ import styles from "./PolicyLayout.module.scss";
 interface PolicyLayoutProps {
   title: string;
   subtitle: string;
+  lastUpdated: string;
   children: ReactNode;
   containerClassName?: string;
 }
@@ -16,6 +17,7 @@ interface PolicyLayoutProps {
 export const PolicyLayout: FC<PolicyLayoutProps> = ({
   title,
   subtitle,
+  lastUpdated,
   children,
   containerClassName = styles.policyContainer,
 }) => {
@@ -25,8 +27,14 @@ export const PolicyLayout: FC<PolicyLayoutProps> = ({
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>{title}</h1>
           <p className={styles.pageSubtitle}>{subtitle}</p>
-          <p className={styles.lastUpdated} suppressHydrationWarning>
-            Ultimo aggiornamento: {new Date().toLocaleDateString("it-IT")}
+          <p className={styles.lastUpdated}>
+            Ultimo aggiornamento:{" "}
+            <time dateTime={lastUpdated}>
+              {new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString(
+                "it-IT",
+                { timeZone: "UTC" }
+              )}
+            </time>
           </p>
         </div>
       </div>

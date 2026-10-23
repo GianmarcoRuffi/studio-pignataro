@@ -19,9 +19,11 @@ const openPageWithoutIntroOverlays = async (page: Page, path: string) => {
 const fillContactForm = async (page: Page) => {
   await page.locator("#email").fill("cliente@example.com");
   await page.locator("#name").fill("Mario Rossi");
-  await page.locator("#message").fill(
-    "Buongiorno, vorrei richiedere maggiori informazioni sul vostro studio."
-  );
+  await page
+    .locator("#message")
+    .fill(
+      "Buongiorno, vorrei richiedere maggiori informazioni sul vostro studio."
+    );
   await page.locator("#acceptPrivacy").check();
 };
 

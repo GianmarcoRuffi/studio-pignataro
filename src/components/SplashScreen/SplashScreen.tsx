@@ -1,8 +1,9 @@
 "use client";
+import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
 import { FC, useEffect, useState } from "react";
-import Image from "next/image";
 import {
+  BRANDING_DARK_LOGO_PATH,
   BRANDING_LOGO_DIMENSIONS,
   BRANDING_LOGO_PATH,
   UI_TIMINGS,
@@ -21,29 +22,33 @@ const SplashScreen: FC<SplashScreenProps> = ({
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const splashShown = sessionStorage.getItem("splash-shown");
-    
+    const splashShown = readSessionValue("splash-shown");
+
     if (splashShown) {
       onComplete();
       return;
     }
 
+    let exitTimer: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
       setIsExiting(true);
-      sessionStorage.setItem("splash-shown", "true");
-      
-      setTimeout(() => {
+      writeSessionValue("splash-shown", "true");
+
+      exitTimer = setTimeout(() => {
         onComplete();
       }, UI_TIMINGS.splash.exitDuration);
     }, minDisplayTime);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(exitTimer);
+    };
   }, [minDisplayTime, onComplete]);
 
   const [shouldRender, setShouldRender] = useState(true);
-  
+
   useEffect(() => {
-    const splashShown = sessionStorage.getItem("splash-shown");
+    const splashShown = readSessionValue("splash-shown");
     if (splashShown) {
       setShouldRender(false);
     }
@@ -54,17 +59,25 @@ const SplashScreen: FC<SplashScreenProps> = ({
   }
 
   return (
-    <div className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}>
+    <div
+      className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}
+    >
       <div className={styles.logoContainer}>
-        <Image
-          src={BRANDING_LOGO_PATH}
-          alt="Studio Architetto Gianluca Pignataro"
-          width={BRANDING_LOGO_DIMENSIONS.width}
-          height={BRANDING_LOGO_DIMENSIONS.height}
-          priority
-          className={styles.logo}
-          style={{ width: "auto", height: "auto" }}
-        />
+        <picture>
+          <source
+            media="(prefers-color-scheme: dark)"
+            srcSet={BRANDING_DARK_LOGO_PATH}
+          />
+          <img
+            src={BRANDING_LOGO_PATH}
+            alt="Studio Architetto Gianluca Pignataro"
+            width={BRANDING_LOGO_DIMENSIONS.width}
+            height={BRANDING_LOGO_DIMENSIONS.height}
+            className={styles.logo}
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
       </div>
     </div>
   );

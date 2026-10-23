@@ -1,5 +1,6 @@
 "use client";
 
+import { cookiePolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
 import { cookiePolicyData, cookieDisclaimerNote } from "./data";
 import styles from "./cookie.module.scss";
@@ -7,6 +8,7 @@ import styles from "./cookie.module.scss";
 export default function CookiePolicy() {
   return (
     <PolicyLayout
+      lastUpdated={cookiePolicyUpdatedAt}
       title="Cookie Policy"
       subtitle="Informativa sull'utilizzo dei cookie"
     >
@@ -28,7 +30,10 @@ export default function CookiePolicy() {
               {subsection.list && (
                 <ul>
                   {subsection.list.items.map((item, itemIdx) => (
-                    <li key={itemIdx} dangerouslySetInnerHTML={{ __html: item }} />
+                    <li
+                      key={itemIdx}
+                      dangerouslySetInnerHTML={{ __html: item }}
+                    />
                   ))}
                 </ul>
               )}
@@ -76,13 +81,17 @@ export default function CookiePolicy() {
               </p>
               <p>
                 <strong>Telefono:</strong>{" "}
-                <a href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}>
+                <a
+                  href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}
+                >
                   {section.contactInfo.phone}
                 </a>
               </p>
               <p>
                 <strong>Cellulare:</strong>{" "}
-                <a href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}>
+                <a
+                  href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}
+                >
                   {section.contactInfo.mobile}
                 </a>
               </p>

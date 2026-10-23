@@ -3,6 +3,13 @@ import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import { useImageLoad } from "../../hooks/useImageLoad";
+import OptionalScripts from "../../components/OptionalScripts/OptionalScripts";
+import { openConsentPreferences } from "../../utils/consent";
+import {
+  getScrollContainer,
+  getScrollTop,
+  scrollToPosition,
+} from "../../utils/scroll";
 import styles from "./contacts.module.scss";
 import { contactsData } from "./data";
 
@@ -13,7 +20,11 @@ export default function Contacts() {
     e.preventDefault();
     const formElement = document.getElementById("contact-form");
     if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      const container = getScrollContainer();
+      const offset =
+        formElement.getBoundingClientRect().top -
+        (container?.getBoundingClientRect().top ?? 0);
+      scrollToPosition({ top: getScrollTop() + offset });
     }
   };
 
@@ -131,15 +142,30 @@ export default function Contacts() {
         <div className={styles.mapContent}>
           <h2 className={styles.sectionTitle}>Dove Siamo</h2>
           <div className={styles.mapContainer}>
-            <iframe
-              src={contactsData.embedData}
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Studio Location"
-              className={styles.mapFrame}
-            ></iframe>
+            <OptionalScripts
+              fallback={
+                <div className={styles.mapPlaceholder}>
+                  <p>
+                    La mappa Google Maps viene caricata solo con il tuo
+                    consenso.
+                  </p>
+                  <button type="button" onClick={openConsentPreferences}>
+                    Gestisci preferenze cookie
+                  </button>
+                  <p>{contactsData.studio}</p>
+                </div>
+              }
+            >
+              <iframe
+                src={contactsData.embedData}
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Studio Location"
+                className={styles.mapFrame}
+              ></iframe>
+            </OptionalScripts>
           </div>
         </div>
       </div>

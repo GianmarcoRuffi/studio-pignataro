@@ -1,4 +1,5 @@
 {
   "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-  "makefile.configureOnOpen": false
+  "makefile.configureOnOpen": false,
+  "compilets.autoStart": true
 }

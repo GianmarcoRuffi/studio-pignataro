@@ -3,7 +3,9 @@ import type Lenis from "lenis";
 export const DEFAULT_SCROLL_CONTAINER_SELECTOR =
   ".layout-content:not(.homepage)";
 
-type SmoothScrollController = Pick<Lenis, "scrollTo">;
+type SmoothScrollController = Pick<Lenis, "scrollTo" | "stop" | "start">;
+
+let scrollPauseCount = 0;
 
 let activeSmoothScrollController: SmoothScrollController | null = null;
 
@@ -47,6 +49,7 @@ export const registerSmoothScrollController = (
   controller: SmoothScrollController | null
 ) => {
   activeSmoothScrollController = controller;
+  if (scrollPauseCount > 0) controller?.stop();
 };
 
 interface ScrollToPositionOptions {
@@ -60,6 +63,13 @@ export const scrollToPosition = ({
   selector = DEFAULT_SCROLL_CONTAINER_SELECTOR,
   behavior = "smooth",
 }: ScrollToPositionOptions) => {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    behavior = "auto";
+  }
+
   if (
     selector === DEFAULT_SCROLL_CONTAINER_SELECTOR &&
     activeSmoothScrollController !== null
@@ -80,4 +90,13 @@ export const scrollToPosition = ({
   if (typeof window !== "undefined") {
     window.scrollTo({ top, behavior });
   }
+};
+
+export const pauseSmoothScroll = () => {
+  scrollPauseCount++;
+  activeSmoothScrollController?.stop();
+  return () => {
+    scrollPauseCount = Math.max(0, scrollPauseCount - 1);
+    if (scrollPauseCount === 0) activeSmoothScrollController?.start();
+  };
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
 export const metadata: Metadata = generatePageMetadata({
+  path: "/presses",
   title: "Pubblicazioni",
   description:
     "Rassegna stampa e pubblicazioni dei lavori dell'Architetto Gianluca Pignataro su riviste specializzate di architettura e design.",

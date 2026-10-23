@@ -7,8 +7,9 @@ Attualmente, le email del form di contatto vengono inviate da `onboarding@resend
 ## Perché è Necessaria la Verifica del Dominio
 
 I servizi email moderni richiedono la verifica del dominio per:
+
 - Prevenire spam e phishing
-- Garantire l'autenticità del mittente  
+- Garantire l'autenticità del mittente
 - Migliorare la deliverability (le email non finiscono in spam)
 - Rispettare le normative (SPF, DKIM, DMARC)
 
@@ -30,6 +31,7 @@ I servizi email moderni richiedono la verifica del dominio per:
 Resend ti fornirà i record DNS da aggiungere. Dovrai configurare:
 
 #### Record SPF (Sender Policy Framework)
+
 ```
 Type: TXT
 Name: @
@@ -37,6 +39,7 @@ Value: v=spf1 include:_spf.resend.com ~all
 ```
 
 #### Record DKIM (DomainKeys Identified Mail)
+
 ```
 Type: TXT
 Name: resend._domainkey
@@ -44,6 +47,7 @@ Value: [valore fornito da Resend]
 ```
 
 #### Record DMARC (Domain-based Message Authentication)
+
 ```
 Type: TXT
 Name: _dmarc
@@ -89,12 +93,12 @@ Il form non usa piu' fallback impliciti: se una di queste variabili manca, l'API
 
 Puoi usare qualsiasi indirizzo email sul tuo dominio verificato:
 
-| Indirizzo | Uso Consigliato |
-|-----------|------------------|
-| `noreply@archpignataro.it` | Email automatiche (form di contatto) |
-| `info@archpignataro.it` | Email da casella monitorata |
-| `studiopignataro@archpignataro.it` | Email personalizzate |
-| `form@archpignataro.it` | Dedicato solo ai form |
+| Indirizzo                          | Uso Consigliato                      |
+| ---------------------------------- | ------------------------------------ |
+| `noreply@archpignataro.it`         | Email automatiche (form di contatto) |
+| `info@archpignataro.it`            | Email da casella monitorata          |
+| `studiopignataro@archpignataro.it` | Email personalizzate                 |
+| `form@archpignataro.it`            | Dedicato solo ai form                |
 
 **💡 Consigliato**: Usa `noreply@archpignataro.it` o `form@archpignataro.it` per le email automatiche del form.
 
@@ -107,8 +111,8 @@ Se usi Vercel per il deployment, aggiorna anche le variabili d'ambiente lì:
 3. Vai su **Settings** → **Environment Variables**
 4. Imposta sia `Preview` sia `Production`
 5. Usa questi valori consigliati:
-	- `Production`: `EMAIL_FROM=noreply@archpignataro.it`, `EMAIL_TO=info@archpignataro.it`
-	- `Preview`: `EMAIL_FROM=noreply@archpignataro.it` oppure `onboarding@resend.dev` se stai ancora testando, con `EMAIL_TO` su una casella separata
+   - `Production`: `EMAIL_FROM=noreply@archpignataro.it`, `EMAIL_TO=info@archpignataro.it`
+   - `Preview`: `EMAIL_FROM=noreply@archpignataro.it` oppure `onboarding@resend.dev` se stai ancora testando, con `EMAIL_TO` su una casella separata
 6. Clicca su **Save**
 7. Fai un nuovo deploy o riavvia l'applicazione
 

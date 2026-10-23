@@ -71,10 +71,11 @@ function formatSubmittedAt(date: Date): string {
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0] || 
-               request.headers.get("x-real-ip") || 
-               "unknown";
-    
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0] ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { error: "Troppe richieste. Riprova tra un minuto." },
@@ -84,9 +85,10 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const { email, name, message, acceptPrivacy, honeypot } = body;
-  const trimmedEmail = typeof email === "string" ? email.trim().toLowerCase() : "";
-  const trimmedName = typeof name === "string" ? name.trim() : "";
-  const trimmedMessage = typeof message === "string" ? message.trim() : "";
+    const trimmedEmail =
+      typeof email === "string" ? email.trim().toLowerCase() : "";
+    const trimmedName = typeof name === "string" ? name.trim() : "";
+    const trimmedMessage = typeof message === "string" ? message.trim() : "";
 
     // Honeypot check - se compilato è un bot
     if (honeypot) {
@@ -114,15 +116,14 @@ export async function POST(request: NextRequest) {
     }
 
     if (trimmedEmail.length > MAX_EMAIL_LENGTH || /[\r\n]/.test(trimmedEmail)) {
-      return NextResponse.json(
-        { error: "Email non valida" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Email non valida" }, { status: 400 });
     }
 
     if (trimmedMessage.length > MAX_MESSAGE_LENGTH) {
       return NextResponse.json(
-        { error: `Il messaggio non può superare ${MAX_MESSAGE_LENGTH} caratteri` },
+        {
+          error: `Il messaggio non può superare ${MAX_MESSAGE_LENGTH} caratteri`,
+        },
         { status: 400 }
       );
     }
@@ -136,7 +137,9 @@ export async function POST(request: NextRequest) {
     const emailConfiguration = getEmailConfiguration();
 
     if (!emailConfiguration) {
-      console.error("Configurazione email incompleta: servono RESEND_API_KEY, EMAIL_FROM e EMAIL_TO");
+      console.error(
+        "Configurazione email incompleta: servono RESEND_API_KEY, EMAIL_FROM e EMAIL_TO"
+      );
       return NextResponse.json(
         { error: "Servizio email non configurato correttamente" },
         { status: 500 }

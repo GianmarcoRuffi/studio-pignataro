@@ -16,16 +16,22 @@ export function buildContactEmailSubject(submissionId: string): string {
 export function linkifyMessage(text: string): string {
   const urlPattern = /(https?:\/\/[^\s]+)/g;
   const emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/g;
-  
+
   return text
-    .replace(urlPattern, '<a href="$1" style="color: #0066cc; text-decoration: underline;">$1</a>')
-    .replace(emailPattern, '<a href="mailto:$1" style="color: #0066cc; text-decoration: underline;">$1</a>');
+    .replace(
+      urlPattern,
+      '<a href="$1" style="color: #0066cc; text-decoration: underline;">$1</a>'
+    )
+    .replace(
+      emailPattern,
+      '<a href="mailto:$1" style="color: #0066cc; text-decoration: underline;">$1</a>'
+    );
 }
 
 export function generateContactEmailHTML(data: ContactEmailData): string {
   const { name, email, message, submissionId, submittedAt } = data;
   const messageWithLinks = linkifyMessage(message);
-  
+
   return `
 <!DOCTYPE html>
 <html>
@@ -168,7 +174,7 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
 
 export function generateContactEmailText(data: ContactEmailData): string {
   const { name, email, message, submissionId, submittedAt } = data;
-  
+
   return `
 NUOVO MESSAGGIO DAL FORM DI CONTATTO
 Studio Dott. Arch. Gianluca Pignataro

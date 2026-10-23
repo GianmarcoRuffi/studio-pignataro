@@ -38,3 +38,9 @@
     transform: scale(1);
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .loadingContainer {
+    background: #111827;
+  }
+}
