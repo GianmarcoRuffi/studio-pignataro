@@ -7,7 +7,7 @@ import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
 import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
 import { preloadImage } from "../../utils/imageUtils";
-import { LOADING } from "../../constants";
+import { LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
 import { GalleryProps, GalleryLink } from "../../models/models";
 
 const Gallery: FC<GalleryProps> = ({
@@ -69,7 +69,7 @@ const Gallery: FC<GalleryProps> = ({
     };
 
     const preloadPromises = initialBatchImages.map((imageSrc) =>
-      preloadImage(imageSrc)
+      preloadImage(imageSrc, 0, { sizes: GALLERY_IMAGE_SIZES, quality: 85 })
     );
 
     const timeout = setTimeout(() => {

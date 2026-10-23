@@ -7,6 +7,8 @@ import {
   useRef,
   type TouchEvent,
 } from "react";
+import { createPortal } from "react-dom";
+import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -36,6 +38,8 @@ const Lightbox: FC<LightboxProps> = ({
   onClose,
   isOpen,
 }) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalAccessibility(isOpen, dialogRef, onClose);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -179,18 +183,6 @@ const Lightbox: FC<LightboxProps> = ({
     }
   }, [activeIndex, isOpen, preloadAdjacentImages]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
   const handleNext = useCallback(() => {
     if (images.length <= 1) return;
     setActiveIndex((current) => (current + 1) % images.length);
@@ -205,9 +197,7 @@ const Lightbox: FC<LightboxProps> = ({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
 
-      if (e.key === "Escape") {
-        onClose();
-      } else if (e.key === "ArrowRight") {
+      if (e.key === "ArrowRight") {
         handleNext();
       } else if (e.key === "ArrowLeft") {
         handlePrevious();
@@ -263,7 +253,7 @@ const Lightbox: FC<LightboxProps> = ({
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className={styles.lightboxOverlay}
       onClick={handleBackdropClick}
@@ -271,9 +261,12 @@ const Lightbox: FC<LightboxProps> = ({
     >
       <div
         className={styles.lightboxContainer}
+        ref={dialogRef}
+        tabIndex={-1}
+        data-lenis-prevent
         role="dialog"
         aria-modal="true"
-        aria-label="Image viewer"
+        aria-label="Visualizzatore immagini"
       >
         <button
           type="button"
@@ -381,7 +374,8 @@ const Lightbox: FC<LightboxProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

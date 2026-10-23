@@ -9,6 +9,7 @@ export default defineConfig({
     timeout: 10_000,
   },
   fullyParallel: false,
+  workers: 2,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
     baseURL: `http://127.0.0.1:${port}`,
@@ -23,6 +24,11 @@ export default defineConfig({
         ...devices["Desktop Chrome"],
         viewport: { width: 1440, height: 900 },
       },
+    },
+    {
+      name: "mobile-chromium",
+      testMatch: /(?:accessibility-and-consent|mobile-performance)\.spec\.ts/,
+      use: { ...devices["Pixel 7"] },
     },
   ],
   webServer: {

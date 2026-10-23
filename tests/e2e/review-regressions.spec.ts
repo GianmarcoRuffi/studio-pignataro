@@ -6,6 +6,7 @@ const prepareStorage = async (page: import("@playwright/test").Page) => {
     sessionStorage.setItem("splash-shown", "true");
     sessionStorage.setItem("siteVisited", "true");
     localStorage.setItem("cookie-consent", "declined");
+    localStorage.setItem("cookie-consent-date", new Date().toISOString());
   });
 };
 
@@ -57,7 +58,9 @@ test("reduced motion disables slider autoplay and hides inactive links from focu
   const href = await link.getAttribute("href");
   await page.waitForTimeout(3500);
   await expect(active.locator("a")).toHaveAttribute("href", href!);
-  await expect(page.locator("[inert] a")).toHaveCount(projects.length - 1);
+  await expect(
+    page.getByRole("region", { name: "Slider progetti" }).locator("[inert] a")
+  ).toHaveCount(projects.length - 1);
   await page.getByRole("button", { name: "Slide successivo" }).click();
   await expect(active.locator("a")).not.toHaveAttribute("href", href!);
 });

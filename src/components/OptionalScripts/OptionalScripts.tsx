@@ -1,58 +1,19 @@
 "use client";
 
-import { FC, ReactNode, useEffect, useState } from "react";
+import { type FC, type ReactNode } from "react";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 
 type OptionalScriptsProps = {
   children?: ReactNode;
+  fallback?: ReactNode;
 };
 
-const OptionalScripts: FC<OptionalScriptsProps> = ({ children }) => {
-  const [isAllowed, setIsAllowed] = useState(false);
-
-  useEffect(() => {
-    const evaluateConsent = () => {
-      try {
-        const consent = localStorage.getItem("cookie-consent");
-        setIsAllowed(consent === "accepted");
-      } catch {
-        setIsAllowed(false);
-      }
-    };
-
-    const handleConsentChange = (event: Event) => {
-      const status = (event as CustomEvent<{ status?: string }>).detail?.status;
-      if (status === "accepted" || status === "declined") {
-        setIsAllowed(status === "accepted");
-        return;
-      }
-      evaluateConsent();
-    };
-
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key === "cookie-consent") {
-        evaluateConsent();
-      }
-    };
-
-    evaluateConsent();
-    window.addEventListener(
-      "cookie-consent-change",
-      handleConsentChange as EventListener
-    );
-    window.addEventListener("storage", handleStorage);
-
-    return () => {
-      window.removeEventListener(
-        "cookie-consent-change",
-        handleConsentChange as EventListener
-      );
-      window.removeEventListener("storage", handleStorage);
-    };
-  }, []);
-
-  if (!isAllowed) return null;
-
-  return <>{children}</>;
+const OptionalScripts: FC<OptionalScriptsProps> = ({
+  children,
+  fallback = null,
+}) => {
+  const { status } = useCookieConsent();
+  return <>{status === "accepted" ? children : fallback}</>;
 };
 
 export default OptionalScripts;

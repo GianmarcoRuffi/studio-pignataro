@@ -284,3 +284,23 @@
     align-items: center;
   }
 }
+
+.mapPlaceholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
+  background: var(--color-background-gray);
+
+  button {
+    padding: 0.75rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}

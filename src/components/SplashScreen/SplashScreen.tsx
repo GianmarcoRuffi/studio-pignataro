@@ -1,4 +1,5 @@
 "use client";
+import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
 import { FC, useEffect, useState } from "react";
 import {
@@ -21,29 +22,33 @@ const SplashScreen: FC<SplashScreenProps> = ({
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const splashShown = sessionStorage.getItem("splash-shown");
+    const splashShown = readSessionValue("splash-shown");
 
     if (splashShown) {
       onComplete();
       return;
     }
 
+    let exitTimer: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
       setIsExiting(true);
-      sessionStorage.setItem("splash-shown", "true");
+      writeSessionValue("splash-shown", "true");
 
-      setTimeout(() => {
+      exitTimer = setTimeout(() => {
         onComplete();
       }, UI_TIMINGS.splash.exitDuration);
     }, minDisplayTime);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(exitTimer);
+    };
   }, [minDisplayTime, onComplete]);
 
   const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
-    const splashShown = sessionStorage.getItem("splash-shown");
+    const splashShown = readSessionValue("splash-shown");
     if (splashShown) {
       setShouldRender(false);
     }

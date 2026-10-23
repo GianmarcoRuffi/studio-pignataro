@@ -1,5 +1,6 @@
 "use client";
 
+import { cookiePolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
 import { cookiePolicyData, cookieDisclaimerNote } from "./data";
 import styles from "./cookie.module.scss";
@@ -7,6 +8,7 @@ import styles from "./cookie.module.scss";
 export default function CookiePolicy() {
   return (
     <PolicyLayout
+      lastUpdated={cookiePolicyUpdatedAt}
       title="Cookie Policy"
       subtitle="Informativa sull'utilizzo dei cookie"
     >

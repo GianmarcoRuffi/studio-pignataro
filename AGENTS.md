@@ -39,12 +39,17 @@ TypeScript strict vieta variabili e parametri inutilizzati. ESLint usa Next Core
 
 La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione aggiunti sono in `tests/e2e/review-regressions.spec.ts`.
 
-## Problemi noti
+## Consenso, modali e immagini
 
-- Le informative dichiarano Google Analytics, Google Fonts e un form contatti non presenti nell'applicazione; allineare i testi ai servizi effettivi e definire conservazione e revoca delle preferenze. La mappa Google nei contatti viene caricata indipendentemente da `OptionalScripts`.
-- La lightbox richiede gestione del focus e blocco dello scroll del contenitore interno; l'header legge ancora lo scroll di `window`.
-- Le date delle informative sono generate al rendering, anziché rappresentare una revisione editoriale esplicita.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer deve mantenere accessibile «Preferenze cookie» anche su mobile. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
+- Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
+- Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
+
+## Audit dipendenze
+
+L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o successiva. L'audit produzione è privo di segnalazioni; l'audit completo rileva ancora vulnerabilità transitive degli strumenti di sviluppo, documentate in `CODE_REVIEW.md`. Non usare `npm audit fix --force` senza verificare le modifiche di versione proposte.
 
 ## Ultimo aggiornamento
 
-2026-10-23: review del progetto; corretti sitemap, comando staging, canonical delle pagine interne, riprova e pannello errore lightbox, esclusione report generati dai controlli, riduzione movimento e accessibilità delle slide inattive; allineati caricamento galleria e formattazione. Verificati i 155 percorsi immagine dei 14 progetti; build, lint, TypeScript, Prettier e 10 test Playwright superati.
+2026-10-23: aggiornate le dipendenze npm e risolti i punti della review su consenso, informative, focus e scroll delle modali, header, storage, date editoriali e caricamento immagini; aggiunta copertura desktop/mobile e misurazione dei byte delle immagini. Build, lint, TypeScript, Prettier e 28 test Playwright superati. Esiti e limiti aggiornati in `CODE_REVIEW.md`.

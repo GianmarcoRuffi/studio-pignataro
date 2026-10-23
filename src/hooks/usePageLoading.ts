@@ -1,4 +1,5 @@
 "use client";
+import { readSessionValue, writeSessionValue } from "../utils/storage";
 import { useState, useEffect } from "react";
 
 export const usePageLoading = () => {
@@ -18,13 +19,13 @@ export const usePageLoading = () => {
       const isDirectOrBookmark =
         !document.referrer ||
         !document.referrer.includes(window.location.hostname);
-      const isFirstVisit = !sessionStorage.getItem("siteVisited");
+      const isFirstVisit = !readSessionValue("siteVisited");
 
       const shouldShowLoading =
         isFirstVisit && isDirectOrBookmark && !isReload && !isBackForward;
 
       setIsPageLoading(shouldShowLoading);
-      sessionStorage.setItem("siteVisited", "true");
+      writeSessionValue("siteVisited", "true");
       setHasChecked(true);
     };
 

@@ -2,7 +2,7 @@
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
-import { BREAKPOINTS, LOADING } from "../../constants";
+import { BREAKPOINTS, LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
 import styles from "./MasonryGallery.module.scss";
 
 interface MasonryGalleryProps {
@@ -149,8 +149,8 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       alt={`Gallery image ${imageIndex + 1}`}
                       width={600}
                       height={400}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      unoptimized
+                      sizes={GALLERY_IMAGE_SIZES}
+                      unoptimized={images[imageIndex].endsWith(".gif")}
                       loading={imageIndex < preloadedCount ? "eager" : "lazy"}
                       className={`${styles.image} ${
                         loadingImages[imageIndex]
@@ -159,7 +159,6 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       }`}
                       onLoad={() => settleImageLoading(imageIndex)}
                       onError={() => settleImageLoading(imageIndex)}
-                      priority={imageIndex < preloadedCount}
                       quality={85}
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
