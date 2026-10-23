@@ -41,7 +41,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer dispone i contatti su una riga e copyright, informative e «Preferenze cookie» su quella inferiore; su tablet e mobile mantiene visibili copyright e preferenze. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -52,4 +52,4 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: il logo principale è ora usato anche con preferenza di sistema scura; il footer è stato riallineato su homepage e pagine interne, con due righe su desktop e copyright/preferenze centrati su tablet e mobile. Build, lint, TypeScript e Prettier superati; resa verificata nel browser su desktop e mobile.
+2026-10-23: il footer di homepage e pagine interne è stato portato a una sola riga a tutte le larghezze, con contenuti adattati allo spazio disponibile. Build, lint e Prettier superati; allineamento verificato nel browser da 320 a 1440 px. Il logo principale resta predefinito anche con preferenza di sistema scura.

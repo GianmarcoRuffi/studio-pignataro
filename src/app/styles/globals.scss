@@ -83,18 +83,12 @@ html,
 :root {
   --viewport-height: 100vh;
   --header-height: 70px;
-  --footer-height: 64px;
+  --footer-height: 40px;
 }
 
 @supports (height: 100dvh) {
   :root {
     --viewport-height: 100dvh;
-  }
-}
-
-@media (max-width: 1024px) {
-  :root {
-    --footer-height: 40px;
   }
 }
 
