@@ -12,7 +12,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 - Il branch `feature/contact-form` include `ContactForm` e `/api/contact`, con invio via Resend; richiede `RESEND_API_KEY`, `EMAIL_FROM` ed `EMAIL_TO`. Mantieni il form insieme al blocco della mappa prima del consenso.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
-- `src/constants/index.ts` centralizza URL, loghi chiaro/scuro, breakpoint e tempi di caricamento. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
+- `src/constants/index.ts` centralizza URL, logo principale, breakpoint e tempi di caricamento. Il logo principale è usato da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
@@ -42,7 +42,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer deve mantenere accessibile «Preferenze cookie» anche su mobile. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -53,4 +53,4 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: risolti i conflitti del merge di `master` in `feature/contact-form`: uniti gli stili del form e del segnaposto mappa, rigenerata la sitemap e riallineati informativa e review alla presenza del form; integrato il collegamento al form con le utility di scroll e allineata la formattazione dei file specifici del branch. Conservate le correzioni precedenti su consenso, modali, storage e immagini. Build, lint, TypeScript, Prettier e 31 test Playwright superati.
+2026-10-23: risolto il conflitto di merge mantenendo le indicazioni del form contatti e del footer su una sola riga, insieme al logo principale predefinito. Le verifiche precedenti dei branch sono documentate in `CODE_REVIEW.md`.

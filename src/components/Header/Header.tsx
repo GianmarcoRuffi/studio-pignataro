@@ -4,11 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
-import {
-  BRANDING_DARK_LOGO_PATH,
-  BRANDING_LOGO_DIMENSIONS,
-  BRANDING_LOGO_PATH,
-} from "../../constants";
+import { BRANDING_LOGO_DIMENSIONS, BRANDING_LOGO_PATH } from "../../constants";
 import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import styles from "./header.module.scss";
@@ -81,10 +77,6 @@ const Header: FC = () => {
         >
           <Link href="/" className={styles.logoLink}>
             <picture className={styles.logoImageFrame}>
-              <source
-                media="(prefers-color-scheme: dark)"
-                srcSet={BRANDING_DARK_LOGO_PATH}
-              />
               <img
                 src={BRANDING_LOGO_PATH}
                 alt="Logo Studio Architetto Pignataro"

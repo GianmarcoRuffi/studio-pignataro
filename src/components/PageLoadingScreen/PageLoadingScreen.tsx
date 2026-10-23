@@ -1,7 +1,6 @@
 "use client";
 import { FC, useEffect, useState } from "react";
 import {
-  BRANDING_DARK_LOGO_PATH,
   BRANDING_LOGO_DIMENSIONS,
   BRANDING_LOGO_PATH,
   UI_TIMINGS,
@@ -49,10 +48,6 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       className={`${styles.loadingContainer} ${isFading ? styles.fadeOut : ""}`}
     >
       <picture>
-        <source
-          media="(prefers-color-scheme: dark)"
-          srcSet={BRANDING_DARK_LOGO_PATH}
-        />
         <img
           src={BRANDING_LOGO_PATH}
           alt="Logo"

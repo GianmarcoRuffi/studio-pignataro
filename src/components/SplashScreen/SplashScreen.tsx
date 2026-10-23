@@ -3,7 +3,6 @@ import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
 import { FC, useEffect, useState } from "react";
 import {
-  BRANDING_DARK_LOGO_PATH,
   BRANDING_LOGO_DIMENSIONS,
   BRANDING_LOGO_PATH,
   UI_TIMINGS,
@@ -64,10 +63,6 @@ const SplashScreen: FC<SplashScreenProps> = ({
     >
       <div className={styles.logoContainer}>
         <picture>
-          <source
-            media="(prefers-color-scheme: dark)"
-            srcSet={BRANDING_DARK_LOGO_PATH}
-          />
           <img
             src={BRANDING_LOGO_PATH}
             alt="Studio Architetto Gianluca Pignataro"
