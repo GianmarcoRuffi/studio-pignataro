@@ -12,7 +12,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 - Il branch `feature/contact-form` include `ContactForm` e `/api/contact`, con invio via Resend; richiede `RESEND_API_KEY`, `EMAIL_FROM` ed `EMAIL_TO`. Mantieni il form insieme al blocco della mappa prima del consenso.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
-- `src/constants/index.ts` centralizza URL, logo principale, breakpoint e tempi di caricamento. Il logo principale è usato da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
+- `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
@@ -53,4 +53,4 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: risolto il conflitto di merge mantenendo le indicazioni del form contatti e del footer su una sola riga, insieme al logo principale predefinito. Le verifiche precedenti dei branch sono documentate in `CODE_REVIEW.md`.
+2026-10-23: mantenuto `dark-theme-logo.png` nel progetto, ma il logo standard e i relativi sfondi chiari sono ora usati anche con preferenza di sistema scura. Il footer resta su una sola riga alle diverse larghezze.

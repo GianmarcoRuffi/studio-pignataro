@@ -910,30 +910,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .logoContainer,
-  .logoContainer:hover,
-  .scrolledLogoContainer {
-    background: linear-gradient(
-      135deg,
-      rgba(12, 12, 12, 0.82) 0%,
-      rgba(38, 38, 38, 0.58) 100%
-    );
-    border-color: rgba(255, 255, 255, 0.14);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-  }
-
-  .headerContainer.homepage .logoContainer,
-  .headerContainer.homepage .logoContainer:hover,
-  .headerContainer.homepage .scrolledLogoContainer {
-    background: linear-gradient(
-      135deg,
-      rgba(10, 10, 10, 0.72) 0%,
-      rgba(28, 28, 28, 0.48) 100%
-    );
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
-  }
-
   .menuIcon,
   .menuIcon:hover,
   .headerContainer.homepage .menuIcon,
