@@ -11,7 +11,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
-- `src/constants/index.ts` centralizza URL, logo principale, breakpoint e tempi di caricamento. Il logo principale è usato da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
+- `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
@@ -52,4 +52,4 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: il footer di homepage e pagine interne è stato portato a una sola riga a tutte le larghezze, con contenuti adattati allo spazio disponibile. Build, lint e Prettier superati; allineamento verificato nel browser da 320 a 1440 px. Il logo principale resta predefinito anche con preferenza di sistema scura.
+2026-10-23: mantenuto `dark-theme-logo.png` nel progetto, ma il logo standard e i relativi sfondi chiari sono ora usati anche con preferenza di sistema scura. Il footer resta su una sola riga alle diverse larghezze.
