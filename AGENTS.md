@@ -11,7 +11,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
-- `src/constants/index.ts` centralizza URL, loghi chiaro/scuro, breakpoint e tempi di caricamento. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
+- `src/constants/index.ts` centralizza URL, logo principale, breakpoint e tempi di caricamento. Il logo principale è usato da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
@@ -41,7 +41,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer deve mantenere accessibile «Preferenze cookie» anche su mobile. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer dispone i contatti su una riga e copyright, informative e «Preferenze cookie» su quella inferiore; su tablet e mobile mantiene visibili copyright e preferenze. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -52,4 +52,4 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: aggiornate le dipendenze npm e risolti i punti della review su consenso, informative, focus e scroll delle modali, header, storage, date editoriali e caricamento immagini; aggiunta copertura desktop/mobile e misurazione dei byte delle immagini. Build, lint, TypeScript, Prettier e 28 test Playwright superati. Esiti e limiti aggiornati in `CODE_REVIEW.md`.
+2026-10-23: il logo principale è ora usato anche con preferenza di sistema scura; il footer è stato riallineato su homepage e pagine interne, con due righe su desktop e copyright/preferenze centrati su tablet e mobile. Build, lint, TypeScript e Prettier superati; resa verificata nel browser su desktop e mobile.
