@@ -28,7 +28,10 @@ export default function CookiePolicy() {
               {subsection.list && (
                 <ul>
                   {subsection.list.items.map((item, itemIdx) => (
-                    <li key={itemIdx} dangerouslySetInnerHTML={{ __html: item }} />
+                    <li
+                      key={itemIdx}
+                      dangerouslySetInnerHTML={{ __html: item }}
+                    />
                   ))}
                 </ul>
               )}
@@ -76,13 +79,17 @@ export default function CookiePolicy() {
               </p>
               <p>
                 <strong>Telefono:</strong>{" "}
-                <a href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}>
+                <a
+                  href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}
+                >
                   {section.contactInfo.phone}
                 </a>
               </p>
               <p>
                 <strong>Cellulare:</strong>{" "}
-                <a href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}>
+                <a
+                  href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}
+                >
                   {section.contactInfo.mobile}
                 </a>
               </p>

@@ -15,7 +15,9 @@ import styles from "./projects.module.scss";
 import { Project } from "../../models/models";
 
 const Projects: FC = () => {
-  const [visibleCards, setVisibleCards] = useState<number>(LOADING.INITIAL_ITEMS);
+  const [visibleCards, setVisibleCards] = useState<number>(
+    LOADING.INITIAL_ITEMS
+  );
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const skeletonCount = useResponsiveSkeletonCount();
 
@@ -24,7 +26,10 @@ const Projects: FC = () => {
     []
   );
   const initialImages = useMemo(
-    () => visibleProjects.slice(0, LOADING.INITIAL_ITEMS).map((project) => project.imgSrc),
+    () =>
+      visibleProjects
+        .slice(0, LOADING.INITIAL_ITEMS)
+        .map((project) => project.imgSrc),
     [visibleProjects]
   );
   const preloadRemainingImages = useCallback(() => {
@@ -43,7 +48,10 @@ const Projects: FC = () => {
   const loadMoreCards = useCallback(() => {
     if (isLoadingMore || visibleCards >= visibleProjects.length) return;
 
-    const nextVisibleCards = Math.min(visibleCards + LOADING.ITEMS_PER_LOAD, visibleProjects.length);
+    const nextVisibleCards = Math.min(
+      visibleCards + LOADING.ITEMS_PER_LOAD,
+      visibleProjects.length
+    );
     const nextImageSources = visibleProjects
       .slice(visibleCards, nextVisibleCards)
       .map((project) => project.imgSrc);
@@ -127,7 +135,10 @@ const Projects: FC = () => {
                     </div>
                     <div className={styles.cardGrid}>
                       <CardSkeleton
-                        count={Math.min(LOADING.ITEMS_PER_LOAD, visibleProjects.length - visibleCards)}
+                        count={Math.min(
+                          LOADING.ITEMS_PER_LOAD,
+                          visibleProjects.length - visibleCards
+                        )}
                         descriptionLines={3}
                         className={styles.cardSkeleton}
                         placeholderClassName={styles.skeletonPlaceholder}

@@ -22,7 +22,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
 
   useEffect(() => {
     const splashShown = sessionStorage.getItem("splash-shown");
-    
+
     if (splashShown) {
       onComplete();
       return;
@@ -31,7 +31,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
     const timer = setTimeout(() => {
       setIsExiting(true);
       sessionStorage.setItem("splash-shown", "true");
-      
+
       setTimeout(() => {
         onComplete();
       }, UI_TIMINGS.splash.exitDuration);
@@ -41,7 +41,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
   }, [minDisplayTime, onComplete]);
 
   const [shouldRender, setShouldRender] = useState(true);
-  
+
   useEffect(() => {
     const splashShown = sessionStorage.getItem("splash-shown");
     if (splashShown) {
@@ -54,7 +54,9 @@ const SplashScreen: FC<SplashScreenProps> = ({
   }
 
   return (
-    <div className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}>
+    <div
+      className={`${styles.splashScreen} ${isExiting ? styles.exiting : ""}`}
+    >
       <div className={styles.logoContainer}>
         <picture>
           <source

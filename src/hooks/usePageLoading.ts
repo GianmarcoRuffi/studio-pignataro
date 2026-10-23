@@ -11,8 +11,7 @@ export const usePageLoading = () => {
 
     const checkNavigationType = () => {
       const entry = performance.getEntriesByType("navigation")[0] as
-        | PerformanceNavigationTiming
-        | undefined;
+        PerformanceNavigationTiming | undefined;
 
       const isReload = entry?.type === "reload";
       const isBackForward = entry?.type === "back_forward";

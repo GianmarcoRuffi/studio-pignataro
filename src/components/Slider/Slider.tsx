@@ -21,10 +21,19 @@ import { SliderProps } from "../../models/models";
 
 const Slider: FC<SliderProps> = ({ projects }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isCookieVisible, setIsCookieVisible] = useState<boolean>(false);
   const slideContainerRef = useRef<HTMLDivElement | null>(null);
   const { isSplashComplete } = useSplash();
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setPrefersReducedMotion(media.matches);
+    updateMotionPreference();
+    media.addEventListener("change", updateMotionPreference);
+    return () => media.removeEventListener("change", updateMotionPreference);
+  }, []);
 
   useEffect(() => {
     const handleCookieVisibility = (e: Event) => {
@@ -80,7 +89,13 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!isHovered && !effectiveLoading && !isCookieVisible && isSplashComplete) {
+    if (
+      !prefersReducedMotion &&
+      !isHovered &&
+      !effectiveLoading &&
+      !isCookieVisible &&
+      isSplashComplete
+    ) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
       }, UI_TIMINGS.slider.autoplayInterval);
@@ -89,7 +104,14 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [isHovered, effectiveLoading, projects.length, isCookieVisible, isSplashComplete]);
+  }, [
+    prefersReducedMotion,
+    isHovered,
+    effectiveLoading,
+    projects.length,
+    isCookieVisible,
+    isSplashComplete,
+  ]);
 
   useEffect(() => {
     if (slideContainerRef.current !== null) {
@@ -135,6 +157,8 @@ const Slider: FC<SliderProps> = ({ projects }) => {
             <div
               key={project.slug}
               className={`${styles.slide} ${projectIndex === activeIndex ? styles.active : ""}`}
+              aria-hidden={projectIndex !== activeIndex}
+              inert={projectIndex !== activeIndex}
             >
               <Link href={`/projects/${project.slug}`}>
                 <div
@@ -145,7 +169,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                 >
                   <Image
                     src={project.imgSrc}
-                    alt={`Slide ${projectIndex + 1}`}
+                    alt={project.projectName}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                     quality={95}

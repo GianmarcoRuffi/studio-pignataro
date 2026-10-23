@@ -326,6 +326,7 @@ const Lightbox: FC<LightboxProps> = ({
                 <button
                   type="button"
                   onClick={() => {
+                    imageCacheRef.current.delete(activeIndex);
                     setImageError(false);
                     setIsImageLoading(true);
                     void preloadImage(activeIndex).then((isLoaded) => {

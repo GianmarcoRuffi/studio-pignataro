@@ -61,6 +61,13 @@ export const scrollToPosition = ({
   behavior = "smooth",
 }: ScrollToPositionOptions) => {
   if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    behavior = "auto";
+  }
+
+  if (
     selector === DEFAULT_SCROLL_CONTAINER_SELECTOR &&
     activeSmoothScrollController !== null
   ) {

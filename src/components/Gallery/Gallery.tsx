@@ -25,9 +25,9 @@ const Gallery: FC<GalleryProps> = ({
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
-  const loadMoreReleaseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null
-  );
+  const loadMoreReleaseTimeoutRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
   const skeletonCount = useResponsiveSkeletonCount();
   const initialBatchImages = useMemo(
     () => (images ?? []).slice(0, LOADING.INITIAL_ITEMS),
@@ -56,7 +56,10 @@ const Gallery: FC<GalleryProps> = ({
 
       hasFinished = true;
       const elapsed = Date.now() - loadingStartedAt;
-      const remaining = Math.max(0, LOADING.BATCH_SKELETON_MIN_DISPLAY - elapsed);
+      const remaining = Math.max(
+        0,
+        LOADING.BATCH_SKELETON_MIN_DISPLAY - elapsed
+      );
 
       settleTimeoutId = setTimeout(() => {
         if (!isCancelled) {
@@ -105,7 +108,10 @@ const Gallery: FC<GalleryProps> = ({
       return;
     }
 
-    const nextVisibleImages = Math.min(visibleImages + 6, images.length);
+    const nextVisibleImages = Math.min(
+      visibleImages + LOADING.ITEMS_PER_LOAD,
+      images.length
+    );
 
     setIsLoadingMore(true);
 
@@ -329,7 +335,7 @@ const Gallery: FC<GalleryProps> = ({
             <MasonryGallery
               images={images}
               visibleImages={visibleImages}
-              preloadedCount={Math.min(6, images.length)}
+              preloadedCount={Math.min(LOADING.INITIAL_ITEMS, images.length)}
             />
 
             {visibleImages < images.length && (

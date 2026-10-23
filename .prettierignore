@@ -24,3 +24,7 @@ public/
 coverage/
 logs/
 .tmp/
+
+# Report generati dai test browser
+playwright-report/
+test-results/

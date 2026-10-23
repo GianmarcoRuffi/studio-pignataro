@@ -15,7 +15,9 @@ import { PressesData } from "../../models/models";
 
 export default function Presses() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
-  const [visibleCards, setVisibleCards] = useState<number>(LOADING.INITIAL_ITEMS);
+  const [visibleCards, setVisibleCards] = useState<number>(
+    LOADING.INITIAL_ITEMS
+  );
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const skeletonCount = useResponsiveSkeletonCount();
 
@@ -44,7 +46,10 @@ export default function Presses() {
     [selectedYear]
   );
   const currentImages = useMemo(
-    () => filteredData.slice(0, LOADING.INITIAL_ITEMS).map((press) => press.imageSource),
+    () =>
+      filteredData
+        .slice(0, LOADING.INITIAL_ITEMS)
+        .map((press) => press.imageSource),
     [filteredData]
   );
   const preloadRemainingImages = useCallback(() => {
@@ -63,7 +68,10 @@ export default function Presses() {
   const loadMoreCards = useCallback(() => {
     if (isLoadingMore || visibleCards >= filteredData.length) return;
 
-    const nextVisibleCards = Math.min(visibleCards + LOADING.ITEMS_PER_LOAD, filteredData.length);
+    const nextVisibleCards = Math.min(
+      visibleCards + LOADING.ITEMS_PER_LOAD,
+      filteredData.length
+    );
     const nextImageSources = filteredData
       .slice(visibleCards, nextVisibleCards)
       .map((press) => press.imageSource);
@@ -185,7 +193,10 @@ export default function Presses() {
                     </div>
                     <div className={styles.cardGrid}>
                       <CardSkeleton
-                        count={Math.min(LOADING.ITEMS_PER_LOAD, filteredData.length - visibleCards)}
+                        count={Math.min(
+                          LOADING.ITEMS_PER_LOAD,
+                          filteredData.length - visibleCards
+                        )}
                         descriptionLines={2}
                         className={styles.cardSkeleton}
                         placeholderClassName={styles.skeletonPlaceholder}

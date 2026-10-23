@@ -24,9 +24,9 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const loadingStartedAtRef = useRef<Record<number, number>>({});
-  const settleTimeoutsRef = useRef<Record<number, ReturnType<typeof setTimeout>>>(
-    {}
-  );
+  const settleTimeoutsRef = useRef<
+    Record<number, ReturnType<typeof setTimeout>>
+  >({});
 
   useEffect(() => {
     const updateColumns = () => {

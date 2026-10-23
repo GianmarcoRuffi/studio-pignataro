@@ -2,6 +2,7 @@ import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 
 export default [
   ...nextCoreWebVitals,
+  { ignores: ["playwright-report/**", "test-results/**"] },
   {
     rules: {
       "import/no-anonymous-default-export": "off",

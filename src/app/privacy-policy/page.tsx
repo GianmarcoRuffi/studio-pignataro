@@ -30,7 +30,9 @@ export default function PrivacyPolicy() {
           {index === 5 && (
             <p>
               Per esercitare i propri diritti, contattare:
-              <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>
+              <a href={`mailto:${privacyContactEmail}`}>
+                {privacyContactEmail}
+              </a>
             </p>
           )}
         </section>

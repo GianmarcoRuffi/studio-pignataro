@@ -26,7 +26,8 @@ export const privacyPolicyData: PolicySection[] = [
   {
     id: "tipologie",
     title: "2. Tipologie di dati raccolti",
-    content: "Questo sito raccoglie alcuni dati personali degli utenti. I dati possono essere:",
+    content:
+      "Questo sito raccoglie alcuni dati personali degli utenti. I dati possono essere:",
     list: {
       items: [
         "<strong>Dati di navigazione:</strong> indirizzo IP, tipo di browser, sistema operativo, pagine visitate",

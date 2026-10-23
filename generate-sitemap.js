@@ -4,7 +4,7 @@ const ts = require("typescript");
 
 const baseUrl = process.env.SITE_URL || "https://archpignataro.it";
 const appDir = path.join(__dirname, "src", "app");
-const dataFile = path.join(__dirname, "src", "data", "data.ts");
+const dataFile = path.join(__dirname, "src", "data", "projectsData.ts");
 
 const priorityByPath = {
   "/": 1.0,
@@ -57,11 +57,9 @@ const collectStaticPages = () => {
 };
 
 const collectProjectSlugs = () => {
-  if (!fs.existsSync(dataFile)) return [];
-
   const source = fs.readFileSync(dataFile, "utf8");
   const tsSource = ts.createSourceFile(
-    "data.ts",
+    "projectsData.ts",
     source,
     ts.ScriptTarget.Latest,
     true

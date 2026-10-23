@@ -18,7 +18,10 @@ const CookieConsent: FC = () => {
     try {
       const consent = localStorage.getItem("cookie-consent");
       if (!consent) {
-        setTimeout(() => setIsVisible(true), UI_TIMINGS.cookieConsent.showDelay);
+        setTimeout(
+          () => setIsVisible(true),
+          UI_TIMINGS.cookieConsent.showDelay
+        );
       }
     } catch (e) {
       console.warn("localStorage not available:", e);

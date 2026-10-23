@@ -45,7 +45,8 @@ export const cookiePolicyData: PolicySection[] = [
     subsections: [
       {
         title: "Cookie tecnici necessari",
-        content: "Questi cookie sono essenziali per il corretto funzionamento del sito:",
+        content:
+          "Questi cookie sono essenziali per il corretto funzionamento del sito:",
         list: {
           items: [
             "<strong>Cookie di sessione:</strong> mantengono la sessione di navigazione",
@@ -56,7 +57,8 @@ export const cookiePolicyData: PolicySection[] = [
       },
       {
         title: "Cookie di analisi",
-        content: "Utilizziamo Google Analytics per raccogliere informazioni anonime su:",
+        content:
+          "Utilizziamo Google Analytics per raccogliere informazioni anonime su:",
         list: {
           items: [
             "Numero di visitatori del sito",
@@ -71,7 +73,8 @@ export const cookiePolicyData: PolicySection[] = [
   {
     id: "terze-parti",
     title: "3. Cookie di terze parti",
-    content: "Il sito può utilizzare servizi di terze parti che impostano i propri cookie:",
+    content:
+      "Il sito può utilizzare servizi di terze parti che impostano i propri cookie:",
     list: {
       items: [
         "<strong>Google Analytics:</strong> analisi del traffico web",
@@ -83,7 +86,8 @@ export const cookiePolicyData: PolicySection[] = [
   {
     id: "gestione",
     title: "4. Gestione dei cookie",
-    content: "Puoi gestire o disabilitare i cookie attraverso le impostazioni del tuo browser:",
+    content:
+      "Puoi gestire o disabilitare i cookie attraverso le impostazioni del tuo browser:",
     list: {
       items: [
         "<strong>Chrome:</strong> Impostazioni → Privacy e sicurezza → Cookie",
@@ -98,7 +102,7 @@ export const cookiePolicyData: PolicySection[] = [
     title: "5. Consenso",
     content: [
       "L'utilizzo del sito implica l'accettazione dei cookie tecnici necessari. Per i cookie di analisi e marketing, il consenso viene richiesto attraverso il banner informativo.",
-      "Il consenso può essere revocato in qualsiasi momento modificando le impostazioni del browser o contattandoci all'indirizzo: <a href=\"mailto:info@archpignataro.it\">info@archpignataro.it</a>",
+      'Il consenso può essere revocato in qualsiasi momento modificando le impostazioni del browser o contattandoci all\'indirizzo: <a href="mailto:info@archpignataro.it">info@archpignataro.it</a>',
     ],
   },
   {
