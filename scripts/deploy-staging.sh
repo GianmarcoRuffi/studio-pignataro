@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Optional manual deployment for the legacy staging aliases.
+# Optional manual deployment for the staging aliases.
 # Automatic staging deployments use the native Vercel Git integration.
 
 if [[ "$(git branch --show-current)" != "staging" ]]; then

@@ -28,7 +28,7 @@
     "resend": "^6.12.2"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": "22.x"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",

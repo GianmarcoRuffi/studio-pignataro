@@ -41,12 +41,28 @@ richiesti non erano configurati.
   ambiente.
 - Preview Deployments abilitati per `staging`, con le eventuali variabili
   d'ambiente nell'ambito Preview.
+- Node.js Version: `22.x`, coerente con `.nvmrc` e con il vincolo `engines.node`
+  in `package.json` e `package-lock.json`. Non usare `>=22`: Vercel sceglierebbe
+  la major disponibile più recente anche con Node 22 selezionato nel pannello.
+- Build Command: `npm run build`, senza l'override precedente `CI=' '`. La build
+  Next.js è verificata anche con `CI=1`; il comando include la generazione della
+  sitemap prevista dal progetto.
 - Non promuovere i deployment di staging a Production e non associare loro il
   dominio `archpignataro.it`.
-- L'accesso alla Preview segue la Deployment Protection configurata in Vercel:
-  se viene richiesto, accedere con un account autorizzato.
+- Lo staging è intenzionalmente pubblico: nessuna autenticazione Vercel o
+  password deve essere aggiunta alla Preview. Mantenerlo escluso dai motori di
+  ricerca con l'header `X-Robots-Tag: noindex` fornito da Vercel.
 
-## Alias staging precedenti, facoltativi
+## Alias staging
+
+Anche gli indirizzi seguenti sono registrati nei domini del progetto come
+Preview collegate al Git branch `staging`, entrambi verificati:
+
+- https://archpignataro-staging.vercel.app
+- https://studio-pignataro-stg.vercel.app
+
+Seguono automaticamente i deployment Git riusciti di `staging`, come l'URL di
+branch principale; non puntano più al vecchio deploy manuale del febbraio 2026.
 
 `npm run deploy:staging` resta disponibile per pubblicare manualmente una
 Preview da `staging` e aggiornare gli alias `archpignataro-staging.vercel.app` e
@@ -54,8 +70,8 @@ Preview da `staging` e aggiornare gli alias `archpignataro-staging.vercel.app` e
 una sessione CLI autenticata oppure `VERCEL_TOKEN`; in CI servono anche
 `VERCEL_ORG_ID` e `VERCEL_PROJECT_ID` se manca il collegamento locale.
 
-Questi alias non vengono aggiornati dal flusso Git automatico. Per verificare
-staging usare l'indirizzo di branch indicato sopra.
+Il comando manuale è facoltativo: il normale flusso di aggiornamento resta
+`git push origin staging`.
 
 Riferimenti: [Vercel per GitHub](https://vercel.com/docs/git/vercel-for-github),
 [URL dei deployment](https://vercel.com/docs/deployments/generated-urls).

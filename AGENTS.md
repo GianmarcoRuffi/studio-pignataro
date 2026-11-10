@@ -22,11 +22,11 @@ Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale;
 
 ## Comandi e verifiche
 
-Usa Node.js 22 (`.nvmrc`) e npm con `package-lock.json`.
+Usa Node.js 22 (`.nvmrc` e `engines.node: "22.x"`) e npm con `package-lock.json`. Mantieni il vincolo della stessa major anche nel lockfile: un intervallo aperto come `>=22` prevale sul pannello Vercel e può selezionare major successive.
 
 - `npm ci`; `npm run dev`.
 - I push su `staging` generano Preview tramite l'integrazione Git nativa Vercel; `master` resta il branch di produzione. Flusso, URL stabile e impostazioni sono in `DEPLOYMENT.md`. Il vecchio workflow Actions duplicato è stato rimosso.
-- `npm run deploy:staging` è facoltativo: da `staging` pubblica una Preview e aggiorna soltanto gli alias precedenti; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato. Gli alias non seguono i deploy Git automatici.
+- `npm run deploy:staging` è facoltativo: da `staging` pubblica una Preview e aggiorna gli alias staging; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato. Gli stessi alias sono domini Preview collegati a `staging` e seguono anche i deploy Git automatici. Lo staging resta pubblico e con `noindex`.
 - `npm run lint`; `npm run type-check`; `npm run format:check`.
 - `npm run format` riscrive i file formattabili.
 - `npm run build` rigenera `public/sitemap.xml` prima della build; `npm start` avvia la produzione.
@@ -56,7 +56,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: integrato `feature/layout-change` in `staging`. Staging usa i deploy Preview nativi Vercel e l'URL stabile di branch; rimosso il workflow Actions duplicato senza secret. Documentato il flusso in `DEPLOYMENT.md` e reso esplicito e limitato a `staging` il comando facoltativo per gli alias precedenti.
+2026-11-10: allineato Node a `22.x` in manifest, lockfile e Vercel; Build Command semplificato a `npm run build`, verificato anche con `CI=1`. I due alias staging sono ora domini Preview collegati al branch e seguono i deploy Git automatici. Staging pubblico e variabili email conservate; flusso aggiornato in `DEPLOYMENT.md`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
