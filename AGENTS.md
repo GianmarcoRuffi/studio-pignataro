@@ -22,7 +22,7 @@ Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale;
 
 ## Comandi e verifiche
 
-Usa Node.js 22 (`.nvmrc` e `engines.node: "22.x"`) e npm con `package-lock.json`. Mantieni il vincolo della stessa major anche nel lockfile: un intervallo aperto come `>=22` prevale sul pannello Vercel e può selezionare major successive.
+Usa Node.js 26 LTS (`.nvmrc` e `engines.node: "26.x"`) e npm con `package-lock.json`. Mantieni il vincolo della stessa major anche nel lockfile e nel pannello Vercel: un intervallo aperto come `>=26` può selezionare major successive. I tipi Node seguono la major 26; la CLI Vercel è sulla linea 65, compatibile con il nuovo runtime.
 
 - `npm ci`; `npm run dev`.
 - I push su `staging` generano Preview tramite l'integrazione Git nativa Vercel; `master` resta il branch di produzione. Flusso, URL stabile e impostazioni sono in `DEPLOYMENT.md`. Il vecchio workflow Actions duplicato è stato rimosso.
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: allineato Node a `22.x` in manifest, lockfile e Vercel; Build Command `npm run build` verificato con CI attivo e su Vercel. I due alias staging sono domini Preview collegati al branch; `noindex` è esplicito soltanto in Preview per coprire tutti gli indirizzi. Staging pubblico e variabili email conservate; flusso aggiornato in `DEPLOYMENT.md`.
+2026-11-10: migrazione a Node 26 LTS, con `.nvmrc`, manifest, lockfile, tipi TypeScript e CLI Vercel allineati. Installazione pulita, build con CI attivo e 34 regressioni desktop/mobile verificate con la major 26; staging usa il flusso Git nativo Vercel.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

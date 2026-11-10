@@ -41,9 +41,12 @@ richiesti non erano configurati.
   ambiente.
 - Preview Deployments abilitati per `staging`, con le eventuali variabili
   d'ambiente nell'ambito Preview.
-- Node.js Version: `22.x`, coerente con `.nvmrc` e con il vincolo `engines.node`
-  in `package.json` e `package-lock.json`. Non usare `>=22`: Vercel sceglierebbe
-  la major disponibile più recente anche con Node 22 selezionato nel pannello.
+- Node.js Version: `26.x` (LTS), coerente con `.nvmrc` e con il vincolo
+  `engines.node` in `package.json` e `package-lock.json`. Non usare `>=26`:
+  Vercel potrebbe scegliere major successive anche con Node 26 nel pannello.
+- Per l'ambiente locale con nvm, eseguire `nvm install` e `nvm use` dalla root
+  prima di `npm ci`. La CLI Vercel del progetto è sulla linea 65; per eventuali
+  deploy prebuilt con Node 26 è richiesta almeno la versione 65.8.0.
 - Build Command: `npm run build`, senza l'override precedente `CI=' '`. La build
   Next.js è verificata anche con `CI=1`; il comando include la generazione della
   sitemap prevista dal progetto.
