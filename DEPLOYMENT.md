@@ -51,7 +51,10 @@ richiesti non erano configurati.
   dominio `archpignataro.it`.
 - Lo staging è intenzionalmente pubblico: nessuna autenticazione Vercel o
   password deve essere aggiunta alla Preview. Mantenerlo escluso dai motori di
-  ricerca con l'header `X-Robots-Tag: noindex` fornito da Vercel.
+  ricerca con l'header `X-Robots-Tag: noindex`: `next.config.js` lo aggiunge a
+  tutte le risposte soltanto quando `VERCEL_ENV=preview`, coprendo anche i due
+  alias personalizzati a cui Vercel non applica automaticamente l'header.
+  Production e sviluppo locale non ricevono questo header dalla configurazione.
 
 ## Alias staging
 

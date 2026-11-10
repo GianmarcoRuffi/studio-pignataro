@@ -30,6 +30,7 @@ Usa Node.js 22 (`.nvmrc` e `engines.node: "22.x"`) e npm con `package-lock.json`
 - `npm run lint`; `npm run type-check`; `npm run format:check`.
 - `npm run format` riscrive i file formattabili.
 - `npm run build` rigenera `public/sitemap.xml` prima della build; `npm start` avvia la produzione.
+- `next.config.js` aggiunge `X-Robots-Tag: noindex` soltanto con `VERCEL_ENV=preview`, anche sugli alias staging personalizzati. Conserva l'indicizzabilità di Production.
 - `npm run playwright:install`; `npm run test:e2e`.
 - Singolo test: `npm run test:e2e -- -g "homepage keeps the hero slider visible"`.
 
@@ -56,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: allineato Node a `22.x` in manifest, lockfile e Vercel; Build Command semplificato a `npm run build`, verificato anche con `CI=1`. I due alias staging sono ora domini Preview collegati al branch e seguono i deploy Git automatici. Staging pubblico e variabili email conservate; flusso aggiornato in `DEPLOYMENT.md`.
+2026-11-10: allineato Node a `22.x` in manifest, lockfile e Vercel; Build Command `npm run build` verificato con CI attivo e su Vercel. I due alias staging sono domini Preview collegati al branch; `noindex` è esplicito soltanto in Preview per coprire tutti gli indirizzi. Staging pubblico e variabili email conservate; flusso aggiornato in `DEPLOYMENT.md`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
