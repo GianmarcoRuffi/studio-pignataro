@@ -1,0 +1,61 @@
+# Produzione e staging su Vercel
+
+Il progetto Vercel `studio-pignataro` è collegato a questo repository tramite
+l'integrazione Git nativa. Vercel esegue installazione, build Next.js e deploy a
+ogni push, senza richiedere secret Vercel in GitHub Actions.
+
+| Branch    | Ambiente   | Indirizzo                                                                |
+| --------- | ---------- | ------------------------------------------------------------------------ |
+| `master`  | Production | https://archpignataro.it                                                 |
+| `staging` | Preview    | https://studio-pignataro-git-staging-gianmarcoruffis-projects.vercel.app |
+
+L'indirizzo di branch di staging segue l'ultimo deployment Preview riuscito.
+Ogni deployment ha anche un proprio URL immutabile, disponibile nel controllo
+`Vercel` del commit su GitHub e nel pannello Vercel.
+
+## Aggiornare staging
+
+Partire da un working tree pulito, aggiornare i riferimenti remoti e integrare
+il branch da verificare:
+
+```bash
+git fetch origin
+git switch staging
+git merge --ff-only origin/staging
+git merge --no-ff feature/nome-feature
+git push origin staging
+```
+
+Attendere il controllo `Vercel` sul commit pubblicato. Deve terminare con
+`Deployment has completed` e il deployment deve essere nell'ambiente `Preview`.
+Un errore di build lascia disponibile l'ultimo deployment riuscito: leggere i
+log del deployment fallito prima di considerare aggiornato staging.
+
+Il vecchio workflow GitHub Actions `Deploy Staging` è stato rimosso: duplicava
+l'integrazione nativa e falliva al passaggio `vercel pull` perché i secret
+richiesti non erano configurati.
+
+## Impostazioni Vercel da mantenere
+
+- Production Branch: `master`; i domini di produzione restano associati a questo
+  ambiente.
+- Preview Deployments abilitati per `staging`, con le eventuali variabili
+  d'ambiente nell'ambito Preview.
+- Non promuovere i deployment di staging a Production e non associare loro il
+  dominio `archpignataro.it`.
+- L'accesso alla Preview segue la Deployment Protection configurata in Vercel:
+  se viene richiesto, accedere con un account autorizzato.
+
+## Alias staging precedenti, facoltativi
+
+`npm run deploy:staging` resta disponibile per pubblicare manualmente una
+Preview da `staging` e aggiornare gli alias `archpignataro-staging.vercel.app` e
+`studio-pignataro-stg.vercel.app`. Richiede il progetto Vercel già collegato e
+una sessione CLI autenticata oppure `VERCEL_TOKEN`; in CI servono anche
+`VERCEL_ORG_ID` e `VERCEL_PROJECT_ID` se manca il collegamento locale.
+
+Questi alias non vengono aggiornati dal flusso Git automatico. Per verificare
+staging usare l'indirizzo di branch indicato sopra.
+
+Riferimenti: [Vercel per GitHub](https://vercel.com/docs/git/vercel-for-github),
+[URL dei deployment](https://vercel.com/docs/deployments/generated-urls).

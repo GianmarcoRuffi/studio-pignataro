@@ -25,7 +25,8 @@ Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale;
 Usa Node.js 22 (`.nvmrc`) e npm con `package-lock.json`.
 
 - `npm ci`; `npm run dev`.
-- `npm run deploy:staging` esegue lo script Vercel e aggiorna gli alias staging; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato.
+- I push su `staging` generano Preview tramite l'integrazione Git nativa Vercel; `master` resta il branch di produzione. Flusso, URL stabile e impostazioni sono in `DEPLOYMENT.md`. Il vecchio workflow Actions duplicato è stato rimosso.
+- `npm run deploy:staging` è facoltativo: da `staging` pubblica una Preview e aggiorna soltanto gli alias precedenti; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato. Gli alias non seguono i deploy Git automatici.
 - `npm run lint`; `npm run type-check`; `npm run format:check`.
 - `npm run format` riscrive i file formattabili.
 - `npm run build` rigenera `public/sitemap.xml` prima della build; `npm start` avvia la produzione.
@@ -55,7 +56,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: restyling «Monografia contemporanea» con palette carta/grafite, Source Serif 4 locale, navigazione testuale, didascalia e contatore dello slider. Progetti, gallerie, biografia, pubblicazioni e contatti seguono una composizione editoriale; recapiti immediati e telefoni cliccabili. Conservati logo su supporto chiaro, footer su una riga, caricamenti progressivi, accessibilità e consenso.
+2026-11-10: integrato `feature/layout-change` in `staging`. Staging usa i deploy Preview nativi Vercel e l'URL stabile di branch; rimosso il workflow Actions duplicato senza secret. Documentato il flusso in `DEPLOYMENT.md` e reso esplicito e limitato a `staging` il comando facoltativo per gli alias precedenti.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
