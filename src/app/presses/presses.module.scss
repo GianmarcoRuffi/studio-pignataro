@@ -63,41 +63,19 @@
   border-bottom: 1px solid var(--color-rule);
   padding: 2.5rem 0;
 }
-.featured {
-  padding: 1rem 0 var(--space-section);
-}
-.featured article {
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: var(--space-section);
-  align-items: center;
-}
-.featured article > button {
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 2590 / 1135;
-}
-.featured h3 {
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-}
 .cardSkeleton {
   display: grid;
-  grid-template-columns: minmax(120px, 24%) 1fr;
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
   gap: var(--space-block);
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--color-rule);
 }
-.cardSkeleton:first-child {
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-}
 .skeletonPlaceholder {
-  aspect-ratio: 4/5;
+  aspect-ratio: 16/9;
   background: var(--color-background-gray);
 }
-.cardSkeleton:first-child .skeletonPlaceholder {
-  aspect-ratio: 2590 / 1135;
-}
 .skeletonText {
-  align-self: center;
+  align-self: start;
 }
 .skeletonTitle {
   height: 2rem;
@@ -128,14 +106,8 @@
   .filterButtons {
     gap: 0.25rem 1rem;
   }
-  .featured article {
+  .cardSkeleton {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  .featured article > button {
-    max-width: 360px;
-  }
-  .cardSkeleton:first-child {
-    grid-template-columns: 1fr;
   }
 }

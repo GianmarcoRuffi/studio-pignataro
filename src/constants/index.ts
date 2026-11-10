@@ -56,6 +56,3 @@ export const LOADING = {
     desktop: 6,
   },
 } as const;
-
-export const GALLERY_IMAGE_SIZES =
-  "(max-width: 768px) 100vw, (max-width: 1440px) 45vw, 650px";

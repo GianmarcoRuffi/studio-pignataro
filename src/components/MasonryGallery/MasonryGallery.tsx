@@ -2,10 +2,16 @@
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
-import { LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
+import { LOADING } from "../../constants";
 import styles from "./MasonryGallery.module.scss";
 
+import type { ImageDimensions } from "../../models/models";
+import type { GalleryFrame } from "../../utils/galleryLayout";
+
 interface MasonryGalleryProps {
+  imageDimensions: ImageDimensions[];
+  rows: GalleryFrame[][];
+  skeletonOnly: boolean;
   images: string[];
   visibleImages: number;
   preloadedCount?: number;
@@ -13,6 +19,9 @@ interface MasonryGalleryProps {
 
 const MasonryGallery: FC<MasonryGalleryProps> = ({
   images,
+  imageDimensions,
+  rows,
+  skeletonOnly,
   visibleImages,
   preloadedCount = 0,
 }) => {
@@ -91,54 +100,77 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   return (
     <>
       <div className={styles.masonryContainer} ref={containerRef}>
-        {images.slice(0, visibleImages).map((imageSource, imageIndex) => (
-          <div key={imageIndex} className={styles.imageWrapper}>
-            <button
-              type="button"
-              className={styles.imageLink}
-              onClick={() => handleImageClick(imageIndex)}
-              aria-label={`Visualizza immagine ${imageIndex + 1}`}
-            >
-              <div className={styles.imageContainer}>
-                {loadingImages[imageIndex] && (
-                  <div className={styles.imageSkeleton}>
-                    <div className={styles.skeletonPlaceholder}></div>
-                  </div>
-                )}
+        {rows.map((row) => (
+          <div
+            key={row[0].index}
+            className={styles.imageRow}
+            data-gallery-row={row[0].index}
+          >
+            {row.map(({ index: imageIndex, width, height }) => {
+              const imageSource = images[imageIndex];
+              return (
+                <div
+                  key={imageIndex}
+                  className={styles.imageWrapper}
+                  data-gallery-index={imageIndex}
+                  style={{ width, height }}
+                >
+                  {skeletonOnly ? (
+                    <div className={styles.imageSkeleton}>
+                      <div className={styles.skeletonPlaceholder} />
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.imageLink}
+                      onClick={() => handleImageClick(imageIndex)}
+                      aria-label={`Visualizza immagine ${imageIndex + 1}`}
+                    >
+                      <div className={styles.imageContainer}>
+                        {loadingImages[imageIndex] && (
+                          <div className={styles.imageSkeleton}>
+                            <div className={styles.skeletonPlaceholder}></div>
+                          </div>
+                        )}
 
-                <Image
-                  src={imageSource}
-                  alt={`Fotografia del progetto, immagine ${imageIndex + 1}`}
-                  width={600}
-                  height={400}
-                  sizes={
-                    imageIndex === 0
-                      ? "(max-width: 1440px) 100vw, 1300px"
-                      : GALLERY_IMAGE_SIZES
-                  }
-                  unoptimized={imageSource.endsWith(".gif")}
-                  loading={imageIndex < preloadedCount ? "eager" : "lazy"}
-                  className={`${styles.image} ${
-                    loadingImages[imageIndex]
-                      ? styles.imageLoading
-                      : styles.imageLoaded
-                  }`}
-                  onLoad={() => settleImageLoading(imageIndex)}
-                  onError={() => settleImageLoading(imageIndex)}
-                  quality={85}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                />
+                        <Image
+                          src={imageSource}
+                          alt={`Fotografia del progetto, immagine ${imageIndex + 1}`}
+                          width={imageDimensions[imageIndex].width}
+                          height={imageDimensions[imageIndex].height}
+                          sizes={`${Math.ceil(width)}px`}
+                          unoptimized={imageSource.endsWith(".gif")}
+                          loading={
+                            imageIndex < preloadedCount ? "eager" : "lazy"
+                          }
+                          className={`${styles.image} ${
+                            loadingImages[imageIndex]
+                              ? styles.imageLoading
+                              : styles.imageLoaded
+                          }`}
+                          onLoad={() => settleImageLoading(imageIndex)}
+                          onError={() => settleImageLoading(imageIndex)}
+                          quality={85}
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                        />
 
-                {!loadingImages[imageIndex] && (
-                  <div className={styles.imageOverlay}>
-                    <span className={styles.zoomIcon} aria-hidden="true">
-                      ↗
-                    </span>
-                  </div>
-                )}
-              </div>
-            </button>
+                        {!loadingImages[imageIndex] && (
+                          <div className={styles.imageOverlay}>
+                            <span
+                              className={styles.zoomIcon}
+                              aria-hidden="true"
+                            >
+                              ↗
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>

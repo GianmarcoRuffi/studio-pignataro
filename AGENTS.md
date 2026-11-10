@@ -9,7 +9,7 @@ Leggi questo file prima di intervenire. A ogni modifica del progetto, aggiorna `
 Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Router, React 19, TypeScript, Sass e Tailwind CSS 4, con contenuti locali.
 
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
-- Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`, Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. Fotografie senza cornici decorative, elenco progetti 7/5 alternato e galleria sequenziale a due colonne con prima immagine ampia. Il ritratto della biografia mantiene il punto focale a sinistra; la monografia usa il rapporto panoramico originale del composito, senza ritagli.
+- Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`, Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. Fotografie senza cornici decorative, elenco progetti 7/5 alternato e gallerie a righe giustificate, con gap di 16 px e blocchi indipendenti di sei immagini. Il ritratto della biografia mantiene il punto focale a sinistra; tutte le pubblicazioni, monografia compresa, usano colonne 32/68 e riquadri 16:9 con immagini intere centrate.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
 - `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
@@ -42,7 +42,7 @@ Playwright avvia build e server sulla porta 3100; verifica slider, skeleton, car
 
 TypeScript strict vieta variabili e parametri inutilizzati. ESLint usa Next Core Web Vitals; Prettier impone due spazi, doppi apici, punto e virgola, LF e larghezza 80. Segui PascalCase, SCSS Modules e import relativi esistenti. Commit prevalentemente `feat:`, `fix:` e `refactor:`, in inglese.
 
-La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione sono in `tests/e2e/review-regressions.spec.ts` e quelli del restyling in `tests/e2e/monograph.spec.ts`.
+La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione sono in `tests/e2e/review-regressions.spec.ts` e quelli del restyling in `tests/e2e/monograph.spec.ts`. Gli allineamenti di gallerie e pubblicazioni sono verificati in `tests/e2e/gallery-layout.spec.ts`.
 
 ## Consenso, modali e immagini
 
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: migrazione a Node 26 LTS, con `.nvmrc`, manifest, lockfile, tipi TypeScript e CLI Vercel allineati. Installazione pulita, build con CI attivo e 34 regressioni desktop/mobile verificate con la major 26; staging usa il flusso Git nativo Vercel.
+2026-11-10: gallerie a incastro con proporzioni lette lato server tramite sharp, righe bilanciate su ogni blocco di sei (solo l’ultima riga effettiva può restare incompleta) e skeleton con la stessa geometria; pubblicazioni uniformate con immagini 16:9 senza ritagli e impaginazione condivisa anche per la monografia.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

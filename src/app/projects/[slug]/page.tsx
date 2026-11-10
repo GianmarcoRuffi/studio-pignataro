@@ -1,3 +1,5 @@
+import sharp from "sharp";
+import path from "node:path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import projects from "../../../data/projectsData";
@@ -67,6 +69,18 @@ export default async function Page({ params }: Params) {
 
   if (!project) notFound();
 
+  const imageDimensions = await Promise.all(
+    project.images.map(async (source) => {
+      const metadata = await sharp(
+        path.join(process.cwd(), "public", source)
+      ).metadata();
+      return {
+        width: metadata.autoOrient.width,
+        height: metadata.pageHeight ?? metadata.autoOrient.height,
+      };
+    })
+  );
+
   const prevProject =
     projects[(projectIndex - 1 + projects.length) % projects.length];
   const nextProject = projects[(projectIndex + 1) % projects.length];
@@ -75,6 +89,7 @@ export default async function Page({ params }: Params) {
     <div>
       <Gallery
         images={project.images}
+        imageDimensions={imageDimensions}
         galleryTitle={project.projectName}
         galleryDescription={project.description}
         galleryLinks={project.externalLink}

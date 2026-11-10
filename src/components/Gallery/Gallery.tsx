@@ -1,17 +1,26 @@
 "use client";
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import MasonryGallery from "../MasonryGallery/MasonryGallery";
 import styles from "./gallery.module.scss";
 import LinkButton from "../LinkButton/LinkButton";
-import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
 import { preloadImage } from "../../utils/imageUtils";
-import { LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
+import { LOADING } from "../../constants";
+import { getGalleryRows } from "../../utils/galleryLayout";
 import { GalleryProps, GalleryLink } from "../../models/models";
 
 const Gallery: FC<GalleryProps> = ({
   images,
+  imageDimensions,
   galleryTitle,
   galleryDescription,
   galleryLinks,
@@ -28,13 +37,42 @@ const Gallery: FC<GalleryProps> = ({
   const loadMoreReleaseTimeoutRef = useRef<ReturnType<
     typeof setTimeout
   > | null>(null);
-  const skeletonCount = useResponsiveSkeletonCount();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [measurement, setMeasurement] = useState({ width: 0, viewport: 0 });
+  useLayoutEffect(() => {
+    const container = frameRef.current;
+    if (!container) return;
+    const measure = () =>
+      setMeasurement({
+        width: container.getBoundingClientRect().width,
+        viewport: window.innerWidth,
+      });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(container);
+    window.addEventListener("resize", measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+  const rows = useMemo(
+    () =>
+      getGalleryRows(
+        imageDimensions,
+        measurement.width,
+        measurement.viewport
+      ).filter((row) => row[0].index < visibleImages),
+    [imageDimensions, visibleImages, measurement]
+  );
+  const measured = measurement.width > 0;
   const initialBatchImages = useMemo(
     () => (images ?? []).slice(0, LOADING.INITIAL_ITEMS),
     [images]
   );
 
   useEffect(() => {
+    if (!measured) return;
     let isCancelled = false;
 
     setVisibleImages(LOADING.INITIAL_ITEMS);
@@ -68,12 +106,9 @@ const Gallery: FC<GalleryProps> = ({
       }, remaining);
     };
 
-    const preloadPromises = initialBatchImages.map((imageSrc) =>
+    const preloadPromises = initialBatchImages.map((imageSrc, index) =>
       preloadImage(imageSrc, 0, {
-        sizes:
-          imageSrc === initialBatchImages[0]
-            ? "(max-width: 1440px) 100vw, 1300px"
-            : GALLERY_IMAGE_SIZES,
+        sizes: `${Math.ceil(rows.flat().find((frame) => frame.index === index)?.width ?? measurement.width)}px`,
         quality: 85,
       })
     );
@@ -99,7 +134,9 @@ const Gallery: FC<GalleryProps> = ({
         clearTimeout(settleTimeoutId);
       }
     };
-  }, [images, initialBatchImages]);
+    // Width changes update the renderer without restarting the initial batch.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images, initialBatchImages, measured]);
 
   useEffect(() => {
     return () => {
@@ -146,7 +183,7 @@ const Gallery: FC<GalleryProps> = ({
       },
       {
         threshold: 0.01,
-        rootMargin: "900px 0px",
+        rootMargin: "0px",
       }
     );
 
@@ -288,32 +325,25 @@ const Gallery: FC<GalleryProps> = ({
           </div>
         </div>
 
-        {isLoading && (
-          <div className={styles.galleryGrid}>
-            {Array.from({ length: skeletonCount }, (_, index) => (
-              <div key={`skeleton-${index}`} className={styles.imageSkeleton}>
-                <div className={styles.skeletonPlaceholder}></div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {!isLoading && images && images.length > 0 && (
-          <>
+        <div
+          ref={frameRef}
+          className={isLoading ? styles.galleryGrid : undefined}
+        >
+          {images.length > 0 && (
             <MasonryGallery
+              key={images[0]}
               images={images}
+              imageDimensions={imageDimensions}
+              rows={rows}
               visibleImages={visibleImages}
+              skeletonOnly={isLoading}
               preloadedCount={Math.min(LOADING.INITIAL_ITEMS, images.length)}
             />
-
-            {visibleImages < images.length && (
-              <div
-                ref={loadMoreTriggerRef}
-                className={styles.loadMoreTrigger}
-              />
-            )}
-          </>
-        )}
+          )}
+          {!isLoading && visibleImages < images.length && (
+            <div ref={loadMoreTriggerRef} className={styles.loadMoreTrigger} />
+          )}
+        </div>
 
         {!isLoading && (!images || images.length === 0) && (
           <div className={styles.emptyState}>
