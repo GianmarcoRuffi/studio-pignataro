@@ -111,7 +111,13 @@ interface GalleryLink {
   name: string;
 }
 
+interface ImageDimensions {
+  width: number;
+  height: number;
+}
+
 interface GalleryProps {
+  imageDimensions: ImageDimensions[];
   images: string[];
   galleryTitle: string;
   galleryDescription: string;
@@ -155,6 +161,7 @@ export type {
   ContactsData,
   GalleryLink,
   GalleryProps,
+  ImageDimensions,
   PressesData,
   PressesCardProps,
   Params,

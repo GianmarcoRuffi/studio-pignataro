@@ -161,7 +161,7 @@ export default function Presses() {
               {filteredData.slice(0, visibleCards).map((press: PressesData) => (
                 <div
                   key={`${press.date}-${press.imageSource}`}
-                  className={`${styles.cardWrapper} ${press.imageSource === pressesData[0].imageSource ? styles.featured : ""}`}
+                  className={styles.cardWrapper}
                 >
                   <PressesCard
                     description={press.description}

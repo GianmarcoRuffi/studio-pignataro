@@ -1,6 +1,6 @@
 .pressCard {
   display: grid;
-  grid-template-columns: minmax(120px, 24%) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
   gap: var(--space-block);
   align-items: start;
 }
@@ -8,15 +8,15 @@
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 16/9;
   border: 0;
   padding: 0;
-  background: transparent;
+  background: #fff;
   cursor: zoom-in;
 }
 .cardImage {
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
   transition: opacity 0.35s;
 }
 .loading {
@@ -63,10 +63,10 @@
 .zoomOverlay {
   display: none;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .pressCard {
-    grid-template-columns: 90px minmax(0, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
   .cardTitle {
     font-size: 1.25rem;
