@@ -83,9 +83,8 @@ const Projects: FC = () => {
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>Progetti</h1>
           <p className={styles.pageSubtitle}>
-            Una selezione dei miei progetti di architettura e interior design,
-            dalla ristrutturazione di edifici storici a soluzioni innovative per
-            interni contemporanei.
+            Architettura, interni e recupero. Una selezione di lavori tra
+            edifici storici e spazi contemporanei.
           </p>
         </div>
       </div>
@@ -108,17 +107,15 @@ const Projects: FC = () => {
             <div className={styles.cardGrid}>
               {visibleProjects
                 .slice(0, visibleCards)
-                .map((project: Project, index: number) => (
-                  <div
-                    key={project.slug}
-                    className={styles.cardWrapper}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
+                .map((project: Project) => (
+                  <div key={project.slug} className={styles.cardWrapper}>
                     <Link href={`/projects/${project.slug}`}>
                       <ProjectCard
                         name={project.projectName}
                         imageSource={project.imgSrc}
                         description={project.description}
+                        imageFit={project.imageFit}
+                        imagePosition={project.imagePosition}
                       />
                     </Link>
                   </div>

@@ -103,9 +103,8 @@ export default function Presses() {
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>Pubblicazioni</h1>
           <p className={styles.pageSubtitle}>
-            Una selezione di articoli e menzioni del mio lavoro su riviste
-            specializzate e pubblicazioni del settore architettonico e del
-            design.
+            Il lavoro dello studio attraverso libri, riviste e articoli. Una
+            bibliografia dal 1999 a oggi.
           </p>
         </div>
       </div>
@@ -115,6 +114,8 @@ export default function Presses() {
           <span className={styles.filterLabel}>Filtra per anno:</span>
           <div className={styles.filterButtons}>
             <button
+              type="button"
+              aria-pressed={selectedYear === "all"}
               onClick={() => {
                 setSelectedYear("all");
                 setVisibleCards(LOADING.INITIAL_ITEMS);
@@ -126,6 +127,8 @@ export default function Presses() {
             {years.map((year) => (
               <button
                 key={year}
+                type="button"
+                aria-pressed={selectedYear === year}
                 onClick={() => {
                   setSelectedYear(year);
                   setVisibleCards(LOADING.INITIAL_ITEMS);
@@ -155,32 +158,29 @@ export default function Presses() {
         ) : (
           <>
             <div className={styles.cardGrid}>
-              {filteredData
-                .slice(0, visibleCards)
-                .map((press: PressesData, index: number) => (
-                  <div
-                    key={`${press.date}-${press.imageSource}`}
-                    className={styles.cardWrapper}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <PressesCard
-                      description={press.description}
-                      imageSource={press.imageSource}
-                      source={
-                        press.source ? (
-                          <LinkButton
-                            href={press.source}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Vai all'articolo
-                          </LinkButton>
-                        ) : null
-                      }
-                      date={press.date}
-                    />
-                  </div>
-                ))}
+              {filteredData.slice(0, visibleCards).map((press: PressesData) => (
+                <div
+                  key={`${press.date}-${press.imageSource}`}
+                  className={`${styles.cardWrapper} ${press.imageSource === pressesData[0].imageSource ? styles.featured : ""}`}
+                >
+                  <PressesCard
+                    description={press.description}
+                    imageSource={press.imageSource}
+                    source={
+                      press.source ? (
+                        <LinkButton
+                          href={press.source}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Vai all'articolo
+                        </LinkButton>
+                      ) : null
+                    }
+                    date={press.date}
+                  />
+                </div>
+              ))}
             </div>
 
             {visibleCards < filteredData.length && (

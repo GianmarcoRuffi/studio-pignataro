@@ -58,4 +58,4 @@ export const LOADING = {
 } as const;
 
 export const GALLERY_IMAGE_SIZES =
-  "(max-width: 767px) 100vw, (max-width: 1023px) 50vw, (max-width: 1399px) 33vw, 25vw";
+  "(max-width: 768px) 100vw, (max-width: 1440px) 45vw, 650px";

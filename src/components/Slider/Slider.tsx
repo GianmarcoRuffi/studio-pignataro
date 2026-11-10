@@ -193,6 +193,23 @@ const Slider: FC<SliderProps> = ({ projects }) => {
         })}
       </div>
 
+      <div className={styles.slideCaption}>
+        <Link href={`/projects/${projects[activeIndex].slug}`}>
+          <span className={styles.captionLabel}>Progetto selezionato</span>
+          <span className={styles.captionTitle}>
+            {projects[activeIndex].projectName}{" "}
+            <span aria-hidden="true">↗</span>
+          </span>
+        </Link>
+        <span
+          className={styles.slideCounter}
+          aria-label="Posizione della slide"
+        >
+          {String(activeIndex + 1).padStart(2, "0")} /{" "}
+          {String(projects.length).padStart(2, "0")}
+        </span>
+      </div>
+
       <button
         type="button"
         className={`${styles.next} ${styles.sliderButton} ${

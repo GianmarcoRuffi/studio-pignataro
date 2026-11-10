@@ -12,139 +12,107 @@ export default function Contacts() {
 
   return (
     <div className={styles.contactsContainer}>
-      <div className={styles.headerSection}>
-        <div className={styles.headerContent}>
-          <div className={styles.studioImage}>
-            <Image
-              src={contactsData.image}
-              alt="Studio Pignataro"
-              fill
-              sizes="(max-width: 1024px) 100vw, 500px"
-              quality={95}
-              priority
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-              className={`${styles.studioImg} ${
-                isImageLoaded ? styles.loaded : styles.loading
-              }`}
-            />
-          </div>
-          <div className={styles.studioInfo}>
-            <h1 className={styles.pageTitle}>Contatti</h1>
-            <p className={styles.studioDescription}>
-              Il nostro studio di architettura è situato nel cuore di Cagliari,
-              facilmente raggiungibile e sempre pronto ad accogliere i nostri
-              clienti.
-            </p>
-          </div>
+      <div className={styles.headerContent}>
+        <div className={styles.studioInfo}>
+          <p className={styles.eyebrow}>Studio Gianluca Pignataro · Cagliari</p>
+          <h1 className={styles.pageTitle}>Contatti</h1>
+          <p className={styles.studioDescription}>
+            Per parlare di un progetto, scrivimi o contatta lo studio.
+          </p>
+          <dl className={styles.contactDetails}>
+            <div className={styles.contactItem}>
+              <dt>Email</dt>
+              <dd>
+                <a href={contactsData.email.mailto}>
+                  {contactsData.email.address}
+                </a>
+              </dd>
+            </div>
+            <div className={styles.contactItem}>
+              <dt>Telefono</dt>
+              <dd>
+                <a href={`tel:+39${contactsData.phone.landline}`}>
+                  {contactsData.phone.landline}
+                </a>
+              </dd>
+            </div>
+            <div className={styles.contactItem}>
+              <dt>Cellulare</dt>
+              <dd>
+                <a href={`tel:+39${contactsData.phone.mobile}`}>
+                  {contactsData.phone.mobile}
+                </a>
+              </dd>
+            </div>
+            <div className={styles.contactItem}>
+              <dt>Studio</dt>
+              <dd>{contactsData.studio}</dd>
+            </div>
+          </dl>
+          <p className={styles.vatNumber}>P.IVA {contactsData.vatNumber}</p>
+        </div>
+        <div className={styles.studioImage}>
+          <Image
+            src={contactsData.image}
+            alt="Interno dello Studio Pignataro a Cagliari"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={90}
+            priority
+            className={`${styles.studioImg} ${isImageLoaded ? styles.loaded : styles.loading}`}
+          />
         </div>
       </div>
 
-      <div className={styles.contactSection}>
-        <div className={styles.contactContent}>
-          <h2 className={styles.sectionTitle}>Informazioni di Contatto</h2>
-
-          <div className={styles.contactGrid}>
-            <div className={styles.contactCard}>
-              <h3 className={styles.cardTitle}>Dati di Contatto</h3>
-              <div className={styles.contactDetails}>
-                <div className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Studio:</span>
-                  <span className={styles.contactValue}>
-                    {contactsData.studio}
-                  </span>
-                </div>
-
-                <div className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Email:</span>
-                  <a
-                    href={contactsData.email.mailto}
-                    className={styles.contactLink}
-                  >
-                    {contactsData.email.address}
-                  </a>
-                </div>
-
-                <div className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Telefono:</span>
-                  <span className={styles.contactValue}>
-                    {contactsData.phone.landline}
-                  </span>
-                </div>
-
-                <div className={styles.contactItem}>
-                  <span className={styles.contactLabel}>Cellulare:</span>
-                  <span className={styles.contactValue}>
-                    {contactsData.phone.mobile}
-                  </span>
-                </div>
-
-                <div className={styles.contactItem}>
-                  <span className={styles.contactLabel}>P.IVA:</span>
-                  <span className={styles.contactValue}>
-                    {contactsData.vatNumber}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.contactCard}>
-              <h3 className={styles.cardTitle}>Social Network</h3>
-              <div className={styles.socialLinks}>
-                <a
-                  href={contactsData.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  LinkedIn →
-                </a>
-                <a
-                  href={contactsData.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  Facebook →
-                </a>
-              </div>
-            </div>
-          </div>
+      <div className={styles.socialSection}>
+        <h2>Segui lo studio</h2>
+        <div className={styles.socialLinks}>
+          <a
+            href={contactsData.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+          <a
+            href={contactsData.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook ↗
+          </a>
         </div>
       </div>
 
       <div className={styles.mapSection}>
-        <div className={styles.mapContent}>
-          <h2 className={styles.sectionTitle}>Dove Siamo</h2>
-          <div className={styles.mapContainer}>
-            <OptionalScripts
-              fallback={
-                <div className={styles.mapPlaceholder}>
-                  <p>
-                    La mappa Google Maps viene caricata solo con il tuo
-                    consenso.
-                  </p>
-                  <button type="button" onClick={openConsentPreferences}>
-                    Gestisci preferenze cookie
-                  </button>
-                  <p>{contactsData.studio}</p>
-                </div>
-              }
-            >
-              <iframe
-                src={contactsData.embedData}
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Studio Location"
-                className={styles.mapFrame}
-              ></iframe>
-            </OptionalScripts>
-          </div>
+        <h2 className={styles.sectionTitle}>Dove siamo</h2>
+        <p className={styles.mapAddress}>{contactsData.studio}</p>
+        <div className={styles.mapContainer}>
+          <OptionalScripts
+            fallback={
+              <div className={styles.mapPlaceholder}>
+                <p>
+                  La mappa Google Maps viene caricata solo con il tuo consenso.
+                </p>
+                <button type="button" onClick={openConsentPreferences}>
+                  Gestisci preferenze cookie
+                </button>
+                <p>{contactsData.studio}</p>
+              </div>
+            }
+          >
+            <iframe
+              src={contactsData.embedData}
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Studio Location"
+              className={styles.mapFrame}
+            />
+          </OptionalScripts>
         </div>
       </div>
-
       <ScrollUpButton />
     </div>
   );

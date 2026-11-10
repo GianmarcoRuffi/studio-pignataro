@@ -3,7 +3,7 @@ import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { BRANDING_LOGO_DIMENSIONS, BRANDING_LOGO_PATH } from "../../constants";
 import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
@@ -19,12 +19,9 @@ const NAV_ITEMS = [
 
 const Header: FC = () => {
   const pathname = usePathname();
-  const isActive = pathname === "/";
   const isHomepage = pathname === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [suppressHomepageLogoChrome, setSuppressHomepageLogoChrome] =
-    useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
   useModalAccessibility(menuOpen, menuRef, () => setMenuOpen(false));
@@ -42,18 +39,13 @@ const Header: FC = () => {
 
   useLayoutEffect(() => {
     setMenuOpen(false);
-    setSuppressHomepageLogoChrome(false);
     updateScrolledState();
 
     const frameId = window.requestAnimationFrame(updateScrolledState);
     return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
 
-  const handleNavigationStart = (href: string) => {
-    if (pathname === "/" && href !== "/") {
-      setSuppressHomepageLogoChrome(true);
-    }
-
+  const handleNavigationStart = () => {
     setMenuOpen(false);
   };
 
@@ -63,18 +55,8 @@ const Header: FC = () => {
         isHomepage ? styles.homepage : ""
       } ${scrolled ? styles.scrolled : ""}`}
     >
-      <div
-        className={`${styles.navWrapper} ${
-          scrolled ? styles.scrolledNavWrapper : ""
-        }`}
-      >
-        <div
-          className={`${styles.logoContainer} ${
-            scrolled ? styles.scrolledLogoContainer : ""
-          } ${
-            suppressHomepageLogoChrome ? styles.suppressHomepageLogoChrome : ""
-          }`}
-        >
+      <div className={styles.navWrapper}>
+        <div className={styles.logoContainer}>
           <Link href="/" className={styles.logoLink}>
             <picture className={styles.logoImageFrame}>
               <img
@@ -90,12 +72,6 @@ const Header: FC = () => {
           </Link>
         </div>
 
-        <div className={`${styles.homeIcon} ${isActive ? styles.active : ""}`}>
-          <Link href="/" aria-label="Home">
-            <FontAwesomeIcon icon={faHome} size="lg" />
-          </Link>
-        </div>
-
         <div className={styles.navbar}>
           <ul className={styles.navList}>
             {NAV_ITEMS.map((item) => (
@@ -105,7 +81,8 @@ const Header: FC = () => {
               >
                 <Link
                   href={item.href}
-                  onClick={() => handleNavigationStart(item.href)}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={handleNavigationStart}
                 >
                   {item.label}
                 </Link>
@@ -162,8 +139,9 @@ const Header: FC = () => {
                 >
                   <Link
                     href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
                     className={styles.navLink}
-                    onClick={() => handleNavigationStart(item.href)}
+                    onClick={handleNavigationStart}
                   >
                     <span className={styles.navText}>{item.label}</span>
                   </Link>

@@ -1,48 +1,23 @@
 .scrollUpButton {
   display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  background-color: var(--color-background-gray);
-  color: var(--color-text-secondary);
-  border: none;
-  border-radius: 50%;
+  bottom: calc(var(--footer-height) + 1rem);
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  background: var(--color-background-primary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-rule);
   cursor: pointer;
-  transition: all 0.3s ease;
   z-index: 50;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
-  &:hover {
-    background-color: var(--color-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
-
+.scrollUpButton:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
 .visible {
   display: block;
-}
-
-@media (max-width: 768px) {
-  .scrollUpButton {
-    bottom: calc(var(--footer-height) + 15px);
-    right: 15px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .scrollUpButton {
-    bottom: calc(var(--footer-height) + 12px);
-    right: 12px;
-    padding: 8px 11px;
-    font-size: 0.85rem;
-  }
 }

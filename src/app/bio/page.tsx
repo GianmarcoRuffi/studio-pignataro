@@ -50,8 +50,17 @@ export default function Bio() {
             />
           </div>
           <div className={styles.profileInfo}>
+            <p className={styles.eyebrow}>Lo studio · Cagliari</p>
             <h1 className={styles.profileName}>{bioData.name}</h1>
-            <p className={styles.profileIntro}>{bioData.intro}</p>
+            <div className={styles.profileIntro}>
+              {bioData.intro
+                .split(
+                  /(?=La pratica professionale|Nel campo della progettazione)/
+                )
+                .map((paragraph) => (
+                  <p key={paragraph.slice(0, 30)}>{paragraph.trim()}</p>
+                ))}
+            </div>
           </div>
         </div>
       </div>
@@ -67,12 +76,14 @@ export default function Bio() {
               <div
                 key={`exp-${experience.title}-${experience.role}`}
                 className={styles.experienceCard}
-                style={{
-                  animationDelay: `${bioData.experiences.indexOf(experience) * 0.1}s`,
-                }}
               >
                 <div className={styles.experienceHeader}>
-                  <h3 className={styles.experienceTitle}>{experience.title}</h3>
+                  <p className={styles.experienceDate}>
+                    {experience.title.split(", da ")[1]}
+                  </p>
+                  <h3 className={styles.experienceTitle}>
+                    {experience.title.split(", da ")[0]}
+                  </h3>
                   <h4 className={styles.experienceRole}>{experience.role}</h4>
                 </div>
 
