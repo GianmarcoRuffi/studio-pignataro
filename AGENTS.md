@@ -46,7 +46,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: in homepage omette indirizzo, telefoni, email e partita IVA; nelle pagine interne mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: gallerie a incastro con proporzioni lette lato server tramite sharp, righe bilanciate su ogni blocco di sei (solo l’ultima riga effettiva può restare incompleta) e skeleton con la stessa geometria; pubblicazioni uniformate con immagini 16:9 senza ritagli e impaginazione condivisa anche per la monografia.
+2026-11-10: pausa dello slider homepage aumentata da 3 a 6 secondi, rimossa l’etichetta «Progetto selezionato» e omessi i dati di contatto nel footer soltanto in homepage.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

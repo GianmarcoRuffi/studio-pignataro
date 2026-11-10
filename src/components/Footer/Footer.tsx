@@ -22,21 +22,23 @@ const Footer: FC = () => {
         <div className={styles.footerPanel}>
           <div className={styles.copyright}>&copy; Gianluca Pignataro</div>
 
-          <div className={styles.footerContent}>
-            <ul className={styles.footerList}>
-              <li>{sharedContactsData.studio}</li>
-              <li>
-                Tel: {sharedContactsData.phone.landline} / Cell.{" "}
-                {sharedContactsData.phone.mobile}
-              </li>
-              <li>
-                <a href={sharedContactsData.email.mailto}>
-                  {sharedContactsData.email.address}
-                </a>
-              </li>
-              <li>P.iva: {sharedContactsData.vatNumber}</li>
-            </ul>
-          </div>
+          {!isHomepage && (
+            <div className={styles.footerContent}>
+              <ul className={styles.footerList}>
+                <li>{sharedContactsData.studio}</li>
+                <li>
+                  Tel: {sharedContactsData.phone.landline} / Cell.{" "}
+                  {sharedContactsData.phone.mobile}
+                </li>
+                <li>
+                  <a href={sharedContactsData.email.mailto}>
+                    {sharedContactsData.email.address}
+                  </a>
+                </li>
+                <li>P.iva: {sharedContactsData.vatNumber}</li>
+              </ul>
+            </div>
+          )}
 
           <div className={styles.policyLinks}>
             <Link

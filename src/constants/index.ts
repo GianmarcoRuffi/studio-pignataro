@@ -41,7 +41,7 @@ export const UI_TIMINGS = {
   },
   slider: {
     imageLoadTimeout: 6000,
-    autoplayInterval: 3000,
+    autoplayInterval: 6000,
   },
 } as const;
 

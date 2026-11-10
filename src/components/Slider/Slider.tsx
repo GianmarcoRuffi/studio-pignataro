@@ -195,7 +195,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
 
       <div className={styles.slideCaption}>
         <Link href={`/projects/${projects[activeIndex].slug}`}>
-          <span className={styles.captionLabel}>Progetto selezionato</span>
           <span className={styles.captionTitle}>
             {projects[activeIndex].projectName}{" "}
             <span aria-hidden="true">↗</span>
