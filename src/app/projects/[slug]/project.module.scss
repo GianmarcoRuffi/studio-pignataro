@@ -1,0 +1,12 @@
+.projectHero {
+  width: 100%;
+  height: clamp(260px, 50svh, 560px);
+  margin: 0;
+  background: var(--color-background-gray);
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

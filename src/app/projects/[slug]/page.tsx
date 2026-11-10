@@ -1,10 +1,12 @@
 import sharp from "sharp";
 import path from "node:path";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import projects from "../../../data/projectsData";
 import Gallery from "../../../components/Gallery/Gallery";
 import { Params, Project } from "../../../models/models";
+import styles from "./project.module.scss";
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
@@ -87,6 +89,26 @@ export default async function Page({ params }: Params) {
 
   return (
     <div>
+      {project.images[0] && (
+        <figure className={styles.projectHero} data-project-hero>
+          <Image
+            src={project.images[0]}
+            alt={`Vista del progetto ${project.projectName}`}
+            width={imageDimensions[0].width}
+            height={imageDimensions[0].height}
+            sizes="100vw"
+            loading="eager"
+            fetchPriority="high"
+            quality={85}
+            unoptimized={project.images[0].endsWith(".gif")}
+            className={styles.heroImage}
+            style={{
+              objectFit: project.imageFit ?? "cover",
+              objectPosition: project.imagePosition ?? "center",
+            }}
+          />
+        </figure>
+      )}
       <Gallery
         images={project.images}
         imageDimensions={imageDimensions}

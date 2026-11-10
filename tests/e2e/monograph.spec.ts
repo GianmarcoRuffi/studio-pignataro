@@ -122,3 +122,56 @@ test("gallery reading order matches the image opened in the lightbox", async ({
   await page.keyboard.press("Escape");
   await expect(trigger).toBeFocused();
 });
+
+for (const width of [1440, 390]) {
+  test(`project opens with a noninteractive photograph before its gallery at ${width}px`, async ({
+    page,
+  }) => {
+    const project = projects[0];
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`/projects/${project.slug}`);
+    const hero = page.locator("[data-project-hero]");
+    const image = hero.locator("img");
+    await expect(image).toBeVisible();
+    await expect(hero.locator("a, button, [tabindex]")).toHaveCount(0);
+    const heroBox = await hero.boundingBox();
+    const headingBox = await page
+      .getByRole("heading", { level: 1 })
+      .boundingBox();
+    const mainBox = await page.locator("main.layout-content").boundingBox();
+    expect(heroBox!.y + heroBox!.height).toBeLessThanOrEqual(headingBox!.y);
+    expect(Math.abs(heroBox!.x - mainBox!.x)).toBeLessThan(2);
+    expect(Math.abs(heroBox!.width - mainBox!.width)).toBeLessThan(20);
+    expect(
+      new URL((await image.getAttribute("src"))!, page.url()).searchParams.get(
+        "url"
+      )
+    ).toBe(project.images[0]);
+    await image.click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    const firstTrigger = page.getByRole("button", {
+      name: "Visualizza immagine 1",
+      exact: true,
+    });
+    await firstTrigger.click();
+    const dialog = page.getByRole("dialog", {
+      name: "Visualizzatore immagini",
+    });
+    await expect(
+      dialog.getByRole("img", {
+        name: `Immagine 1 di ${project.images.length}`,
+        exact: true,
+      })
+    ).toHaveJSProperty("src", new URL(project.images[0], page.url()).href);
+  });
+}
+
+test("project opening photograph preserves contain for renders", async ({
+  page,
+}) => {
+  await page.goto("/projects/Via-Eroi-d-Italia");
+  await expect(page.locator("[data-project-hero] img")).toHaveCSS(
+    "object-fit",
+    "contain"
+  );
+});
