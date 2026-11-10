@@ -20,6 +20,14 @@ config.autoAddCss = false;
 const myFont = localFont({
   src: "./fonts/CenturyGothic.ttf",
   display: "swap",
+  variable: "--font-sans",
+});
+
+const editorialFont = localFont({
+  src: "./fonts/SourceSerif4-Roman.woff2",
+  display: "swap",
+  weight: "200 900",
+  variable: "--font-editorial",
 });
 
 export const metadata = {
@@ -81,7 +89,11 @@ export const metadata = {
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="it" className={myFont.className} data-scroll-behavior="smooth">
+    <html
+      lang="it"
+      className={`${myFont.className} ${myFont.variable} ${editorialFont.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body suppressHydrationWarning>
         <SplashProvider>
           <SplashWrapper>

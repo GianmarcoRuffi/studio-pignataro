@@ -2,21 +2,60 @@
 
 @layer theme {
   :root {
-    --color-primary: #373737;
-    --color-secondary: #2d3748;
-    --color-accent: #4a5568;
-
-    --color-text-primary: #373737;
-    --color-text-secondary: #000;
-    --color-text-tertiary: #6c757d;
-
-    --color-background-primary: #f7f7f7;
-    --color-background-light: #fff;
-    --color-background-dark: #f3f4f605;
-    --color-background-gray: #e6e9ee;
-    --color-background-light-gray: #f3f4f6;
-    --color-background-alt-gray: #e2e8f0;
+    --color-primary: #292826;
+    --color-secondary: #55524c;
+    --color-accent: #625b50;
+    --color-text-primary: #292826;
+    --color-text-secondary: #292826;
+    --color-text-tertiary: #625e56;
+    --color-background-primary: #f7f5f0;
+    --color-background-light: #f7f5f0;
+    --color-background-dark: #292826;
+    --color-background-gray: #e7e3da;
+    --color-background-light-gray: #eeebe4;
+    --color-background-alt-gray: #e7e3da;
+    --color-rule: #d8d3ca;
+    --page-gutter: clamp(1.25rem, 4.5vw, 5rem);
+    --page-width: 1440px;
+    --space-section: clamp(3.5rem, 7vw, 7rem);
+    --space-block: clamp(1.5rem, 3vw, 3rem);
+    --text-measure: 65ch;
+    --type-title: clamp(2.5rem, 5vw, 4.75rem);
+    --type-heading: clamp(1.8rem, 3vw, 3rem);
   }
+}
+
+body {
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+a {
+  color: inherit;
+}
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+::selection {
+  background: #d8d3ca;
+  color: #292826;
 }
 
 html,
@@ -82,7 +121,7 @@ html,
 
 :root {
   --viewport-height: 100vh;
-  --header-height: 70px;
+  --header-height: 88px;
   --footer-height: 40px;
 }
 
@@ -130,7 +169,7 @@ html,
   display: flex;
   flex-direction: column;
   margin-top: var(--header-height);
-  padding: 2rem 1rem;
+  padding: 0;
   overflow: auto;
   max-height: calc(
     var(--viewport-height) - var(--header-height) - var(--footer-height)
@@ -147,7 +186,7 @@ html,
     );
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1rem 0.5rem;
+    padding: 0;
   }
 }
 

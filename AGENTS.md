@@ -9,6 +9,7 @@ Leggi questo file prima di intervenire. A ogni modifica del progetto, aggiorna `
 Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Router, React 19, TypeScript, Sass e Tailwind CSS 4, con contenuti locali.
 
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
+- Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`, Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. Fotografie senza cornici decorative, elenco progetti 7/5 alternato e galleria sequenziale a due colonne con prima immagine ampia. Il ritratto della biografia mantiene il punto focale a sinistra; la monografia usa il rapporto panoramico originale del composito, senza ritagli.
 - I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
 - `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
@@ -31,13 +32,15 @@ Usa Node.js 22 (`.nvmrc`) e npm con `package-lock.json`.
 - `npm run playwright:install`; `npm run test:e2e`.
 - Singolo test: `npm run test:e2e -- -g "homepage keeps the hero slider visible"`.
 
+`tsconfig.json` esclude soltanto `.next/dev/types/validator.ts`: il validatore generato da `next dev` contiene import e tipi inutilizzati incompatibili con `noUnusedLocals`. Restano attivi i controlli strict sui sorgenti e il validatore delle rotte di produzione in `.next/types`.
+
 Playwright avvia build e server sulla porta 3100; verifica slider, skeleton, caricamento incrementale e scroll. Per modifiche soltanto documentali verifica percorsi, comandi e formattazione.
 
 ## Convenzioni
 
 TypeScript strict vieta variabili e parametri inutilizzati. ESLint usa Next Core Web Vitals; Prettier impone due spazi, doppi apici, punto e virgola, LF e larghezza 80. Segui PascalCase, SCSS Modules e import relativi esistenti. Commit prevalentemente `feat:`, `fix:` e `refactor:`, in inglese.
 
-La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione aggiunti sono in `tests/e2e/review-regressions.spec.ts`.
+La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione sono in `tests/e2e/review-regressions.spec.ts` e quelli del restyling in `tests/e2e/monograph.spec.ts`.
 
 ## Consenso, modali e immagini
 
@@ -52,4 +55,14 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-10-23: mantenuto `dark-theme-logo.png` nel progetto, ma il logo standard e i relativi sfondi chiari sono ora usati anche con preferenza di sistema scura. Il footer resta su una sola riga alle diverse larghezze.
+2026-11-10: restyling «Monografia contemporanea» con palette carta/grafite, Source Serif 4 locale, navigazione testuale, didascalia e contatore dello slider. Progetti, gallerie, biografia, pubblicazioni e contatti seguono una composizione editoriale; recapiti immediati e telefoni cliccabili. Conservati logo su supporto chiaro, footer su una riga, caricamenti progressivi, accessibilità e consenso.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

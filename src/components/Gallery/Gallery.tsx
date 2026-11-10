@@ -69,7 +69,13 @@ const Gallery: FC<GalleryProps> = ({
     };
 
     const preloadPromises = initialBatchImages.map((imageSrc) =>
-      preloadImage(imageSrc, 0, { sizes: GALLERY_IMAGE_SIZES, quality: 85 })
+      preloadImage(imageSrc, 0, {
+        sizes:
+          imageSrc === initialBatchImages[0]
+            ? "(max-width: 1440px) 100vw, 1300px"
+            : GALLERY_IMAGE_SIZES,
+        quality: 85,
+      })
     );
 
     const timeout = setTimeout(() => {
@@ -262,44 +268,6 @@ const Gallery: FC<GalleryProps> = ({
         </div>
       </div>
 
-      <div className={styles.projectNavigation}>
-        <div className={styles.navButton}>
-          {prevProject && (
-            <a
-              href={`/projects/${prevProject.slug}`}
-              className={styles.navLink}
-              aria-label={`Progetto precedente: ${prevProject.projectName}`}
-            >
-              <span className={styles.navArrow}>‹</span>
-              <span className={styles.navText}>
-                <span className={styles.navLabel}>Precedente</span>
-                <span className={styles.navTitle}>
-                  {prevProject.projectName}
-                </span>
-              </span>
-            </a>
-          )}
-        </div>
-
-        <div className={styles.navButton}>
-          {nextProject && (
-            <a
-              href={`/projects/${nextProject.slug}`}
-              className={`${styles.navLink} ${styles.navLinkNext}`}
-              aria-label={`Progetto successivo: ${nextProject.projectName}`}
-            >
-              <span className={styles.navText}>
-                <span className={styles.navLabel}>Successivo</span>
-                <span className={styles.navTitle}>
-                  {nextProject.projectName}
-                </span>
-              </span>
-              <span className={styles.navArrow}>›</span>
-            </a>
-          )}
-        </div>
-      </div>
-
       <div className={styles.galleryContainer}>
         <div className={styles.projectHeader}>
           <div className={styles.projectHeaderContent}>
@@ -352,6 +320,44 @@ const Gallery: FC<GalleryProps> = ({
             <p>Nessuna immagine disponibile per questa galleria.</p>
           </div>
         )}
+
+        <div className={styles.projectNavigation}>
+          <div className={styles.navButton}>
+            {prevProject && (
+              <a
+                href={`/projects/${prevProject.slug}`}
+                className={styles.navLink}
+                aria-label={`Progetto precedente: ${prevProject.projectName}`}
+              >
+                <span className={styles.navArrow}>‹</span>
+                <span className={styles.navText}>
+                  <span className={styles.navLabel}>Precedente</span>
+                  <span className={styles.navTitle}>
+                    {prevProject.projectName}
+                  </span>
+                </span>
+              </a>
+            )}
+          </div>
+
+          <div className={styles.navButton}>
+            {nextProject && (
+              <a
+                href={`/projects/${nextProject.slug}`}
+                className={`${styles.navLink} ${styles.navLinkNext}`}
+                aria-label={`Progetto successivo: ${nextProject.projectName}`}
+              >
+                <span className={styles.navText}>
+                  <span className={styles.navLabel}>Successivo</span>
+                  <span className={styles.navTitle}>
+                    {nextProject.projectName}
+                  </span>
+                </span>
+                <span className={styles.navArrow}>›</span>
+              </a>
+            )}
+          </div>
+        </div>
 
         <div className={styles.backSection}>
           <LinkButton href="/projects">

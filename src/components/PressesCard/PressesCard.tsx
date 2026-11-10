@@ -30,7 +30,7 @@ const PressesCard: FC<PressesCardProps> = ({
         type="button"
         className={styles.imageContainer}
         onClick={handleImageClick}
-        aria-label={`Visualizza ${description}`}
+        aria-label={`Visualizza ${descriptionLines.join(" ")}`}
       >
         <div
           className={`${styles.imageSkeleton} ${
@@ -43,8 +43,7 @@ const PressesCard: FC<PressesCardProps> = ({
           src={imageSource}
           alt={`Copertina: ${date}`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          unoptimized
+          sizes="(max-width: 768px) 80vw, 500px"
           loading="lazy"
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="

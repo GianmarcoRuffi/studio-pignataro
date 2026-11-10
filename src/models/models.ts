@@ -24,6 +24,8 @@ interface ProjectBio {
 }
 
 interface ProjectCardProps {
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
   name: string;
   imageSource: string;
   description: string;

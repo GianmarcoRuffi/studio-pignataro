@@ -11,6 +11,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   name,
   imageSource,
   description,
+  imageFit = "cover",
+  imagePosition = "center",
 }) => {
   const loaded = useImageLoad(imageSource, {
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
@@ -30,7 +32,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
           src={imageSource}
           alt={`${name} - ${description}`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1440px) 58vw, 760px"
+          style={{ objectFit: imageFit, objectPosition: imagePosition }}
           loading="lazy"
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="

@@ -2,7 +2,7 @@
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
-import { BREAKPOINTS, LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
+import { LOADING, GALLERY_IMAGE_SIZES } from "../../constants";
 import styles from "./MasonryGallery.module.scss";
 
 interface MasonryGalleryProps {
@@ -16,7 +16,6 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   visibleImages,
   preloadedCount = 0,
 }) => {
-  const [columns, setColumns] = useState(3);
   const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>(
     {}
   );
@@ -27,25 +26,6 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   const settleTimeoutsRef = useRef<
     Record<number, ReturnType<typeof setTimeout>>
   >({});
-
-  useEffect(() => {
-    const updateColumns = () => {
-      const width = window.innerWidth;
-      if (width < BREAKPOINTS.tablet) {
-        setColumns(1);
-      } else if (width < BREAKPOINTS.desktop) {
-        setColumns(2);
-      } else if (width < BREAKPOINTS.wide) {
-        setColumns(3);
-      } else {
-        setColumns(4);
-      }
-    };
-
-    updateColumns();
-    window.addEventListener("resize", updateColumns);
-    return () => window.removeEventListener("resize", updateColumns);
-  }, []);
 
   useEffect(() => {
     setLoadingImages((prev) => {
@@ -99,17 +79,6 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
     }, remaining);
   }, []);
 
-  const organizeImages = () => {
-    const columnArrays: number[][] = Array.from({ length: columns }, () => []);
-
-    for (let i = 0; i < Math.min(visibleImages, images.length); i++) {
-      const columnIndex = i % columns;
-      columnArrays[columnIndex].push(i);
-    }
-
-    return columnArrays;
-  };
-
   const handleImageClick = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -119,60 +88,57 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
     setLightboxOpen(false);
   };
 
-  const columnArrays = organizeImages();
-
   return (
     <>
       <div className={styles.masonryContainer} ref={containerRef}>
-        {columnArrays.map((columnImages, columnIndex) => (
-          <div
-            key={`masonry-column-${columnIndex}`}
-            className={styles.masonryColumn}
-          >
-            {columnImages.map((imageIndex) => (
-              <div key={imageIndex} className={styles.imageWrapper}>
-                <button
-                  type="button"
-                  className={styles.imageLink}
-                  onClick={() => handleImageClick(imageIndex)}
-                  aria-label={`Visualizza immagine ${imageIndex + 1}`}
-                >
-                  <div className={styles.imageContainer}>
-                    {loadingImages[imageIndex] && (
-                      <div className={styles.imageSkeleton}>
-                        <div className={styles.skeletonPlaceholder}></div>
-                      </div>
-                    )}
-
-                    <Image
-                      src={images[imageIndex]}
-                      alt={`Gallery image ${imageIndex + 1}`}
-                      width={600}
-                      height={400}
-                      sizes={GALLERY_IMAGE_SIZES}
-                      unoptimized={images[imageIndex].endsWith(".gif")}
-                      loading={imageIndex < preloadedCount ? "eager" : "lazy"}
-                      className={`${styles.image} ${
-                        loadingImages[imageIndex]
-                          ? styles.imageLoading
-                          : styles.imageLoaded
-                      }`}
-                      onLoad={() => settleImageLoading(imageIndex)}
-                      onError={() => settleImageLoading(imageIndex)}
-                      quality={85}
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                    />
-
-                    {!loadingImages[imageIndex] && (
-                      <div className={styles.imageOverlay}>
-                        <span className={styles.zoomIcon}>🔍</span>
-                      </div>
-                    )}
+        {images.slice(0, visibleImages).map((imageSource, imageIndex) => (
+          <div key={imageIndex} className={styles.imageWrapper}>
+            <button
+              type="button"
+              className={styles.imageLink}
+              onClick={() => handleImageClick(imageIndex)}
+              aria-label={`Visualizza immagine ${imageIndex + 1}`}
+            >
+              <div className={styles.imageContainer}>
+                {loadingImages[imageIndex] && (
+                  <div className={styles.imageSkeleton}>
+                    <div className={styles.skeletonPlaceholder}></div>
                   </div>
-                </button>
+                )}
+
+                <Image
+                  src={imageSource}
+                  alt={`Fotografia del progetto, immagine ${imageIndex + 1}`}
+                  width={600}
+                  height={400}
+                  sizes={
+                    imageIndex === 0
+                      ? "(max-width: 1440px) 100vw, 1300px"
+                      : GALLERY_IMAGE_SIZES
+                  }
+                  unoptimized={imageSource.endsWith(".gif")}
+                  loading={imageIndex < preloadedCount ? "eager" : "lazy"}
+                  className={`${styles.image} ${
+                    loadingImages[imageIndex]
+                      ? styles.imageLoading
+                      : styles.imageLoaded
+                  }`}
+                  onLoad={() => settleImageLoading(imageIndex)}
+                  onError={() => settleImageLoading(imageIndex)}
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                />
+
+                {!loadingImages[imageIndex] && (
+                  <div className={styles.imageOverlay}>
+                    <span className={styles.zoomIcon} aria-hidden="true">
+                      ↗
+                    </span>
+                  </div>
+                )}
               </div>
-            ))}
+            </button>
           </div>
         ))}
       </div>

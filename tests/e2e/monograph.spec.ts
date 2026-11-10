@@ -1,0 +1,124 @@
+import { expect, test } from "@playwright/test";
+import projects from "../../src/data/projectsData";
+import { sharedContactsData } from "../../src/data/contactsData";
+
+test.beforeEach(async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => {
+    sessionStorage.setItem("splash-shown", "true");
+    sessionStorage.setItem("siteVisited", "true");
+    localStorage.setItem("cookie-consent", "declined");
+    localStorage.setItem("cookie-consent-date", new Date().toISOString());
+  });
+});
+
+for (const width of [1440, 390]) {
+  test(`homepage identifies the active project above the footer at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/");
+    const slider = page.getByRole("region", { name: "Slider progetti" });
+    for (const index of [0, 1]) {
+      const project = projects[index];
+      const caption = slider.locator("a").filter({
+        hasText: project.projectName,
+      });
+      await expect(caption).toBeInViewport();
+      await expect(caption).toHaveAttribute(
+        "href",
+        `/projects/${project.slug}`
+      );
+      await expect(
+        slider.getByText(
+          new RegExp(`^0?${index + 1}\\s*/\\s*${projects.length}$`)
+        )
+      ).toBeInViewport();
+      const titleBox = await caption.boundingBox();
+      const footerBox = await page.locator("footer").boundingBox();
+      expect(titleBox).not.toBeNull();
+      expect(footerBox).not.toBeNull();
+      expect(titleBox!.y + titleBox!.height).toBeLessThanOrEqual(footerBox!.y);
+      if (index === 0) {
+        await page.getByRole("button", { name: "Slide successivo" }).click();
+      }
+    }
+    expect(
+      await page.locator("main.layout-content").evaluate((element) => {
+        return element.scrollHeight <= element.clientHeight + 1;
+      })
+    ).toBe(true);
+  });
+
+  test(`contact links are available without scrolling at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/contacts");
+    const main = page.locator("main");
+    await expect(
+      main.locator(`a[href='${sharedContactsData.email.mailto}']`)
+    ).toBeInViewport();
+    for (const number of Object.values(sharedContactsData.phone)) {
+      const phone = main.locator(`a[href^='tel:'][href$='${number}']`);
+      await expect(phone).toBeInViewport();
+    }
+    await expect(page.locator("iframe")).toHaveCount(0);
+  });
+}
+
+test("publication year filters include and exclude the monograph", async ({
+  page,
+}) => {
+  await page.goto("/presses");
+  const monograph = page.locator("main article").filter({
+    hasText: "30 anni di inconsuetudine",
+  });
+  await expect(monograph).toHaveCount(1);
+  await page.getByRole("button", { name: "2022", exact: true }).click();
+  await expect(monograph).toHaveCount(0);
+  await expect(page.locator("main article")).toHaveCount(1);
+  await expect(page.locator("main article")).toContainText("TUBES");
+  await page.getByRole("button", { name: "2023", exact: true }).click();
+  await expect(monograph).toHaveCount(1);
+  await expect(page.locator("main article")).toHaveCount(1);
+  await page.getByRole("button", { name: "Tutti", exact: true }).click();
+  await expect(monograph).toHaveCount(1);
+  await expect
+    .poll(() => page.locator("main article").count())
+    .toBeGreaterThan(1);
+});
+
+test("gallery reading order matches the image opened in the lightbox", async ({
+  page,
+}) => {
+  const project = projects[0];
+  await page.goto(`/projects/${project.slug}`);
+  const triggers = page.getByRole("button", {
+    name: /^Visualizza immagine \d+$/,
+  });
+  await expect(triggers).toHaveCount(6);
+  expect(
+    await triggers.evaluateAll((elements) =>
+      elements.map((element) => element.getAttribute("aria-label"))
+    )
+  ).toEqual(
+    Array.from({ length: 6 }, (_, index) => `Visualizza immagine ${index + 1}`)
+  );
+  const trigger = page.getByRole("button", {
+    name: "Visualizza immagine 3",
+    exact: true,
+  });
+  await trigger.click();
+  const dialog = page.getByRole("dialog", { name: "Visualizzatore immagini" });
+  const image = dialog.getByRole("img", {
+    name: `Immagine 3 di ${project.images.length}`,
+    exact: true,
+  });
+  await expect(image).toHaveJSProperty(
+    "src",
+    new URL(project.images[2], page.url()).href
+  );
+  await page.keyboard.press("Escape");
+  await expect(trigger).toBeFocused();
+});
