@@ -32,7 +32,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           src={imageSource}
           alt={`${name} - ${description}`}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1440px) 58vw, 760px"
+          sizes="(max-width: 444px) calc(100vw - 40px), (max-width: 768px) 91vw, (max-width: 1440px) 44vw, 640px"
           style={{ objectFit: imageFit, objectPosition: imagePosition }}
           loading="lazy"
           placeholder="blur"

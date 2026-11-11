@@ -26,40 +26,31 @@
 }
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--space-section) var(--space-block);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.75rem, 5vw, 5rem) var(--space-block);
   align-items: start;
 }
 .cardWrapper,
 .cardSkeleton {
-  grid-column: span 7;
   min-width: 0;
-}
-.cardWrapper:nth-child(4n + 2),
-.cardWrapper:nth-child(4n + 3),
-.cardSkeleton:nth-child(4n + 2),
-.cardSkeleton:nth-child(4n + 3) {
-  grid-column: span 5;
-}
-.cardWrapper:nth-child(4n + 2),
-.cardWrapper:nth-child(4n + 4) {
-  padding-top: 4rem;
 }
 .cardWrapper a {
   display: block;
   text-decoration: none;
 }
-.cardWrapper a:hover h3 {
+.cardWrapper a:hover h3,
+.cardWrapper a:focus-visible h3 {
   text-decoration: underline;
   text-underline-offset: 0.15em;
   text-decoration-thickness: 1px;
 }
 .skeletonPlaceholder {
-  aspect-ratio: 4/3;
+  aspect-ratio: 3 / 2;
   background: var(--color-background-gray);
 }
 .skeletonText {
-  padding-top: 1.2rem;
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
 }
 .skeletonTitle {
   height: 1.75rem;
@@ -105,12 +96,5 @@
   .cardGrid {
     grid-template-columns: minmax(0, 1fr);
     gap: 2.75rem;
-  }
-  .cardWrapper,
-  .cardSkeleton,
-  .cardWrapper:nth-child(n),
-  .cardSkeleton:nth-child(n) {
-    grid-column: 1;
-    padding-top: 0;
   }
 }

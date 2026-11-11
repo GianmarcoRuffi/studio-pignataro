@@ -3,7 +3,7 @@
 }
 .imageContainer {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   background: var(--color-background-gray);
   overflow: hidden;
 }
@@ -43,11 +43,12 @@
   animation: shimmer 1.8s infinite;
 }
 .cardContent {
-  padding: 1.15rem 0 0;
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
 }
 .cardTitle {
   margin: 0 0 0.5rem;
-  font: 400 clamp(1.5rem, 2.5vw, 2.25rem)/1.2 var(--font-editorial);
+  font: 400 clamp(1.5rem, 2.2vw, 2rem)/1.2 var(--font-editorial);
 }
 .cardDescription {
   margin: 0;
