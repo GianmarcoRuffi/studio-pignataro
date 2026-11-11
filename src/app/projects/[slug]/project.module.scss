@@ -19,3 +19,46 @@
   width: 100%;
   height: 100%;
 }
+
+.heroChevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ffffff80;
+  background: #19181599;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.heroChevron:hover,
+.heroChevron:focus-visible {
+  background: #191815dd;
+}
+
+.heroChevron:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.previous {
+  left: var(--page-gutter);
+}
+
+.next {
+  right: var(--page-gutter);
+}
+
+@media (max-width: 768px) {
+  .heroChevron {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}

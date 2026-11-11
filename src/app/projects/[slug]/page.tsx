@@ -1,6 +1,8 @@
 import sharp from "sharp";
 import path from "node:path";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import projects from "../../../data/projectsData";
@@ -107,6 +109,22 @@ export default async function Page({ params }: Params) {
               objectPosition: project.imagePosition ?? "center",
             }}
           />
+          <nav aria-label="Navigazione progetti">
+            <a
+              href={`/projects/${prevProject.slug}`}
+              className={`${styles.heroChevron} ${styles.previous}`}
+              aria-label={`Progetto precedente: ${prevProject.projectName}`}
+            >
+              <FontAwesomeIcon icon={faAngleLeft} aria-hidden="true" />
+            </a>
+            <a
+              href={`/projects/${nextProject.slug}`}
+              className={`${styles.heroChevron} ${styles.next}`}
+              aria-label={`Progetto successivo: ${nextProject.projectName}`}
+            >
+              <FontAwesomeIcon icon={faAngleRight} aria-hidden="true" />
+            </a>
+          </nav>
         </figure>
       )}
       <Gallery

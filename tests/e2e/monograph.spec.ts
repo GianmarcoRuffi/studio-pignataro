@@ -133,7 +133,19 @@ for (const width of [1440, 390]) {
     const hero = page.locator("[data-project-hero]");
     const image = hero.locator("img");
     await expect(image).toBeVisible();
-    await expect(hero.locator("a, button, [tabindex]")).toHaveCount(0);
+    const previous = hero.getByRole("link", {
+      name: `Progetto precedente: ${projects.at(-1)!.projectName}`,
+    });
+    const next = hero.getByRole("link", {
+      name: `Progetto successivo: ${projects[1].projectName}`,
+    });
+    await expect(previous).toBeInViewport();
+    await expect(previous).toHaveAttribute(
+      "href",
+      `/projects/${projects.at(-1)!.slug}`
+    );
+    await expect(next).toBeInViewport();
+    await expect(next).toHaveAttribute("href", `/projects/${projects[1].slug}`);
     const heroBox = await hero.boundingBox();
     const headingBox = await page
       .getByRole("heading", { level: 1 })
@@ -163,6 +175,17 @@ for (const width of [1440, 390]) {
         exact: true,
       })
     ).toHaveJSProperty("src", new URL(project.images[0], page.url()).href);
+    await page.keyboard.press("Escape");
+    await previous.click();
+    await expect(page).toHaveURL(`/projects/${projects.at(-1)!.slug}`);
+    await page
+      .locator("[data-project-hero]")
+      .getByRole("link", {
+        name: `Progetto successivo: ${project.projectName}`,
+      })
+      .click();
+    await expect(page).toHaveURL(`/projects/${project.slug}`);
+    await expect(hero).toBeInViewport();
   });
 }
 
