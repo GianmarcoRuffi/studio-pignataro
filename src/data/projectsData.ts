@@ -57,7 +57,20 @@ const projects: Project[] = [
     externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
     slug: "Via-Asti",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("projects/via-asti/gallery", 12),
+    images: generateNamedImagePaths("projects/via-asti/gallery", [
+      "4",
+      "1",
+      "2",
+      "3",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+    ]),
   },
 
   {
@@ -85,7 +98,18 @@ const projects: Project[] = [
     ],
     slug: "Via-Machiavelli",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("projects/via-machiavelli/gallery", 10),
+    images: generateNamedImagePaths("projects/via-machiavelli/gallery", [
+      "9",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "10",
+    ]),
   },
 
   {
@@ -106,7 +130,10 @@ const projects: Project[] = [
 
     slug: "Vico-V-Via-San-Giovanni",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("projects/vico-v-via-san-giovanni/gallery", 12),
+    images: generateNamedImagePaths(
+      "projects/vico-v-via-san-giovanni/gallery",
+      ["2", "1", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    ),
   },
 
   {
@@ -128,7 +155,23 @@ const projects: Project[] = [
     description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).`,
     slug: "Via-Canonico-Sanna",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("projects/via-canonico-sanna/gallery", 15),
+    images: generateNamedImagePaths("projects/via-canonico-sanna/gallery", [
+      "2",
+      "1",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+    ]),
   },
 
   {
@@ -137,7 +180,10 @@ const projects: Project[] = [
     description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.`,
     slug: "Viale-Regina-Margherita",
     imgCredits: "Foto © Luigi Corda",
-    images: generateImagePaths("projects/viale-regina-margherita/gallery", 10),
+    images: generateNamedImagePaths(
+      "projects/viale-regina-margherita/gallery",
+      ["3", "1", "2", "4", "5", "6", "7", "8", "9", "10"]
+    ),
   },
 
   {

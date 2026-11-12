@@ -1,6 +1,34 @@
 import { expect, test } from "@playwright/test";
+import { createHash } from "node:crypto";
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import projects from "../../src/data/projectsData";
 import { sharedContactsData } from "../../src/data/contactsData";
+
+test("all project photographs are included and the carousel cover opens each gallery", () => {
+  const digest = (source: string) =>
+    createHash("sha256")
+      .update(readFileSync(path.join(process.cwd(), "public", source)))
+      .digest("hex");
+
+  for (const project of projects) {
+    const galleryHashes = project.images.map(digest);
+    expect(galleryHashes[0], project.slug).toBe(digest(project.imgSrc));
+    expect(new Set(galleryHashes).size, project.slug).toBe(
+      project.images.length
+    );
+    const folder = path.posix.join(
+      path.posix.dirname(project.imgSrc),
+      "gallery"
+    );
+    for (const filename of readdirSync(path.join("public", folder))) {
+      if (!/\.(webp|gif|png|jpe?g)$/i.test(filename)) continue;
+      expect(galleryHashes, `${project.slug}: ${filename}`).toContain(
+        digest(path.posix.join(folder, filename))
+      );
+    }
+  }
+});
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
