@@ -3,7 +3,8 @@ import { useLocale } from "../../locales/LocaleProvider";
 import { formatMessage } from "../../locales";
 
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useMemo, useState } from "react";
+import Lightbox from "../Lightbox/Lightbox";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import { LOADING } from "../../constants";
 import { PressesCardProps } from "../../models/models";
@@ -16,12 +17,14 @@ const PressesCard: FC<PressesCardProps> = ({
   date,
 }) => {
   const { messages } = useLocale();
+  const [isOpen, setIsOpen] = useState(false);
+  const images = useMemo(() => [imageSource], [imageSource]);
   const isImageLoaded = useImageLoad(imageSource, {
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });
 
   const handleImageClick = () => {
-    window.open(imageSource, "_blank", "noopener,noreferrer");
+    setIsOpen(true);
   };
 
   const descriptionLines = description
@@ -93,6 +96,15 @@ const PressesCard: FC<PressesCardProps> = ({
 
         {source && <div className={styles.cardAction}>{source}</div>}
       </div>
+      {isOpen && (
+        <Lightbox
+          images={images}
+          currentIndex={0}
+          isOpen
+          onClose={() => setIsOpen(false)}
+          enableZoom
+        />
+      )}
     </article>
   );
 };

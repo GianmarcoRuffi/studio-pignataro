@@ -44,7 +44,7 @@
       "architect": "Architetto"
     },
     "bio": {
-      "eyebrow": "I professionisti · Cagliari"
+      "eyebrow": "Lo Studio · Cagliari"
     },
     "contacts": {
       "eyebrow": "Studio Gianluca Pignataro · Cagliari",
@@ -87,6 +87,9 @@
       "service": "Architectural Services"
     },
     "lightbox": {
+      "zoomIn": "Ingrandisci",
+      "zoomOut": "Riduci",
+      "zoomRegion": "Immagine ingrandibile",
       "label": "Visualizzatore immagini",
       "close": "Chiudi lightbox",
       "previous": "Immagine precedente",

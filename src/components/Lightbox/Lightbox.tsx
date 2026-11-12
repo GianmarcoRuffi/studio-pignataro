@@ -18,6 +18,8 @@ import {
   faTimes,
   faChevronLeft,
   faChevronRight,
+  faMagnifyingGlassPlus,
+  faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./lightbox.module.scss";
 
@@ -26,6 +28,7 @@ interface LightboxProps {
   currentIndex: number;
   onClose: () => void;
   isOpen: boolean;
+  enableZoom?: boolean;
 }
 
 interface NetworkConnectionInfo {
@@ -40,9 +43,34 @@ const Lightbox: FC<LightboxProps> = ({
   currentIndex,
   onClose,
   isOpen,
+  enableZoom = false,
 }) => {
   const { messages } = useLocale();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(1);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [naturalSize, setNaturalSize] = useState({ width: 1920, height: 1080 });
+  useEffect(() => {
+    if (!isOpen || !enableZoom || !viewportRef.current) return;
+    const element = viewportRef.current;
+    const observer = new ResizeObserver(() => {
+      setViewport({ width: element.clientWidth, height: element.clientHeight });
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [isOpen, enableZoom]);
+  useEffect(() => {
+    setZoom(1);
+    viewportRef.current?.scrollTo(0, 0);
+  }, [isOpen, currentIndex]);
+  const fit = Math.min(
+    viewport.width / naturalSize.width,
+    viewport.height / naturalSize.height,
+    1
+  );
+  const imageWidth = Math.max(1, naturalSize.width * fit * zoom);
+  const imageHeight = Math.max(1, naturalSize.height * fit * zoom);
   useModalAccessibility(isOpen, dialogRef, onClose);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -303,9 +331,13 @@ const Lightbox: FC<LightboxProps> = ({
         )}
 
         <div
-          className={styles.imageContainer}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          ref={viewportRef}
+          className={`${styles.imageContainer} ${enableZoom ? styles.zoomViewport : ""}`}
+          tabIndex={enableZoom ? 0 : undefined}
+          role={enableZoom ? "region" : undefined}
+          aria-label={enableZoom ? messages.ui.lightbox.zoomRegion : undefined}
+          onTouchStart={enableZoom ? undefined : handleTouchStart}
+          onTouchEnd={enableZoom ? undefined : handleTouchEnd}
         >
           {isImageLoading && (
             <div className="absolute left-1/2 top-1/2 z-[10003] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.7)] p-8 text-center text-white">
@@ -344,37 +376,79 @@ const Lightbox: FC<LightboxProps> = ({
               </div>
             </div>
           ) : (
-            <Image
-              key={`lightbox-image-${activeIndex}`}
-              src={images[activeIndex]}
-              alt={formatMessage(messages.ui.lightbox.imageAlt, {
-                index: activeIndex + 1,
-                total: images.length,
-              })}
-              width={1920}
-              height={1080}
-              sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
-              unoptimized
-              loading="eager"
-              fetchPriority="high"
-              className={styles.lightboxImage}
-              style={{
-                opacity: isImageLoading ? 0.3 : 1,
-                transition: "opacity 0.3s ease-in-out",
-              }}
-              onLoad={() => {
-                setIsImageLoading(false);
-                setImageError(false);
-                imageCacheRef.current.set(activeIndex, true);
-              }}
-              onError={() => {
-                setIsImageLoading(false);
-                setImageError(true);
-                imageCacheRef.current.set(activeIndex, false);
-              }}
-            />
+            <div
+              className={enableZoom ? styles.zoomCanvas : undefined}
+              style={
+                enableZoom
+                  ? {
+                      width: Math.max(viewport.width, imageWidth),
+                      height: Math.max(viewport.height, imageHeight),
+                    }
+                  : undefined
+              }
+            >
+              <Image
+                key={`lightbox-image-${activeIndex}`}
+                src={images[activeIndex]}
+                alt={formatMessage(messages.ui.lightbox.imageAlt, {
+                  index: activeIndex + 1,
+                  total: images.length,
+                })}
+                width={1920}
+                height={1080}
+                sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
+                unoptimized
+                loading="eager"
+                fetchPriority="high"
+                className={`${styles.lightboxImage} ${enableZoom ? styles.zoomImage : ""}`}
+                style={{
+                  ...(enableZoom
+                    ? { width: imageWidth, height: imageHeight }
+                    : {}),
+                  opacity: isImageLoading ? 0.3 : 1,
+                  transition: "opacity 0.3s ease-in-out",
+                }}
+                onLoad={(event) => {
+                  if (enableZoom)
+                    setNaturalSize({
+                      width: event.currentTarget.naturalWidth,
+                      height: event.currentTarget.naturalHeight,
+                    });
+                  setIsImageLoading(false);
+                  setImageError(false);
+                  imageCacheRef.current.set(activeIndex, true);
+                }}
+                onError={() => {
+                  setIsImageLoading(false);
+                  setImageError(true);
+                  imageCacheRef.current.set(activeIndex, false);
+                }}
+              />
+            </div>
           )}
         </div>
+
+        {enableZoom && !imageError && (
+          <div className={styles.zoomControls}>
+            <button
+              type="button"
+              aria-label={messages.ui.lightbox.zoomOut}
+              disabled={zoom === 1 || isImageLoading}
+              onClick={() => setZoom((value) => Math.max(1, value - 0.5))}
+            >
+              <FontAwesomeIcon icon={faMagnifyingGlassMinus} />
+            </button>
+            <output aria-live="polite">{Math.round(zoom * 100)}%</output>
+            <button
+              type="button"
+              aria-label={messages.ui.lightbox.zoomIn}
+              disabled={zoom === 3 || isImageLoading}
+              onClick={() => setZoom((value) => Math.min(3, value + 0.5))}
+            >
+              <FontAwesomeIcon icon={faMagnifyingGlassPlus} />
+            </button>
+          </div>
+        )}
 
         {images.length > 1 && (
           <div className={styles.indicators}>

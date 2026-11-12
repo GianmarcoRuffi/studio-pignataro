@@ -113,6 +113,60 @@
   }
 }
 
+.zoomViewport {
+  display: block;
+  width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
+  height: calc(100dvh - (var(--viewport-gap) * 2));
+  max-height: calc(100dvh - (var(--viewport-gap) * 2));
+  overflow: auto;
+  touch-action: pan-x pan-y pinch-zoom;
+  overscroll-behavior: contain;
+}
+
+.zoomCanvas {
+  display: grid;
+  place-items: center;
+}
+
+.zoomImage {
+  max-width: none;
+  max-height: none;
+}
+
+.zoomControls {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10005;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 6px;
+  background: #191815e6;
+  color: #fff;
+
+  button {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  }
+
+  output {
+    min-width: 4ch;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+}
+
 .retryButton,
 .skipButton {
   background: rgba(255, 255, 255, 0.15);

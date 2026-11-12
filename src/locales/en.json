@@ -87,6 +87,9 @@
       "service": "Architectural Services"
     },
     "lightbox": {
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "zoomRegion": "Zoomable image",
       "label": "Image viewer",
       "close": "Close lightbox",
       "previous": "Previous image",
