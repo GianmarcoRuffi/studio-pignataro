@@ -6,7 +6,12 @@
   padding-right: var(--page-gutter);
 }
 .projectHeader {
-  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  min-height: calc(
+    var(--viewport-height) - var(--header-height) - var(--footer-height) - var(
+        --project-hero-height
+      )
+  );
+  padding: clamp(1.5rem, 2.3vw, 2rem) 0 clamp(2rem, 4vw, 3.5rem);
 }
 .projectHeaderContent {
   max-width: 1000px;

@@ -1,7 +1,15 @@
+.projectPage {
+  --project-hero-height: clamp(
+    280px,
+    56.25vw,
+    calc(100svh - var(--header-height) - var(--footer-height) - 14rem)
+  );
+}
+
 .projectHero {
   position: relative;
   width: 100%;
-  height: clamp(220px, 50vw, 52svh);
+  height: var(--project-hero-height);
   margin: 0;
   background: var(--color-background-gray);
 }

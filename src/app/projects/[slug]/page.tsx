@@ -93,7 +93,7 @@ export default async function Page({ params }: Params) {
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (
-    <div>
+    <div className={styles.projectPage}>
       {project.images[0] && (
         <figure className={styles.projectHero} data-project-hero>
           <div className={styles.heroMedia}>
