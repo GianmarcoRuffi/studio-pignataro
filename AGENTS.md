@@ -47,7 +47,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 ## Consenso, modali e immagini
 
 - `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Su desktop mostra copyright a sinistra e informative/preferenze a destra; sotto 769 px nasconde le informative e centra copyright e «Preferenze cookie». I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
-- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body. Le immagini delle pubblicazioni aprono la stessa modale con zoom da 100% a 300%, controlli +/− e scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
+- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body. Le immagini delle pubblicazioni aprono la stessa modale con proporzioni native, rendering naturale e nessun ingrandimento oltre la risoluzione originale: clic o Invio/Spazio sull’immagine alternano vista adattata e dimensioni native, con scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
 
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-12: copertine delle pubblicazioni aperte nella lightbox accessibile invece che in una nuova finestra, con zoom progressivo fino al 300%, scorrimento interno e controlli localizzati; preservati i collegamenti agli articoli e la lightbox dei progetti.
+2026-11-12: corrette le immagini delle pubblicazioni nella modale: proporzioni originali, rendering naturale senza filtri di contrasto o pixelatura, zoom direttamente sull’immagine limitato alla risoluzione nativa e rimozione dei controlli percentuali.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

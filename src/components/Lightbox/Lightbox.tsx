@@ -18,8 +18,6 @@ import {
   faTimes,
   faChevronLeft,
   faChevronRight,
-  faMagnifyingGlassPlus,
-  faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./lightbox.module.scss";
 
@@ -48,20 +46,28 @@ const Lightbox: FC<LightboxProps> = ({
   const { messages } = useLocale();
   const dialogRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [naturalSize, setNaturalSize] = useState({ width: 1920, height: 1080 });
   useEffect(() => {
     if (!isOpen || !enableZoom || !viewportRef.current) return;
-    const element = viewportRef.current;
-    const observer = new ResizeObserver(() => {
-      setViewport({ width: element.clientWidth, height: element.clientHeight });
-    });
-    observer.observe(element);
-    return () => observer.disconnect();
+    const measure = () => {
+      const css = getComputedStyle(dialogRef.current!);
+      const gap = parseFloat(css.getPropertyValue("--viewport-gap"));
+      const side =
+        parseFloat(css.getPropertyValue("--nav-size")) +
+        parseFloat(css.getPropertyValue("--control-gap"));
+      setViewport({
+        width: Math.max(1, window.innerWidth - 2 * (gap + side)),
+        height: Math.max(1, window.innerHeight - 2 * gap),
+      });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, [isOpen, enableZoom]);
   useEffect(() => {
-    setZoom(1);
+    setZoom(false);
     viewportRef.current?.scrollTo(0, 0);
   }, [isOpen, currentIndex]);
   const fit = Math.min(
@@ -69,8 +75,18 @@ const Lightbox: FC<LightboxProps> = ({
     viewport.height / naturalSize.height,
     1
   );
-  const imageWidth = Math.max(1, naturalSize.width * fit * zoom);
-  const imageHeight = Math.max(1, naturalSize.height * fit * zoom);
+  const scale = zoom ? 1 : fit;
+  const imageWidth = Math.max(1, naturalSize.width * scale);
+  const imageHeight = Math.max(1, naturalSize.height * scale);
+  const ImageFrame = enableZoom ? "button" : "div";
+  useEffect(() => {
+    const element = viewportRef.current;
+    if (!enableZoom || !element) return;
+    element.scrollTo(
+      zoom ? (naturalSize.width - element.clientWidth) / 2 : 0,
+      zoom ? (naturalSize.height - element.clientHeight) / 2 : 0
+    );
+  }, [enableZoom, zoom, naturalSize.width, naturalSize.height]);
   useModalAccessibility(isOpen, dialogRef, onClose);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -292,7 +308,7 @@ const Lightbox: FC<LightboxProps> = ({
       role="presentation"
     >
       <div
-        className={styles.lightboxContainer}
+        className={`${styles.lightboxContainer} ${enableZoom ? styles.zoomDialog : ""}`}
         ref={dialogRef}
         tabIndex={-1}
         data-lenis-prevent
@@ -334,6 +350,14 @@ const Lightbox: FC<LightboxProps> = ({
           ref={viewportRef}
           className={`${styles.imageContainer} ${enableZoom ? styles.zoomViewport : ""}`}
           tabIndex={enableZoom ? 0 : undefined}
+          style={
+            enableZoom
+              ? {
+                  width: Math.min(viewport.width, imageWidth),
+                  height: Math.min(viewport.height, imageHeight),
+                }
+              : undefined
+          }
           role={enableZoom ? "region" : undefined}
           aria-label={enableZoom ? messages.ui.lightbox.zoomRegion : undefined}
           onTouchStart={enableZoom ? undefined : handleTouchStart}
@@ -376,13 +400,34 @@ const Lightbox: FC<LightboxProps> = ({
               </div>
             </div>
           ) : (
-            <div
-              className={enableZoom ? styles.zoomCanvas : undefined}
+            <ImageFrame
+              type={enableZoom ? "button" : undefined}
+              aria-label={
+                enableZoom
+                  ? zoom
+                    ? messages.ui.lightbox.zoomOut
+                    : messages.ui.lightbox.zoomIn
+                  : undefined
+              }
+              aria-pressed={enableZoom ? zoom : undefined}
+              disabled={enableZoom ? isImageLoading || fit >= 1 : undefined}
+              onClick={
+                enableZoom
+                  ? () => {
+                      setZoom((value) => !value);
+                    }
+                  : undefined
+              }
+              className={
+                enableZoom
+                  ? `${styles.zoomCanvas} ${zoom ? styles.zoomed : ""}`
+                  : undefined
+              }
               style={
                 enableZoom
                   ? {
-                      width: Math.max(viewport.width, imageWidth),
-                      height: Math.max(viewport.height, imageHeight),
+                      width: imageWidth,
+                      height: imageHeight,
                     }
                   : undefined
               }
@@ -394,8 +439,8 @@ const Lightbox: FC<LightboxProps> = ({
                   index: activeIndex + 1,
                   total: images.length,
                 })}
-                width={1920}
-                height={1080}
+                width={enableZoom ? naturalSize.width : 1920}
+                height={enableZoom ? naturalSize.height : 1080}
                 sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
                 unoptimized
                 loading="eager"
@@ -424,31 +469,9 @@ const Lightbox: FC<LightboxProps> = ({
                   imageCacheRef.current.set(activeIndex, false);
                 }}
               />
-            </div>
+            </ImageFrame>
           )}
         </div>
-
-        {enableZoom && !imageError && (
-          <div className={styles.zoomControls}>
-            <button
-              type="button"
-              aria-label={messages.ui.lightbox.zoomOut}
-              disabled={zoom === 1 || isImageLoading}
-              onClick={() => setZoom((value) => Math.max(1, value - 0.5))}
-            >
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus} />
-            </button>
-            <output aria-live="polite">{Math.round(zoom * 100)}%</output>
-            <button
-              type="button"
-              aria-label={messages.ui.lightbox.zoomIn}
-              disabled={zoom === 3 || isImageLoading}
-              onClick={() => setZoom((value) => Math.min(3, value + 0.5))}
-            >
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus} />
-            </button>
-          </div>
-        )}
 
         {images.length > 1 && (
           <div className={styles.indicators}>

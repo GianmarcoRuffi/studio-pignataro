@@ -113,58 +113,43 @@
   }
 }
 
+.lightboxContainer.zoomDialog {
+  touch-action: auto;
+}
+
 .zoomViewport {
   display: block;
-  width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
-  height: calc(100dvh - (var(--viewport-gap) * 2));
-  max-height: calc(100dvh - (var(--viewport-gap) * 2));
   overflow: auto;
+  max-height: calc(100dvh - (var(--viewport-gap) * 2));
   touch-action: pan-x pan-y pinch-zoom;
   overscroll-behavior: contain;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
 }
 
 .zoomCanvas {
-  display: grid;
-  place-items: center;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.zoomCanvas:disabled {
+  cursor: default;
+}
+
+.zoomed {
+  cursor: zoom-out;
 }
 
 .zoomImage {
   max-width: none;
   max-height: none;
-}
-
-.zoomControls {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10005;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 6px;
-  background: #191815e6;
-  color: #fff;
-
-  button {
-    width: 44px;
-    height: 44px;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-    &:disabled {
-      opacity: 0.35;
-      cursor: default;
-    }
-  }
-
-  output {
-    min-width: 4ch;
-    text-align: center;
-    font-size: 0.85rem;
-  }
+  border-radius: 0;
+  image-rendering: auto;
+  filter: none;
 }
 
 .retryButton,
