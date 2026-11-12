@@ -3,8 +3,8 @@
     "home": "Home",
     "projects": "Projects",
     "presses": "Publications",
-    "bio": "About",
-    "contacts": "Contact",
+    "bio": "About me",
+    "contacts": "Contacts",
     "logoAlt": "Studio Architetto Pignataro logo",
     "toggleMenu": "Toggle menu",
     "menu": "Navigation menu",
@@ -20,8 +20,8 @@
   "metadata": {
     "title": "Studio Architetto Gianluca Pignataro",
     "template": "%s | Studio Architetto Gianluca Pignataro",
-    "description": "Architecture studio in Cagliari with thirty years of experience in architecture, interior design and the renovation of historic buildings.",
-    "keywords": "architect, cagliari, studio, design, interiors, renovation, historic buildings",
+    "description": "Gianluca Pignataro’s architectural practice in Cagliari, with thirty years of experience in architectural design, interior design and the restoration and refurbishment of historic buildings.",
+    "keywords": "architect, Cagliari, architectural practice, architectural design, interior design, residential architecture, refurbishment, historic building restoration",
     "author": "Architect Gianluca Pignataro",
     "publisher": "Architetto Pignataro",
     "logoAlt": "Studio Architetto Gianluca Pignataro - Logo"
@@ -31,7 +31,7 @@
       "projects": "Projects",
       "presses": "Publications",
       "contacts": "Contact",
-      "bio": "About",
+      "bio": "About me",
       "previous": "Previous",
       "next": "Next",
       "privacy": "Privacy Policy",
@@ -44,24 +44,24 @@
       "architect": "Architect"
     },
     "bio": {
-      "eyebrow": "The studio professionals · Cagliari"
+      "eyebrow": "Architectural practice · Cagliari"
     },
     "contacts": {
-      "eyebrow": "Studio Gianluca Pignataro · Cagliari",
-      "intro": "To discuss a project, write to me or contact the studio.",
+      "eyebrow": "Gianluca Pignataro · Architect · Cagliari",
+      "intro": "To discuss your project or enquire about architectural services, please contact me by email or telephone.",
       "email": "Email",
       "phone": "Telephone",
       "mobile": "Mobile",
-      "studio": "Studio",
+      "studio": "Practice address",
       "vat": "VAT number",
-      "imageAlt": "Interior of Studio Pignataro in Cagliari",
-      "follow": "Follow the studio",
+      "imageAlt": "Interior of Gianluca Pignataro’s architectural practice in Cagliari",
+      "follow": "Follow the practice",
       "linkedin": "LinkedIn ↗",
       "facebook": "Facebook ↗",
-      "location": "Find us",
-      "mapConsent": "The Google Maps map is loaded only with your consent.",
+      "location": "Visit the practice",
+      "mapConsent": "The Google Maps location map is displayed only with your consent.",
       "manageConsent": "Manage cookie preferences",
-      "mapTitle": "Studio Location",
+      "mapTitle": "Location of Gianluca Pignataro’s architectural practice",
       "vatNumber": "VAT number {number}"
     },
     "policy": {
@@ -83,7 +83,7 @@
       "metadataTitle": "Page not found"
     },
     "structuredData": {
-      "description": "Professional studio in Cagliari with thirty years of experience in architecture, interior design and the renovation of historic buildings.",
+      "description": "Gianluca Pignataro’s architectural practice in Cagliari, with thirty years of experience in architectural design, interior design and the restoration and refurbishment of historic buildings.",
       "service": "Architectural Services"
     },
     "lightbox": {
@@ -99,10 +99,10 @@
       "counter": "{index} of {total}"
     },
     "projects": {
-      "intro": "Architecture, interiors and restoration. A selection of work spanning historic buildings and contemporary spaces.",
+      "intro": "Architecture, interiors and the refurbishment of existing buildings. Selected projects in historic settings and contemporary spaces.",
       "loading": "Loading projects...",
       "navigation": "Project navigation",
-      "heroAlt": "View of the project {name}",
+      "heroAlt": "{name} — architectural project",
       "previousLabel": "Previous project: {name}",
       "nextLabel": "Next project: {name}",
       "metadataKeywords": [
@@ -115,10 +115,10 @@
       ]
     },
     "presses": {
-      "intro": "The studio’s work through books, magazines and articles. A bibliography from 1999 to the present.",
+      "intro": "The work of the practice in books, architecture magazines and online features. Selected publications from 1999 to the present.",
       "filter": "Filter by year:",
       "all": "All",
-      "article": "Read the article",
+      "article": "Read the feature",
       "loading": "Loading publications...",
       "view": "View {description}",
       "coverAlt": "Cover: {date}"
@@ -130,7 +130,7 @@
       "imageAlt": "Project photograph, image {index}"
     },
     "projectCard": {
-      "view": "View Project",
+      "view": "View project",
       "alt": "{name} - {description}"
     },
     "slider": {
@@ -151,11 +151,11 @@
       "accept": "Accept optional services"
     },
     "metadata": {
-      "bioDescription": "Professional profile of architect Gianluca Pignataro: thirty years of experience in restoration, rehabilitation of historic buildings and architectural design in Cagliari and abroad.",
-      "contactsDescription": "Contact Studio Architetto Gianluca Pignataro in Cagliari. Address, email, telephone and social channels for architectural consultancy enquiries.",
-      "projectsDescription": "A selection of my architecture and interior design projects, from historic building renovations to innovative solutions for contemporary interiors.",
+      "bioDescription": "Architect Gianluca Pignataro: thirty years of professional experience in architectural design, historic building restoration and refurbishment, in Cagliari and internationally.",
+      "contactsDescription": "Discuss your project with architect Gianluca Pignataro in Cagliari. Contact details and enquiries about architectural and interior design services.",
+      "projectsDescription": "Selected architectural and interior design projects by Gianluca Pignataro, including residential refurbishment, historic buildings and contemporary interiors.",
       "titleTemplate": "%s | Studio Architetto Gianluca Pignataro",
-      "pressesDescription": "Press coverage and publications of architect Gianluca Pignataro’s work in specialist architecture and design magazines.",
+      "pressesDescription": "Books, specialist architecture and design publications, and press features presenting the work of architect Gianluca Pignataro.",
       "privacyDescription": "Information on the processing of personal data by Studio Architetto Gianluca Pignataro.",
       "cookieDescription": "Information on the use of cookies on the Studio Architetto Gianluca Pignataro website."
     }
@@ -164,7 +164,7 @@
     "projects": {
       "Quartiere-Vanchiglia": {
         "projectName": "Quartiere Vanchiglia",
-        "description": "Renovation and interior design in the historic centre of Turin.",
+        "description": "Refurbishment and interior design in the historic centre of Turin.",
         "imgCredits": "Photo © Luigi Corda"
       },
       "Via-Venturoli": {
@@ -174,7 +174,7 @@
       },
       "Corso-Vittorio-Emanuele-II": {
         "projectName": "Corso Vittorio Emanuele II",
-        "description": "Renovation and interior design in the historic centre of Cagliari.",
+        "description": "Refurbishment and interior design in the historic centre of Cagliari.",
         "externalLink": {
           "0": {
             "name": "Luigi Corda"
@@ -184,7 +184,7 @@
       },
       "Via-Asti": {
         "projectName": "Via Asti",
-        "description": "Renovation and interior design in Cagliari.",
+        "description": "Refurbishment and interior design in Cagliari.",
         "externalLink": {
           "0": {
             "name": "Luigi Corda"
@@ -199,7 +199,7 @@
       },
       "Via-Machiavelli": {
         "projectName": "Via Machiavelli",
-        "description": "Renovation and interior design in Cagliari.",
+        "description": "Refurbishment and interior design in Cagliari.",
         "externalLink": {
           "0": {
             "name": " 'Un appartamento moderno rivoluzionario' on Homify"
@@ -212,7 +212,7 @@
       },
       "Vico-V-Via-San-Giovanni": {
         "projectName": "Vico V di Via S. Giovanni",
-        "description": "Renovation and interior design in the historic centre of Cagliari.",
+        "description": "Refurbishment and interior design in the historic centre of Cagliari.",
         "externalLink": {
           "0": {
             "name": " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' on Homify"
@@ -225,64 +225,64 @@
       },
       "Agenzia-Immobiliare-AMS": {
         "projectName": "Agenzia Immobiliare AMS",
-        "description": "Interior design and construction supervision.\n    Via Cagliari, Capoterra (CA)",
+        "description": "Interior design and site supervision.\n    Via Cagliari, Capoterra (CA)",
         "imgCredits": "Photo © Luigi Corda"
       },
       "Via-Canonico-Sanna": {
         "projectName": "Via Canonico Sanna",
-        "description": "Renovation of a residential building in the historic centre of Baunei (OG).",
+        "description": "Refurbishment of a residential building in the historic centre of Baunei (OG).",
         "imgCredits": "Photo © Luigi Corda"
       },
       "Viale-Regina-Margherita": {
         "projectName": "V.le Regina Margherita",
-        "description": "Renovation in the historic Zedda-Piras building in Cagliari.",
+        "description": "Refurbishment within the historic Palazzo Zedda-Piras in Cagliari.",
         "imgCredits": "Photo © Luigi Corda"
       },
       "Via-Vittorio-Amedeo-II": {
         "projectName": "Via Vittorio Amedeo II",
-        "description": "Design and construction supervision of a residential building in Cagliari.",
+        "description": "Architectural design and site supervision for a residential building in Cagliari.",
         "imgCredits": "Photo © Luigi Corda"
       },
       "TangexCorp": {
         "projectName": "Tangex Corp.",
-        "description": "Design of a villa in Ocean Park, San Juan, Puerto Rico (U.S.A.).",
+        "description": "Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA).",
         "imgCredits": "Photo © Guanina Santiago de Jesus"
       },
       "Via-Eroi-d-Italia": {
         "projectName": "Via Eroi d'Italia",
-        "description": "Design, interior design and construction supervision of a residential building in Cagliari.",
+        "description": "Architectural design, interior design and site supervision for a residential building in Cagliari.",
         "imgCredits": "Photo © Matteo Piazza"
       },
       "Glisbo": {
         "projectName": "Agenzia pubblicitaria Glisbò",
-        "description": "Modular stand for the \"Regione Autonoma della Sardegna\".",
+        "description": "Modular exhibition stand for the Autonomous Region of Sardinia.",
         "externalLink": {
           "0": {
             "name": "Glisbò"
           }
         },
-        "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it "
+        "imgCredits": "Architectural visualisations by Gianpierluigi Secci - 3D Designer - www.mistralstudio.it"
       }
     },
     "bio": {
       "name": "Architect Gianluca Pignataro",
-      "intro": "Born in Bologna, where I completed a science-focused secondary education, I graduated in Florence and began my career in Cagliari. At the practice of Professor and Architect Giovanni Maria Campus, I immediately worked on restoration, the rehabilitation of historic buildings and architectural design. Over 30 years of professional practice, numerous commissions have allowed me to specialise in restoring and rehabilitating historic buildings, including the rehabilitation of seven buildings in the historic centre of Baunei (OG) for Stams s.r.l., part of the Cualbu group. In architectural design, I have worked in Italy for clients including Findomestic Banca, construction companies, cooperatives and private individuals. Thanks to my dual Italian and United States citizenship, I have also completed five shops in shopping centres and a villa in Puerto Rico (U.S.A.).",
+      "intro": "Born in Bologna, where I completed my secondary education in the sciences, I graduated in Florence before beginning my architectural career in Cagliari. At the practice of Prof. Giovanni Maria Campus, I worked on architectural design and the restoration and refurbishment of historic buildings. Over thirty years in practice, I have developed particular expertise in this field through commissions including the refurbishment of seven buildings in Baunei’s historic centre for Stams s.r.l., part of the Cualbu Group. My architectural work in Italy includes projects for Findomestic Banca, building contractors, housing cooperatives and private clients. As a dual Italian and US citizen, I have also delivered five retail units in shopping centres and a villa in Puerto Rico (USA).",
       "professionalExperiencesTitle": "Professional experience",
       "experiences": {
         "0": {
           "title": "Studio Dott. Arch. Gianluca Pignataro - Cagliari, January 2004 to present",
-          "role": "Founder – Principal",
-          "description": "Architect designing contemporary residential buildings and rehabilitating buildings in historic centres.",
+          "role": "Founder and principal architect",
+          "description": "Architect specialising in contemporary residential design and the refurbishment of buildings in historic centres.",
           "projects": {
-            "0": "Via Ancona: Renovation and interior design in Cagliari",
-            "1": "Via delle Libellule: Renovation and interior design in Cagliari",
-            "2": "Sole leader of the team of architects and engineers carrying out building and planning compliance checks for properties covered by the Superbonus 110% scheme, for the Regional Coach Manager of “HARLEY & DIKKINSON CONSULTING S.r.l.”, Engineer Giuseppe De Bonis.",
-            "3": "Corso Vittorio Emanuele II: Renovation and interior design in the historic centre of Cagliari",
+            "0": "Via Ancona: Refurbishment and interior design in Cagliari",
+            "1": "Via delle Libellule: Refurbishment and interior design in Cagliari",
+            "2": "Team lead for architects and engineers undertaking building and planning compliance assessments for properties under Italy’s Superbonus 110% scheme, on behalf of Giuseppe De Bonis, engineer and Regional Coach Manager at HARLEY & DIKKINSON CONSULTING S.r.l.",
+            "3": "Corso Vittorio Emanuele II: Refurbishment and interior design in the historic centre of Cagliari",
             "4": {
-              "description": "Palazzo Asquer: Structural stabilisation and restoration of Roman remains in the basement of the historic Palazzo Asquer, a building protected by the Ministerial Superintendency (SABAP) in the Castello district of Cagliari’s historic centre"
+              "description": "Palazzo Asquer: Structural stabilisation and restoration of Roman remains in the basement of Palazzo Asquer, a protected historic building overseen by the Italian heritage authority (SABAP), in the Castello district of Cagliari’s historic centre"
             },
             "5": {
-              "description": "Agenzia pubblicitaria Glisbò: Modular stand for the “Regione Autonoma della Sardegna”",
+              "description": "Agenzia pubblicitaria Glisbò: Modular exhibition stand for the Autonomous Region of Sardinia",
               "links": {
                 "0": {
                   "name": "Glisbò"
@@ -290,16 +290,16 @@
               }
             },
             "6": {
-              "description": "Via Asti: Renovation and interior design in Cagliari (published project)",
+              "description": "Via Asti: Refurbishment and interior design in Cagliari (published project)",
               "links": {
                 "0": {
                   "name": "Luigi Corda"
                 }
               }
             },
-            "7": "Property valuation surveyor for the “Banca di Credito Cooperativo di Cagliari”",
+            "7": "Property valuations for Banca di Credito Cooperativo di Cagliari",
             "8": {
-              "description": "Via Machiavelli: Renovation and interior design in Cagliari (published project)",
+              "description": "Via Machiavelli: Refurbishment and interior design in Cagliari (published project)",
               "links": {
                 "0": {
                   "name": "Homify"
@@ -307,20 +307,20 @@
               }
             },
             "9": {
-              "description": "Renovation of an apartment (published project)",
+              "description": "Refurbishment of an apartment (published project)",
               "links": {
                 "0": {
                   "name": "Tubes Radiatori"
                 }
               }
             },
-            "10": "Nemesis Data s.r.l.: Extension of a residential unit in Porto Cervo, Arzachena (OT)",
-            "11": "Vico V di Via San Giovanni: Renovation and interior design in the Villanova district of Cagliari’s historic centre (published project)",
-            "12": "Via Canonico Sanna: Renovation of a residential building in the historic centre of Baunei (OG)",
-            "13": "V.le Regina Margherita: Renovation and interior design in the historic Zedda-Piras building in Cagliari",
-            "14": "Via Vittorio Amedeo II: Design and construction supervision of a residential building in Cagliari",
+            "10": "Nemesis Data s.r.l.: Extension to a residential property in Porto Cervo, Arzachena (OT)",
+            "11": "Vico V di Via San Giovanni: Refurbishment and interior design in the Villanova district of Cagliari’s historic centre (published project)",
+            "12": "Via Canonico Sanna: Refurbishment of a residential building in the historic centre of Baunei (OG)",
+            "13": "V.le Regina Margherita: Refurbishment and interior design within the historic Palazzo Zedda-Piras in Cagliari",
+            "14": "Via Vittorio Amedeo II: Architectural design and site supervision for a residential building in Cagliari",
             "15": {
-              "description": "Stams s.r.l. (Cualbu Group): Design and artistic direction for the rehabilitation of seven buildings in the historic centre of Baunei (OG)",
+              "description": "Stams s.r.l. (Cualbu Group): Architectural design and design direction for the refurbishment of seven buildings in Baunei’s historic centre (OG)",
               "links": {
                 "0": {
                   "name": "Dommoso"
@@ -330,33 +330,33 @@
                 }
               }
             },
-            "16": "Tangex Corp.: Design of a villa in Ocean Park, San Juan, Puerto Rico (U.S.A.)"
+            "16": "Tangex Corp.: Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA)"
           }
         },
         "1": {
           "title": "Archlabo - Pignataro Vandermeulen Architetti - Cagliari, January 1993 to December 2003",
           "role": "Co-founder",
-          "description": "Lead architect, from concept through construction, for residential, commercial and furniture design projects; member of a team of two architects and one engineer. Responsible for relations with clients and contractors.",
+          "description": "Lead architect for residential, commercial and furniture design projects, from initial concept through to completion on site. Part of a team of two architects and an engineer, with responsibility for client liaison and coordination with contractors.",
           "projects": {
-            "0": "Tangex Corp.: Design of five shops in shopping centres in Puerto Rico (U.S.A.)",
-            "1": "Cooperativa edilizia Urbus: Design of a residential building in Cagliari",
-            "2": "Findomestic Banca: Design and construction supervision of customer service branches and regional offices in Cagliari and Sassari",
-            "3": "Discoteca Pandemonium: Design and construction supervision, Quartu S.E. (CA)",
-            "4": "Impresa Sarritzu: Design of a residential hotel for 120 students in Cagliari",
-            "5": "Via Eroi d’Italia: Design, interior design and construction supervision of a residential building in Cagliari",
+            "0": "Tangex Corp.: Architectural design for five retail units in shopping centres in Puerto Rico (USA)",
+            "1": "Cooperativa edilizia Urbus: Architectural design for a residential building in Cagliari",
+            "2": "Findomestic Banca: Architectural design and site supervision for customer-facing branches and regional offices in Cagliari and Sassari",
+            "3": "Discoteca Pandemonium: Architectural design and site supervision in Quartu S.E. (CA)",
+            "4": "Impresa Sarritzu: Architectural design for a student residence accommodating 120 students in Cagliari",
+            "5": "Via Eroi d’Italia: Architectural design, interior design and site supervision for a residential building in Cagliari",
             "6": {
-              "description": "Via Canelles: Renovation of an apartment in the Castello district of Cagliari’s historic centre (published project)"
+              "description": "Via Canelles: Refurbishment of an apartment in the Castello district of Cagliari’s historic centre (published project)"
             }
           }
         },
         "2": {
           "title": "Studio Prof. Arch. Giovanni Maria Campus – Cagliari, January 1991 to December 1993",
           "role": "Architectural designer",
-          "description": "Sole designer or collaborating architect, from concept through construction, on the following projects:",
+          "description": "Architectural design, independently or in collaboration with other architects, from initial concept through to completion on site, for the following projects:",
           "projects": {
             "0": "Restoration of Palazzo Aresu in Cagliari’s historic centre",
-            "1": "Design of the 'Casa di Riposo per anziani' care home in Arzachena (OT)",
-            "2": "Design of 'Hotel S.Efis' in Nora, Pula (Cagliari)",
+            "1": "Architectural design for the Casa di Riposo per anziani residential care home in Arzachena (OT)",
+            "2": "Architectural design for Hotel S.Efis in Nora, Pula (Cagliari)",
             "3": "Restoration of the church of SS. Annunziata in Cagliari"
           }
         }
@@ -376,7 +376,7 @@
         "date": "February 2021"
       },
       "homifyAttics": {
-        "description": "Recupero dei sottotetti (…)”, article published in the online magazine “HOMIFY”",
+        "description": "“Recupero dei sottotetti (…)”, feature published in the online magazine HOMIFY",
         "date": "November 2018"
       },
       "homifyApartment": {
@@ -409,7 +409,7 @@
             "0": "<strong>Browsing data:</strong> IP address, browser type, operating system, pages visited",
             "1": "<strong>Voluntarily provided data:</strong> information sent voluntarily by email or communicated to the practice by telephone",
             "2": "<strong>Local preferences:</strong> choices concerning optional services and the status of introductory screens, stored in the browser",
-            "3": "<strong>Google Maps:</strong> technical data communicated to Google only when you authorise the map on the Contacts page"
+            "3": "<strong>Google Maps:</strong> technical data communicated to Google only when you authorise the map on the Contact page"
           }
         }
       },
@@ -419,16 +419,16 @@
         "list": {
           "items": {
             "0": "Providing requested services",
-            "1": "Responding to contact requests",
+            "1": "Responding to enquiries about architectural services",
             "2": "Displaying the optional map with prior consent",
-            "3": "Navigation security and operation",
+            "3": "Keeping the website secure and operational",
             "4": "Compliance with legal and tax obligations"
           }
         }
       },
       "base-giuridica": {
         "title": "4. Legal basis for processing",
-        "content": "The optional map is activated with the data subject’s consent (Article 6(1)(a) GDPR), which can be withdrawn through “Cookie preferences” in the footer. Requests for consultancy are processed to take pre-contractual steps or perform the requested service (point (b)); statutory obligations are based on point (c). The security and operation of the website serve the legitimate interest in providing it (point (f))."
+        "content": "The optional map is activated with the data subject’s consent (Article 6(1)(a) GDPR), which can be withdrawn through “Cookie preferences” in the footer. Enquiries about architectural services are processed to take pre-contractual steps or provide the requested service (point (b)); statutory obligations are based on point (c). The security and operation of the website serve the legitimate interest in providing it (point (f))."
       },
       "conservazione": {
         "title": "5. Data retention",
@@ -484,7 +484,7 @@
       "terze-parti": {
         "title": "3. Google Maps",
         "content": {
-          "0": "The Contacts page can display a map provided by Google Maps. The map remains disabled until you choose “Accept optional services”. Once activated, the browser connects to Google and communicates technical data such as your IP address and device information; Google may use its own cookies and storage tools according to its settings. For details, see <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">Google’s privacy policy</a>."
+          "0": "The Contact page can display a map provided by Google Maps. The map remains disabled until you choose “Accept optional services”. Once activated, the browser connects to Google and communicates technical data such as your IP address and device information; Google may use its own cookies and storage tools according to its settings. For details, see <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">Google’s privacy policy</a>."
         }
       },
       "gestione": {
@@ -523,8 +523,8 @@
     },
     "cookieDisclaimerNote": "<strong>Note:</strong> declining optional services still allows you to view the portfolio and contact details of the practice.",
     "notFound": {
-      "title": "We are sorry, the page you are looking for does not exist.",
-      "ctaLabel": "Click here to return to the home page"
+      "title": "The page you are looking for could not be found.",
+      "ctaLabel": "Return to the home page"
     }
   }
 }

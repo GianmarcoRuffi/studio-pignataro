@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-12: attivata la navigazione bilingue italiano/inglese con bandierine e tooltip nell’header; aggiunte pagine inglesi `/en`, contenuti e metadati localizzati, alternanze hreflang e sitemap bilingue, preservando gli URL italiani.
+2026-11-12: rivisti i testi inglesi con registro professionale e terminologia architettonica britannica coerente (architectural practice, refurbishment, site supervision); navbar «About me», contatti orientati alle richieste di incarico e biografia fedele ai servizi descritti. Riferimenti terminologici: RIBA (Working with an architect) e Historic England (Maintenance, Repair and Restoration).
 
 <!-- BEGIN:nextjs-agent-rules -->
 
