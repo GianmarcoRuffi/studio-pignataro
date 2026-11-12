@@ -6,22 +6,23 @@
   padding-right: var(--page-gutter);
 }
 .projectHeader {
-  padding: 2.5rem 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
 }
 .projectHeaderContent {
   max-width: 1000px;
 }
 .projectTitle {
-  margin: 0 0 1rem;
-  font: 400 var(--type-title)/1.08 var(--font-editorial);
+  margin: 0 0 clamp(0.75rem, 1.5vw, 1.25rem);
+  font: 400 clamp(2rem, 3.75vw, 3.5rem)/1.12 var(--font-editorial);
+  text-wrap: balance;
 }
 .projectDescription {
-  font: 400 clamp(1.15rem, 2vw, 1.5rem)/1.6 var(--font-editorial);
+  font: 400 clamp(1.05rem, 1.5vw, 1.25rem)/1.55 var(--font-editorial);
   margin: 0;
   max-width: var(--text-measure);
 }
 .projectCredits {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   font-size: 0.72rem;
   color: var(--color-text-tertiary);
 }
@@ -30,8 +31,8 @@
   text-underline-offset: 0.2em;
 }
 .discreteLinksContainer {
-  margin-top: 1rem;
-  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1.8;
 }
 .discreteLink {

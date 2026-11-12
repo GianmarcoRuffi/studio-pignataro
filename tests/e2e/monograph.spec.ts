@@ -41,7 +41,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const width of [1440, 390]) {
-  test(`homepage identifies the active project above the footer at ${width}px`, async ({
+  test(`homepage keeps the project caption hidden and the counter visible at ${width}px`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 844 });
@@ -52,21 +52,27 @@ for (const width of [1440, 390]) {
       const caption = slider.locator("a").filter({
         hasText: project.projectName,
       });
-      await expect(caption).toBeInViewport();
-      await expect(caption).toHaveAttribute(
-        "href",
-        `/projects/${project.slug}`
-      );
+      await expect(caption).toHaveCount(0);
+      await expect(
+        slider
+          .locator("a")
+          .filter({ has: page.locator("img") })
+          .nth(index)
+      ).toHaveAttribute("href", `/projects/${project.slug}`);
       await expect(
         slider.getByText(
           new RegExp(`^0?${index + 1}\\s*/\\s*${projects.length}$`)
         )
       ).toBeInViewport();
-      const titleBox = await caption.boundingBox();
+      const counterBox = await slider
+        .getByText(new RegExp(`^0?${index + 1}\\s*/\\s*${projects.length}$`))
+        .boundingBox();
       const footerBox = await page.locator("footer").boundingBox();
-      expect(titleBox).not.toBeNull();
+      expect(counterBox).not.toBeNull();
       expect(footerBox).not.toBeNull();
-      expect(titleBox!.y + titleBox!.height).toBeLessThanOrEqual(footerBox!.y);
+      expect(counterBox!.y + counterBox!.height).toBeLessThanOrEqual(
+        footerBox!.y
+      );
       if (index === 0) {
         await page.getByRole("button", { name: "Slide successivo" }).click();
       }

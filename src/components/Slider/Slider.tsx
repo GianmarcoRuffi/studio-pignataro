@@ -197,17 +197,6 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       </div>
 
       <div className={styles.slideCaption}>
-        <Link
-          href={localizedPath(
-            `/projects/${projects[activeIndex].slug}`,
-            locale
-          )}
-        >
-          <span className={styles.captionTitle}>
-            {projects[activeIndex].projectName}{" "}
-            <span aria-hidden="true">↗</span>
-          </span>
-        </Link>
         <span
           className={styles.slideCounter}
           aria-label={messages.ui.slider.position}
