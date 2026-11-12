@@ -43,7 +43,18 @@ test("sitemap includes every generated project with its original slug", async ({
       `<loc>https://archpignataro.it/projects/${project.slug}</loc>`
     );
   }
-  expect(xml.match(/<loc>/g)).toHaveLength(projects.length + 7);
+  for (const project of projects) {
+    expect(xml).toContain(
+      `<loc>https://archpignataro.it/en/projects/${project.slug}</loc>`
+    );
+    expect(xml).toContain(
+      `hreflang="it" href="https://archpignataro.it/projects/${project.slug}"`
+    );
+    expect(xml).toContain(
+      `hreflang="en" href="https://archpignataro.it/en/projects/${project.slug}"`
+    );
+  }
+  expect(xml.match(/<loc>/g)).toHaveLength((projects.length + 7) * 2);
 });
 
 test("reduced motion disables slider autoplay and hides inactive links from focus", async ({

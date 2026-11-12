@@ -1,5 +1,6 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import Image from "next/image";
 import { FC } from "react";
@@ -14,6 +15,7 @@ const PressesCard: FC<PressesCardProps> = ({
   source,
   date,
 }) => {
+  const { messages } = useLocale();
   const isImageLoaded = useImageLoad(imageSource, {
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });

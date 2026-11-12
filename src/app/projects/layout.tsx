@@ -1,17 +1,19 @@
-import { messages } from "../../locales";
+import { getServerMessages } from "../../locales/server";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
-const projectsDescription = messages.ui.metadata.projectsDescription;
-
-export const metadata: Metadata = generatePageMetadata({
-  path: "/projects",
-  title: {
-    default: messages.ui.common.projects,
-    template: messages.ui.metadata.titleTemplate,
-  },
-  description: projectsDescription,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return generatePageMetadata({
+    locale,
+    path: "/projects",
+    title: {
+      default: messages.ui.common.projects,
+      template: messages.ui.metadata.titleTemplate,
+    },
+    description: messages.ui.metadata.projectsDescription,
+  });
+}
 
 export default function ProjectsLayout({
   children,

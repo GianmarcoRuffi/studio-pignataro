@@ -1,9 +1,10 @@
 "use client";
-import { messages } from "../../locales";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useCallback, useMemo, useState } from "react";
 import Link from "next/link";
-import projects from "../../data/projectsData";
+import { getProjects } from "../../data/projectsData";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
@@ -16,6 +17,8 @@ import styles from "./projects.module.scss";
 import { Project } from "../../models/models";
 
 const Projects: FC = () => {
+  const { messages, locale } = useLocale();
+  const projects = useMemo(() => getProjects(messages), [messages]);
   const [visibleCards, setVisibleCards] = useState<number>(
     LOADING.INITIAL_ITEMS
   );
@@ -24,7 +27,7 @@ const Projects: FC = () => {
 
   const visibleProjects = useMemo(
     () => projects.filter((project) => !project.invisible),
-    []
+    [projects]
   );
   const initialImages = useMemo(
     () =>
@@ -107,7 +110,9 @@ const Projects: FC = () => {
                 .slice(0, visibleCards)
                 .map((project: Project) => (
                   <div key={project.slug} className={styles.cardWrapper}>
-                    <Link href={`/projects/${project.slug}`}>
+                    <Link
+                      href={localizedPath(`/projects/${project.slug}`, locale)}
+                    >
                       <ProjectCard
                         name={project.projectName}
                         imageSource={project.imgSrc}

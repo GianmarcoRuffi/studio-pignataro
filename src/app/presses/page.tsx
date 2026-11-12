@@ -1,11 +1,11 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { useCallback, useMemo, useState } from "react";
 import PressesCard from "../../components/PressesCard/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import LinkButton from "../../components/LinkButton/LinkButton";
-import pressesData from "./data";
+import { getPressesData } from "./data";
 import { useInfiniteLoadTrigger } from "../../hooks/useInfiniteLoadTrigger";
 import { useMultiImageLoader } from "../../hooks/useMultiImageLoader";
 import { useResponsiveSkeletonCount } from "../../hooks/useResponsiveSkeletonCount";
@@ -16,6 +16,8 @@ import styles from "./presses.module.scss";
 import { PressesData } from "../../models/models";
 
 export default function Presses() {
+  const { messages } = useLocale();
+  const pressesData = useMemo(() => getPressesData(messages), [messages]);
   const [selectedYear, setSelectedYear] = useState<string>("all");
   const [visibleCards, setVisibleCards] = useState<number>(
     LOADING.INITIAL_ITEMS
@@ -38,14 +40,14 @@ export default function Presses() {
         if (a === "Unknown") return 1;
         return Number.parseInt(b, 10) - Number.parseInt(a, 10);
       }),
-    []
+    [pressesData]
   );
   const filteredData = useMemo(
     () =>
       selectedYear === "all"
         ? pressesData
         : pressesData.filter((press) => press.date.includes(selectedYear)),
-    [selectedYear]
+    [selectedYear, pressesData]
   );
   const currentImages = useMemo(
     () =>

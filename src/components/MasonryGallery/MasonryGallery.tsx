@@ -1,5 +1,6 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
@@ -27,6 +28,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   visibleImages,
   preloadedCount = 0,
 }) => {
+  const { messages } = useLocale();
   const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>(
     {}
   );

@@ -1,4 +1,5 @@
-import { messages, formatMessage } from "../../../locales";
+import { localizedPath, formatMessage } from "../../../locales";
+import { getServerMessages } from "../../../locales/server";
 import sharp from "sharp";
 import path from "node:path";
 import Image from "next/image";
@@ -6,12 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import projects from "../../../data/projectsData";
+import italianProjects, { getProjects } from "../../../data/projectsData";
 import Gallery from "../../../components/Gallery/Gallery";
 import { Params, Project } from "../../../models/models";
 import styles from "./project.module.scss";
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  const projects = getProjects(messages);
   const { slug } = await params;
   const project = projects.find((p: Project) => p.slug === slug);
 
@@ -21,7 +24,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   const description = project.description.replace(/\s+/g, " ").trim();
   const title = project.projectName;
-  const canonical = `/projects/${slug}`;
+  const canonical = localizedPath(`/projects/${slug}`, locale);
   const keywords = [...messages.ui.projects.metadataKeywords, title];
 
   return {
@@ -30,6 +33,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     keywords,
     alternates: {
       canonical,
+      languages: {
+        it: `/projects/${slug}`,
+        en: `/en/projects/${slug}`,
+        "x-default": `/projects/${slug}`,
+      },
     },
     openGraph: {
       type: "website",
@@ -53,12 +61,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  return projects.map((p: Project) => ({
+  return italianProjects.map((p: Project) => ({
     slug: p.slug,
   }));
 }
 
 export default async function Page({ params }: Params) {
+  const { locale, messages } = await getServerMessages();
+  const projects = getProjects(messages);
   const { slug } = await params;
 
   const projectIndex = projects.findIndex((p: Project) => p.slug === slug);
@@ -120,7 +130,7 @@ export default async function Page({ params }: Params) {
           </div>
           <nav aria-label={messages.ui.projects.navigation}>
             <a
-              href={`/projects/${prevProject.slug}`}
+              href={localizedPath(`/projects/${prevProject.slug}`, locale)}
               className={`${styles.heroChevron} ${styles.previous}`}
               aria-label={formatMessage(messages.ui.projects.previousLabel, {
                 name: prevProject.projectName,
@@ -137,7 +147,7 @@ export default async function Page({ params }: Params) {
               </span>
             </a>
             <a
-              href={`/projects/${nextProject.slug}`}
+              href={localizedPath(`/projects/${nextProject.slug}`, locale)}
               className={`${styles.heroChevron} ${styles.next}`}
               aria-label={formatMessage(messages.ui.projects.nextLabel, {
                 name: nextProject.projectName,

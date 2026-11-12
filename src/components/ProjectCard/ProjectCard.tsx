@@ -1,5 +1,6 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import { FC } from "react";
 import Image from "next/image";
@@ -15,6 +16,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   imageFit = "cover",
   imagePosition = "center",
 }) => {
+  const { messages } = useLocale();
   const loaded = useImageLoad(imageSource, {
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });

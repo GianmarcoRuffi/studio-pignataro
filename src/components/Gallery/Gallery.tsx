@@ -1,5 +1,7 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import {
   FC,
@@ -29,6 +31,7 @@ const Gallery: FC<GalleryProps> = ({
   prevProject,
   nextProject,
 }) => {
+  const { messages, locale } = useLocale();
   const [visibleImages, setVisibleImages] = useState<number>(
     LOADING.INITIAL_ITEMS
   );
@@ -342,7 +345,7 @@ const Gallery: FC<GalleryProps> = ({
           <div className={styles.navButton}>
             {prevProject && (
               <a
-                href={`/projects/${prevProject.slug}`}
+                href={localizedPath(`/projects/${prevProject.slug}`, locale)}
                 className={styles.navLink}
                 aria-label={formatMessage(messages.ui.projects.previousLabel, {
                   name: prevProject.projectName,
@@ -364,7 +367,7 @@ const Gallery: FC<GalleryProps> = ({
           <div className={styles.navButton}>
             {nextProject && (
               <a
-                href={`/projects/${nextProject.slug}`}
+                href={localizedPath(`/projects/${nextProject.slug}`, locale)}
                 className={`${styles.navLink} ${styles.navLinkNext}`}
                 aria-label={formatMessage(messages.ui.projects.nextLabel, {
                   name: nextProject.projectName,

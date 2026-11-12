@@ -1,12 +1,14 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { privacyPolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
-import { privacyPolicyData, privacyContactEmail } from "./data";
+import { getPrivacyPolicyData, privacyContactEmail } from "./data";
 import styles from "./privacy.module.scss";
 
 export default function PrivacyPolicy() {
+  const { messages } = useLocale();
+  const privacyPolicyData = getPrivacyPolicyData(messages);
   return (
     <PolicyLayout
       lastUpdated={privacyPolicyUpdatedAt}

@@ -1,17 +1,20 @@
 "use client";
-import { messages } from "../../locales";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import Script from "next/script";
 import { BRANDING_LOGO_URL, SITE_URL } from "../../constants";
 
 const StructuredData = () => {
+  const { locale, messages } = useLocale();
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: messages.ui.common.brand,
     alternateName: messages.ui.common.shortBrand,
     description: messages.ui.structuredData.description,
-    url: SITE_URL,
+    url: `${SITE_URL}${localizedPath("/", locale)}`,
+    inLanguage: locale,
     logo: BRANDING_LOGO_URL,
     image: BRANDING_LOGO_URL,
     address: {

@@ -1,12 +1,15 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { cookiePolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
-import { cookiePolicyData, cookieDisclaimerNote } from "./data";
+import { getCookiePolicyData, getCookieDisclaimerNote } from "./data";
 import styles from "./cookie.module.scss";
 
 export default function CookiePolicy() {
+  const { messages } = useLocale();
+  const cookiePolicyData = getCookiePolicyData(messages);
+  const cookieDisclaimerNote = getCookieDisclaimerNote(messages);
   return (
     <PolicyLayout
       lastUpdated={cookiePolicyUpdatedAt}

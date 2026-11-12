@@ -1,5 +1,6 @@
 "use client";
-import { messages } from "../../locales";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +13,7 @@ import { CONSENT_OPEN_EVENT, saveConsent } from "../../utils/consent";
 import styles from "./CookieConsent.module.scss";
 
 const CookieConsent: FC = () => {
+  const { messages, locale } = useLocale();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { isSplashComplete } = useSplash();
@@ -105,7 +107,7 @@ const CookieConsent: FC = () => {
 
           <div className={styles.cookieLinks}>
             <a
-              href={LEGAL_PATHS.privacyPolicy}
+              href={localizedPath(LEGAL_PATHS.privacyPolicy, locale)}
               className={styles.policyLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -113,7 +115,7 @@ const CookieConsent: FC = () => {
               {messages.ui.common.privacy}
             </a>
             <a
-              href={LEGAL_PATHS.cookiePolicy}
+              href={localizedPath(LEGAL_PATHS.cookiePolicy, locale)}
               className={styles.policyLink}
               target="_blank"
               rel="noopener noreferrer"

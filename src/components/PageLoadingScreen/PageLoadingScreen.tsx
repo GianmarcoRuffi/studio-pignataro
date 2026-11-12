@@ -1,5 +1,5 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useEffect, useState } from "react";
 import {
@@ -16,6 +16,7 @@ interface PageLoadingScreenProps {
 const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
   onLoadingComplete,
 }) => {
+  const { messages } = useLocale();
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
   const [isLogoLoaded, setIsLogoLoaded] = useState(false);

@@ -1,4 +1,6 @@
 "use client";
+import { stripLocale, localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC } from "react";
 import Link from "next/link";
@@ -6,11 +8,11 @@ import { usePathname } from "next/navigation";
 import { openConsentPreferences } from "../../utils/consent";
 import styles from "./footer.module.scss";
 import { LEGAL_PATHS } from "../../constants";
-import { messages } from "../../locales";
 
 const Footer: FC = () => {
+  const { messages, locale } = useLocale();
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
+  const isHomepage = stripLocale(pathname) === "/";
 
   return (
     <footer
@@ -26,13 +28,16 @@ const Footer: FC = () => {
 
           <div className={styles.policyLinks}>
             <Link
-              href={LEGAL_PATHS.privacyPolicy}
+              href={localizedPath(LEGAL_PATHS.privacyPolicy, locale)}
               className={styles.policyLink}
             >
               {messages.footer.privacy}
             </Link>
             <span className={styles.separator}>•</span>
-            <Link href={LEGAL_PATHS.cookiePolicy} className={styles.policyLink}>
+            <Link
+              href={localizedPath(LEGAL_PATHS.cookiePolicy, locale)}
+              className={styles.policyLink}
+            >
               {messages.footer.cookies}
             </Link>
           </div>

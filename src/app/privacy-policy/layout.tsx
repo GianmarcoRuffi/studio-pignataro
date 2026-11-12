@@ -1,12 +1,16 @@
-import { messages } from "../../locales";
+import { getServerMessages } from "../../locales/server";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
-export const metadata: Metadata = generatePageMetadata({
-  path: "/privacy-policy",
-  title: messages.ui.common.privacy,
-  description: messages.ui.metadata.privacyDescription,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return generatePageMetadata({
+    locale,
+    path: "/privacy-policy",
+    title: messages.ui.common.privacy,
+    description: messages.ui.metadata.privacyDescription,
+  });
+}
 
 export default function PrivacyPolicyLayout({
   children,

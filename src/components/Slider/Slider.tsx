@@ -1,5 +1,6 @@
 "use client";
-import { messages } from "../../locales";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +13,7 @@ import styles from "./slider.module.scss";
 import { SliderProps } from "../../models/models";
 
 const Slider: FC<SliderProps> = ({ projects }) => {
+  const { messages, locale } = useLocale();
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -147,7 +149,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
               aria-hidden={projectIndex !== activeIndex}
               inert={projectIndex !== activeIndex}
             >
-              <Link href={`/projects/${project.slug}`}>
+              <Link href={localizedPath(`/projects/${project.slug}`, locale)}>
                 <div
                   className={`${styles.imageWrapper} ${
                     isContain ? styles.withBackdrop : ""
@@ -195,7 +197,12 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       </div>
 
       <div className={styles.slideCaption}>
-        <Link href={`/projects/${projects[activeIndex].slug}`}>
+        <Link
+          href={localizedPath(
+            `/projects/${projects[activeIndex].slug}`,
+            locale
+          )}
+        >
           <span className={styles.captionTitle}>
             {projects[activeIndex].projectName}{" "}
             <span aria-hidden="true">↗</span>

@@ -1,14 +1,16 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
-import { bioData } from "./data";
+import { getBioData } from "./data";
 import { Link as BioLink } from "../../models/models";
 
 export default function Bio() {
+  const { messages, locale } = useLocale();
+  const bioData = getBioData(messages);
   const isImageLoaded = useImageLoad(bioData.image);
 
   const renderProjectLinks = (links: BioLink[] | undefined) => {
@@ -56,7 +58,7 @@ export default function Bio() {
             <div className={styles.profileIntro}>
               {bioData.intro
                 .split(
-                  /(?=La pratica professionale|Nel campo della progettazione)/
+                  /(?=La pratica professionale|Nel campo della progettazione|Over 30 years of professional practice|In architectural design)/
                 )
                 .map((paragraph) => (
                   <p key={paragraph.slice(0, 30)}>{paragraph.trim()}</p>
@@ -80,10 +82,18 @@ export default function Bio() {
               >
                 <div className={styles.experienceHeader}>
                   <p className={styles.experienceDate}>
-                    {experience.title.split(", da ")[1]}
+                    {
+                      experience.title.split(
+                        locale === "en" ? ", " : ", da "
+                      )[1]
+                    }
                   </p>
                   <h3 className={styles.experienceTitle}>
-                    {experience.title.split(", da ")[0]}
+                    {
+                      experience.title.split(
+                        locale === "en" ? ", " : ", da "
+                      )[0]
+                    }
                   </h3>
                   <h4 className={styles.experienceRole}>{experience.role}</h4>
                 </div>

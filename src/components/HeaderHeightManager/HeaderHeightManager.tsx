@@ -1,4 +1,5 @@
 "use client";
+import { stripLocale } from "../../locales";
 
 import { FC } from "react";
 import { usePathname } from "next/navigation";
@@ -8,7 +9,7 @@ import { HeaderHeightManagerProps } from "../../models/models";
 
 const HeaderHeightManager: FC<HeaderHeightManagerProps> = ({ children }) => {
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
+  const isHomepage = stripLocale(pathname) === "/";
 
   return (
     <>

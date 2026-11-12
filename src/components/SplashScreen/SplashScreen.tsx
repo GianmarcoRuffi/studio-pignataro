@@ -1,5 +1,5 @@
 "use client";
-import { messages } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
@@ -20,6 +20,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
   onComplete,
   minDisplayTime = UI_TIMINGS.splash.defaultMinDisplay,
 }) => {
+  const { messages } = useLocale();
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {

@@ -1,128 +1,338 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://archpignataro.it/</loc>
-    <lastmod>2026-06-01T10:43:15.111Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/bio</loc>
-    <lastmod>2026-11-10T10:40:57.850Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/bio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/bio" />
+    <lastmod>2026-11-12T16:59:07.230Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/bio</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/bio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/bio" />
+    <lastmod>2026-11-12T16:59:07.230Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/contacts</loc>
-    <lastmod>2026-11-10T10:40:57.917Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/contacts" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/contacts</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/contacts" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/cookie-policy</loc>
-    <lastmod>2026-10-23T08:01:54.930Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/cookie-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/cookie-policy" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/cookie-policy</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/cookie-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/cookie-policy" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/presses</loc>
-    <lastmod>2026-11-10T10:40:57.879Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/presses" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/presses" />
+    <lastmod>2026-11-12T16:58:47.774Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/presses</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/presses" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/presses" />
+    <lastmod>2026-11-12T16:58:47.774Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/privacy-policy</loc>
-    <lastmod>2026-10-23T08:01:54.931Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/privacy-policy" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/privacy-policy" />
+    <lastmod>2026-11-12T16:58:32.990Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects</loc>
-    <lastmod>2026-11-10T10:40:57.687Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects" />
+    <lastmod>2026-11-12T16:58:47.760Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects" />
+    <lastmod>2026-11-12T16:58:47.760Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Quartiere-Vanchiglia</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Quartiere-Vanchiglia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Quartiere-Vanchiglia" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Quartiere-Vanchiglia</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Quartiere-Vanchiglia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Quartiere-Vanchiglia" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Venturoli</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Venturoli" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Venturoli" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Venturoli</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Venturoli" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Venturoli" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Corso-Vittorio-Emanuele-II</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Corso-Vittorio-Emanuele-II" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Corso-Vittorio-Emanuele-II" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Corso-Vittorio-Emanuele-II</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Corso-Vittorio-Emanuele-II" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Corso-Vittorio-Emanuele-II" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Asti</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Asti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Asti" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Asti</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Asti" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Asti" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Ada-Negri</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Ada-Negri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Ada-Negri" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Ada-Negri</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Ada-Negri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Ada-Negri" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Machiavelli</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Machiavelli" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Machiavelli" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Machiavelli</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Machiavelli" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Machiavelli" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Vico-V-Via-San-Giovanni</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Vico-V-Via-San-Giovanni" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Vico-V-Via-San-Giovanni" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Vico-V-Via-San-Giovanni</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Vico-V-Via-San-Giovanni" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Vico-V-Via-San-Giovanni" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Agenzia-Immobiliare-AMS</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Agenzia-Immobiliare-AMS" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Agenzia-Immobiliare-AMS" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Agenzia-Immobiliare-AMS</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Agenzia-Immobiliare-AMS" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Agenzia-Immobiliare-AMS" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Canonico-Sanna</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Canonico-Sanna" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Canonico-Sanna" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Canonico-Sanna</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Canonico-Sanna" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Canonico-Sanna" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Viale-Regina-Margherita</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Viale-Regina-Margherita" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Viale-Regina-Margherita" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Viale-Regina-Margherita</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Viale-Regina-Margherita" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Viale-Regina-Margherita" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Vittorio-Amedeo-II</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Vittorio-Amedeo-II" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Vittorio-Amedeo-II" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Vittorio-Amedeo-II</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Vittorio-Amedeo-II" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Vittorio-Amedeo-II" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/TangexCorp</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/TangexCorp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/TangexCorp" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/TangexCorp</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/TangexCorp" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/TangexCorp" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Via-Eroi-d-Italia</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Eroi-d-Italia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Eroi-d-Italia" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Via-Eroi-d-Italia</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Via-Eroi-d-Italia" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Via-Eroi-d-Italia" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://archpignataro.it/projects/Glisbo</loc>
-    <lastmod>2026-10-23T08:01:54.934Z</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Glisbo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Glisbo" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://archpignataro.it/en/projects/Glisbo</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://archpignataro.it/projects/Glisbo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://archpignataro.it/en/projects/Glisbo" />
+    <lastmod>2026-11-12T16:57:31.392Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.65</priority>
   </url>

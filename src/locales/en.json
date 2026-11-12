@@ -8,7 +8,8 @@
     "logoAlt": "Studio Architetto Pignataro logo",
     "toggleMenu": "Toggle menu",
     "menu": "Navigation menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "switchLanguage": "Versione Italiana"
   },
   "footer": {
     "copyright": "Gianluca Pignataro",

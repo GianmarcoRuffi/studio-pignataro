@@ -1,5 +1,6 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
@@ -10,6 +11,7 @@ import styles from "./contacts.module.scss";
 import { contactsData } from "./data";
 
 export default function Contacts() {
+  const { messages } = useLocale();
   const isImageLoaded = useImageLoad(contactsData.image);
 
   return (

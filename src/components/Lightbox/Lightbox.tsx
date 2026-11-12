@@ -1,5 +1,6 @@
 "use client";
-import { messages, formatMessage } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import {
   FC,
@@ -40,6 +41,7 @@ const Lightbox: FC<LightboxProps> = ({
   onClose,
   isOpen,
 }) => {
+  const { messages } = useLocale();
   const dialogRef = useRef<HTMLDivElement>(null);
   useModalAccessibility(isOpen, dialogRef, onClose);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
