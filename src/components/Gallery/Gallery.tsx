@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import Link from "next/link";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import MasonryGallery from "../MasonryGallery/MasonryGallery";
 import styles from "./gallery.module.scss";
@@ -291,20 +290,6 @@ const Gallery: FC<GalleryProps> = ({
 
   return (
     <div>
-      <div className={styles.breadcrumbContainer}>
-        <div className={styles.breadcrumbPath}>
-          <Link href="/" className={styles.breadcrumbItem}>
-            Home
-          </Link>
-          <span className={styles.breadcrumbSeparator}>›</span>
-          <Link href="/projects" className={styles.breadcrumbItem}>
-            Progetti
-          </Link>
-          <span className={styles.breadcrumbSeparator}>›</span>
-          <span className={styles.breadcrumbCurrent}>{galleryTitle}</span>
-        </div>
-      </div>
-
       <div className={styles.galleryContainer}>
         <div className={styles.projectHeader}>
           <div className={styles.projectHeaderContent}>

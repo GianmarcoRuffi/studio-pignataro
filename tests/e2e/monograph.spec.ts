@@ -174,12 +174,37 @@ for (const width of [1440, 390]) {
     );
     await expect(next).toBeInViewport();
     await expect(next).toHaveAttribute("href", `/projects/${projects[1].slug}`);
+    await expect(page.locator("[class*='breadcrumb']")).toHaveCount(0);
+    await expect(
+      previous.getByText("Precedente", { exact: true })
+    ).toBeVisible();
+    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
+    const previousName = previous.getByText(projects.at(-1)!.projectName, {
+      exact: true,
+    });
+    const nextName = next.getByText(projects[1].projectName, { exact: true });
+    await expect(previousName).toBeHidden();
+    await expect(nextName).toBeHidden();
+    await previous.hover();
+    await expect(previousName).toBeVisible();
+    await expect(nextName).toBeHidden();
+    await next.hover();
+    await expect(nextName).toBeVisible();
+    await expect(previousName).toBeHidden();
+    await page.mouse.move(0, 0);
+    await previous.focus();
+    await page.keyboard.press("Tab");
+    await expect(next).toBeFocused();
+    await expect(nextName).toBeVisible();
     const heroBox = await hero.boundingBox();
     const headingBox = await page
       .getByRole("heading", { level: 1 })
       .boundingBox();
     const mainBox = await page.locator("main.layout-content").boundingBox();
     expect(heroBox!.y + heroBox!.height).toBeLessThanOrEqual(headingBox!.y);
+    expect(headingBox!.y - heroBox!.y - heroBox!.height).toBeLessThanOrEqual(
+      41
+    );
     expect(Math.abs(heroBox!.x - mainBox!.x)).toBeLessThan(2);
     expect(Math.abs(heroBox!.width - mainBox!.width)).toBeLessThan(20);
     expect(

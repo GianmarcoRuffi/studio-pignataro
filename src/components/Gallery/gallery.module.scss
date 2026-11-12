@@ -1,30 +1,9 @@
-.breadcrumbContainer,
 .galleryContainer,
 .projectNavigation {
   max-width: var(--page-width);
   margin: 0 auto;
   padding-left: var(--page-gutter);
   padding-right: var(--page-gutter);
-}
-.breadcrumbContainer {
-  padding-top: 2rem;
-}
-.breadcrumbPath {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  font-size: 0.7rem;
-  line-height: 1.6;
-}
-.breadcrumbItem {
-  text-decoration: none;
-}
-.breadcrumbItem:hover {
-  text-decoration: underline;
-}
-.breadcrumbSeparator,
-.breadcrumbCurrent {
-  color: var(--color-text-tertiary);
 }
 .projectHeader {
   padding: 2.5rem 0;
@@ -129,11 +108,5 @@
   }
   .navLink {
     gap: 0.5rem;
-  }
-  .breadcrumbCurrent {
-    display: none;
-  }
-  .breadcrumbSeparator:last-of-type {
-    display: none;
   }
 }

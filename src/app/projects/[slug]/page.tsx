@@ -116,6 +116,12 @@ export default async function Page({ params }: Params) {
               aria-label={`Progetto precedente: ${prevProject.projectName}`}
             >
               <FontAwesomeIcon icon={faAngleLeft} aria-hidden="true" />
+              <span className={styles.heroCaption} aria-hidden="true">
+                <span className={styles.heroDirection}>Precedente</span>
+                <span className={styles.heroProjectName}>
+                  {prevProject.projectName}
+                </span>
+              </span>
             </a>
             <a
               href={`/projects/${nextProject.slug}`}
@@ -123,6 +129,12 @@ export default async function Page({ params }: Params) {
               aria-label={`Progetto successivo: ${nextProject.projectName}`}
             >
               <FontAwesomeIcon icon={faAngleRight} aria-hidden="true" />
+              <span className={styles.heroCaption} aria-hidden="true">
+                <span className={styles.heroDirection}>Successivo</span>
+                <span className={styles.heroProjectName}>
+                  {nextProject.projectName}
+                </span>
+              </span>
             </a>
           </nav>
         </figure>

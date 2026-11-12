@@ -55,6 +55,47 @@
   right: var(--page-gutter);
 }
 
+.heroCaption {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  width: min(27rem, calc(50vw - var(--page-gutter) - 1rem));
+  display: grid;
+  gap: 0.5rem;
+  pointer-events: none;
+  text-shadow:
+    0 1px 6px #000,
+    0 1px 18px #000;
+}
+
+.next .heroCaption {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+.heroDirection {
+  font-size: 0.65rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.heroProjectName {
+  font: 400 clamp(1.1rem, 2vw, 1.8rem)/1.15 var(--font-editorial);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+}
+
+.heroChevron:hover .heroProjectName,
+.heroChevron:focus-visible .heroProjectName {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media (max-width: 768px) {
   .heroChevron {
     width: 44px;
