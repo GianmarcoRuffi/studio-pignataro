@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { FC, useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -87,26 +88,19 @@ const CookieConsent: FC = () => {
             type="button"
             className={styles.closeButton}
             onClick={handleDecline}
-            aria-label="Chiudi e usa solo necessari"
+            aria-label={messages.ui.consent.close}
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <h3 id="cookie-consent-title" className={styles.cookieTitle}>
-            Utilizzo dei Cookie
+            {messages.ui.consent.title}
           </h3>
         </div>
 
         <div className={styles.cookieContent}>
-          <p className={styles.cookieText}>
-            Il sito memorizza le preferenze di navigazione sul tuo dispositivo.
-            La mappa Google Maps è un servizio esterno facoltativo e viene
-            caricata solo se la autorizzi.
-          </p>
+          <p className={styles.cookieText}>{messages.ui.consent.intro}</p>
           <p className={styles.cookieSubtext}>
-            Puoi rifiutare i servizi facoltativi e continuare a visitare il
-            sito. La scelta vale per un anno; puoi cambiarla in qualsiasi
-            momento tramite «Preferenze cookie» nel footer. La navigazione non
-            esprime consenso.
+            {messages.ui.consent.description}
           </p>
 
           <div className={styles.cookieLinks}>
@@ -116,7 +110,7 @@ const CookieConsent: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Privacy Policy
+              {messages.ui.common.privacy}
             </a>
             <a
               href={LEGAL_PATHS.cookiePolicy}
@@ -124,7 +118,7 @@ const CookieConsent: FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Cookie Policy
+              {messages.ui.common.cookies}
             </a>
           </div>
         </div>
@@ -134,17 +128,17 @@ const CookieConsent: FC = () => {
             type="button"
             className={styles.declineButton}
             onClick={handleDecline}
-            aria-label="Solo necessari"
+            aria-label={messages.ui.consent.necessary}
           >
-            Solo necessari
+            {messages.ui.consent.necessary}
           </button>
           <button
             type="button"
             className={styles.acceptButton}
             onClick={handleAccept}
-            aria-label="Accetta servizi facoltativi"
+            aria-label={messages.ui.consent.accept}
           >
-            Accetta servizi facoltativi
+            {messages.ui.consent.accept}
           </button>
         </div>
       </div>

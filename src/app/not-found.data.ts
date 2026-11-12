@@ -1,5 +1,6 @@
+import { messages } from "../locales";
 export const notFoundContent = {
-  title: "Siamo spiacenti, la pagina che hai cercato non esiste.",
-  ctaLabel: "Clicca qui per tornare alla home",
+  title: messages["editorial"]["notFound"]["title"],
+  ctaLabel: messages["editorial"]["notFound"]["ctaLabel"],
   ctaHref: "/",
 } as const;

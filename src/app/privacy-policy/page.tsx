@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { privacyPolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
@@ -9,8 +10,8 @@ export default function PrivacyPolicy() {
   return (
     <PolicyLayout
       lastUpdated={privacyPolicyUpdatedAt}
-      title="Privacy Policy"
-      subtitle="Informativa sul trattamento dei dati personali"
+      title={messages.ui.common.privacy}
+      subtitle={messages.ui.policy.privacySubtitle}
     >
       {privacyPolicyData.map((section) => (
         <section key={section.id} className={styles.section}>
@@ -31,7 +32,7 @@ export default function PrivacyPolicy() {
           )}
           {section.id === "diritti" && (
             <p>
-              Per esercitare i propri diritti, contattare:
+              {messages.ui.policy.rightsContact}
               <a href={`mailto:${privacyContactEmail}`}>
                 {privacyContactEmail}
               </a>

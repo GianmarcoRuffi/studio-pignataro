@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
@@ -50,7 +51,7 @@ export default function Bio() {
             />
           </div>
           <div className={styles.profileInfo}>
-            <p className={styles.eyebrow}>Lo studio · Cagliari</p>
+            <p className={styles.eyebrow}>{messages.ui.bio.eyebrow}</p>
             <h1 className={styles.profileName}>{bioData.name}</h1>
             <div className={styles.profileIntro}>
               {bioData.intro

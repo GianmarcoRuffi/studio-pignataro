@@ -1,0 +1,529 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "presses": "Publications",
+    "bio": "About",
+    "contacts": "Contact",
+    "logoAlt": "Studio Architetto Pignataro logo",
+    "toggleMenu": "Toggle menu",
+    "menu": "Navigation menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "copyright": "Gianluca Pignataro",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "preferences": "Cookie preferences"
+  },
+  "metadata": {
+    "title": "Studio Architetto Gianluca Pignataro",
+    "template": "%s | Studio Architetto Gianluca Pignataro",
+    "description": "Architecture studio in Cagliari with thirty years of experience in architecture, interior design and the renovation of historic buildings.",
+    "keywords": "architect, cagliari, studio, design, interiors, renovation, historic buildings",
+    "author": "Architect Gianluca Pignataro",
+    "publisher": "Architetto Pignataro",
+    "logoAlt": "Studio Architetto Gianluca Pignataro - Logo"
+  },
+  "ui": {
+    "common": {
+      "projects": "Projects",
+      "presses": "Publications",
+      "contacts": "Contact",
+      "bio": "About",
+      "previous": "Previous",
+      "next": "Next",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "logo": "Logo",
+      "brand": "Studio Architetto Gianluca Pignataro",
+      "shortBrand": "Architetto Pignataro",
+      "city": "Cagliari",
+      "founder": "Gianluca Pignataro",
+      "architect": "Architect"
+    },
+    "bio": {
+      "eyebrow": "The studio professionals · Cagliari"
+    },
+    "contacts": {
+      "eyebrow": "Studio Gianluca Pignataro · Cagliari",
+      "intro": "To discuss a project, write to me or contact the studio.",
+      "email": "Email",
+      "phone": "Telephone",
+      "mobile": "Mobile",
+      "studio": "Studio",
+      "vat": "VAT number",
+      "imageAlt": "Interior of Studio Pignataro in Cagliari",
+      "follow": "Follow the studio",
+      "linkedin": "LinkedIn ↗",
+      "facebook": "Facebook ↗",
+      "location": "Find us",
+      "mapConsent": "The Google Maps map is loaded only with your consent.",
+      "manageConsent": "Manage cookie preferences",
+      "mapTitle": "Studio Location",
+      "vatNumber": "VAT number {number}"
+    },
+    "policy": {
+      "privacySubtitle": "Information on the processing of personal data",
+      "rightsContact": "To exercise your rights, contact:",
+      "cookieSubtitle": "Information on the use of cookies",
+      "name": "Name",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "type": "Type",
+      "email": "Email:",
+      "phone": "Telephone:",
+      "mobile": "Mobile:",
+      "address": "Address:",
+      "vat": "VAT number:",
+      "updated": "Last updated:"
+    },
+    "notFound": {
+      "metadataTitle": "Page not found"
+    },
+    "structuredData": {
+      "description": "Professional studio in Cagliari with thirty years of experience in architecture, interior design and the renovation of historic buildings.",
+      "service": "Architectural Services"
+    },
+    "lightbox": {
+      "label": "Image viewer",
+      "close": "Close lightbox",
+      "previous": "Previous image",
+      "next": "Next image",
+      "unavailable": "❌ Image unavailable",
+      "retryLabel": "Try loading the image again",
+      "retry": "🔄 Retry",
+      "imageAlt": "Image {index} of {total}",
+      "loading": "Loading image {index} of {total}...",
+      "counter": "{index} of {total}"
+    },
+    "projects": {
+      "intro": "Architecture, interiors and restoration. A selection of work spanning historic buildings and contemporary spaces.",
+      "loading": "Loading projects...",
+      "navigation": "Project navigation",
+      "heroAlt": "View of the project {name}",
+      "previousLabel": "Previous project: {name}",
+      "nextLabel": "Next project: {name}",
+      "metadataKeywords": [
+        "architect",
+        "cagliari",
+        "architecture studio",
+        "interior design",
+        "renovation",
+        "architecture projects"
+      ]
+    },
+    "presses": {
+      "intro": "The studio’s work through books, magazines and articles. A bibliography from 1999 to the present.",
+      "filter": "Filter by year:",
+      "all": "All",
+      "article": "Read the article",
+      "loading": "Loading publications...",
+      "view": "View {description}",
+      "coverAlt": "Cover: {date}"
+    },
+    "gallery": {
+      "empty": "No images are available for this gallery.",
+      "back": "← Back to the project gallery",
+      "viewImage": "View image {index}",
+      "imageAlt": "Project photograph, image {index}"
+    },
+    "projectCard": {
+      "view": "View Project",
+      "alt": "{name} - {description}"
+    },
+    "slider": {
+      "label": "Project slideshow",
+      "previous": "Previous slide",
+      "next": "Next slide",
+      "position": "Slide position"
+    },
+    "scroll": {
+      "top": "Scroll to top"
+    },
+    "consent": {
+      "close": "Close and use necessary services only",
+      "title": "Use of Cookies",
+      "intro": "The site stores your browsing preferences on your device. Google Maps is an optional external service and is loaded only if you authorize it.",
+      "description": "You can refuse optional services and continue browsing the site. Your choice is valid for one year; you can change it at any time through “Cookie preferences” in the footer. Browsing does not constitute consent.",
+      "necessary": "Necessary only",
+      "accept": "Accept optional services"
+    },
+    "metadata": {
+      "bioDescription": "Professional profile of architect Gianluca Pignataro: thirty years of experience in restoration, rehabilitation of historic buildings and architectural design in Cagliari and abroad.",
+      "contactsDescription": "Contact Studio Architetto Gianluca Pignataro in Cagliari. Address, email, telephone and social channels for architectural consultancy enquiries.",
+      "projectsDescription": "A selection of my architecture and interior design projects, from historic building renovations to innovative solutions for contemporary interiors.",
+      "titleTemplate": "%s | Studio Architetto Gianluca Pignataro",
+      "pressesDescription": "Press coverage and publications of architect Gianluca Pignataro’s work in specialist architecture and design magazines.",
+      "privacyDescription": "Information on the processing of personal data by Studio Architetto Gianluca Pignataro.",
+      "cookieDescription": "Information on the use of cookies on the Studio Architetto Gianluca Pignataro website."
+    }
+  },
+  "editorial": {
+    "projects": {
+      "Quartiere-Vanchiglia": {
+        "projectName": "Quartiere Vanchiglia",
+        "description": "Renovation and interior design in the historic centre of Turin.",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Venturoli": {
+        "projectName": "Via Venturoli",
+        "description": "Interior design in Bologna.",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Corso-Vittorio-Emanuele-II": {
+        "projectName": "Corso Vittorio Emanuele II",
+        "description": "Renovation and interior design in the historic centre of Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": "Luigi Corda"
+          }
+        },
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Asti": {
+        "projectName": "Via Asti",
+        "description": "Renovation and interior design in Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": "Luigi Corda"
+          }
+        },
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Ada-Negri": {
+        "projectName": "Via Ada Negri",
+        "description": "Interior design in Cagliari.",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Machiavelli": {
+        "projectName": "Via Machiavelli",
+        "description": "Renovation and interior design in Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": " 'Un appartamento moderno rivoluzionario' on Homify"
+          },
+          "1": {
+            "name": " 'Ristrutturazione di un appartamento' on Tubes Radiatori"
+          }
+        },
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Vico-V-Via-San-Giovanni": {
+        "projectName": "Vico V di Via S. Giovanni",
+        "description": "Renovation and interior design in the historic centre of Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' on Homify"
+          },
+          "1": {
+            "name": " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' on Homify"
+          }
+        },
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Agenzia-Immobiliare-AMS": {
+        "projectName": "Agenzia Immobiliare AMS",
+        "description": "Interior design and construction supervision.\n    Via Cagliari, Capoterra (CA)",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Canonico-Sanna": {
+        "projectName": "Via Canonico Sanna",
+        "description": "Renovation of a residential building in the historic centre of Baunei (OG).",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Viale-Regina-Margherita": {
+        "projectName": "V.le Regina Margherita",
+        "description": "Renovation in the historic Zedda-Piras building in Cagliari.",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "Via-Vittorio-Amedeo-II": {
+        "projectName": "Via Vittorio Amedeo II",
+        "description": "Design and construction supervision of a residential building in Cagliari.",
+        "imgCredits": "Photo © Luigi Corda"
+      },
+      "TangexCorp": {
+        "projectName": "Tangex Corp.",
+        "description": "Design of a villa in Ocean Park, San Juan, Puerto Rico (U.S.A.).",
+        "imgCredits": "Photo © Guanina Santiago de Jesus"
+      },
+      "Via-Eroi-d-Italia": {
+        "projectName": "Via Eroi d'Italia",
+        "description": "Design, interior design and construction supervision of a residential building in Cagliari.",
+        "imgCredits": "Photo © Matteo Piazza"
+      },
+      "Glisbo": {
+        "projectName": "Agenzia pubblicitaria Glisbò",
+        "description": "Modular stand for the \"Regione Autonoma della Sardegna\".",
+        "externalLink": {
+          "0": {
+            "name": "Glisbò"
+          }
+        },
+        "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it "
+      }
+    },
+    "bio": {
+      "name": "Architect Gianluca Pignataro",
+      "intro": "Born in Bologna, where I completed a science-focused secondary education, I graduated in Florence and began my career in Cagliari. At the practice of Professor and Architect Giovanni Maria Campus, I immediately worked on restoration, the rehabilitation of historic buildings and architectural design. Over 30 years of professional practice, numerous commissions have allowed me to specialise in restoring and rehabilitating historic buildings, including the rehabilitation of seven buildings in the historic centre of Baunei (OG) for Stams s.r.l., part of the Cualbu group. In architectural design, I have worked in Italy for clients including Findomestic Banca, construction companies, cooperatives and private individuals. Thanks to my dual Italian and United States citizenship, I have also completed five shops in shopping centres and a villa in Puerto Rico (U.S.A.).",
+      "professionalExperiencesTitle": "Professional experience",
+      "experiences": {
+        "0": {
+          "title": "Studio Dott. Arch. Gianluca Pignataro - Cagliari, January 2004 to present",
+          "role": "Founder – Principal",
+          "description": "Architect designing contemporary residential buildings and rehabilitating buildings in historic centres.",
+          "projects": {
+            "0": "Via Ancona: Renovation and interior design in Cagliari",
+            "1": "Via delle Libellule: Renovation and interior design in Cagliari",
+            "2": "Sole leader of the team of architects and engineers carrying out building and planning compliance checks for properties covered by the Superbonus 110% scheme, for the Regional Coach Manager of “HARLEY & DIKKINSON CONSULTING S.r.l.”, Engineer Giuseppe De Bonis.",
+            "3": "Corso Vittorio Emanuele II: Renovation and interior design in the historic centre of Cagliari",
+            "4": {
+              "description": "Palazzo Asquer: Structural stabilisation and restoration of Roman remains in the basement of the historic Palazzo Asquer, a building protected by the Ministerial Superintendency (SABAP) in the Castello district of Cagliari’s historic centre"
+            },
+            "5": {
+              "description": "Agenzia pubblicitaria Glisbò: Modular stand for the “Regione Autonoma della Sardegna”",
+              "links": {
+                "0": {
+                  "name": "Glisbò"
+                }
+              }
+            },
+            "6": {
+              "description": "Via Asti: Renovation and interior design in Cagliari (published project)",
+              "links": {
+                "0": {
+                  "name": "Luigi Corda"
+                }
+              }
+            },
+            "7": "Property valuation surveyor for the “Banca di Credito Cooperativo di Cagliari”",
+            "8": {
+              "description": "Via Machiavelli: Renovation and interior design in Cagliari (published project)",
+              "links": {
+                "0": {
+                  "name": "Homify"
+                }
+              }
+            },
+            "9": {
+              "description": "Renovation of an apartment (published project)",
+              "links": {
+                "0": {
+                  "name": "Tubes Radiatori"
+                }
+              }
+            },
+            "10": "Nemesis Data s.r.l.: Extension of a residential unit in Porto Cervo, Arzachena (OT)",
+            "11": "Vico V di Via San Giovanni: Renovation and interior design in the Villanova district of Cagliari’s historic centre (published project)",
+            "12": "Via Canonico Sanna: Renovation of a residential building in the historic centre of Baunei (OG)",
+            "13": "V.le Regina Margherita: Renovation and interior design in the historic Zedda-Piras building in Cagliari",
+            "14": "Via Vittorio Amedeo II: Design and construction supervision of a residential building in Cagliari",
+            "15": {
+              "description": "Stams s.r.l. (Cualbu Group): Design and artistic direction for the rehabilitation of seven buildings in the historic centre of Baunei (OG)",
+              "links": {
+                "0": {
+                  "name": "Dommoso"
+                },
+                "1": {
+                  "name": "Ville e Casali"
+                }
+              }
+            },
+            "16": "Tangex Corp.: Design of a villa in Ocean Park, San Juan, Puerto Rico (U.S.A.)"
+          }
+        },
+        "1": {
+          "title": "Archlabo - Pignataro Vandermeulen Architetti - Cagliari, January 1993 to December 2003",
+          "role": "Co-founder",
+          "description": "Lead architect, from concept through construction, for residential, commercial and furniture design projects; member of a team of two architects and one engineer. Responsible for relations with clients and contractors.",
+          "projects": {
+            "0": "Tangex Corp.: Design of five shops in shopping centres in Puerto Rico (U.S.A.)",
+            "1": "Cooperativa edilizia Urbus: Design of a residential building in Cagliari",
+            "2": "Findomestic Banca: Design and construction supervision of customer service branches and regional offices in Cagliari and Sassari",
+            "3": "Discoteca Pandemonium: Design and construction supervision, Quartu S.E. (CA)",
+            "4": "Impresa Sarritzu: Design of a residential hotel for 120 students in Cagliari",
+            "5": "Via Eroi d’Italia: Design, interior design and construction supervision of a residential building in Cagliari",
+            "6": {
+              "description": "Via Canelles: Renovation of an apartment in the Castello district of Cagliari’s historic centre (published project)"
+            }
+          }
+        },
+        "2": {
+          "title": "Studio Prof. Arch. Giovanni Maria Campus – Cagliari, January 1991 to December 1993",
+          "role": "Architectural designer",
+          "description": "Sole designer or collaborating architect, from concept through construction, on the following projects:",
+          "projects": {
+            "0": "Restoration of Palazzo Aresu in Cagliari’s historic centre",
+            "1": "Design of the 'Casa di Riposo per anziani' care home in Arzachena (OT)",
+            "2": "Design of 'Hotel S.Efis' in Nora, Pula (Cagliari)",
+            "3": "Restoration of the church of SS. Annunziata in Cagliari"
+          }
+        }
+      }
+    },
+    "publications": {
+      "monograph": {
+        "description": "“Gianluca Pignataro – 30 anni di inconsuetudine”<br />Monograph edited by Luigi Corda – “Associazione Culturale Timeless”",
+        "date": "December 2023"
+      },
+      "tubesApartment": {
+        "description": "“Ristrutturazione di un appartamento”, article published on the website “TUBES”.",
+        "date": "2022"
+      },
+      "homifyReasons": {
+        "description": "“15 motivi (…)”, article published in the online magazine “HOMIFY”",
+        "date": "February 2021"
+      },
+      "homifyAttics": {
+        "description": "Recupero dei sottotetti (…)”, article published in the online magazine “HOMIFY”",
+        "date": "November 2018"
+      },
+      "homifyApartment": {
+        "description": "“Un appartamento moderno rivoluzionario”, article published in the online magazine “HOMIFY”",
+        "date": "May 2016"
+      },
+      "youtradeGres": {
+        "description": "“Sull’onda del gres”, article published in the magazine “YOUTRADE Casa”",
+        "date": "September 2015"
+      },
+      "youtradeDiagonal": {
+        "description": "“Diamoci un taglio (ma diagonale)”, cover and article published in the magazine “YOUTRADE Casa”",
+        "date": "May 2015"
+      },
+      "bravaCasaHistory": {
+        "description": "“Sulle orme della Storia”, article published in the magazine “Brava Casa”",
+        "date": "March 1999"
+      }
+    },
+    "privacyPolicy": {
+      "titolare": {
+        "title": "1. Data controller",
+        "content": "The controller of personal data is Architect Gianluca Pignataro, based at {studio}, VAT number: {vatNumber}, Email: {email}"
+      },
+      "tipologie": {
+        "title": "2. Types of data collected",
+        "content": "This website collects certain personal data from users. These may include:",
+        "list": {
+          "items": {
+            "0": "<strong>Browsing data:</strong> IP address, browser type, operating system, pages visited",
+            "1": "<strong>Voluntarily provided data:</strong> information sent voluntarily by email or communicated to the practice by telephone",
+            "2": "<strong>Local preferences:</strong> choices concerning optional services and the status of introductory screens, stored in the browser",
+            "3": "<strong>Google Maps:</strong> technical data communicated to Google only when you authorise the map on the Contacts page"
+          }
+        }
+      },
+      "finalita": {
+        "title": "3. Purposes of processing",
+        "content": "Personal data are processed for the following purposes:",
+        "list": {
+          "items": {
+            "0": "Providing requested services",
+            "1": "Responding to contact requests",
+            "2": "Displaying the optional map with prior consent",
+            "3": "Navigation security and operation",
+            "4": "Compliance with legal and tax obligations"
+          }
+        }
+      },
+      "base-giuridica": {
+        "title": "4. Legal basis for processing",
+        "content": "The optional map is activated with the data subject’s consent (Article 6(1)(a) GDPR), which can be withdrawn through “Cookie preferences” in the footer. Requests for consultancy are processed to take pre-contractual steps or perform the requested service (point (b)); statutory obligations are based on point (c). The security and operation of the website serve the legitimate interest in providing it (point (f))."
+      },
+      "conservazione": {
+        "title": "5. Data retention",
+        "content": "Personal data are retained only for as long as strictly necessary to achieve the purposes for which they were collected:",
+        "list": {
+          "items": {
+            "0": "Contact data: for as long as necessary to handle the request and meet any contractual or statutory obligations",
+            "1": "Optional service preferences: valid for 365 days; introductory screen status: browser tab session",
+            "2": "Technical hosting and Google Maps data: according to the retention periods and terms of the respective providers"
+          }
+        }
+      },
+      "fornitori": {
+        "title": "Providers and external links",
+        "content": {
+          "0": "Hosting is provided by Vercel, which receives the technical data needed to respond to browser requests. See <a href=\"{vercelPrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">Vercel’s privacy policy</a> for the processing carried out by the provider.",
+          "1": "Google Maps remains blocked until consent is given. Once activated, <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">Google’s privacy terms</a> also apply, including information about recipients and international transfers. Deactivation removes the map without deleting data already received by Google.",
+          "2": "Links to external websites and social media are opened only when you choose to follow them; the privacy policies of the websites visited apply."
+        }
+      },
+      "diritti": {
+        "title": "6. Rights of the data subject",
+        "content": "The data subject has the right to obtain the following from the controller:",
+        "list": {
+          "items": {
+            "0": "Access to their personal data",
+            "1": "Rectification or erasure of their data",
+            "2": "Restriction of processing",
+            "3": "Data portability",
+            "4": "Objection to processing",
+            "5": "Withdrawal of consent"
+          }
+        }
+      },
+      "reclami": {
+        "title": "7. Complaints",
+        "content": "Data subjects have the right to lodge a complaint with the Italian Data Protection Authority (www.gpdp.it) if they believe that processing concerning them infringes the Regulation."
+      },
+      "modifiche": {
+        "title": "8. Changes to the Privacy Policy",
+        "content": "This Privacy Policy may be amended periodically. Changes will be published on this page, together with the date of the latest update."
+      }
+    },
+    "cookiePolicy": {
+      "cosa-sono": {
+        "title": "1. Cookies and browser storage",
+        "content": "Cookies and local browser storage allow information to be stored on your device. This website uses localStorage to remember your choice about optional services and sessionStorage to manage introductory screens during your visit."
+      },
+      "tipologie": {
+        "title": "2. Tools used by the website",
+        "content": "Navigation preferences are stored on your device. The website does not integrate Google Analytics or marketing tools; fonts and icons are served by the website, without connections to Google Fonts or the FontAwesome CDN."
+      },
+      "terze-parti": {
+        "title": "3. Google Maps",
+        "content": {
+          "0": "The Contacts page can display a map provided by Google Maps. The map remains disabled until you choose “Accept optional services”. Once activated, the browser connects to Google and communicates technical data such as your IP address and device information; Google may use its own cookies and storage tools according to its settings. For details, see <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">Google’s privacy policy</a>."
+        }
+      },
+      "gestione": {
+        "title": "4. Managing preferences",
+        "content": "The “Cookie preferences” button in the footer, also available on mobile, allows you to change your choice at any time. “Necessary only” prevents the map from loading and removes any map that is already open. Withdrawal stops new map connections but does not delete data already received by Google or third-party cookies: these can be removed in your browser settings."
+      },
+      "consenso": {
+        "title": "5. Duration of your choice",
+        "content": "Your choice is recorded with the date and remains valid for 365 days, after which you are asked again. A choice without a valid date is considered expired. Browsing or scrolling the page does not authorise optional services. If your browser prevents storage, your choice applies only during the current visit."
+      },
+      "dettaglio": {
+        "title": "6. Local storage used",
+        "content": "These entries are local browser storage, not cookies sent to the server. You can delete them in your browser settings.",
+        "cookieTable": {
+          "0": {
+            "purpose": "Choice of accepted or declined (localStorage)",
+            "duration": "365 days",
+            "type": "Technical preference"
+          },
+          "1": {
+            "purpose": "Date of choice and expiry check (localStorage)",
+            "duration": "365 days",
+            "type": "Technical preference"
+          },
+          "2": {
+            "purpose": "Avoids repeating introductory screens (sessionStorage)",
+            "duration": "Browser tab session",
+            "type": "Navigation"
+          }
+        }
+      },
+      "contatti": {
+        "title": "7. Contact",
+        "content": "For information about this page, contact the practice:"
+      }
+    },
+    "cookieDisclaimerNote": "<strong>Note:</strong> declining optional services still allows you to view the portfolio and contact details of the practice.",
+    "notFound": {
+      "title": "We are sorry, the page you are looking for does not exist.",
+      "ctaLabel": "Click here to return to the home page"
+    }
+  }
+}

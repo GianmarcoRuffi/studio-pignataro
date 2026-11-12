@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { FC, useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -56,7 +57,7 @@ const ScrollUpButton: FC<ScrollUpButtonProps> = ({
       type="button"
       className={`${styles.scrollUpButton} ${showButton ? styles.visible : ""}`}
       onClick={scrollToTop}
-      aria-label="Scroll to top"
+      aria-label={messages.ui.scroll.top}
     >
       <FontAwesomeIcon icon={faArrowUp} />
     </button>

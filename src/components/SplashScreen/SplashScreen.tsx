@@ -1,4 +1,6 @@
 "use client";
+import { messages } from "../../locales";
+
 import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
 import { FC, useEffect, useState } from "react";
@@ -65,7 +67,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
         <picture>
           <img
             src={BRANDING_LOGO_PATH}
-            alt="Studio Architetto Gianluca Pignataro"
+            alt={messages.ui.common.brand}
             width={BRANDING_LOGO_DIMENSIONS.width}
             height={BRANDING_LOGO_DIMENSIONS.height}
             className={styles.logo}

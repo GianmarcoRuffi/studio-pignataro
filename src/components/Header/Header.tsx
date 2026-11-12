@@ -1,5 +1,12 @@
 "use client";
-import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  FC,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,13 +15,14 @@ import { BRANDING_LOGO_DIMENSIONS, BRANDING_LOGO_PATH } from "../../constants";
 import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import styles from "./header.module.scss";
+import { messages } from "../../locales";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Progetti" },
-  { href: "/presses", label: "Pubblicazioni" },
-  { href: "/bio", label: "Chi sono" },
-  { href: "/contacts", label: "Contatti" },
+  { href: "/", label: messages.navigation.home },
+  { href: "/projects", label: messages.navigation.projects },
+  { href: "/presses", label: messages.navigation.presses },
+  { href: "/bio", label: messages.navigation.bio },
+  { href: "/contacts", label: messages.navigation.contacts },
 ] as const;
 
 const Header: FC = () => {
@@ -25,17 +33,19 @@ const Header: FC = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
   useModalAccessibility(menuOpen, menuRef, () => setMenuOpen(false));
-  const updateScrolledState = () => {
-    const threshold = 50;
-    setScrolled(getScrollTop() > threshold);
-  };
+  const updateScrolledState = useCallback(() => {
+    const top = getScrollTop();
+    setScrolled(
+      (wasScrolled) => !isHomepage && (wasScrolled ? top >= 24 : top > 64)
+    );
+  }, [isHomepage]);
 
   useEffect(() => {
     updateScrolledState();
     const target = getScrollEventTarget();
     target?.addEventListener("scroll", updateScrolledState);
     return () => target?.removeEventListener("scroll", updateScrolledState);
-  }, [pathname]);
+  }, [pathname, updateScrolledState]);
 
   useLayoutEffect(() => {
     setMenuOpen(false);
@@ -43,7 +53,16 @@ const Header: FC = () => {
 
     const frameId = window.requestAnimationFrame(updateScrolledState);
     return () => window.cancelAnimationFrame(frameId);
-  }, [pathname]);
+  }, [pathname, updateScrolledState]);
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.headerCompact = String(
+      scrolled && !isHomepage
+    );
+    return () => {
+      delete document.documentElement.dataset.headerCompact;
+    };
+  }, [scrolled, isHomepage]);
 
   const handleNavigationStart = () => {
     setMenuOpen(false);
@@ -61,7 +80,7 @@ const Header: FC = () => {
             <picture className={styles.logoImageFrame}>
               <img
                 src={BRANDING_LOGO_PATH}
-                alt="Logo Studio Architetto Pignataro"
+                alt={messages.navigation.logoAlt}
                 width={BRANDING_LOGO_DIMENSIONS.width}
                 height={BRANDING_LOGO_DIMENSIONS.height}
                 className={styles.logoImage}
@@ -96,7 +115,7 @@ const Header: FC = () => {
           ref={menuIconRef}
           className={`${styles.menuIcon} ${menuOpen ? styles.open : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={messages.navigation.toggleMenu}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
         >
@@ -112,7 +131,7 @@ const Header: FC = () => {
           ref={menuRef}
           role="dialog"
           aria-modal={menuOpen ? true : undefined}
-          aria-label="Menu di navigazione"
+          aria-label={messages.navigation.menu}
           aria-hidden={!menuOpen}
           inert={!menuOpen}
           tabIndex={-1}
@@ -123,7 +142,7 @@ const Header: FC = () => {
             type="button"
             className={styles.closeButton}
             onClick={() => setMenuOpen(false)}
-            aria-label="Chiudi menu"
+            aria-label={messages.navigation.closeMenu}
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>

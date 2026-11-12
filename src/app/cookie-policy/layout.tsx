@@ -1,11 +1,11 @@
+import { messages } from "../../locales";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
 export const metadata: Metadata = generatePageMetadata({
   path: "/cookie-policy",
-  title: "Cookie Policy",
-  description:
-    "Informativa sull'utilizzo dei cookie nel sito dello Studio Architetto Gianluca Pignataro.",
+  title: messages.ui.common.cookies,
+  description: messages.ui.metadata.cookieDescription,
 });
 
 export default function CookiePolicyLayout({

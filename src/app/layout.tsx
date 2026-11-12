@@ -15,6 +15,8 @@ import { SplashProvider } from "../context/SplashContext";
 import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
 import { BRANDING_LOGO_URL, SITE_URL } from "../constants";
 
+import { messages } from "../locales";
+
 config.autoAddCss = false;
 
 const myFont = localFont({
@@ -32,17 +34,15 @@ const editorialFont = localFont({
 
 export const metadata = {
   title: {
-    default: "Studio Architetto Gianluca Pignataro",
-    template: "%s | Studio Architetto Gianluca Pignataro",
+    default: messages.metadata.title,
+    template: messages.metadata.template,
   },
-  description:
-    "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+  description: messages.metadata.description,
   metadataBase: new URL(SITE_URL),
-  keywords:
-    "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
-  authors: [{ name: "Architetto Gianluca Pignataro" }],
-  creator: "Architetto Gianluca Pignataro",
-  publisher: "Architetto Pignataro",
+  keywords: messages.metadata.keywords,
+  authors: [{ name: messages.metadata.author }],
+  creator: messages.metadata.author,
+  publisher: messages.metadata.publisher,
   alternates: {
     canonical: SITE_URL,
   },
@@ -59,26 +59,24 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Studio Architetto Gianluca Pignataro",
-    description:
-      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+    title: messages.metadata.title,
+    description: messages.metadata.description,
     locale: "it_IT",
-    siteName: "Architetto Pignataro",
+    siteName: messages.metadata.publisher,
     url: SITE_URL,
     images: [
       {
         url: BRANDING_LOGO_URL,
         width: 1200,
         height: 630,
-        alt: "Studio Architetto Gianluca Pignataro - Logo",
+        alt: messages.metadata.logoAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Architetto Gianluca Pignataro",
-    description:
-      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+    title: messages.metadata.title,
+    description: messages.metadata.description,
     images: [BRANDING_LOGO_URL],
   },
   verification: {

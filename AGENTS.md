@@ -10,13 +10,13 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
 - Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`, Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. L'elenco progetti usa due colonne uguali allineate, una sotto 769 px, copertine 3:2 e didascalie con filetto inferiore. Le gallerie mantengono righe giustificate, gap di 16 px e blocchi indipendenti di sei immagini; ogni foto dei dettagli, apertura compresa, ha una cornice grigia interna di 1 px con il token `--color-photo-border`, senza modificare la geometria. La prima foto di ogni galleria corrisponde alla copertina del carosello, senza duplicati nella sequenza. Ogni dettaglio apre con questa stessa foto a tutta larghezza, non cliccabile, con due chevron sovrapposti che seguono la navigazione ciclica precedente/successivo in fondo alla pagina, con etichette e nomi sotto le frecce, entrambi visibili solo su hover o focus da tastiera. Il dettaglio non mostra breadcrumb né il relativo spazio; la sequenza sottostante conserva tutte le foto, inclusa la prima, con lightbox. La foto di apertura usa un’altezza responsive proporzionata alla larghezza, rispetta `imageFit` e `imagePosition` del progetto e, con `contain`, riempie lo sfondo con la stessa immagine sfocata e scurita del carosello. Il ritratto della biografia mantiene il punto focale a sinistra; tutte le pubblicazioni, monografia compresa, usano colonne 32/68 e riquadri 16:9 con immagini intere centrate.
-- I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
+- Tutti i testi UI, editoriali, accessibili e SEO sono centralizzati in `src/locales/it.json` ed `en.json`, con stessa struttura e segnaposto nominati. `src/locales/index.ts` espone il dizionario italiano tipizzato e `formatMessage`; l’inglese è tradotto ma non caricato nel sito, senza selettore o rotte lingua. I moduli `data.ts` restano adattatori; URL, percorsi, identificatori e date editoriali restano tecnici. I contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
 - `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
-Il layout radice coordina splash, header, footer e consenso cookie. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
+Il layout radice coordina splash, header, footer e consenso cookie. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
 
 Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale; conserva le durate minime definite in `LOADING`. `OptionalScripts` abilita i figli solo con consenso `accepted`, usando `cookie-consent` e l'evento `cookie-consent-change`.
 
@@ -46,7 +46,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: in homepage omette indirizzo, telefoni, email e partita IVA; nelle pagine interne mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Su desktop mostra copyright a sinistra e informative/preferenze a destra; sotto 769 px nasconde le informative e centra copyright e «Preferenze cookie». I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-12: etichette e nomi della navigazione iniziale visibili solo su hover o focus; migliorate le proporzioni responsive delle foto di apertura e aggiunto ai progetti con immagini intere lo sfondo sfocato del carosello.
+2026-11-12: footer essenziale su tutte le pagine, header compatto durante lo scroll e centralizzazione dei testi italiani e delle traduzioni inglesi nei dizionari locali; sito ancora italiano, senza nuove dipendenze o rotte lingua.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

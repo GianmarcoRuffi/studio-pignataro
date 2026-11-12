@@ -1,3 +1,4 @@
+import { messages } from "../locales";
 import { Project } from "../models/models";
 import {
   generateImagePaths,
@@ -20,30 +21,52 @@ const linkNames: Record<string, string> = {
 
 const projects: Project[] = [
   {
-    projectName: "Quartiere Vanchiglia",
+    projectName:
+      messages["editorial"]["projects"]["Quartiere-Vanchiglia"]["projectName"],
     imgSrc: "/projects/quartiere-vanchiglia/cover.webp",
-    description: `Ristrutturazione con Interior design nel centro storico di Torino.`,
+    description:
+      messages["editorial"]["projects"]["Quartiere-Vanchiglia"]["description"],
     slug: "Quartiere-Vanchiglia",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Quartiere-Vanchiglia"]["imgCredits"],
     images: generateVanchigliaPaths(23),
   },
 
   {
-    projectName: "Via Venturoli",
+    projectName:
+      messages["editorial"]["projects"]["Via-Venturoli"]["projectName"],
     imgSrc: "/projects/via-venturoli/cover.webp",
-    description: `Progettazione di Interior design a Bologna.`,
+    description:
+      messages["editorial"]["projects"]["Via-Venturoli"]["description"],
     slug: "Via-Venturoli",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Venturoli"]["imgCredits"],
     images: generateImagePaths("projects/via-venturoli/gallery", 15),
   },
 
   {
-    projectName: "Corso Vittorio Emanuele II",
+    projectName:
+      messages["editorial"]["projects"]["Corso-Vittorio-Emanuele-II"][
+        "projectName"
+      ],
     imgSrc: "/projects/corso-vittorio-emanuele-ii/cover.webp",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
-    externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
+    description:
+      messages["editorial"]["projects"]["Corso-Vittorio-Emanuele-II"][
+        "description"
+      ],
+    externalLink: [
+      {
+        name: messages["editorial"]["projects"]["Corso-Vittorio-Emanuele-II"][
+          "externalLink"
+        ]["0"]["name"],
+        url: linkNames["Luigi Corda"],
+      },
+    ],
     slug: "Corso-Vittorio-Emanuele-II",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Corso-Vittorio-Emanuele-II"][
+        "imgCredits"
+      ],
     images: generateImagePaths(
       "projects/corso-vittorio-emanuele-ii/gallery",
       14
@@ -51,12 +74,19 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Via Asti",
+    projectName: messages["editorial"]["projects"]["Via-Asti"]["projectName"],
     imgSrc: "/projects/via-asti/cover.webp",
-    description: `Ristrutturazione con Interior design a Cagliari.`,
-    externalLink: [{ name: "Luigi Corda", url: linkNames["Luigi Corda"] }],
+    description: messages["editorial"]["projects"]["Via-Asti"]["description"],
+    externalLink: [
+      {
+        name: messages["editorial"]["projects"]["Via-Asti"]["externalLink"][
+          "0"
+        ]["name"],
+        url: linkNames["Luigi Corda"],
+      },
+    ],
     slug: "Via-Asti",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits: messages["editorial"]["projects"]["Via-Asti"]["imgCredits"],
     images: generateNamedImagePaths("projects/via-asti/gallery", [
       "4",
       "1",
@@ -74,30 +104,40 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Via Ada Negri",
+    projectName:
+      messages["editorial"]["projects"]["Via-Ada-Negri"]["projectName"],
     imgSrc: "/projects/via-ada-negri/cover.webp",
-    description: `Progettazione di Interior design a Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Via-Ada-Negri"]["description"],
     slug: "Via-Ada-Negri",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Ada-Negri"]["imgCredits"],
     images: generateImagePaths("projects/via-ada-negri/gallery", 5),
   },
 
   {
-    projectName: "Via Machiavelli",
+    projectName:
+      messages["editorial"]["projects"]["Via-Machiavelli"]["projectName"],
     imgSrc: "/projects/via-machiavelli/cover.webp",
-    description: `Ristrutturazione con Interior design a Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Via-Machiavelli"]["description"],
     externalLink: [
       {
-        name: " 'Un appartamento moderno rivoluzionario' su Homify",
+        name: messages["editorial"]["projects"]["Via-Machiavelli"][
+          "externalLink"
+        ]["0"]["name"],
         url: linkNames["Homify"],
       },
       {
-        name: " 'Ristrutturazione di un appartamento' su Tubes Radiatori",
+        name: messages["editorial"]["projects"]["Via-Machiavelli"][
+          "externalLink"
+        ]["1"]["name"],
         url: linkNames["Tubes Radiatori"],
       },
     ],
     slug: "Via-Machiavelli",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Machiavelli"]["imgCredits"],
     images: generateNamedImagePaths("projects/via-machiavelli/gallery", [
       "9",
       "1",
@@ -113,23 +153,36 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Vico V di Via S. Giovanni",
+    projectName:
+      messages["editorial"]["projects"]["Vico-V-Via-San-Giovanni"][
+        "projectName"
+      ],
     imgSrc: "/projects/vico-v-via-san-giovanni/cover.webp",
-    description: `Ristrutturazione con Interior design nel centro storico di Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Vico-V-Via-San-Giovanni"][
+        "description"
+      ],
 
     externalLink: [
       {
-        name: " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify",
+        name: messages["editorial"]["projects"]["Vico-V-Via-San-Giovanni"][
+          "externalLink"
+        ]["0"]["name"],
         url: linkNames["Homify-Recupero dei Sottotetti"],
       },
       {
-        name: " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify",
+        name: messages["editorial"]["projects"]["Vico-V-Via-San-Giovanni"][
+          "externalLink"
+        ]["1"]["name"],
         url: linkNames["Homify-15 motivi"],
       },
     ],
 
     slug: "Vico-V-Via-San-Giovanni",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Vico-V-Via-San-Giovanni"][
+        "imgCredits"
+      ],
     images: generateNamedImagePaths(
       "projects/vico-v-via-san-giovanni/gallery",
       ["2", "1", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
@@ -137,12 +190,20 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Agenzia Immobiliare AMS",
+    projectName:
+      messages["editorial"]["projects"]["Agenzia-Immobiliare-AMS"][
+        "projectName"
+      ],
     imgSrc: "/projects/agenzia-immobiliare-ams/cover.webp",
-    description: `Interior design e d.l.
-    Via Cagliari, Capoterra (CA)`,
+    description:
+      messages["editorial"]["projects"]["Agenzia-Immobiliare-AMS"][
+        "description"
+      ],
     slug: "Agenzia-Immobiliare-AMS",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Agenzia-Immobiliare-AMS"][
+        "imgCredits"
+      ],
     images: generateNamedImagePaths(
       "projects/agenzia-immobiliare-ams/gallery",
       ["1", "3", "2", "4", "5"]
@@ -150,11 +211,14 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Via Canonico Sanna",
+    projectName:
+      messages["editorial"]["projects"]["Via-Canonico-Sanna"]["projectName"],
     imgSrc: "/projects/via-canonico-sanna/cover.webp",
-    description: `Ristrutturazione di una palazzina nel centro storico di Baunei (OG).`,
+    description:
+      messages["editorial"]["projects"]["Via-Canonico-Sanna"]["description"],
     slug: "Via-Canonico-Sanna",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Canonico-Sanna"]["imgCredits"],
     images: generateNamedImagePaths("projects/via-canonico-sanna/gallery", [
       "2",
       "1",
@@ -175,11 +239,20 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "V.le Regina Margherita",
+    projectName:
+      messages["editorial"]["projects"]["Viale-Regina-Margherita"][
+        "projectName"
+      ],
     imgSrc: "/projects/viale-regina-margherita/cover.webp",
-    description: `Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Viale-Regina-Margherita"][
+        "description"
+      ],
     slug: "Viale-Regina-Margherita",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Viale-Regina-Margherita"][
+        "imgCredits"
+      ],
     images: generateNamedImagePaths(
       "projects/viale-regina-margherita/gallery",
       ["3", "1", "2", "4", "5", "6", "7", "8", "9", "10"]
@@ -187,42 +260,58 @@ const projects: Project[] = [
   },
 
   {
-    projectName: "Via Vittorio Amedeo II",
+    projectName:
+      messages["editorial"]["projects"]["Via-Vittorio-Amedeo-II"][
+        "projectName"
+      ],
     imgSrc: "/projects/via-vittorio-amedeo-ii/cover.webp",
-    description: `Progettazione e d.l. di una palazzina residenziale a Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Via-Vittorio-Amedeo-II"][
+        "description"
+      ],
     slug: "Via-Vittorio-Amedeo-II",
-    imgCredits: "Foto © Luigi Corda",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Vittorio-Amedeo-II"]["imgCredits"],
     images: generateImagePaths("projects/via-vittorio-amedeo-ii/gallery", 3),
   },
 
   {
-    projectName: "Tangex Corp.",
+    projectName: messages["editorial"]["projects"]["TangexCorp"]["projectName"],
     imgSrc: "/projects/tangex-corp/cover.webp",
-    description: `Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).`,
+    description: messages["editorial"]["projects"]["TangexCorp"]["description"],
     slug: "TangexCorp",
-    imgCredits: "Foto © Guanina Santiago de Jesus",
+    imgCredits: messages["editorial"]["projects"]["TangexCorp"]["imgCredits"],
     images: generateImagePaths("projects/tangex-corp/gallery", 4),
   },
 
   {
-    projectName: "Via Eroi d'Italia",
+    projectName:
+      messages["editorial"]["projects"]["Via-Eroi-d-Italia"]["projectName"],
     imgSrc: "/projects/via-eroi-d-italia/cover.webp",
-    description: `Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.`,
+    description:
+      messages["editorial"]["projects"]["Via-Eroi-d-Italia"]["description"],
     imageFit: "contain",
     slug: "Via-Eroi-d-Italia",
-    imgCredits: "Foto © Matteo Piazza",
+    imgCredits:
+      messages["editorial"]["projects"]["Via-Eroi-d-Italia"]["imgCredits"],
     images: generateImagePaths("projects/via-eroi-d-italia/gallery", 8),
   },
 
   {
-    projectName: "Agenzia pubblicitaria Glisbò",
+    projectName: messages["editorial"]["projects"]["Glisbo"]["projectName"],
     imgSrc: "/projects/glisbo/cover.webp",
-    description: 'Stand modulare per la "Regione Autonoma della Sardegna".',
-    externalLink: [{ name: "Glisbò", url: linkNames["Glisbo"] }],
+    description: messages["editorial"]["projects"]["Glisbo"]["description"],
+    externalLink: [
+      {
+        name: messages["editorial"]["projects"]["Glisbo"]["externalLink"]["0"][
+          "name"
+        ],
+        url: linkNames["Glisbo"],
+      },
+    ],
     imageFit: "contain",
     slug: "Glisbo",
-    imgCredits:
-      "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
+    imgCredits: messages["editorial"]["projects"]["Glisbo"]["imgCredits"],
     images: [
       ...generateNamedImagePaths(
         "projects/glisbo/gallery",

@@ -1,4 +1,6 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
+
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
@@ -14,14 +16,14 @@ export default function Contacts() {
     <div className={styles.contactsContainer}>
       <div className={styles.headerContent}>
         <div className={styles.studioInfo}>
-          <p className={styles.eyebrow}>Studio Gianluca Pignataro · Cagliari</p>
-          <h1 className={styles.pageTitle}>Contatti</h1>
+          <p className={styles.eyebrow}>{messages.ui.contacts.eyebrow}</p>
+          <h1 className={styles.pageTitle}>{messages.ui.common.contacts}</h1>
           <p className={styles.studioDescription}>
-            Per parlare di un progetto, scrivimi o contatta lo studio.
+            {messages.ui.contacts.intro}
           </p>
           <dl className={styles.contactDetails}>
             <div className={styles.contactItem}>
-              <dt>Email</dt>
+              <dt>{messages.ui.contacts.email}</dt>
               <dd>
                 <a href={contactsData.email.mailto}>
                   {contactsData.email.address}
@@ -29,7 +31,7 @@ export default function Contacts() {
               </dd>
             </div>
             <div className={styles.contactItem}>
-              <dt>Telefono</dt>
+              <dt>{messages.ui.contacts.phone}</dt>
               <dd>
                 <a href={`tel:+39${contactsData.phone.landline}`}>
                   {contactsData.phone.landline}
@@ -37,7 +39,7 @@ export default function Contacts() {
               </dd>
             </div>
             <div className={styles.contactItem}>
-              <dt>Cellulare</dt>
+              <dt>{messages.ui.contacts.mobile}</dt>
               <dd>
                 <a href={`tel:+39${contactsData.phone.mobile}`}>
                   {contactsData.phone.mobile}
@@ -45,16 +47,20 @@ export default function Contacts() {
               </dd>
             </div>
             <div className={styles.contactItem}>
-              <dt>Studio</dt>
+              <dt>{messages.ui.contacts.studio}</dt>
               <dd>{contactsData.studio}</dd>
             </div>
           </dl>
-          <p className={styles.vatNumber}>P.IVA {contactsData.vatNumber}</p>
+          <p className={styles.vatNumber}>
+            {formatMessage(messages.ui.contacts.vatNumber, {
+              number: contactsData.vatNumber,
+            })}
+          </p>
         </div>
         <div className={styles.studioImage}>
           <Image
             src={contactsData.image}
-            alt="Interno dello Studio Pignataro a Cagliari"
+            alt={messages.ui.contacts.imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
@@ -65,37 +71,35 @@ export default function Contacts() {
       </div>
 
       <div className={styles.socialSection}>
-        <h2>Segui lo studio</h2>
+        <h2>{messages.ui.contacts.follow}</h2>
         <div className={styles.socialLinks}>
           <a
             href={contactsData.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn ↗
+            {messages.ui.contacts.linkedin}
           </a>
           <a
             href={contactsData.social.facebook}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Facebook ↗
+            {messages.ui.contacts.facebook}
           </a>
         </div>
       </div>
 
       <div className={styles.mapSection}>
-        <h2 className={styles.sectionTitle}>Dove siamo</h2>
+        <h2 className={styles.sectionTitle}>{messages.ui.contacts.location}</h2>
         <p className={styles.mapAddress}>{contactsData.studio}</p>
         <div className={styles.mapContainer}>
           <OptionalScripts
             fallback={
               <div className={styles.mapPlaceholder}>
-                <p>
-                  La mappa Google Maps viene caricata solo con il tuo consenso.
-                </p>
+                <p>{messages.ui.contacts.mapConsent}</p>
                 <button type="button" onClick={openConsentPreferences}>
-                  Gestisci preferenze cookie
+                  {messages.ui.contacts.manageConsent}
                 </button>
                 <p>{contactsData.studio}</p>
               </div>
@@ -107,7 +111,7 @@ export default function Contacts() {
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Studio Location"
+              title={messages.ui.contacts.mapTitle}
               className={styles.mapFrame}
             />
           </OptionalScripts>

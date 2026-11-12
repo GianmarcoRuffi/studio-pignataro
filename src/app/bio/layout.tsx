@@ -1,11 +1,11 @@
+import { messages } from "../../locales";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
 export const metadata: Metadata = generatePageMetadata({
   path: "/bio",
-  title: "Chi sono",
-  description:
-    "Profilo professionale dell'Architetto Gianluca Pignataro: trenta anni di esperienza in restauro, recupero dell'edilizia storica e progettazione architettonica a Cagliari e all'estero.",
+  title: messages.ui.common.bio,
+  description: messages.ui.metadata.bioDescription,
 });
 
 export default function BioLayout({ children }: { children: React.ReactNode }) {

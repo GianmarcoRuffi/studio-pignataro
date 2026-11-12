@@ -1,4 +1,6 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
+
 import Image from "next/image";
 import { FC } from "react";
 import { useImageLoad } from "../../hooks/useImageLoad";
@@ -30,7 +32,9 @@ const PressesCard: FC<PressesCardProps> = ({
         type="button"
         className={styles.imageContainer}
         onClick={handleImageClick}
-        aria-label={`Visualizza ${descriptionLines.join(" ")}`}
+        aria-label={formatMessage(messages.ui.presses.view, {
+          description: descriptionLines.join(" "),
+        })}
       >
         <div
           className={`${styles.imageSkeleton} ${
@@ -41,7 +45,7 @@ const PressesCard: FC<PressesCardProps> = ({
         </div>
         <Image
           src={imageSource}
-          alt={`Copertina: ${date}`}
+          alt={formatMessage(messages.ui.presses.coverAlt, { date })}
           fill
           sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1440px) 30vw, 400px"
           loading="lazy"

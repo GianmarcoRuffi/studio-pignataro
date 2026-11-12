@@ -1,4 +1,6 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
+
 import {
   FC,
   useCallback,
@@ -332,7 +334,7 @@ const Gallery: FC<GalleryProps> = ({
 
         {!isLoading && (!images || images.length === 0) && (
           <div className={styles.emptyState}>
-            <p>Nessuna immagine disponibile per questa galleria.</p>
+            <p>{messages.ui.gallery.empty}</p>
           </div>
         )}
 
@@ -342,11 +344,15 @@ const Gallery: FC<GalleryProps> = ({
               <a
                 href={`/projects/${prevProject.slug}`}
                 className={styles.navLink}
-                aria-label={`Progetto precedente: ${prevProject.projectName}`}
+                aria-label={formatMessage(messages.ui.projects.previousLabel, {
+                  name: prevProject.projectName,
+                })}
               >
                 <span className={styles.navArrow}>‹</span>
                 <span className={styles.navText}>
-                  <span className={styles.navLabel}>Precedente</span>
+                  <span className={styles.navLabel}>
+                    {messages.ui.common.previous}
+                  </span>
                   <span className={styles.navTitle}>
                     {prevProject.projectName}
                   </span>
@@ -360,10 +366,14 @@ const Gallery: FC<GalleryProps> = ({
               <a
                 href={`/projects/${nextProject.slug}`}
                 className={`${styles.navLink} ${styles.navLinkNext}`}
-                aria-label={`Progetto successivo: ${nextProject.projectName}`}
+                aria-label={formatMessage(messages.ui.projects.nextLabel, {
+                  name: nextProject.projectName,
+                })}
               >
                 <span className={styles.navText}>
-                  <span className={styles.navLabel}>Successivo</span>
+                  <span className={styles.navLabel}>
+                    {messages.ui.common.next}
+                  </span>
                   <span className={styles.navTitle}>
                     {nextProject.projectName}
                   </span>
@@ -375,9 +385,7 @@ const Gallery: FC<GalleryProps> = ({
         </div>
 
         <div className={styles.backSection}>
-          <LinkButton href="/projects">
-            ← Torna alla galleria dei progetti
-          </LinkButton>
+          <LinkButton href="/projects">{messages.ui.gallery.back}</LinkButton>
         </div>
 
         <ScrollUpButton />

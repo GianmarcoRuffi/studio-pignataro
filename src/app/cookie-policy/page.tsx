@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { cookiePolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
@@ -9,8 +10,8 @@ export default function CookiePolicy() {
   return (
     <PolicyLayout
       lastUpdated={cookiePolicyUpdatedAt}
-      title="Cookie Policy"
-      subtitle="Informativa sull'utilizzo dei cookie"
+      title={messages.ui.common.cookies}
+      subtitle={messages.ui.policy.cookieSubtitle}
     >
       {cookiePolicyData.map((section) => (
         <section key={section.id} className={styles.section}>
@@ -55,10 +56,10 @@ export default function CookiePolicy() {
           {section.cookieTable && (
             <div className={styles.cookieTable}>
               <div className={styles.tableHeader}>
-                <span>Nome</span>
-                <span>Scopo</span>
-                <span>Durata</span>
-                <span>Tipo</span>
+                <span>{messages.ui.policy.name}</span>
+                <span>{messages.ui.policy.purpose}</span>
+                <span>{messages.ui.policy.duration}</span>
+                <span>{messages.ui.policy.type}</span>
               </div>
               {section.cookieTable.map((row, idx) => (
                 <div key={idx} className={styles.tableRow}>
@@ -74,13 +75,13 @@ export default function CookiePolicy() {
           {section.contactInfo && (
             <div className={styles.contactInfo}>
               <p>
-                <strong>Email:</strong>{" "}
+                <strong>{messages.ui.policy.email}</strong>{" "}
                 <a href={`mailto:${section.contactInfo.email}`}>
                   {section.contactInfo.email}
                 </a>
               </p>
               <p>
-                <strong>Telefono:</strong>{" "}
+                <strong>{messages.ui.policy.phone}</strong>{" "}
                 <a
                   href={`tel:+39${section.contactInfo.phone.replace(/\s/g, "")}`}
                 >
@@ -88,7 +89,7 @@ export default function CookiePolicy() {
                 </a>
               </p>
               <p>
-                <strong>Cellulare:</strong>{" "}
+                <strong>{messages.ui.policy.mobile}</strong>{" "}
                 <a
                   href={`tel:+39${section.contactInfo.mobile.replace(/\s/g, "")}`}
                 >
@@ -96,10 +97,12 @@ export default function CookiePolicy() {
                 </a>
               </p>
               <p>
-                <strong>Indirizzo:</strong> {section.contactInfo.address}
+                <strong>{messages.ui.policy.address}</strong>{" "}
+                {section.contactInfo.address}
               </p>
               <p>
-                <strong>P.IVA:</strong> {section.contactInfo.vat}
+                <strong>{messages.ui.policy.vat}</strong>{" "}
+                {section.contactInfo.vat}
               </p>
             </div>
           )}

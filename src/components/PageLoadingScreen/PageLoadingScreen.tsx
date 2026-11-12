@@ -1,4 +1,6 @@
 "use client";
+import { messages } from "../../locales";
+
 import { FC, useEffect, useState } from "react";
 import {
   BRANDING_LOGO_DIMENSIONS,
@@ -50,7 +52,7 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       <picture>
         <img
           src={BRANDING_LOGO_PATH}
-          alt="Logo"
+          alt={messages.ui.common.logo}
           width={BRANDING_LOGO_DIMENSIONS.width}
           height={BRANDING_LOGO_DIMENSIONS.height}
           className={styles.logo}

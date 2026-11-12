@@ -1,3 +1,4 @@
+import { messages } from "../../locales";
 import { FC, ReactNode } from "react";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./PolicyLayout.module.scss";
@@ -28,7 +29,7 @@ export const PolicyLayout: FC<PolicyLayoutProps> = ({
           <h1 className={styles.pageTitle}>{title}</h1>
           <p className={styles.pageSubtitle}>{subtitle}</p>
           <p className={styles.lastUpdated}>
-            Ultimo aggiornamento:{" "}
+            {messages.ui.policy.updated}{" "}
             <time dateTime={lastUpdated}>
               {new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString(
                 "it-IT",

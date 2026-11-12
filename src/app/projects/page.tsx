@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { FC, useCallback, useMemo, useState } from "react";
 import Link from "next/link";
@@ -81,11 +82,8 @@ const Projects: FC = () => {
     <div className={styles.projectsContainer}>
       <div className={styles.headerSection}>
         <div className={styles.headerContent}>
-          <h1 className={styles.pageTitle}>Progetti</h1>
-          <p className={styles.pageSubtitle}>
-            Architettura, interni e recupero. Una selezione di lavori tra
-            edifici storici e spazi contemporanei.
-          </p>
+          <h1 className={styles.pageTitle}>{messages.ui.common.projects}</h1>
+          <p className={styles.pageSubtitle}>{messages.ui.projects.intro}</p>
         </div>
       </div>
 
@@ -128,7 +126,7 @@ const Projects: FC = () => {
                   <>
                     <div className={styles.loadingIndicator}>
                       <div className={styles.spinner}></div>
-                      <span>Caricamento progetti...</span>
+                      <span>{messages.ui.projects.loading}</span>
                     </div>
                     <div className={styles.cardGrid}>
                       <CardSkeleton

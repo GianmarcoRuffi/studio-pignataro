@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { openConsentPreferences } from "../../utils/consent";
 import styles from "./footer.module.scss";
 import { LEGAL_PATHS } from "../../constants";
-import { sharedContactsData } from "../../data/contactsData";
+import { messages } from "../../locales";
 
 const Footer: FC = () => {
   const pathname = usePathname();
@@ -20,36 +20,20 @@ const Footer: FC = () => {
     >
       <div className={styles.footerWrapper}>
         <div className={styles.footerPanel}>
-          <div className={styles.copyright}>&copy; Gianluca Pignataro</div>
-
-          {!isHomepage && (
-            <div className={styles.footerContent}>
-              <ul className={styles.footerList}>
-                <li>{sharedContactsData.studio}</li>
-                <li>
-                  Tel: {sharedContactsData.phone.landline} / Cell.{" "}
-                  {sharedContactsData.phone.mobile}
-                </li>
-                <li>
-                  <a href={sharedContactsData.email.mailto}>
-                    {sharedContactsData.email.address}
-                  </a>
-                </li>
-                <li>P.iva: {sharedContactsData.vatNumber}</li>
-              </ul>
-            </div>
-          )}
+          <div className={styles.copyright}>
+            &copy; {messages.footer.copyright}
+          </div>
 
           <div className={styles.policyLinks}>
             <Link
               href={LEGAL_PATHS.privacyPolicy}
               className={styles.policyLink}
             >
-              Privacy Policy
+              {messages.footer.privacy}
             </Link>
             <span className={styles.separator}>•</span>
             <Link href={LEGAL_PATHS.cookiePolicy} className={styles.policyLink}>
-              Cookie Policy
+              {messages.footer.cookies}
             </Link>
           </div>
           <button
@@ -57,7 +41,7 @@ const Footer: FC = () => {
             className={styles.preferencesButton}
             onClick={openConsentPreferences}
           >
-            Preferenze cookie
+            {messages.footer.preferences}
           </button>
         </div>
       </div>

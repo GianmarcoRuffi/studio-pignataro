@@ -1,4 +1,5 @@
 "use client";
+import { messages } from "../../locales";
 
 import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -108,7 +109,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       className={styles.slider}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      aria-label="Slider progetti"
+      aria-label={messages.ui.slider.label}
     >
       <button
         type="button"
@@ -116,7 +117,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={prevSlide}
-        aria-label="Slide precedente"
+        aria-label={messages.ui.slider.previous}
       >
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
@@ -202,7 +203,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
         </Link>
         <span
           className={styles.slideCounter}
-          aria-label="Posizione della slide"
+          aria-label={messages.ui.slider.position}
         >
           {String(activeIndex + 1).padStart(2, "0")} /{" "}
           {String(projects.length).padStart(2, "0")}
@@ -215,7 +216,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={nextSlide}
-        aria-label="Slide successivo"
+        aria-label={messages.ui.slider.next}
       >
         <FontAwesomeIcon icon={faAngleRight} />
       </button>

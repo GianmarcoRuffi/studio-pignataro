@@ -1,65 +1,66 @@
+import { messages } from "../../locales";
 import { PressesData } from "../../models/models";
 
 const pressesData: PressesData[] = [
   {
     description:
-      "“Gianluca Pignataro – 30 anni di inconsuetudine”<br />Monografia a cura di Luigi Corda – “Associazione Culturale Timeless”",
+      messages["editorial"]["publications"]["monograph"]["description"],
     imageSource: "/publications/covers/timeless-cover.webp",
     source: "",
-    date: "Dicembre 2023",
+    date: messages["editorial"]["publications"]["monograph"]["date"],
   },
   {
     description:
-      "“Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”.",
+      messages["editorial"]["publications"]["tubesApartment"]["description"],
     imageSource: "/publications/covers/tubes-cover.webp",
     source:
       "https://www.tubesradiatori.com/it/progetti/ristrutturazione-di-un-appartamento/",
-    date: "2022",
+    date: messages["editorial"]["publications"]["tubesApartment"]["date"],
   },
   {
     description:
-      "“15 motivi (…)”, articolo pubblicato nella rivista online “HOMIFY”",
+      messages["editorial"]["publications"]["homifyReasons"]["description"],
     imageSource: "/publications/covers/homify-cover-1.webp",
     source:
       "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
-    date: "Febbraio 2021",
+    date: messages["editorial"]["publications"]["homifyReasons"]["date"],
   },
   {
     description:
-      "Recupero dei sottotetti (…)”, articolo pubblicato nella rivista online “HOMIFY”",
+      messages["editorial"]["publications"]["homifyAttics"]["description"],
     imageSource: "/publications/covers/homify-cover-2.webp",
     source:
       "https://www.homify.it/librodelleidee/6101558/recupero-dei-sottotetti-misure-e-normative-per-il-piemonte",
-    date: "Novembre 2018",
+    date: messages["editorial"]["publications"]["homifyAttics"]["date"],
   },
   {
     description:
-      "“Un appartamento moderno rivoluzionario”, articolo pubblicato nella rivista online “HOMIFY”",
+      messages["editorial"]["publications"]["homifyApartment"]["description"],
     imageSource: "/publications/covers/homify-cover-3.webp",
     source:
       "https://www.homify.it/librodelleidee/778802/un-appartamento-moderno-rivoluzionario",
-    date: "Maggio 2016",
+    date: messages["editorial"]["publications"]["homifyApartment"]["date"],
   },
   {
     description:
-      "“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”",
+      messages["editorial"]["publications"]["youtradeGres"]["description"],
     imageSource: "/publications/covers/youtrade-cover-2.webp",
     source: "",
-    date: "Settembre 2015",
+    date: messages["editorial"]["publications"]["youtradeGres"]["date"],
   },
   {
     description:
-      "“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa”",
+      messages["editorial"]["publications"]["youtradeDiagonal"]["description"],
     imageSource: "/publications/covers/youtrade-cover-1.webp",
     source: "",
-    date: "Maggio 2015",
+    date: messages["editorial"]["publications"]["youtradeDiagonal"]["date"],
   },
   {
     description:
-      "“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”",
+      messages["editorial"]["publications"]["bravaCasaHistory"]["description"],
     imageSource: "/publications/covers/bravacasa-cover.webp",
     source: "",
-    date: "Marzo 1999",
+    date: messages["editorial"]["publications"]["bravaCasaHistory"]["date"],
   },
 ];
 

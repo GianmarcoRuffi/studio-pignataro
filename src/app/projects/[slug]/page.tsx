@@ -1,3 +1,4 @@
+import { messages, formatMessage } from "../../../locales";
 import sharp from "sharp";
 import path from "node:path";
 import Image from "next/image";
@@ -21,15 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const description = project.description.replace(/\s+/g, " ").trim();
   const title = project.projectName;
   const canonical = `/projects/${slug}`;
-  const keywords = [
-    "architetto",
-    "cagliari",
-    "studio di architettura",
-    "interior design",
-    "ristrutturazione",
-    "progetti architettura",
-    title,
-  ];
+  const keywords = [...messages.ui.projects.metadataKeywords, title];
 
   return {
     title,
@@ -108,7 +101,9 @@ export default async function Page({ params }: Params) {
             )}
             <Image
               src={project.images[0]}
-              alt={`Vista del progetto ${project.projectName}`}
+              alt={formatMessage(messages.ui.projects.heroAlt, {
+                name: project.projectName,
+              })}
               width={imageDimensions[0].width}
               height={imageDimensions[0].height}
               sizes="100vw"
@@ -123,15 +118,19 @@ export default async function Page({ params }: Params) {
               }}
             />
           </div>
-          <nav aria-label="Navigazione progetti">
+          <nav aria-label={messages.ui.projects.navigation}>
             <a
               href={`/projects/${prevProject.slug}`}
               className={`${styles.heroChevron} ${styles.previous}`}
-              aria-label={`Progetto precedente: ${prevProject.projectName}`}
+              aria-label={formatMessage(messages.ui.projects.previousLabel, {
+                name: prevProject.projectName,
+              })}
             >
               <FontAwesomeIcon icon={faAngleLeft} aria-hidden="true" />
               <span className={styles.heroCaption} aria-hidden="true">
-                <span className={styles.heroDirection}>Precedente</span>
+                <span className={styles.heroDirection}>
+                  {messages.ui.common.previous}
+                </span>
                 <span className={styles.heroProjectName}>
                   {prevProject.projectName}
                 </span>
@@ -140,11 +139,15 @@ export default async function Page({ params }: Params) {
             <a
               href={`/projects/${nextProject.slug}`}
               className={`${styles.heroChevron} ${styles.next}`}
-              aria-label={`Progetto successivo: ${nextProject.projectName}`}
+              aria-label={formatMessage(messages.ui.projects.nextLabel, {
+                name: nextProject.projectName,
+              })}
             >
               <FontAwesomeIcon icon={faAngleRight} aria-hidden="true" />
               <span className={styles.heroCaption} aria-hidden="true">
-                <span className={styles.heroDirection}>Successivo</span>
+                <span className={styles.heroDirection}>
+                  {messages.ui.common.next}
+                </span>
                 <span className={styles.heroProjectName}>
                   {nextProject.projectName}
                 </span>

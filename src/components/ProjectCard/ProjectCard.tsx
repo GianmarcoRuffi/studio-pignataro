@@ -1,4 +1,5 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
 
 import { FC } from "react";
 import Image from "next/image";
@@ -30,7 +31,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         <Image
           src={imageSource}
-          alt={`${name} - ${description}`}
+          alt={formatMessage(messages.ui.projectCard.alt, {
+            name,
+            description,
+          })}
           fill
           sizes="(max-width: 444px) calc(100vw - 40px), (max-width: 768px) 91vw, (max-width: 1440px) 44vw, 640px"
           style={{ objectFit: imageFit, objectPosition: imagePosition }}
@@ -40,7 +44,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
           className={`${styles.cardImage} ${loaded ? styles.loaded : styles.loading}`}
         />
         <div className={styles.overlay}>
-          <span className={styles.viewProject}>Visualizza Progetto</span>
+          <span className={styles.viewProject}>
+            {messages.ui.projectCard.view}
+          </span>
         </div>
       </div>
 

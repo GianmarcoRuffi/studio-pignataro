@@ -1,3 +1,4 @@
+import { messages } from "../locales";
 import { FC } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -5,7 +6,7 @@ import { notFoundContent } from "./not-found.data";
 import styles from "./styles/not-found.module.scss";
 
 export const metadata: Metadata = {
-  title: "Pagina non trovata",
+  title: messages.ui.notFound.metadataTitle,
 };
 
 const NotFound: FC = () => {

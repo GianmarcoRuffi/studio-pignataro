@@ -1,4 +1,6 @@
 "use client";
+import { messages } from "../../locales";
+
 import { useCallback, useMemo, useState } from "react";
 import PressesCard from "../../components/PressesCard/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
@@ -101,17 +103,16 @@ export default function Presses() {
     <div className={styles.pressesContainer}>
       <div className={styles.headerSection}>
         <div className={styles.headerContent}>
-          <h1 className={styles.pageTitle}>Pubblicazioni</h1>
-          <p className={styles.pageSubtitle}>
-            Il lavoro dello studio attraverso libri, riviste e articoli. Una
-            bibliografia dal 1999 a oggi.
-          </p>
+          <h1 className={styles.pageTitle}>{messages.ui.common.presses}</h1>
+          <p className={styles.pageSubtitle}>{messages.ui.presses.intro}</p>
         </div>
       </div>
 
       <div className={styles.filterSection}>
         <div className={styles.filterContainer}>
-          <span className={styles.filterLabel}>Filtra per anno:</span>
+          <span className={styles.filterLabel}>
+            {messages.ui.presses.filter}
+          </span>
           <div className={styles.filterButtons}>
             <button
               type="button"
@@ -122,7 +123,7 @@ export default function Presses() {
               }}
               className={`${styles.filterButton} ${selectedYear === "all" ? styles.active : ""}`}
             >
-              Tutti
+              {messages.ui.presses.all}
             </button>
             {years.map((year) => (
               <button
@@ -173,7 +174,7 @@ export default function Presses() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Vai all'articolo
+                          {messages.ui.presses.article}
                         </LinkButton>
                       ) : null
                     }
@@ -189,7 +190,7 @@ export default function Presses() {
                   <>
                     <div className={styles.loadingIndicator}>
                       <div className={styles.spinner}></div>
-                      <span>Caricamento pubblicazioni...</span>
+                      <span>{messages.ui.presses.loading}</span>
                     </div>
                     <div className={styles.cardGrid}>
                       <CardSkeleton

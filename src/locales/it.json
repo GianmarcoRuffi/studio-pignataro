@@ -1,0 +1,529 @@
+{
+  "navigation": {
+    "home": "Home",
+    "projects": "Progetti",
+    "presses": "Pubblicazioni",
+    "bio": "Chi sono",
+    "contacts": "Contatti",
+    "logoAlt": "Logo Studio Architetto Pignataro",
+    "toggleMenu": "Toggle menu",
+    "menu": "Menu di navigazione",
+    "closeMenu": "Chiudi menu"
+  },
+  "footer": {
+    "copyright": "Gianluca Pignataro",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "preferences": "Preferenze cookie"
+  },
+  "metadata": {
+    "title": "Studio Architetto Gianluca Pignataro",
+    "template": "%s | Studio Architetto Gianluca Pignataro",
+    "description": "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+    "keywords": "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
+    "author": "Architetto Gianluca Pignataro",
+    "publisher": "Architetto Pignataro",
+    "logoAlt": "Studio Architetto Gianluca Pignataro - Logo"
+  },
+  "ui": {
+    "common": {
+      "projects": "Progetti",
+      "presses": "Pubblicazioni",
+      "contacts": "Contatti",
+      "bio": "Chi sono",
+      "previous": "Precedente",
+      "next": "Successivo",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "logo": "Logo",
+      "brand": "Studio Architetto Gianluca Pignataro",
+      "shortBrand": "Architetto Pignataro",
+      "city": "Cagliari",
+      "founder": "Gianluca Pignataro",
+      "architect": "Architetto"
+    },
+    "bio": {
+      "eyebrow": "I professionisti · Cagliari"
+    },
+    "contacts": {
+      "eyebrow": "Studio Gianluca Pignataro · Cagliari",
+      "intro": "Per parlare di un progetto, scrivimi o contatta lo studio.",
+      "email": "Email",
+      "phone": "Telefono",
+      "mobile": "Cellulare",
+      "studio": "Studio",
+      "vat": "P.IVA",
+      "imageAlt": "Interno dello Studio Pignataro a Cagliari",
+      "follow": "Segui lo studio",
+      "linkedin": "LinkedIn ↗",
+      "facebook": "Facebook ↗",
+      "location": "Dove siamo",
+      "mapConsent": "La mappa Google Maps viene caricata solo con il tuo consenso.",
+      "manageConsent": "Gestisci preferenze cookie",
+      "mapTitle": "Studio Location",
+      "vatNumber": "P.IVA {number}"
+    },
+    "policy": {
+      "privacySubtitle": "Informativa sul trattamento dei dati personali",
+      "rightsContact": "Per esercitare i propri diritti, contattare:",
+      "cookieSubtitle": "Informativa sull'utilizzo dei cookie",
+      "name": "Nome",
+      "purpose": "Scopo",
+      "duration": "Durata",
+      "type": "Tipo",
+      "email": "Email:",
+      "phone": "Telefono:",
+      "mobile": "Cellulare:",
+      "address": "Indirizzo:",
+      "vat": "P.IVA:",
+      "updated": "Ultimo aggiornamento:"
+    },
+    "notFound": {
+      "metadataTitle": "Pagina non trovata"
+    },
+    "structuredData": {
+      "description": "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+      "service": "Architectural Services"
+    },
+    "lightbox": {
+      "label": "Visualizzatore immagini",
+      "close": "Chiudi lightbox",
+      "previous": "Immagine precedente",
+      "next": "Immagine successiva",
+      "unavailable": "❌ Immagine non disponibile",
+      "retryLabel": "Riprova a caricare l'immagine",
+      "retry": "🔄 Riprova",
+      "imageAlt": "Immagine {index} di {total}",
+      "loading": "Caricamento immagine {index} di {total}...",
+      "counter": "{index} di {total}"
+    },
+    "projects": {
+      "intro": "Architettura, interni e recupero. Una selezione di lavori tra edifici storici e spazi contemporanei.",
+      "loading": "Caricamento progetti...",
+      "navigation": "Navigazione progetti",
+      "heroAlt": "Vista del progetto {name}",
+      "previousLabel": "Progetto precedente: {name}",
+      "nextLabel": "Progetto successivo: {name}",
+      "metadataKeywords": [
+        "architetto",
+        "cagliari",
+        "studio di architettura",
+        "interior design",
+        "ristrutturazione",
+        "progetti architettura"
+      ]
+    },
+    "presses": {
+      "intro": "Il lavoro dello studio attraverso libri, riviste e articoli. Una bibliografia dal 1999 a oggi.",
+      "filter": "Filtra per anno:",
+      "all": "Tutti",
+      "article": "Vai all'articolo",
+      "loading": "Caricamento pubblicazioni...",
+      "view": "Visualizza {description}",
+      "coverAlt": "Copertina: {date}"
+    },
+    "gallery": {
+      "empty": "Nessuna immagine disponibile per questa galleria.",
+      "back": "← Torna alla galleria dei progetti",
+      "viewImage": "Visualizza immagine {index}",
+      "imageAlt": "Fotografia del progetto, immagine {index}"
+    },
+    "projectCard": {
+      "view": "Visualizza Progetto",
+      "alt": "{name} - {description}"
+    },
+    "slider": {
+      "label": "Slider progetti",
+      "previous": "Slide precedente",
+      "next": "Slide successivo",
+      "position": "Posizione della slide"
+    },
+    "scroll": {
+      "top": "Scroll to top"
+    },
+    "consent": {
+      "close": "Chiudi e usa solo necessari",
+      "title": "Utilizzo dei Cookie",
+      "intro": "Il sito memorizza le preferenze di navigazione sul tuo dispositivo. La mappa Google Maps è un servizio esterno facoltativo e viene caricata solo se la autorizzi.",
+      "description": "Puoi rifiutare i servizi facoltativi e continuare a visitare il sito. La scelta vale per un anno; puoi cambiarla in qualsiasi momento tramite «Preferenze cookie» nel footer. La navigazione non esprime consenso.",
+      "necessary": "Solo necessari",
+      "accept": "Accetta servizi facoltativi"
+    },
+    "metadata": {
+      "bioDescription": "Profilo professionale dell'Architetto Gianluca Pignataro: trenta anni di esperienza in restauro, recupero dell'edilizia storica e progettazione architettonica a Cagliari e all'estero.",
+      "contactsDescription": "Contatti dello Studio Architetto Gianluca Pignataro a Cagliari. Informazioni su indirizzo, email, telefono e canali social per le tue richieste di consulenza architettonica.",
+      "projectsDescription": "Una selezione dei miei progetti di architettura e interior design, dalla ristrutturazione di edifici storici a soluzioni innovative per interni contemporanei.",
+      "titleTemplate": "%s | Studio Architetto Gianluca Pignataro",
+      "pressesDescription": "Rassegna stampa e pubblicazioni dei lavori dell'Architetto Gianluca Pignataro su riviste specializzate di architettura e design.",
+      "privacyDescription": "Informativa sul trattamento dei dati personali dello Studio Architetto Gianluca Pignataro.",
+      "cookieDescription": "Informativa sull'utilizzo dei cookie nel sito dello Studio Architetto Gianluca Pignataro."
+    }
+  },
+  "editorial": {
+    "projects": {
+      "Quartiere-Vanchiglia": {
+        "projectName": "Quartiere Vanchiglia",
+        "description": "Ristrutturazione con Interior design nel centro storico di Torino.",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Venturoli": {
+        "projectName": "Via Venturoli",
+        "description": "Progettazione di Interior design a Bologna.",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Corso-Vittorio-Emanuele-II": {
+        "projectName": "Corso Vittorio Emanuele II",
+        "description": "Ristrutturazione con Interior design nel centro storico di Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": "Luigi Corda"
+          }
+        },
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Asti": {
+        "projectName": "Via Asti",
+        "description": "Ristrutturazione con Interior design a Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": "Luigi Corda"
+          }
+        },
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Ada-Negri": {
+        "projectName": "Via Ada Negri",
+        "description": "Progettazione di Interior design a Cagliari.",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Machiavelli": {
+        "projectName": "Via Machiavelli",
+        "description": "Ristrutturazione con Interior design a Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": " 'Un appartamento moderno rivoluzionario' su Homify"
+          },
+          "1": {
+            "name": " 'Ristrutturazione di un appartamento' su Tubes Radiatori"
+          }
+        },
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Vico-V-Via-San-Giovanni": {
+        "projectName": "Vico V di Via S. Giovanni",
+        "description": "Ristrutturazione con Interior design nel centro storico di Cagliari.",
+        "externalLink": {
+          "0": {
+            "name": " 'Recupero dei Sottotetti: Misure e Normative per il Piemonte' su Homify"
+          },
+          "1": {
+            "name": " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify"
+          }
+        },
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Agenzia-Immobiliare-AMS": {
+        "projectName": "Agenzia Immobiliare AMS",
+        "description": "Interior design e d.l.\n    Via Cagliari, Capoterra (CA)",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Canonico-Sanna": {
+        "projectName": "Via Canonico Sanna",
+        "description": "Ristrutturazione di una palazzina nel centro storico di Baunei (OG).",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Viale-Regina-Margherita": {
+        "projectName": "V.le Regina Margherita",
+        "description": "Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "Via-Vittorio-Amedeo-II": {
+        "projectName": "Via Vittorio Amedeo II",
+        "description": "Progettazione e d.l. di una palazzina residenziale a Cagliari.",
+        "imgCredits": "Foto © Luigi Corda"
+      },
+      "TangexCorp": {
+        "projectName": "Tangex Corp.",
+        "description": "Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).",
+        "imgCredits": "Foto © Guanina Santiago de Jesus"
+      },
+      "Via-Eroi-d-Italia": {
+        "projectName": "Via Eroi d'Italia",
+        "description": "Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.",
+        "imgCredits": "Foto © Matteo Piazza"
+      },
+      "Glisbo": {
+        "projectName": "Agenzia pubblicitaria Glisbò",
+        "description": "Stand modulare per la \"Regione Autonoma della Sardegna\".",
+        "externalLink": {
+          "0": {
+            "name": "Glisbò"
+          }
+        },
+        "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it "
+      }
+    },
+    "bio": {
+      "name": "Dott. Arch. Gianluca Pignataro",
+      "intro": "Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica nello studio del Prof. Arch. Giovanni Maria Campus. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato a Puerto Rico (U.S.A.) cinque negozi in centri commerciali ed una villa.",
+      "professionalExperiencesTitle": "Esperienze professionali",
+      "experiences": {
+        "0": {
+          "title": "Studio Dott. Arch. Gianluca Pignataro - Cagliari, da Gennaio 2004 ad oggi",
+          "role": "Fondatore – Titolare",
+          "description": "Architetto progettista di interventi nell’edilizia residenziale moderna e nel recupero di edifici in centro storico.",
+          "projects": {
+            "0": "Via Ancona: Ristrutturazione con Interior design a Cagliari",
+            "1": "Via delle Libellule: Ristrutturazione con Interior design a Cagliari",
+            "2": "Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “HARLEY & DIKKINSON CONSULTING S.r.l.” Ing. Giuseppe De Bonis.",
+            "3": "Corso Vittorio Emanuele II: Ristrutturazione con Interior design nel centro storico di Cagliari",
+            "4": {
+              "description": "Palazzo Asquer: Messa in sicurezza strutturale con restauro di resti romani nel seminterrato del Palazzo storico Asquer, vincolato dalla Soprintendenza Ministeriale (SABAP) nel centro storico di Cagliari quartiere Castello"
+            },
+            "5": {
+              "description": "Agenzia pubblicitaria Glisbò: Stand modulare per la “Regione Autonoma della Sardegna”",
+              "links": {
+                "0": {
+                  "name": "Glisbò"
+                }
+              }
+            },
+            "6": {
+              "description": "Via Asti: Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)",
+              "links": {
+                "0": {
+                  "name": "Luigi Corda"
+                }
+              }
+            },
+            "7": "Perito estimatore per la “Banca di Credito Cooperativo di Cagliari”",
+            "8": {
+              "description": "Via Machiavelli: Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)",
+              "links": {
+                "0": {
+                  "name": "Homify"
+                }
+              }
+            },
+            "9": {
+              "description": "Ristrutturazione di un appartamento (lavoro pubblicato)",
+              "links": {
+                "0": {
+                  "name": "Tubes Radiatori"
+                }
+              }
+            },
+            "10": "Nemesis Data s.r.l.: Ampliamento di una unità residenziale a Porto Cervo, Arzachena (OT)",
+            "11": "Vico V di Via San Giovanni: Ristrutturazione con Interior design nel centro storico di Cagliari, quartiere Villanova (lavoro pubblicato)",
+            "12": "Via Canonico Sanna: Ristrutturazione di una palazzina nel centro storico di Baunei (OG)",
+            "13": "V.le Regina Margherita: Ristrutturazione con Interior design nel palazzo storico Zedda-Piras a Cagliari",
+            "14": "Via Vittorio Amedeo II: Progettazione e d.l. di una palazzina residenziale a Cagliari",
+            "15": {
+              "description": "Stams s.r.l. (Gruppo Cualbu): Progettazione e direzione artistica del recupero di sette edifici nel centro storico di Baunei (OG)",
+              "links": {
+                "0": {
+                  "name": "Dommoso"
+                },
+                "1": {
+                  "name": "Ville e Casali"
+                }
+              }
+            },
+            "16": "Tangex Corp.: Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)"
+          }
+        },
+        "1": {
+          "title": "Archlabo - Pignataro Vandermeulen Architetti - Cagliari, da Gennaio 1993 a Dicembre 2003",
+          "role": "Co-fondatore",
+          "description": "Architetto progettista principale, dalla ideazione sino alla realizzazione in cantiere di progetti residenziali, commerciali e di design di arredi; componente di un team composto da due architetti ed un ingegnere. Responsabile dei rapporti con committenza e imprese.",
+          "projects": {
+            "0": "Tangex Corp.: Progettazione di cinque negozi in centri commerciali a Puerto Rico (U.S.A.)",
+            "1": "Cooperativa edilizia Urbus: progettazione di un edificio residenziale a Cagliari",
+            "2": "Findomestic Banca: progettazione e d.l. delle “Sedi clienti/uffici territorio” a Cagliari e Sassari",
+            "3": "Discoteca Pandemonium: progettazione e d.l., Quartu S.E. (CA)",
+            "4": "Impresa Sarritzu: Progettazione di un Albergo Residence per 120 studenti a Cagliari",
+            "5": "Via Eroi d'Italia: Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari",
+            "6": {
+              "description": "Via Canelles: ristrutturazione di un appartamento nel centro storico di Cagliari, quartiere Castello (lavoro pubblicato)"
+            }
+          }
+        },
+        "2": {
+          "title": "Studio Prof. Arch. Giovanni Maria Campus – Cagliari, da Gennaio 1991 a Dicembre 1993",
+          "role": "Progettista",
+          "description": "Progettista unico o in partecipazione con altri architetti dalla fase ideativa sino alla realizzazione cantieristica dei seguenti progetti:",
+          "projects": {
+            "0": "Restauro di Palazzo Aresu, nel centro storico di Cagliari",
+            "1": "Progettazione della 'Casa di Riposo per anziani' ad Arzachena (OT)",
+            "2": "Progettazione del 'Hotel S.Efis' a Pula, località Nora (Cagliari)",
+            "3": "Restauro della chiesa della SS. Annunziata a Cagliari"
+          }
+        }
+      }
+    },
+    "publications": {
+      "monograph": {
+        "description": "“Gianluca Pignataro – 30 anni di inconsuetudine”<br />Monografia a cura di Luigi Corda – “Associazione Culturale Timeless”",
+        "date": "Dicembre 2023"
+      },
+      "tubesApartment": {
+        "description": "“Ristrutturazione di un appartamento”, articolo pubblicato nel sito online “TUBES”.",
+        "date": "2022"
+      },
+      "homifyReasons": {
+        "description": "“15 motivi (…)”, articolo pubblicato nella rivista online “HOMIFY”",
+        "date": "Febbraio 2021"
+      },
+      "homifyAttics": {
+        "description": "Recupero dei sottotetti (…)”, articolo pubblicato nella rivista online “HOMIFY”",
+        "date": "Novembre 2018"
+      },
+      "homifyApartment": {
+        "description": "“Un appartamento moderno rivoluzionario”, articolo pubblicato nella rivista online “HOMIFY”",
+        "date": "Maggio 2016"
+      },
+      "youtradeGres": {
+        "description": "“Sull’onda del gres”, articolo pubblicato nella rivista “YOUTRADE Casa”",
+        "date": "Settembre 2015"
+      },
+      "youtradeDiagonal": {
+        "description": "“Diamoci un taglio (ma diagonale)”, copertina e articolo pubblicato nella rivista “YOUTRADE Casa”",
+        "date": "Maggio 2015"
+      },
+      "bravaCasaHistory": {
+        "description": "“Sulle orme della Storia”, articolo pubblicato nella rivista “Brava Casa”",
+        "date": "Marzo 1999"
+      }
+    },
+    "privacyPolicy": {
+      "titolare": {
+        "title": "1. Titolare del trattamento",
+        "content": "Il Titolare del trattamento dei dati personali è l’Architetto Gianluca Pignataro, con sede in {studio}, Partita IVA: {vatNumber}, Email: {email}"
+      },
+      "tipologie": {
+        "title": "2. Tipologie di dati raccolti",
+        "content": "Questo sito raccoglie alcuni dati personali degli utenti. I dati possono essere:",
+        "list": {
+          "items": {
+            "0": "<strong>Dati di navigazione:</strong> indirizzo IP, tipo di browser, sistema operativo, pagine visitate",
+            "1": "<strong>Dati forniti volontariamente:</strong> informazioni inviate volontariamente via email o comunicate telefonicamente allo studio",
+            "2": "<strong>Preferenze locali:</strong> scelta sui servizi facoltativi e stato delle schermate introduttive, memorizzati nel browser",
+            "3": "<strong>Google Maps:</strong> dati tecnici comunicati a Google soltanto quando autorizzi la mappa nella pagina Contatti"
+          }
+        }
+      },
+      "finalita": {
+        "title": "3. Finalità del trattamento",
+        "content": "I dati personali sono trattati per le seguenti finalità:",
+        "list": {
+          "items": {
+            "0": "Erogazione dei servizi richiesti",
+            "1": "Risposta alle richieste di contatto",
+            "2": "Visualizzazione della mappa facoltativa previo consenso",
+            "3": "Sicurezza e funzionamento della navigazione",
+            "4": "Adempimenti legali e fiscali"
+          }
+        }
+      },
+      "base-giuridica": {
+        "title": "4. Base giuridica del trattamento",
+        "content": "La mappa facoltativa viene attivata con il consenso dell’interessato (art. 6, par. 1, lett. a GDPR), revocabile tramite «Preferenze cookie» nel footer. Le richieste di consulenza sono trattate per adottare misure precontrattuali o eseguire il servizio richiesto (lett. b); gli adempimenti previsti dalla legge si basano sulla lett. c. La sicurezza e il funzionamento del sito perseguono il legittimo interesse alla sua erogazione (lett. f)."
+      },
+      "conservazione": {
+        "title": "5. Conservazione dei dati",
+        "content": "I dati personali sono conservati per il tempo strettamente necessario al conseguimento delle finalità per cui sono stati raccolti:",
+        "list": {
+          "items": {
+            "0": "Dati di contatto: per il tempo necessario a gestire la richiesta e gli eventuali obblighi contrattuali o di legge",
+            "1": "Preferenze dei servizi facoltativi: validità di 365 giorni; stato delle schermate introduttive: sessione della scheda",
+            "2": "Dati tecnici dell’hosting e di Google Maps: secondo i tempi e le condizioni dei rispettivi fornitori"
+          }
+        }
+      },
+      "fornitori": {
+        "title": "Fornitori e collegamenti esterni",
+        "content": {
+          "0": "L’hosting è erogato da Vercel, che riceve i dati tecnici necessari a rispondere alle richieste del browser. Consulta <a href=\"{vercelPrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">l’informativa di Vercel</a> per il trattamento effettuato dal fornitore.",
+          "1": "Google Maps resta bloccato fino al consenso. Dopo l’attivazione si applicano anche <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">le condizioni privacy di Google</a>, comprese le informazioni su destinatari e trasferimenti internazionali. La disattivazione rimuove la mappa, senza cancellare i dati già ricevuti da Google.",
+          "2": "I collegamenti a siti e social esterni vengono aperti solo su tua azione; si applicano le informative dei siti visitati."
+        }
+      },
+      "diritti": {
+        "title": "6. Diritti dell'interessato",
+        "content": "L'interessato ha diritto di ottenere dal Titolare:",
+        "list": {
+          "items": {
+            "0": "Accesso ai propri dati personali",
+            "1": "Rettifica o cancellazione degli stessi",
+            "2": "Limitazione del trattamento",
+            "3": "Portabilità dei dati",
+            "4": "Opposizione al trattamento",
+            "5": "Revoca del consenso"
+          }
+        }
+      },
+      "reclami": {
+        "title": "7. Reclami",
+        "content": "L'interessato ha diritto di proporre reclamo al Garante per la protezione dei dati personali (www.gpdp.it) qualora ritenga che il trattamento che lo riguarda violi il Regolamento."
+      },
+      "modifiche": {
+        "title": "8. Modifiche alla Privacy Policy",
+        "content": "Questa Privacy Policy può essere modificata periodicamente. Le modifiche saranno pubblicate su questa pagina con indicazione della data di ultimo aggiornamento."
+      }
+    },
+    "cookiePolicy": {
+      "cosa-sono": {
+        "title": "1. Cookie e memoria del browser",
+        "content": "I cookie e le memorie locali del browser permettono di conservare informazioni sul dispositivo. Questo sito usa localStorage per ricordare la scelta sui servizi facoltativi e sessionStorage per gestire le schermate introduttive durante la visita."
+      },
+      "tipologie": {
+        "title": "2. Strumenti utilizzati dal sito",
+        "content": "Le preferenze di navigazione sono memorizzate sul dispositivo. Il sito non integra Google Analytics o strumenti di marketing; i font e le icone sono serviti dal sito, senza collegamenti a Google Fonts o CDN FontAwesome."
+      },
+      "terze-parti": {
+        "title": "3. Mappa Google Maps",
+        "content": {
+          "0": "La pagina Contatti può mostrare una mappa fornita da Google Maps. La mappa resta disattivata finché non scegli «Accetta servizi facoltativi». Dopo l’attivazione il browser si collega a Google, comunicando dati tecnici quali indirizzo IP e informazioni del dispositivo; Google può usare propri cookie e strumenti di memoria secondo le sue impostazioni. Per i dettagli consulta <a href=\"{googlePrivacyUrl}\" target=\"_blank\" rel=\"noopener noreferrer\">l’informativa privacy di Google</a>."
+        }
+      },
+      "gestione": {
+        "title": "4. Gestione delle preferenze",
+        "content": "Il pulsante «Preferenze cookie» nel footer, disponibile anche su mobile, permette di cambiare la scelta in ogni momento. «Solo necessari» impedisce il caricamento della mappa e rimuove quella eventualmente aperta. La revoca interrompe le nuove connessioni della mappa ma non cancella i dati già ricevuti da Google o i cookie di terze parti: questi possono essere eliminati nelle impostazioni del browser."
+      },
+      "consenso": {
+        "title": "5. Durata della scelta",
+        "content": "La scelta viene registrata con la data e resta valida per 365 giorni, poi viene richiesta nuovamente. Una scelta senza data valida è considerata scaduta. Navigare o scorrere la pagina non autorizza servizi facoltativi. Se il browser impedisce la memorizzazione, la scelta vale soltanto durante la visita corrente."
+      },
+      "dettaglio": {
+        "title": "6. Memorie locali utilizzate",
+        "content": "Queste voci sono memorie locali del browser, non cookie inviati al server. È possibile cancellarle tramite le impostazioni del browser.",
+        "cookieTable": {
+          "0": {
+            "purpose": "Scelta accepted o declined (localStorage)",
+            "duration": "365 giorni",
+            "type": "Preferenza tecnica"
+          },
+          "1": {
+            "purpose": "Data della scelta e controllo della scadenza (localStorage)",
+            "duration": "365 giorni",
+            "type": "Preferenza tecnica"
+          },
+          "2": {
+            "purpose": "Evita di ripetere le schermate introduttive (sessionStorage)",
+            "duration": "Sessione della scheda",
+            "type": "Navigazione"
+          }
+        }
+      },
+      "contatti": {
+        "title": "7. Contatti",
+        "content": "Per informazioni su questa pagina contatta lo studio:"
+      }
+    },
+    "cookieDisclaimerNote": "<strong>Nota:</strong> rifiutare i servizi facoltativi consente di consultare comunque il portfolio e i contatti dello studio.",
+    "notFound": {
+      "title": "Siamo spiacenti, la pagina che hai cercato non esiste.",
+      "ctaLabel": "Clicca qui per tornare alla home"
+    }
+  }
+}

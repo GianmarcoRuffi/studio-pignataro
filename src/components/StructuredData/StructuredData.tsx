@@ -1,4 +1,6 @@
 "use client";
+import { messages } from "../../locales";
+
 import Script from "next/script";
 import { BRANDING_LOGO_URL, SITE_URL } from "../../constants";
 
@@ -6,27 +8,26 @@ const StructuredData = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Studio Architetto Gianluca Pignataro",
-    alternateName: "Architetto Pignataro",
-    description:
-      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
+    name: messages.ui.common.brand,
+    alternateName: messages.ui.common.shortBrand,
+    description: messages.ui.structuredData.description,
     url: SITE_URL,
     logo: BRANDING_LOGO_URL,
     image: BRANDING_LOGO_URL,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Cagliari",
+      addressLocality: messages.ui.common.city,
       addressCountry: "IT",
     },
-    serviceType: "Architectural Services",
+    serviceType: messages.ui.structuredData.service,
     areaServed: {
       "@type": "City",
-      name: "Cagliari",
+      name: messages.ui.common.city,
     },
     founder: {
       "@type": "Person",
-      name: "Gianluca Pignataro",
-      jobTitle: "Architetto",
+      name: messages.ui.common.founder,
+      jobTitle: messages.ui.common.architect,
     },
     sameAs: [SITE_URL],
   };

@@ -1,4 +1,6 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
+
 import {
   FC,
   useState,
@@ -266,13 +268,13 @@ const Lightbox: FC<LightboxProps> = ({
         data-lenis-prevent
         role="dialog"
         aria-modal="true"
-        aria-label="Visualizzatore immagini"
+        aria-label={messages.ui.lightbox.label}
       >
         <button
           type="button"
           className={styles.closeButton}
           onClick={onClose}
-          aria-label="Chiudi lightbox"
+          aria-label={messages.ui.lightbox.close}
         >
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -283,7 +285,7 @@ const Lightbox: FC<LightboxProps> = ({
               type="button"
               className={styles.navButton + " " + styles.navButtonLeft}
               onClick={handlePrevious}
-              aria-label="Immagine precedente"
+              aria-label={messages.ui.lightbox.previous}
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
@@ -291,7 +293,7 @@ const Lightbox: FC<LightboxProps> = ({
               type="button"
               className={styles.navButton + " " + styles.navButtonRight}
               onClick={handleNext}
-              aria-label="Immagine successiva"
+              aria-label={messages.ui.lightbox.next}
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
@@ -307,14 +309,17 @@ const Lightbox: FC<LightboxProps> = ({
             <div className="absolute left-1/2 top-1/2 z-[10003] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.7)] p-8 text-center text-white">
               <div className={styles.spinner}></div>
               <span className="text-[14px] opacity-90">
-                Caricamento immagine {activeIndex + 1} di {images.length}...
+                {formatMessage(messages.ui.lightbox.loading, {
+                  index: activeIndex + 1,
+                  total: images.length,
+                })}
               </span>
             </div>
           )}
 
           {imageError ? (
             <div className={styles.errorIndicator}>
-              <span>❌ Immagine non disponibile</span>
+              <span>{messages.ui.lightbox.unavailable}</span>
               <div className="flex flex-wrap justify-center gap-3">
                 <button
                   type="button"
@@ -330,9 +335,9 @@ const Lightbox: FC<LightboxProps> = ({
                     });
                   }}
                   className={styles.retryButton}
-                  aria-label="Riprova a caricare l'immagine"
+                  aria-label={messages.ui.lightbox.retryLabel}
                 >
-                  🔄 Riprova
+                  {messages.ui.lightbox.retry}
                 </button>
               </div>
             </div>
@@ -340,7 +345,10 @@ const Lightbox: FC<LightboxProps> = ({
             <Image
               key={`lightbox-image-${activeIndex}`}
               src={images[activeIndex]}
-              alt={`Immagine ${activeIndex + 1} di ${images.length}`}
+              alt={formatMessage(messages.ui.lightbox.imageAlt, {
+                index: activeIndex + 1,
+                total: images.length,
+              })}
               width={1920}
               height={1080}
               sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
@@ -369,7 +377,10 @@ const Lightbox: FC<LightboxProps> = ({
         {images.length > 1 && (
           <div className={styles.indicators}>
             <span className={styles.counter}>
-              {activeIndex + 1} di {images.length}
+              {formatMessage(messages.ui.lightbox.counter, {
+                index: activeIndex + 1,
+                total: images.length,
+              })}
             </span>
           </div>
         )}

@@ -1,4 +1,6 @@
 "use client";
+import { messages, formatMessage } from "../../locales";
+
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
@@ -124,7 +126,9 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       type="button"
                       className={styles.imageLink}
                       onClick={() => handleImageClick(imageIndex)}
-                      aria-label={`Visualizza immagine ${imageIndex + 1}`}
+                      aria-label={formatMessage(messages.ui.gallery.viewImage, {
+                        index: imageIndex + 1,
+                      })}
                     >
                       <div className={styles.imageContainer}>
                         {loadingImages[imageIndex] && (
@@ -135,7 +139,9 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
 
                         <Image
                           src={imageSource}
-                          alt={`Fotografia del progetto, immagine ${imageIndex + 1}`}
+                          alt={formatMessage(messages.ui.gallery.imageAlt, {
+                            index: imageIndex + 1,
+                          })}
                           width={imageDimensions[imageIndex].width}
                           height={imageDimensions[imageIndex].height}
                           sizes={`${Math.ceil(width)}px`}

@@ -166,6 +166,17 @@ test("header reacts to the page container and navigation rebinds scrolling", asy
     element.scrollTop = 500;
   });
   await expect(page.locator("header")).toHaveClass(/scrolled/);
+  await expect(page.locator("header")).toHaveCSS("height", "76px");
+  await expect(container).toHaveCSS("margin-top", "76px");
+  await container.evaluate((element) => {
+    element.scrollTop = 40;
+  });
+  await expect(page.locator("header")).toHaveCSS("height", "76px");
+  await container.evaluate((element) => {
+    element.scrollTop = 0;
+  });
+  await expect(page.locator("header")).toHaveCSS("height", "88px");
+  await expect(container).toHaveCSS("margin-top", "88px");
   await expect(
     page.getByRole("button", { name: "Preferenze cookie", exact: true })
   ).toBeVisible();
@@ -246,3 +257,33 @@ test("policy dates are editorial and contact addresses are consistent", async ({
     ).toBeVisible();
   }
 });
+
+for (const width of [1440, 900, 390]) {
+  test(`footer omits contact details everywhere at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await prepare(page);
+    for (const route of ["/", "/projects", "/contacts", "/privacy-policy"]) {
+      await page.goto(route);
+      const footer = page.locator("footer");
+      await expect(footer).not.toContainText("Via Arrigo Solmi");
+      await expect(footer).not.toContainText("070305880");
+      await expect(footer).not.toContainText("3485189797");
+      await expect(footer).not.toContainText("glpignataro@yahoo.it");
+      await expect(footer).not.toContainText("02783940923");
+      await expect(
+        footer.getByRole("button", { name: "Preferenze cookie" })
+      ).toBeVisible();
+      if (width > 768) {
+        await expect(
+          footer.getByRole("link", { name: "Privacy Policy" })
+        ).toBeVisible();
+      } else {
+        await expect(
+          footer.getByRole("link", { name: "Privacy Policy" })
+        ).toBeHidden();
+      }
+    }
+  });
+}
