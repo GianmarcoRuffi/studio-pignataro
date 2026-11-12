@@ -93,22 +93,36 @@ export default async function Page({ params }: Params) {
     <div>
       {project.images[0] && (
         <figure className={styles.projectHero} data-project-hero>
-          <Image
-            src={project.images[0]}
-            alt={`Vista del progetto ${project.projectName}`}
-            width={imageDimensions[0].width}
-            height={imageDimensions[0].height}
-            sizes="100vw"
-            loading="eager"
-            fetchPriority="high"
-            quality={85}
-            unoptimized={project.images[0].endsWith(".gif")}
-            className={styles.heroImage}
-            style={{
-              objectFit: project.imageFit ?? "cover",
-              objectPosition: project.imagePosition ?? "center",
-            }}
-          />
+          <div className={styles.heroMedia}>
+            {project.imageFit === "contain" && (
+              <Image
+                src={project.images[0]}
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="100vw"
+                quality={85}
+                loading="eager"
+                className={styles.heroBackdrop}
+              />
+            )}
+            <Image
+              src={project.images[0]}
+              alt={`Vista del progetto ${project.projectName}`}
+              width={imageDimensions[0].width}
+              height={imageDimensions[0].height}
+              sizes="100vw"
+              loading="eager"
+              fetchPriority="high"
+              quality={85}
+              unoptimized={project.images[0].endsWith(".gif")}
+              className={styles.heroImage}
+              style={{
+                objectFit: project.imageFit ?? "cover",
+                objectPosition: project.imagePosition ?? "center",
+              }}
+            />
+          </div>
           <nav aria-label="Navigazione progetti">
             <a
               href={`/projects/${prevProject.slug}`}

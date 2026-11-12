@@ -177,8 +177,8 @@ for (const width of [1440, 390]) {
     await expect(page.locator("[class*='breadcrumb']")).toHaveCount(0);
     await expect(
       previous.getByText("Precedente", { exact: true })
-    ).toBeVisible();
-    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
+    ).toBeHidden();
+    await expect(next.getByText("Successivo", { exact: true })).toBeHidden();
     const previousName = previous.getByText(projects.at(-1)!.projectName, {
       exact: true,
     });
@@ -187,15 +187,20 @@ for (const width of [1440, 390]) {
     await expect(nextName).toBeHidden();
     await previous.hover();
     await expect(previousName).toBeVisible();
+    await expect(
+      previous.getByText("Precedente", { exact: true })
+    ).toBeVisible();
     await expect(nextName).toBeHidden();
     await next.hover();
     await expect(nextName).toBeVisible();
+    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
     await expect(previousName).toBeHidden();
     await page.mouse.move(0, 0);
     await previous.focus();
     await page.keyboard.press("Tab");
     await expect(next).toBeFocused();
     await expect(nextName).toBeVisible();
+    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
     const heroBox = await hero.boundingBox();
     const headingBox = await page
       .getByRole("heading", { level: 1 })
@@ -242,12 +247,26 @@ for (const width of [1440, 390]) {
   });
 }
 
-test("project opening photograph preserves contain for renders", async ({
-  page,
-}) => {
-  await page.goto("/projects/Via-Eroi-d-Italia");
-  await expect(page.locator("[data-project-hero] img")).toHaveCSS(
-    "object-fit",
-    "contain"
-  );
-});
+for (const width of [1440, 390]) {
+  for (const slug of ["Via-Eroi-d-Italia", "Glisbo"]) {
+    test(`project opening photograph preserves contain with a backdrop for ${slug} at ${width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/projects/${slug}`);
+      const hero = page.locator("[data-project-hero]");
+      const image = hero.locator("img:not([aria-hidden])");
+      const backdrop = hero.locator('img[aria-hidden="true"]');
+      await expect(image).toHaveCSS("object-fit", "contain");
+      await expect(image).toHaveCSS("object-position", "50% 50%");
+      await expect(backdrop).toBeVisible();
+      await expect(backdrop).toHaveCSS("object-fit", "cover");
+      await expect(backdrop).toHaveCSS("filter", "blur(24px) brightness(0.65)");
+      await expect(backdrop).toHaveAttribute(
+        "src",
+        (await image.getAttribute("src"))!
+      );
+      await expect(hero.getByRole("link").first()).toBeInViewport();
+    });
+  }
+}
