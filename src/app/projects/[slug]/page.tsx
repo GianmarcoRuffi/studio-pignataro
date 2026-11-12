@@ -3,6 +3,7 @@ import { getServerMessages } from "../../../locales/server";
 import sharp from "sharp";
 import path from "node:path";
 import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import type { Metadata } from "next";
@@ -129,7 +130,7 @@ export default async function Page({ params }: Params) {
             />
           </div>
           <nav aria-label={messages.ui.projects.navigation}>
-            <a
+            <Link
               href={localizedPath(`/projects/${prevProject.slug}`, locale)}
               className={`${styles.heroChevron} ${styles.previous}`}
               aria-label={formatMessage(messages.ui.projects.previousLabel, {
@@ -145,8 +146,8 @@ export default async function Page({ params }: Params) {
                   {prevProject.projectName}
                 </span>
               </span>
-            </a>
-            <a
+            </Link>
+            <Link
               href={localizedPath(`/projects/${nextProject.slug}`, locale)}
               className={`${styles.heroChevron} ${styles.next}`}
               aria-label={formatMessage(messages.ui.projects.nextLabel, {
@@ -162,7 +163,7 @@ export default async function Page({ params }: Params) {
                   {nextProject.projectName}
                 </span>
               </span>
-            </a>
+            </Link>
           </nav>
         </figure>
       )}

@@ -6,6 +6,7 @@ import {
   FC,
   useState,
   useEffect,
+  useLayoutEffect,
   useCallback,
   useRef,
   type TouchEvent,
@@ -13,6 +14,7 @@ import {
 import { createPortal } from "react-dom";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import Image from "next/image";
+import type { ImageDimensions } from "../../models/models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -27,6 +29,7 @@ interface LightboxProps {
   onClose: () => void;
   isOpen: boolean;
   enableZoom?: boolean;
+  imageDimensions?: ImageDimensions[];
 }
 
 interface NetworkConnectionInfo {
@@ -42,15 +45,31 @@ const Lightbox: FC<LightboxProps> = ({
   onClose,
   isOpen,
   enableZoom = false,
+  imageDimensions,
 }) => {
   const { messages } = useLocale();
   const dialogRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState(false);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
-  const [naturalSize, setNaturalSize] = useState({ width: 1920, height: 1080 });
-  useEffect(() => {
-    if (!isOpen || !enableZoom || !viewportRef.current) return;
+  const [activeIndex, setActiveIndex] = useState(currentIndex);
+  const imageSrc = images[activeIndex];
+  const [imageState, setImageState] = useState<{
+    src: string;
+    status: "loaded" | "error";
+  } | null>(null);
+  const isImageLoading = imageState?.src !== imageSrc;
+  const imageError =
+    imageState?.src === imageSrc && imageState.status === "error";
+  const [loadedSize, setLoadedSize] = useState<
+    (ImageDimensions & { src: string }) | null
+  >(null);
+  const naturalSize =
+    loadedSize?.src === imageSrc
+      ? loadedSize
+      : (imageDimensions?.[activeIndex] ?? { width: 1920, height: 1080 });
+  useLayoutEffect(() => {
+    if (!isOpen || !viewportRef.current) return;
     const measure = () => {
       const css = getComputedStyle(dialogRef.current!);
       const gap = parseFloat(css.getPropertyValue("--viewport-gap"));
@@ -66,10 +85,10 @@ const Lightbox: FC<LightboxProps> = ({
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [isOpen, enableZoom]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     setZoom(false);
     viewportRef.current?.scrollTo(0, 0);
-  }, [isOpen, currentIndex]);
+  }, [isOpen, activeIndex]);
   const fit = Math.min(
     viewport.width / naturalSize.width,
     viewport.height / naturalSize.height,
@@ -88,9 +107,6 @@ const Lightbox: FC<LightboxProps> = ({
     );
   }, [enableZoom, zoom, naturalSize.width, naturalSize.height]);
   useModalAccessibility(isOpen, dialogRef, onClose);
-  const [activeIndex, setActiveIndex] = useState(currentIndex);
-  const [isImageLoading, setIsImageLoading] = useState(true);
-  const [imageError, setImageError] = useState(false);
   const imageCacheRef = useRef<Map<number, boolean>>(new Map());
   const inFlightPreloadsRef = useRef<Map<number, Promise<boolean>>>(new Map());
   const preloadRadiusRef = useRef(3);
@@ -212,23 +228,16 @@ const Lightbox: FC<LightboxProps> = ({
     [images.length, preloadImage]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen) {
       setActiveIndex(currentIndex);
-      const status = imageCacheRef.current.get(currentIndex);
-      setImageError(status === false);
-      setIsImageLoading(status !== true);
-      preloadAdjacentImages(currentIndex);
+      // The displayed element must load, even when a preload is cached.
+      setImageState(null);
     }
-  }, [isOpen, currentIndex, preloadAdjacentImages]);
+  }, [isOpen, currentIndex]);
 
   useEffect(() => {
-    if (isOpen) {
-      const status = imageCacheRef.current.get(activeIndex);
-      setImageError(status === false);
-      setIsImageLoading(status !== true);
-      preloadAdjacentImages(activeIndex);
-    }
+    if (isOpen) preloadAdjacentImages(activeIndex);
   }, [activeIndex, isOpen, preloadAdjacentImages]);
 
   const handleNext = useCallback(() => {
@@ -350,8 +359,9 @@ const Lightbox: FC<LightboxProps> = ({
           ref={viewportRef}
           className={`${styles.imageContainer} ${enableZoom ? styles.zoomViewport : ""}`}
           tabIndex={enableZoom ? 0 : undefined}
+          aria-busy={isImageLoading}
           style={
-            enableZoom
+            enableZoom || isImageLoading
               ? {
                   width: Math.min(viewport.width, imageWidth),
                   height: Math.min(viewport.height, imageHeight),
@@ -364,9 +374,9 @@ const Lightbox: FC<LightboxProps> = ({
           onTouchEnd={enableZoom ? undefined : handleTouchEnd}
         >
           {isImageLoading && (
-            <div className="absolute left-1/2 top-1/2 z-[10003] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.7)] p-8 text-center text-white">
-              <div className={styles.spinner}></div>
-              <span className="text-[14px] opacity-90">
+            <div className={styles.loadingPlaceholder} role="status">
+              <div className={styles.spinner} aria-hidden="true" />
+              <span>
                 {formatMessage(messages.ui.lightbox.loading, {
                   index: activeIndex + 1,
                   total: images.length,
@@ -383,14 +393,7 @@ const Lightbox: FC<LightboxProps> = ({
                   type="button"
                   onClick={() => {
                     imageCacheRef.current.delete(activeIndex);
-                    setImageError(false);
-                    setIsImageLoading(true);
-                    void preloadImage(activeIndex).then((isLoaded) => {
-                      if (!isLoaded) {
-                        setImageError(true);
-                        setIsImageLoading(false);
-                      }
-                    });
+                    setImageState(null);
                   }}
                   className={styles.retryButton}
                   aria-label={messages.ui.lightbox.retryLabel}
@@ -439,8 +442,8 @@ const Lightbox: FC<LightboxProps> = ({
                   index: activeIndex + 1,
                   total: images.length,
                 })}
-                width={enableZoom ? naturalSize.width : 1920}
-                height={enableZoom ? naturalSize.height : 1080}
+                width={naturalSize.width}
+                height={naturalSize.height}
                 sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
                 unoptimized
                 loading="eager"
@@ -450,22 +453,19 @@ const Lightbox: FC<LightboxProps> = ({
                   ...(enableZoom
                     ? { width: imageWidth, height: imageHeight }
                     : {}),
-                  opacity: isImageLoading ? 0.3 : 1,
-                  transition: "opacity 0.3s ease-in-out",
+                  opacity: isImageLoading ? 0 : 1,
                 }}
                 onLoad={(event) => {
-                  if (enableZoom)
-                    setNaturalSize({
-                      width: event.currentTarget.naturalWidth,
-                      height: event.currentTarget.naturalHeight,
-                    });
-                  setIsImageLoading(false);
-                  setImageError(false);
+                  setLoadedSize({
+                    src: imageSrc,
+                    width: event.currentTarget.naturalWidth,
+                    height: event.currentTarget.naturalHeight,
+                  });
+                  setImageState({ src: imageSrc, status: "loaded" });
                   imageCacheRef.current.set(activeIndex, true);
                 }}
                 onError={() => {
-                  setIsImageLoading(false);
-                  setImageError(true);
+                  setImageState({ src: imageSrc, status: "error" });
                   imageCacheRef.current.set(activeIndex, false);
                 }}
               />

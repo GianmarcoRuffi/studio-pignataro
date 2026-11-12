@@ -12,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import Link from "next/link";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import MasonryGallery from "../MasonryGallery/MasonryGallery";
 import styles from "./gallery.module.scss";
@@ -344,7 +345,7 @@ const Gallery: FC<GalleryProps> = ({
         <div className={styles.projectNavigation}>
           <div className={styles.navButton}>
             {prevProject && (
-              <a
+              <Link
                 href={localizedPath(`/projects/${prevProject.slug}`, locale)}
                 className={styles.navLink}
                 aria-label={formatMessage(messages.ui.projects.previousLabel, {
@@ -360,13 +361,13 @@ const Gallery: FC<GalleryProps> = ({
                     {prevProject.projectName}
                   </span>
                 </span>
-              </a>
+              </Link>
             )}
           </div>
 
           <div className={styles.navButton}>
             {nextProject && (
-              <a
+              <Link
                 href={localizedPath(`/projects/${nextProject.slug}`, locale)}
                 className={`${styles.navLink} ${styles.navLinkNext}`}
                 aria-label={formatMessage(messages.ui.projects.nextLabel, {
@@ -382,7 +383,7 @@ const Gallery: FC<GalleryProps> = ({
                   </span>
                 </span>
                 <span className={styles.navArrow}>›</span>
-              </a>
+              </Link>
             )}
           </div>
         </div>

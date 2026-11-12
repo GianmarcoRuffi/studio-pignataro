@@ -184,6 +184,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
       </div>
 
       <Lightbox
+        imageDimensions={imageDimensions}
         images={images}
         currentIndex={lightboxIndex}
         isOpen={lightboxOpen}

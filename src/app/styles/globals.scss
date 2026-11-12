@@ -217,6 +217,49 @@ html,
   flex-direction: column;
 }
 
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.page-crossfade) {
+  animation-duration: 320ms;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(.page-crossfade) {
+  animation: page-fade-out 180ms ease-out both;
+}
+
+::view-transition-new(.page-crossfade) {
+  animation: page-fade-in 280ms ease-out 40ms both;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@supports not (view-transition-class: page-crossfade) {
+  .layout-content {
+    animation: page-fade-in 280ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .layout-content.homepage {
     height: var(--viewport-height);
