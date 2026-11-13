@@ -17,9 +17,6 @@
   color: #fff;
   border-color: #ffffff40;
 }
-.policyLinks {
-  margin-left: auto;
-}
 .footerWrapper {
   width: 100%;
   height: 100%;
@@ -37,18 +34,6 @@
 .copyright {
   font-size: 11px;
   flex-shrink: 0;
-}
-.policyLinks {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: 10px;
-}
-.policyLink {
-  text-decoration: none;
-}
-.policyLink:hover {
-  text-decoration: underline;
 }
 .preferencesButton {
   border: 0;
@@ -70,10 +55,6 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-  }
-  .policyLinks {
-    margin-left: 0;
-    display: none;
   }
   .copyright,
   .preferencesButton {

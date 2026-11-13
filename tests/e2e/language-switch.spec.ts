@@ -116,14 +116,23 @@ test("English pages retain language through links and isolate simultaneous local
   ).toBeVisible();
   await page
     .locator("footer")
-    .getByRole("link", { name: "Privacy Policy" })
+    .getByRole("button", { name: "Cookie preferences", exact: true })
     .click();
-  await expect(page).toHaveURL("/en/privacy-policy");
+  const dialog = page.getByRole("dialog");
   await expect(
-    page.getByText("Information on the processing of personal data", {
+    dialog.getByRole("link", { name: "Cookie Policy" })
+  ).toHaveAttribute("href", "/en/cookie-policy");
+  const [policyPage] = await Promise.all([
+    page.waitForEvent("popup"),
+    dialog.getByRole("link", { name: "Privacy Policy" }).click(),
+  ]);
+  await expect(policyPage).toHaveURL("/en/privacy-policy");
+  await expect(
+    policyPage.getByText("Information on the processing of personal data", {
       exact: true,
     })
   ).toBeVisible();
+  await policyPage.close();
   await page.goto("/en/presses");
   await expect(
     page.getByRole("heading", { name: "Publications", exact: true })

@@ -158,6 +158,65 @@ test("gallery reading order matches the image opened in the lightbox", async ({
 });
 
 for (const width of [1440, 390]) {
+  test(`project opening stays stable while the header compacts and expands at ${width}px`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`/projects/${projects[0].slug}`);
+    const container = page.locator("main.layout-content");
+    await expect(container).toHaveClass(/lenis/);
+    await expect(page.locator("[data-project-hero] img")).toBeVisible();
+    const samples = await container.evaluate(async (element) => {
+      const hero = element.querySelector("[data-project-hero]")!;
+      const introduction = element.querySelector("[class*='projectHeader']")!;
+      const readings = [];
+      const start = performance.now();
+      let movedDown = false;
+      let movedUp = false;
+      while (performance.now() - start < 1800) {
+        const elapsed = performance.now() - start;
+        if (!movedDown && elapsed > 50) {
+          element.dispatchEvent(
+            new WheelEvent("wheel", {
+              deltaY: 180,
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+          movedDown = true;
+        }
+        if (!movedUp && elapsed > 900) {
+          element.dispatchEvent(
+            new WheelEvent("wheel", {
+              deltaY: -400,
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+          movedUp = true;
+        }
+        readings.push({
+          hero: hero.getBoundingClientRect().height,
+          introduction: introduction.getBoundingClientRect().height,
+          compact: document.documentElement.dataset.headerCompact,
+          scroll: element.scrollTop,
+        });
+        await new Promise(requestAnimationFrame);
+      }
+      return readings;
+    });
+    expect(samples.some((sample) => sample.compact === "true")).toBe(true);
+    expect(samples.at(-1)!.compact).toBe("false");
+    await expect
+      .poll(() => container.evaluate((element) => element.scrollTop))
+      .toBe(0);
+    for (const dimension of ["hero", "introduction"] as const) {
+      const heights = samples.map((sample) => sample[dimension]);
+      expect(Math.max(...heights) - Math.min(...heights)).toBeLessThan(1);
+    }
+  });
+
   test(`project opens with a noninteractive photograph before its gallery at ${width}px`, async ({
     page,
   }) => {

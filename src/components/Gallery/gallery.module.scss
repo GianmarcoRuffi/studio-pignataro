@@ -7,9 +7,9 @@
 }
 .projectHeader {
   min-height: calc(
-    var(--viewport-height) - var(--header-height) - var(--footer-height) - var(
-        --project-hero-height
-      )
+    var(--viewport-height) - var(--header-height-expanded) - var(
+        --footer-height
+      ) - var(--project-hero-height)
   );
   padding: clamp(1.5rem, 2.3vw, 2rem) 0 clamp(2rem, 4vw, 3.5rem);
 }

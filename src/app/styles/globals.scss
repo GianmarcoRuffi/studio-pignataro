@@ -123,7 +123,8 @@ html,
 
 :root {
   --viewport-height: 100vh;
-  --header-height: 88px;
+  --header-height-expanded: 88px;
+  --header-height: var(--header-height-expanded);
   --footer-height: 40px;
 }
 

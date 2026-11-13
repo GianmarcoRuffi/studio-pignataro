@@ -275,15 +275,7 @@ for (const width of [1440, 900, 390]) {
       await expect(
         footer.getByRole("button", { name: "Preferenze cookie" })
       ).toBeVisible();
-      if (width > 768) {
-        await expect(
-          footer.getByRole("link", { name: "Privacy Policy" })
-        ).toBeVisible();
-      } else {
-        await expect(
-          footer.getByRole("link", { name: "Privacy Policy" })
-        ).toBeHidden();
-      }
+      await expect(footer.getByRole("link")).toHaveCount(0);
     }
   });
 }

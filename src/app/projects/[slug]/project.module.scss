@@ -2,7 +2,7 @@
   --project-hero-height: clamp(
     280px,
     56.25vw,
-    calc(100svh - var(--header-height) - var(--footer-height) - 14rem)
+    calc(100svh - var(--header-height-expanded) - var(--footer-height) - 14rem)
   );
 }
 

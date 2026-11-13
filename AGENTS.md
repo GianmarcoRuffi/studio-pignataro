@@ -16,7 +16,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 
 ## Comportamenti da preservare
 
-Il layout radice coordina splash, header, footer e consenso cookie. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
+Il layout radice coordina splash, header, footer e consenso cookie. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Foto di apertura e introduzione dei dettagli progetto usano l’altezza estesa stabile `--header-height-expanded`, così la compattazione dell’header non ridimensiona i contenuti durante lo scroll. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
 
 Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale; conserva le durate minime definite in `LOADING`. `OptionalScripts` abilita i figli solo con consenso `accepted`, usando `cookie-consent` e l'evento `cookie-consent-change`.
 
@@ -46,7 +46,7 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Su desktop mostra copyright a sinistra e informative/preferenze a destra; sotto 769 px nasconde le informative e centra copyright e «Preferenze cookie». I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Mostra soltanto copyright e «Preferenze cookie»: su desktop rispettivamente a sinistra e a destra, sotto 769 px centrati. I link Privacy Policy e Cookie Policy restano consultabili nella modale delle preferenze, in entrambe le lingue. I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
 - `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body. Le immagini delle pubblicazioni aprono la stessa modale con proporzioni native, rendering naturale e nessun ingrandimento oltre la risoluzione originale: clic o Invio/Spazio sull’immagine alternano vista adattata e dimensioni native, con scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Il carosello della homepage non mostra attualmente il nome del progetto né la freccia diagonale in basso a sinistra; conserva il contatore a destra, i chevron laterali e il collegamento sulla foto. Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-13: sostituite le bandiere con il selettore testuale IT / EN su desktop e nel menu mobile. La lingua corrente è sottolineata e non cliccabile; il cambio conserva pagina e navigazione localizzata.
+2026-11-13: rimossi dal footer desktop i link alle informative, disponibili nella modale «Preferenze cookie». Stabilizzate le altezze di apertura e introduzione dei progetti durante la compattazione dell’header per eliminare il salto di 12 px nello scroll.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
