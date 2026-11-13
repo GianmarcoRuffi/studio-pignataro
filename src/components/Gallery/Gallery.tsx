@@ -236,7 +236,7 @@ const Gallery: FC<GalleryProps> = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.discreteLink}
+              className={`editorial-link ${styles.discreteLink}`}
             >
               {link.name}
             </a>
@@ -258,7 +258,7 @@ const Gallery: FC<GalleryProps> = ({
           href={luigiCordaLink.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>
@@ -271,7 +271,7 @@ const Gallery: FC<GalleryProps> = ({
           href="https://www.luigicorda.com"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>
@@ -284,7 +284,7 @@ const Gallery: FC<GalleryProps> = ({
           href="https://www.mistralstudio.it"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>

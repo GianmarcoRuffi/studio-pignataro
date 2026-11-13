@@ -16,6 +16,8 @@ for (const width of [1440, 390]) {
   }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/projects/Quartiere-Vanchiglia");
+    if (width <= 1024)
+      await page.getByRole("button", { name: "Toggle menu" }).click();
     const english = page.locator('header a[hreflang="en"]:visible');
     await expect(english).toHaveAttribute(
       "href",
@@ -49,6 +51,8 @@ for (const width of [1440, 390]) {
     await page.locator("main.layout-content").evaluate((el) => {
       el.scrollTop = 0;
     });
+    if (width <= 1024)
+      await page.getByRole("button", { name: "Toggle menu" }).click();
     const italian = page.locator('header a[hreflang="it"]:visible');
     await italian.hover();
     await expect(
@@ -72,7 +76,7 @@ test("English pages retain language through links and isolate simultaneous local
   expect(await en.text()).toContain('lang="en"');
   await page.goto("/en/contacts");
   await expect(
-    page.getByRole("heading", { level: 1, name: "Contact", exact: true })
+    page.getByRole("heading", { level: 1, name: "Contacts", exact: true })
   ).toBeVisible();
   await page
     .locator("footer")

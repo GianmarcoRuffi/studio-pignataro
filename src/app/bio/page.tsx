@@ -24,7 +24,7 @@ export default function Bio() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.projectLink}
+            className={`editorial-link ${styles.projectLink}`}
           >
             {link.name} →
           </a>

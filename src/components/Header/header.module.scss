@@ -109,16 +109,17 @@
   background: var(--color-background-primary);
   color: var(--color-primary);
   z-index: 1003;
-  opacity: 0;
+  transform: translateY(-100%);
   visibility: hidden;
   overflow-y: auto;
   transition:
-    opacity 0.25s,
-    visibility 0.25s;
+    transform 320ms ease,
+    visibility 0s linear 320ms;
 }
 .menuOpen {
-  opacity: 1;
+  transform: translateY(0);
   visibility: visible;
+  transition-delay: 0s;
 }
 .closeButton {
   position: absolute;
@@ -225,4 +226,18 @@
 .languageSwitch:focus-visible .languageTooltip {
   opacity: 1;
   visibility: visible;
+}
+
+.mobileLanguage {
+  margin-top: 1rem;
+}
+@media (max-width: 1024px) {
+  .desktopLanguage {
+    display: none;
+  }
+}
+
+.mobileLanguage .languageTooltip {
+  left: 0;
+  right: auto;
 }

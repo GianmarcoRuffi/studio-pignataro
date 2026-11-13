@@ -59,9 +59,34 @@ const Header: FC = () => {
   const isHomepage = stripLocale(pathname) === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuPresent, setMenuPresent] = useState(false);
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuPresent(true);
+      return;
+    }
+    const timer = setTimeout(
+      () => setMenuPresent(false),
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 320
+    );
+    return () => clearTimeout(timer);
+  }, [menuOpen]);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1025px)");
+    const close = () => {
+      if (media.matches) {
+        setMenuOpen(false);
+        setMenuPresent(false);
+      }
+    };
+    media.addEventListener("change", close);
+    return () => media.removeEventListener("change", close);
+  }, []);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
-  useModalAccessibility(menuOpen, menuRef, () => setMenuOpen(false));
+  useModalAccessibility(menuOpen || menuPresent, menuRef, () =>
+    setMenuOpen(false)
+  );
   const updateScrolledState = useCallback(() => {
     const top = getScrollTop();
     setScrolled(
@@ -147,7 +172,7 @@ const Header: FC = () => {
           <a
             href={localizedPath(pathname, locale === "it" ? "en" : "it")}
             hrefLang={locale === "it" ? "en" : "it"}
-            className={styles.languageSwitch}
+            className={`${styles.languageSwitch} ${styles.desktopLanguage}`}
             aria-label={messages.navigation.switchLanguage}
           >
             <Flag italian={locale === "en"} />
@@ -175,10 +200,10 @@ const Header: FC = () => {
           id="mobile-navigation"
           ref={menuRef}
           role="dialog"
-          aria-modal={menuOpen ? true : undefined}
+          aria-modal={menuOpen || menuPresent ? true : undefined}
           aria-label={messages.navigation.menu}
-          aria-hidden={!menuOpen}
-          inert={!menuOpen}
+          aria-hidden={!menuOpen && !menuPresent}
+          inert={!menuOpen && !menuPresent}
           tabIndex={-1}
           data-lenis-prevent
           className={`${styles.menuOverlay} ${menuOpen ? styles.menuOpen : ""}`}
@@ -213,6 +238,19 @@ const Header: FC = () => {
                   </Link>
                 </li>
               ))}
+              <li className={styles.mobileLanguage}>
+                <a
+                  href={localizedPath(pathname, locale === "it" ? "en" : "it")}
+                  hrefLang={locale === "it" ? "en" : "it"}
+                  className={styles.languageSwitch}
+                  aria-label={messages.navigation.switchLanguage}
+                >
+                  <Flag italian={locale === "en"} />
+                  <span role="tooltip" className={styles.languageTooltip}>
+                    {messages.navigation.switchLanguage}
+                  </span>
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

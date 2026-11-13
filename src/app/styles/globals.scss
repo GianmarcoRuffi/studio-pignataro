@@ -275,3 +275,16 @@ html,
     padding-right: 0;
   }
 }
+
+:root {
+  color-scheme: only light;
+}
+
+a.editorial-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a.editorial-link:hover {
+  text-decoration-thickness: 2px;
+}

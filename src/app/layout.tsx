@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./styles/globals.scss";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -18,6 +18,11 @@ import { BRANDING_LOGO_URL, SITE_URL } from "../constants";
 import { localizedPath } from "../locales";
 import { getServerMessages } from "../locales/server";
 import { LocaleProvider } from "../locales/LocaleProvider";
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f7f5f0",
+};
 
 config.autoAddCss = false;
 

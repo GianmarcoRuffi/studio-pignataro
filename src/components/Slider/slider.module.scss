@@ -16,12 +16,10 @@
 .slide {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s ease;
+
   z-index: 1;
 }
 .active {
-  opacity: 1;
   z-index: 2;
 }
 .slide > a {
@@ -107,5 +105,21 @@
   }
   .slideCounter {
     font-size: 0.65rem;
+  }
+}
+
+.slider {
+  touch-action: pan-y pinch-zoom;
+}
+@media (max-width: 768px) {
+  .sliderButton {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    text-shadow: 0 1px 4px #000;
+  }
+  .sliderButton:hover {
+    background: transparent;
   }
 }
