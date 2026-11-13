@@ -41,6 +41,9 @@ export const UI_TIMINGS = {
     imageLoadTimeout: 6000,
     autoplayInterval: 6000,
   },
+  lightbox: {
+    loadingIndicatorDelay: 300,
+  },
 } as const;
 
 export const LOADING = {

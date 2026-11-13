@@ -88,10 +88,21 @@
   font-size: 0.8rem;
 }
 .socialLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   text-decoration: none;
+  transition: opacity 0.2s;
 }
 .socialLinks a:hover {
-  text-decoration: underline;
+  opacity: 0.65;
+}
+.socialLinks svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
 }
 .sectionTitle {
   margin: 0 0 1rem;

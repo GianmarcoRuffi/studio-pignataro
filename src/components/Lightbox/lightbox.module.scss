@@ -95,6 +95,29 @@
   filter: contrast(1.01) saturate(1.02) brightness(1.01);
 }
 
+.outgoingImage {
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.fadingOut {
+  animation: image-fade-out 300ms ease both;
+}
+
+.fadingIn {
+  animation: fadeIn 300ms ease both;
+}
+
+@keyframes image-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .loadingPlaceholder {
   position: absolute;
   inset: 0;

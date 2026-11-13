@@ -15,6 +15,7 @@ import { createPortal } from "react-dom";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import Image from "next/image";
 import type { ImageDimensions } from "../../models/models";
+import { UI_TIMINGS } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -61,6 +62,29 @@ const Lightbox: FC<LightboxProps> = ({
   const isImageLoading = imageState?.src !== imageSrc;
   const imageError =
     imageState?.src === imageSrc && imageState.status === "error";
+  const activeSourceRef = useRef(imageSrc);
+  const [loadingMessageSource, setLoadingMessageSource] = useState<
+    string | null
+  >(null);
+  const [presentation, setPresentation] = useState<{
+    current: string;
+    previous: string | null;
+  } | null>(null);
+  const outgoingSource = isImageLoading
+    ? presentation?.current
+    : presentation?.previous;
+  useLayoutEffect(() => {
+    activeSourceRef.current = imageSrc;
+  }, [imageSrc]);
+  useEffect(() => {
+    setLoadingMessageSource(null);
+    if (!isOpen || !isImageLoading) return;
+    const timer = setTimeout(
+      () => setLoadingMessageSource(imageSrc),
+      UI_TIMINGS.lightbox.loadingIndicatorDelay
+    );
+    return () => clearTimeout(timer);
+  }, [isOpen, imageSrc, isImageLoading]);
   const [loadedSize, setLoadedSize] = useState<
     (ImageDimensions & { src: string }) | null
   >(null);
@@ -373,7 +397,7 @@ const Lightbox: FC<LightboxProps> = ({
           onTouchStart={enableZoom ? undefined : handleTouchStart}
           onTouchEnd={enableZoom ? undefined : handleTouchEnd}
         >
-          {isImageLoading && (
+          {isImageLoading && loadingMessageSource === imageSrc && (
             <div className={styles.loadingPlaceholder} role="status">
               <div className={styles.spinner} aria-hidden="true" />
               <span>
@@ -384,6 +408,20 @@ const Lightbox: FC<LightboxProps> = ({
               </span>
             </div>
           )}
+
+          {!enableZoom &&
+            !imageError &&
+            outgoingSource &&
+            outgoingSource !== imageSrc && (
+              <Image
+                src={outgoingSource}
+                alt=""
+                aria-hidden="true"
+                fill
+                unoptimized
+                className={`${styles.outgoingImage} ${isImageLoading ? "" : styles.fadingOut}`}
+              />
+            )}
 
           {imageError ? (
             <div className={styles.errorIndicator}>
@@ -448,7 +486,7 @@ const Lightbox: FC<LightboxProps> = ({
                 unoptimized
                 loading="eager"
                 fetchPriority="high"
-                className={`${styles.lightboxImage} ${enableZoom ? styles.zoomImage : ""}`}
+                className={`${styles.lightboxImage} ${enableZoom ? styles.zoomImage : !isImageLoading ? styles.fadingIn : ""}`}
                 style={{
                   ...(enableZoom
                     ? { width: imageWidth, height: imageHeight }
@@ -456,15 +494,23 @@ const Lightbox: FC<LightboxProps> = ({
                   opacity: isImageLoading ? 0 : 1,
                 }}
                 onLoad={(event) => {
+                  if (activeSourceRef.current !== imageSrc) return;
                   setLoadedSize({
                     src: imageSrc,
                     width: event.currentTarget.naturalWidth,
                     height: event.currentTarget.naturalHeight,
                   });
                   setImageState({ src: imageSrc, status: "loaded" });
+                  if (!enableZoom) {
+                    setPresentation((previous) => ({
+                      current: imageSrc,
+                      previous: previous?.current ?? null,
+                    }));
+                  }
                   imageCacheRef.current.set(activeIndex, true);
                 }}
                 onError={() => {
+                  if (activeSourceRef.current !== imageSrc) return;
                   setImageState({ src: imageSrc, status: "error" });
                   imageCacheRef.current.set(activeIndex, false);
                 }}
