@@ -57,7 +57,7 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-13: verificata la stabilità dello scroll nelle Pubblicazioni. Allineato l’invito al contatto italiano al testo inglese su progetti e servizi di architettura; aggiornati i loghi social accessibili in entrambe le lingue. La lightbox dei progetti conserva la foto precedente, sfuma il cambio immagine e ritarda il messaggio di caricamento per evitare lampeggi nei passaggi rapidi.
+2026-11-13: ridotto da 6 a 5 secondi l’intervallo automatico del carosello della homepage (`UI_TIMINGS.slider.autoplayInterval`).
 
 <!-- BEGIN:nextjs-agent-rules -->
 
