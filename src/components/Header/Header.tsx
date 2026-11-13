@@ -18,31 +18,50 @@ import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import styles from "./header.module.scss";
 
-function Flag({ italian }: { italian: boolean }) {
+function LanguageSwitch({ desktop = false }: { desktop?: boolean }) {
+  const { messages, locale } = useLocale();
+  const pathname = usePathname();
   return (
-    <svg
-      viewBox="0 0 60 40"
-      width="24"
-      height="16"
-      aria-hidden="true"
-      focusable="false"
+    <div
+      role="group"
+      aria-label={messages.navigation.languageSelector}
+      className={`${styles.languageSelector} ${desktop ? styles.desktopLanguage : ""}`}
     >
-      {italian ? (
-        <>
-          <path fill="#009246" d="M0 0h20v40H0z" />
-          <path fill="#fff" d="M20 0h20v40H20z" />
-          <path fill="#ce2b37" d="M40 0h20v40H40z" />
-        </>
-      ) : (
-        <>
-          <path fill="#012169" d="M0 0h60v40H0z" />
-          <path stroke="#fff" strokeWidth="9" d="m0 0 60 40M60 0 0 40" />
-          <path stroke="#c8102e" strokeWidth="3" d="m0 0 60 40M60 0 0 40" />
-          <path stroke="#fff" strokeWidth="14" d="M30 0v40M0 20h60" />
-          <path stroke="#c8102e" strokeWidth="8" d="M30 0v40M0 20h60" />
-        </>
-      )}
-    </svg>
+      {(["it", "en"] as const).map((language, index) => (
+        <span key={language} className={styles.languageOption}>
+          {index > 0 && (
+            <span aria-hidden="true" className={styles.languageSeparator}>
+              /
+            </span>
+          )}
+          {language === locale ? (
+            <span
+              className={styles.currentLanguage}
+              lang={language}
+              aria-current="true"
+              aria-label={
+                messages.navigation[language === "it" ? "italian" : "english"]
+              }
+            >
+              {language.toUpperCase()}
+            </span>
+          ) : (
+            <a
+              href={localizedPath(pathname, language)}
+              hrefLang={language}
+              lang={language}
+              className={styles.languageSwitch}
+              aria-label={messages.navigation.switchLanguage}
+            >
+              {language.toUpperCase()}
+              <span role="tooltip" className={styles.languageTooltip}>
+                {messages.navigation.switchLanguage}
+              </span>
+            </a>
+          )}
+        </span>
+      ))}
+    </div>
   );
 }
 
@@ -169,17 +188,7 @@ const Header: FC = () => {
             </ul>
           </div>
 
-          <a
-            href={localizedPath(pathname, locale === "it" ? "en" : "it")}
-            hrefLang={locale === "it" ? "en" : "it"}
-            className={`${styles.languageSwitch} ${styles.desktopLanguage}`}
-            aria-label={messages.navigation.switchLanguage}
-          >
-            <Flag italian={locale === "en"} />
-            <span role="tooltip" className={styles.languageTooltip}>
-              {messages.navigation.switchLanguage}
-            </span>
-          </a>
+          <LanguageSwitch desktop />
           <button
             type="button"
             ref={menuIconRef}
@@ -239,17 +248,7 @@ const Header: FC = () => {
                 </li>
               ))}
               <li className={styles.mobileLanguage}>
-                <a
-                  href={localizedPath(pathname, locale === "it" ? "en" : "it")}
-                  hrefLang={locale === "it" ? "en" : "it"}
-                  className={styles.languageSwitch}
-                  aria-label={messages.navigation.switchLanguage}
-                >
-                  <Flag italian={locale === "en"} />
-                  <span role="tooltip" className={styles.languageTooltip}>
-                    {messages.navigation.switchLanguage}
-                  </span>
-                </a>
+                <LanguageSwitch />
               </li>
             </ul>
           </nav>

@@ -10,14 +10,36 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-for (const width of [1440, 390]) {
-  test(`flag switches the same project and English navigation persists at ${width}px`, async ({
+for (const width of [1440, 1025, 1024, 390]) {
+  test(`language selector switches the same project and English navigation persists at ${width}px`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/projects/Quartiere-Vanchiglia");
     if (width <= 1024)
       await page.getByRole("button", { name: "Toggle menu" }).click();
+    const selector = page.getByRole("group", { name: "Lingua", exact: true });
+    await expect(selector).toBeVisible();
+    await expect(selector.locator('[aria-current="true"]')).toHaveText("IT");
+    await expect(selector.locator('[aria-current="true"]')).toHaveCSS(
+      "text-decoration-line",
+      "underline"
+    );
+    await expect(selector.locator('a[hreflang="it"]')).toHaveCount(0);
+    await expect(selector.locator("svg")).toHaveCount(0);
+    if (width <= 1024) {
+      await expect(
+        page.locator("header > div").getByRole("group", { name: "Lingua" })
+      ).toHaveCount(1);
+      const contacts = await page
+        .getByRole("dialog")
+        .getByRole("link", { name: "Contatti", exact: true })
+        .boundingBox();
+      const languageBox = await selector.boundingBox();
+      expect(languageBox!.y).toBeGreaterThanOrEqual(
+        contacts!.y + contacts!.height
+      );
+    }
     const english = page.locator('header a[hreflang="en"]:visible');
     await expect(english).toHaveAttribute(
       "href",
@@ -27,7 +49,13 @@ for (const width of [1440, 390]) {
     await expect(
       page.getByRole("tooltip", { name: "English Version" })
     ).toBeVisible();
-    await english.click();
+    const target = await english.boundingBox();
+    expect(target!.width).toBeGreaterThanOrEqual(44);
+    expect(target!.height).toBeGreaterThanOrEqual(44);
+    await page.screenshot({ path: `/tmp/language-selector-${width}.png` });
+    await english.focus();
+    await expect(english).toBeFocused();
+    await page.keyboard.press("Enter");
     await expect(page).toHaveURL("/en/projects/Quartiere-Vanchiglia");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
@@ -54,6 +82,14 @@ for (const width of [1440, 390]) {
     if (width <= 1024)
       await page.getByRole("button", { name: "Toggle menu" }).click();
     const italian = page.locator('header a[hreflang="it"]:visible');
+    const englishSelector = page.getByRole("group", {
+      name: "Language",
+      exact: true,
+    });
+    await expect(englishSelector.locator('[aria-current="true"]')).toHaveText(
+      "EN"
+    );
+    await expect(englishSelector.locator('a[hreflang="en"]')).toHaveCount(0);
     await italian.hover();
     await expect(
       page.getByRole("tooltip", { name: "Versione Italiana" })

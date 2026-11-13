@@ -9,7 +9,10 @@
     "toggleMenu": "Toggle menu",
     "menu": "Menu di navigazione",
     "closeMenu": "Chiudi menu",
-    "switchLanguage": "English Version"
+    "switchLanguage": "English Version",
+    "languageSelector": "Lingua",
+    "italian": "Italiano",
+    "english": "English"
   },
   "footer": {
     "copyright": "Gianluca Pignataro",

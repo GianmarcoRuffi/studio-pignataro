@@ -187,21 +187,34 @@
 .navList {
   align-items: center;
 }
-.languageSwitch {
+.languageSelector {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.languageOption {
+  display: flex;
+  align-items: center;
+}
+.languageSwitch,
+.currentLanguage {
   position: relative;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  padding: 0;
-  border: 0;
+  min-width: 44px;
+  min-height: 44px;
   text-decoration: none;
 }
-.languageSwitch svg {
-  display: block;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px #8886;
+.currentLanguage,
+.languageSwitch:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+.languageSeparator {
+  opacity: 0.6;
 }
 .languageTooltip {
   position: absolute;
@@ -240,4 +253,9 @@
 .mobileLanguage .languageTooltip {
   left: 0;
   right: auto;
+}
+
+.mobileLanguage .languageSelector {
+  margin-left: 0;
+  width: fit-content;
 }
