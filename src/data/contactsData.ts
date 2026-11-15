@@ -5,6 +5,13 @@ import type {
 } from "../models/models";
 
 export const sharedContactsData: SharedContactsData = {
+  postalAddress: {
+    streetAddress: "Via Arrigo Solmi 36",
+    postalCode: "09129",
+    addressLocality: "Cagliari",
+    addressRegion: "CA",
+    addressCountry: "IT",
+  },
   studio: "Via Arrigo Solmi 36, 09129 Cagliari",
   email: {
     address: "glpignataro@yahoo.it",

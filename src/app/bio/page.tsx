@@ -1,6 +1,9 @@
 "use client";
 import { useLocale } from "../../locales/LocaleProvider";
 
+import Link from "next/link";
+import { localizedPath } from "../../locales";
+import { getProjects } from "../../data/projectsData";
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
@@ -134,6 +137,30 @@ export default function Bio() {
         </div>
       </div>
 
+      <nav
+        className={styles.experiencesSection}
+        aria-label={messages.ui.seo.relatedProjects}
+      >
+        <div className={styles.experiencesContent}>
+          <h2 className={styles.sectionTitle}>
+            {messages.ui.seo.relatedProjects}
+          </h2>
+          <ul>
+            {getProjects(messages)
+              .filter((p) => !p.invisible && p.details)
+              .map((p) => (
+                <li key={p.slug}>
+                  <Link href={localizedPath(`/projects/${p.slug}`, locale)}>
+                    {p.projectName}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <Link href={localizedPath("/presses", locale)}>
+            {messages.ui.seo.publications}
+          </Link>
+        </div>
+      </nav>
       <ScrollUpButton />
     </div>
   );

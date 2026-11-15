@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 
 interface Project {
+  seoDescription?: string;
+  details?: string;
+  updatedAt?: string;
   projectName: string;
   imgSrc: string;
   description: string;
@@ -92,6 +95,13 @@ interface SocialLinks {
 }
 
 interface SharedContactsData {
+  postalAddress: {
+    streetAddress: string;
+    postalCode: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
   studio: string;
   email: Email;
   phone: Phone;
@@ -121,6 +131,8 @@ interface GalleryProps {
   images: string[];
   galleryTitle: string;
   galleryDescription: string;
+  galleryDetails?: string;
+  publicationHref?: string;
   galleryLinks?: GalleryLink[];
   imgCredits?: string;
   prevProject?: { slug: string; projectName: string };

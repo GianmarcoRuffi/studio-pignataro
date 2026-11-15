@@ -29,7 +29,7 @@ Usa Node.js 26 LTS (`.nvmrc` e `engines.node: "26.x"`) e npm con `package-lock.j
 - `npm run deploy:staging` è facoltativo: da `staging` pubblica una Preview e aggiorna gli alias staging; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato. Gli stessi alias sono domini Preview collegati a `staging` e seguono anche i deploy Git automatici. Lo staging resta pubblico e con `noindex`.
 - `npm run lint`; `npm run type-check`; `npm run format:check`.
 - `npm run format` riscrive i file formattabili.
-- `npm run build` rigenera `public/sitemap.xml` prima della build; `npm start` avvia la produzione.
+- `npm run build` genera `/sitemap.xml` tramite `src/app/sitemap.ts`; `npm start` avvia la produzione.
 - `next.config.js` aggiunge `X-Robots-Tag: noindex` soltanto con `VERCEL_ENV=preview`, anche sugli alias staging personalizzati. Conserva l'indicizzabilità di Production.
 - `npm run playwright:install`; `npm run test:e2e`.
 - Singolo test: `npm run test:e2e -- -g "homepage keeps the hero slider visible"`.
@@ -57,7 +57,17 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-13: ridotto da 6 a 5 secondi l’intervallo automatico del carosello della homepage (`UI_TIMINGS.slider.autoplayInterval`).
+2026-11-15: SEO con JSON-LD server tipizzato, metadati condivisi senza meta keywords,
+indici editoriali completi SSR in Progetti/Pubblicazioni, monografia e collegamenti
+contestuali. Sitemap nativa con immagini, alternanze IT/EN e `updatedAt` opzionale
+attendibile (mai mtime di build). Lo splash si attiva solo al primo ingresso in
+homepage dopo hydration; contenuti SSR visibili e pagine interne immediate.
+Audit ripetibile con `python3 scripts/audit-seo.py BASE_URL OUTPUT_JSON`;
+risultati e limiti in `SEO-AUDIT.md`. Contrasto del testo secondario del consenso
+allineato al token condiviso dopo audit Lighthouse. Precaricamento delle schede
+allineato a sizes/quality condivisi con i renderer, senza download originali doppi.
+Procedura esterna e mappa query in `SEO.md`. Preservare i testi della biografia
+modificati dallo studio e il caricamento incrementale delle griglie client.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     locale,
     path: "/projects",
     title: {
-      default: messages.ui.common.projects,
+      default: messages.ui.metadata.projectsTitle,
       template: messages.ui.metadata.titleTemplate,
     },
     description: messages.ui.metadata.projectsDescription,

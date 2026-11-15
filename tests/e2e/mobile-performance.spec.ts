@@ -158,3 +158,29 @@ test("carousel autoplay slides horizontally and theme stays light", async ({
     "/projects/Via-Venturoli"
   );
 });
+
+test("catalogues preload responsive covers without downloading originals", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const requests: string[] = [];
+  page.on("request", (request) => {
+    if (request.resourceType() === "image") requests.push(request.url());
+  });
+  for (const path of ["/projects", "/presses"]) {
+    requests.length = 0;
+    await page.goto(path);
+    await expect(page.locator("article").first()).toBeVisible();
+    await page.waitForLoadState("networkidle");
+    expect(
+      requests.some((url) => new URL(url).pathname === "/_next/image")
+    ).toBe(true);
+    expect(
+      requests.filter((url) =>
+        /\/(?:publications\/covers\/|projects\/[^/]+\/cover\.)/.test(
+          new URL(url).pathname
+        )
+      )
+    ).toEqual([]);
+  }
+});

@@ -1,4 +1,5 @@
 "use client";
+import { CARD_IMAGE_OPTIONS } from "../../constants";
 import { useLocale } from "../../locales/LocaleProvider";
 import { formatMessage } from "../../locales";
 
@@ -18,6 +19,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const { messages } = useLocale();
   const loaded = useImageLoad(imageSource, {
+    responsive: CARD_IMAGE_OPTIONS.projects,
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });
 
@@ -38,7 +40,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
             description,
           })}
           fill
-          sizes="(max-width: 444px) calc(100vw - 40px), (max-width: 768px) 91vw, (max-width: 1440px) 44vw, 640px"
+          quality={CARD_IMAGE_OPTIONS.projects.quality}
+          sizes={CARD_IMAGE_OPTIONS.projects.sizes}
           style={{ objectFit: imageFit, objectPosition: imagePosition }}
           loading="lazy"
           placeholder="blur"

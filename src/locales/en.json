@@ -21,10 +21,9 @@
     "preferences": "Cookie preferences"
   },
   "metadata": {
-    "title": "Studio Architetto Gianluca Pignataro",
-    "template": "%s | Studio Architetto Gianluca Pignataro",
+    "title": "Gianluca Pignataro | Architect in Cagliari",
+    "template": "%s | Gianluca Pignataro",
     "description": "Gianluca Pignataro’s architectural practice in Cagliari, with thirty years of experience in architectural design, interior design and the restoration and refurbishment of historic buildings.",
-    "keywords": "architect, Cagliari, architectural practice, architectural design, interior design, residential architecture, refurbishment, historic building restoration",
     "author": "Architect Gianluca Pignataro",
     "publisher": "Architetto Pignataro",
     "logoAlt": "Studio Architetto Gianluca Pignataro - Logo"
@@ -110,15 +109,7 @@
       "navigation": "Project navigation",
       "heroAlt": "{name} — architectural project",
       "previousLabel": "Previous project: {name}",
-      "nextLabel": "Next project: {name}",
-      "metadataKeywords": [
-        "architect",
-        "cagliari",
-        "architecture studio",
-        "interior design",
-        "renovation",
-        "architecture projects"
-      ]
+      "nextLabel": "Next project: {name}"
     },
     "presses": {
       "intro": "The work of the practice in books, architecture magazines and online features. Selected publications from 1999 to the present.",
@@ -160,10 +151,22 @@
       "bioDescription": "Architect Gianluca Pignataro: thirty years of professional experience in architectural design, historic building restoration and refurbishment, in Cagliari and internationally.",
       "contactsDescription": "Discuss your project with architect Gianluca Pignataro in Cagliari. Contact details and enquiries about architectural and interior design services.",
       "projectsDescription": "Selected architectural and interior design projects by Gianluca Pignataro, including residential refurbishment, historic buildings and contemporary interiors.",
-      "titleTemplate": "%s | Studio Architetto Gianluca Pignataro",
+      "titleTemplate": "%s | Gianluca Pignataro",
       "pressesDescription": "Books, specialist architecture and design publications, and press features presenting the work of architect Gianluca Pignataro.",
       "privacyDescription": "Information on the processing of personal data by Studio Architetto Gianluca Pignataro.",
-      "cookieDescription": "Information on the use of cookies on the Studio Architetto Gianluca Pignataro website."
+      "cookieDescription": "Information on the use of cookies on the Studio Architetto Gianluca Pignataro website.",
+      "bioTitle": "Architect in Cagliari — Biography",
+      "projectsTitle": "Architecture and interior design projects",
+      "pressesTitle": "Publications and monograph"
+    },
+    "seo": {
+      "projectIndex": "Complete project index",
+      "publicationIndex": "Complete bibliography",
+      "relatedProjects": "Related projects",
+      "publications": "Publications",
+      "monographTitle": "Gianluca Pignataro – 30 anni di inconsuetudine",
+      "monographIntro": "Published in December 2023 and edited by Luigi Corda for Associazione Culturale Timeless, this monograph brings together thirty years of Gianluca Pignataro’s architectural work.",
+      "projectImage": "{name} — photograph {index}"
     }
   },
   "editorial": {
@@ -171,12 +174,16 @@
       "Quartiere-Vanchiglia": {
         "projectName": "Quartiere Vanchiglia",
         "description": "Refurbishment and interior design in the historic centre of Turin.",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Quartiere Vanchiglia — Refurbishment and interior design in the historic centre of Turin. Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Venturoli": {
         "projectName": "Via Venturoli",
         "description": "Interior design in Bologna.",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Venturoli — Interior design in Bologna. Gianluca Pignataro.",
+        "details": ""
       },
       "Corso-Vittorio-Emanuele-II": {
         "projectName": "Corso Vittorio Emanuele II",
@@ -186,7 +193,9 @@
             "name": "Luigi Corda"
           }
         },
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Corso Vittorio Emanuele II — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro.",
+        "details": "Refurbishment and interior design in the historic centre of Cagliari"
       },
       "Via-Asti": {
         "projectName": "Via Asti",
@@ -196,12 +205,16 @@
             "name": "Luigi Corda"
           }
         },
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Asti — Refurbishment and interior design in Cagliari. Gianluca Pignataro.",
+        "details": "Refurbishment and interior design in Cagliari (published project)"
       },
       "Via-Ada-Negri": {
         "projectName": "Via Ada Negri",
         "description": "Interior design in Cagliari.",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Ada Negri — Interior design in Cagliari. Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Machiavelli": {
         "projectName": "Via Machiavelli",
@@ -214,7 +227,9 @@
             "name": " 'Ristrutturazione di un appartamento' on Tubes Radiatori"
           }
         },
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Machiavelli — Refurbishment and interior design in Cagliari. Gianluca Pignataro.",
+        "details": "Refurbishment and interior design in Cagliari (published project)"
       },
       "Vico-V-Via-San-Giovanni": {
         "projectName": "Vico V di Via S. Giovanni",
@@ -227,37 +242,51 @@
             "name": " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' on Homify"
           }
         },
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Vico V di Via S. Giovanni — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro.",
+        "details": "Refurbishment and interior design in the Villanova district of Cagliari’s historic centre (published project)"
       },
       "Agenzia-Immobiliare-AMS": {
         "projectName": "Agenzia Immobiliare AMS",
         "description": "Interior design and site supervision.\n    Via Cagliari, Capoterra (CA)",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Agenzia Immobiliare AMS — Interior design and site supervision.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Canonico-Sanna": {
         "projectName": "Via Canonico Sanna",
         "description": "Refurbishment of a residential building in the historic centre of Baunei (OG).",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Canonico Sanna — Refurbishment of a residential building in the historic centre of Baunei (OG). Gianluca Pignataro.",
+        "details": "Refurbishment of a residential building in the historic centre of Baunei (OG)"
       },
       "Viale-Regina-Margherita": {
         "projectName": "V.le Regina Margherita",
         "description": "Refurbishment within the historic Palazzo Zedda-Piras in Cagliari.",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "V.le Regina Margherita — Refurbishment within the historic Palazzo Zedda-Piras in Cagliari. Gianluca Pignataro.",
+        "details": "Refurbishment and interior design within the historic Palazzo Zedda-Piras in Cagliari"
       },
       "Via-Vittorio-Amedeo-II": {
         "projectName": "Via Vittorio Amedeo II",
         "description": "Architectural design and site supervision for a residential building in Cagliari.",
-        "imgCredits": "Photo © Luigi Corda"
+        "imgCredits": "Photo © Luigi Corda",
+        "seoDescription": "Via Vittorio Amedeo II — Architectural design and site supervision for a residential building in Cagliari. Gianluca Pignataro.",
+        "details": "Architectural design and site supervision for a residential building in Cagliari"
       },
       "TangexCorp": {
         "projectName": "Tangex Corp.",
         "description": "Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA).",
-        "imgCredits": "Photo © Guanina Santiago de Jesus"
+        "imgCredits": "Photo © Guanina Santiago de Jesus",
+        "seoDescription": "Tangex Corp. — Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA). Gianluca Pignataro.",
+        "details": "Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA)"
       },
       "Via-Eroi-d-Italia": {
         "projectName": "Via Eroi d'Italia",
         "description": "Architectural design, interior design and site supervision for a residential building in Cagliari.",
-        "imgCredits": "Photo © Matteo Piazza"
+        "imgCredits": "Photo © Matteo Piazza",
+        "seoDescription": "Via Eroi d'Italia — Architectural design, interior design and site supervision for a residential building in Cagliari. Gianluca Pignataro.",
+        "details": "Architectural design, interior design and site supervision for a residential building in Cagliari."
       },
       "Glisbo": {
         "projectName": "Agenzia pubblicitaria Glisbò",
@@ -267,7 +296,9 @@
             "name": "Glisbò"
           }
         },
-        "imgCredits": "Architectural visualisations by Gianpierluigi Secci - 3D Designer - www.mistralstudio.it"
+        "imgCredits": "Architectural visualisations by Gianpierluigi Secci - 3D Designer - www.mistralstudio.it",
+        "seoDescription": "Agenzia pubblicitaria Glisbò — Modular exhibition stand for the Autonomous Region of Sardinia. Gianluca Pignataro.",
+        "details": "Modular exhibition stand for the Autonomous Region of Sardinia"
       }
     },
     "bio": {

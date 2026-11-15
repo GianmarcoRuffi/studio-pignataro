@@ -12,6 +12,7 @@ import type { ImageDimensions } from "../../models/models";
 import type { GalleryFrame } from "../../utils/galleryLayout";
 
 interface MasonryGalleryProps {
+  projectName: string;
   imageDimensions: ImageDimensions[];
   rows: GalleryFrame[][];
   skeletonOnly: boolean;
@@ -21,6 +22,7 @@ interface MasonryGalleryProps {
 }
 
 const MasonryGallery: FC<MasonryGalleryProps> = ({
+  projectName,
   images,
   imageDimensions,
   rows,
@@ -130,6 +132,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       onClick={() => handleImageClick(imageIndex)}
                       aria-label={formatMessage(messages.ui.gallery.viewImage, {
                         index: imageIndex + 1,
+                        name: projectName,
                       })}
                     >
                       <div className={styles.imageContainer}>
@@ -141,8 +144,9 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
 
                         <Image
                           src={imageSource}
-                          alt={formatMessage(messages.ui.gallery.imageAlt, {
+                          alt={formatMessage(messages.ui.seo.projectImage, {
                             index: imageIndex + 1,
+                            name: projectName,
                           })}
                           width={imageDimensions[imageIndex].width}
                           height={imageDimensions[imageIndex].height}

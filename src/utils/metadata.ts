@@ -1,8 +1,10 @@
+import { SEO_DEFAULT_IMAGE } from "../constants";
 import type { Metadata } from "next";
 import { localizedPath, type Locale } from "../locales";
 
 interface PageMetadataOptions {
   locale?: Locale;
+  image?: string;
   title: string | { default: string; template: string };
   description: string;
   path: string;
@@ -20,6 +22,7 @@ export function generatePageMetadata({
   description,
   path,
   locale = "it",
+  image = SEO_DEFAULT_IMAGE,
 }: PageMetadataOptions): Metadata {
   const metadata: Metadata = {
     title: title as Metadata["title"],
@@ -33,12 +36,19 @@ export function generatePageMetadata({
       },
     },
     openGraph: {
+      type: "website",
+      siteName: "Gianluca Pignataro",
+      images: [
+        { url: image, alt: typeof title === "string" ? title : title.default },
+      ],
       url: localizedPath(path, locale),
       locale: locale === "en" ? "en_GB" : "it_IT",
       title: typeof title === "string" ? title : title.default,
       description,
     },
     twitter: {
+      card: "summary_large_image",
+      images: [image],
       title: typeof title === "string" ? title : title.default,
       description,
     },

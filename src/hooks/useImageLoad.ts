@@ -1,7 +1,9 @@
+import { getImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 interface UseImageLoadOptions {
   minimumLoadingTime?: number;
+  responsive?: { sizes: string; quality: number };
 }
 
 /**
@@ -20,6 +22,8 @@ export function useImageLoad(
   src: string,
   options: UseImageLoadOptions = {}
 ): boolean {
+  const sizes = options.responsive?.sizes;
+  const quality = options.responsive?.quality;
   const minimumLoadingTime = options.minimumLoadingTime ?? 0;
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -55,7 +59,21 @@ export function useImageLoad(
 
     img.onload = settle;
     img.onerror = settle;
-    img.src = src;
+    if (sizes && quality !== undefined && !src.endsWith(".gif")) {
+      const { props } = getImageProps({
+        src,
+        alt: "",
+        width: 600,
+        height: 400,
+        sizes,
+        quality,
+      });
+      img.sizes = props.sizes ?? "";
+      img.srcset = props.srcSet ?? "";
+      img.src = props.src;
+    } else {
+      img.src = src;
+    }
 
     if (img.complete) {
       settle();
@@ -70,7 +88,7 @@ export function useImageLoad(
       img.onload = null;
       img.onerror = null;
     };
-  }, [minimumLoadingTime, src]);
+  }, [minimumLoadingTime, src, sizes, quality]);
 
   return isLoaded;
 }

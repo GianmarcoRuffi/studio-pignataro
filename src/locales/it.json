@@ -21,10 +21,9 @@
     "preferences": "Preferenze cookie"
   },
   "metadata": {
-    "title": "Studio Architetto Gianluca Pignataro",
-    "template": "%s | Studio Architetto Gianluca Pignataro",
+    "title": "Studio Architetto Gianluca Pignataro a Cagliari",
+    "template": "%s | Gianluca Pignataro",
     "description": "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    "keywords": "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
     "author": "Architetto Gianluca Pignataro",
     "publisher": "Architetto Pignataro",
     "logoAlt": "Studio Architetto Gianluca Pignataro - Logo"
@@ -110,15 +109,7 @@
       "navigation": "Navigazione progetti",
       "heroAlt": "Vista del progetto {name}",
       "previousLabel": "Progetto precedente: {name}",
-      "nextLabel": "Progetto successivo: {name}",
-      "metadataKeywords": [
-        "architetto",
-        "cagliari",
-        "studio di architettura",
-        "interior design",
-        "ristrutturazione",
-        "progetti architettura"
-      ]
+      "nextLabel": "Progetto successivo: {name}"
     },
     "presses": {
       "intro": "Il lavoro dello studio attraverso libri, riviste e articoli. Una bibliografia dal 1999 a oggi.",
@@ -160,10 +151,22 @@
       "bioDescription": "Profilo professionale dell'Architetto Gianluca Pignataro: trenta anni di esperienza in restauro, recupero dell'edilizia storica e progettazione architettonica a Cagliari e all'estero.",
       "contactsDescription": "Contatti dello Studio Architetto Gianluca Pignataro a Cagliari. Informazioni su indirizzo, email, telefono e canali social per le tue richieste di consulenza architettonica.",
       "projectsDescription": "Una selezione dei miei progetti di architettura e interior design, dalla ristrutturazione di edifici storici a soluzioni innovative per interni contemporanei.",
-      "titleTemplate": "%s | Studio Architetto Gianluca Pignataro",
+      "titleTemplate": "%s | Gianluca Pignataro",
       "pressesDescription": "Rassegna stampa e pubblicazioni dei lavori dell'Architetto Gianluca Pignataro su riviste specializzate di architettura e design.",
       "privacyDescription": "Informativa sul trattamento dei dati personali dello Studio Architetto Gianluca Pignataro.",
-      "cookieDescription": "Informativa sull'utilizzo dei cookie nel sito dello Studio Architetto Gianluca Pignataro."
+      "cookieDescription": "Informativa sull'utilizzo dei cookie nel sito dello Studio Architetto Gianluca Pignataro.",
+      "bioTitle": "Architetto a Cagliari — Biografia",
+      "projectsTitle": "Progetti di architettura e interior design",
+      "pressesTitle": "Pubblicazioni e monografia"
+    },
+    "seo": {
+      "projectIndex": "Indice completo dei progetti",
+      "publicationIndex": "Bibliografia completa",
+      "relatedProjects": "Progetti collegati",
+      "publications": "Pubblicazioni",
+      "monographTitle": "Gianluca Pignataro – 30 anni di inconsuetudine",
+      "monographIntro": "Pubblicata nel dicembre 2023 e curata da Luigi Corda per l’Associazione Culturale Timeless, la monografia raccoglie trent’anni del lavoro di architettura di Gianluca Pignataro.",
+      "projectImage": "{name} — fotografia {index}"
     }
   },
   "editorial": {
@@ -171,12 +174,16 @@
       "Quartiere-Vanchiglia": {
         "projectName": "Quartiere Vanchiglia",
         "description": "Ristrutturazione con Interior design nel centro storico di Torino.",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Quartiere Vanchiglia — Ristrutturazione con Interior design nel centro storico di Torino. Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Venturoli": {
         "projectName": "Via Venturoli",
         "description": "Progettazione di Interior design a Bologna.",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Venturoli — Progettazione di Interior design a Bologna. Gianluca Pignataro.",
+        "details": ""
       },
       "Corso-Vittorio-Emanuele-II": {
         "projectName": "Corso Vittorio Emanuele II",
@@ -186,7 +193,9 @@
             "name": "Luigi Corda"
           }
         },
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Corso Vittorio Emanuele II — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro.",
+        "details": "Ristrutturazione con Interior design nel centro storico di Cagliari"
       },
       "Via-Asti": {
         "projectName": "Via Asti",
@@ -196,12 +205,16 @@
             "name": "Luigi Corda"
           }
         },
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Asti — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro.",
+        "details": "Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)"
       },
       "Via-Ada-Negri": {
         "projectName": "Via Ada Negri",
         "description": "Progettazione di Interior design a Cagliari.",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Ada Negri — Progettazione di Interior design a Cagliari. Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Machiavelli": {
         "projectName": "Via Machiavelli",
@@ -214,7 +227,9 @@
             "name": " 'Ristrutturazione di un appartamento' su Tubes Radiatori"
           }
         },
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Machiavelli — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro.",
+        "details": "Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)"
       },
       "Vico-V-Via-San-Giovanni": {
         "projectName": "Vico V di Via S. Giovanni",
@@ -227,37 +242,51 @@
             "name": " '15 Motivi per Scegliere il Cocciopesto e i Laterizi per i Rivestimenti' su Homify"
           }
         },
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Vico V di Via S. Giovanni — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro.",
+        "details": "Ristrutturazione con Interior design nel centro storico di Cagliari, quartiere Villanova (lavoro pubblicato)"
       },
       "Agenzia-Immobiliare-AMS": {
         "projectName": "Agenzia Immobiliare AMS",
         "description": "Interior design e d.l.\n    Via Cagliari, Capoterra (CA)",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Agenzia Immobiliare AMS — Interior design e d.l.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro.",
+        "details": ""
       },
       "Via-Canonico-Sanna": {
         "projectName": "Via Canonico Sanna",
         "description": "Ristrutturazione di una palazzina nel centro storico di Baunei (OG).",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Canonico Sanna — Ristrutturazione di una palazzina nel centro storico di Baunei (OG). Gianluca Pignataro.",
+        "details": "Ristrutturazione di una palazzina nel centro storico di Baunei (OG)"
       },
       "Viale-Regina-Margherita": {
         "projectName": "V.le Regina Margherita",
         "description": "Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "V.le Regina Margherita — Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari. Gianluca Pignataro.",
+        "details": "Ristrutturazione con Interior design nel palazzo storico Zedda-Piras a Cagliari"
       },
       "Via-Vittorio-Amedeo-II": {
         "projectName": "Via Vittorio Amedeo II",
         "description": "Progettazione e d.l. di una palazzina residenziale a Cagliari.",
-        "imgCredits": "Foto © Luigi Corda"
+        "imgCredits": "Foto © Luigi Corda",
+        "seoDescription": "Via Vittorio Amedeo II — Progettazione e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro.",
+        "details": "Progettazione e d.l. di una palazzina residenziale a Cagliari"
       },
       "TangexCorp": {
         "projectName": "Tangex Corp.",
         "description": "Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).",
-        "imgCredits": "Foto © Guanina Santiago de Jesus"
+        "imgCredits": "Foto © Guanina Santiago de Jesus",
+        "seoDescription": "Tangex Corp. — Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.). Gianluca Pignataro.",
+        "details": "Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)"
       },
       "Via-Eroi-d-Italia": {
         "projectName": "Via Eroi d'Italia",
         "description": "Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.",
-        "imgCredits": "Foto © Matteo Piazza"
+        "imgCredits": "Foto © Matteo Piazza",
+        "seoDescription": "Via Eroi d'Italia — Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro.",
+        "details": "Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari"
       },
       "Glisbo": {
         "projectName": "Agenzia pubblicitaria Glisbò",
@@ -267,12 +296,14 @@
             "name": "Glisbò"
           }
         },
-        "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it "
+        "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
+        "seoDescription": "Agenzia pubblicitaria Glisbò — Stand modulare per la \"Regione Autonoma della Sardegna\". Gianluca Pignataro.",
+        "details": "Stand modulare per la “Regione Autonoma della Sardegna”"
       }
     },
     "bio": {
       "name": "Dott. Arch. Gianluca Pignataro",
-      "intro": "Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica nello studio del Prof. Arch. Giovanni Maria Campus. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato a Puerto Rico (U.S.A.) cinque negozi in centri commerciali ed una villa.",
+      "intro": "Nato a Bologna e diplomato in studi scientifici, laureato a Firenze ho intrapreso la professione a Cagliari dove ho da subito affrontato tematiche di restauro e di recupero dell’edilizia storica e di progettazione architettonica nello studio del Prof. Arch. Giovanni Maria Campus. La pratica professionale svolta in 30 anni mi ha specializzato nel campo del restauro e recupero dell’edilizia storica grazie ai molteplici incarichi tra cui il recupero di sette edifici nel centro storico di Baunei (OG) per la Stams s.r.l. società del gruppo Cualbu. Nel campo della progettazione architettonica ho operato in Italia per clienti come Findomestic Banca, imprese di costruzione, cooperative e privati e grazie alla doppia cittadinanza italiana e statunitense, ho realizzato a Puerto Rico (U.S.A.) cinque negozi nei più importanti centri commerciali dell'isola ed una villa sull'oceano.",
       "professionalExperiencesTitle": "Esperienze professionali",
       "experiences": {
         "0": {
@@ -282,7 +313,7 @@
           "projects": {
             "0": "Via Ancona: Ristrutturazione con Interior design a Cagliari",
             "1": "Via delle Libellule: Ristrutturazione con Interior design a Cagliari",
-            "2": "Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “HARLEY & DIKKINSON CONSULTING S.r.l.” Ing. Giuseppe De Bonis.",
+            "2": "Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “HARLEY & DIKKINSON CONSULTING S.r.l.”",
             "3": "Corso Vittorio Emanuele II: Ristrutturazione con Interior design nel centro storico di Cagliari",
             "4": {
               "description": "Palazzo Asquer: Messa in sicurezza strutturale con restauro di resti romani nel seminterrato del Palazzo storico Asquer, vincolato dalla Soprintendenza Ministeriale (SABAP) nel centro storico di Cagliari quartiere Castello"

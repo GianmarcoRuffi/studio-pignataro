@@ -1,3 +1,6 @@
+import { generatePageMetadata } from "../../../utils/metadata";
+import JsonLd from "../../../components/StructuredData/JsonLd";
+import { SITE_URL } from "../../../constants";
 import { localizedPath, formatMessage } from "../../../locales";
 import { getServerMessages } from "../../../locales/server";
 import sharp from "sharp";
@@ -23,42 +26,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return {};
   }
 
-  const description = project.description.replace(/\s+/g, " ").trim();
-  const title = project.projectName;
-  const canonical = localizedPath(`/projects/${slug}`, locale);
-  const keywords = [...messages.ui.projects.metadataKeywords, title];
-
-  return {
-    title,
-    description,
-    keywords,
-    alternates: {
-      canonical,
-      languages: {
-        it: `/projects/${slug}`,
-        en: `/en/projects/${slug}`,
-        "x-default": `/projects/${slug}`,
-      },
-    },
-    openGraph: {
-      type: "website",
-      title,
-      description,
-      url: canonical,
-      images: [
-        {
-          url: project.imgSrc,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [project.imgSrc],
-    },
-  };
+  return generatePageMetadata({
+    locale,
+    path: `/projects/${slug}`,
+    title: `${project.projectName} — ${project.description.replace(/\.$/, "")}`,
+    description: project.seoDescription || project.description,
+    image: project.imgSrc,
+  });
 }
 
 export async function generateStaticParams() {
@@ -95,6 +69,18 @@ export default async function Page({ params }: Params) {
 
   return (
     <div className={styles.projectPage}>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.projectName,
+          description: project.description,
+          url: `${SITE_URL}${localizedPath(`/projects/${slug}`, locale)}`,
+          creator: { "@id": `${SITE_URL}/#architect` },
+          inLanguage: locale,
+          image: project.images.map((source) => `${SITE_URL}${source}`),
+        }}
+      />
       {project.images[0] && (
         <figure className={styles.projectHero} data-project-hero>
           <div className={styles.heroMedia}>
@@ -172,6 +158,16 @@ export default async function Page({ params }: Params) {
         imageDimensions={imageDimensions}
         galleryTitle={project.projectName}
         galleryDescription={project.description}
+        galleryDetails={
+          project.details !== project.description ? project.details : undefined
+        }
+        publicationHref={
+          project.externalLink?.some((link) =>
+            /homify|tubesradiatori/.test(link.url)
+          )
+            ? localizedPath("/presses", locale)
+            : undefined
+        }
         galleryLinks={project.externalLink}
         imgCredits={project.imgCredits}
         prevProject={prevProject}

@@ -1,0 +1,29 @@
+.index {
+  margin-top: 1.5rem;
+  color: inherit;
+  summary {
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+  ul {
+    padding-left: 1.25rem;
+    columns: 2;
+    column-gap: 2rem;
+  }
+  li {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+  p {
+    margin: 0.5rem 0;
+  }
+  h2 {
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+  }
+  @media (max-width: 768px) {
+    ul {
+      columns: 1;
+    }
+  }
+}

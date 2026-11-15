@@ -1,4 +1,6 @@
 "use client";
+import { usePathname } from "next/navigation";
+import { stripLocale } from "../locales";
 import { readSessionValue } from "../utils/storage";
 
 import {
@@ -32,16 +34,16 @@ interface SplashProviderProps {
 }
 
 export const SplashProvider: FC<SplashProviderProps> = ({ children }) => {
-  const [isSplashComplete, setIsSplashComplete] = useState(false);
-  const [shouldShowSplash, setShouldShowSplash] = useState(true);
+  const [isSplashComplete, setIsSplashComplete] = useState(true);
+  const [shouldShowSplash, setShouldShowSplash] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const splashShown = readSessionValue("splash-shown");
-    if (splashShown) {
-      setIsSplashComplete(true);
-      setShouldShowSplash(false);
-    }
-  }, []);
+    const show =
+      stripLocale(pathname) === "/" && !readSessionValue("splash-shown");
+    setShouldShowSplash(show);
+    setIsSplashComplete(!show);
+  }, [pathname]);
 
   const setSplashComplete = useCallback(() => {
     setIsSplashComplete(true);

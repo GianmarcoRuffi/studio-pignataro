@@ -13,7 +13,7 @@ import PageSmoothScroll from "../components/PageSmoothScroll/PageSmoothScroll";
 import { RootLayoutProps } from "../models/models";
 import { SplashProvider } from "../context/SplashContext";
 import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
-import { BRANDING_LOGO_URL, SITE_URL } from "../constants";
+import { SEO_DEFAULT_IMAGE, SITE_URL } from "../constants";
 
 import { localizedPath } from "../locales";
 import { getServerMessages } from "../locales/server";
@@ -48,7 +48,6 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: messages.metadata.description,
     metadataBase: new URL(SITE_URL),
-    keywords: messages.metadata.keywords,
     authors: [{ name: messages.metadata.author }],
     creator: messages.metadata.author,
     publisher: messages.metadata.publisher,
@@ -76,10 +75,8 @@ export async function generateMetadata(): Promise<Metadata> {
       url: localizedPath("/", locale),
       images: [
         {
-          url: BRANDING_LOGO_URL,
-          width: 1200,
-          height: 630,
-          alt: messages.metadata.logoAlt,
+          url: SEO_DEFAULT_IMAGE,
+          alt: messages.ui.common.brand,
         },
       ],
     },
@@ -87,7 +84,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: messages.metadata.title,
       description: messages.metadata.description,
-      images: [BRANDING_LOGO_URL],
+      images: [SEO_DEFAULT_IMAGE],
     },
     verification: {
       google: "google0b4aa7aff11718e8",

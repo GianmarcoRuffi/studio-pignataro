@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata({
     locale,
     path: "/bio",
-    title: messages.ui.common.bio,
+    title: messages.ui.metadata.bioTitle,
     description: messages.ui.metadata.bioDescription,
   });
 }

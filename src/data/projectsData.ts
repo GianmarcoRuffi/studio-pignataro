@@ -19,7 +19,7 @@ const linkNames: Record<string, string> = {
     "https://www.homify.it/librodelleidee/7792268/15-motivi-per-scegliere-il-cocciopesto-e-i-laterizi-per-i-rivestimenti",
 };
 
-export function getProjects(messages: Dictionary): Project[] {
+function buildProjects(messages: Dictionary): Project[] {
   return [
     {
       projectName:
@@ -336,3 +336,17 @@ export function getProjects(messages: Dictionary): Project[] {
 const projects = getProjects(italianMessages);
 
 export default projects;
+
+export function getProjects(messages: Dictionary): Project[] {
+  return buildProjects(messages).map((project) => {
+    const editorial =
+      messages.editorial.projects[
+        project.slug as keyof typeof messages.editorial.projects
+      ];
+    return {
+      ...project,
+      seoDescription: editorial.seoDescription,
+      details: editorial.details,
+    };
+  });
+}

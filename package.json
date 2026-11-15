@@ -5,14 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "deploy:staging": "bash scripts/deploy-staging.sh",
-    "build": "npm run sitemap && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
-    "sitemap": "node generate-sitemap.js",
     "playwright:install": "playwright install chromium",
     "test:e2e": "playwright test"
   },
@@ -43,6 +42,7 @@
     "postcss": "^8.5.6",
     "prettier": "^3.3.3",
     "sass": "^1.99.0",
+    "schema-dts": "^2.1.0",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.6.2",
     "vercel": "^65.14.0"

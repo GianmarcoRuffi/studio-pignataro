@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata({
     locale,
     path: "/presses",
-    title: messages.ui.common.presses,
+    title: messages.ui.metadata.pressesTitle,
     description: messages.ui.metadata.pressesDescription,
   });
 }
