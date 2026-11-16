@@ -16,7 +16,7 @@ Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Ro
 
 ## Comportamenti da preservare
 
-Il layout radice coordina splash, header, footer e consenso cookie. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Foto di apertura e introduzione dei dettagli progetto usano l’altezza estesa stabile `--header-height-expanded`, così la compattazione dell’header non ridimensiona i contenuti durante lo scroll. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
+Il layout radice coordina splash, header, footer e consenso cookie. Lo splash viene valutato soltanto all’ingresso iniziale dalla homepage, una volta per sessione: i contenuti restano nascosti fino alla decisione e non viene riproposto tornando alla home con la navigazione interna. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Foto di apertura e introduzione dei dettagli progetto usano l’altezza estesa stabile `--header-height-expanded`, così la compattazione dell’header non ridimensiona i contenuti durante lo scroll. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
 
 Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale; conserva le durate minime definite in `LOADING`. `OptionalScripts` abilita i figli solo con consenso `accepted`, usando `cookie-consent` e l'evento `cookie-consent-change`.
 
@@ -46,8 +46,8 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Mostra soltanto copyright e «Preferenze cookie»: su desktop rispettivamente a sinistra e a destra, sotto 769 px centrati. I link Privacy Policy e Cookie Policy restano consultabili nella modale delle preferenze, in entrambe le lingue. I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
-- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body. La navigazione delle foto progetto conserva l’immagine precedente durante il caricamento e usa una dissolvenza di 300 ms; il messaggio di caricamento compare soltanto dopo `UI_TIMINGS.lightbox.loadingIndicatorDelay` (300 ms), rispettando il movimento ridotto. Le immagini delle pubblicazioni aprono la stessa modale con proporzioni native, rendering naturale e nessun ingrandimento oltre la risoluzione originale: clic o Invio/Spazio sull’immagine alternano vista adattata e dimensioni native, con scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Mostra soltanto copyright e «Preferenze cookie»: su desktop rispettivamente a sinistra e a destra, sotto 769 px centrati. I link Privacy Policy e Cookie Policy nella modale delle preferenze usano la navigazione interna nella stessa scheda, in entrambe le lingue: chiudono subito la modale senza modificare il consenso né ricaricare il documento. I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body; finestra, foto, contatore e controlli hanno spigoli retti e colori coerenti con il carosello. Chevron e X condividono dimensioni e stile, con bersagli di almeno 44 px su mobile; le foto conservano i colori originali. La navigazione delle foto progetto conserva l’immagine precedente durante il caricamento e usa una dissolvenza di 300 ms; il messaggio di caricamento compare soltanto dopo `UI_TIMINGS.lightbox.loadingIndicatorDelay` (300 ms), rispettando il movimento ridotto. Le immagini delle pubblicazioni aprono la stessa modale con proporzioni native, rendering naturale e nessun ingrandimento oltre la risoluzione originale: clic o Invio/Spazio sull’immagine alternano vista adattata e dimensioni native, con scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
 - Il carosello della homepage non mostra attualmente il nome del progetto né la freccia diagonale in basso a sinistra; conserva il contatore a destra, i chevron laterali e il collegamento sulla foto. Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
 
@@ -57,13 +57,16 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-16: aggiornate le immagini Tangex Corp.: nuova copertina condivisa con
-la prima foto della galleria e due foto aggiuntive, per sei immagini totali.
-Le tre nuove foto sono WebP sRGB, con lato massimo 1920 px e qualità 85.
-Preservare il ritaglio esclusivamente mobile del carousel per Via Asti, Via
-Canonico Sanna, Via Venturoli e Viale Regina Margherita, le modifiche Bio IT/EN
-(Via Dante, link Harley & Dikkinson, rimozione De Bonis) e la rimozione degli
-indici e paragrafi SEO visibili duplicati.
+2026-11-16: corretti i link delle informative con navigazione nella stessa
+scheda e chiusura della modale senza cambiare il consenso. Splash limitato
+all’ingresso iniziale dalla homepage, senza comparsa dopo la navigazione
+interna né anteprima della home prima dello splash. Uniformati finestra,
+chevron, X e contatore della lightbox allo stile squadrato del sito.
+Preservare le sei immagini Tangex Corp. (copertina condivisa con la prima
+foto della galleria), il ritaglio esclusivamente mobile del carousel per
+Via Asti, Via Canonico Sanna, Via Venturoli e Viale Regina Margherita,
+le modifiche Bio IT/EN (Via Dante, link Harley & Dikkinson, rimozione
+De Bonis) e la rimozione degli indici e paragrafi SEO visibili duplicati.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

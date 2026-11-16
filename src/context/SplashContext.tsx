@@ -34,16 +34,17 @@ interface SplashProviderProps {
 }
 
 export const SplashProvider: FC<SplashProviderProps> = ({ children }) => {
-  const [isSplashComplete, setIsSplashComplete] = useState(true);
-  const [shouldShowSplash, setShouldShowSplash] = useState(false);
   const pathname = usePathname();
+  const [isHomeEntry] = useState(() => stripLocale(pathname) === "/");
+  const [isSplashComplete, setIsSplashComplete] = useState(!isHomeEntry);
+  const [shouldShowSplash, setShouldShowSplash] = useState(false);
 
   useEffect(() => {
-    const show =
-      stripLocale(pathname) === "/" && !readSessionValue("splash-shown");
+    // Decide once per document entry, before revealing the homepage content.
+    const show = isHomeEntry && !readSessionValue("splash-shown");
     setShouldShowSplash(show);
     setIsSplashComplete(!show);
-  }, [pathname]);
+  }, [isHomeEntry]);
 
   const setSplashComplete = useCallback(() => {
     setIsSplashComplete(true);

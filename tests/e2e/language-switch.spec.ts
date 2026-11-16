@@ -122,17 +122,15 @@ test("English pages retain language through links and isolate simultaneous local
   await expect(
     dialog.getByRole("link", { name: "Cookie Policy" })
   ).toHaveAttribute("href", "/en/cookie-policy");
-  const [policyPage] = await Promise.all([
-    page.waitForEvent("popup"),
-    dialog.getByRole("link", { name: "Privacy Policy" }).click(),
-  ]);
-  await expect(policyPage).toHaveURL("/en/privacy-policy");
+  await dialog.getByRole("link", { name: "Privacy Policy" }).click();
+  await expect(page).toHaveURL("/en/privacy-policy");
+  await expect(dialog).toHaveCount(0);
+  expect(page.context().pages()).toHaveLength(1);
   await expect(
-    policyPage.getByText("Information on the processing of personal data", {
+    page.getByText("Information on the processing of personal data", {
       exact: true,
     })
   ).toBeVisible();
-  await policyPage.close();
   await page.goto("/en/presses");
   await expect(
     page.getByRole("heading", { name: "Publications", exact: true })

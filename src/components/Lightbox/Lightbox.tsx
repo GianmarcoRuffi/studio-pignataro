@@ -19,8 +19,8 @@ import { UI_TIMINGS } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
-  faChevronLeft,
-  faChevronRight,
+  faAngleLeft,
+  faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./lightbox.module.scss";
 
@@ -366,7 +366,7 @@ const Lightbox: FC<LightboxProps> = ({
               onClick={handlePrevious}
               aria-label={messages.ui.lightbox.previous}
             >
-              <FontAwesomeIcon icon={faChevronLeft} />
+              <FontAwesomeIcon icon={faAngleLeft} />
             </button>
             <button
               type="button"
@@ -374,7 +374,7 @@ const Lightbox: FC<LightboxProps> = ({
               onClick={handleNext}
               aria-label={messages.ui.lightbox.next}
             >
-              <FontAwesomeIcon icon={faChevronRight} />
+              <FontAwesomeIcon icon={faAngleRight} />
             </button>
           </>
         )}

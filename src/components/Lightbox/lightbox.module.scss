@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: #191815f2;
   backdrop-filter: blur(5px);
   z-index: 10001;
   display: flex;
@@ -17,10 +17,9 @@
 .lightboxContainer {
   --viewport-gap: 24px;
   --control-gap: 14px;
-  --nav-size: 50px;
-  --close-size: 45px;
-  --nav-font-size: 20px;
-  --close-font-size: 18px;
+  --nav-size: 48px;
+  --close-size: var(--nav-size);
+  --control-font-size: 24px;
   --side-space: calc(var(--nav-size) + var(--control-gap));
   position: relative;
   display: inline-flex;
@@ -34,28 +33,20 @@
   @media (max-width: 480px) {
     --viewport-gap: 4px;
     --control-gap: 6px;
-    --nav-size: 36px;
-    --close-size: 36px;
-    --nav-font-size: 15px;
-    --close-font-size: 15px;
+    --nav-size: 44px;
+    --control-font-size: 20px;
   }
 
   @media (min-width: 481px) and (max-width: 768px) {
     --viewport-gap: 12px;
     --control-gap: 8px;
-    --nav-size: 42px;
-    --close-size: 40px;
-    --nav-font-size: 17px;
-    --close-font-size: 16px;
+    --nav-size: 44px;
+    --control-font-size: 20px;
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
     --viewport-gap: 16px;
     --control-gap: 10px;
-    --nav-size: 46px;
-    --close-size: 42px;
-    --nav-font-size: 18px;
-    --close-font-size: 17px;
   }
 }
 
@@ -65,10 +56,9 @@
   height: fit-content;
   max-width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
   max-height: calc(100vh - (var(--viewport-gap) * 2));
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: var(--color-background-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,21 +68,15 @@
 .lightboxImage {
   transition: opacity 300ms ease;
   display: block;
-  border-radius: 8px;
+  border-radius: 0;
   width: auto;
   height: auto;
   max-width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
   max-height: calc(100vh - (var(--viewport-gap) * 2));
   object-fit: contain;
   object-position: center;
-  image-rendering: high-quality;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
   z-index: 10001;
   position: relative;
-
-  filter: contrast(1.01) saturate(1.02) brightness(1.01);
 }
 
 .outgoingImage {
@@ -128,8 +112,8 @@
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  background: #252422;
-  color: #f7f5f0;
+  background: var(--color-background-dark);
+  color: var(--color-background-primary);
   text-align: center;
   font-size: 14px;
 
@@ -224,47 +208,18 @@
   filter: none;
 }
 
-.retryButton,
-.skipButton {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+.retryButton {
+  background: #19181599;
+  border: 1px solid #ffffff80;
   color: white;
   padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
+  transition: background 0.2s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-.retryButton {
-  background: rgba(74, 144, 226, 0.3);
-  border-color: rgba(74, 144, 226, 0.5);
-
-  &:hover {
-    background: rgba(74, 144, 226, 0.4);
-    border-color: rgba(74, 144, 226, 0.7);
-  }
-}
-
-.skipButton {
-  background: rgba(156, 163, 175, 0.3);
-  border-color: rgba(156, 163, 175, 0.5);
-
-  &:hover {
-    background: rgba(156, 163, 175, 0.4);
-    border-color: rgba(156, 163, 175, 0.7);
+    background: #191815dd;
   }
 }
 
@@ -277,60 +232,37 @@
   }
 }
 
-.closeButton {
-  position: absolute;
-  top: 0;
-  right: calc(-1 * (var(--close-size) + var(--control-gap)));
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  width: var(--close-size);
-  height: var(--close-size);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: var(--close-font-size);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  z-index: 10005;
-  pointer-events: auto;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-  }
-}
-
+.closeButton,
 .navButton {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  background: #19181599;
+  border: 1px solid #ffffff80;
   color: white;
   width: var(--nav-size);
   height: var(--nav-size);
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: var(--nav-font-size);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  font-size: var(--control-font-size);
+  transition: background 0.2s;
   z-index: 10005;
   pointer-events: auto;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
+    background: #191815dd;
   }
+}
 
-  &:active {
-    transform: translateY(-50%) scale(0.95);
-  }
+.closeButton {
+  top: 0;
+  right: calc(-1 * (var(--close-size) + var(--control-gap)));
+}
+
+.navButton {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .navButtonLeft {
@@ -341,24 +273,10 @@
   right: calc(-1 * (var(--nav-size) + var(--control-gap)));
 }
 
-.prevButton {
-  left: -60px;
-
-  @media (max-width: 768px) {
-    left: -50px;
-  }
-}
-
-.nextButton {
-  right: -60px;
-
-  @media (max-width: 768px) {
-    right: -50px;
-  }
-}
-
 .indicators {
   position: absolute;
+  z-index: 10005;
+  pointer-events: none;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
@@ -374,10 +292,11 @@
 .counter {
   color: white;
   font-size: 14px;
-  background: rgba(255, 255, 255, 0.2);
+  background: #191815dd;
+  border: 1px solid #ffffff80;
   padding: 8px 16px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
+  border-radius: 0;
+  font-variant-numeric: tabular-nums;
 
   @media (max-width: 768px) {
     font-size: 12px;

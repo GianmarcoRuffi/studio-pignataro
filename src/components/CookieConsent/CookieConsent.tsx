@@ -3,6 +3,7 @@ import { localizedPath } from "../../locales";
 import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCookie, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useSplash } from "../../context/SplashContext";
@@ -21,6 +22,12 @@ const CookieConsent: FC = () => {
   const { status, isReady } = useCookieConsent();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const dismissForNavigation = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setIsVisible(false);
+    setIsClosing(false);
+  };
 
   const closePopup = () => {
     setIsClosing(true);
@@ -106,22 +113,20 @@ const CookieConsent: FC = () => {
           </p>
 
           <div className={styles.cookieLinks}>
-            <a
+            <Link
               href={localizedPath(LEGAL_PATHS.privacyPolicy, locale)}
               className={styles.policyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              onNavigate={dismissForNavigation}
             >
               {messages.ui.common.privacy}
-            </a>
-            <a
+            </Link>
+            <Link
               href={localizedPath(LEGAL_PATHS.cookiePolicy, locale)}
               className={styles.policyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              onNavigate={dismissForNavigation}
             >
               {messages.ui.common.cookies}
-            </a>
+            </Link>
           </div>
         </div>
 
