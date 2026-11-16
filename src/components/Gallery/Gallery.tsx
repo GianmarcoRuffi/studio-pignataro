@@ -27,8 +27,6 @@ const Gallery: FC<GalleryProps> = ({
   imageDimensions,
   galleryTitle,
   galleryDescription,
-  galleryDetails,
-  publicationHref,
   galleryLinks,
   imgCredits,
   prevProject,
@@ -303,13 +301,6 @@ const Gallery: FC<GalleryProps> = ({
           <div className={styles.projectHeaderContent}>
             <h1 className={styles.projectTitle}>{galleryTitle}</h1>
             <p className={styles.projectDescription}>{galleryDescription}</p>
-            {galleryDetails && (
-              <p className={styles.projectDescription}>{galleryDetails}</p>
-            )}
-            {publicationHref && (
-              <Link href={publicationHref}>{messages.ui.seo.publications}</Link>
-            )}
-
             {galleryLinks &&
               (() => {
                 const { articleLinks } = renderGalleryLinks();

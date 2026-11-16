@@ -15,11 +15,7 @@ import CardSkeleton from "../../components/CardSkeleton/CardSkeleton";
 import styles from "./presses.module.scss";
 import { PressesData } from "../../models/models";
 
-export default function Presses({
-  editorialIndex,
-}: {
-  editorialIndex?: React.ReactNode;
-}) {
+export default function Presses() {
   const { messages } = useLocale();
   const pressesData = useMemo(() => getPressesData(messages), [messages]);
   const [selectedYear, setSelectedYear] = useState<string>("all");
@@ -115,7 +111,6 @@ export default function Presses({
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>{messages.ui.common.presses}</h1>
           <p className={styles.pageSubtitle}>{messages.ui.presses.intro}</p>
-          {editorialIndex}
         </div>
       </div>
 

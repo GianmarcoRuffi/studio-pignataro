@@ -57,17 +57,12 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-15: SEO con JSON-LD server tipizzato, metadati condivisi senza meta keywords,
-indici editoriali completi SSR in Progetti/Pubblicazioni, monografia e collegamenti
-contestuali. Sitemap nativa con immagini, alternanze IT/EN e `updatedAt` opzionale
-attendibile (mai mtime di build). Lo splash si attiva solo al primo ingresso in
-homepage dopo hydration; contenuti SSR visibili e pagine interne immediate.
-Audit ripetibile con `python3 scripts/audit-seo.py BASE_URL OUTPUT_JSON`;
-risultati e limiti in `SEO-AUDIT.md`. Contrasto del testo secondario del consenso
-allineato al token condiviso dopo audit Lighthouse. Precaricamento delle schede
-allineato a sizes/quality condivisi con i renderer, senza download originali doppi.
-Procedura esterna e mappa query in `SEO.md`. Preservare i testi della biografia
-modificati dallo studio e il caricamento incrementale delle griglie client.
+2026-11-16: Bio IT/EN con Via Dante prima di Via Ancona; rimosso anche in inglese
+il riferimento all’ingegner De Bonis. Il nome Harley & Dikkinson nel punto
+Superbonus è un link inline al sito ufficiale, con segnaposto `{company}` nei
+dizionari e URL tecnico nell’adattatore bio. Restano rimossi gli indici e i testi
+SEO visibili duplicati; preservare metadati/JSON-LD, splash solo in homepage,
+contrasto del consenso e precaricamento responsive delle schede.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

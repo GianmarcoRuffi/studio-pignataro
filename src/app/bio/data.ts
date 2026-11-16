@@ -1,6 +1,8 @@
 import { messages as italianMessages, type Dictionary } from "../../locales";
 import { BioData } from "../../models/models";
 
+export const HARLEY_COMPANY_URL = "https://harleydikkinson.com/";
+
 export function getBioData(messages: Dictionary): BioData {
   return {
     image: "/site/bio/profile.webp",
@@ -15,6 +17,7 @@ export function getBioData(messages: Dictionary): BioData {
         description:
           messages["editorial"]["bio"]["experiences"]["0"]["description"],
         projects: [
+          messages.editorial.bio.experiences["0"].projects.viaDante,
           messages["editorial"]["bio"]["experiences"]["0"]["projects"]["0"],
           messages["editorial"]["bio"]["experiences"]["0"]["projects"]["1"],
           messages["editorial"]["bio"]["experiences"]["0"]["projects"]["2"],

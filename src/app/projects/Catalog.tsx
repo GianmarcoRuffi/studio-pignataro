@@ -16,9 +16,7 @@ import CardSkeleton from "../../components/CardSkeleton/CardSkeleton";
 import styles from "./projects.module.scss";
 import { Project } from "../../models/models";
 
-const Projects: FC<{ editorialIndex?: React.ReactNode }> = ({
-  editorialIndex,
-}) => {
+const Projects: FC = () => {
   const { messages, locale } = useLocale();
   const projects = useMemo(() => getProjects(messages), [messages]);
   const [visibleCards, setVisibleCards] = useState<number>(
@@ -93,7 +91,6 @@ const Projects: FC<{ editorialIndex?: React.ReactNode }> = ({
         <div className={styles.headerContent}>
           <h1 className={styles.pageTitle}>{messages.ui.common.projects}</h1>
           <p className={styles.pageSubtitle}>{messages.ui.projects.intro}</p>
-          {editorialIndex}
         </div>
       </div>
 

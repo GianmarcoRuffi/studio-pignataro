@@ -158,16 +158,6 @@ export default async function Page({ params }: Params) {
         imageDimensions={imageDimensions}
         galleryTitle={project.projectName}
         galleryDescription={project.description}
-        galleryDetails={
-          project.details !== project.description ? project.details : undefined
-        }
-        publicationHref={
-          project.externalLink?.some((link) =>
-            /homify|tubesradiatori/.test(link.url)
-          )
-            ? localizedPath("/presses", locale)
-            : undefined
-        }
         galleryLinks={project.externalLink}
         imgCredits={project.imgCredits}
         prevProject={prevProject}

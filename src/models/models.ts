@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 
 interface Project {
   seoDescription?: string;
-  details?: string;
   updatedAt?: string;
   projectName: string;
   imgSrc: string;
@@ -131,8 +130,6 @@ interface GalleryProps {
   images: string[];
   galleryTitle: string;
   galleryDescription: string;
-  galleryDetails?: string;
-  publicationHref?: string;
   galleryLinks?: GalleryLink[];
   imgCredits?: string;
   prevProject?: { slug: string; projectName: string };

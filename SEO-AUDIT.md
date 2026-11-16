@@ -1,5 +1,10 @@
 # Audit SEO e prestazioni — 15 novembre 2026
 
+Nota del 16 novembre 2026: rimossi gli indici visibili, la presentazione aggiuntiva
+della monografia, i secondi paragrafi e i collegamenti editoriali aggiunti.
+Metadati, sitemap, JSON-LD e ottimizzazioni di caricamento restano attivi.
+Le misure seguenti documentano la build del 15 novembre, prima di questa rimozione.
+
 ## Copertura verificata
 
 Crawl HTTP della sitemap e dell'HTML iniziale su produzione e build locale,

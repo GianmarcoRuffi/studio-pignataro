@@ -160,12 +160,6 @@
       "pressesTitle": "Pubblicazioni e monografia"
     },
     "seo": {
-      "projectIndex": "Indice completo dei progetti",
-      "publicationIndex": "Bibliografia completa",
-      "relatedProjects": "Progetti collegati",
-      "publications": "Pubblicazioni",
-      "monographTitle": "Gianluca Pignataro – 30 anni di inconsuetudine",
-      "monographIntro": "Pubblicata nel dicembre 2023 e curata da Luigi Corda per l’Associazione Culturale Timeless, la monografia raccoglie trent’anni del lavoro di architettura di Gianluca Pignataro.",
       "projectImage": "{name} — fotografia {index}"
     }
   },
@@ -175,15 +169,13 @@
         "projectName": "Quartiere Vanchiglia",
         "description": "Ristrutturazione con Interior design nel centro storico di Torino.",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Quartiere Vanchiglia — Ristrutturazione con Interior design nel centro storico di Torino. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Quartiere Vanchiglia — Ristrutturazione con Interior design nel centro storico di Torino. Gianluca Pignataro."
       },
       "Via-Venturoli": {
         "projectName": "Via Venturoli",
         "description": "Progettazione di Interior design a Bologna.",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Venturoli — Progettazione di Interior design a Bologna. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Via Venturoli — Progettazione di Interior design a Bologna. Gianluca Pignataro."
       },
       "Corso-Vittorio-Emanuele-II": {
         "projectName": "Corso Vittorio Emanuele II",
@@ -194,8 +186,7 @@
           }
         },
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Corso Vittorio Emanuele II — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro.",
-        "details": "Ristrutturazione con Interior design nel centro storico di Cagliari"
+        "seoDescription": "Corso Vittorio Emanuele II — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro."
       },
       "Via-Asti": {
         "projectName": "Via Asti",
@@ -206,15 +197,13 @@
           }
         },
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Asti — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro.",
-        "details": "Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)"
+        "seoDescription": "Via Asti — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro."
       },
       "Via-Ada-Negri": {
         "projectName": "Via Ada Negri",
         "description": "Progettazione di Interior design a Cagliari.",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Ada Negri — Progettazione di Interior design a Cagliari. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Via Ada Negri — Progettazione di Interior design a Cagliari. Gianluca Pignataro."
       },
       "Via-Machiavelli": {
         "projectName": "Via Machiavelli",
@@ -228,8 +217,7 @@
           }
         },
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Machiavelli — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro.",
-        "details": "Ristrutturazione con Interior design a Cagliari (lavoro pubblicato)"
+        "seoDescription": "Via Machiavelli — Ristrutturazione con Interior design a Cagliari. Gianluca Pignataro."
       },
       "Vico-V-Via-San-Giovanni": {
         "projectName": "Vico V di Via S. Giovanni",
@@ -243,50 +231,43 @@
           }
         },
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Vico V di Via S. Giovanni — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro.",
-        "details": "Ristrutturazione con Interior design nel centro storico di Cagliari, quartiere Villanova (lavoro pubblicato)"
+        "seoDescription": "Vico V di Via S. Giovanni — Ristrutturazione con Interior design nel centro storico di Cagliari. Gianluca Pignataro."
       },
       "Agenzia-Immobiliare-AMS": {
         "projectName": "Agenzia Immobiliare AMS",
         "description": "Interior design e d.l.\n    Via Cagliari, Capoterra (CA)",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Agenzia Immobiliare AMS — Interior design e d.l.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Agenzia Immobiliare AMS — Interior design e d.l.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro."
       },
       "Via-Canonico-Sanna": {
         "projectName": "Via Canonico Sanna",
         "description": "Ristrutturazione di una palazzina nel centro storico di Baunei (OG).",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Canonico Sanna — Ristrutturazione di una palazzina nel centro storico di Baunei (OG). Gianluca Pignataro.",
-        "details": "Ristrutturazione di una palazzina nel centro storico di Baunei (OG)"
+        "seoDescription": "Via Canonico Sanna — Ristrutturazione di una palazzina nel centro storico di Baunei (OG). Gianluca Pignataro."
       },
       "Viale-Regina-Margherita": {
         "projectName": "V.le Regina Margherita",
         "description": "Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari.",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "V.le Regina Margherita — Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari. Gianluca Pignataro.",
-        "details": "Ristrutturazione con Interior design nel palazzo storico Zedda-Piras a Cagliari"
+        "seoDescription": "V.le Regina Margherita — Ristrutturazione nel palazzo storico Zedda-Piras a Cagliari. Gianluca Pignataro."
       },
       "Via-Vittorio-Amedeo-II": {
         "projectName": "Via Vittorio Amedeo II",
         "description": "Progettazione e d.l. di una palazzina residenziale a Cagliari.",
         "imgCredits": "Foto © Luigi Corda",
-        "seoDescription": "Via Vittorio Amedeo II — Progettazione e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro.",
-        "details": "Progettazione e d.l. di una palazzina residenziale a Cagliari"
+        "seoDescription": "Via Vittorio Amedeo II — Progettazione e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro."
       },
       "TangexCorp": {
         "projectName": "Tangex Corp.",
         "description": "Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.).",
         "imgCredits": "Foto © Guanina Santiago de Jesus",
-        "seoDescription": "Tangex Corp. — Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.). Gianluca Pignataro.",
-        "details": "Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)"
+        "seoDescription": "Tangex Corp. — Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.). Gianluca Pignataro."
       },
       "Via-Eroi-d-Italia": {
         "projectName": "Via Eroi d'Italia",
         "description": "Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari.",
         "imgCredits": "Foto © Matteo Piazza",
-        "seoDescription": "Via Eroi d'Italia — Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro.",
-        "details": "Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari"
+        "seoDescription": "Via Eroi d'Italia — Progettazione, Interior design e d.l. di una palazzina residenziale a Cagliari. Gianluca Pignataro."
       },
       "Glisbo": {
         "projectName": "Agenzia pubblicitaria Glisbò",
@@ -297,8 +278,7 @@
           }
         },
         "imgCredits": "Render di Gianpierluigi Secci - 3d Designer -www.mistralstudio.it ",
-        "seoDescription": "Agenzia pubblicitaria Glisbò — Stand modulare per la \"Regione Autonoma della Sardegna\". Gianluca Pignataro.",
-        "details": "Stand modulare per la “Regione Autonoma della Sardegna”"
+        "seoDescription": "Agenzia pubblicitaria Glisbò — Stand modulare per la \"Regione Autonoma della Sardegna\". Gianluca Pignataro."
       }
     },
     "bio": {
@@ -313,7 +293,7 @@
           "projects": {
             "0": "Via Ancona: Ristrutturazione con Interior design a Cagliari",
             "1": "Via delle Libellule: Ristrutturazione con Interior design a Cagliari",
-            "2": "Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “HARLEY & DIKKINSON CONSULTING S.r.l.”",
+            "2": "Responsabile unico del team di Architetti ed Ingegneri per le verifiche edilizie ed urbanistiche degli edifici aderenti alla normativa del Superbonus 110%, per il Coach Manager Regionale di “{company}”",
             "3": "Corso Vittorio Emanuele II: Ristrutturazione con Interior design nel centro storico di Cagliari",
             "4": {
               "description": "Palazzo Asquer: Messa in sicurezza strutturale con restauro di resti romani nel seminterrato del Palazzo storico Asquer, vincolato dalla Soprintendenza Ministeriale (SABAP) nel centro storico di Cagliari quartiere Castello"
@@ -367,7 +347,8 @@
                 }
               }
             },
-            "16": "Tangex Corp.: Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)"
+            "16": "Tangex Corp.: Progettazione di una villa a Ocean Park San Juan, Puerto Rico (U.S.A.)",
+            "viaDante": "Via Dante: Ristrutturazione con Interior design a Quartu Sant'Elena (CA)"
           }
         },
         "1": {
@@ -397,7 +378,8 @@
             "3": "Restauro della chiesa della SS. Annunziata a Cagliari"
           }
         }
-      }
+      },
+      "harleyCompany": "HARLEY & DIKKINSON CONSULTING S.r.l."
     },
     "publications": {
       "monograph": {

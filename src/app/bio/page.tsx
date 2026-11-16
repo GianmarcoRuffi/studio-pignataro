@@ -1,20 +1,35 @@
 "use client";
 import { useLocale } from "../../locales/LocaleProvider";
 
-import Link from "next/link";
-import { localizedPath } from "../../locales";
-import { getProjects } from "../../data/projectsData";
+import { Fragment } from "react";
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
-import { getBioData } from "./data";
+import { getBioData, HARLEY_COMPANY_URL } from "./data";
 import { Link as BioLink } from "../../models/models";
 
 export default function Bio() {
   const { messages, locale } = useLocale();
   const bioData = getBioData(messages);
   const isImageLoaded = useImageLoad(bioData.image);
+
+  const renderProjectText = (text: string) =>
+    text.split("{company}").map((part, index) => (
+      <Fragment key={index}>
+        {index > 0 && (
+          <a
+            href={HARLEY_COMPANY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="editorial-link"
+          >
+            {messages.editorial.bio.harleyCompany}
+          </a>
+        )}
+        {part}
+      </Fragment>
+    ));
 
   const renderProjectLinks = (links: BioLink[] | undefined) => {
     if (!links || links.length === 0) return null;
@@ -113,7 +128,9 @@ export default function Bio() {
                         className={styles.projectItem}
                       >
                         <span className={styles.projectBullet}>•</span>
-                        <span className={styles.projectText}>{project}</span>
+                        <span className={styles.projectText}>
+                          {renderProjectText(project)}
+                        </span>
                       </div>
                     ) : (
                       <div
@@ -123,7 +140,7 @@ export default function Bio() {
                         <span className={styles.projectBullet}>•</span>
                         <div className={styles.projectContent}>
                           <span className={styles.projectText}>
-                            {project.description}
+                            {renderProjectText(project.description)}
                           </span>
                           {renderProjectLinks(project.links)}
                         </div>
@@ -137,30 +154,6 @@ export default function Bio() {
         </div>
       </div>
 
-      <nav
-        className={styles.experiencesSection}
-        aria-label={messages.ui.seo.relatedProjects}
-      >
-        <div className={styles.experiencesContent}>
-          <h2 className={styles.sectionTitle}>
-            {messages.ui.seo.relatedProjects}
-          </h2>
-          <ul>
-            {getProjects(messages)
-              .filter((p) => !p.invisible && p.details)
-              .map((p) => (
-                <li key={p.slug}>
-                  <Link href={localizedPath(`/projects/${p.slug}`, locale)}>
-                    {p.projectName}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-          <Link href={localizedPath("/presses", locale)}>
-            {messages.ui.seo.publications}
-          </Link>
-        </div>
-      </nav>
       <ScrollUpButton />
     </div>
   );

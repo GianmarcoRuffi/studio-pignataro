@@ -160,12 +160,6 @@
       "pressesTitle": "Publications and monograph"
     },
     "seo": {
-      "projectIndex": "Complete project index",
-      "publicationIndex": "Complete bibliography",
-      "relatedProjects": "Related projects",
-      "publications": "Publications",
-      "monographTitle": "Gianluca Pignataro – 30 anni di inconsuetudine",
-      "monographIntro": "Published in December 2023 and edited by Luigi Corda for Associazione Culturale Timeless, this monograph brings together thirty years of Gianluca Pignataro’s architectural work.",
       "projectImage": "{name} — photograph {index}"
     }
   },
@@ -175,15 +169,13 @@
         "projectName": "Quartiere Vanchiglia",
         "description": "Refurbishment and interior design in the historic centre of Turin.",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Quartiere Vanchiglia — Refurbishment and interior design in the historic centre of Turin. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Quartiere Vanchiglia — Refurbishment and interior design in the historic centre of Turin. Gianluca Pignataro."
       },
       "Via-Venturoli": {
         "projectName": "Via Venturoli",
         "description": "Interior design in Bologna.",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Venturoli — Interior design in Bologna. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Via Venturoli — Interior design in Bologna. Gianluca Pignataro."
       },
       "Corso-Vittorio-Emanuele-II": {
         "projectName": "Corso Vittorio Emanuele II",
@@ -194,8 +186,7 @@
           }
         },
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Corso Vittorio Emanuele II — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro.",
-        "details": "Refurbishment and interior design in the historic centre of Cagliari"
+        "seoDescription": "Corso Vittorio Emanuele II — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro."
       },
       "Via-Asti": {
         "projectName": "Via Asti",
@@ -206,15 +197,13 @@
           }
         },
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Asti — Refurbishment and interior design in Cagliari. Gianluca Pignataro.",
-        "details": "Refurbishment and interior design in Cagliari (published project)"
+        "seoDescription": "Via Asti — Refurbishment and interior design in Cagliari. Gianluca Pignataro."
       },
       "Via-Ada-Negri": {
         "projectName": "Via Ada Negri",
         "description": "Interior design in Cagliari.",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Ada Negri — Interior design in Cagliari. Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Via Ada Negri — Interior design in Cagliari. Gianluca Pignataro."
       },
       "Via-Machiavelli": {
         "projectName": "Via Machiavelli",
@@ -228,8 +217,7 @@
           }
         },
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Machiavelli — Refurbishment and interior design in Cagliari. Gianluca Pignataro.",
-        "details": "Refurbishment and interior design in Cagliari (published project)"
+        "seoDescription": "Via Machiavelli — Refurbishment and interior design in Cagliari. Gianluca Pignataro."
       },
       "Vico-V-Via-San-Giovanni": {
         "projectName": "Vico V di Via S. Giovanni",
@@ -243,50 +231,43 @@
           }
         },
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Vico V di Via S. Giovanni — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro.",
-        "details": "Refurbishment and interior design in the Villanova district of Cagliari’s historic centre (published project)"
+        "seoDescription": "Vico V di Via S. Giovanni — Refurbishment and interior design in the historic centre of Cagliari. Gianluca Pignataro."
       },
       "Agenzia-Immobiliare-AMS": {
         "projectName": "Agenzia Immobiliare AMS",
         "description": "Interior design and site supervision.\n    Via Cagliari, Capoterra (CA)",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Agenzia Immobiliare AMS — Interior design and site supervision.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro.",
-        "details": ""
+        "seoDescription": "Agenzia Immobiliare AMS — Interior design and site supervision.\n    Via Cagliari, Capoterra (CA) Gianluca Pignataro."
       },
       "Via-Canonico-Sanna": {
         "projectName": "Via Canonico Sanna",
         "description": "Refurbishment of a residential building in the historic centre of Baunei (OG).",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Canonico Sanna — Refurbishment of a residential building in the historic centre of Baunei (OG). Gianluca Pignataro.",
-        "details": "Refurbishment of a residential building in the historic centre of Baunei (OG)"
+        "seoDescription": "Via Canonico Sanna — Refurbishment of a residential building in the historic centre of Baunei (OG). Gianluca Pignataro."
       },
       "Viale-Regina-Margherita": {
         "projectName": "V.le Regina Margherita",
         "description": "Refurbishment within the historic Palazzo Zedda-Piras in Cagliari.",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "V.le Regina Margherita — Refurbishment within the historic Palazzo Zedda-Piras in Cagliari. Gianluca Pignataro.",
-        "details": "Refurbishment and interior design within the historic Palazzo Zedda-Piras in Cagliari"
+        "seoDescription": "V.le Regina Margherita — Refurbishment within the historic Palazzo Zedda-Piras in Cagliari. Gianluca Pignataro."
       },
       "Via-Vittorio-Amedeo-II": {
         "projectName": "Via Vittorio Amedeo II",
         "description": "Architectural design and site supervision for a residential building in Cagliari.",
         "imgCredits": "Photo © Luigi Corda",
-        "seoDescription": "Via Vittorio Amedeo II — Architectural design and site supervision for a residential building in Cagliari. Gianluca Pignataro.",
-        "details": "Architectural design and site supervision for a residential building in Cagliari"
+        "seoDescription": "Via Vittorio Amedeo II — Architectural design and site supervision for a residential building in Cagliari. Gianluca Pignataro."
       },
       "TangexCorp": {
         "projectName": "Tangex Corp.",
         "description": "Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA).",
         "imgCredits": "Photo © Guanina Santiago de Jesus",
-        "seoDescription": "Tangex Corp. — Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA). Gianluca Pignataro.",
-        "details": "Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA)"
+        "seoDescription": "Tangex Corp. — Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA). Gianluca Pignataro."
       },
       "Via-Eroi-d-Italia": {
         "projectName": "Via Eroi d'Italia",
         "description": "Architectural design, interior design and site supervision for a residential building in Cagliari.",
         "imgCredits": "Photo © Matteo Piazza",
-        "seoDescription": "Via Eroi d'Italia — Architectural design, interior design and site supervision for a residential building in Cagliari. Gianluca Pignataro.",
-        "details": "Architectural design, interior design and site supervision for a residential building in Cagliari."
+        "seoDescription": "Via Eroi d'Italia — Architectural design, interior design and site supervision for a residential building in Cagliari. Gianluca Pignataro."
       },
       "Glisbo": {
         "projectName": "Agenzia pubblicitaria Glisbò",
@@ -297,8 +278,7 @@
           }
         },
         "imgCredits": "Architectural visualisations by Gianpierluigi Secci - 3D Designer - www.mistralstudio.it",
-        "seoDescription": "Agenzia pubblicitaria Glisbò — Modular exhibition stand for the Autonomous Region of Sardinia. Gianluca Pignataro.",
-        "details": "Modular exhibition stand for the Autonomous Region of Sardinia"
+        "seoDescription": "Agenzia pubblicitaria Glisbò — Modular exhibition stand for the Autonomous Region of Sardinia. Gianluca Pignataro."
       }
     },
     "bio": {
@@ -313,7 +293,7 @@
           "projects": {
             "0": "Via Ancona: Refurbishment and interior design in Cagliari",
             "1": "Via delle Libellule: Refurbishment and interior design in Cagliari",
-            "2": "Team lead for architects and engineers undertaking building and planning compliance assessments for properties under Italy’s Superbonus 110% scheme, on behalf of Giuseppe De Bonis, engineer and Regional Coach Manager at HARLEY & DIKKINSON CONSULTING S.r.l.",
+            "2": "Team lead for architects and engineers undertaking building and planning compliance assessments for properties under Italy’s Superbonus 110% scheme, on behalf of the Regional Coach Manager at {company}.",
             "3": "Corso Vittorio Emanuele II: Refurbishment and interior design in the historic centre of Cagliari",
             "4": {
               "description": "Palazzo Asquer: Structural stabilisation and restoration of Roman remains in the basement of Palazzo Asquer, a protected historic building overseen by the Italian heritage authority (SABAP), in the Castello district of Cagliari’s historic centre"
@@ -367,7 +347,8 @@
                 }
               }
             },
-            "16": "Tangex Corp.: Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA)"
+            "16": "Tangex Corp.: Architectural design for a villa in Ocean Park, San Juan, Puerto Rico (USA)",
+            "viaDante": "Via Dante: Refurbishment and interior design in Quartu Sant'Elena (CA)"
           }
         },
         "1": {
@@ -397,7 +378,8 @@
             "3": "Restoration of the church of SS. Annunziata in Cagliari"
           }
         }
-      }
+      },
+      "harleyCompany": "HARLEY & DIKKINSON CONSULTING S.r.l."
     },
     "publications": {
       "monograph": {

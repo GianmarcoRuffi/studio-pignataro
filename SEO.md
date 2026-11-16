@@ -45,9 +45,8 @@ accessi verificati; ranking, rich result e indicizzazione non sono garantiti.
 Affinare titoli e descrizioni usando query osservate, senza inventare volumi o
 ripetere keyword. Le località dei progetti fuori Sardegna restano quelle reali.
 Testi italiani e inglesi hanno la stessa struttura; il nome ufficiale della
-monografia non viene tradotto. `details` contiene soltanto fatti documentati;
-quando mancano fonti resta vuoto. Gli approfondimenti iniziali derivano dalle
-esperienze professionali presenti nella biografia, non da ipotesi sulle immagini.
+monografia non viene tradotto. I metadati restano separati dalle descrizioni
+visibili; non aggiungere paragrafi, indici o collegamenti duplicati nelle pagine.
 
 Predisporre per lo studio un elenco di citazioni da aggiornare su testate e
 portali già presenti nei dati, privilegiando backlink alla scheda pertinente.
@@ -63,8 +62,9 @@ Gli eventuali contatti editoriali e richieste alle testate sono a cura dello stu
   alternanze reciproche e slug invariati. `updatedAt` è una data ISO opzionale da
   impostare solo a seguito di una modifica editoriale effettiva; altrimenti manca
   `lastmod`. Non introdurre date di build, priority o changefreq.
-- Gli indici nativi espandibili sono disponibili senza JavaScript e non dipendono
-  dai filtri o dalla griglia progressiva. Le immagini restano responsive.
+- I dati strutturati delle raccolte sono server e non aggiungono elementi visibili.
+  Elenchi e pubblicazioni conservano le griglie progressive originali. La sitemap
+  permette di scoprire tutti i dettagli e le immagini; le immagini restano responsive.
 - Preview conserva `X-Robots-Tag: noindex`; Production resta indicizzabile.
 - Verificare condivisioni social, 404 e redirect HTTP/www dopo il rilascio.
 

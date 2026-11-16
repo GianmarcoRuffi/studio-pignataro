@@ -1,5 +1,10 @@
 import Catalog from "./Catalog";
-import EditorialIndex from "../../components/StructuredData/EditorialIndex";
+import CollectionStructuredData from "../../components/StructuredData/CollectionStructuredData";
 export default function Page() {
-  return <Catalog editorialIndex={<EditorialIndex publications={false} />} />;
+  return (
+    <>
+      <CollectionStructuredData publications={false} />
+      <Catalog />
+    </>
+  );
 }

@@ -38,28 +38,34 @@ for (const prefix of ["", "/en"]) {
         expect(JSON.parse(script[1])["@context"]).toBe("https://schema.org");
     }
   });
-  test(`complete indexes work without JavaScript ${prefix || "it"}`, async ({
-    browser,
-    baseURL,
+  test(`pages omit added editorial duplicates ${prefix || "it"}`, async ({
+    page,
   }) => {
-    const context = await browser.newContext({
-      javaScriptEnabled: false,
-      baseURL,
-    });
-    const page = await context.newPage();
-    await page.goto(`${prefix}/projects`);
-    await expect(page.locator("h1")).toBeVisible();
-    await page.locator("details summary").click();
-    for (const project of projects.filter((p) => !p.invisible)) {
+    for (const path of ["/projects", "/presses", "/bio"]) {
+      await page.goto(`${prefix}${path}`);
+      await expect(page.locator("h1")).toBeVisible();
+      await expect(page.locator("details, #monograph")).toHaveCount(0);
       await expect(
-        page.locator(`details a[href="${prefix}/projects/${project.slug}"]`)
-      ).toBeVisible();
+        page.getByRole("heading", {
+          name: /Progetti collegati|Related projects/,
+        })
+      ).toHaveCount(0);
     }
-    await page.goto(`${prefix}/presses`);
-    await expect(page.locator("#monograph")).toBeVisible();
-    await page.locator("details summary").click();
-    await expect(page.locator("details li")).toHaveCount(8);
-    await context.close();
+    for (const slug of [
+      "Corso-Vittorio-Emanuele-II",
+      "Via-Machiavelli",
+      "Vico-V-Via-San-Giovanni",
+    ]) {
+      await page.goto(`${prefix}/projects/${slug}`);
+      await expect(page.locator('[class*="projectDescription"]')).toHaveCount(
+        1
+      );
+      await expect(
+        page.locator(
+          '[class*="projectHeaderContent"] a[href="' + prefix + '/presses"]'
+        )
+      ).toHaveCount(0);
+    }
   });
 }
 

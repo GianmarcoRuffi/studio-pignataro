@@ -346,7 +346,6 @@ export function getProjects(messages: Dictionary): Project[] {
     return {
       ...project,
       seoDescription: editorial.seoDescription,
-      details: editorial.details,
     };
   });
 }
