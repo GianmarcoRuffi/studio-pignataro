@@ -3,8 +3,8 @@ import { useLocale } from "../../locales/LocaleProvider";
 import { formatMessage } from "../../locales";
 
 import Image from "next/image";
+import { useState } from "react";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import { useImageLoad } from "../../hooks/useImageLoad";
 import OptionalScripts from "../../components/OptionalScripts/OptionalScripts";
 import { openConsentPreferences } from "../../utils/consent";
 import styles from "./contacts.module.scss";
@@ -12,7 +12,7 @@ import { contactsData } from "./data";
 
 export default function Contacts() {
   const { messages } = useLocale();
-  const isImageLoaded = useImageLoad(contactsData.image);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <div className={styles.contactsContainer}>
@@ -66,6 +66,8 @@ export default function Contacts() {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
+            onLoad={() => setIsImageLoaded(true)}
+            onError={() => setIsImageLoaded(true)}
             priority
             className={`${styles.studioImg} ${isImageLoaded ? styles.loaded : styles.loading}`}
           />

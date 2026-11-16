@@ -2,7 +2,7 @@
 import { localizedPath } from "../../locales";
 import { useLocale } from "../../locales/LocaleProvider";
 
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC, useCallback, useMemo, useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { getProjects } from "../../data/projectsData";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
@@ -23,6 +23,13 @@ const Projects: FC = () => {
     LOADING.INITIAL_ITEMS
   );
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loadGeneration = useRef(0);
+  useEffect(
+    () => () => {
+      loadGeneration.current++;
+    },
+    []
+  );
   const skeletonCount = useResponsiveSkeletonCount();
 
   const visibleProjects = useMemo(
@@ -60,6 +67,7 @@ const Projects: FC = () => {
       .slice(visibleCards, nextVisibleCards)
       .map((project) => project.imgSrc);
 
+    const generation = ++loadGeneration.current;
     setIsLoadingMore(true);
 
     void Promise.all(
@@ -71,6 +79,7 @@ const Projects: FC = () => {
         )
       )
     ).finally(() => {
+      if (generation !== loadGeneration.current) return;
       setVisibleCards(nextVisibleCards);
       setIsLoadingMore(false);
     });

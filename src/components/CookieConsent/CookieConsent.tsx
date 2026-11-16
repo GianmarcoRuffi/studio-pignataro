@@ -9,7 +9,10 @@ import { faCookie, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useSplash } from "../../context/SplashContext";
 import { LEGAL_PATHS, UI_TIMINGS } from "../../constants";
 import { useCookieConsent } from "../../hooks/useCookieConsent";
-import { useModalAccessibility } from "../../hooks/useModalAccessibility";
+import {
+  useModalAccessibility,
+  useOtherModalOpen,
+} from "../../hooks/useModalAccessibility";
 import { CONSENT_OPEN_EVENT, saveConsent } from "../../utils/consent";
 import styles from "./CookieConsent.module.scss";
 
@@ -21,15 +24,20 @@ const CookieConsent: FC = () => {
 
   const { status, isReady } = useCookieConsent();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const autoPrompted = useRef(false);
+  const otherModalOpen = useOtherModalOpen(dialogRef);
+  const [openRequested, setOpenRequested] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const dismissForNavigation = () => {
+    setOpenRequested(false);
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setIsVisible(false);
     setIsClosing(false);
   };
 
   const closePopup = () => {
+    setOpenRequested(false);
     setIsClosing(true);
     closeTimer.current = setTimeout(() => {
       setIsVisible(false);
@@ -47,26 +55,41 @@ const CookieConsent: FC = () => {
   useModalAccessibility(isVisible, dialogRef, handleDecline);
 
   useEffect(() => {
-    if (!isSplashComplete || !isReady || status !== null) return;
+    if (status !== null) autoPrompted.current = false;
+    if (!isSplashComplete || !isReady || otherModalOpen || isVisible) return;
+    if (autoPrompted.current && !openRequested) return;
+    if (status !== null && !openRequested) return;
     const timer = setTimeout(
-      () => setIsVisible(true),
-      UI_TIMINGS.cookieConsent.showDelay
+      () => {
+        autoPrompted.current = true;
+        setOpenRequested(false);
+        setIsVisible(true);
+      },
+      openRequested ? 0 : UI_TIMINGS.cookieConsent.showDelay
     );
     return () => clearTimeout(timer);
-  }, [isSplashComplete, isReady, status]);
+  }, [
+    isSplashComplete,
+    isReady,
+    status,
+    otherModalOpen,
+    isVisible,
+    openRequested,
+  ]);
 
   useEffect(() => {
     const open = () => {
       if (closeTimer.current) clearTimeout(closeTimer.current);
       setIsClosing(false);
-      setIsVisible(true);
+      if (otherModalOpen) setOpenRequested(true);
+      else setIsVisible(true);
     };
     window.addEventListener(CONSENT_OPEN_EVENT, open);
     return () => {
       window.removeEventListener(CONSENT_OPEN_EVENT, open);
       if (closeTimer.current) clearTimeout(closeTimer.current);
     };
-  }, []);
+  }, [otherModalOpen]);
 
   useEffect(() => {
     window.dispatchEvent(

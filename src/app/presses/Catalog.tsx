@@ -1,7 +1,7 @@
 "use client";
 import { useLocale } from "../../locales/LocaleProvider";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useRef, useEffect } from "react";
 import PressesCard from "../../components/PressesCard/PressesCard";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import LinkButton from "../../components/LinkButton/LinkButton";
@@ -23,6 +23,13 @@ export default function Presses() {
     LOADING.INITIAL_ITEMS
   );
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loadGeneration = useRef(0);
+  useEffect(
+    () => () => {
+      loadGeneration.current++;
+    },
+    []
+  );
   const skeletonCount = useResponsiveSkeletonCount();
 
   const years = useMemo(
@@ -80,6 +87,7 @@ export default function Presses() {
       .slice(visibleCards, nextVisibleCards)
       .map((press) => press.imageSource);
 
+    const generation = ++loadGeneration.current;
     setIsLoadingMore(true);
 
     void Promise.all(
@@ -91,6 +99,7 @@ export default function Presses() {
         )
       )
     ).finally(() => {
+      if (generation !== loadGeneration.current) return;
       setVisibleCards(nextVisibleCards);
       setIsLoadingMore(false);
     });
@@ -124,6 +133,8 @@ export default function Presses() {
               type="button"
               aria-pressed={selectedYear === "all"}
               onClick={() => {
+                loadGeneration.current++;
+                setIsLoadingMore(false);
                 setSelectedYear("all");
                 setVisibleCards(LOADING.INITIAL_ITEMS);
               }}
@@ -137,6 +148,8 @@ export default function Presses() {
                 type="button"
                 aria-pressed={selectedYear === year}
                 onClick={() => {
+                  loadGeneration.current++;
+                  setIsLoadingMore(false);
                   setSelectedYear(year);
                   setVisibleCards(LOADING.INITIAL_ITEMS);
                 }}

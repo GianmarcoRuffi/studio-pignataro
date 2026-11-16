@@ -1,10 +1,9 @@
 "use client";
 import { useLocale } from "../../locales/LocaleProvider";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
 import { getBioData, HARLEY_COMPANY_URL } from "./data";
 import { Link as BioLink } from "../../models/models";
@@ -12,7 +11,7 @@ import { Link as BioLink } from "../../models/models";
 export default function Bio() {
   const { messages, locale } = useLocale();
   const bioData = getBioData(messages);
-  const isImageLoaded = useImageLoad(bioData.image);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const renderProjectText = (text: string) =>
     text.split("{company}").map((part, index) => (
@@ -62,6 +61,8 @@ export default function Bio() {
               fill
               sizes="(max-width: 768px) 100vw, 450px"
               quality={95}
+              onLoad={() => setIsImageLoaded(true)}
+              onError={() => setIsImageLoaded(true)}
               priority
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="

@@ -57,7 +57,11 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-16: corretti i link delle informative con navigazione nella stessa
+2026-11-16: review mirata: preferenze cookie differite finché un’altra modale
+è attiva; Bio e Contatti seguono il caricamento della foto ottimizzata senza
+scaricare l’originale. Precaricamenti limitati a 5 secondi e completamenti
+obsoleti ignorati; la lightbox conserva visibile la foto precedente anche
+con il messaggio di attesa. Regressioni in `review-loading.spec.ts`. Corretti i link delle informative con navigazione nella stessa
 scheda e chiusura della modale senza cambiare il consenso. Splash limitato
 all’ingresso iniziale dalla homepage, senza comparsa dopo la navigazione
 interna né anteprima della home prima dello splash. Uniformati finestra,

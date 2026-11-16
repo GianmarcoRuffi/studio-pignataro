@@ -48,6 +48,7 @@ export const UI_TIMINGS = {
 } as const;
 
 export const LOADING = {
+  IMAGE_LOAD_TIMEOUT: 5000,
   INITIAL_ITEMS: 6,
   ITEMS_PER_LOAD: 6,
   BATCH_SKELETON_MIN_DISPLAY: 450,

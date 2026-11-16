@@ -1,3 +1,4 @@
+import { LOADING } from "../constants";
 import { getImageProps } from "next/image";
 
 /**
@@ -70,10 +71,14 @@ export function preloadImage(
     let isSettled = false;
     const loadingStartedAt = Date.now();
 
+    const timeout = setTimeout(() => settle(), LOADING.IMAGE_LOAD_TIMEOUT);
     const settle = () => {
       if (isSettled) return;
 
       isSettled = true;
+      clearTimeout(timeout);
+      img.onload = null;
+      img.onerror = null;
       const elapsed = Date.now() - loadingStartedAt;
       const remaining = Math.max(0, minimumLoadingTime - elapsed);
 

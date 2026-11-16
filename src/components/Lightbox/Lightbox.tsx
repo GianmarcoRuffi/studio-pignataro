@@ -398,7 +398,10 @@ const Lightbox: FC<LightboxProps> = ({
           onTouchEnd={enableZoom ? undefined : handleTouchEnd}
         >
           {isImageLoading && loadingMessageSource === imageSrc && (
-            <div className={styles.loadingPlaceholder} role="status">
+            <div
+              className={`${styles.loadingPlaceholder} ${!enableZoom && outgoingSource ? styles.overPrevious : ""}`}
+              role="status"
+            >
               <div className={styles.spinner} aria-hidden="true" />
               <span>
                 {formatMessage(messages.ui.lightbox.loading, {

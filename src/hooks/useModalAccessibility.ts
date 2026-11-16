@@ -1,7 +1,31 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, type RefObject } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useSyncExternalStore,
+  type RefObject,
+} from "react";
 import { getScrollContainer, pauseSmoothScroll } from "../utils/scroll";
+
+const activeDialogs = new Set<HTMLElement>();
+const listeners = new Set<() => void>();
+const notify = () => listeners.forEach((listener) => listener());
+const subscribe = (listener: () => void) => {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+};
+
+export function useOtherModalOpen(dialogRef: RefObject<HTMLElement | null>) {
+  return useSyncExternalStore(
+    subscribe,
+    () => [...activeDialogs].some((dialog) => dialog !== dialogRef.current),
+    () => false
+  );
+}
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -99,6 +123,8 @@ export function useModalAccessibility(
         focusFrame = window.requestAnimationFrame(focusWhenVisible);
       }
     };
+    activeDialogs.add(dialog);
+    notify();
     focusFirst();
     focusFrame = window.requestAnimationFrame(focusWhenVisible);
     document.addEventListener("keydown", handleKeyDown, true);
@@ -123,6 +149,8 @@ export function useModalAccessibility(
       });
       if (previousFocus?.isConnected && !previousFocus.closest("[inert]"))
         previousFocus.focus({ preventScroll: true });
+      activeDialogs.delete(dialog);
+      notify();
     };
   }, [isOpen, dialogRef]);
 }
