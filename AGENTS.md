@@ -57,8 +57,9 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-16: allineata la Bio inglese al testo italiano sui cinque negozi nei più
-importanti centri commerciali di Puerto Rico e sulla villa sull’oceano.
+2026-11-16: aggiornate le immagini Tangex Corp.: nuova copertina condivisa con
+la prima foto della galleria e due foto aggiuntive, per sei immagini totali.
+Le tre nuove foto sono WebP sRGB, con lato massimo 1920 px e qualità 85.
 Preservare il ritaglio esclusivamente mobile del carousel per Via Asti, Via
 Canonico Sanna, Via Venturoli e Viale Regina Margherita, le modifiche Bio IT/EN
 (Via Dante, link Harley & Dikkinson, rimozione De Bonis) e la rimozione degli

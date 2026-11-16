@@ -294,7 +294,7 @@ function buildProjects(messages: Dictionary): Project[] {
         messages["editorial"]["projects"]["TangexCorp"]["description"],
       slug: "TangexCorp",
       imgCredits: messages["editorial"]["projects"]["TangexCorp"]["imgCredits"],
-      images: generateImagePaths("projects/tangex-corp/gallery", 4),
+      images: generateImagePaths("projects/tangex-corp/gallery", 6),
     },
 
     {
