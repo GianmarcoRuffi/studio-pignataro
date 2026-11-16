@@ -13,6 +13,7 @@ interface Project {
   invisible?: boolean;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  sliderMobileImagePosition?: string;
 }
 
 interface ExternalLink {

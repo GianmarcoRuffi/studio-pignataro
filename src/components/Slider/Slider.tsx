@@ -250,7 +250,11 @@ const Slider: FC<SliderProps> = ({ projects }) => {
             maxWidth: "100%",
             maxHeight: "100%",
             objectFit: effectiveImageFit,
-            objectPosition: project.imagePosition ?? "center",
+            "--slide-image-position": project.imagePosition ?? "center",
+            "--slide-mobile-image-position":
+              project.sliderMobileImagePosition ??
+              project.imagePosition ??
+              "center",
           } as CSSProperties;
 
           return (
@@ -287,6 +291,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                     <Image
                       src={project.imgSrc}
                       alt={project.projectName}
+                      className={styles.slideImage}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                       quality={85}

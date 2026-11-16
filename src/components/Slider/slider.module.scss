@@ -123,3 +123,15 @@
     background: transparent;
   }
 }
+
+.slideImage {
+  object-position: var(--slide-image-position, center);
+}
+@media (max-width: 768px) {
+  .slideImage {
+    object-position: var(
+      --slide-mobile-image-position,
+      var(--slide-image-position, center)
+    );
+  }
+}

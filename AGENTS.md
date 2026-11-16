@@ -57,12 +57,12 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-16: Bio IT/EN con Via Dante prima di Via Ancona; rimosso anche in inglese
-il riferimento all’ingegner De Bonis. Il nome Harley & Dikkinson nel punto
-Superbonus è un link inline al sito ufficiale, con segnaposto `{company}` nei
-dizionari e URL tecnico nell’adattatore bio. Restano rimossi gli indici e i testi
-SEO visibili duplicati; preservare metadati/JSON-LD, splash solo in homepage,
-contrasto del consenso e precaricamento responsive delle schede.
+2026-11-16: allineata la Bio inglese al testo italiano sui cinque negozi nei più
+importanti centri commerciali di Puerto Rico e sulla villa sull’oceano.
+Preservare il ritaglio esclusivamente mobile del carousel per Via Asti, Via
+Canonico Sanna, Via Venturoli e Viale Regina Margherita, le modifiche Bio IT/EN
+(Via Dante, link Harley & Dikkinson, rimozione De Bonis) e la rimozione degli
+indici e paragrafi SEO visibili duplicati.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

@@ -41,6 +41,7 @@ function buildProjects(messages: Dictionary): Project[] {
       projectName:
         messages["editorial"]["projects"]["Via-Venturoli"]["projectName"],
       imgSrc: "/projects/via-venturoli/cover.webp",
+      sliderMobileImagePosition: "98% 50%",
       description:
         messages["editorial"]["projects"]["Via-Venturoli"]["description"],
       slug: "Via-Venturoli",
@@ -81,6 +82,7 @@ function buildProjects(messages: Dictionary): Project[] {
     {
       projectName: messages["editorial"]["projects"]["Via-Asti"]["projectName"],
       imgSrc: "/projects/via-asti/cover.webp",
+      sliderMobileImagePosition: "78% 50%",
       description: messages["editorial"]["projects"]["Via-Asti"]["description"],
       externalLink: [
         {
@@ -219,6 +221,7 @@ function buildProjects(messages: Dictionary): Project[] {
       projectName:
         messages["editorial"]["projects"]["Via-Canonico-Sanna"]["projectName"],
       imgSrc: "/projects/via-canonico-sanna/cover.webp",
+      sliderMobileImagePosition: "45% 50%",
       description:
         messages["editorial"]["projects"]["Via-Canonico-Sanna"]["description"],
       slug: "Via-Canonico-Sanna",
@@ -249,6 +252,7 @@ function buildProjects(messages: Dictionary): Project[] {
           "projectName"
         ],
       imgSrc: "/projects/viale-regina-margherita/cover.webp",
+      sliderMobileImagePosition: "85% 50%",
       description:
         messages["editorial"]["projects"]["Viale-Regina-Margherita"][
           "description"
