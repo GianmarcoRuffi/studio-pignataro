@@ -6,17 +6,17 @@ Leggi questo file prima di intervenire. A ogni modifica del progetto, aggiorna `
 
 ## Architettura e contenuti
 
-Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Router, React 19, TypeScript, Sass e Tailwind CSS 4, con contenuti locali.
+Portfolio italiano dello Studio Architetto Gianluca Pignataro: Next.js 16 App Router, React 19.3, TypeScript, Sass e Tailwind CSS 4, con contenuti locali.
 
 - `src/data/projectsData.ts` alimenta slider, elenco e dettagli `/projects/[slug]`, inclusi metadati e `generateStaticParams`. Mantieni gli slug esistenti, sensibili alle maiuscole; `invisible` filtra l'elenco progetti, ma non impedisce la generazione del dettaglio.
-- Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`, Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. Fotografie senza cornici decorative, elenco progetti 7/5 alternato e gallerie a righe giustificate, con gap di 16 px e blocchi indipendenti di sei immagini. Il ritratto della biografia mantiene il punto focale a sinistra; tutte le pubblicazioni, monografia compresa, usano colonne 32/68 e riquadri 16:9 con immagini intere centrate.
-- I contenuti delle altre pagine sono nei rispettivi `data.ts`; i contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`.
+- Il sistema visivo «Monografia contemporanea» usa token condivisi in `globals.scss`; Progetti, Pubblicazioni, bio e Contatti condividono il margine iniziale compatto `--space-page-start` (`clamp(1.5rem, 3vw, 3.5rem)`), separato dalla distanza fra sezioni. I caratteri sono Century Gothic per navigazione e didascalie e Source Serif 4 locale (con licenza OFL in `src/app/fonts`) per titoli e testi editoriali. L'elenco progetti usa due colonne uguali allineate, una sotto 769 px, copertine 3:2 e didascalie con filetto inferiore. Le gallerie mantengono righe giustificate, gap di 16 px e blocchi indipendenti di sei immagini; ogni foto dei dettagli, apertura compresa, ha una cornice grigia interna di 1 px con il token `--color-photo-border`, senza modificare la geometria. La prima foto di ogni galleria corrisponde alla copertina del carosello, senza duplicati nella sequenza. Ogni dettaglio apre con questa stessa foto a tutta larghezza, non cliccabile, con due chevron sovrapposti che seguono la navigazione ciclica precedente/successivo in fondo alla pagina, con etichette e nomi sotto le frecce, entrambi visibili solo su hover o focus da tastiera. Il dettaglio non mostra breadcrumb né il relativo spazio; la sequenza sottostante conserva tutte le foto, inclusa la prima, con lightbox. La foto di apertura usa un’altezza responsive condivisa con l’introduzione tramite `--project-hero-height`, con minimo 280 px e spazio riservato ai testi; il blocco con titolo, descrizione, link e crediti completa almeno l’altezza visibile della pagina, con maggiore respiro sotto i testi, così la galleria inizia dopo la prima schermata; rispetta `imageFit` e `imagePosition` del progetto e, con `contain`, riempie lo sfondo con la stessa immagine sfocata e scurita del carosello. Il ritratto della biografia mantiene il punto focale a sinistra; tutte le pubblicazioni, monografia compresa, usano colonne 32/68 e riquadri 16:9 con immagini intere centrate.
+- Tutti i testi UI, editoriali, accessibili e SEO sono centralizzati in `src/locales/it.json` ed `en.json`, con stessa struttura e segnaposto nominati. `src/locales/index.ts` espone tipi, `formatMessage` e helper dei percorsi. Le pagine italiane mantengono gli URL originali; quelle inglesi usano `/en`. `src/proxy.ts` determina la lingua dal percorso e sovrascrive l’header interno; layout e metadati sono renderizzati per richiesta con `getServerMessages`, mentre i componenti client usano `LocaleProvider`. I dati editoriali espongono factory per dizionario e conservano gli export italiani compatibili. Il selettore `IT / EN`, dopo «Contatti» su desktop e sotto l’ultima voce nel pannello fino a 1024 px, mostra la lingua corrente sottolineata e non cliccabile; l’altra apre la stessa pagina con ricaricamento completo e tooltip «English Version»/«Versione Italiana», disponibile anche da tastiera e su mobile. Tutti i link interni conservano la lingua; canonical, hreflang e sitemap includono entrambe le versioni. Nessun cookie o rilevamento automatico della lingua. I moduli `data.ts` restano adattatori; URL, percorsi, identificatori e date editoriali restano tecnici. I contatti condivisi sono in `src/data/contactsData.ts`, i tipi in `src/models/models.ts`. Nella pagina Contatti i social sono loghi SVG cliccabili con nomi accessibili localizzati.
 - Le immagini sono in `public/`; `src/utils/imageUtils.ts` genera anche percorsi numerati. Verifica corrispondenza tra nomi, quantità dichiarate e file effettivi.
 - `src/constants/index.ts` centralizza URL, loghi, breakpoint e tempi di caricamento. Il logo principale e il suo sfondo chiaro sono usati da header, splash e schermata di caricamento indipendentemente dal tema del dispositivo; il file del logo scuro resta disponibile ma non è selezionato. I layout e `src/utils/metadata.ts` gestiscono i metadati; `StructuredData` produce JSON-LD.
 
 ## Comportamenti da preservare
 
-Il layout radice coordina splash, header, footer e consenso cookie. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
+Il layout radice coordina splash, header, footer e consenso cookie. Lo splash viene valutato soltanto all’ingresso iniziale dalla homepage, una volta per sessione: i contenuti restano nascosti fino alla decisione e non viene riproposto tornando alla home con la navigazione interna. L’header delle pagine interne passa da 88 a 76 px oltre 64 px di scroll e torna normale sotto 24 px, sincronizzando logo e spazio della pagina in 250 ms; homepage sempre a 88 px e movimento ridotto rispettato. Foto di apertura e introduzione dei dettagli progetto usano l’altezza estesa stabile `--header-height-expanded`, così la compattazione dell’header non ridimensiona i contenuti durante lo scroll. Le pagine interne scorrono in `main.layout-content`, con `[data-scroll-content]` e Lenis; la homepage ospita lo slider senza scorrimento. Usa `src/utils/scroll.ts` per le operazioni di scroll e rispetta `prefers-reduced-motion`.
 
 Gallerie e schede combinano precaricamento, skeleton e caricamento incrementale; conserva le durate minime definite in `LOADING`. `OptionalScripts` abilita i figli solo con consenso `accepted`, usando `cookie-consent` e l'evento `cookie-consent-change`.
 
@@ -29,7 +29,7 @@ Usa Node.js 26 LTS (`.nvmrc` e `engines.node: "26.x"`) e npm con `package-lock.j
 - `npm run deploy:staging` è facoltativo: da `staging` pubblica una Preview e aggiorna gli alias staging; richiede autenticazione CLI o `VERCEL_TOKEN` e progetto collegato. Gli stessi alias sono domini Preview collegati a `staging` e seguono anche i deploy Git automatici. Lo staging resta pubblico e con `noindex`.
 - `npm run lint`; `npm run type-check`; `npm run format:check`.
 - `npm run format` riscrive i file formattabili.
-- `npm run build` rigenera `public/sitemap.xml` prima della build; `npm start` avvia la produzione.
+- `npm run build` genera `/sitemap.xml` tramite `src/app/sitemap.ts`; `npm start` avvia la produzione.
 - `next.config.js` aggiunge `X-Robots-Tag: noindex` soltanto con `VERCEL_ENV=preview`, anche sugli alias staging personalizzati. Conserva l'indicizzabilità di Production.
 - `npm run playwright:install`; `npm run test:e2e`.
 - Singolo test: `npm run test:e2e -- -g "homepage keeps the hero slider visible"`.
@@ -46,10 +46,10 @@ La review e le priorità residue sono in `CODE_REVIEW.md`; i test di regressione
 
 ## Consenso, modali e immagini
 
-- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga: mostra tutti i dati sui desktop larghi, nasconde i contatti sotto 1366 px e le informative sotto 769 px, lasciando sempre visibili copyright e «Preferenze cookie». La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
-- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body.
+- `src/utils/consent.ts` e `useCookieConsent` condividono una preferenza valida per 365 giorni; senza data valida il consenso è assente. Il footer mantiene una sola riga e omette indirizzo, telefoni, email e partita IVA su tutte le pagine. Mostra soltanto copyright e «Preferenze cookie»: su desktop rispettivamente a sinistra e a destra, sotto 769 px centrati. I link Privacy Policy e Cookie Policy nella modale delle preferenze usano la navigazione interna nella stessa scheda, in entrambe le lingue: chiudono subito la modale senza modificare il consenso né ricaricare il documento. I recapiti restano nella pagina Contatti e nelle informative. La mappa Google passa da `OptionalScripts` e viene rimossa alla revoca.
+- `useModalAccessibility` gestisce focus, Escape, isolamento con `inert` e blocco dello scroll interno/Lenis per lightbox, menu e banner. La lightbox usa un portal nel body; finestra, foto, contatore e controlli hanno spigoli retti e colori coerenti con il carosello. Chevron e X condividono dimensioni e stile, con bersagli di almeno 44 px su mobile; le foto conservano i colori originali. La navigazione delle foto progetto conserva l’immagine precedente durante il caricamento e usa una dissolvenza di 300 ms; il messaggio di caricamento compare soltanto dopo `UI_TIMINGS.lightbox.loadingIndicatorDelay` (300 ms), rispettando il movimento ridotto. Le immagini delle pubblicazioni aprono la stessa modale con proporzioni native, rendering naturale e nessun ingrandimento oltre la risoluzione originale: clic o Invio/Spazio sull’immagine alternano vista adattata e dimensioni native, con scorrimento interno; la X ed Escape chiudono ripristinando il focus sulla copertina. I collegamenti agli articoli restano esterni.
 - Usa `src/utils/storage.ts` per lo storage di sessione, con fallback in memoria. Le date editoriali delle informative sono esplicite nei rispettivi `data.ts`.
-- Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
+- Il carosello della homepage non mostra attualmente il nome del progetto né la freccia diagonale in basso a sinistra; conserva il contatore a destra, i chevron laterali e il collegamento sulla foto. Lo slider carica soltanto la slide attiva e le due adiacenti; slider e galleria usano immagini responsive ottimizzate, preservando il GIF animato. I test mobile misurano anche i byte delle copertine.
 
 ## Audit dipendenze
 
@@ -57,7 +57,16 @@ L'override di `tar` mantiene la linea 7 sulla patch di sicurezza 7.5.22 o succes
 
 ## Ultimo aggiornamento
 
-2026-11-10: gallerie a incastro con proporzioni lette lato server tramite sharp, righe bilanciate su ogni blocco di sei (solo l’ultima riga effettiva può restare incompleta) e skeleton con la stessa geometria; pubblicazioni uniformate con immagini 16:9 senza ritagli e impaginazione condivisa anche per la monografia.
+2026-11-16: corretti i link delle informative con navigazione nella stessa
+scheda e chiusura della modale senza cambiare il consenso. Splash limitato
+all’ingresso iniziale dalla homepage, senza comparsa dopo la navigazione
+interna né anteprima della home prima dello splash. Uniformati finestra,
+chevron, X e contatore della lightbox allo stile squadrato del sito.
+Preservare le sei immagini Tangex Corp. (copertina condivisa con la prima
+foto della galleria), il ritaglio esclusivamente mobile del carousel per
+Via Asti, Via Canonico Sanna, Via Venturoli e Viale Regina Margherita,
+le modifiche Bio IT/EN (Via Dante, link Harley & Dikkinson, rimozione
+De Bonis) e la rimozione degli indici e paragrafi SEO visibili duplicati.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

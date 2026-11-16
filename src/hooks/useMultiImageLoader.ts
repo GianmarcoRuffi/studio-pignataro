@@ -1,7 +1,9 @@
+import { getImageProps } from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 interface UseMultiImageLoaderOptions {
   timeout?: number;
+  responsive?: { sizes: string; quality: number };
   minimumLoadingTime?: number;
   onComplete?: () => void;
   onError?: (error: Error) => void;
@@ -19,10 +21,13 @@ export const useMultiImageLoader = (
 ): UseMultiImageLoaderReturn => {
   const {
     timeout = 5000,
+    responsive,
     minimumLoadingTime = 0,
     onComplete,
     onError,
   } = options;
+  const sizes = responsive?.sizes;
+  const quality = responsive?.quality;
   const onCompleteRef = useRef(onComplete);
   const onErrorRef = useRef(onError);
 
@@ -141,7 +146,21 @@ export const useMultiImageLoader = (
         markLoaded();
       };
 
-      img.src = src;
+      if (sizes && quality !== undefined && !src.endsWith(".gif")) {
+        const { props } = getImageProps({
+          src,
+          alt: "",
+          width: 600,
+          height: 400,
+          sizes,
+          quality,
+        });
+        img.sizes = props.sizes ?? "";
+        img.srcset = props.srcSet ?? "";
+        img.src = props.src;
+      } else {
+        img.src = src;
+      }
 
       if (img.complete) {
         markLoaded();
@@ -155,7 +174,7 @@ export const useMultiImageLoader = (
         clearTimeout(settleTimeoutId);
       }
     };
-  }, [minimumLoadingTime, sourcesKey, timeout]);
+  }, [minimumLoadingTime, sourcesKey, timeout, sizes, quality]);
 
   return {
     isLoading,

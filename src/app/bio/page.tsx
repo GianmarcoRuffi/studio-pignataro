@@ -1,14 +1,35 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import styles from "./bio.module.scss";
-import { bioData } from "./data";
+import { getBioData, HARLEY_COMPANY_URL } from "./data";
 import { Link as BioLink } from "../../models/models";
 
 export default function Bio() {
+  const { messages, locale } = useLocale();
+  const bioData = getBioData(messages);
   const isImageLoaded = useImageLoad(bioData.image);
+
+  const renderProjectText = (text: string) =>
+    text.split("{company}").map((part, index) => (
+      <Fragment key={index}>
+        {index > 0 && (
+          <a
+            href={HARLEY_COMPANY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="editorial-link"
+          >
+            {messages.editorial.bio.harleyCompany}
+          </a>
+        )}
+        {part}
+      </Fragment>
+    ));
 
   const renderProjectLinks = (links: BioLink[] | undefined) => {
     if (!links || links.length === 0) return null;
@@ -21,7 +42,7 @@ export default function Bio() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.projectLink}
+            className={`editorial-link ${styles.projectLink}`}
           >
             {link.name} →
           </a>
@@ -50,12 +71,12 @@ export default function Bio() {
             />
           </div>
           <div className={styles.profileInfo}>
-            <p className={styles.eyebrow}>Lo studio · Cagliari</p>
+            <p className={styles.eyebrow}>{messages.ui.bio.eyebrow}</p>
             <h1 className={styles.profileName}>{bioData.name}</h1>
             <div className={styles.profileIntro}>
               {bioData.intro
                 .split(
-                  /(?=La pratica professionale|Nel campo della progettazione)/
+                  /(?=La pratica professionale|Nel campo della progettazione|Over 30 years of professional practice|In architectural design)/
                 )
                 .map((paragraph) => (
                   <p key={paragraph.slice(0, 30)}>{paragraph.trim()}</p>
@@ -79,10 +100,18 @@ export default function Bio() {
               >
                 <div className={styles.experienceHeader}>
                   <p className={styles.experienceDate}>
-                    {experience.title.split(", da ")[1]}
+                    {
+                      experience.title.split(
+                        locale === "en" ? ", " : ", da "
+                      )[1]
+                    }
                   </p>
                   <h3 className={styles.experienceTitle}>
-                    {experience.title.split(", da ")[0]}
+                    {
+                      experience.title.split(
+                        locale === "en" ? ", " : ", da "
+                      )[0]
+                    }
                   </h3>
                   <h4 className={styles.experienceRole}>{experience.role}</h4>
                 </div>
@@ -99,7 +128,9 @@ export default function Bio() {
                         className={styles.projectItem}
                       >
                         <span className={styles.projectBullet}>•</span>
-                        <span className={styles.projectText}>{project}</span>
+                        <span className={styles.projectText}>
+                          {renderProjectText(project)}
+                        </span>
                       </div>
                     ) : (
                       <div
@@ -109,7 +140,7 @@ export default function Bio() {
                         <span className={styles.projectBullet}>•</span>
                         <div className={styles.projectContent}>
                           <span className={styles.projectText}>
-                            {project.description}
+                            {renderProjectText(project.description)}
                           </span>
                           {renderProjectLinks(project.links)}
                         </div>

@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 interface Project {
+  seoDescription?: string;
+  updatedAt?: string;
   projectName: string;
   imgSrc: string;
   description: string;
@@ -11,6 +13,7 @@ interface Project {
   invisible?: boolean;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  sliderMobileImagePosition?: string;
 }
 
 interface ExternalLink {
@@ -92,6 +95,13 @@ interface SocialLinks {
 }
 
 interface SharedContactsData {
+  postalAddress: {
+    streetAddress: string;
+    postalCode: string;
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
   studio: string;
   email: Email;
   phone: Phone;

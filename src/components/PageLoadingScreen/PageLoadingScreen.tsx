@@ -1,4 +1,6 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
+
 import { FC, useEffect, useState } from "react";
 import {
   BRANDING_LOGO_DIMENSIONS,
@@ -14,6 +16,7 @@ interface PageLoadingScreenProps {
 const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
   onLoadingComplete,
 }) => {
+  const { messages } = useLocale();
   const [isVisible, setIsVisible] = useState(true);
   const [isFading, setIsFading] = useState(false);
   const [isLogoLoaded, setIsLogoLoaded] = useState(false);
@@ -50,7 +53,7 @@ const PageLoadingScreen: FC<PageLoadingScreenProps> = ({
       <picture>
         <img
           src={BRANDING_LOGO_PATH}
-          alt="Logo"
+          alt={messages.ui.common.logo}
           width={BRANDING_LOGO_DIMENSIONS.width}
           height={BRANDING_LOGO_DIMENSIONS.height}
           className={styles.logo}

@@ -1,19 +1,18 @@
 "use client";
 
-import { FC, useEffect } from "react";
+import { FC, useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 import { scrollToPosition } from "../../utils/scroll";
 
 const ScrollToTop: FC = () => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  useLayoutEffect(() => {
+    if (window.location.hash) return;
     scrollToPosition({
       top: 0,
-      behavior: prefersReducedMotion ? "auto" : "smooth",
+      selector: ".layout-content",
+      behavior: "instant",
     });
   }, [pathname]);
 

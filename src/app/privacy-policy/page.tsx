@@ -1,16 +1,19 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { privacyPolicyUpdatedAt } from "./data";
 import PolicyLayout from "../../components/PolicyLayout/PolicyLayout";
-import { privacyPolicyData, privacyContactEmail } from "./data";
+import { getPrivacyPolicyData, privacyContactEmail } from "./data";
 import styles from "./privacy.module.scss";
 
 export default function PrivacyPolicy() {
+  const { messages } = useLocale();
+  const privacyPolicyData = getPrivacyPolicyData(messages);
   return (
     <PolicyLayout
       lastUpdated={privacyPolicyUpdatedAt}
-      title="Privacy Policy"
-      subtitle="Informativa sul trattamento dei dati personali"
+      title={messages.ui.common.privacy}
+      subtitle={messages.ui.policy.privacySubtitle}
     >
       {privacyPolicyData.map((section) => (
         <section key={section.id} className={styles.section}>
@@ -31,7 +34,7 @@ export default function PrivacyPolicy() {
           )}
           {section.id === "diritti" && (
             <p>
-              Per esercitare i propri diritti, contattare:
+              {messages.ui.policy.rightsContact}
               <a href={`mailto:${privacyContactEmail}`}>
                 {privacyContactEmail}
               </a>

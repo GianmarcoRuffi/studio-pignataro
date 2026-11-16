@@ -1,4 +1,5 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +19,7 @@ interface ScrollUpButtonProps {
 const ScrollUpButton: FC<ScrollUpButtonProps> = ({
   scrollContainer = DEFAULT_SCROLL_CONTAINER_SELECTOR,
 }) => {
+  const { messages } = useLocale();
   const [showButton, setShowButton] = useState<boolean>(false);
 
   const handleScroll = useCallback(() => {
@@ -56,7 +58,7 @@ const ScrollUpButton: FC<ScrollUpButtonProps> = ({
       type="button"
       className={`${styles.scrollUpButton} ${showButton ? styles.visible : ""}`}
       onClick={scrollToTop}
-      aria-label="Scroll to top"
+      aria-label={messages.ui.scroll.top}
     >
       <FontAwesomeIcon icon={faArrowUp} />
     </button>

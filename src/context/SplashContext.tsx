@@ -1,4 +1,6 @@
 "use client";
+import { usePathname } from "next/navigation";
+import { stripLocale } from "../locales";
 import { readSessionValue } from "../utils/storage";
 
 import {
@@ -32,16 +34,17 @@ interface SplashProviderProps {
 }
 
 export const SplashProvider: FC<SplashProviderProps> = ({ children }) => {
-  const [isSplashComplete, setIsSplashComplete] = useState(false);
-  const [shouldShowSplash, setShouldShowSplash] = useState(true);
+  const pathname = usePathname();
+  const [isHomeEntry] = useState(() => stripLocale(pathname) === "/");
+  const [isSplashComplete, setIsSplashComplete] = useState(!isHomeEntry);
+  const [shouldShowSplash, setShouldShowSplash] = useState(false);
 
   useEffect(() => {
-    const splashShown = readSessionValue("splash-shown");
-    if (splashShown) {
-      setIsSplashComplete(true);
-      setShouldShowSplash(false);
-    }
-  }, []);
+    // Decide once per document entry, before revealing the homepage content.
+    const show = isHomeEntry && !readSessionValue("splash-shown");
+    setShouldShowSplash(show);
+    setIsSplashComplete(!show);
+  }, [isHomeEntry]);
 
   const setSplashComplete = useCallback(() => {
     setIsSplashComplete(true);

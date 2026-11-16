@@ -10,6 +10,43 @@ const prepareStorage = async (page: import("@playwright/test").Page) => {
   });
 };
 
+for (const prefix of ["", "/en"]) {
+  test(`returning home from an internal entry skips the splash in ${prefix || "/"}`, async ({
+    page,
+  }) => {
+    await page.addInitScript(() => {
+      sessionStorage.setItem("siteVisited", "true");
+      localStorage.setItem("cookie-consent", "declined");
+      localStorage.setItem("cookie-consent-date", new Date().toISOString());
+      new MutationObserver(() => {
+        if (document.querySelector('[class*="splashScreen"]')) {
+          document.documentElement.dataset.splashObserved = "true";
+        }
+      }).observe(document, { childList: true, subtree: true });
+    });
+    await page.goto(`${prefix}/bio`);
+    await page
+      .locator("header")
+      .getByRole("link", { name: "Home", exact: true })
+      .click();
+    await expect(page).toHaveURL(prefix || "/");
+    await expect(page.locator("main")).toBeVisible();
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        })
+    );
+    await expect(page.locator("html")).not.toHaveAttribute(
+      "data-splash-observed",
+      "true"
+    );
+    expect(
+      await page.evaluate(() => sessionStorage.getItem("splash-shown"))
+    ).toBeNull();
+  });
+}
+
 test("internal pages publish their own canonical URL", async ({ request }) => {
   for (const path of [
     "/bio",
@@ -43,7 +80,18 @@ test("sitemap includes every generated project with its original slug", async ({
       `<loc>https://archpignataro.it/projects/${project.slug}</loc>`
     );
   }
-  expect(xml.match(/<loc>/g)).toHaveLength(projects.length + 7);
+  for (const project of projects) {
+    expect(xml).toContain(
+      `<loc>https://archpignataro.it/en/projects/${project.slug}</loc>`
+    );
+    expect(xml).toContain(
+      `hreflang="it" href="https://archpignataro.it/projects/${project.slug}"`
+    );
+    expect(xml).toContain(
+      `hreflang="en" href="https://archpignataro.it/en/projects/${project.slug}"`
+    );
+  }
+  expect(xml.match(/<loc>/g)).toHaveLength((projects.length + 7) * 2);
 });
 
 test("reduced motion disables slider autoplay and hides inactive links from focus", async ({

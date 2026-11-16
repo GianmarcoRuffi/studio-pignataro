@@ -1,12 +1,16 @@
+import { getServerMessages } from "../../locales/server";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
-export const metadata: Metadata = generatePageMetadata({
-  path: "/presses",
-  title: "Pubblicazioni",
-  description:
-    "Rassegna stampa e pubblicazioni dei lavori dell'Architetto Gianluca Pignataro su riviste specializzate di architettura e design.",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return generatePageMetadata({
+    locale,
+    path: "/presses",
+    title: messages.ui.metadata.pressesTitle,
+    description: messages.ui.metadata.pressesDescription,
+  });
+}
 
 export default function PressesLayout({
   children,

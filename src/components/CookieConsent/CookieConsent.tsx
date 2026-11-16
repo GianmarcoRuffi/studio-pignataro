@@ -1,6 +1,9 @@
 "use client";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
 import { FC, useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCookie, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useSplash } from "../../context/SplashContext";
@@ -11,6 +14,7 @@ import { CONSENT_OPEN_EVENT, saveConsent } from "../../utils/consent";
 import styles from "./CookieConsent.module.scss";
 
 const CookieConsent: FC = () => {
+  const { messages, locale } = useLocale();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { isSplashComplete } = useSplash();
@@ -18,6 +22,12 @@ const CookieConsent: FC = () => {
   const { status, isReady } = useCookieConsent();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const dismissForNavigation = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setIsVisible(false);
+    setIsClosing(false);
+  };
 
   const closePopup = () => {
     setIsClosing(true);
@@ -87,45 +97,36 @@ const CookieConsent: FC = () => {
             type="button"
             className={styles.closeButton}
             onClick={handleDecline}
-            aria-label="Chiudi e usa solo necessari"
+            aria-label={messages.ui.consent.close}
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <h3 id="cookie-consent-title" className={styles.cookieTitle}>
-            Utilizzo dei Cookie
+            {messages.ui.consent.title}
           </h3>
         </div>
 
         <div className={styles.cookieContent}>
-          <p className={styles.cookieText}>
-            Il sito memorizza le preferenze di navigazione sul tuo dispositivo.
-            La mappa Google Maps è un servizio esterno facoltativo e viene
-            caricata solo se la autorizzi.
-          </p>
+          <p className={styles.cookieText}>{messages.ui.consent.intro}</p>
           <p className={styles.cookieSubtext}>
-            Puoi rifiutare i servizi facoltativi e continuare a visitare il
-            sito. La scelta vale per un anno; puoi cambiarla in qualsiasi
-            momento tramite «Preferenze cookie» nel footer. La navigazione non
-            esprime consenso.
+            {messages.ui.consent.description}
           </p>
 
           <div className={styles.cookieLinks}>
-            <a
-              href={LEGAL_PATHS.privacyPolicy}
+            <Link
+              href={localizedPath(LEGAL_PATHS.privacyPolicy, locale)}
               className={styles.policyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              onNavigate={dismissForNavigation}
             >
-              Privacy Policy
-            </a>
-            <a
-              href={LEGAL_PATHS.cookiePolicy}
+              {messages.ui.common.privacy}
+            </Link>
+            <Link
+              href={localizedPath(LEGAL_PATHS.cookiePolicy, locale)}
               className={styles.policyLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              onNavigate={dismissForNavigation}
             >
-              Cookie Policy
-            </a>
+              {messages.ui.common.cookies}
+            </Link>
           </div>
         </div>
 
@@ -134,17 +135,17 @@ const CookieConsent: FC = () => {
             type="button"
             className={styles.declineButton}
             onClick={handleDecline}
-            aria-label="Solo necessari"
+            aria-label={messages.ui.consent.necessary}
           >
-            Solo necessari
+            {messages.ui.consent.necessary}
           </button>
           <button
             type="button"
             className={styles.acceptButton}
             onClick={handleAccept}
-            aria-label="Accetta servizi facoltativi"
+            aria-label={messages.ui.consent.accept}
           >
-            Accetta servizi facoltativi
+            {messages.ui.consent.accept}
           </button>
         </div>
       </div>

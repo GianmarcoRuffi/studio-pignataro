@@ -1,5 +1,14 @@
 "use client";
-import { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { stripLocale, localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import {
+  FC,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,33 +18,107 @@ import { getScrollEventTarget, getScrollTop } from "../../utils/scroll";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import styles from "./header.module.scss";
 
-const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Progetti" },
-  { href: "/presses", label: "Pubblicazioni" },
-  { href: "/bio", label: "Chi sono" },
-  { href: "/contacts", label: "Contatti" },
-] as const;
+function LanguageSwitch({ desktop = false }: { desktop?: boolean }) {
+  const { messages, locale } = useLocale();
+  const pathname = usePathname();
+  return (
+    <div
+      role="group"
+      aria-label={messages.navigation.languageSelector}
+      className={`${styles.languageSelector} ${desktop ? styles.desktopLanguage : ""}`}
+    >
+      {(["it", "en"] as const).map((language, index) => (
+        <span key={language} className={styles.languageOption}>
+          {index > 0 && (
+            <span aria-hidden="true" className={styles.languageSeparator}>
+              /
+            </span>
+          )}
+          {language === locale ? (
+            <span
+              className={styles.currentLanguage}
+              lang={language}
+              aria-current="true"
+              aria-label={
+                messages.navigation[language === "it" ? "italian" : "english"]
+              }
+            >
+              {language.toUpperCase()}
+            </span>
+          ) : (
+            <a
+              href={localizedPath(pathname, language)}
+              hrefLang={language}
+              lang={language}
+              className={styles.languageSwitch}
+              aria-label={messages.navigation.switchLanguage}
+            >
+              {language.toUpperCase()}
+              <span role="tooltip" className={styles.languageTooltip}>
+                {messages.navigation.switchLanguage}
+              </span>
+            </a>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 const Header: FC = () => {
+  const { messages, locale } = useLocale();
+  const navItems = [
+    { href: "/", label: messages.navigation.home },
+    { href: "/projects", label: messages.navigation.projects },
+    { href: "/presses", label: messages.navigation.presses },
+    { href: "/bio", label: messages.navigation.bio },
+    { href: "/contacts", label: messages.navigation.contacts },
+  ] as const;
   const pathname = usePathname();
-  const isHomepage = pathname === "/";
+  const isHomepage = stripLocale(pathname) === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuPresent, setMenuPresent] = useState(false);
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuPresent(true);
+      return;
+    }
+    const timer = setTimeout(
+      () => setMenuPresent(false),
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 320
+    );
+    return () => clearTimeout(timer);
+  }, [menuOpen]);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1025px)");
+    const close = () => {
+      if (media.matches) {
+        setMenuOpen(false);
+        setMenuPresent(false);
+      }
+    };
+    media.addEventListener("change", close);
+    return () => media.removeEventListener("change", close);
+  }, []);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const menuIconRef = useRef<HTMLButtonElement | null>(null);
-  useModalAccessibility(menuOpen, menuRef, () => setMenuOpen(false));
-  const updateScrolledState = () => {
-    const threshold = 50;
-    setScrolled(getScrollTop() > threshold);
-  };
+  useModalAccessibility(menuOpen || menuPresent, menuRef, () =>
+    setMenuOpen(false)
+  );
+  const updateScrolledState = useCallback(() => {
+    const top = getScrollTop();
+    setScrolled(
+      (wasScrolled) => !isHomepage && (wasScrolled ? top >= 24 : top > 64)
+    );
+  }, [isHomepage]);
 
   useEffect(() => {
     updateScrolledState();
     const target = getScrollEventTarget();
     target?.addEventListener("scroll", updateScrolledState);
     return () => target?.removeEventListener("scroll", updateScrolledState);
-  }, [pathname]);
+  }, [pathname, updateScrolledState]);
 
   useLayoutEffect(() => {
     setMenuOpen(false);
@@ -43,7 +126,16 @@ const Header: FC = () => {
 
     const frameId = window.requestAnimationFrame(updateScrolledState);
     return () => window.cancelAnimationFrame(frameId);
-  }, [pathname]);
+  }, [pathname, updateScrolledState]);
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.headerCompact = String(
+      scrolled && !isHomepage
+    );
+    return () => {
+      delete document.documentElement.dataset.headerCompact;
+    };
+  }, [scrolled, isHomepage]);
 
   const handleNavigationStart = () => {
     setMenuOpen(false);
@@ -57,11 +149,11 @@ const Header: FC = () => {
     >
       <div className={styles.navWrapper}>
         <div className={styles.logoContainer}>
-          <Link href="/" className={styles.logoLink}>
+          <Link href={localizedPath("/", locale)} className={styles.logoLink}>
             <picture className={styles.logoImageFrame}>
               <img
                 src={BRANDING_LOGO_PATH}
-                alt="Logo Studio Architetto Pignataro"
+                alt={messages.navigation.logoAlt}
                 width={BRANDING_LOGO_DIMENSIONS.width}
                 height={BRANDING_LOGO_DIMENSIONS.height}
                 className={styles.logoImage}
@@ -72,49 +164,55 @@ const Header: FC = () => {
           </Link>
         </div>
 
-        <div className={styles.navbar}>
-          <ul className={styles.navList}>
-            {NAV_ITEMS.map((item) => (
-              <li
-                key={item.href}
-                className={pathname === item.href ? styles.active : ""}
-              >
-                <Link
-                  href={item.href}
-                  aria-current={pathname === item.href ? "page" : undefined}
-                  onClick={handleNavigationStart}
+        <div className={styles.headerActions}>
+          <div className={styles.navbar}>
+            <ul className={styles.navList}>
+              {navItems.map((item) => (
+                <li
+                  key={item.href}
+                  className={
+                    stripLocale(pathname) === item.href ? styles.active : ""
+                  }
                 >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <button
-          type="button"
-          ref={menuIconRef}
-          className={`${styles.menuIcon} ${menuOpen ? styles.open : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-        >
-          <div className={styles.hamburgerLines}>
-            <span className={styles.line1}></span>
-            <span className={styles.line2}></span>
-            <span className={styles.line3}></span>
+                  <Link
+                    href={localizedPath(item.href, locale)}
+                    aria-current={
+                      stripLocale(pathname) === item.href ? "page" : undefined
+                    }
+                    onClick={handleNavigationStart}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </button>
 
+          <LanguageSwitch desktop />
+          <button
+            type="button"
+            ref={menuIconRef}
+            className={`${styles.menuIcon} ${menuOpen ? styles.open : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={messages.navigation.toggleMenu}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+          >
+            <div className={styles.hamburgerLines}>
+              <span className={styles.line1}></span>
+              <span className={styles.line2}></span>
+              <span className={styles.line3}></span>
+            </div>
+          </button>
+        </div>
         <div
           id="mobile-navigation"
           ref={menuRef}
           role="dialog"
-          aria-modal={menuOpen ? true : undefined}
-          aria-label="Menu di navigazione"
-          aria-hidden={!menuOpen}
-          inert={!menuOpen}
+          aria-modal={menuOpen || menuPresent ? true : undefined}
+          aria-label={messages.navigation.menu}
+          aria-hidden={!menuOpen && !menuPresent}
+          inert={!menuOpen && !menuPresent}
           tabIndex={-1}
           data-lenis-prevent
           className={`${styles.menuOverlay} ${menuOpen ? styles.menuOpen : ""}`}
@@ -123,23 +221,25 @@ const Header: FC = () => {
             type="button"
             className={styles.closeButton}
             onClick={() => setMenuOpen(false)}
-            aria-label="Chiudi menu"
+            aria-label={messages.navigation.closeMenu}
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
 
           <nav className={styles.fullscreenNav}>
             <ul className={styles.fullscreenNavList}>
-              {NAV_ITEMS.map((item) => (
+              {navItems.map((item) => (
                 <li
                   key={`mobile-${item.href}`}
                   className={`${styles.navItem} ${
-                    pathname === item.href ? styles.active : ""
+                    stripLocale(pathname) === item.href ? styles.active : ""
                   }`}
                 >
                   <Link
-                    href={item.href}
-                    aria-current={pathname === item.href ? "page" : undefined}
+                    href={localizedPath(item.href, locale)}
+                    aria-current={
+                      stripLocale(pathname) === item.href ? "page" : undefined
+                    }
                     className={styles.navLink}
                     onClick={handleNavigationStart}
                   >
@@ -147,6 +247,9 @@ const Header: FC = () => {
                   </Link>
                 </li>
               ))}
+              <li className={styles.mobileLanguage}>
+                <LanguageSwitch />
+              </li>
             </ul>
           </nav>
         </div>

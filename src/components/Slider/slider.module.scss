@@ -16,12 +16,10 @@
 .slide {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 0.8s ease;
+
   z-index: 1;
 }
 .active {
-  opacity: 1;
   z-index: 2;
 }
 .slide > a {
@@ -74,7 +72,7 @@
   right: var(--page-gutter);
   display: flex;
   align-items: end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1.5rem;
   color: #fff;
   pointer-events: none;
@@ -89,33 +87,6 @@
   height: 220px;
   background: linear-gradient(transparent, #151411d9);
   pointer-events: none;
-}
-.slideCaption a {
-  text-decoration: none;
-  pointer-events: auto;
-  padding: 0.25rem 0;
-}
-.captionLabel {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-.captionTitle {
-  display: block;
-  font: 400 clamp(1.7rem, 3vw, 2.75rem)/1.15 var(--font-editorial);
-}
-.captionTitle > span {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.6em;
-  margin-left: 0.75rem;
-}
-.slideCaption a:hover .captionTitle {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.15em;
 }
 .slideCounter {
   font-size: 0.75rem;
@@ -132,14 +103,35 @@
     bottom: calc(var(--footer-height) + 1.5rem);
     gap: 1rem;
   }
-  .captionTitle {
-    max-width: 16ch;
-    font-size: 1.8rem;
-  }
-  .captionLabel {
-    font-size: 0.6rem;
-  }
   .slideCounter {
     font-size: 0.65rem;
+  }
+}
+
+.slider {
+  touch-action: pan-y pinch-zoom;
+}
+@media (max-width: 768px) {
+  .sliderButton {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    text-shadow: 0 1px 4px #000;
+  }
+  .sliderButton:hover {
+    background: transparent;
+  }
+}
+
+.slideImage {
+  object-position: var(--slide-image-position, center);
+}
+@media (max-width: 768px) {
+  .slideImage {
+    object-position: var(
+      --slide-mobile-image-position,
+      var(--slide-image-position, center)
+    );
   }
 }

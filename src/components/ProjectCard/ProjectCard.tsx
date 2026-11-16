@@ -1,4 +1,7 @@
 "use client";
+import { CARD_IMAGE_OPTIONS } from "../../constants";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
 
 import { FC } from "react";
 import Image from "next/image";
@@ -14,7 +17,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
   imageFit = "cover",
   imagePosition = "center",
 }) => {
+  const { messages } = useLocale();
   const loaded = useImageLoad(imageSource, {
+    responsive: CARD_IMAGE_OPTIONS.projects,
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });
 
@@ -30,9 +35,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         <Image
           src={imageSource}
-          alt={`${name} - ${description}`}
+          alt={formatMessage(messages.ui.projectCard.alt, {
+            name,
+            description,
+          })}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1440px) 58vw, 760px"
+          quality={CARD_IMAGE_OPTIONS.projects.quality}
+          sizes={CARD_IMAGE_OPTIONS.projects.sizes}
           style={{ objectFit: imageFit, objectPosition: imagePosition }}
           loading="lazy"
           placeholder="blur"
@@ -40,7 +49,9 @@ const ProjectCard: FC<ProjectCardProps> = ({
           className={`${styles.cardImage} ${loaded ? styles.loaded : styles.loading}`}
         />
         <div className={styles.overlay}>
-          <span className={styles.viewProject}>Visualizza Progetto</span>
+          <span className={styles.viewProject}>
+            {messages.ui.projectCard.view}
+          </span>
         </div>
       </div>
 

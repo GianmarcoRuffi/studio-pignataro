@@ -15,9 +15,11 @@
     --color-background-light-gray: #eeebe4;
     --color-background-alt-gray: #e7e3da;
     --color-rule: #d8d3ca;
+    --color-photo-border: #aaa6a0;
     --page-gutter: clamp(1.25rem, 4.5vw, 5rem);
     --page-width: 1440px;
     --space-section: clamp(3.5rem, 7vw, 7rem);
+    --space-page-start: clamp(1.5rem, 3vw, 3.5rem);
     --space-block: clamp(1.5rem, 3vw, 3rem);
     --text-measure: 65ch;
     --type-title: clamp(2.5rem, 5vw, 4.75rem);
@@ -121,8 +123,13 @@ html,
 
 :root {
   --viewport-height: 100vh;
-  --header-height: 88px;
+  --header-height-expanded: 88px;
+  --header-height: var(--header-height-expanded);
   --footer-height: 40px;
+}
+
+:root[data-header-compact="true"] {
+  --header-height: 76px;
 }
 
 @supports (height: 100dvh) {
@@ -165,6 +172,10 @@ html,
 }
 
 .layout-content {
+  transition:
+    margin-top 0.25s,
+    max-height 0.25s,
+    height 0.25s;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -207,6 +218,49 @@ html,
   flex-direction: column;
 }
 
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.page-crossfade) {
+  animation-duration: 320ms;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(.page-crossfade) {
+  animation: page-fade-out 180ms ease-out both;
+}
+
+::view-transition-new(.page-crossfade) {
+  animation: page-fade-in 280ms ease-out 40ms both;
+}
+
+@keyframes page-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@supports not (view-transition-class: page-crossfade) {
+  .layout-content {
+    animation: page-fade-in 280ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   .layout-content.homepage {
     height: var(--viewport-height);
@@ -221,4 +275,17 @@ html,
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+:root {
+  color-scheme: only light;
+}
+
+a.editorial-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+a.editorial-link:hover {
+  text-decoration-thickness: 2px;
 }

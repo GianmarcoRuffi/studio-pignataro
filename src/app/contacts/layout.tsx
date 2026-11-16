@@ -1,12 +1,16 @@
+import { getServerMessages } from "../../locales/server";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
-export const metadata: Metadata = generatePageMetadata({
-  path: "/contacts",
-  title: "Contatti",
-  description:
-    "Contatti dello Studio Architetto Gianluca Pignataro a Cagliari. Informazioni su indirizzo, email, telefono e canali social per le tue richieste di consulenza architettonica.",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return generatePageMetadata({
+    locale,
+    path: "/contacts",
+    title: messages.ui.common.contacts,
+    description: messages.ui.metadata.contactsDescription,
+  });
+}
 
 export default function ContactsLayout({
   children,

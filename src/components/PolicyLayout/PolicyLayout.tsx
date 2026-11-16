@@ -1,3 +1,6 @@
+"use client";
+import { useLocale } from "../../locales/LocaleProvider";
+
 import { FC, ReactNode } from "react";
 import ScrollUpButton from "../ScrollUpButton/ScrollUpButton";
 import styles from "./PolicyLayout.module.scss";
@@ -21,6 +24,7 @@ export const PolicyLayout: FC<PolicyLayoutProps> = ({
   children,
   containerClassName = styles.policyContainer,
 }) => {
+  const { messages, locale } = useLocale();
   return (
     <div className={containerClassName}>
       <div className={styles.headerSection}>
@@ -28,10 +32,10 @@ export const PolicyLayout: FC<PolicyLayoutProps> = ({
           <h1 className={styles.pageTitle}>{title}</h1>
           <p className={styles.pageSubtitle}>{subtitle}</p>
           <p className={styles.lastUpdated}>
-            Ultimo aggiornamento:{" "}
+            {messages.ui.policy.updated}{" "}
             <time dateTime={lastUpdated}>
               {new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString(
-                "it-IT",
+                locale === "en" ? "en-GB" : "it-IT",
                 { timeZone: "UTC" }
               )}
             </time>

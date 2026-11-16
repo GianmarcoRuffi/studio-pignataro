@@ -1,0 +1,127 @@
+.projectPage {
+  --project-hero-height: clamp(
+    280px,
+    56.25vw,
+    calc(100svh - var(--header-height-expanded) - var(--footer-height) - 14rem)
+  );
+}
+
+.projectHero {
+  position: relative;
+  width: 100%;
+  height: var(--project-hero-height);
+  margin: 0;
+  background: var(--color-background-gray);
+}
+
+.projectHero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-photo-border);
+  pointer-events: none;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heroBackdrop {
+  object-fit: cover;
+  object-position: center;
+  filter: blur(24px) brightness(0.65);
+  transform: scale(1.1);
+}
+
+.heroImage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.heroChevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #ffffff80;
+  background: #19181599;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.heroChevron:hover,
+.heroChevron:focus-visible {
+  background: #191815dd;
+}
+
+.heroChevron:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.previous {
+  left: var(--page-gutter);
+}
+
+.next {
+  right: var(--page-gutter);
+}
+
+.heroCaption {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  width: min(27rem, calc(50vw - var(--page-gutter) - 1rem));
+  display: grid;
+  gap: 0.5rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+  text-shadow:
+    0 1px 6px #000,
+    0 1px 18px #000;
+}
+
+.next .heroCaption {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+.heroDirection {
+  font-size: 0.65rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.heroProjectName {
+  font: 400 clamp(1.1rem, 2vw, 1.8rem)/1.15 var(--font-editorial);
+}
+
+.heroChevron:hover .heroCaption,
+.heroChevron:focus-visible .heroCaption {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .heroChevron {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}

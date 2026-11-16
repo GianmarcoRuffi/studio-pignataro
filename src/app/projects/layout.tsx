@@ -1,17 +1,19 @@
+import { getServerMessages } from "../../locales/server";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "../../utils/metadata";
 
-const projectsDescription =
-  "Una selezione dei miei progetti di architettura e interior design, dalla ristrutturazione di edifici storici a soluzioni innovative per interni contemporanei.";
-
-export const metadata: Metadata = generatePageMetadata({
-  path: "/projects",
-  title: {
-    default: "Progetti",
-    template: "%s | Studio Architetto Gianluca Pignataro",
-  },
-  description: projectsDescription,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return generatePageMetadata({
+    locale,
+    path: "/projects",
+    title: {
+      default: messages.ui.metadata.projectsTitle,
+      template: messages.ui.metadata.titleTemplate,
+    },
+    description: messages.ui.metadata.projectsDescription,
+  });
+}
 
 export default function ProjectsLayout({
   children,

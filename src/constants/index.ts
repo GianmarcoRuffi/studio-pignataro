@@ -6,10 +6,9 @@ export const BREAKPOINTS = {
 } as const;
 
 export const SITE_URL = "https://archpignataro.it";
+export const SEO_DEFAULT_IMAGE = "/projects/quartiere-vanchiglia/cover.webp";
 export const BRANDING_LOGO_FILENAME = "logo.png";
 export const BRANDING_LOGO_PATH = `/branding/${BRANDING_LOGO_FILENAME}`;
-export const BRANDING_DARK_LOGO_FILENAME = "dark-theme-logo.png";
-export const BRANDING_DARK_LOGO_PATH = `/branding/${BRANDING_DARK_LOGO_FILENAME}`;
 export const BRANDING_LOGO_URL = `${SITE_URL}${BRANDING_LOGO_PATH}`;
 export const BRANDING_LOGO_DIMENSIONS = {
   width: 237,
@@ -43,6 +42,9 @@ export const UI_TIMINGS = {
     imageLoadTimeout: 6000,
     autoplayInterval: 3000,
   },
+  lightbox: {
+    loadingIndicatorDelay: 300,
+  },
 } as const;
 
 export const LOADING = {
@@ -54,5 +56,18 @@ export const LOADING = {
     mobile: 3,
     tablet: 4,
     desktop: 6,
+  },
+} as const;
+
+export const CARD_IMAGE_OPTIONS = {
+  projects: {
+    sizes:
+      "(max-width: 444px) calc(100vw - 40px), (max-width: 768px) 91vw, (max-width: 1440px) 44vw, 640px",
+    quality: 75,
+  },
+  publications: {
+    sizes:
+      "(max-width: 768px) calc(100vw - 40px), (max-width: 1440px) 30vw, 400px",
+    quality: 90,
   },
 } as const;

@@ -1,4 +1,6 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
+
 import { readSessionValue, writeSessionValue } from "../../utils/storage";
 
 import { FC, useEffect, useState } from "react";
@@ -18,6 +20,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
   onComplete,
   minDisplayTime = UI_TIMINGS.splash.defaultMinDisplay,
 }) => {
+  const { messages } = useLocale();
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
@@ -65,7 +68,7 @@ const SplashScreen: FC<SplashScreenProps> = ({
         <picture>
           <img
             src={BRANDING_LOGO_PATH}
-            alt="Studio Architetto Gianluca Pignataro"
+            alt={messages.ui.common.brand}
             width={BRANDING_LOGO_DIMENSIONS.width}
             height={BRANDING_LOGO_DIMENSIONS.height}
             className={styles.logo}

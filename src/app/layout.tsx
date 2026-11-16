@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { Metadata, Viewport } from "next";
 import "./styles/globals.scss";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -13,7 +13,16 @@ import PageSmoothScroll from "../components/PageSmoothScroll/PageSmoothScroll";
 import { RootLayoutProps } from "../models/models";
 import { SplashProvider } from "../context/SplashContext";
 import SplashWrapper from "../components/SplashWrapper/SplashWrapper";
-import { BRANDING_LOGO_URL, SITE_URL } from "../constants";
+import { SEO_DEFAULT_IMAGE, SITE_URL } from "../constants";
+
+import { localizedPath } from "../locales";
+import { getServerMessages } from "../locales/server";
+import { LocaleProvider } from "../locales/LocaleProvider";
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f7f5f0",
+};
 
 config.autoAddCss = false;
 
@@ -30,84 +39,84 @@ const editorialFont = localFont({
   variable: "--font-editorial",
 });
 
-export const metadata = {
-  title: {
-    default: "Studio Architetto Gianluca Pignataro",
-    template: "%s | Studio Architetto Gianluca Pignataro",
-  },
-  description:
-    "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-  metadataBase: new URL(SITE_URL),
-  keywords:
-    "architetto, cagliari, studio, design, interni, ristrutturazione, edifici, storici",
-  authors: [{ name: "Architetto Gianluca Pignataro" }],
-  creator: "Architetto Gianluca Pignataro",
-  publisher: "Architetto Pignataro",
-  alternates: {
-    canonical: SITE_URL,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const { locale, messages } = await getServerMessages();
+  return {
+    title: {
+      default: messages.metadata.title,
+      template: messages.metadata.template,
+    },
+    description: messages.metadata.description,
+    metadataBase: new URL(SITE_URL),
+    authors: [{ name: messages.metadata.author }],
+    creator: messages.metadata.author,
+    publisher: messages.metadata.publisher,
+    alternates: {
+      canonical: localizedPath("/", locale),
+      languages: { it: "/", en: "/en", "x-default": "/" },
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    title: "Studio Architetto Gianluca Pignataro",
-    description:
-      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    locale: "it_IT",
-    siteName: "Architetto Pignataro",
-    url: SITE_URL,
-    images: [
-      {
-        url: BRANDING_LOGO_URL,
-        width: 1200,
-        height: 630,
-        alt: "Studio Architetto Gianluca Pignataro - Logo",
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Studio Architetto Gianluca Pignataro",
-    description:
-      "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
-    images: [BRANDING_LOGO_URL],
-  },
-  verification: {
-    google: "google0b4aa7aff11718e8",
-  },
-  manifest: "/manifest.json",
-};
+    },
+    openGraph: {
+      type: "website",
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+      locale: locale === "en" ? "en_GB" : "it_IT",
+      siteName: messages.metadata.publisher,
+      url: localizedPath("/", locale),
+      images: [
+        {
+          url: SEO_DEFAULT_IMAGE,
+          alt: messages.ui.common.brand,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+      images: [SEO_DEFAULT_IMAGE],
+    },
+    verification: {
+      google: "google0b4aa7aff11718e8",
+    },
+    manifest: "/manifest.json",
+  };
+}
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => {
+const RootLayout = async ({ children }: RootLayoutProps) => {
+  const { locale, messages } = await getServerMessages();
   return (
     <html
-      lang="it"
+      lang={locale}
       className={`${myFont.className} ${myFont.variable} ${editorialFont.variable}`}
       data-scroll-behavior="smooth"
     >
       <body suppressHydrationWarning>
-        <SplashProvider>
-          <SplashWrapper>
-            <StructuredData />
-            <PageSmoothScroll />
-            <ScrollToTop />
-            <div className="layout-wrapper">
-              <HeaderHeightManager>{children}</HeaderHeightManager>
-              <Footer />
-            </div>
-            <OptionalScripts />
-            <CookieConsent />
-          </SplashWrapper>
-        </SplashProvider>
+        <LocaleProvider locale={locale} messages={messages}>
+          <SplashProvider>
+            <SplashWrapper>
+              <StructuredData />
+              <PageSmoothScroll />
+              <ScrollToTop />
+              <div className="layout-wrapper">
+                <HeaderHeightManager>{children}</HeaderHeightManager>
+                <Footer />
+              </div>
+              <OptionalScripts />
+              <CookieConsent />
+            </SplashWrapper>
+          </SplashProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

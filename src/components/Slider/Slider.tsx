@@ -1,6 +1,15 @@
 "use client";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
 
-import { CSSProperties, FC, useEffect, useRef, useState } from "react";
+import {
+  CSSProperties,
+  FC,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
@@ -11,6 +20,23 @@ import styles from "./slider.module.scss";
 import { SliderProps } from "../../models/models";
 
 const Slider: FC<SliderProps> = ({ projects }) => {
+  const { messages, locale } = useLocale();
+  const [offset, setOffset] = useState(0);
+  const [settling, setSettling] = useState(false);
+  const gesture = useRef<{
+    x: number;
+    y: number;
+    dx: number;
+    dragging: boolean;
+  } | null>(null);
+  const suppressClick = useRef(false);
+  const finishTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (finishTimer.current) clearTimeout(finishTimer.current);
+    },
+    []
+  );
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -52,12 +78,30 @@ const Slider: FC<SliderProps> = ({ projects }) => {
 
   const effectiveLoading = !isSplashComplete && isLoading;
 
+  const finishSlide = useCallback(
+    (direction: number) => {
+      if (settling || effectiveLoading) return;
+      setSettling(true);
+      setOffset(-direction * (slideContainerRef.current?.clientWidth ?? 0));
+      finishTimer.current = setTimeout(
+        () => {
+          setActiveIndex(
+            (index) => (index + direction + projects.length) % projects.length
+          );
+          setSettling(false);
+          setOffset(0);
+        },
+        prefersReducedMotion ? 0 : 500
+      );
+    },
+    [settling, effectiveLoading, projects.length, prefersReducedMotion]
+  );
   const nextSlide = () => {
     if (effectiveLoading) {
       return;
     }
 
-    setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    finishSlide(1);
   };
 
   const prevSlide = () => {
@@ -65,9 +109,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       return;
     }
 
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
-    );
+    finishSlide(-1);
   };
 
   useEffect(() => {
@@ -76,12 +118,14 @@ const Slider: FC<SliderProps> = ({ projects }) => {
     if (
       !prefersReducedMotion &&
       !isHovered &&
+      !settling &&
+      !gesture.current &&
       !effectiveLoading &&
       !isCookieVisible &&
       isSplashComplete
     ) {
       interval = setInterval(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
+        finishSlide(1);
       }, UI_TIMINGS.slider.autoplayInterval);
     }
 
@@ -89,6 +133,9 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       clearInterval(interval);
     };
   }, [
+    finishSlide,
+    settling,
+    activeIndex,
     prefersReducedMotion,
     isHovered,
     effectiveLoading,
@@ -98,17 +145,84 @@ const Slider: FC<SliderProps> = ({ projects }) => {
   ]);
 
   useEffect(() => {
-    if (slideContainerRef.current !== null) {
-      slideContainerRef.current.style.height = `${slideContainerRef.current.scrollHeight}px`;
-    }
-  }, [activeIndex]);
+    const reset = () => {
+      if (finishTimer.current) clearTimeout(finishTimer.current);
+      gesture.current = null;
+      setOffset(0);
+      setSettling(false);
+      setIsHovered(false);
+    };
+    window.addEventListener("resize", reset);
+    return () => window.removeEventListener("resize", reset);
+  }, []);
 
   return (
     <section
       className={styles.slider}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => {
+        if (matchMedia("(hover: hover)").matches) setIsHovered(true);
+      }}
       onMouseLeave={() => setIsHovered(false)}
-      aria-label="Slider progetti"
+      onClickCapture={(event) => {
+        if (suppressClick.current) {
+          event.preventDefault();
+          event.stopPropagation();
+          suppressClick.current = false;
+        }
+      }}
+      onPointerDown={(event) => {
+        suppressClick.current = false;
+        if (
+          event.pointerType === "mouse" ||
+          settling ||
+          effectiveLoading ||
+          (event.target as HTMLElement).closest("button")
+        )
+          return;
+        suppressClick.current = false;
+        gesture.current = {
+          x: event.clientX,
+          y: event.clientY,
+          dx: 0,
+          dragging: false,
+        };
+        setIsHovered(true);
+      }}
+      onPointerMove={(event) => {
+        const g = gesture.current;
+        if (!g) return;
+        const dx = event.clientX - g.x;
+        if (
+          !g.dragging &&
+          Math.abs(dx) > 8 &&
+          Math.abs(dx) > Math.abs(event.clientY - g.y)
+        ) {
+          g.dragging = true;
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }
+        if (g.dragging) {
+          g.dx = dx;
+          suppressClick.current = true;
+          setOffset(dx);
+        }
+      }}
+      onPointerUp={() => {
+        const g = gesture.current;
+        gesture.current = null;
+        setIsHovered(false);
+        if (!g?.dragging) return;
+        const threshold = Math.max(
+          40,
+          (slideContainerRef.current?.clientWidth ?? 0) * 0.15
+        );
+        finishSlide(Math.abs(g.dx) >= threshold ? (g.dx < 0 ? 1 : -1) : 0);
+      }}
+      onPointerCancel={() => {
+        gesture.current = null;
+        setIsHovered(false);
+        finishSlide(0);
+      }}
+      aria-label={messages.ui.slider.label}
     >
       <button
         type="button"
@@ -116,7 +230,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={prevSlide}
-        aria-label="Slide precedente"
+        aria-label={messages.ui.slider.previous}
       >
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
@@ -136,17 +250,26 @@ const Slider: FC<SliderProps> = ({ projects }) => {
             maxWidth: "100%",
             maxHeight: "100%",
             objectFit: effectiveImageFit,
-            objectPosition: project.imagePosition ?? "center",
+            "--slide-image-position": project.imagePosition ?? "center",
+            "--slide-mobile-image-position":
+              project.sliderMobileImagePosition ??
+              project.imagePosition ??
+              "center",
           } as CSSProperties;
 
           return (
             <div
               key={project.slug}
               className={`${styles.slide} ${projectIndex === activeIndex ? styles.active : ""}`}
+              style={{
+                transform: `translateX(calc(${projectIndex === activeIndex ? 0 : projectIndex === (activeIndex + 1) % projects.length ? 100 : projectIndex === (activeIndex - 1 + projects.length) % projects.length ? -100 : 200}% + ${offset}px))`,
+                transition: settling ? "transform 500ms ease" : "none",
+                visibility: shouldLoad ? "visible" : "hidden",
+              }}
               aria-hidden={projectIndex !== activeIndex}
               inert={projectIndex !== activeIndex}
             >
-              <Link href={`/projects/${project.slug}`}>
+              <Link href={localizedPath(`/projects/${project.slug}`, locale)}>
                 <div
                   className={`${styles.imageWrapper} ${
                     isContain ? styles.withBackdrop : ""
@@ -168,6 +291,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
                     <Image
                       src={project.imgSrc}
                       alt={project.projectName}
+                      className={styles.slideImage}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                       quality={85}
@@ -194,16 +318,9 @@ const Slider: FC<SliderProps> = ({ projects }) => {
       </div>
 
       <div className={styles.slideCaption}>
-        <Link href={`/projects/${projects[activeIndex].slug}`}>
-          <span className={styles.captionLabel}>Progetto selezionato</span>
-          <span className={styles.captionTitle}>
-            {projects[activeIndex].projectName}{" "}
-            <span aria-hidden="true">↗</span>
-          </span>
-        </Link>
         <span
           className={styles.slideCounter}
-          aria-label="Posizione della slide"
+          aria-label={messages.ui.slider.position}
         >
           {String(activeIndex + 1).padStart(2, "0")} /{" "}
           {String(projects.length).padStart(2, "0")}
@@ -216,7 +333,7 @@ const Slider: FC<SliderProps> = ({ projects }) => {
           isHovered && !effectiveLoading ? styles.visible : styles.hidden
         }`}
         onClick={nextSlide}
-        aria-label="Slide successivo"
+        aria-label={messages.ui.slider.next}
       >
         <FontAwesomeIcon icon={faAngleRight} />
       </button>

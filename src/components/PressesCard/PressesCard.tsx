@@ -1,6 +1,11 @@
 "use client";
+import { CARD_IMAGE_OPTIONS } from "../../constants";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
+
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useMemo, useState } from "react";
+import Lightbox from "../Lightbox/Lightbox";
 import { useImageLoad } from "../../hooks/useImageLoad";
 import { LOADING } from "../../constants";
 import { PressesCardProps } from "../../models/models";
@@ -12,12 +17,16 @@ const PressesCard: FC<PressesCardProps> = ({
   source,
   date,
 }) => {
+  const { messages } = useLocale();
+  const [isOpen, setIsOpen] = useState(false);
+  const images = useMemo(() => [imageSource], [imageSource]);
   const isImageLoaded = useImageLoad(imageSource, {
+    responsive: CARD_IMAGE_OPTIONS.publications,
     minimumLoadingTime: LOADING.IMAGE_SKELETON_MIN_DISPLAY,
   });
 
   const handleImageClick = () => {
-    window.open(imageSource, "_blank", "noopener,noreferrer");
+    setIsOpen(true);
   };
 
   const descriptionLines = description
@@ -30,7 +39,9 @@ const PressesCard: FC<PressesCardProps> = ({
         type="button"
         className={styles.imageContainer}
         onClick={handleImageClick}
-        aria-label={`Visualizza ${descriptionLines.join(" ")}`}
+        aria-label={formatMessage(messages.ui.presses.view, {
+          description: descriptionLines.join(" "),
+        })}
       >
         <div
           className={`${styles.imageSkeleton} ${
@@ -41,13 +52,13 @@ const PressesCard: FC<PressesCardProps> = ({
         </div>
         <Image
           src={imageSource}
-          alt={`Copertina: ${date}`}
+          alt={formatMessage(messages.ui.presses.coverAlt, { date })}
           fill
-          sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1440px) 30vw, 400px"
+          sizes={CARD_IMAGE_OPTIONS.publications.sizes}
           loading="lazy"
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-          quality={90}
+          quality={CARD_IMAGE_OPTIONS.publications.quality}
           className={`${styles.cardImage} ${
             isImageLoaded ? styles.loaded : styles.loading
           }`}
@@ -87,6 +98,15 @@ const PressesCard: FC<PressesCardProps> = ({
 
         {source && <div className={styles.cardAction}>{source}</div>}
       </div>
+      {isOpen && (
+        <Lightbox
+          images={images}
+          currentIndex={0}
+          isOpen
+          onClose={() => setIsOpen(false)}
+          enableZoom
+        />
+      )}
     </article>
   );
 };

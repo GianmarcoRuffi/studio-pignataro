@@ -1,7 +1,7 @@
 .bioContainer {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: var(--space-section) var(--page-gutter);
+  padding: var(--space-page-start) var(--page-gutter) var(--space-section);
 }
 .headerContent {
   display: grid;

@@ -1,8 +1,12 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
+
 import {
   FC,
   useState,
   useEffect,
+  useLayoutEffect,
   useCallback,
   useRef,
   type TouchEvent,
@@ -10,11 +14,13 @@ import {
 import { createPortal } from "react-dom";
 import { useModalAccessibility } from "../../hooks/useModalAccessibility";
 import Image from "next/image";
+import type { ImageDimensions } from "../../models/models";
+import { UI_TIMINGS } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
-  faChevronLeft,
-  faChevronRight,
+  faAngleLeft,
+  faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./lightbox.module.scss";
 
@@ -23,6 +29,8 @@ interface LightboxProps {
   currentIndex: number;
   onClose: () => void;
   isOpen: boolean;
+  enableZoom?: boolean;
+  imageDimensions?: ImageDimensions[];
 }
 
 interface NetworkConnectionInfo {
@@ -37,12 +45,92 @@ const Lightbox: FC<LightboxProps> = ({
   currentIndex,
   onClose,
   isOpen,
+  enableZoom = false,
+  imageDimensions,
 }) => {
+  const { messages } = useLocale();
   const dialogRef = useRef<HTMLDivElement>(null);
-  useModalAccessibility(isOpen, dialogRef, onClose);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(false);
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
   const [activeIndex, setActiveIndex] = useState(currentIndex);
-  const [isImageLoading, setIsImageLoading] = useState(true);
-  const [imageError, setImageError] = useState(false);
+  const imageSrc = images[activeIndex];
+  const [imageState, setImageState] = useState<{
+    src: string;
+    status: "loaded" | "error";
+  } | null>(null);
+  const isImageLoading = imageState?.src !== imageSrc;
+  const imageError =
+    imageState?.src === imageSrc && imageState.status === "error";
+  const activeSourceRef = useRef(imageSrc);
+  const [loadingMessageSource, setLoadingMessageSource] = useState<
+    string | null
+  >(null);
+  const [presentation, setPresentation] = useState<{
+    current: string;
+    previous: string | null;
+  } | null>(null);
+  const outgoingSource = isImageLoading
+    ? presentation?.current
+    : presentation?.previous;
+  useLayoutEffect(() => {
+    activeSourceRef.current = imageSrc;
+  }, [imageSrc]);
+  useEffect(() => {
+    setLoadingMessageSource(null);
+    if (!isOpen || !isImageLoading) return;
+    const timer = setTimeout(
+      () => setLoadingMessageSource(imageSrc),
+      UI_TIMINGS.lightbox.loadingIndicatorDelay
+    );
+    return () => clearTimeout(timer);
+  }, [isOpen, imageSrc, isImageLoading]);
+  const [loadedSize, setLoadedSize] = useState<
+    (ImageDimensions & { src: string }) | null
+  >(null);
+  const naturalSize =
+    loadedSize?.src === imageSrc
+      ? loadedSize
+      : (imageDimensions?.[activeIndex] ?? { width: 1920, height: 1080 });
+  useLayoutEffect(() => {
+    if (!isOpen || !viewportRef.current) return;
+    const measure = () => {
+      const css = getComputedStyle(dialogRef.current!);
+      const gap = parseFloat(css.getPropertyValue("--viewport-gap"));
+      const side =
+        parseFloat(css.getPropertyValue("--nav-size")) +
+        parseFloat(css.getPropertyValue("--control-gap"));
+      setViewport({
+        width: Math.max(1, window.innerWidth - 2 * (gap + side)),
+        height: Math.max(1, window.innerHeight - 2 * gap),
+      });
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [isOpen, enableZoom]);
+  useLayoutEffect(() => {
+    setZoom(false);
+    viewportRef.current?.scrollTo(0, 0);
+  }, [isOpen, activeIndex]);
+  const fit = Math.min(
+    viewport.width / naturalSize.width,
+    viewport.height / naturalSize.height,
+    1
+  );
+  const scale = zoom ? 1 : fit;
+  const imageWidth = Math.max(1, naturalSize.width * scale);
+  const imageHeight = Math.max(1, naturalSize.height * scale);
+  const ImageFrame = enableZoom ? "button" : "div";
+  useEffect(() => {
+    const element = viewportRef.current;
+    if (!enableZoom || !element) return;
+    element.scrollTo(
+      zoom ? (naturalSize.width - element.clientWidth) / 2 : 0,
+      zoom ? (naturalSize.height - element.clientHeight) / 2 : 0
+    );
+  }, [enableZoom, zoom, naturalSize.width, naturalSize.height]);
+  useModalAccessibility(isOpen, dialogRef, onClose);
   const imageCacheRef = useRef<Map<number, boolean>>(new Map());
   const inFlightPreloadsRef = useRef<Map<number, Promise<boolean>>>(new Map());
   const preloadRadiusRef = useRef(3);
@@ -164,23 +252,16 @@ const Lightbox: FC<LightboxProps> = ({
     [images.length, preloadImage]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen) {
       setActiveIndex(currentIndex);
-      const status = imageCacheRef.current.get(currentIndex);
-      setImageError(status === false);
-      setIsImageLoading(status !== true);
-      preloadAdjacentImages(currentIndex);
+      // The displayed element must load, even when a preload is cached.
+      setImageState(null);
     }
-  }, [isOpen, currentIndex, preloadAdjacentImages]);
+  }, [isOpen, currentIndex]);
 
   useEffect(() => {
-    if (isOpen) {
-      const status = imageCacheRef.current.get(activeIndex);
-      setImageError(status === false);
-      setIsImageLoading(status !== true);
-      preloadAdjacentImages(activeIndex);
-    }
+    if (isOpen) preloadAdjacentImages(activeIndex);
   }, [activeIndex, isOpen, preloadAdjacentImages]);
 
   const handleNext = useCallback(() => {
@@ -260,19 +341,19 @@ const Lightbox: FC<LightboxProps> = ({
       role="presentation"
     >
       <div
-        className={styles.lightboxContainer}
+        className={`${styles.lightboxContainer} ${enableZoom ? styles.zoomDialog : ""}`}
         ref={dialogRef}
         tabIndex={-1}
         data-lenis-prevent
         role="dialog"
         aria-modal="true"
-        aria-label="Visualizzatore immagini"
+        aria-label={messages.ui.lightbox.label}
       >
         <button
           type="button"
           className={styles.closeButton}
           onClick={onClose}
-          aria-label="Chiudi lightbox"
+          aria-label={messages.ui.lightbox.close}
         >
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -283,93 +364,168 @@ const Lightbox: FC<LightboxProps> = ({
               type="button"
               className={styles.navButton + " " + styles.navButtonLeft}
               onClick={handlePrevious}
-              aria-label="Immagine precedente"
+              aria-label={messages.ui.lightbox.previous}
             >
-              <FontAwesomeIcon icon={faChevronLeft} />
+              <FontAwesomeIcon icon={faAngleLeft} />
             </button>
             <button
               type="button"
               className={styles.navButton + " " + styles.navButtonRight}
               onClick={handleNext}
-              aria-label="Immagine successiva"
+              aria-label={messages.ui.lightbox.next}
             >
-              <FontAwesomeIcon icon={faChevronRight} />
+              <FontAwesomeIcon icon={faAngleRight} />
             </button>
           </>
         )}
 
         <div
-          className={styles.imageContainer}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          ref={viewportRef}
+          className={`${styles.imageContainer} ${enableZoom ? styles.zoomViewport : ""}`}
+          tabIndex={enableZoom ? 0 : undefined}
+          aria-busy={isImageLoading}
+          style={
+            enableZoom || isImageLoading
+              ? {
+                  width: Math.min(viewport.width, imageWidth),
+                  height: Math.min(viewport.height, imageHeight),
+                }
+              : undefined
+          }
+          role={enableZoom ? "region" : undefined}
+          aria-label={enableZoom ? messages.ui.lightbox.zoomRegion : undefined}
+          onTouchStart={enableZoom ? undefined : handleTouchStart}
+          onTouchEnd={enableZoom ? undefined : handleTouchEnd}
         >
-          {isImageLoading && (
-            <div className="absolute left-1/2 top-1/2 z-[10003] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-lg bg-[rgba(0,0,0,0.7)] p-8 text-center text-white">
-              <div className={styles.spinner}></div>
-              <span className="text-[14px] opacity-90">
-                Caricamento immagine {activeIndex + 1} di {images.length}...
+          {isImageLoading && loadingMessageSource === imageSrc && (
+            <div className={styles.loadingPlaceholder} role="status">
+              <div className={styles.spinner} aria-hidden="true" />
+              <span>
+                {formatMessage(messages.ui.lightbox.loading, {
+                  index: activeIndex + 1,
+                  total: images.length,
+                })}
               </span>
             </div>
           )}
 
+          {!enableZoom &&
+            !imageError &&
+            outgoingSource &&
+            outgoingSource !== imageSrc && (
+              <Image
+                src={outgoingSource}
+                alt=""
+                aria-hidden="true"
+                fill
+                unoptimized
+                className={`${styles.outgoingImage} ${isImageLoading ? "" : styles.fadingOut}`}
+              />
+            )}
+
           {imageError ? (
             <div className={styles.errorIndicator}>
-              <span>❌ Immagine non disponibile</span>
+              <span>{messages.ui.lightbox.unavailable}</span>
               <div className="flex flex-wrap justify-center gap-3">
                 <button
                   type="button"
                   onClick={() => {
                     imageCacheRef.current.delete(activeIndex);
-                    setImageError(false);
-                    setIsImageLoading(true);
-                    void preloadImage(activeIndex).then((isLoaded) => {
-                      if (!isLoaded) {
-                        setImageError(true);
-                        setIsImageLoading(false);
-                      }
-                    });
+                    setImageState(null);
                   }}
                   className={styles.retryButton}
-                  aria-label="Riprova a caricare l'immagine"
+                  aria-label={messages.ui.lightbox.retryLabel}
                 >
-                  🔄 Riprova
+                  {messages.ui.lightbox.retry}
                 </button>
               </div>
             </div>
           ) : (
-            <Image
-              key={`lightbox-image-${activeIndex}`}
-              src={images[activeIndex]}
-              alt={`Immagine ${activeIndex + 1} di ${images.length}`}
-              width={1920}
-              height={1080}
-              sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
-              unoptimized
-              loading="eager"
-              fetchPriority="high"
-              className={styles.lightboxImage}
-              style={{
-                opacity: isImageLoading ? 0.3 : 1,
-                transition: "opacity 0.3s ease-in-out",
-              }}
-              onLoad={() => {
-                setIsImageLoading(false);
-                setImageError(false);
-                imageCacheRef.current.set(activeIndex, true);
-              }}
-              onError={() => {
-                setIsImageLoading(false);
-                setImageError(true);
-                imageCacheRef.current.set(activeIndex, false);
-              }}
-            />
+            <ImageFrame
+              type={enableZoom ? "button" : undefined}
+              aria-label={
+                enableZoom
+                  ? zoom
+                    ? messages.ui.lightbox.zoomOut
+                    : messages.ui.lightbox.zoomIn
+                  : undefined
+              }
+              aria-pressed={enableZoom ? zoom : undefined}
+              disabled={enableZoom ? isImageLoading || fit >= 1 : undefined}
+              onClick={
+                enableZoom
+                  ? () => {
+                      setZoom((value) => !value);
+                    }
+                  : undefined
+              }
+              className={
+                enableZoom
+                  ? `${styles.zoomCanvas} ${zoom ? styles.zoomed : ""}`
+                  : undefined
+              }
+              style={
+                enableZoom
+                  ? {
+                      width: imageWidth,
+                      height: imageHeight,
+                    }
+                  : undefined
+              }
+            >
+              <Image
+                key={`lightbox-image-${activeIndex}`}
+                src={images[activeIndex]}
+                alt={formatMessage(messages.ui.lightbox.imageAlt, {
+                  index: activeIndex + 1,
+                  total: images.length,
+                })}
+                width={naturalSize.width}
+                height={naturalSize.height}
+                sizes="(max-width: 480px) 98vw, (max-width: 768px) 96vw, 96vw"
+                unoptimized
+                loading="eager"
+                fetchPriority="high"
+                className={`${styles.lightboxImage} ${enableZoom ? styles.zoomImage : !isImageLoading ? styles.fadingIn : ""}`}
+                style={{
+                  ...(enableZoom
+                    ? { width: imageWidth, height: imageHeight }
+                    : {}),
+                  opacity: isImageLoading ? 0 : 1,
+                }}
+                onLoad={(event) => {
+                  if (activeSourceRef.current !== imageSrc) return;
+                  setLoadedSize({
+                    src: imageSrc,
+                    width: event.currentTarget.naturalWidth,
+                    height: event.currentTarget.naturalHeight,
+                  });
+                  setImageState({ src: imageSrc, status: "loaded" });
+                  if (!enableZoom) {
+                    setPresentation((previous) => ({
+                      current: imageSrc,
+                      previous: previous?.current ?? null,
+                    }));
+                  }
+                  imageCacheRef.current.set(activeIndex, true);
+                }}
+                onError={() => {
+                  if (activeSourceRef.current !== imageSrc) return;
+                  setImageState({ src: imageSrc, status: "error" });
+                  imageCacheRef.current.set(activeIndex, false);
+                }}
+              />
+            </ImageFrame>
           )}
         </div>
 
         {images.length > 1 && (
           <div className={styles.indicators}>
             <span className={styles.counter}>
-              {activeIndex + 1} di {images.length}
+              {formatMessage(messages.ui.lightbox.counter, {
+                index: activeIndex + 1,
+                total: images.length,
+              })}
             </span>
           </div>
         )}

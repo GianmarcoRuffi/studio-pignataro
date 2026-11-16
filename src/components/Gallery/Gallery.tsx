@@ -1,4 +1,8 @@
 "use client";
+import { localizedPath } from "../../locales";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
+
 import {
   FC,
   useCallback,
@@ -28,6 +32,7 @@ const Gallery: FC<GalleryProps> = ({
   prevProject,
   nextProject,
 }) => {
+  const { messages, locale } = useLocale();
   const [visibleImages, setVisibleImages] = useState<number>(
     LOADING.INITIAL_ITEMS
   );
@@ -231,7 +236,7 @@ const Gallery: FC<GalleryProps> = ({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.discreteLink}
+              className={`editorial-link ${styles.discreteLink}`}
             >
               {link.name}
             </a>
@@ -253,7 +258,7 @@ const Gallery: FC<GalleryProps> = ({
           href={luigiCordaLink.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>
@@ -266,7 +271,7 @@ const Gallery: FC<GalleryProps> = ({
           href="https://www.luigicorda.com"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>
@@ -279,7 +284,7 @@ const Gallery: FC<GalleryProps> = ({
           href="https://www.mistralstudio.it"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.clickableCredits}
+          className={`editorial-link ${styles.clickableCredits}`}
         >
           {imgCredits}
         </a>
@@ -291,26 +296,11 @@ const Gallery: FC<GalleryProps> = ({
 
   return (
     <div>
-      <div className={styles.breadcrumbContainer}>
-        <div className={styles.breadcrumbPath}>
-          <Link href="/" className={styles.breadcrumbItem}>
-            Home
-          </Link>
-          <span className={styles.breadcrumbSeparator}>›</span>
-          <Link href="/projects" className={styles.breadcrumbItem}>
-            Progetti
-          </Link>
-          <span className={styles.breadcrumbSeparator}>›</span>
-          <span className={styles.breadcrumbCurrent}>{galleryTitle}</span>
-        </div>
-      </div>
-
       <div className={styles.galleryContainer}>
         <div className={styles.projectHeader}>
           <div className={styles.projectHeaderContent}>
             <h1 className={styles.projectTitle}>{galleryTitle}</h1>
             <p className={styles.projectDescription}>{galleryDescription}</p>
-
             {galleryLinks &&
               (() => {
                 const { articleLinks } = renderGalleryLinks();
@@ -331,6 +321,7 @@ const Gallery: FC<GalleryProps> = ({
         >
           {images.length > 0 && (
             <MasonryGallery
+              projectName={galleryTitle}
               key={images[0]}
               images={images}
               imageDimensions={imageDimensions}
@@ -347,52 +338,58 @@ const Gallery: FC<GalleryProps> = ({
 
         {!isLoading && (!images || images.length === 0) && (
           <div className={styles.emptyState}>
-            <p>Nessuna immagine disponibile per questa galleria.</p>
+            <p>{messages.ui.gallery.empty}</p>
           </div>
         )}
 
         <div className={styles.projectNavigation}>
           <div className={styles.navButton}>
             {prevProject && (
-              <a
-                href={`/projects/${prevProject.slug}`}
+              <Link
+                href={localizedPath(`/projects/${prevProject.slug}`, locale)}
                 className={styles.navLink}
-                aria-label={`Progetto precedente: ${prevProject.projectName}`}
+                aria-label={formatMessage(messages.ui.projects.previousLabel, {
+                  name: prevProject.projectName,
+                })}
               >
                 <span className={styles.navArrow}>‹</span>
                 <span className={styles.navText}>
-                  <span className={styles.navLabel}>Precedente</span>
+                  <span className={styles.navLabel}>
+                    {messages.ui.common.previous}
+                  </span>
                   <span className={styles.navTitle}>
                     {prevProject.projectName}
                   </span>
                 </span>
-              </a>
+              </Link>
             )}
           </div>
 
           <div className={styles.navButton}>
             {nextProject && (
-              <a
-                href={`/projects/${nextProject.slug}`}
+              <Link
+                href={localizedPath(`/projects/${nextProject.slug}`, locale)}
                 className={`${styles.navLink} ${styles.navLinkNext}`}
-                aria-label={`Progetto successivo: ${nextProject.projectName}`}
+                aria-label={formatMessage(messages.ui.projects.nextLabel, {
+                  name: nextProject.projectName,
+                })}
               >
                 <span className={styles.navText}>
-                  <span className={styles.navLabel}>Successivo</span>
+                  <span className={styles.navLabel}>
+                    {messages.ui.common.next}
+                  </span>
                   <span className={styles.navTitle}>
                     {nextProject.projectName}
                   </span>
                 </span>
                 <span className={styles.navArrow}>›</span>
-              </a>
+              </Link>
             )}
           </div>
         </div>
 
         <div className={styles.backSection}>
-          <LinkButton href="/projects">
-            ← Torna alla galleria dei progetti
-          </LinkButton>
+          <LinkButton href="/projects">{messages.ui.gallery.back}</LinkButton>
         </div>
 
         <ScrollUpButton />

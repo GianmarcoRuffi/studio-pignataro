@@ -4,7 +4,7 @@
   "description": "Studio professionale a Cagliari con trenta anni di esperienza in architettura, design di interni e ristrutturazione di edifici storici.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#f7f5f0",
+  "theme_color": "#f7f5f0",
   "icons": []
 }

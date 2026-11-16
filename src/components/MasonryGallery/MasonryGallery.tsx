@@ -1,4 +1,7 @@
 "use client";
+import { useLocale } from "../../locales/LocaleProvider";
+import { formatMessage } from "../../locales";
+
 import { FC, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Lightbox from "../Lightbox/Lightbox";
@@ -9,6 +12,7 @@ import type { ImageDimensions } from "../../models/models";
 import type { GalleryFrame } from "../../utils/galleryLayout";
 
 interface MasonryGalleryProps {
+  projectName: string;
   imageDimensions: ImageDimensions[];
   rows: GalleryFrame[][];
   skeletonOnly: boolean;
@@ -18,6 +22,7 @@ interface MasonryGalleryProps {
 }
 
 const MasonryGallery: FC<MasonryGalleryProps> = ({
+  projectName,
   images,
   imageDimensions,
   rows,
@@ -25,6 +30,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
   visibleImages,
   preloadedCount = 0,
 }) => {
+  const { messages } = useLocale();
   const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>(
     {}
   );
@@ -124,7 +130,10 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
                       type="button"
                       className={styles.imageLink}
                       onClick={() => handleImageClick(imageIndex)}
-                      aria-label={`Visualizza immagine ${imageIndex + 1}`}
+                      aria-label={formatMessage(messages.ui.gallery.viewImage, {
+                        index: imageIndex + 1,
+                        name: projectName,
+                      })}
                     >
                       <div className={styles.imageContainer}>
                         {loadingImages[imageIndex] && (
@@ -135,7 +144,10 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
 
                         <Image
                           src={imageSource}
-                          alt={`Fotografia del progetto, immagine ${imageIndex + 1}`}
+                          alt={formatMessage(messages.ui.seo.projectImage, {
+                            index: imageIndex + 1,
+                            name: projectName,
+                          })}
                           width={imageDimensions[imageIndex].width}
                           height={imageDimensions[imageIndex].height}
                           sizes={`${Math.ceil(width)}px`}
@@ -176,6 +188,7 @@ const MasonryGallery: FC<MasonryGalleryProps> = ({
       </div>
 
       <Lightbox
+        imageDimensions={imageDimensions}
         images={images}
         currentIndex={lightboxIndex}
         isOpen={lightboxOpen}

@@ -1,6 +1,34 @@
 import { expect, test } from "@playwright/test";
+import { createHash } from "node:crypto";
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import projects from "../../src/data/projectsData";
 import { sharedContactsData } from "../../src/data/contactsData";
+
+test("all project photographs are included and the carousel cover opens each gallery", () => {
+  const digest = (source: string) =>
+    createHash("sha256")
+      .update(readFileSync(path.join(process.cwd(), "public", source)))
+      .digest("hex");
+
+  for (const project of projects) {
+    const galleryHashes = project.images.map(digest);
+    expect(galleryHashes[0], project.slug).toBe(digest(project.imgSrc));
+    expect(new Set(galleryHashes).size, project.slug).toBe(
+      project.images.length
+    );
+    const folder = path.posix.join(
+      path.posix.dirname(project.imgSrc),
+      "gallery"
+    );
+    for (const filename of readdirSync(path.join("public", folder))) {
+      if (!/\.(webp|gif|png|jpe?g)$/i.test(filename)) continue;
+      expect(galleryHashes, `${project.slug}: ${filename}`).toContain(
+        digest(path.posix.join(folder, filename))
+      );
+    }
+  }
+});
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
@@ -13,7 +41,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 for (const width of [1440, 390]) {
-  test(`homepage identifies the active project above the footer at ${width}px`, async ({
+  test(`homepage keeps the project caption hidden and the counter visible at ${width}px`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 844 });
@@ -24,21 +52,27 @@ for (const width of [1440, 390]) {
       const caption = slider.locator("a").filter({
         hasText: project.projectName,
       });
-      await expect(caption).toBeInViewport();
-      await expect(caption).toHaveAttribute(
-        "href",
-        `/projects/${project.slug}`
-      );
+      await expect(caption).toHaveCount(0);
+      await expect(
+        slider
+          .locator("a")
+          .filter({ has: page.locator("img") })
+          .nth(index)
+      ).toHaveAttribute("href", `/projects/${project.slug}`);
       await expect(
         slider.getByText(
           new RegExp(`^0?${index + 1}\\s*/\\s*${projects.length}$`)
         )
       ).toBeInViewport();
-      const titleBox = await caption.boundingBox();
+      const counterBox = await slider
+        .getByText(new RegExp(`^0?${index + 1}\\s*/\\s*${projects.length}$`))
+        .boundingBox();
       const footerBox = await page.locator("footer").boundingBox();
-      expect(titleBox).not.toBeNull();
+      expect(counterBox).not.toBeNull();
       expect(footerBox).not.toBeNull();
-      expect(titleBox!.y + titleBox!.height).toBeLessThanOrEqual(footerBox!.y);
+      expect(counterBox!.y + counterBox!.height).toBeLessThanOrEqual(
+        footerBox!.y
+      );
       if (index === 0) {
         await page.getByRole("button", { name: "Slide successivo" }).click();
       }
@@ -122,3 +156,182 @@ test("gallery reading order matches the image opened in the lightbox", async ({
   await page.keyboard.press("Escape");
   await expect(trigger).toBeFocused();
 });
+
+for (const width of [1440, 390]) {
+  test(`project opening stays stable while the header compacts and expands at ${width}px`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`/projects/${projects[0].slug}`);
+    const container = page.locator("main.layout-content");
+    await expect(container).toHaveClass(/lenis/);
+    await expect(page.locator("[data-project-hero] img")).toBeVisible();
+    const samples = await container.evaluate(async (element) => {
+      const hero = element.querySelector("[data-project-hero]")!;
+      const introduction = element.querySelector("[class*='projectHeader']")!;
+      const readings = [];
+      const start = performance.now();
+      let movedDown = false;
+      let movedUp = false;
+      while (performance.now() - start < 1800) {
+        const elapsed = performance.now() - start;
+        if (!movedDown && elapsed > 50) {
+          element.dispatchEvent(
+            new WheelEvent("wheel", {
+              deltaY: 180,
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+          movedDown = true;
+        }
+        if (!movedUp && elapsed > 900) {
+          element.dispatchEvent(
+            new WheelEvent("wheel", {
+              deltaY: -400,
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+          movedUp = true;
+        }
+        readings.push({
+          hero: hero.getBoundingClientRect().height,
+          introduction: introduction.getBoundingClientRect().height,
+          compact: document.documentElement.dataset.headerCompact,
+          scroll: element.scrollTop,
+        });
+        await new Promise(requestAnimationFrame);
+      }
+      return readings;
+    });
+    expect(samples.some((sample) => sample.compact === "true")).toBe(true);
+    expect(samples.at(-1)!.compact).toBe("false");
+    await expect
+      .poll(() => container.evaluate((element) => element.scrollTop))
+      .toBe(0);
+    for (const dimension of ["hero", "introduction"] as const) {
+      const heights = samples.map((sample) => sample[dimension]);
+      expect(Math.max(...heights) - Math.min(...heights)).toBeLessThan(1);
+    }
+  });
+
+  test(`project opens with a noninteractive photograph before its gallery at ${width}px`, async ({
+    page,
+  }) => {
+    const project = projects[0];
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(`/projects/${project.slug}`);
+    const hero = page.locator("[data-project-hero]");
+    const image = hero.locator("img");
+    await expect(image).toBeVisible();
+    const previous = hero.getByRole("link", {
+      name: `Progetto precedente: ${projects.at(-1)!.projectName}`,
+    });
+    const next = hero.getByRole("link", {
+      name: `Progetto successivo: ${projects[1].projectName}`,
+    });
+    await expect(previous).toBeInViewport();
+    await expect(previous).toHaveAttribute(
+      "href",
+      `/projects/${projects.at(-1)!.slug}`
+    );
+    await expect(next).toBeInViewport();
+    await expect(next).toHaveAttribute("href", `/projects/${projects[1].slug}`);
+    await expect(page.locator("[class*='breadcrumb']")).toHaveCount(0);
+    await expect(
+      previous.getByText("Precedente", { exact: true })
+    ).toBeHidden();
+    await expect(next.getByText("Successivo", { exact: true })).toBeHidden();
+    const previousName = previous.getByText(projects.at(-1)!.projectName, {
+      exact: true,
+    });
+    const nextName = next.getByText(projects[1].projectName, { exact: true });
+    await expect(previousName).toBeHidden();
+    await expect(nextName).toBeHidden();
+    await previous.hover();
+    await expect(previousName).toBeVisible();
+    await expect(
+      previous.getByText("Precedente", { exact: true })
+    ).toBeVisible();
+    await expect(nextName).toBeHidden();
+    await next.hover();
+    await expect(nextName).toBeVisible();
+    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
+    await expect(previousName).toBeHidden();
+    await page.mouse.move(0, 0);
+    await previous.focus();
+    await page.keyboard.press("Tab");
+    await expect(next).toBeFocused();
+    await expect(nextName).toBeVisible();
+    await expect(next.getByText("Successivo", { exact: true })).toBeVisible();
+    const heroBox = await hero.boundingBox();
+    const headingBox = await page
+      .getByRole("heading", { level: 1 })
+      .boundingBox();
+    const mainBox = await page.locator("main.layout-content").boundingBox();
+    expect(heroBox!.y + heroBox!.height).toBeLessThanOrEqual(headingBox!.y);
+    expect(headingBox!.y - heroBox!.y - heroBox!.height).toBeLessThanOrEqual(
+      41
+    );
+    expect(Math.abs(heroBox!.x - mainBox!.x)).toBeLessThan(2);
+    expect(Math.abs(heroBox!.width - mainBox!.width)).toBeLessThan(20);
+    expect(
+      new URL((await image.getAttribute("src"))!, page.url()).searchParams.get(
+        "url"
+      )
+    ).toBe(project.images[0]);
+    await image.click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    const firstTrigger = page.getByRole("button", {
+      name: "Visualizza immagine 1",
+      exact: true,
+    });
+    await firstTrigger.click();
+    const dialog = page.getByRole("dialog", {
+      name: "Visualizzatore immagini",
+    });
+    await expect(
+      dialog.getByRole("img", {
+        name: `Immagine 1 di ${project.images.length}`,
+        exact: true,
+      })
+    ).toHaveJSProperty("src", new URL(project.images[0], page.url()).href);
+    await page.keyboard.press("Escape");
+    await previous.click();
+    await expect(page).toHaveURL(`/projects/${projects.at(-1)!.slug}`);
+    await page
+      .locator("[data-project-hero]")
+      .getByRole("link", {
+        name: `Progetto successivo: ${project.projectName}`,
+      })
+      .click();
+    await expect(page).toHaveURL(`/projects/${project.slug}`);
+    await expect(hero).toBeInViewport();
+  });
+}
+
+for (const width of [1440, 390]) {
+  for (const slug of ["Via-Eroi-d-Italia", "Glisbo"]) {
+    test(`project opening photograph preserves contain with a backdrop for ${slug} at ${width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/projects/${slug}`);
+      const hero = page.locator("[data-project-hero]");
+      const image = hero.locator("img:not([aria-hidden])");
+      const backdrop = hero.locator('img[aria-hidden="true"]');
+      await expect(image).toHaveCSS("object-fit", "contain");
+      await expect(image).toHaveCSS("object-position", "50% 50%");
+      await expect(backdrop).toBeVisible();
+      await expect(backdrop).toHaveCSS("object-fit", "cover");
+      await expect(backdrop).toHaveCSS("filter", "blur(24px) brightness(0.65)");
+      await expect(backdrop).toHaveAttribute(
+        "src",
+        (await image.getAttribute("src"))!
+      );
+      await expect(hero.getByRole("link").first()).toBeInViewport();
+    });
+  }
+}
