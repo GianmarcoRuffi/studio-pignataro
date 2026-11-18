@@ -6,6 +6,7 @@ import {
   FC,
   useState,
   useEffect,
+  useEffectEvent,
   useLayoutEffect,
   useCallback,
   useRef,
@@ -40,6 +41,19 @@ interface NetworkConnectionInfo {
   removeEventListener?: (type: "change", listener: () => void) => void;
 }
 
+function getPinch(touches: TouchList | React.TouchList) {
+  const first = touches[0];
+  const second = touches[1];
+  return {
+    x: (first.clientX + second.clientX) / 2,
+    y: (first.clientY + second.clientY) / 2,
+    distance: Math.hypot(
+      first.clientX - second.clientX,
+      first.clientY - second.clientY
+    ),
+  };
+}
+
 const Lightbox: FC<LightboxProps> = ({
   images,
   currentIndex,
@@ -49,10 +63,29 @@ const Lightbox: FC<LightboxProps> = ({
   imageDimensions,
 }) => {
   const { messages } = useLocale();
+  const overlayRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const [zoom, setZoom] = useState(false);
-  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [zoom, setZoom] = useState(1);
+  const [viewport, setViewport] = useState({
+    width: 1,
+    height: 1,
+    mobile: false,
+  });
+  const canZoom = enableZoom || viewport.mobile;
+  const pinchStartRef = useRef<{
+    distance: number;
+    zoom: number;
+    imageX: number;
+    imageY: number;
+  } | null>(null);
+  const zoomAnchorRef = useRef<{
+    x: number;
+    y: number;
+    imageX: number;
+    imageY: number;
+  } | null>(null);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const imageSrc = images[activeIndex];
   const [imageState, setImageState] = useState<{
@@ -93,43 +126,93 @@ const Lightbox: FC<LightboxProps> = ({
       ? loadedSize
       : (imageDimensions?.[activeIndex] ?? { width: 1920, height: 1080 });
   useLayoutEffect(() => {
-    if (!isOpen || !viewportRef.current) return;
+    const overlay = overlayRef.current;
+    const dialog = dialogRef.current;
+    if (!isOpen || !overlay || !dialog) return;
     const measure = () => {
-      const css = getComputedStyle(dialogRef.current!);
+      const css = getComputedStyle(dialog);
+      const mobile = css.getPropertyValue("--mobile-layout").trim() === "1";
       const gap = parseFloat(css.getPropertyValue("--viewport-gap"));
-      const side =
-        parseFloat(css.getPropertyValue("--nav-size")) +
-        parseFloat(css.getPropertyValue("--control-gap"));
+      const navSize = parseFloat(css.getPropertyValue("--nav-size"));
+      const side = mobile
+        ? 0
+        : navSize + parseFloat(css.getPropertyValue("--control-gap"));
+      const vertical = mobile ? navSize + gap : 0;
       setViewport({
-        width: Math.max(1, window.innerWidth - 2 * (gap + side)),
-        height: Math.max(1, window.innerHeight - 2 * gap),
+        width: Math.max(1, overlay.clientWidth - 2 * (gap + side)),
+        height: Math.max(1, overlay.clientHeight - 2 * (gap + vertical)),
+        mobile,
       });
     };
     measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [isOpen, enableZoom]);
+    const observer = new ResizeObserver(measure);
+    observer.observe(overlay);
+    return () => observer.disconnect();
+  }, [isOpen]);
   useLayoutEffect(() => {
-    setZoom(false);
+    setZoom(1);
+    pinchStartRef.current = null;
+    zoomAnchorRef.current = null;
     viewportRef.current?.scrollTo(0, 0);
-  }, [isOpen, activeIndex]);
+  }, [isOpen, activeIndex, viewport.mobile]);
   const fit = Math.min(
     viewport.width / naturalSize.width,
     viewport.height / naturalSize.height,
-    1
+    viewport.mobile ? Infinity : 1
   );
-  const scale = zoom ? 1 : fit;
+  const maxZoom = viewport.mobile ? Math.max(2, 1 / fit) : 1 / fit;
+  const zoomLevel = Math.min(zoom, maxZoom);
+  const isZoomed = zoomLevel > 1;
+  const scale = fit * zoomLevel;
   const imageWidth = Math.max(1, naturalSize.width * scale);
   const imageHeight = Math.max(1, naturalSize.height * scale);
-  const ImageFrame = enableZoom ? "button" : "div";
+  const ImageFrame = canZoom ? "button" : "div";
+  useLayoutEffect(() => {
+    const element = viewportRef.current;
+    const image = imageRef.current;
+    if (!canZoom || !element || !image) return;
+    const anchor = zoomAnchorRef.current;
+    zoomAnchorRef.current = null;
+    if (isZoomed && anchor) {
+      const bounds = image.getBoundingClientRect();
+      element.scrollBy(
+        bounds.left + anchor.imageX * bounds.width - anchor.x,
+        bounds.top + anchor.imageY * bounds.height - anchor.y
+      );
+      return;
+    }
+    element.scrollTo(
+      isZoomed ? (imageWidth - element.clientWidth) / 2 : 0,
+      isZoomed ? (imageHeight - element.clientHeight) / 2 : 0
+    );
+  }, [canZoom, isZoomed, imageWidth, imageHeight]);
+
+  const handlePinchMove = useEffectEvent((event: globalThis.TouchEvent) => {
+    if (event.touches.length !== 2 || !pinchStartRef.current) return;
+    event.preventDefault();
+    const { x, y, distance } = getPinch(event.touches);
+    const {
+      zoom: initialZoom,
+      distance: initialDistance,
+      imageX,
+      imageY,
+    } = pinchStartRef.current;
+    const nextZoom = Math.min(
+      maxZoom,
+      Math.max(1, (initialZoom * distance) / initialDistance)
+    );
+    if (nextZoom === zoomLevel) return;
+    zoomAnchorRef.current = { x, y, imageX, imageY };
+    setZoom(nextZoom);
+  });
   useEffect(() => {
     const element = viewportRef.current;
-    if (!enableZoom || !element) return;
-    element.scrollTo(
-      zoom ? (naturalSize.width - element.clientWidth) / 2 : 0,
-      zoom ? (naturalSize.height - element.clientHeight) / 2 : 0
-    );
-  }, [enableZoom, zoom, naturalSize.width, naturalSize.height]);
+    if (!isOpen || !viewport.mobile || !element) return;
+    const handleTouchMove = (event: globalThis.TouchEvent) =>
+      handlePinchMove(event);
+    element.addEventListener("touchmove", handleTouchMove, { passive: false });
+    return () => element.removeEventListener("touchmove", handleTouchMove);
+  }, [isOpen, viewport.mobile]);
   useModalAccessibility(isOpen, dialogRef, onClose);
   const imageCacheRef = useRef<Map<number, boolean>>(new Map());
   const inFlightPreloadsRef = useRef<Map<number, Promise<boolean>>>(new Map());
@@ -276,7 +359,13 @@ const Lightbox: FC<LightboxProps> = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
+      if (
+        !isOpen ||
+        (isZoomed &&
+          e.target instanceof Node &&
+          viewportRef.current?.contains(e.target))
+      )
+        return;
 
       if (e.key === "ArrowRight") {
         handleNext();
@@ -287,7 +376,7 @@ const Lightbox: FC<LightboxProps> = ({
 
     globalThis.addEventListener("keydown", handleKeyDown);
     return () => globalThis.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose, handleNext, handlePrevious]);
+  }, [isOpen, isZoomed, handleNext, handlePrevious]);
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -295,17 +384,36 @@ const Lightbox: FC<LightboxProps> = ({
     }
   };
 
-  const handleTouchStart = useCallback((event: TouchEvent<HTMLDivElement>) => {
-    if (event.touches.length !== 1) {
-      return;
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    if (event.touches.length !== 1 || isZoomed) {
+      touchStartRef.current = null;
+    } else {
+      const touch = event.touches[0];
+      touchStartRef.current = { x: touch.clientX, y: touch.clientY };
     }
 
-    const touch = event.touches[0];
-    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
-  }, []);
+    if (
+      !viewport.mobile ||
+      event.touches.length !== 2 ||
+      isImageLoading ||
+      imageError ||
+      !imageRef.current
+    ) {
+      return;
+    }
+    const bounds = imageRef.current.getBoundingClientRect();
+    const { x, y, distance } = getPinch(event.touches);
+    pinchStartRef.current = {
+      distance: Math.max(1, distance),
+      zoom: zoomLevel,
+      imageX: (x - bounds.left) / bounds.width,
+      imageY: (y - bounds.top) / bounds.height,
+    };
+  };
 
   const handleTouchEnd = useCallback(
     (event: TouchEvent<HTMLDivElement>) => {
+      if (event.touches.length < 2) pinchStartRef.current = null;
       if (!touchStartRef.current || event.changedTouches.length !== 1) {
         touchStartRef.current = null;
         return;
@@ -323,6 +431,7 @@ const Lightbox: FC<LightboxProps> = ({
         return;
       }
 
+      event.preventDefault();
       if (deltaX < 0) {
         handleNext();
       } else {
@@ -336,12 +445,13 @@ const Lightbox: FC<LightboxProps> = ({
 
   return createPortal(
     <div
+      ref={overlayRef}
       className={styles.lightboxOverlay}
       onClick={handleBackdropClick}
       role="presentation"
     >
       <div
-        className={`${styles.lightboxContainer} ${enableZoom ? styles.zoomDialog : ""}`}
+        className={styles.lightboxContainer}
         ref={dialogRef}
         tabIndex={-1}
         data-lenis-prevent
@@ -381,25 +491,29 @@ const Lightbox: FC<LightboxProps> = ({
 
         <div
           ref={viewportRef}
-          className={`${styles.imageContainer} ${enableZoom ? styles.zoomViewport : ""}`}
-          tabIndex={enableZoom ? 0 : undefined}
+          className={`${styles.imageContainer} ${canZoom ? styles.zoomViewport : ""} ${isZoomed ? styles.panning : ""}`}
+          tabIndex={canZoom ? 0 : undefined}
           aria-busy={isImageLoading}
           style={
-            enableZoom || isImageLoading
+            canZoom || isImageLoading
               ? {
                   width: Math.min(viewport.width, imageWidth),
                   height: Math.min(viewport.height, imageHeight),
                 }
               : undefined
           }
-          role={enableZoom ? "region" : undefined}
-          aria-label={enableZoom ? messages.ui.lightbox.zoomRegion : undefined}
-          onTouchStart={enableZoom ? undefined : handleTouchStart}
-          onTouchEnd={enableZoom ? undefined : handleTouchEnd}
+          role={canZoom ? "region" : undefined}
+          aria-label={canZoom ? messages.ui.lightbox.zoomRegion : undefined}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={() => {
+            touchStartRef.current = null;
+            pinchStartRef.current = null;
+          }}
         >
           {isImageLoading && loadingMessageSource === imageSrc && (
             <div
-              className={`${styles.loadingPlaceholder} ${!enableZoom && outgoingSource ? styles.overPrevious : ""}`}
+              className={`${styles.loadingPlaceholder} ${outgoingSource ? styles.overPrevious : ""}`}
               role="status"
             >
               <div className={styles.spinner} aria-hidden="true" />
@@ -412,19 +526,16 @@ const Lightbox: FC<LightboxProps> = ({
             </div>
           )}
 
-          {!enableZoom &&
-            !imageError &&
-            outgoingSource &&
-            outgoingSource !== imageSrc && (
-              <Image
-                src={outgoingSource}
-                alt=""
-                aria-hidden="true"
-                fill
-                unoptimized
-                className={`${styles.outgoingImage} ${isImageLoading ? "" : styles.fadingOut}`}
-              />
-            )}
+          {!imageError && outgoingSource && outgoingSource !== imageSrc && (
+            <Image
+              src={outgoingSource}
+              alt=""
+              aria-hidden="true"
+              fill
+              unoptimized
+              className={`${styles.outgoingImage} ${isImageLoading ? "" : styles.fadingOut}`}
+            />
+          )}
 
           {imageError ? (
             <div className={styles.errorIndicator}>
@@ -445,30 +556,30 @@ const Lightbox: FC<LightboxProps> = ({
             </div>
           ) : (
             <ImageFrame
-              type={enableZoom ? "button" : undefined}
+              type={canZoom ? "button" : undefined}
               aria-label={
-                enableZoom
-                  ? zoom
+                canZoom
+                  ? isZoomed
                     ? messages.ui.lightbox.zoomOut
                     : messages.ui.lightbox.zoomIn
                   : undefined
               }
-              aria-pressed={enableZoom ? zoom : undefined}
-              disabled={enableZoom ? isImageLoading || fit >= 1 : undefined}
+              aria-pressed={canZoom ? isZoomed : undefined}
+              disabled={canZoom ? isImageLoading || maxZoom <= 1 : undefined}
               onClick={
-                enableZoom
+                canZoom
                   ? () => {
-                      setZoom((value) => !value);
+                      setZoom(isZoomed ? 1 : maxZoom);
                     }
                   : undefined
               }
               className={
-                enableZoom
-                  ? `${styles.zoomCanvas} ${zoom ? styles.zoomed : ""}`
+                canZoom
+                  ? `${styles.zoomCanvas} ${isZoomed ? styles.zoomed : ""}`
                   : undefined
               }
               style={
-                enableZoom
+                canZoom
                   ? {
                       width: imageWidth,
                       height: imageHeight,
@@ -477,6 +588,7 @@ const Lightbox: FC<LightboxProps> = ({
               }
             >
               <Image
+                ref={imageRef}
                 key={`lightbox-image-${activeIndex}`}
                 src={images[activeIndex]}
                 alt={formatMessage(messages.ui.lightbox.imageAlt, {
@@ -489,9 +601,10 @@ const Lightbox: FC<LightboxProps> = ({
                 unoptimized
                 loading="eager"
                 fetchPriority="high"
-                className={`${styles.lightboxImage} ${enableZoom ? styles.zoomImage : !isImageLoading ? styles.fadingIn : ""}`}
+                draggable={false}
+                className={`${styles.lightboxImage} ${canZoom ? styles.zoomImage : ""} ${images.length > 1 && !isImageLoading ? styles.fadingIn : ""}`}
                 style={{
-                  ...(enableZoom
+                  ...(canZoom
                     ? { width: imageWidth, height: imageHeight }
                     : {}),
                   opacity: isImageLoading ? 0 : 1,
@@ -504,7 +617,7 @@ const Lightbox: FC<LightboxProps> = ({
                     height: event.currentTarget.naturalHeight,
                   });
                   setImageState({ src: imageSrc, status: "loaded" });
-                  if (!enableZoom) {
+                  if (images.length > 1) {
                     setPresentation((previous) => ({
                       current: imageSrc,
                       previous: previous?.current ?? null,

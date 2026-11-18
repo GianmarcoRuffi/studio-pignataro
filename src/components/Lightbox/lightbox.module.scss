@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: var(--viewport-height);
   background: #191815f2;
   backdrop-filter: blur(5px);
   z-index: 10001;
@@ -18,31 +18,23 @@
   --viewport-gap: 24px;
   --control-gap: 14px;
   --nav-size: 48px;
-  --close-size: var(--nav-size);
   --control-font-size: 24px;
   --side-space: calc(var(--nav-size) + var(--control-gap));
+  --vertical-space: var(--viewport-gap);
+  --image-max-width: calc(
+    100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2)
+  );
+  --image-max-height: calc(
+    var(--viewport-height) - (var(--vertical-space) * 2)
+  );
   position: relative;
   display: inline-flex;
   width: fit-content;
   height: fit-content;
-  max-width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
-  max-height: calc(100vh - (var(--viewport-gap) * 2));
+  max-width: var(--image-max-width);
+  max-height: var(--image-max-height);
   cursor: default;
   overflow: visible;
-
-  @media (max-width: 480px) {
-    --viewport-gap: 4px;
-    --control-gap: 6px;
-    --nav-size: 44px;
-    --control-font-size: 20px;
-  }
-
-  @media (min-width: 481px) and (max-width: 768px) {
-    --viewport-gap: 12px;
-    --control-gap: 8px;
-    --nav-size: 44px;
-    --control-font-size: 20px;
-  }
 
   @media (min-width: 769px) and (max-width: 1024px) {
     --viewport-gap: 16px;
@@ -54,8 +46,8 @@
   position: relative;
   width: fit-content;
   height: fit-content;
-  max-width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
-  max-height: calc(100vh - (var(--viewport-gap) * 2));
+  max-width: var(--image-max-width);
+  max-height: var(--image-max-height);
   border-radius: 0;
   overflow: hidden;
   background: var(--color-background-dark);
@@ -71,8 +63,8 @@
   border-radius: 0;
   width: auto;
   height: auto;
-  max-width: calc(100vw - (var(--viewport-gap) * 2) - (var(--side-space) * 2));
-  max-height: calc(100vh - (var(--viewport-gap) * 2));
+  max-width: var(--image-max-width);
+  max-height: var(--image-max-height);
   object-fit: contain;
   object-position: center;
   z-index: 10001;
@@ -169,14 +161,9 @@
   }
 }
 
-.lightboxContainer.zoomDialog {
-  touch-action: auto;
-}
-
 .zoomViewport {
   display: block;
   overflow: auto;
-  max-height: calc(100dvh - (var(--viewport-gap) * 2));
   touch-action: pan-x pan-y pinch-zoom;
   overscroll-behavior: contain;
   background: transparent;
@@ -257,7 +244,7 @@
 
 .closeButton {
   top: 0;
-  right: calc(-1 * (var(--close-size) + var(--control-gap)));
+  right: calc(-1 * var(--side-space));
 }
 
 .navButton {
@@ -283,10 +270,6 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  @media (max-width: 768px) {
-    bottom: 12px;
-  }
 }
 
 .counter {
@@ -297,11 +280,6 @@
   padding: 8px 16px;
   border-radius: 0;
   font-variant-numeric: tabular-nums;
-
-  @media (max-width: 768px) {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
 }
 
 @keyframes fadeIn {
@@ -313,9 +291,58 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px),
+  (orientation: landscape) and (max-height: 480px) and (pointer: coarse) {
   .lightboxContainer {
-    touch-action: pan-x;
+    --mobile-layout: 1;
+    --viewport-gap: 8px;
+    --nav-size: 44px;
+    --control-font-size: 20px;
+    --side-space: 0px;
+    --vertical-space: calc(var(--nav-size) + 2 * var(--viewport-gap));
+  }
+
+  .zoomViewport {
+    touch-action: pan-y;
+  }
+
+  .panning {
+    touch-action: pan-x pan-y;
+  }
+
+  .closeButton,
+  .navButton,
+  .indicators {
+    position: fixed;
+  }
+
+  .closeButton {
+    top: var(--viewport-gap);
+    right: var(--viewport-gap);
+  }
+
+  .navButton {
+    top: auto;
+    bottom: var(--viewport-gap);
+    transform: none;
+  }
+
+  .navButtonLeft {
+    left: var(--viewport-gap);
+  }
+
+  .navButtonRight {
+    right: var(--viewport-gap);
+  }
+
+  .indicators {
+    bottom: var(--viewport-gap);
+    height: var(--nav-size);
+  }
+
+  .counter {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 
